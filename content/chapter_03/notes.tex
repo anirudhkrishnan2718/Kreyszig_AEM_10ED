@@ -1,0 +1,150 @@
+\chapter{Higher Order Linear ODEs}
+\section{Homogeneous Linear ODEs}
+
+\begin{description}
+    \item[Linear ODE of nth order] The standard form of an ODE on $ n $-th order is,
+        \begin{align}
+            y^{(n)} + p_{n-1}(x)y^{(n-1)} + \dots + p_{1}(x)y' + p_{0}(x)y & = r(x)
+        \end{align}
+        Here, $ \{p_{i}(x)\} $ are any continuous functions of $ x $, and the solution
+        $ h(x) $, is defined and $ n $-times differentiable on the interval $ \mathcal{I} $
+        in which the set $ \{p_{i}(x)\} $ are defined and continuous.
+    \item[Superposition principle] If $ y_{1},\ y_{2} $ are solutions to a linear h-ODE
+        of order $ n $, then
+        \begin{align}
+            c_{1}y_{1} + c_{2}y_{2} = y_{3}
+        \end{align}
+        is also a solution for some constants $ c_{1}, c_{2} $.
+    \item[Linearly Independent functions] A set of functions $ y_{1}(x), \dots, y_{n}(x) $
+        are linearly independent (L.I.) on some interval $ \mathcal{I} $ if,
+        \begin{align}
+            k_{1}y_{1}(x) + \dots + k_{n}y_{n}(x) = 0 \qquad \implies \qquad
+            k_{1} = \dots = k_{n} = 0
+        \end{align}
+        Conversely, if some solution to the above equation exists for which not all $ k_{i} $
+        are zero, then the functions are linearly dependent (L.D.)
+    \item[Basis of solutions] A set of L.I. solutions to the linear h-ODE of order $ n $.
+    \item[General solution] Given a basis of solutions $ \{y_{i}\} $ of the h-ODE,
+        \begin{align}
+            y & = c_{1}y_{1} + \dots + c_{n}y_{n}
+        \end{align}
+        is a general solution of the ODE. Particular solutions can be obtained by assigning
+        values to the coefficients $ \{c_{i}\} $. \par
+        No singular solutions exist which cannot be obtained from the general solution.
+    \item[Initial Value Problem] Given the set of $ n $ initial conditions,
+        \begin{align}
+            y(x_{0}) = K_{0} \quad \ y'(x_{0}) = K_{1}\quad \dots \quad y^{(n)}(X_{0}) = K_{n}
+        \end{align}
+        There exists a unique solution for a linear h-ODE with coefficients $ \{p_{i}(x)\} $
+        continuous on $ \mathcal{I} $ given that $ x_{0} \in \mathcal{I} $.
+    \item[Wronskian] Using the determinant of order $ n $,
+        \begin{align}
+            \renewcommand*{\arraystretch}{1.5}
+            W(y_{1},\dots,y_{n}) = \begin{vNiceMatrix}[r, margin]
+                                       y_{1}         & y_{2}         & \dots  & y_{n}         \\
+                                       y_{1}'        & y_{2}'        & \dots  & y_{n}'        \\
+                                       \vdots        & \vdots        & \ddots & \vdots        \\
+                                       y_{1}^{(n-1)} & y_{2}^{(n-1)} & \dots  & y_{n}^{(n-1)} \\
+                                   \end{vNiceMatrix}
+        \end{align}
+        If $ W(x) \neq 0 $ for some $ x \in \mathcal{I} $, where the coefficients of the
+        h-ODE $ \{p_{i}(x)\} $ are continuous on $ \mathcal{I} $, then the solutions
+        $ \{y_{i}(x)\} $ are L.I. \par
+
+        Conversely, if $ W(x) = 0 $ for some $ x = x_{0} \in \mathcal{I} $, then $W \equiv 0$
+        identically for all $ x_{0} \in \mathcal{I} $ and the functions are L.D.
+    \item[Existence and Uniqueness] If the coefficients $ \{p_{i}(x)\} $ are continuous on
+        some interval $ \mathcal{I} $, then the h-ODE has a general solution on $ \mathcal{I} $.
+        \par
+        Using the fact that the Wronskian is merely the coefficient matrix of the system of linear
+        equations in the unknowns $ \{c_{i}\} $ in the general solution, \par
+        The Wronskisan of a solution composed of an L.I. basis of solutions is guaranteed to
+        cover all possible solutions. Thus the general solution is unique. \par
+\end{description}
+
+\section{Homogeneous Linear ODEs with Constant Coefficients}
+
+\begin{description}
+    \item[Standard form] In standard form, the h-ODE with constant coefficients of order $ n $,
+        alongside its characteristic equation is,
+        \begin{align}
+            y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_{1}y' + a_{0} & = 0             \\
+            y_{h}                                                & = e^{\lambda x} \\
+            \lambda^{n} + a_{n-1}\lambda^{n-1} + \dots a_{1}\lambda + a_{0} = 0
+        \end{align}
+    \item[Distinct real roots] Each distinct root $ \lambda_{k} $ corresponds to a solution
+        to the ODE $ e^{k\lambda} $
+        \begin{align}
+            W & = \begin{vNiceMatrix}[r, margin]
+                      e^{\lambda_{1}x}                  & e^{\lambda_{2}x}                  & \dots  & e^{\lambda_{n}x}                  \\
+                      \lambda_{1}e^{\lambda_{1}x}       & \lambda_{2}e^{\lambda_{2}x}       & \dots  & \lambda_{n}e^{\lambda_{n}x}       \\
+                      \lambda_{1}^{2}e^{\lambda_{1}x}   & \lambda_{2}^{2}e^{\lambda_{2}x}   & \dots  & \lambda_{n}^{2}e^{\lambda_{n}x}   \\
+                      \vdots                            & \vdots                            & \ddots & \vdots                            \\
+                      \lambda_{1}^{n-1}e^{\lambda_{1}x} & \lambda_{2}^{n-1}e^{\lambda_{2}x} & \dots  & \lambda_{n}^{n-1}e^{\lambda_{n}x}
+                  \end{vNiceMatrix}
+        \end{align}
+    \item[Vandermode determinant] A simplified version of the above determinant given by,
+        \begin{align}
+            W & = \exp\left( x\sum_{k=1}^{n} \lambda_{k} \right)\ \begin{vNiceMatrix}[r, margin]
+                                                                      1                 & 1                 & \dots  & 1                 \\
+                                                                      \lambda_{1}       & \lambda_{2}       & \dots  & \lambda_{n}       \\
+                                                                      \lambda_{1}^{2}   & \lambda_{2}^{2}   & \dots  & \lambda_{n}^{2}   \\
+                                                                      \vdots            & \vdots            & \ddots & \vdots            \\
+                                                                      \lambda_{1}^{n-1} & \lambda_{2}^{n-1} & \dots  & \lambda_{n}^{n-1}
+                                                                  \end{vNiceMatrix}                       \\
+              & = \exp\left( x\sum_{k=1}^{n} \lambda_{k} \right)\ (-1)^{n(n-1)/2} \cdot \prod_{j = 1}^{n}\ (\lambda_{j} - \lambda_{k}) \qquad n \geq j > k
+        \end{align}
+        The above expression is simply the difference between all possible combinations of roots.
+        Since the first term is a product of exponentials, it is never zero. \par
+        So, the Wronksian provides L.I only if all the roots are distinct, and thus none
+        of the terms $ (\lambda_{j} - \lambda_{k}) $ are zero.
+    \item[Repeated roots] For repeated roots of multiplicity $ m $, whether real or complex,
+        \begin{align}
+            y_{1}  & = e^{\lambda x}      & z_{1}, z_{2}     & = e^{\alpha x}\sin \beta x, e^{\alpha x} \cos \beta x           \\
+            y_{2}  & = xe^{\lambda x}     & z_{3}, z_{4}     & = xe^{\alpha x}\sin \beta x, xe^{\alpha x} \cos \beta x         \\
+            y_{3}  & = x^{2}e^{\lambda x} & z_{5}, z_{6}     & = x^{2}e^{\alpha x}\sin \beta x, x^{2}e^{\alpha x} \cos \beta x \\
+            \vdots &                      & \vdots           & \nonumber                                                       \\
+            y_{m}  & = x^{m}e^{\lambda x} & z_{2m-1}, z_{2m} & = x^{m}e^{\alpha x}\sin \beta x, x^{m}e^{\alpha x} \cos \beta x
+        \end{align}
+        Other solutions are obtained by multiplying higher powers of $ x $ to existing solutions.
+        \par
+        To derive the above multiple roots factor, consider the root $ \lambda_{1} $ with
+        multiplicity $ m $,
+        \begin{align}
+            \mathcal{L}[y]             & = y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_{1}y' + a_{0}y                              \\
+            \mathcal{L}[e^{\lambda x}] & = (\lambda^{n} + a_{n-1}\lambda^{n-1} + \dots + a_{1}\lambda + a_{0})\ e^{\lambda x} \\
+                                       & = (\lambda - \lambda_{1})^{m} \cdot h(\lambda) \cdot e^{\lambda x}
+        \end{align}
+        Here $ h(\lambda) $ is the leftover polynomial after factoring out all the $ \lambda_{1} $.
+        \begin{align}
+            \diffp**{\lambda}{\mathcal{L}[e^{\lambda x}]}
+             & = \mathcal{L}\left[ \diffp**{\lambda}{e^{\lambda x}} \right]
+            = \mathcal{L}[xe^{\lambda x}]                                                       \\
+             & = m(\lambda - \lambda_{1})^{m-1} \cdot h(\lambda)e^{\lambda x} \nonumber         \\
+             & + (\lambda - \lambda_{1})^{m} \cdot \diffp**{\lambda}{[h(\lambda)e^{\lambda x}]} \\
+        \end{align}
+        Since $ m > 2 $, the RHS is zero at $ \Lambda = \lambda_{1} $. This means that
+        $\mathcal{L}[xe^{\lambda x}] = 0$, and thus $ xe^{\lambda x} $ is a solution.
+        \par Further differentiation w.r.t. $ \lambda $ can be used to arrive at further
+        solutions corresponding to $ \lambda_{1} $.
+\end{description}
+
+\section{Nonhomogeneous Linear ODEs}
+
+\begin{description}
+    \item[Standard form] Ensuring the coefficient of $ y^{(n)} $ is $ 1 $,
+        \begin{align}
+            y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_{1}y' + a_{0} & = r(x)                \\
+            y                                                    & = y_{h}(x) + y_{p}(x)
+        \end{align}
+        The Initial value problem is the same as for h-ODEs.
+    \item[Undetermined coefficients] Similar to second order nh-ODEs, higher order ODEs
+        can be solved using the pre-factor $ x^{m} $ to deal with roots of multiplicity $ m $.
+    \item[Variation of parameters] Generalizing to order $ n $,
+        \begin{align}
+            y_{p} & = \sum_{k = 1}^{n}\ y_{k} \int \frac{W_{k}}{W}\ r \dl x
+        \end{align}
+        $ W $ is the Wronskian of the h-ODE with a basis of solutions $ \{y_{1}, y_{2},
+            \dots,y_{n}\} $. $ W_{k} $ is the reduced Wronskian produced by replacing the
+        $ k $-th column of $ W $ with the column vector $ [0\ 0\ \dots\ 0\ 1]^{T} $
+\end{description}

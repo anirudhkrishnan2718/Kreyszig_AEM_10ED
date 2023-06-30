@@ -1,0 +1,430 @@
+\section{Green's Theorem in the Plane}
+
+\begin{enumerate}
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F} & = \bmatcol{y}{-x}                                            &
+              C       & : x^2 + y^2 = 1/4                                              \\
+              \oint_C \vec{F} \dotp \dl{\vec{r}}
+                      & = \iint_R \Big( \diffp {F_2}{x} - \diffp{F_1}{y} \Big) \dl A &
+              I       & = -\iint_R 2 \dl A                                             \\
+              I       & = -\int_{0}^{1/2} \int_{0}^{2\pi} 2r \dl r \dl \theta        &
+                      & = -2\pi \Bigg[r^2\Bigg]_0^{1/2}
+              = \color{y_h} -\frac{\pi}{2}
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F} & = \bmatcol{6y^2}{2x - 2y^4}                                  &
+              C       & : \text{square with given vertices}                            \\
+              \oint_C \vec{F} \dotp \dl{\vec{r}}
+                      & = \iint_R \Big( \diffp {F_2}{x} - \diffp{F_1}{y} \Big) \dl A &
+              I       & = \iint_R \Bigg( 2 - 12y \Bigg) \dl A                          \\
+              I       & = \int_{-2}^{2} \int_{-2}^{2} (2 - 12y) \dl x \dl y          &
+                      & =  \int_{-2}^{2} \Bigg[ 2x - 12xy \Bigg]_{-2}^{2} \dl y        \\
+                      & = \int_{-2}^{2} ({\color{y_h} 8 - 48y}) \dl y                &
+                      & = \Bigg[ 8y - 24y^2 \Bigg]_{-2}^{2}
+              = \color{y_p} 32
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F} & = \bmatcol{x^2 e^y}{y^2 e^x}                                 &
+              C       & : \text{Rectangle with given vertices}                         \\
+              \oint_C \vec{F} \dotp \dl{\vec{r}}
+                      & = \iint_R \Big( \diffp {F_2}{x} - \diffp{F_1}{y} \Big) \dl A &
+              I       & = \iint_R \Bigg( y^2 e^x - x^2 e^y \Bigg) \dl A                \\
+              I       & = \int_{0}^{3} \int_{0}^{2} (y^2 e^x - x^2 e^y) \dl x \dl y  &
+                      & =  \int_{0}^{3} \Bigg[ y^2e^x - \frac{x^3}{3}e^y
+              \Bigg]_{0}^{2} \dl y                                                     \\
+                      & = \int_{0}^{3} \left({\color{y_h} y^2 (e^2 - 1)
+                          - \frac{8e^y}{3}}\right)
+              \dl y   &
+                      & = \Bigg[ \frac{(e^2 - 1)y^3 - 8e^y}{3} \Bigg]_{0}^{3}          \\
+                      & = \color{y_p} \frac{27e^2 - 19 - 8e^3}{3}
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F}        & = \bmatcol{x \cosh(2y) }{2x^2 \sinh(2y)}           &
+              C              & : y \in [x^2 , x] \qquad x \in [0, 1]                \\
+              \oint_C \vec{F} \dotp \dl{\vec{r}}
+                             & = \iint_R \Big( \diffp {F_2}{x} - \diffp{F_1}{y}
+              \Big)
+              \dl A          &
+              I              & = \iint_R \Bigg( 2x\sinh(2y) \Bigg) \dl A            \\
+              I              & = \int_{0}^{1} \int_{x^2}^{x} \Big( 2x\sinh(2y)
+              \Big)
+              \dl y
+              \dl x          &
+                             & =  \int_{0}^{1} \Bigg[ x\cosh(2y) \Bigg]_{x^2}^{x}
+              \dl x                                                                 \\
+                             & = \int_{0}^{1} \Bigg({\color{y_h} x \cosh(2x) -
+                  x\cosh(2x^2)} \Bigg)
+              \dl x                                                                 \\
+                             & = \Bigg[ \frac{2x\sinh(2x) - \cosh(2x)
+                      - \sinh(2x^2)}{4}
+              \Bigg]_{0}^{1} &
+                             & = \color{y_p} \frac{-e^{-2} + 1}{4}
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F}         & = \bmatcol{x^2 + y^2}{x^2 - y^2}                  &
+              C               & : y \in [1 , 2 - x^2] \qquad x \in [0, 1]           \\
+              \oint_C \vec{F} \dotp \dl{\vec{r}}
+                              & = \iint_R \Big( \diffp {F_2}{x} - \diffp{F_1}{y}
+              \Big)
+              \dl A           &
+              I               & = \iint_R \Bigg( 2x - 2y \Bigg) \dl A               \\
+              I               & = \int_{-1}^{1} \int_{1}^{2 - x^2} \Big( 2x - 2y
+              \Big)
+              \dl y \dl x     &
+                              & =  \int_{-1}^{1} \Bigg[ 2xy - y^2
+                  \Bigg]_{1}^{2 - x^2}
+              \dl x                                                                 \\
+                              & = \int_{0}^{1} \Bigg({\color{y_h} 2x - 2x^3
+                  - 3 - x^4 + 4x^2} \Bigg)
+              \dl x                                                                 \\
+                              & = \Bigg[ x^2 - \frac{x^4}{2} - 3x - \frac{x^5}{5}
+                  + \frac{4x^3}{3}
+              \Bigg]_{-1}^{1} &
+                              & = \color{y_p} \frac{-56}{15}
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F} & = \bmatcol{\cosh y}{-\sinh x} \qquad \qquad
+              C : y \in [x, 3x] \qquad x \in [1, 3]                           \\
+              \oint_C \vec{F} \dotp \dl{\vec{r}}
+                      & = \iint_R \Bigg( \diffp {F_2}{x} - \diffp{F_1}{y}
+              \Bigg) \dl A                                                    \\
+              I       & = \iint_R \Bigg( -\cosh x - \sinh y \Bigg) \dl A      \\
+              I       & = \int_{1}^{3} \int_{x}^{3x} \Big( -\cosh x - \sinh y
+              \Big)
+              \dl y \dl x                                                     \\
+                      & =  \int_{1}^{3} \Bigg[ -y\cosh x - \cosh y
+                  \Bigg]_{x}^{3x}
+              \dl x                                                           \\
+                      & = \int_{1}^{3} \Bigg({\color{y_h} -2x\cosh(x)
+                  -\cosh(3x) + \cosh x} \Bigg)
+              \dl x                                                           \\
+                      & = \Bigg[ -2x\sinh x + 2\cosh x - \frac{\sinh(3x)}{3}
+                  + \sinh(x) \Bigg]_{1}^{3} = \color{y_p} -1379.04
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F}              & = \nabla \big[x^3 \cos^2(xy)\big]
+              = \bmatcol{F_1}{F_2} &
+              C                    & : x \in [0 , 2 - x^2] \qquad x \in [0, 1]   \\
+              \diffp {F_2}{x}      & = \diffp{g}{x, y}                         &
+              \diffp {F_1}{y}      & = \diffp{g}{y, x}
+          \end{align}
+          Since the vector function is the gradient of an underlying scalar function
+          $ g $, and its second partial derivatives commute, the line integral is
+          identically zero.
+
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F}      & = \bmatcol{-e^{-x}\cos y}{-e^{-x} \sin y}            &
+              C            & : x \in [0, \sqrt{16 - y^2}] \qquad x \in [-4, 4]      \\
+              \oint_C \vec{F} \dotp \dl{\vec{r}}
+                           & = \iint_R \Bigg( \diffp {F_2}{x} - \diffp{F_1}{y}
+              \Bigg) \dl A &
+                           & = \iint_R \Bigg( e^{-x} \sin y - e^{-x}\sin y \Bigg)
+              \dl A
+              = \color{y_p} 0
+          \end{align}
+          Since the vector function is the gradient of an underlying scalar function
+          $ g = e^{-x}\cos(y)$, and its second partial derivatives commute, the line
+          integral is identically zero.
+
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F} & = \bmatcol{e^{y/x}}{e^{y}\ \ln(x) + 2x} \qquad \qquad
+              C : y \in [1 + x^4, 2] \qquad x \in [-1, 1]                            \\
+              \oint_C \vec{F} \dotp \dl{\vec{r}}
+                      & = \iint_R \Bigg( \diffp {F_2}{x} - \diffp{F_1}{y}
+              \Bigg) \dl A                                                           \\
+              I       & = \iint_R \Bigg( \frac{e^y}{x} + 2 - \frac{e^y}{x} \Bigg)
+              \dl A                                                                  \\
+              I       & = \int_{-1}^{1} \int_{1 + x^4}^{2} \Big( 2 \Big) \dl y \dl x
+              =  \int_{-1}^{1} \Bigg[ 2y \Bigg]_{1 + x^4}^{2} \dl x                  \\
+                      & = \int_{-1}^{1} \Bigg({\color{y_h} 2 - 2x^4} \Bigg)
+              \dl x
+              = \Bigg[ 2x - \frac{2x^5}{5} \Bigg]_{-1}^{1}
+              = \color{y_p} \frac{16}{5}
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              \vec{F} & = \bmatcol{x^2y^2}{-x/y^2} \qquad \qquad
+              C : r \in [1, 2] \qquad \theta \in [\pi/4, \pi/2]                        \\
+              \oint_C \vec{F} \dotp \dl{\vec{r}}
+                      & = \iint_R \Bigg( \diffp {F_2}{x} - \diffp{F_1}{y} \Bigg) \dl A \\
+              I       & = \iint_R \Bigg( \frac{-1}{y^2} - 2x^2y \Bigg) \dl A           \\
+              I       & = \int_{1}^{2} \int_{\pi/4}^{\pi/2} \Big(
+              \frac{-1}{r\sin^2 \theta} - 2r^4 \cos^2 \theta \sin \theta \Big)
+              \dl \theta  \dl r                                                        \\
+                      & =  \int_{-1}^{1} \Bigg[ \frac{\cot(\theta)}{r}
+              + \frac{2r^4}{3} \cos^3 \theta \Bigg]_{\pi/4}^{\pi/2} \dl x              \\
+                      & = \int_{1}^{2} \Bigg({\color{y_h} \frac{-1}{r} -
+                  \frac{r^4}{3\sqrt{2}}} \Bigg) \dl x
+              = \Bigg[ -\ln(r) - \frac{r^5}{15\sqrt{2}} \Bigg]_{1}^{2}
+              = \color{y_p} -\ln(2) - \frac{31\sqrt{2}}{30}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm,
+                          xmin = 0, xmax = 3, ymin = 0, ymax = 3,
+                          axis lines = middle,
+                          xlabel = \normalsize $ x $, ylabel = \normalsize $ y $,
+                          axis equal, xtick = {1,2}, ytick = {1,2},
+                          Ani]
+                      \draw [draw = black!0, fill = gray!20]
+                      (45:2)--(45:1) arc (45:90:1) -- (90:2) arc(90:45:2)
+                      -- cycle;
+                      \addplot[GraphSmooth, y_h, domain= 0:pi/2, variable=\t]
+                      ({cos(\t)}, {sin(\t)});
+                      \addplot[GraphSmooth, y_h, domain= 0:pi/2, variable=\t]
+                      ({2 * cos(\t)}, {2 * sin(\t)});
+                      \addplot[GraphSmooth, y_p, domain= 0:2.5/sqrt(2), variable=\t]
+                      ({\t}, {\t});
+                      \addplot[GraphSmooth, y_p, domain= 0:2.5, variable=\t]
+                      ({0.01}, {\t});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the area of a circle using Green's theorem,
+          \begin{align}
+              A & = \frac{1}{2} \oint_C (x \dl y) - (y \dl x)                       &
+              x & = r\cos \theta \qquad y = r \sin \theta                             \\
+              A & = \frac{1}{2} \int_{0}^{2\pi} \Big(r^2 \cos^2 \theta + r^2 \sin^2
+              \theta\Big) \dl \theta
+                & = \frac{2\pi r^2}{2} = \color{y_p} \pi r^2
+          \end{align}
+
+          Finding the area of a triangle using Green's theorem, with vertices
+          $ (0,0), (0, b) $ and $ (b, h) $
+          \begin{align}
+              A & = \frac{1}{2} \oint_C (x \dl y) - (y \dl x)     \\
+              A & = \frac{1}{2} \Bigg[ \int_{0}^{b} (-0) \dl x  +
+                  \int_{0}^{h} b \dl y + \int_{1}^{0} (bht) \dl t - (bht) \dl t \Bigg]
+              = \color{y_p} \frac{bh}{2}
+          \end{align}
+          Other examples TBC.
+
+    \item Restating Green's theorem,
+          \begin{align}
+              \vec{F}                        & = \bmatcol{F_2}{-F_1}               &
+              \nabla \dotp \vec{F}           & = \diffp {F_2}{x} - \diffp {F_1}{y}   \\
+              \vec{r}'                       & = \diff {\vec{r}}{s}
+              = \bmatcol{\difc xs}{\difc ys} &
+              \vec{n}                        & = \bmatcol{\difc ys}{-\difc xs}
+              = \vec{\hat{n}} \dl s                                                  \\
+              \vec{r}' \dotp \vec{n}         & = 0                                 &
+          \end{align}
+          Now, starting from the pre-existing definition of Green's theorem,
+          \begin{align}
+              \iint \Bigg[\diffp {F_2}{x} - \diffp{F_1}{y}\Bigg] \dl x \dl y & =
+              \color{y_h} \iint \Big[\nabla \dotp \vec{F}\Big] \dl x \dl y       \\
+              \oint_C (F_1 \dl x + F_2 \dl y)                                & =
+              \color{y_p} \oint_C \vec{F} \dotp \vec{\hat{n}} \dl s
+          \end{align}
+          Starting with the curl of $ \vec{F} $,
+          \begin{align}
+              \vec{F}                                  & = \bmatcol{F_1}{F_2}    &
+              \color{y_h} (\nabla \times \vec{F})
+              \dotp \vec{\hat{k}}                      & =
+              \diffp {F_2}{x} - \diffp{F_1}{y}                                     \\
+              \vec{r}'                                 & = \diff {\vec{r}}{s}
+              = \bmatcol{\difc{x}{s}}{\difc{y}{s}}     &
+              \vec{F} \dotp \vec{r}'                   & =
+              F_1 \diff xs + F_2 \diff ys                                          \\
+              \color{y_p} \vec{F} \dotp \vec{r}' \dl s & = F_1 \dl x + F_2 \dl y &
+              \iint_R (\nabla \times \vec{F}) \dotp
+              \vec{\hat{k}} \dl x \dl y                & = \oint_C \vec{F} \dotp
+              \vec{r}' \dl s
+          \end{align}
+
+          Verifying the relations for the given example,
+          \begin{align}
+              \vec{F}                     & = \bmatcol{7x}{-3y}                &
+              \vec{r}                     & = \bmatcol{2\cos t}{2\sin t}         \\
+              \diff st                    & = \sqrt{\Bigg( \diff xt \Bigg)^2
+              + \Bigg( \diff yt \Bigg)^2} &
+              \diff st                    & = 2                                  \\
+              \vec{r}(s)                  & = \bmatcol{2\cos(s/2)}{2\sin(s/2)}
+              \qquad s \in [0, 4\pi]
+          \end{align}
+          For the first relation,
+          \begin{align}
+              \iint_R (\nabla \dotp \vec{F})
+              \dl x \dl y                         & = \int_{0}^{2}
+              \Bigg[ \int_{0}^{2\pi} 4r \dl \theta \Bigg]
+              \dl r = \color{y_h} 16\pi                                               \\
+              \diff {\vec{r}}{s}                  & = \bmatcol{-\sin(s/2)}{\cos(s/2)}
+              \qquad \qquad \vec{n} = \bmatcol{\cos(s/2)}{\sin(s/2)}                  \\
+              \oint_C \vec{F} \dotp \vec{\hat{n}} & = \oint
+              14\cos^2 (s/2) - 6\sin^2(s/2) \dl s                                     \\
+                                                  & = \Bigg[7s + 7\sin(s)
+                  - 3s - 3\sin(s)\Bigg]_0^{4\pi} = \color{y_p} 16\pi
+          \end{align}
+          For the second relation,
+          \begin{align}
+              (\nabla \times \vec{F})              & = \vec{0}                    &
+              \iint_R (\nabla \times \vec{F}) \dotp \vec{\hat{k}} \dl A
+              = \color{y_h} 0                                                       \\
+              \vec{F} \dotp \vec{r}'               & = -10\sin(s)                   \\
+              \oint_C \vec{F} \dotp \vec{r}' \dl s & = -10\int_{0}^{4\pi} \sin(s)
+              \dl s                                & = \Bigg[ 10\cos(s)
+                  \Bigg]_0^{4\pi} = \color{y_p} 0
+          \end{align}
+          Other example TBC.
+
+    \item Using the restatement of Green's theorem,
+          \begin{align}
+              \oint_C \diffp wn \dl s     & = \iint_R \nabla^2 w \dl A            &
+              C                           & : y \in [0.5x, 2] \qquad x \in [0, 4]   \\
+              w                           & = \cosh(x)                            &
+              \nabla^2 w                  & = \cosh(x)                              \\
+              I                           & = \int_{0}^{4} \Bigg[ \int_{0.5x}^{2}
+              \cosh(x) \dl y \Bigg] \dl x &
+                                          & = \int_{0}^{4} \Bigg[ y\cosh(x)
+              \Bigg]_{0.5x}^2                                                       \\
+                                          & = \int_{0}^{4} \Big({\color{y_h}
+                  2\cosh(x) - 0.5x\cosh(x)}\Big)
+              \dl x                                                                 \\
+                                          & = \Bigg[ (2 - 0.5x)\sinh(x)
+              + 0.5\cosh(x) \Bigg]_0^4                                              \\
+                                          & = \color{y_p} \frac{\cosh(4) - 1}{2}
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              w                       & = x^2y + xy^2 \qquad \qquad
+              C : r \in [0, 1] \qquad \theta \in [0, \pi/2]                   \\
+              \oint_C \diffp wn \dl s & = \iint_R \nabla^2 w \dl A            \\
+              I                       & = \iint_R \Bigg( 2y + 2x \Bigg) \dl A \\
+              I                       & = \int_{0}^{1} \int_{0}^{\pi/2}
+              \Big( 2r \cos \theta + 2r \sin \theta \Big)
+              \ r \dl \theta\ \dl r                                           \\
+                                      & =  \int_{0}^{1} 2r^2 \Bigg[
+              \sin \theta - \cos \theta \Bigg]_{0}^{\pi/2} \dl r              \\
+                                      & = \int_{0}^{1} \Bigg({\color{y_h}
+                  4r^2 } \Bigg) \dl r
+              = \Bigg[ \frac{4r^3}{3} \Bigg]_{0}^{1}
+              = \color{y_p} \frac{4}{3}
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              w                       & = e^x \cos y + xy^3 \qquad \qquad
+              C : y \in [1, 10 - x^2] \qquad x \in [0, 3]                  \\
+              \oint_C \diffp wn \dl s & = \iint_R \nabla^2 w \dl A         \\
+              I                       & = \iint_R \Bigg( e^x \cos y +
+              -e^x \cos y + 6xy \Bigg) \dl A                               \\
+              I                       & = \int_{0}^{3} \int_{1}^{10 - x^2}
+              \Big( 6xy\Big) \dl y \dl x
+              =  \int_{0}^{3} 3x \Bigg[
+              y^2 \Bigg]_{1}^{10 - x^2} \dl x                              \\
+                                      & = \int_{0}^{3} \Bigg({\color{y_h}
+                          3(99x - 20x^3 + x^5) } \Bigg) \dl r
+              = 3\Bigg[ \frac{99x^2}{2} - 5x^4 + \frac{x^6}{6} \Bigg]_{0}^{3}
+              = \color{y_p} 486
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              w                       & = x^2 + y^2 \qquad \qquad
+              C : x^2 + y^2 = 4                                             \\
+              \oint_C \diffp wn \dl s & = \iint_R \nabla^2 w \dl A          \\
+              I                       & = \iint_R \Bigg( 2 + 2 \Bigg) \dl A \\
+              I                       & = \int_{0}^{2} \int_{0}^{2\pi}
+              \Big( 4 \Big) r \dl \theta\ \dl r                             \\
+                                      & = \int_{0}^{2} \Bigg({\color{y_h}
+                  8\pi r } \Bigg) \dl r
+              = \Bigg[ 4\pi r^2 \Bigg]_{0}^{2}
+              = \color{y_p} 16\pi
+          \end{align}
+
+    \item Using Green's theorem,
+          \begin{align}
+              w                       & = x^3 - y^3 \qquad \qquad
+              C : y \in [0, x^2] \qquad x \in [-2, 2]                         \\
+              \oint_C \diffp wn \dl s & = \iint_R \nabla^2 w \dl A            \\
+              I                       & = \iint_R \Bigg( 6x - 6y \Bigg) \dl A \\
+              I                       & = \int_{-2}^{2} \Bigg[\int_{0}^{x^2}
+                  \Big(  6x - 6y \Big) \dl y\Bigg] \dl x
+              =  \int_{-2}^{2}\Bigg[ 6xy - 3y^2 \Bigg]_{0}^{x^2} \dl x        \\
+                                      & = \int_{-2}^{2} \Bigg({\color{y_h}
+                  6x^3 - 3x^4 } \Bigg) \dl x
+              = \Bigg[ \frac{3x^4}{2} - \frac{3x^5}{5} \Bigg]_{-2}^{2}
+              = \color{y_p} -\frac{192}{5}
+          \end{align}
+
+    \item The directional derivative is defined as,
+          \begin{align}
+              \vec{F}         & = \bmatcol{-w\ \difsp wy}{w\ \difsp wx}        &
+              \nabla^2 w      & = 0                                              \\
+              \diffp {F_2}{x} & = w\ \diffp[2] wx + \Bigg( \diffp wx \Bigg)^2  &
+              \diffp {F_1}{y} & = -w\ \diffp[2] wy - \Bigg( \diffp wy \Bigg)^2   \\
+              F_1\ \dl x      & = F_1\ \diff xs\ \dl s                         &
+              F_2\ \dl y      & = F_2\ \diff ys\ \dl s                           \\
+                              & = -w\ \diffp wy\ \diff xs\ \dl s               &
+                              & = w\ \diffp wx\ \diff ys\ \dl s
+          \end{align}
+          Rearranging these terms into the Green's function,
+          \begin{align}
+              \iint_R \left( \diffp{F_2}{x}
+              - \diffp{F_1}{y} \right)\ \dl A & =
+              \iint_R \left[w\ \Bigg( \diffp[2] wx + \diffp[2] wy \Bigg)
+              + \Bigg( \diffp wx \Bigg)^2 + \Bigg( \diffp wy \Bigg)^2\right]\ \dl A   \\
+                                              & = \color{y_h}
+              \iint_R \left[ \Bigg( \diffp wx \Bigg)^2
+              + \Bigg( \diffp wy \Bigg)^2 \right]\ \dl A                              \\
+              \vec{n}                         & = \bmatcol{\difs ys}
+              {- \difs xs}                                                            \\
+              \oint_C F_1 \dl x + F_2 \dl y   & = \oint_C \vec{F} \dotp \vec{\hat{n}}
+              \ \dl s                                                                 \\
+                                              & =  \color{y_p} \oint_C w\ \diffp wn
+              \ \dl s
+          \end{align}
+
+    \item Applying the result from Problem $ 18 $,
+          \begin{align}
+              w          & = e^x \sin y                                                \\
+              \nabla^2 w & = e^x \sin y - e^x \sin y = 0                               \\
+              C          & : y \in [0, 5] \qquad x \in [0, 2]                          \\
+              I          & = \iint_R \left[ w\ \nabla^2 w + \left( \diffp wx \right)^2
+              + \left( \diffp wy \right)^2  \right] \dl A                              \\
+                         & = \int_{0}^{2} \left[ \int_{0}^{5} \Bigg(
+              e^{2x} \sin^2 y + e^{2x} \cos^2 y \Bigg) \dl y \right] \dl x             \\
+                         & = \int_{0}^{2} ({\color{y_h} 5e^{2x}}) \dl x
+              = \color{y_p} 2.5(e^4 - 1)
+          \end{align}
+
+    \item Applying the result from Problem $ 18 $,
+          \begin{align}
+              w          & = x^2 + y^2                                                 \\
+              \nabla^2 w & = 2 + 2 = 4                                                 \\
+              C          & : y \in [0, 1-x] \qquad x \in [0, 1]                        \\
+              I          & = \iint_R \left[ w\ \nabla^2 w + \left( \diffp wx \right)^2
+              + \left( \diffp wy \right)^2  \right] \dl A                              \\
+                         & = \int_{0}^{1} \left[ \int_{0}^{1-x} \Bigg(
+              4(x^2 + y^2) + 4x^2 + 4y^2 \Bigg) \dl y \right] \dl x                    \\
+                         & = \int_{0}^{1} \left[ \int_{0}^{1-x} \Bigg(
+              8(x^2 + y^2) \Bigg) \dl y \right] \dl x                                  \\
+                         & = 8\int_{0}^{1} \left[ x^2y + \frac{y^3}{3}
+              \right]_0^{1-x} \dl x                                                    \\
+                         & = 8\int_{0}^{1} \left( {\color{y_h} x^2 - x^3 +
+              \frac{(1-x)^3}{3}} \right) \dl x                                         \\
+                         & = 8\Bigg[ \frac{x^3}{3} - \frac{x^4}{4}
+                  - \frac{(1 - x)^4}{12} \Bigg]_0^1 =\color{y_p} \frac{4}{3}
+          \end{align}
+\end{enumerate}

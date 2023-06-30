@@ -1,0 +1,557 @@
+\section{Divergence of a Vector Field}
+
+\begin{enumerate}
+    \item Finding the divergence,
+          \begin{align}
+              \vec{v}                          & = \begin{bNiceMatrix}[margin]
+                                                       x^2 \\ 4y^2 \\ 9z^2
+                                                   \end{bNiceMatrix} &
+              P                                & : (-1, 0, 0.5)                  \\
+              \nabla \dotp \vec{v}             & = 2x + 8y + 18z               &
+              \Big[\nabla \dotp \vec{v}\Big]_P & = 7
+          \end{align}
+
+    \item Finding the divergence,
+          \begin{align}
+              \vec{v}                          & = \begin{bNiceMatrix}[margin]
+                                                       0 \\ \cos(xyz) \\ \sin(xyz)
+                                                   \end{bNiceMatrix}     &
+              P                                & : (2, \pi/2, 0)                     \\
+              \nabla \dotp \vec{v}             & = 0  -xz \sin(xyz) + xy \cos(xyz) &
+              \Big[\nabla \dotp \vec{v}\Big]_P & = \pi
+          \end{align}
+
+    \item Finding the divergence,
+          \begin{align}
+              \vec{v}              & = \frac{1}{x^2 + y^2}
+              \bmatcol{x}{y}                                                       \\
+              \nabla \dotp \vec{v} & = \frac{x^2 - y^2}{(x^2 + y^2)^2}\ (-1 + 1) &
+                                   & = 0
+          \end{align}
+          Field is solenoidal
+
+    \item Finding the divergence,
+          \begin{align}
+              \vec{v}                             & =
+              \begin{bNiceMatrix}[margin]
+                  v_1(y, z) \\ v_2(z, x) \\ v_3(x, y)
+              \end{bNiceMatrix} &
+              P                                   & : (3, 1, -1)       \\
+              \nabla \dotp \vec{v}                & = 0  + 0 + 0 = 0 &
+              \Big[\nabla \dotp \vec{v}\Big]_P    & = 0
+          \end{align}
+          Field is solenoidal
+
+    \item Finding the divergence,
+          \begin{align}
+              \vec{v}                          & = x^2y^2z^2
+              \begin{bNiceMatrix}[margin]
+                  x \\ y \\ z
+              \end{bNiceMatrix}      &
+              P                                & : (3, -1, 4)                  \\
+              \nabla \dotp \vec{v}             & = y^2z^2(3x^2) + x^2z^2(3y^2)
+              + x^2y^2(3z^2)                   &
+                                               & = (3xyz)^2                    \\
+              \Big[\nabla \dotp \vec{v}\Big]_P & = 1296
+          \end{align}
+
+    \item Finding the divergence,
+          \begin{align}
+              \vec{v}              & = (x^2 + y^2 + z^2)^{-3/2}
+              \begin{bNiceMatrix}[margin]
+                  x \\ y \\ z
+              \end{bNiceMatrix}                        \\
+              \nabla \dotp \vec{v} & = \frac{1}
+              {(x^2 + y^2 + z^2)^{5/2}} \left[ (y^2 + z^2 - 2x^2) + (x^2 + z^2 - 2y^2)
+              + (x^2 + y^2 - 2z^2) \right]                      \\
+                                   & = 0
+          \end{align}
+          Field is solenoidal
+
+    \item Finding $ v_3 $, given the field is solenoidal
+          \begin{align}
+              \vec{v}              & = \begin{bNiceMatrix}[margin]
+                                           e^x \cos(y) \\ e^x \sin(y) \\ v_3
+                                       \end{bNiceMatrix}                \\
+              \nabla \dotp \vec{v} & = e^x \cos(y) + e^x \cos(y) + \diffp {v_3}{z} = 0 \\
+              \diffp{v_3}{z}       & = -2e^x \cos(y)                                   \\
+              z                    & = (-2e^x \cos(y))\ z + f(x, y)
+          \end{align}
+
+    \item Finding the condition on $ v_3 $,
+          \begin{enumerate}
+              \item divergence is always positive
+                    \begin{align} \vec{v}                     & =
+              \begin{bNiceMatrix}[margin]
+                                      x \\ y \\ v_3
+                                  \end{bNiceMatrix} &
+              \nabla \dotp \vec{v}        & = 1 + 1 + \diffp{v_3}{z} > 0 \\
+              v_3                         & > -2z + c + f(x, y)
+                    \end{align}
+
+              \item divergence depends on $ \abs{z} $
+                    \begin{align} \vec{v}                     & =
+              \begin{bNiceMatrix}[margin]
+                                      x \\ y \\ v_3
+                                  \end{bNiceMatrix} &
+              \nabla \dotp \vec{v}        & = 1 + 1 + \diffp{v_3}{z}                  \\
+              v_3                         & = -z \left( 1 + \frac{\abs{z}}{2} \right)
+              + c + f(x, y)               &
+              \diffp{v_3}{z}              & = -\abs{z} - 1                            \\
+              \nabla \dotp \vec{v}        & = 1 - \abs{z} =
+              \begin{dcases}
+                                      > 0 & \quad \abs{z} < 1 \\
+                                      < 0 & \quad \abs{z} > 1 \\
+                                  \end{dcases}
+                    \end{align}
+          \end{enumerate}
+
+    \item Proving the relations,
+          \begin{enumerate}
+              \item Scalar multiplication,
+                    \begin{align}
+                        \nabla \dotp (k\vec{v}) & = \diffp{(kv_1)}{x}
+                        + \diffp{(kv_2)}{y}
+                        + \diffp{(kv_3)}{z}     &
+                                                & = k \left[ \diffp{v_1}{x}
+                            + \diffp{v_2}{y}
+                        + \diffp{v_3}{z} \right]                            \\
+                                                & = k\ \nabla \dotp \vec{v}
+                    \end{align}
+
+              \item Scalar function $ f $
+                    \begin{align}
+                        \nabla \dotp (f\vec{v}) & = \diffp{(fv_1)}{x}
+                        + \diffp{(fv_2)}{y}
+                        + \diffp{(fv_3)}{z}                                 \\
+                                                & = f \left[ \diffp{v_1}{x}
+                            + \diffp{v_2}{y}
+                            + \diffp{v_3}{z} \right] + v_1\ \diffp fx + v_2\ \diffp fy
+                        + v_3\ \diffp fz                                    \\
+                                                & = f\ \nabla \dotp \vec{v}
+                        + \vec{v} \dotp (\nabla f)
+                    \end{align}
+                    Verifying this result,
+                    \begin{align}
+                        f                       & = \exp(xyz)                   \\
+                        \vec{v}                 & = \begin{bNiceMatrix}[margin]
+                                                        ax \\ by \\ cz
+                                                    \end{bNiceMatrix}  \\
+                        \nabla \dotp (f\vec{v}) & = e^{xyz}[a + axyz + b + byzx
+                        + c + czxy]                                             \\
+                                                & =
+                        e^{xyz} [a + b + c] + ax(yz\ e^{xyz}) + by(xz\ e^{xyz})
+                        + cz(xy\ e^{xyz})                                       \\
+                                                & = f\ (\nabla \dotp \vec{v})
+                        + \vec{v} \dotp (\nabla f)
+                    \end{align}
+                    Solving problem $ 6 $ using this result,
+                    \begin{align}
+                        f                        & = (x^2 + y^2 + z^2)^{-3/2}      &
+                        \vec{v}                  & = \begin{bNiceMatrix}[margin]
+                                                         x \\ y \\ z
+                                                     \end{bNiceMatrix}      \\
+                        f\ (\nabla \dotp v)      & = 3f                            &
+                        \vec{v} \dotp (\nabla f) & = \frac{-3f\ (x^2 + y^2 + z^2)}
+                        {(x^2 + y^2 + z^2)}                                          \\
+                        \nabla \dotp (f\vec{v})  & = 0
+                    \end{align}
+
+              \item Scalar functions $ f, g $
+                    \begin{align}
+                        \nabla \dotp (f \nabla g) & =
+                        \diffp*{\left( f\diffp gx \right)}{x}
+                        + \diffp*{\left( f\diffp gy \right)}{y}
+                        + \diffp*{\left( f\diffp gz \right)}{z}                \\
+                                                  & = f \left[ \diffp[2]{g}{x}
+                            + \diffp[2]{g}{y}
+                            + \diffp[2]{g}{z} \right] + v_1\ \diffp fx + v_2\ \diffp fy
+                        + v_3\ \diffp fz                                       \\
+                                                  & = f\ (\nabla^2 g)
+                        + \nabla f \dotp \nabla g
+                    \end{align}
+
+                    Verifying the result for the given functions,
+                    \begin{align}
+                        f                          & = x^2 - y^2                \\
+                        g                          & = \exp(x + y)              \\
+                        f\ \nabla^2 g              & = (x^2 - y^2)
+                        \left[ 2\exp(x + y)  \right]                            \\
+                        \nabla f \dotp \nabla g    & = \exp(x + y)(2x - 2y)     \\
+                        f\ (\nabla g)              & = x^2 - y^2
+                        \bmatcol{\exp(x+y)}{\exp(x+y)}                          \\
+                        \nabla \dotp (f\ \nabla g) & = \exp(x+y)[x^2 - y^2 + 2x
+                        + x^2 - y^2 - 2y]                                       \\
+                                                   & = f\ (\nabla^2 g)
+                        + \nabla f \dotp \nabla g
+                    \end{align}
+
+              \item Using the result from part $ c $,
+                    \begin{align}
+                        \nabla \dotp (f \nabla g) - \nabla \dotp (g \nabla f) & =
+                        f\ (\nabla^2 g) + \nabla f \dotp \nabla g                 \\
+                                                                              & -
+                        g\ (\nabla^2 f) - \nabla g \dotp \nabla f                 \\
+                                                                              & =
+                        f\ (\nabla^2 g) - g\ (\nabla^2 f)
+                    \end{align}
+
+              \item Other examples TBC.
+          \end{enumerate}
+
+    \item Graphing the velocity fields,
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \def\U{1}
+                      \def\V{0}
+                      \begin{axis}[
+                              legend pos = outer north east,
+                              title = {$\vec{v} = \vec{\hat{i}}$},
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                              axis equal,
+                              view     = {0}{90}, % for a view 'from above'
+                              domain = -2:2,
+                              restrict y to domain = -2:2,
+                          ]
+                          \addplot3 [
+                              forget plot,
+                              color = black,
+                              quiver={u={(\U)},
+                                      v={(\V)},
+                                      scale arrows = 0.25,},
+                              -stealth,
+                              samples=11,
+                          ] (x, y, 0);
+                          \draw[thick, y_p]
+                          (1, 1, 0) -- (1, -1, 0) -- (-1, -1, 0) -- (-1, 1, 0) -- cycle;
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \def\U{x}
+                      \def\V{0}
+                      \begin{axis}[
+                              legend pos = outer north east,
+                              title = {$\vec{v} = x\ \vec{\hat{i}}$},
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                              axis equal,
+                              view     = {0}{90}, % for a view 'from above'
+                              domain = -2:2,
+                              restrict y to domain = -2:2,
+                          ]
+                          \addplot3 [
+                              forget plot,
+                              color = black,
+                              quiver={u={(\U)},
+                                      v={(\V)},
+                                      scale arrows = 0.2,},
+                              -stealth,
+                              samples=11,
+                          ] (x, y, 0);
+                          \draw[thick, y_p]
+                          (1, 1, 0) -- (1, -1, 0) -- (-1, -1, 0) -- (-1, 1, 0) -- cycle;
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \def\U{x}
+                      \def\V{-y}
+                      \begin{axis}[
+                              legend pos = outer north east,
+                              title = {$\vec{v} = x\ \vec{i} - y\ \vec{\hat{j}}$},
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                              axis equal,
+                              view     = {0}{90}, % for a view 'from above'
+                              domain = -2:2,
+                              restrict y to domain = -2:2,
+                          ]
+                          \addplot3 [
+                              forget plot,
+                              color = black,
+                              quiver={u={(\U)},
+                                      v={(\V)},
+                                      scale arrows = 0.2,},
+                              -stealth,
+                              samples=11,
+                          ] (x, y, 0);
+                          \draw[thick, y_p]
+                          (1, 1, 0) -- (1, -1, 0) -- (-1, -1, 0) -- (-1, 1, 0) -- cycle;
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \def\U{x}
+                      \def\V{y}
+                      \begin{axis}[
+                              legend pos = outer north east,
+                              title = {$\vec{v} = x\ \vec{i} + y\ \vec{\hat{j}}$},
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                              axis equal,
+                              view     = {0}{90}, % for a view 'from above'
+                              domain = -2:2,
+                              restrict y to domain = -2:2,
+                          ]
+                          \addplot3 [
+                              forget plot,
+                              color = black,
+                              quiver={u={(\U)},
+                                      v={(\V)},
+                                      scale arrows = 0.15,},
+                              -stealth,
+                              samples=11,
+                          ] (x, y, 0);
+                          \draw[thick, y_p]
+                          (1, 1, 0) -- (1, -1, 0) -- (-1, -1, 0) -- (-1, 1, 0) -- cycle;
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \def\U{-x}
+                      \def\V{-y}
+                      \begin{axis}[
+                              legend pos = outer north east,
+                              title = {$\vec{v} = -x\ \vec{i} - y\ \vec{\hat{j}}$},
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                              axis equal,
+                              view     = {0}{90}, % for a view 'from above'
+                              domain = -2:2,
+                              restrict y to domain = -2:2,
+                          ]
+                          \addplot3 [
+                              forget plot,
+                              color = black,
+                              quiver={u={(\U)},
+                                      v={(\V)},
+                                      scale arrows = 0.2,},
+                              -stealth,
+                              samples=11,
+                          ] (x, y, 0);
+                          \draw[thick, y_p]
+                          (1, 1, 0) -- (1, -1, 0) -- (-1, -1, 0) -- (-1, 1, 0) -- cycle;
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \def\U{-y / (x^2 + y^2)}
+                      \def\V{x / (x^2 + y^2)}
+                      \begin{axis}[
+                              legend pos = outer north east,
+                              title = {$\vec{v} = \frac{1}{x^2 + y^2}\ (-y\ \vec{i}
+                                          + x\ \vec{\hat{j}})$},
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                              axis equal,
+                              view     = {0}{90}, % for a view 'from above'
+                              domain = -2:2,
+                              restrict y to domain = -2:2,
+                          ]
+                          \addplot3 [
+                              forget plot,
+                              color = black,
+                              quiver={u={(\U)},
+                                      v={(\V)},
+                                      scale arrows = 0.15,},
+                              -stealth,
+                              samples=11,
+                          ] (x, y, 0);
+                          \draw[thick, y_p]
+                          (1, 1, 0) -- (1, -1, 0) -- (-1, -1, 0) -- (-1, 1, 0) -- cycle;
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          Flux from looking at the vector fields can be estimated to be either positive,
+          negative or zero in the figures.
+
+    \item For incompressible flow,
+          \begin{align}
+              \vec{v} = \vec{r}'   & = \begin{bNiceMatrix}[margin]
+                                           y \\ 0 \\ 0
+                                       \end{bNiceMatrix} &
+              \nabla \dotp \vec{v} & = 0                          \\
+              \vec{r}(t)           & = \begin{bNiceMatrix}[margin]
+                                           x(t) \\ y(t) \\ z(t)
+                                       \end{bNiceMatrix}
+              = \begin{bNiceMatrix}[margin]
+                    x_0 + y_0 t \\ y_0 \\ z_0
+                \end{bNiceMatrix}
+          \end{align}
+          Consider the cube as a stack of $ xz $ planes. The planes move in the $ x $
+          direction at different speeds depending on their initial $ y $ coordinate. \par
+          The points have no motion in the $ x $ or $ z $ directions. This means that
+          each plane simply moves in the $ x $ direction by a different amount.
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[scale = 2]
+                  \draw[black, thick] (0,0) -- (0, 1) -- (1, 1) -- (1, 0) -- cycle;
+                  \draw[thick, dashed, y_p] (0,0) -- (1, 1) -- (2, 1) -- (1, 0) -- cycle;
+              \end{tikzpicture}
+          \end{figure}
+          The area of a parallelogram made from deforming a square is the same as that
+          square. This means that the volume of the fluid at $ t = 1 $ remains the same
+          as the initial cube.
+
+    \item For compressible flow,
+          \begin{align}
+              \vec{v} = \vec{r}' & = \begin{bNiceMatrix}[margin]
+                                         x(t) \\ 0 \\ 0
+                                     \end{bNiceMatrix} &
+              \vec{r}(t)         & = \begin{bNiceMatrix}[margin]
+                                         x(t) \\ y(t) \\ z(t)
+                                     \end{bNiceMatrix}
+              = \begin{bNiceMatrix}[margin]
+                    c_1 \exp(t) \\ c_2 \\ c_3
+                \end{bNiceMatrix}
+          \end{align}
+          Consider the cube as a stack of $ yz $ planes. The planes move in the $ x $
+          direction at different speeds depending on their $ x $ coordinate. \par
+          The points have no motion in the $ y $ or $ z $ directions. This means that
+          each plane simply moves in the $ x $ direction by a different amount.
+
+          For the slice initially at $ x = 1 $, $ c_1 = 1 $. This slice has moved to
+          $ x = e $ at time $ t = 1 $. Since the slice at $ x = 0 $ never moves, the
+          volume is a cuboid of dimensions $ e \times 1 \times 1 $. \par
+
+    \item For rotational flow in a cylinder about the $ z $ axis, with constant angular
+          velocity $ \boldsymbol{\omega} $
+          \begin{align}
+              \vec{r}              & = \begin{bNiceMatrix}[margin, r]
+                                           x \\ y \\ z
+                                       \end{bNiceMatrix}       &
+              \vec{v}              & = \boldsymbol{\omega} \times \vec{r} =
+              \begin{vNiceMatrix}[margin, r]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  0             & 0             & \omega        \\
+                  x             & y             & z
+              \end{vNiceMatrix} =
+              \begin{bNiceMatrix}[margin, r]
+                  -\omega y \\ \omega x \\ 0
+              \end{bNiceMatrix}                                 \\
+              \nabla \dotp \vec{v} & = 0
+          \end{align}
+          This flow is solenoidal. This is an incompressible flow in a circle centered
+          around the origin, which has zero flux through its perimeter.
+
+    \item Considering only the first component,
+          \begin{align}
+              \nabla \dotp \vec{v} & = \diffp {v_1}{x} + \dots &
+              \nabla \dotp \vec{u} & = \diffp {u_1}{x} + \dots   \\
+              u_1 = v_1 + f(y, z) + c
+          \end{align}
+          There is very little constraint on $ \vec{u} $ to satisfy this condition.
+
+    \item Using the definition of the Laplacian,
+          \begin{align}
+              f                        & = \cos^2(x) + \sin^2(y)                &
+              \nabla f                 & = \bmatcol{-\sin(2x)}{\sin(2y)}          \\
+              \nabla \dotp (\nabla f)  & = \color{y_h} -2\cos(2x) + 2\cos(2y)     \\
+              \nabla^2 f               & = \diffp*{[-\sin(2x)]}{x}
+              + \diffp*{[\sin(2y)]}{y} &
+                                       & = \color{y_p} -2 \cos(2x) + 2 \cos(2y)
+          \end{align}
+
+    \item Using the definition of the Laplacian,
+          \begin{align}
+              f                       & = \exp(xyz)                              &
+              \nabla f                & = e^{xyz} \begin{bNiceMatrix}[margin, r]
+                                                      yz \\ xz \\ xy
+                                                  \end{bNiceMatrix}    \\
+              \nabla \dotp (\nabla f) & = \color{y_h} e^{xyz}
+              \Big[(yz)^2 + (xz)^2 + (xy)^2\Big]                                   \\
+              \nabla^2 f              & = \diffp*{\Big[yz\ e^{xyz}\Big]}{x}
+              + \diffp*{\Big[xz\ e^{xyz}\Big]}{y}
+              + \diffp*{\Big[xy\ e^{xyz}\Big]}{z}                                  \\
+                                      & = \color{y_p} e^{xyz}
+              \Big[(yz)^2 + (xz)^2 + (xy)^2\Big]
+          \end{align}
+
+    \item Using the definition of the Laplacian,
+          \begin{align}
+              f                       & = \ln(x^2 + y^2)                      \\
+              \nabla f                & = \frac{1}{x^2 + y^2}\bmatcol{2x}{2y} \\
+              \nabla \dotp (\nabla f) & = \frac{2x^2 + 2y^2 - 4x^2}
+              {(x^2 + y^2)^2} + \frac{2x^2 + 2y^2 - 4y^2}
+              {(x^2 + y^2)^2} = \color{y_h} 0                                 \\
+              \nabla^2 f              & =
+              \diffp*{\Bigg[ \frac{2x}{x^2 + y^2} \Bigg]}{x}
+              + \diffp*{\Bigg[ \frac{2y}{x^2 + y^2} \Bigg]}{y}                \\
+                                      & = \frac{2x^2 + 2y^2 - 4x^2}
+              {(x^2 + y^2)^2} + \frac{2x^2 + 2y^2 - 4y^2}
+              {(x^2 + y^2)^2} = \color{y_p} 0
+          \end{align}
+
+    \item Using the definition of the Laplacian,
+          \begin{align}
+              f                       & = z - \sqrt{x^2 + y^2} = z - r      \\
+              \nabla f                & = \begin{bNiceMatrix}[margin, r]
+                                              -x\ (x^2 + y^2)^{-1/2} \\
+                                              -y\ (x^2 + y^2)^{-1/2} \\
+                                              1
+                                          \end{bNiceMatrix}     \\
+              \nabla \dotp (\nabla f) & = \frac{-r^2 + x^2- r^2 + y^2}{r^3}
+              = \color{y_h} \frac{-1}{\sqrt{x^2 + y^2}}                     \\
+              \nabla^2 f              & =
+              \diffp*{\Bigg[ \frac{-x}{r} \Bigg]}{x}
+              + \diffp*{\Bigg[ \frac{-y}{r} \Bigg]}{y}                      \\
+                                      & = \frac{-r^2 + x^2}{r^3}
+              + \frac{-r^2 + y^2}{r^3} = \color{y_p} \frac{-1}{\sqrt{x^2 + y^2}}
+          \end{align}
+
+    \item Using the definition of the Laplacian,
+          \begin{align}
+              f                       & = \frac{1}{x^2 + y^2 + z^2} = \frac{1}{r^2}   \\
+              \nabla f                & = \frac{-2}{r^4}\begin{bNiceMatrix}[margin, r]
+                                                            x \\
+                                                            y \\
+                                                            z \\
+                                                        \end{bNiceMatrix} \\
+              \nabla \dotp (\nabla f) & = \frac{-2r^2 + 8x^2}{r^6}
+              + \frac{-2r^2 + 8y^2}{r^6} + \frac{-2r^2 + 8z^2}{r^6}
+              = \color{y_h} \frac{2}{(x^2 + y^2 + z^2)^2}                             \\
+              \nabla^2 f              & =
+              \diffp*{\Bigg[ \frac{-2x}{r^4} \Bigg]}{x}
+              + \diffp*{\Bigg[ \frac{-2y}{r^4} \Bigg]}{y}
+              + \diffp*{\Bigg[ \frac{-2z}{r^4} \Bigg]}{z}                             \\
+                                      & = \frac{-2r^2 + 8x^2}{r^6}
+              + \frac{-2r^2 + 8y^2}{r^6} + \frac{-2r^2 + 8z^2}{r^6}
+              = \color{y_p} \frac{2}{(x^2 + y^2 + z^2)^2}
+          \end{align}
+
+    \item Using the definition of the Laplacian,
+          \begin{align}
+              f                       & = e^{2x} \cosh(2y)                             \\
+              \nabla f                & = \bmatcol{2e^{2x}\cosh(2y)}{2e^{2x}\sinh(2y)} \\
+              \nabla \dotp (\nabla f) & = 4e^{2x}\cosh(2y) + 4e^{2x}\cosh(2y)
+              = \color{y_h} 8e^{2x}\cosh(2y)                                           \\
+              \nabla^2 f              & = \color{y_p} 8e^{2x}\cosh(2y)
+          \end{align}
+\end{enumerate}

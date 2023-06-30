@@ -1,0 +1,435 @@
+\section{Legendre's Equation, Legendre Polynomials}
+\begin{enumerate}
+    \item Setting $ n=0 $,
+          \begin{align}
+              y_1(x) & = 1 - \frac{0 \cdot 1}{2!}\ x^2 + \dots                     \\
+                     & = 1 + 0 + 0 + \dots                                         \\
+                     & = 1                                                         \\
+              y_2(x) & = x - \frac{-1 \cdot 2}{3!}\ x^3
+              + \frac{-1 \cdot -3 \cdot 2 \cdot 4}{5!}\ x^5 + \dots                \\
+                     & = x + \frac{x^3}{3} + \frac{x^5}{5} + \frac{x^7}{7} + \dots \\
+                     & = \frac{1}{2}\left[ x - \frac{x^2}{2}
+              + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} - \dots \right]      \\
+                     & - \frac{1}{2}\left[ -x - \frac{x^2}{2} - \frac{x^3}{3}
+              - \frac{x^4}{4} - \frac{x^5}{5} - \dots \right]                      \\
+                     & = \frac{1}{2} [\ln(1 + x) - \ln(1-x)]                       \\
+                     & = \frac{1}{2}\ \ln \left( \frac{1+x}{1-x} \right)
+          \end{align}
+          Solving by separating variables,
+          \begin{align}
+              (1-x^2)y''              & = 2xy'                               \\
+              z                       & = y'                               &
+              z'                      & = y''                                \\
+              (1-x^2)z'               & = 2xz                              &
+              \int \frac{1}{z}\ \dl z & = \int \frac{2x}{1 - x^2}\ \dl x     \\
+              u                       & = 1 - x^2                          &
+              \dl u                   & = -2x \dl x                          \\
+              \ln(z)                  & = -\ln(1 - x^2)                      \\
+              y' = z                  & = \frac{1}{1-x^2}                  &
+              y'                      & = \frac{1}{2} \left( \frac{1}{1-x}
+              + \frac{1}{1+x} \right)                                        \\
+              y                       & = \frac{1}{2} \ln \left(
+              \frac{1+x}{1-x}\right) + c_3
+          \end{align}
+
+    \item Setting $ n=1 $, and using the result from Problem $ 1 $,
+          \begin{align}
+              y_2(x) & = x - \frac{0 \cdot 3}{3!}\ x^3 + \dots            \\
+                     & = x + 0 + 0 + \dots                                \\
+                     & = x                                                \\
+              y_1(x) & = 1 - \frac{1 \cdot 2}{2!}\ x^2
+              + \frac{-1 \cdot 1 \cdot 2 \cdot 4}{4!}\ x^4 - \dots        \\
+                     & = 1 - x^2 - \frac{x^4}{3} - \frac{x^6}{5} - \dots  \\
+                     & = 1 - x\left[ x + \frac{x^3}{3} + \frac{x^5}{5}
+              + \dots \right]                                             \\
+                     & 1 - \frac{x}{2}\ \ln\left( \frac{1+x}{1-x} \right) \\
+          \end{align}
+
+    \item Deriving the Legendre polynomials from the general term, with
+          $ M = \lfloor n/2 \rfloor $
+          \begin{align}
+              P_n(x)           & = \sum_{m = 0}^{M} (-1^m)\ \frac{(2n - 2m)!}
+              {2^n\ m!\ (n-m)!\ (n-2m)!}\ x^{n-2m}                            \\
+              n = 0 \implies M & = 0                                          \\
+              P_0(x)           & = \frac{0!}{2^0\ 0!\ 0!\ 0!}\ x^0
+              = {\color{y_h} 1}                                               \\
+              n = 1 \implies M & = 0                                          \\
+              P_1(x)           & = \frac{2!}{2^1\ 0!\ 1!\ 1!}\ x^1
+              = {\color{y_p}x}                                                \\
+              n = 2 \implies M & = 1                                          \\
+              P_2(x)           & = \frac{4!}{2^2\ 0!\ 2!\ 2!}\ x^2
+              - \frac{2!}{2^2\ 1!\ 1!\ 0!}\ x^0
+              = {\color{y_h} \frac{1}{2}(3x^2 - 1)}                           \\
+              n = 3 \implies M & = 1                                          \\
+              P_3(x)           & = \frac{6!}{2^3\ 0!\ 3!\ 3!}\ x^3
+              - \frac{4!}{2^3\ 1!\ 2!\ 1!}\ x^1
+              = {\color{y_p}\frac{1}{2}(5x^3 - 3x)}
+          \end{align}
+          For $ n>3 $, there are $ 3 $ terms in the summation,
+          \begin{align}
+              n = 4 \implies M & = 2                                             \\
+              P_4(x)           & = \frac{8!}{2^4\ 0!\ 4!\ 4!}\ x^4
+              - \frac{6!}{2^4\ 1!\ 3!\ 2!}\ x^2
+              + \frac{4!}{2^4\ 2!\ 2!\ 0!}\ x^0                                  \\
+                               & = {\color{y_h} \frac{1}{8}(35x^4 - 30x^2 + 3)}  \\
+              n = 5 \implies M & = 2                                             \\
+              P_5(x)           & = \frac{10!}{2^5\ 0!\ 5!\ 5!}\ x^5
+              - \frac{8!}{2^5\ 1!\ 4!\ 3!}\ x^3
+              + \frac{6!}{2^5\ 2!\ 3!\ 1!}\ x                                    \\
+                               & = {\color{y_p}\frac{1}{8}(63x^5 - 70x^3 + 15x)}
+          \end{align}
+
+    \item Verifying that $ \{P_i(x)\} $ satisfy the Legendre ODE,
+          \begin{align}
+              %       (1-x^2)y'' - 2xy' + (n)(n+1)y & = 0                       \\
+              P_0(x)                     & = 1                      &
+              (1-x^2)(0) + 0             & = 2x(0)                    \\
+              P_1(x)                     & = x                      &
+              (1-x^2)(0) + 2x            & = 2x(1)                    \\
+              P_2(x)                     & = \frac{1}{2}(3x^2 - 1)  &
+              (1-x^2)(3) + 3(3x^2 - 1)   & = 2x(3x)                   \\
+              P_3(x)                     & = \frac{1}{2}(5x^3 - 3x) &
+              (1-x^2)(30x) + 60x^3 - 36x & = 30x^3 - 60
+          \end{align}
+          For $ P_4, P_5 $,
+          \begin{align}
+              P_4(x) & = \frac{1}{8}(35x^4 - 30x^2 + 3)  \\
+              (1-x^2)(420x^2 - 60) + 20(35x^4 - 30x^2 + 3)
+                     & = 280x^4 - 120x^2                 \\
+              P_5(x) & = \frac{1}{8}(63x^5 -70x^3 + 15x) \\
+              (1 - x^2)(1260x^3 - 420x) + 1890x^5 - 2100x^3 + 450x
+                     & = 630x^5 - 420x^3 + 30x
+          \end{align}
+
+    \item For $ n= 6, 7 $, there are $ 4 $ terms in the summation,
+          \begin{align}
+              n = 6 \implies M & = 3                                         \\
+              P_6(x)           & = \frac{12!}{2^6\ 0!\ 6!\ 6!}\ x^6
+              - \frac{10!}{2^6\ 1!\ 5!\ 4!}\ x^4                             \\
+                               & + \frac{8!}{2^6\ 2!\ 4!\ 2!}\ x^2
+              + \frac{6!}{2^6\ 3!\ 3!\ 0!}\ x^0                              \\
+                               & = {\color{y_h} \frac{1}{16}(231x^6 - 315x^4
+              + 105x^2 - 5)}                                                 \\
+              n = 7 \implies M & = 3                                         \\
+              P_7(x)           & = \frac{14!}{2^7\ 0!\ 7!\ 7!}\ x^7
+              - \frac{12!}{2^7\ 1!\ 6!\ 5!}\ x^5                             \\
+                               & + \frac{10!}{2^7\ 2!\ 5!\ 3!}\ x^3
+              + \frac{8!}{2^7\ 3!\ 4!\ 1!}\ x                                \\
+                               & = {\color{y_p}\frac{1}{6}(429x^7 - 693x^5
+              + 315x^3 - 35x)}
+          \end{align}
+
+    \item Plotting $ P_2 $ to $ P_10 $ on common axes,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = $ x $,
+                          ylabel = $ y $,
+                          legend pos = outer north east,
+                          grid = both,
+                          height = 12cm,
+                          domain = 0:1,
+                          colormap/jet,
+                          Ani]
+                      \addplot[GraphSmooth, color = red4] {leg_P_0(x)};
+                      \addplot[GraphSmooth, color = brown4] {leg_P_2(x)};
+                      \addplot[GraphSmooth, color = yellow4] {leg_P_4(x)};
+                      \addplot[GraphSmooth, color = green4] {leg_P_6(x)};
+                      \addplot[GraphSmooth, color = azure4] {leg_P_8(x)};
+                      \addplot[GraphSmooth, color = violet4] {leg_P_10(x)};
+                      \addlegendentry{$ P_{0} $}
+                      \addlegendentry{$ P_{2} $}
+                      \addlegendentry{$ P_{4} $}
+                      \addlegendentry{$ P_{6} $}
+                      \addlegendentry{$ P_{8} $}
+                      \addlegendentry{$ P_{10} $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = $ x $,
+                          ylabel = $ y $,
+                          legend pos = outer north east,
+                          grid = both,
+                          height = 12cm,
+                          domain = 0:1,
+                          colormap/jet,
+                          Ani]
+                      \addplot[GraphSmooth, color = red4] {leg_P_1(x)};
+                      \addplot[GraphSmooth, color = brown4] {leg_P_3(x)};
+                      \addplot[GraphSmooth, color = yellow4] {leg_P_5(x)};
+                      \addplot[GraphSmooth, color = green4] {leg_P_7(x)};
+                      \addplot[GraphSmooth, color = azure4] {leg_P_9(x)};
+                      \addlegendentry{$ P_{1} $}
+                      \addlegendentry{$ P_{3} $}
+                      \addlegendentry{$ P_{5} $}
+                      \addlegendentry{$ P_{7} $}
+                      \addlegendentry{$ P_{9} $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Wthin the interval $ (0, 1) $ each polynomial only intersects $ y = 0.5 $
+          once, at $ x_0 $.
+          \begin{table}[ht]
+              \centering
+              \SetTblrInner{rowsep=0.5em}
+              \begin{tblr}{
+                  colspec={Q[r,$$]|[dotted]Q[l,$$]|Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  \text{Even} & x_0    & \text{Odd} & x_0    \\ \hline[dotted]
+                  P_2         & 0.8165 & P_1        & 0.5    \\
+                  P_4         & 0.9430 & P_3        & 0.9059 \\
+                  P_6         & 0.9726 & P_5        & 0.9618 \\
+                  P_8         & 0.984  & P_7        & 0.9794 \\
+                  P_{10}      & 0.9895 & P_9        & 0.9872 \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item TBC. Whenever inbuilt precision limits are reached.
+    \item Plotting the first few legendre functions of the second kind,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = $ x $,
+                          ylabel = $ y $,
+                          legend pos = outer north east,
+                          grid = both,
+                          height = 12cm,
+                          restrict y to domain = -3:3,
+                          domain = -1:1,
+                          colormap/jet,
+                          Ani]
+                      \addplot[GraphSmooth, color = red4] {leg_Q_0(x)};
+                      \addplot[GraphSmooth, color = brown4] {leg_Q_1(x)};
+                      \addplot[GraphSmooth, color = yellow4] {leg_Q_2(x)};
+                      \addplot[GraphSmooth, color = violet4] {leg_Q_3(x)};
+                      \addlegendentry{$ Q_{0} $}
+                      \addlegendentry{$ Q_{1} $}
+                      \addlegendentry{$ Q_{2} $}
+                      \addlegendentry{$ Q_{3} $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Substituting the given expression into the legendre ODE,
+          \begin{align}
+              0 & = (1-x^2)y'' - 2xy' + n(n+1)y =                                \\
+              y & = a_s x^s + a_{s+1}x^{s+1} + a_{s+2}x^{s+2}                    \\
+              0 & = x^{s+2} [-(s+2)(s+1)a_{s+2} - 2(s+2)a_{s+2} + n(n+1)a_{s+2}] \\
+                & + x^{s+1} [-(s+1)s a_{s+1}] - 2(s+1)a_{s+1} + n(n+1)a_{s+1}    \\
+                & + x^s [(s+2)(s+1)a_{s+2} - s(s-1)a_s - 2(s)a_s
+              + n(n+1)a_s ]                                                      \\
+                & + x^{s-1} [(s+1)s a_{s+1}]                                     \\
+                & + x^{s-2} [s(s-1)a_s]
+          \end{align}
+          Since only $ x^s $ has two different coefficients, setting the expression
+          to zero,
+          \begin{align}
+              a_{s+2} & = a_s\ \frac{s^2 + s - n^2 - n}{(s+1)(s+2)}            \\
+                      & = -a_s\ \frac{n^2 - ns + ns - s^2 + n - s}{(s+1)(s+2)} \\
+                      & = -a_s\ \frac{(n-2)(1 + s + n)}{(s+1)(s+2)}
+          \end{align}
+
+    \item Generating function given by,
+          \begin{align}
+              G(u, x) & = \sum_{n = 0}^{\infty} f_n (x)\ u^n
+          \end{align}
+          \begin{enumerate}
+              \item For Legendre polynomials,
+                    \begin{align}
+                        G(u, x) & = (1 - 2xu + u^2)^{-1/2}                             \\
+                                & = (1 - v)^{-1/2}                                     \\
+                                & = 1 + \frac{v}{2} + \frac{3v^2}{4 \cdot 2!}
+                        + \frac{15v^3}{8 \cdot 3!} + \dots                             \\
+                                & = 1 + \frac{2xu - u^2}{2} + \frac{3(2xu - u^2)^2}{8}
+                        + \frac{15(2xu - u^2)^3}{48} + \dots                           \\
+                                & = \sum_{k = 0}^{\infty} \frac{(2k)!}
+                        {2^{2k}\ k!k!}\ v^k
+                        = \sum_{k = 0}^{\infty} \frac{(2k)!}
+                        {2^{2k}\ k!k!}\ u^k\ (2x-u)^k
+                    \end{align}
+                    Gathering the coefficients of $ u^m $, using the binomial expansion
+                    of $ (2x - u)^k $. Here, $ r $ is used as the summation index
+                    when finding $ f_n(x) $, with $ r \in \{0, \dots,
+                        \lfloor n/2 \rfloor\} $
+                    \begin{align}
+                        0 \leq m & \leq k                                     \\
+                        g(u, x)  & = \sum_{k = 0}^{\infty}\ \frac{(2k)!}
+                        {2^{k}\ k!}\ u^k\
+                        \sum_{m = 0}^{k} \frac{1}{(k-m)!m!}\ (-u)^m (x)^{n-m} \\
+                        f_n(x)   & = \frac{(2n)!}{2^n\ n!\ (n)!\ 0!}\ x^n
+                        - \frac{(2n-2)!}{2^{n-1}\ (n-1)!\ (n-2)!1!}\ x^{n-2}  \\
+                                 & + \frac{(2n-4)!}
+                        {2^{n-2}\ (n-2)!\ (n-4)!2!}\ x^{n-4} - \dots          \\
+                                 & = \sum_{r=0}^{\lfloor n/2 \rfloor}
+                        \frac{(-1)^r\ (2n-2r)!}{2^{n-r}\ (n-r)!\ (n-2r)!\ r!}\ x^{n-2r}
+                    \end{align}
+                    The above expression is exactly the $ n $-th Legendre polynomial, and
+                    simutaneously the coefficient $ f_n(x) $ of $ u^n $ in the
+                    binomial expansion of the generating function.
+
+              \item By the cartesian distane rule,
+                    \begin{align}
+                        r^2             & = (A_{1x} - A_{2x})^2
+                        + (A_{1y} - A_{2y})^2                                    \\
+                        r^2             & = r_1^2 + r_2^2 - 2r_1 r_2 \cos \theta \\
+                        \frac{1}{r}     & = \left( r_1^2 + r_2^2
+                        - 2r_1 r_2 \cos \theta \right) ^{-1/2}                   \\
+                                        & = \frac{1}{r_2} \left( 1
+                        + \frac{r_1^2}{r_2^2}
+                        - \frac{2r_1}{r_2} \cos \theta \right)^{-1/2}            \\
+                        \frac{r_1}{r_2} & \rightarrow u\qquad \qquad
+                        \cos\theta \rightarrow x                                 \\
+                                        & = \frac{1}{r_2} (1 + u^2 - 2ux)^{-1/2} \\
+                                        & = \frac{1}{r_2} \sum_{m = 0}^{\infty}
+                        P_m(\cos \theta)\ \left( \frac{r_1}{r_2} \right)^m
+                    \end{align}
+                    This result follows from the previous part.
+
+              \item Using the generating function at $ x = 1 $
+                    \begin{align}
+                        G(u, 1) & = (1 - 2u + u^2)^{-1/2} = (1-u)^{-1} \\
+                                & = \sum_{k=0}^{\infty} u^k
+                        = \sum_{n=0}^{\infty} P_n(x) u^n               \\
+                        P_n (1) & = 1 \qquad \forall n
+                    \end{align}
+                    Using the generating function at $ x = -1 $
+                    \begin{align}
+                        G(u, -1) & = (1 + 2u + u^2)^{-1/2} = (1+u)^{-1} \\
+                                 & = \sum_{k=0}^{\infty}
+                        \frac{(-1)(-2)\dots(-k)}{k!} u^k
+                        = \sum_{n=0}^{\infty} (-1)^n u^n                \\
+                        P_n (-1) & = (-1)^n \quad \forall \quad n
+                    \end{align}
+                    Using the generating function at $ x = 0 $
+                    \begin{align}
+                        G(u, 0) & = (1 + u^2)^{-1/2}                         \\
+                                & = \sum_{k=0}^{\infty}
+                        \frac{(-1/2)(-3/2)\dots(1/2 - k)}{k!} u^{2k}         \\
+                        P_n (0) & = 0 \quad \forall \quad n = 2k+1           \\
+                        P_n(0)  & = \frac{(-1)^k\ [1 \cdot 3 \cdots (2k-1)]}
+                        {2^k\ k!} \quad \forall \quad n = 2k
+                    \end{align}
+          \end{enumerate}
+
+    \item Reducing to the Legendre ODE,
+          \begin{align}
+              (a^2 - x^2)y'' - 2xy' + n(n+1)y       & = 0                             \\
+              x = au \qquad \dl x                   & = a\ \dl u                      \\
+              \diff yx = \diff yu \ \diff ux        & = \frac{1}{a} \diff yu          \\
+              \diff[2]yx = \frac{1}{a}\ \diff[2]yu
+              \diff ux                              & = \frac{1}{a^2} \diff[2]yu      \\
+              \left[ \frac{a^2 - (au)^2}{a^2} \right]\ \diff[2]yu
+              - \frac{2au}{a}\ \diff yu + (n)(n+1)y & = 0                             \\
+              (1 - u^2) \diff[2]yu - 2u \diff yu
+              + n(n+1)y                             & = 0                             \\
+              y                                     & = c_1 P_n (u) + c_2 Q_n (u)     \\
+                                                    & = c_1 P_n (x/a) + c_2 Q_n (x/a)
+          \end{align}
+
+    \item Rodriguez formula,
+          \begin{align}
+              (x^2 - 1)^n                               & = \sum_{k = 0}^{n}
+              \binom{n}{k} x^{2n-2k}(-1)^k                                   \\
+              \difoverride{n} \diff*[n] {(x^2 -1)^n}{x} &
+              = \sum_{k=0}^{M}(-1)^k\ \frac{n!\ (2n-2k)!}
+              {(n-k)!\ k!\ (n-2k)!}\ x^{n - 2k}                              \\
+              \left[ \frac{1}{2^n\ n!} \right] \difoverride{n}
+              \diff*[n] {(x^2 -1)^n}{x}                 &
+              = \sum_{k=0}^{M}(-1)^k\ \frac{(2n-2k)!}
+              {2^n\ k!\ (n-k)!\ (n-2k)!}\ x^{n - 2k}                         \\
+                                                        & = P_n (x)
+          \end{align}
+          Here, $ M = \lfloor n/2 \rfloor $ and the expression matches the Legendre
+          polynomial formula given.
+
+    \item Applying Rodriguez formula for $ n = 0 $ to $ n = 5 $,
+          \begin{align}
+              P_0 (x) & = \frac{1}{2^0\ 0!}\ \left[ (x^2 - 1)^0 \right]
+              = {\color{y_h} 1}                                         \\
+              P_1 (x) & = \frac{1}{2^1\ 1!}\ \diff**{x}
+              {\left[ (x^2 - 1)^1 \right]}
+              = \frac{1}{2} (2x)
+              = {\color{y_p} x}                                         \\
+              P_2 (x) & = \frac{1}{2^2\ 2!}\ \diff**[2]{x}
+              {\left[ (x^2 - 1)^2 \right]}
+              = \frac{1}{8} (12x^2 - 4)
+              =  {\color{y_h} \frac{1}{2}(3x^2 - 1)}                    \\
+              P_3 (x) & = \frac{1}{2^3\ 3!}\ \diff**[3]{x}
+              {\left[ (x^2 - 1)^3 \right]}
+              = \frac{1}{48} (120x^3 - 72x)
+              =  {\color{y_p} \frac{1}{2}(5x^3 - 3x)}                   \\
+              P_4 (x) & = \frac{1}{2^4\ 4!}\ \diff**[4]{x}
+              {\left[ (x^2 - 1)^4 \right]}
+              = {\color{y_h} \frac{1}{8}(35x^4 - 30x^2 + 3)}            \\
+              P_5 (x) & = \frac{1}{2^5\ 5!}\ \diff**[5]{x}
+              {\left[ (x^2 - 1)^5 \right]}
+              =  {\color{y_p} \frac{1}{8}(63x^5 - 70x^3 + 15x)}
+          \end{align}
+
+    \item Bonnet's recursion, differentiating w.r.t. $ u $,
+          \begin{align}
+              \frac{x - u}{(1 - 2ux + u^2)^{3/2}}   & = \sum_{n = 1}^{\infty}
+              n P_n(x)\ u^{n-1}                                               \\
+              (x-u) \sum_{n=0}^{\infty} P_n(x)\ u^n &
+              = (1 - 2ux + u^2)\sum_{n = 1}^{\infty} n P_n(x)\ u^{n-1}        \\
+                                                    &
+              = (1 - 2ux + u^2)\sum_{n = 0}^{\infty} (n+1) P_{n+1}(x)\ u^{n}  \\
+              xP_n - P_{n-1}                        &
+              = (n+1)P_{n+1} - 2xn P_n + (n-1)P_{n-1}                         \\
+              (n+1)\ P_{n+1}                        &
+              = (2n + 1)x\ P_n - n\ P_{n-1}
+          \end{align}
+          Manual calculations TBC.
+
+    \item Finding and cross-checking associated Legendre functions,
+          \begin{enumerate}
+              \item $ n = k = 1 $,
+                    \begin{align}
+                        P_1^1 (x) & = (1 - x^2)^{1/2}\ \diff**{x}{\left[
+                        p_1(x) \right]}                                       \\
+                                  & = \sqrt{1 - x^2} = \mu                    \\
+                        2xy'      & = \frac{-2x^2}{\mu}                       \\
+                        (1 - x^2)y'' + \left( 2 - \frac{1}{1-x^2} \right)y
+                                  & = \frac{-1}{\mu} + \frac{(1 - 2x^2)}{\mu}
+                        = \frac{-2x^2}{\mu}
+                    \end{align}
+              \item $ n = 2, k = 1 $,
+                    \begin{align}
+                        P_2^1 (x) & = \sqrt{1 - x^2}\ \diff**{x}{\left[
+                        p_2(x) \right]}                                                 \\
+                                  & = 3x \sqrt{1 - x^2} = 3x\mu                         \\
+                        2xy'      & = \frac{-2x^2}{\mu}
+                        = \frac{6x - 12x^3}{\mu}                                        \\
+                        (1 - x^2)y'' + \left(6 - \frac{1}{1-x^2} \right)y
+                                  & = \frac{6x^3 - 9x}{\mu} + \frac{(15x - 18x^3)}{\mu} \\
+                                  & = \frac{(6x - 12x^3)}{\mu}
+                    \end{align}
+              \item $ n = 2, k = 2 $,
+                    \begin{align}
+                        P_2^2 (x) & = (1 - x^2)\ \diff**[2]{x}{\left[
+                        p_2(x) \right]}                               \\
+                                  & = 3(1 - x^2)                      \\
+                        2xy'      & = -12x^2                          \\
+                        (1 - x^2)y'' + \left(6 - \frac{4}{1-x^2} \right)y
+                                  & = -6 + 6x^2 + (6 - 18x^2)         \\
+                                  & = -12x^2
+                    \end{align}
+              \item $ n = 4, k = 2 $,
+                    \begin{align}
+                        P_4^2 (x) & = (1 - x^2)\ \diff**[2]{x}{\left[
+                        p_4(x) \right]}                               \\
+                                  & = \frac{15(7x^2 - 1)(1 - x^2)}{2} \\
+                        2xy'      & = -60x^2(7x^2 - 4)                \\
+                        (1 - x^2)y'' + \left(20 - \frac{4}{1-x^2} \right)y
+                                  & = (1-x^2)(120 - 630x^2)
+                        + 15(8 - 10x^2)(7x^2 - 1)                    \\
+                                  & = -420x^4 + 240x^2
+                    \end{align}
+          \end{enumerate}
+\end{enumerate}

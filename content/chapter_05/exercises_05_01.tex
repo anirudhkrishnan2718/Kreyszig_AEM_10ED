@@ -1,0 +1,661 @@
+\section{Power Series Method}
+
+\begin{enumerate}
+    \item TBC. Refer notes.
+    \item Finding radius of convergence,
+          \begin{align}
+              f(x)                           & = \sum_{m = 0}^{\infty} (m+1)m\ x^{m} \\
+              \frac{1}{R}                    & = \lim_{m \rightarrow \infty}
+              \Big| \frac{a_{m+1}}{a_m}\Big| & = \lim_{m \rightarrow \infty}
+              \Big|\frac{(m+2)(m+1)}{m(m+1)}\Big| = 1                                \\
+              R                              & = 1
+          \end{align}
+
+    \item Finding radius of convergence,
+          \begin{align}
+              f(x)            & = \sum_{m = 0}^{\infty}
+              \frac{(-1)^m}{k^m}\ x^{2m}                      \\
+              \frac{1}{R}     & = \lim_{m \rightarrow \infty}
+              |a_{2m}|^{1/2m} & = \lim_{m \rightarrow \infty}
+              \Bigg|\left( \frac{-1}{k} \right)^{m}\Bigg|^{1/2m}
+              = \frac{1}{\sqrt{k}}                            \\
+              R               & = \sqrt{k}
+          \end{align}
+
+    \item Finding radius of convergence,
+          \begin{align}
+              f(x)        & = \sum_{m = 0}^{\infty}
+              \frac{x^{2m + 1}}{(2m + 1)!}                \\
+              \frac{1}{R} & = \lim_{m \rightarrow \infty}
+              \Bigg| \frac{a_{m+1}}{a_m} \Bigg|
+                          & = \lim_{m \rightarrow \infty}
+              \Bigg| \frac{1}{(2m+2)(2m+3)} \Bigg| = 0    \\
+              R           & = \infty
+          \end{align}
+
+    \item Finding radius of convergence,
+          \begin{align}
+              f(x)            & = \sum_{m = 0}^{\infty}
+              \frac{2^m}{3^m}\ x^{2m}                         \\
+              \frac{1}{R}     & = \lim_{m \rightarrow \infty}
+              |a_{2m}|^{1/2m} & = \lim_{m \rightarrow \infty}
+              \Bigg|\left( \frac{2}{3} \right)^{m}\Bigg|^{1/2m}
+              = \frac{\sqrt{2}}{\sqrt{3}}                     \\
+              R               & = \sqrt{1.5}
+          \end{align}
+
+    \item Solving by power series method,
+          \begin{alignat}{6}
+              y     & ={}      & a_0   & {}+{}    & a_1 x  &
+              {}+{} & a_2 x^2  & {}+{} & a_3x^3   & {}+{}  & \dots \\
+              y'    & ={}      & a_1   & {}+{}    & 2a_2 x &
+              {}+{} & 3a_3 x^2 & {}+{} & 4a_4 x^3 & {}+{}  & \dots \\
+              xy'   & ={}      &       &          & a_1 x  &
+              {}+{} & 2a_2 x^2 & {}+{} & 3a_3 x^3 & {}+{}  & \dots
+          \end{alignat}
+          Equating powers of $ x $ on both sides, \\
+          \begin{align}
+              y' + xy' & = y                                  \\
+              a_0      & = a_1         &     &     &  & [x^0] \\
+              a_1      & = a_1 + 2a_2  & a_2 & = 0 &  & [x^1] \\
+              a_2      & = 3a_3 + 2a_2 & a_3 & = 0 &  & [x^2] \\
+              a_3      & = 4a_4 + 3a_3 & a_4 & = 0 &  & [x^3] \\
+              y        & = a_0(1 + x)
+          \end{align}
+
+    \item Solving by power series method,
+          \begin{alignat}{6}
+              y     & ={}      & a_0   & {}+{}    & a_1 x  &
+              {}+{} & a_2 x^2  & {}+{} & a_3x^3   & {}+{}  & \dots \\
+              y'    & ={}      & a_1   & {}+{}    & 2a_2 x &
+              {}+{} & 3a_3 x^2 & {}+{} & 4a_4 x^3 & {}+{}  & \dots \\
+              -2xy  & ={}      &       & {}-{}    & 2a_0 x &
+              {}-{} & 2a_1 x^2 & {}-{} & 2a_2 x^3 & {}+{}  & \dots
+          \end{alignat}
+          Equating powers of $ x $ on both sides, \\
+          \begin{align}
+              y'   & = -2xy                                           \\
+              a_1  & = 0                                  &
+                   &                                      &   & [x^0] \\
+              2a_2 & = -2a_0                              &
+              a_2  & = -a_0                               &   & [x^1] \\
+              3a_3 & = -2a_1                              &
+              a_3  & = 0                                  &   & [x^2] \\
+              4a_4 & = -2a_2                              &
+              a_4  & = \left( \frac{-1^2}{2!} \right) a_0 &   & [x^3] \\
+              5a_5 & = -2a_3                              &
+              a_5  & = 0                                  &   & [x^4] \\
+              6a_6 & = -2a_4                              &
+              a_6  & = \frac{-1^3}{3!}a_0                 &   & [x^5]
+          \end{align}
+          Assigning the power series to a function,
+          \begin{align}
+              y & = a_0 \left[1 - \frac{x^2}{1!} + \frac{x^4}{2!}
+              - \frac{x^6}{3!} + \dots \right]                    \\
+                & = a_0 \sum_{m = 0}^{\infty}
+              \frac{\left( -x^2 \right)^m}{m!} = a_0\exp(-x^2)
+          \end{align}
+
+    \item Solving by power series method,
+          \begin{alignat}{6}
+              y     & ={}      & a_0   & {}+{}    & a_1 x  &
+              {}+{} & a_2 x^2  & {}+{} & a_3x^3   & {}+{}  & \dots \\
+              y'    & ={}      & a_1   & {}+{}    & 2a_2 x &
+              {}+{} & 3a_3 x^2 & {}+{} & 4a_4 x^3 & {}+{}  & \dots \\
+              xy'   & ={}      &       &          & a_1 x  &
+              {}+{} & 2a_2 x^2 & {}+{} & 3a_3 x^3 & {}+{}  & \dots
+          \end{alignat}
+          Equating powers of $ x $ on both sides, \\
+          \begin{align}
+              xy' -3y     & = k                         \\
+              -3a_0       & = k             &
+              a_0         & = \frac{-k}{3}  &   & [x^0] \\
+              a_1 - 3a_1  & = 0             &
+              a_1         & = 0             &   & [x^1] \\
+              2a_2 - 3a_2 & = 0             &
+              a_2         & = 0             &   & [x^2] \\
+              3a_3 - 3a_3 & = 0             &
+              a_3         & \in \mathcal{R} &   & [x^3] \\
+              4a_4 - 3a_4 & = 0             &
+              a_4         & = 0             &   & [x^4] \\
+          \end{align}
+          Assigning the power series to a function,
+          \begin{align}
+              y & = \frac{-k}{3} + a_3 x^3
+          \end{align}
+
+    \item Solving by power series method,
+          \begin{alignat}{6}
+              y     & ={}       & a_0   & {}+{}     & a_1 x  &
+              {}+{} & a_2 x^2   & {}+{} & a_3x^3    & {}+{}  & \dots \\
+              y'    & ={}       & a_1   & {}+{}     & 2a_2 x &
+              {}+{} & 3a_3 x^2  & {}+{} & 4a_4 x^3  & {}+{}  & \dots \\
+              y''   & ={}       & 2a_2  & {}+{}     & 6a_3 x &
+              {}+{} & 12a_4 x^2 & {}+{} & 20a_5 x^3 & {}+{}  & \dots
+          \end{alignat}
+          Equating powers of $ x $ on both sides, \\
+          \begin{align}
+              y'' + y     & = 0                           \\
+              a_0 + 2a_2  & = 0               &
+              a_2         & = \frac{-a_0}{2}  &   & [x^0] \\
+              6a_3 + a_1  & = 0               &
+              a_3         & = \frac{-a_1}{6}  &   & [x^1] \\
+              12a_4 + a_2 & = 0               &
+              a_4         & = \frac{a_0}{24}  &   & [x^2] \\
+              20a_5 + a_3 & = 0               &
+              a_5         & = \frac{a_1}{120} &   & [x^3]
+          \end{align}
+          Assigning the power series to a function,
+          \begin{align}
+              y & = a_0\left[ 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots \right]
+              + a_1 \left[ 1 - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots \right]    \\
+                & = a_0 \cos(x) + a_1 \sin(x)
+          \end{align}
+
+    \item Solving by power series method,
+          \begin{alignat}{6}
+              xy    & ={}       &       & {}        & a_0 x  &
+              {}+{} & a_1 x^2   & {}+{} & a_2x^3    & {}+{}  & \dots \\
+              -y'   & ={}-{}    & a_1   & {}-{}     & 2a_2 x &
+              {}-{} & 3a_3 x^2  & {}-{} & 4a_4 x^3  & {}-{}  & \dots \\
+              y''   & ={}       & 2a_2  & {}+{}     & 6a_3 x &
+              {}+{} & 12a_4 x^2 & {}+{} & 20a_5 x^3 & {}+{}  & \dots
+          \end{alignat}
+          Equating powers of $ x $ on both sides, \\
+          \begin{align}
+              y'' - y' + xy & = 0                                   \\
+              2a_2          & = a_1                     &
+              a_2           & = \frac{a_1}{2!}          &   & [x^0] \\
+              6a_3 + a_0    & = 2a_2                    &
+              a_3           & = \frac{a_1 - a_0}{3!}    &   & [x^1] \\
+              12a_4 + a_1   & = 3a_3                    &
+              a_4           & = \frac{-a_1 - a_0}{4!}   &   & [x^2] \\
+              20a_5 + a_2   & = 4a_4                    &
+              a_5           & = \frac{-4a_1 - a_0}{5!}  &   & [x^3] \\
+              30a_6 + a_3   & = 5a_5                    &
+              a_6           & = \frac{-8a_1 + 3a_0}{6!} &   & [x^4] \\
+              42a_7 + a_4   & = 6a_6                    &
+              a_7           & = \frac{-3a_1 + 8a_0}{7!} &   & [x^5]
+          \end{align}
+          Consolidating power series in terms of $ a_0 $ and $ a_1 $,
+          \begin{align}
+              y & = a_0\left[ 1 - \frac{x^3}{3!} - \frac{x^4}{4!}
+              - \frac{x^5}{5!} + \frac{3x^6}{6!} + \frac{8x^7}{7!} \dots \right] \\
+                & + a_1 \left[ \frac{x}{1!} + \frac{x^2}{2!}
+                  + \frac{x^3}{3!} - \frac{x^4}{4!} - \frac{4x^5}{5!}
+                  - \frac{8x^6}{6!} - \frac{3x^7}{7!} + \dots \right]
+          \end{align}
+
+    \item Solving by power series method,
+          \begin{alignat}{6}
+              x^2 y & ={}       &       & {}        &        &
+                    & a_0 x^2   & {}+{} & a_1x^3    & {}+{}  & \dots \\
+              -y'   & ={}-{}    & a_1   & {}-{}     & 2a_2 x &
+              {}-{} & 3a_3 x^2  & {}-{} & 4a_4 x^3  & {}-{}  & \dots \\
+              y''   & ={}       & 2a_2  & {}+{}     & 6a_3 x &
+              {}+{} & 12a_4 x^2 & {}+{} & 20a_5 x^3 & {}+{}  & \dots
+          \end{alignat}
+          Equating powers of $ x $ on both sides, \\
+          \begin{align}
+              y'' - y' + xy & = 0                                    \\
+              2a_2          & = a_1                      &
+              a_2           & = \frac{a_1}{2!}           &   & [x^0] \\
+              6a_3          & = 2a_2                     &
+              a_3           & = \frac{a_1}{3!}           &   & [x^1] \\
+              12a_4 + a_0   & = 3a_3                     &
+              a_4           & = \frac{a_1 - 2a_0}{4!}    &   & [x^2] \\
+              20a_5 + a_1   & = 4a_4                     &
+              a_5           & = \frac{-5a_1 - 2a_0}{5!}  &   & [x^3] \\
+              30a_6 + a_2   & = 5a_5                     &
+              a_6           & = \frac{-17a_1 - 2a_0}{6!} &   & [x^4] \\
+              42a_7 + a_3   & = 6a_6                     &
+              a_7           & = \frac{-37a_1 - 2a_0}{7!} &   & [x^5]
+          \end{align}
+          Consolidating power series in terms of $ a_0 $ and $ a_1 $,
+          \begin{align}
+              y & = a_0\left[ 1 - \frac{2x^4}{4!}
+              - \frac{2x^5}{5!} - \frac{2x^6}{6!} - \frac{2x^7}{7!} \dots \right] \\
+                & + a_1 \left[ \frac{x}{1!} + \frac{x^2}{2!}
+                  + \frac{x^3}{3!} + \frac{x^4}{4!} - \frac{5x^5}{5!}
+                  - \frac{17x^6}{6!} - \frac{37x^7}{7!} + \dots \right]
+          \end{align}
+
+    \item Trying the general $ m $-th term approach,
+          \begin{align}
+              y''    & = \sum_{m=2}^{\infty}a_m\ m(m-1)x^{m-2}     &
+                     & = \sum_{m=0}^{\infty}a_{m+2}\ (m+2)(m+1)x^m   \\
+                     &                                             &
+              x^2y'' & = \sum_{m=2}^{\infty}a_{m}\ (m)(m-1)x^m       \\
+              y'     & = \sum_{m=1}^{\infty}a_m\ mx^{m-1}          &
+              2xy'   & = \sum_{m = 1}^{\infty}2a_{m}\ (m)x^m
+          \end{align}
+          Equating powers of $ x $,
+          \begin{align}
+              (1-x^2)y'' + 2y   & = 2xy'                     \\
+              2a_2 + 2a_0       & = 0                      &
+              a_2               & = -a_0                     \\
+              6a_3              & = 2a_1                   &
+              a_3               & = \frac{a_1}{3}            \\
+              (m+1)(m+2)a_{m+2} & = (m^2 + m - 2)a_m       &
+              \forall \quad m   & \geq 2                     \\
+              a_{m+2}           & = \frac{(m-1)a_m}{(m+1)}
+          \end{align}
+          Consolidating terms using $ a_0 $ and $a_1$,
+          \begin{align}
+              y & = a_0 \left[1 - x^2 - \frac{x^4}{3} - \frac{x^6}{5}
+              - \frac{x^8}{7} - \dots \right]                         \\
+                & + a_1 \left[ x + \frac{x^3}{3} + \frac{x^5}{6}
+                  + \frac{x^7}{9} + \frac{x^9}{12} + \dots \right]
+          \end{align}
+
+    \item Trying the general $ m $-th term approach,
+          \begin{align}
+              y''    & = \sum_{m=2}^{\infty}a_m\ m(m-1)x^{m-2}     &
+                     & = \sum_{m=0}^{\infty}a_{m+2}\ (m+2)(m+1)x^m   \\
+              x^{2}y & = \sum_{m=0}^{\infty}a_m\ x^{m+2}           &
+                     & = \sum_{m = 2}^{\infty}a_{m-2}\ x^m
+          \end{align}
+          Equating powers of $ x $,
+          \begin{align}
+              2a_2 + a_0                        & = 0               &
+              a_2                               & = -\frac{a_0}{2!}   \\
+              6a_3                              & = -a_1            &
+              a_3                               & = -\frac{a_1}{3!}   \\
+              (m+1)(m+2)a_{m+2} + a_m + a_{m-2} & = 0               &
+              \forall \quad m                   & \geq 2              \\
+              a_{m+2}                           & = \frac{-a_{m} -
+              a_{m-2}}{(m+2)(m+1)}
+          \end{align}
+          Consolidating terms using $ a_0 $ and $a_1$,
+          \begin{align}
+              y & = a_0 \left[ 1 - \frac{x^2}{2!} - \frac{x^4}{4!}
+              + 13\frac{x^6}{6!} + \dots \right]                               \\
+                & + a_1 \left[ \frac{x}{1!} - \frac{x^3}{3!} - 5\frac{x^5}{5!}
+                  + 25\frac{x^7}{7!} \dots \right]
+          \end{align}
+
+    \item Trying the general $ m $-th term approach,
+          \begin{align}
+              y''     & = \sum_{m=2}^{\infty}a_m\ m(m-1)x^{m-2}     &
+                      & = \sum_{m=0}^{\infty}a_{m+2}\ (m+2)(m+1)x^m   \\
+              y'      & = \sum_{m=1}^{\infty}a_m\ mx^{m-1}          &
+              4xy'    & = \sum_{m=1}^{\infty}4a_{m}\ (m)x^m           \\
+              4x^{2}y & = \sum_{m=0}^{\infty}4a_m\ x^{m+2}          &
+                      & = \sum_{m = 2}^{\infty}4a_{m-2}\ x^m
+          \end{align}
+          Equating powers of $ x $,
+          \begin{align}
+              2a_2 - 2a_0                  & = 0                   &
+              a_2                          & = a_0                   \\
+              6a_3 - 2a_1                  & = 4a_1                &
+              a_3                          & = a_1                   \\
+              (m+1)(m+2)a_{m+2} + 4a_{m-2} & = (4m + 2) a_m        &
+              \forall \quad m              & \geq 2                  \\
+              a_{m+2}                      & = \frac{(4m+2)a_{m} -
+                  4a_{m-2}}{(m+2)(m+1)}
+          \end{align}
+          Consolidating terms using $ a_0 $ and $a_1$,
+          \begin{align}
+              y & = a_0 \left[ 1 + \frac{x^2}{1!} + \frac{x^4}{2!}
+              + \frac{x^6}{3!} + \frac{x^8}{4!}\dots \right]       \\
+                & + a_1 \left[ x + \frac{x^3}{1!} + \frac{x^5}{2!}
+              + \frac{x^7}{3!} + \frac{x^9}{4!} + \dots \right]    \\
+              y & = (a_0 + a_1 x)\ e^{x^2}
+          \end{align}
+
+    \item Shifting summation indices,
+          \begin{enumerate}
+              \item Using $ s \rightarrow m+1 $
+                    \begin{align}
+                        f(s) & = \sum_{s = 2}^{\infty}\frac{s(s+1)}
+                        {s^2 + 1}\ x^{s-1}                               \\
+                             & = \frac{6}{5}\ x + \frac{12}{10}\ x^2
+                        + \frac{20}{17}\ x^3 + \frac{30}{26}\ x^4
+                        + \frac{42}{37}\ x^5 + \dots                     \\
+                             & = \sum_{m = 1}^{\infty} \frac{(m+1)(m+2)}
+                        {(m+1)^2 + 1}\ x^m
+                    \end{align}
+              \item Using $ p \rightarrow m-4$
+                    \begin{align}
+                        g(p) & = \sum_{p = 1}^{\infty}\frac{p^2}
+                        {(p+1)!}\ x^{p+4}                              \\
+                             & = \frac{1}{2!}\ x^5 + \frac{4}{3!}\ x^6
+                        + \frac{9}{4!}\ x^7 + \frac{16}{5!}\ x^8
+                        + \frac{25}{6!}\ x^9 + \dots                   \\
+                             & = \sum_{m = 5}^{\infty} \frac{(m-4)^2}
+                        {(m-3)!}\ x^m
+                    \end{align}
+          \end{enumerate}
+
+    \item Trying the general $ m $-th term approach,
+          \begin{align}
+              y' & = \sum_{m=1}^{\infty}a_m\ mx^{m-1}       &
+              y' & = \sum_{m=0}^{\infty}a_{m+1}\ (m+1)x^{m}   \\
+              4y & = \sum_{m=0}^{\infty}4a_m\ x^{m}
+          \end{align}
+          Equating powers of $ x $,
+          \begin{align}
+              y' + 4y             & = 1                       \\
+              4a_0 + a_1          & = 0                     &
+              a_1                 & = -4a_0                   \\
+              (m+1)a_{m+1} + 4a_m & = 0                     &
+              \forall \quad m     & \geq 1                    \\
+              a_{m+1}             & = \frac{-4a_{m}}{(m+1)}
+          \end{align}
+          Consolidating terms using $ a_0 $,
+          \begin{align}
+              y & = a_0 \left[ 1 - \frac{4x}{1!} + \frac{4^2 x^2}{2!}
+              - \frac{4^3 x^3}{3!} + \frac{4^4 x^4}{4!} - \dots \right] \\
+              y & = a_0 e^{-4x}
+          \end{align}
+          Applying the I.C. $y(0) = 1.25, x_1 = 0.2$,
+          \begin{align}
+              y(0)   & = a_0 = 1.25                    \\
+              y(x_1) & = 1.25 \cdot \exp(-4 \cdot 0.2) \\
+                     & = 0.56166
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          declare function = {
+                                  a_0 = 1.25; a_1 = 1;
+                                  t_0(\x) = a_0 * 1;
+                                  t_1(\x) = a_0 * (-4/factorial(1)) * (\x);
+                                  t_2(\x) = a_0 * (4^2/factorial(2)) * (\x)^2;
+                                  t_3(\x) = a_0 * (-4^3/factorial(3)) * (\x)^3;
+                                  t_4(\x) = a_0 * (4^4/factorial(4)) * (\x)^4;
+                                  t_5(\x) = a_0 * (-4^5/factorial(5)) * (\x)^5;
+                              },
+                          xlabel = $ x $,
+                          ylabel = $ y $,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          domain = 0.199:0.201,
+                          Ani]
+                      \addplot[GraphSmooth, color = red4]
+                      {t_0(x)};
+                      \addplot[GraphSmooth, color = brown4]
+                      {t_0(x) + t_1(x)};
+                      \addplot[GraphSmooth, color = yellow4]
+                      {t_0(x) + t_1(x) + t_2(x)};
+                      \addplot[GraphSmooth, color = green4]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x)};
+                      \addplot[GraphSmooth, color = azure4]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x) + t_4(x)};
+                      \addplot[GraphSmooth, color = violet4]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x) + t_4(x) + t_5(x)};
+                      \node[GraphNode, label={-90:{\footnotesize (0.2, 0.562)}}]
+                      at (axis cs:0.2, 0.562) {};
+                      \addlegendentry{$ s_0 $}
+                      \addlegendentry{$ s_1 $}
+                      \addlegendentry{$ s_2 $}
+                      \addlegendentry{$ s_3 $}
+                      \addlegendentry{$ s_4 $}
+                      \addlegendentry{$ s_5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+
+    \item Trying the general $ m $-th term approach,
+          \begin{align}
+              y''  & = \sum_{m=2}^{\infty}a_m\ m(m-1)x^{m-2}     &
+                   & = \sum_{m=0}^{\infty}a_{m+2}\ (m+2)(m+1)x^m   \\
+              y'   & = \sum_{m=1}^{\infty}a_m\ mx^{m-1}          &
+              3xy' & = \sum_{m=1}^{\infty}3a_{m}\ (m)x^m
+          \end{align}
+          Equating powers of $ x $,
+          \begin{align}
+              2a_2 + 2a_0                       & = 0                   &
+              a_2                               & = -a_0                  \\
+              6a_3 + 5a_1                       & = 0                   &
+              a_3                               & = \frac{-5}{6}a_1       \\
+              (m+1)(m+2)a_{m+2} + (3m + 2)a_{m} & = 0                   &
+              \forall \quad m                   & \geq 2                  \\
+              a_{m+2}                           & = \frac{-(3m+2)a_{m}}
+              {(m+2)(m+1)}
+          \end{align}
+          Consolidating terms using $ a_0 $ and $a_1$,
+          \begin{align}
+              y & = a_0 \left[ 1 - \frac{2x^2}{2!} + \frac{16x^4}{4!}
+              - \frac{224x^6}{6!} + \dots \right]                     \\
+                & + a_1 \left[ x - \frac{5x^3}{3!} + \frac{55x^5}{5!}
+                  - \frac{935x^7}{7!} + \dots \right]
+          \end{align}
+          Applying the I.C. $y(0) = 1, y'(0) = 1, x_1 = 0.5$,
+          \begin{align}
+              y(0)   & = a_0 = 1                       \\
+              y'(0)  & = a_1 = 1                       \\
+              y(x_1) & = 1.25 \cdot \exp(-4 \cdot 0.2) \\
+                     & = 1.15455
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          declare function = {
+                                  a_0 = 1; a_1 = 1;
+                                  t_0(\x) = a_0 * 1;
+                                  t_1(\x) = a_1 * (\x);
+                                  t_2(\x) = a_0 * (-2/factorial(2)) * (\x)^2;
+                                  t_3(\x) = a_1 * (-5/factorial(3)) * (\x)^3;
+                                  t_4(\x) = a_0 * (16/factorial(4)) * (\x)^4;
+                                  t_5(\x) = a_1 * (55/factorial(5)) * (\x)^5;
+                              },
+                          xlabel = $ x $,
+                          ylabel = $ y $,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          domain = 0.4:0.6,
+                          Ani]
+                      \addplot[GraphSmooth, color = red4]
+                      {t_0(x)};
+                      \addplot[GraphSmooth, color = brown4]
+                      {t_0(x) + t_1(x)};
+                      \addplot[GraphSmooth, color = yellow4]
+                      {t_0(x) + t_1(x) + t_2(x)};
+                      \addplot[GraphSmooth, color = green4]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x)};
+                      \addplot[GraphSmooth, color = azure4]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x) + t_4(x)};
+                      \addplot[GraphSmooth, color = violet4]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x) + t_4(x) + t_5(x)};
+                      \node[GraphNode, label={-135:{\footnotesize (0.5, 1.154)}}]
+                      at (axis cs:0.5, 1.154) {};
+                      \addlegendentry{$ s_0 $}
+                      \addlegendentry{$ s_1 $}
+                      \addlegendentry{$ s_2 $}
+                      \addlegendentry{$ s_3 $}
+                      \addlegendentry{$ s_4 $}
+                      \addlegendentry{$ s_5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Trying the general $ m $-th term approach,
+          \begin{align}
+              y''    & = \sum_{m=2}^{\infty}a_m\ m(m-1)x^{m-2}     &
+                     & = \sum_{m=0}^{\infty}a_{m+2}\ (m+2)(m+1)x^m   \\
+                     &                                             &
+              x^2y'' & = \sum_{m=2}^{\infty}a_{m}\ (m)(m-1)x^m       \\
+              y'     & = \sum_{m=1}^{\infty}a_m\ mx^{m-1}          &
+              2xy'   & = \sum_{m = 1}^{\infty}2a_{m}\ (m)x^m
+          \end{align}
+          Equating powers of $ x $,
+          \begin{align}
+              (1-x^2)y'' + 30y  & = 2xy'                               \\
+              2a_2 + 30a_0      & = 0                                &
+              a_2               & = -15a_0                             \\
+              6a_3 + 30a_1      & = 2a_1                             &
+              a_3               & = \frac{-14a_1}{3}                   \\
+              (m+1)(m+2)a_{m+2} & = (m^2 + m - 30)a_m                &
+              \forall \quad m   & \geq 2                               \\
+              a_{m+2}           & = \frac{(m+6)(m-5)a_m}{(m+1)(m+2)}
+          \end{align}
+          Consolidating terms using $ a_0 $ and $a_1$,
+          \begin{align}
+              y & = a_0 \left[1 - 15x^2 + 30x^4 - 10x^6
+              - \frac{15x^8}{7} - \dots \right]                      \\
+                & + a_1 \left[ x - \frac{14x^3}{3} + \frac{21x^5}{5}
+                  \right]
+          \end{align}
+          Applying the I.C. $y(0) = 0, y'(0) = 1.875, x_1 = 0.5$,
+          \begin{align}
+              y(0)   & = a_0 = 0     \\
+              y'(0)  & = a_1 = 1.875 \\
+              y(x_1) & = 0.08984
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          declare function = {
+                                  a_0 = 0; a_1 = 1.875;
+                                  t_0(\x) = a_0 * 1;
+                                  t_1(\x) = a_1 * (\x);
+                                  t_2(\x) = a_0 * (-2/factorial(2)) * (\x)^2;
+                                  t_3(\x) = a_1 * (-14/3) * (\x)^3;
+                                  t_4(\x) = a_0 * (16/factorial(4)) * (\x)^4;
+                                  t_5(\x) = a_1 * (21/5) * (\x)^5;
+                              },
+                          xlabel = $ x $,
+                          ylabel = $ y $,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          domain = 0.4:0.6,
+                          Ani]
+                      \addplot[GraphSmooth, color = red4]
+                      {t_1(x)};
+                      \addplot[GraphSmooth, color = brown4]
+                      {t_1(x) + t_3(x)};
+                      \addplot[GraphSmooth, color = yellow4]
+                      {t_1(x) + t_3(x) + t_5(x)};
+                      \node[GraphNode, label={45:{\footnotesize (0.5, 0.0898)}}]
+                      at (axis cs:0.5, 0.0898) {};
+                      \addlegendentry{$ s_1 $}
+                      \addlegendentry{$ s_3 $}
+                      \addlegendentry{$ s_5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Trying the general $ m $-th term approach,
+          \begin{align}
+              -2y' & = \sum_{m=1}^{\infty}-2a_m\ mx^{m-1}       &
+                   & = \sum_{m = 0}^{\infty}-2a_{m+1}\ (m+1)x^m   \\
+              xy'  & = \sum_{m = 1}^{\infty}a_{m}\ (m)x^m       &
+              xy   & = \sum_{m = 1}^{\infty} a_{m-1} x^{m}
+          \end{align}
+          Equating powers of $ x $,
+          \begin{align}
+              (x-2)y'              & = xy                               \\
+              -2a_1                & = 0                              &
+              a_1                  & = 0                                \\
+              ma_m - 2(m+1)a_{m+1} & = a_{m-1}                        &
+              \forall \quad m      & \geq 1                             \\
+              a_{m+1}              & = \frac{m a_m - a_{m-1}}{2(m+1)}
+          \end{align}
+          Consolidating terms using $ a_0 $ and $a_1$,
+          \begin{align}
+              y & = a_0 \left[1 + 0x - \frac{x^2}{4} - \frac{x^3}{12}
+              + 0x^4 + \frac{x^5}{120} +  \dots \right]               \\
+          \end{align}
+          Applying the I.C. $y(0) = 4, x_1 = 2$,
+          \begin{align}
+              y(0)   & = a_0 = 4                       \\
+              y(x_1) & = -1.6                          \\
+              z(x_1) & = (z - 2)^2 e^z \Big|_{z=2} = 0
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          declare function = {
+                                  a_0 = 4; a_1 = 1.875;
+                                  t_0(\x) = a_0 * 1;
+                                  t_1(\x) = a_0 * 0 * (\x);
+                                  t_2(\x) = a_0 * (-1/4) * (\x)^2;
+                                  t_3(\x) = a_0 * (-1/12) * (\x)^3;
+                                  t_4(\x) = a_0 * (0) * (\x)^4;
+                                  t_5(\x) = a_0 * (1/120) * (\x)^5;
+                              },
+                          xlabel = $ x $,
+                          ylabel = $ y $,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          domain = 1.9:2.1,
+                          Ani]
+                      \addplot[GraphSmooth, color = red4]
+                      {t_0(x)};
+                      \addplot[GraphSmooth, color = brown4]
+                      {t_0(x) + t_1(x)};
+                      \addplot[GraphSmooth, color = yellow4]
+                      {t_0(x) + t_1(x) + t_2(x)};
+                      \addplot[GraphSmooth, color = green4]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x)};
+                      \addplot[GraphSmooth, color = azure4]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x) + t_4(x)};
+                      \addplot[GraphSmooth, color = violet4]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x) + t_4(x) + t_5(x)};
+                      \node[GraphNode, label={45:{\footnotesize (2, -1.6)}}]
+                      at (axis cs:2, -1.6) {};
+                      \addlegendentry{$ s_0 $}
+                      \addlegendentry{$ s_1 $}
+                      \addlegendentry{$ s_2 $}
+                      \addlegendentry{$ s_3 $}
+                      \addlegendentry{$ s_4 $}
+                      \addlegendentry{$ s_5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing the partial sums of the Maclaurin series of
+          \begin{align}
+              \sin(x) & = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          declare function = {
+                                  a_0 = 1;
+                                  t_0(\x) = a_0 * x;
+                                  t_1(\x) = a_0 * (-1/6) * (\x)^3;
+                                  t_2(\x) = a_0 * (1/120) * (\x)^5;
+                                  t_3(\x) = a_0 * (-1/factorial(7)) * (\x)^7;
+                              },
+                          xlabel = $ x $,
+                          ylabel = $ y $,
+                          legend pos = south west,
+                          grid = both,
+                          width = 12cm,
+                          PiStyleX,
+                          domain = 0:1.5*pi,
+                          xtick distance = 0.2*pi,
+                          Ani]
+                      \addplot[GraphSmooth, color = black]
+                      {sin(x)};
+                      \addplot[GraphSmooth, color = red5]
+                      {t_0(x)};
+                      \addplot[GraphSmooth, color = brown5]
+                      {t_0(x) + t_1(x)};
+                      \addplot[GraphSmooth, color = yellow5]
+                      {t_0(x) + t_1(x) + t_2(x)};
+                      \addplot[GraphSmooth, color = green5]
+                      {t_0(x) + t_1(x) + t_2(x) + t_3(x)};
+                      \addlegendentry{True}
+                      \addlegendentry{$ s_0 $}
+                      \addlegendentry{$ s_1 $}
+                      \addlegendentry{$ s_2 $}
+                      \addlegendentry{$ s_3 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          From the plot, higher series sums diverge from the true sine curve
+          at larger values of $ x $, which means they are closer approximations.
+\end{enumerate}

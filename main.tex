@@ -1,0 +1,311 @@
+%%--------------------------- PREAMBLE -----------------------------%%
+\documentclass[10pt, oneside]{book}
+\usepackage{lipsum}
+\usepackage{lmodern}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[]{fancyhdr}
+% \usepackage[]{titlesec}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{needspace}
+\usepackage{enumitem}
+\usepackage{layout}
+\usepackage{tcolorbox}
+\usepackage{sectsty}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+% \usepackage[autostyle, english = american]{csquotes}
+\usepackage{pgfplots}
+\pgfplotsset{compat = 1.18, width = 12 cm, height = 8 cm}
+\usepackage{pgfplotstable}
+\usepackage{nicematrix}
+
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{math}
+
+%% reusable functions of one or more variables inside plots
+\input{./tables/tikz_functions.tex}
+
+%% draw arrows along trajectories
+\tikzset{
+    set arrow inside/.code={\pgfqkeys{/tikz/arrow inside}{#1}},
+    set arrow inside={end/.initial=>, opt/.initial=},
+    /pgf/decoration/Mark/.style={
+        mark/.expanded=at position #1 with
+        {
+            \noexpand\arrow[\pgfkeysvalueof{/tikz/arrow inside/opt}]{\pgfkeysvalueof{/tikz/arrow inside/end}}
+        }
+    },
+    arrow inside/.style 2 args={
+        set arrow inside={#1},
+        postaction={
+            decorate,decoration={
+                markings,Mark/.list={#2}
+            }
+        }
+    },
+}
+
+
+\usepgfplotslibrary{polar}
+\usepackage[font=small,labelfont=bf]{caption}
+
+\usepackage{tabularray}
+\usepackage{ninecolors}
+\NineColors{saturation = high}
+
+\usepackage{mathtools}
+\usepackage{float}
+\usepackage{subcaption}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=Figures/]
+\usetikzlibrary{angles,quotes, graphs, arrows.meta}
+\usepackage{circuitikz}
+\usepackage[l3]{csvsimple}
+\usepackage{booktabs}
+\usepackage{siunitx}
+
+%%--------------- PHYSICS PACKAGE PARTIAL DERIVATIVES --------------%%
+\usepackage{amsmath, amssymb}
+\usepackage[scr]{rsfso}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\dotp}{\boldsymbol{\cdot}}
+\newcommand\bmatcol[2]{\begin{bNiceMatrix}[r, margin] #1 \\ #2\end{bNiceMatrix}}
+\newcommand\bmattt[4]{\begin{bNiceMatrix}[r, margin] #1 & #2 \\ #3 & #4 \end{bNiceMatrix}}
+%% infinite series sum with default index m
+\newcommand\iser[2][m]{\sum_{#1 = #2}^{\infty}}
+% \newcommand\Lap{\mathscr{L}}
+\DeclareMathOperator{\Lap}{\mathscr{L}}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+
+% \usepackage{xparse}
+\usepackage[]{diffcoeff}
+
+%% integral from some start point to infinity
+\newcommand\infint[1][0]{\int_{#1}^{\infty}}
+
+
+%%---------------------- BASIC DOCUMENT DETAILS --------------------%%
+%% These details are easiest hard-coded
+\author{Anirudh Krishnan}
+\title{Advanced Engineering Mathematics, Erwin Kreyszig}
+\date{\today}
+
+
+%%------------ CHAPTER, SECTION, SUBSECTION FOMRATTING -------------%%
+
+%% Chapter formatting
+\chapterfont{\sffamily \color{red2}}
+\sectionfont{\sffamily \color{red4}}
+\subsectionfont{\sffamily \color{red6}}
+\makeatletter
+\renewcommand\tagform@[1]{\maketag@@@{\ignorespaces#1\unskip\@@italiccorr}}
+\makeatother
+%% Number equations by section instead of chapter
+\numberwithin{equation}{section}
+%% equation numbering font size and colors
+\renewcommand{\theequation}{\scriptsize\sffamily{\color{blue1}\thesection}.{\color{blue3}\arabic{equation}}}
+
+
+%%-------------- FINE CONTROL OVER DOCUMENT DIMENSIONS------------- %%
+%% Insert blank line on new paragraph
+\setlength{\parskip}{1em}
+\pgfplotsset{
+    axis line style={
+        color = Gray
+    }, 
+    major grid style={
+        draw=Gray!25,
+        line width = 0.25 pt
+        }, 
+    every  tick/.style={Gray,},
+    every tick label/.style={font = \small}
+    }
+
+\tikzset{
+    GraphNode/.style={
+        black,
+        circle,
+        fill=black,
+        inner sep = 1.5pt,
+        outer sep = 1.5pt,
+        },
+    OpenInt/.style={
+        thick,
+        draw = y_h,
+        circle,
+        fill=white,
+        inner sep = 1.5pt,
+        outer sep = 1.5pt,
+        },
+    TreeNode/.style={
+        color = y_p,
+        inner sep = 1pt,
+        outer sep = 10pt,
+        }
+    }
+
+    \pgfmathsetmacro{\PI}{3.141592654}
+\pgfplotsset{
+    Ani/.style={
+        % legend style = {cells = {align = left}},
+        set layers,
+        legend cell align = {left},
+        trig format plots = rad,
+        label style={font=\scriptsize},
+        tick label style={font=\scriptsize},
+        GraphSmooth/.style={
+            color = blue,
+            smooth,
+            thick,
+            samples = 200
+        },
+        PiStyleY/.style={
+            scaled y ticks = {real:\PI},
+            ytick scale label code/.code = {$ \cdot \pi $}
+        },
+        PiStyleX/.style={
+            scaled x ticks = {real:\PI},
+            xtick scale label code/.code = {$ \cdot \pi $}
+        },
+        JumpPlot/.style={
+            forget plot,
+            only marks,
+            color = blue,
+            samples = 400,
+            mark options = {mark size = 0.25 pt}
+        }
+    }
+}
+
+%% control enumitem settings
+
+\setlist[enumerate, 1]{
+    after={\bigskip},
+    leftmargin = *,
+    label={\color{cyan3}\sffamily\textbf{\arabic*.}}}
+
+\setlist[enumerate, 2]{
+    after={\bigskip},
+    leftmargin = *,
+    label={\color{cyan4}\sffamily\textbf{(\alph*)}}}
+
+    \setlist[enumerate, 3]{
+    after={\bigskip},
+    leftmargin = *,
+    label={\color{cyan5}\sffamily\textbf{(\arabic*)}}}
+
+\setlist[itemize, 1]{
+    after={\bigskip},
+    leftmargin = *,
+    label=\textcolor{violet2}{\textbullet}}
+
+\setlist[description]{
+    after=\bigskip,
+    labelsep = \parindent,
+    align=left,
+    leftmargin=*,
+    itemindent=!,
+    font={\sffamily\slshape\small\color{azure3}}}
+
+%% dont show any subdivisions below chapters in TOC
+\setcounter{tocdepth}{2}
+\setlength{\footskip}{0.5in}
+\addtolength{\jot}{1em}
+
+%%--------------------_ CUSTOM COLOR DEFINITION --------------------%%
+
+%% expressions in ODE solutions
+\colorlet{y_p}{red4}
+\colorlet{y_h}{green4}
+
+
+%%------------------------- MAIN DOCUMENT --------------------------%%
+
+\begin{document}
+% \pagenumbering{Alph}
+\renewcommand{\arraystretch}{1.5}
+\layout
+% \maketitle
+\begin{titlepage}
+    \input{./custom_titlepage_auto.tex}
+    \frontmatter
+    \tableofcontents
+    \listoffigures
+    \listoftables
+\end{titlepage}
+% \pagenumbering{arabic}
+
+\mainmatter
+
+%% Setting the vertical space around a display math environment
+\setlength{\abovedisplayskip}{2em}
+\setlength{\belowdisplayskip}{2em}
+\setlength{\abovedisplayshortskip}{2em}
+\setlength{\belowdisplayshortskip}{2em}
+
+%%---------------------- MATH OPERATOR SPACING ---------------------%%
+
+\thinmuskip = 5mu plus 2mu minus 2mu
+\medmuskip = 5mu plus 2mu minus 2mu
+\thickmuskip = 6mu plus 2mu minus 2mu
+
+%%---------------- HEADER AND FOOTER FORMATTING --------------------%%
+
+%% Set the pagestyle for plain pages which are on chapter start and
+%% fancy pages used everywhere else
+%% Once again the author and document title are hard-coded here for
+%% convenience.
+%% Defining and using variables like in a programming language
+%% is too finicky
+\fancypagestyle
+{plain}
+{\fancyhf{}
+    \fancyhead[]{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}}
+
+\fancypagestyle
+{fancy}{
+    \fancyhead[]{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}}
+
+\pagestyle{fancy}
+
+%%---------------------- INCLUDE CHAPTERS --------------------------%%
+
+%% textbook notes
+\include{content/chapter_01/notes}
+\include{content/chapter_02/notes}
+\include{content/chapter_03/notes}
+\include{content/chapter_04/notes}
+\include{content/chapter_05/notes}
+\include{content/chapter_06/notes}
+\include{content/chapter_07/notes}
+\include{content/chapter_08/notes}
+\include{content/chapter_09/notes}
+\include{content/chapter_10/notes}
+\include{content/chapter_11/notes}
+
+%% section exercises
+% \include{content/chapter_01/exercises}
+% \include{content/chapter_02/exercises}
+% \include{content/chapter_03/exercises}
+% \include{content/chapter_04/exercises}
+% \include{content/chapter_05/exercises}
+% \include{content/chapter_06/exercises}
+% \include{content/chapter_07/exercises}
+% \include{content/chapter_08/exercises}
+% \include{content/chapter_09/exercises}
+% \include{content/chapter_10/exercises}
+\include{content/chapter_11/exercises}
+
+\end{document}

@@ -1,0 +1,1067 @@
+\section{Determinants, Cramer's Rule}
+\begin{enumerate}
+    \item Illustrating Theorem 1 part $ a $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c & d
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    c & d \\ a & b
+                                \end{bNiceMatrix}    \\
+              \det(\vec{M}) & = ad - bc                        &
+              \det(\vec{N}) & = bc - ad                          \\
+                            &                                  &
+                            & = -\det(\vec{M})
+          \end{align}
+          Illustrating Theorem 1 part $ b $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c & d
+                                \end{bNiceMatrix}       &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c + \lambda a & d + \lambda b
+                                \end{bNiceMatrix}  \\
+              \det(\vec{M}) & = ad - bc                              &
+              \det(\vec{N}) & = ad - bc + [\lambda ab - \lambda ab]    \\
+                            &                                        &
+                            & = \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 1 part $ c $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c & d
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ \lambda c & \lambda d
+                                \end{bNiceMatrix}    \\
+              \det(\vec{M}) & = ad - bc                        &
+              \det(\vec{N}) & = \lambda ad - \lambda bc          \\
+                            &                                  &
+                            & = \lambda\ \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ a $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c & d
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    b & a \\ d & c
+                                \end{bNiceMatrix}    \\
+              \det(\vec{M}) & = ad - bc                        &
+              \det(\vec{N}) & = bc - ad                          \\
+                            &                                  &
+                            & = -\det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ b $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c & d
+                                \end{bNiceMatrix}       &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b + \lambda a \\ c & d + \lambda c
+                                \end{bNiceMatrix}  \\
+              \det(\vec{M}) & = ad - bc                              &
+              \det(\vec{N}) & = ad - bc + [\lambda ac - \lambda ac]    \\
+                            &                                        &
+                            & = \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ c $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c & d
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & \lambda b \\ c & \lambda d
+                                \end{bNiceMatrix}    \\
+              \det(\vec{M}) & = ad - bc                        &
+              \det(\vec{N}) & = \lambda ad - \lambda bc          \\
+                            &                                  &
+                            & = \lambda\ \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ d $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c & d
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & c \\ b & d
+                                \end{bNiceMatrix}    \\
+              \det(\vec{M}) & = ad - bc                        &
+              \det(\vec{N}) & = ad - bc                          \\
+                            &                                  &
+                            & = \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ e $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c & d
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & 0 \\ c & 0
+                                \end{bNiceMatrix}    \\
+              \det(\vec{M}) & = ad - bc                        &
+              \det(\vec{N}) & = 0a - 0c                          \\
+                            &                                  &
+                            & = 0
+          \end{align}
+          Illustrating Theorem 2 part $ f $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b \\ c & d
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & \mu a \\ c & \mu c
+                                \end{bNiceMatrix}    \\
+              \det(\vec{M}) & = ad - bc                        &
+              \det(\vec{N}) & = \mu ac - \mu ac                  \\
+                            &                                  &
+                            & = 0
+          \end{align}
+
+    \item Expanding a second order determinant in all four ways possible,
+          \begin{align}
+              D      & = \begin{bNiceMatrix}[c, margin]
+                             a & b \\ c & d
+                         \end{bNiceMatrix}    \\
+              D_{1i} & = a(d) - b(c)                    &
+              D_{2i} & = -c(b) + d(a)                     \\
+              D_{k1} & = a(d) - c(b)                    &
+              D_{k2} & = -b(c) + d(a)
+          \end{align}
+          All four expansion match.
+
+    \item Illustrating Theorem 1 part $ a $ using $ 3 \times 3 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b & c \\ d & e & f \\ g & h & i
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    d & e & f \\ a & b & c \\ g & h & i
+                                \end{bNiceMatrix} \\
+              \det(\vec{M}) & = aei - afh - dbi + dch + gbf - gec  \\
+              \det(\vec{N}) & = dbi - dch - aei + afh + gec - gbf  \\
+                            & = -\det(\vec{M})
+          \end{align}
+          Illustrating Theorem 1 part $ b $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b & c \\ d & e & f \\ g & h & i
+                                \end{bNiceMatrix}                   &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a             & b             & c             \\
+                                    d + \lambda a & e + \lambda b & f + \lambda c \\
+                                    g             & h             & i
+                                \end{bNiceMatrix}       \\
+              \det(\vec{M}) & = aei - afh - dbi + dch + gbf - gec                   \\
+              \det(\vec{N}) & = aei - afh - dbi + dch + gbf - gec                   \\
+                            & + \lambda \Big[abi - ach - abi + ach + gbc - gbc\Big] \\
+                            & = \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 1 part $ c $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b & c \\ d & e & f \\ g & h & i
+                                \end{bNiceMatrix}                   &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    \lambda a & \lambda b & \lambda c \\
+                                    d         & e         & f         \\
+                                    g         & h         & i
+                                \end{bNiceMatrix}                   \\
+              \det(\vec{M}) & = aei - afh - dbi + dch + gbf - gec                   \\
+              \det(\vec{N}) & = \lambda \Big[aei - afh - dbi + dch + gbf - gec\Big] \\
+                            & = \lambda \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ a $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b & c \\ d & e & f \\ g & h & i
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    b & a & c \\
+                                    e & d & f \\
+                                    h & g & i
+                                \end{bNiceMatrix}      \\
+              \det(\vec{M}) & = aei - afh - dbi + dch + gbf - gec  \\
+              \det(\vec{N}) & = bdi - bfg - eai + ecg + haf - hcd  \\
+                            & = - \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ b $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b & c \\ d & e & f \\ g & h & i
+                                \end{bNiceMatrix}                   &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b + \lambda a & c \\
+                                    d & e + \lambda d & f \\
+                                    g & h + \lambda g & i
+                                \end{bNiceMatrix}                       \\
+              \det(\vec{M}) & = aei - afh - dbi + dch + gbf - gec                   \\
+              \det(\vec{N}) & = aei - afh - dbi + dch + gbf - gec                   \\
+                            & + \lambda \Big[adi - agf - adi + dgc + gaf - gdc\Big] \\
+                            & = \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ c $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b & c \\ d & e & f \\ g & h & i
+                                \end{bNiceMatrix}                   &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    \lambda a & b & c \\
+                                    \lambda d & e & f \\
+                                    \lambda g & h & i
+                                \end{bNiceMatrix}                       \\
+              \det(\vec{M}) & = aei - afh - dbi + dch + gbf - gec                   \\
+              \det(\vec{N}) & = \lambda \Big[aei - afh - dbi + dch + gbf - gec\Big] \\
+                            & = \lambda \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ d $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b & c \\ d & e & f \\ g & h & i
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & d & g \\
+                                    b & e & h \\
+                                    c & f & i
+                                \end{bNiceMatrix}      \\
+              \det(\vec{M}) & = aei - afh - dbi + dch + gbf - gec  \\
+              \det(\vec{N}) & = aei - afh - bdi + bfg + cdh - ceg  \\
+                            & = \det(\vec{M})
+          \end{align}
+          Illustrating Theorem 2 part $ e $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b & c \\ d & e & f \\ g & h & i
+                                \end{bNiceMatrix} &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & 0 & c \\
+                                    d & 0 & f \\
+                                    g & 0 & i
+                                \end{bNiceMatrix}      \\
+              \det(\vec{M}) & = aei - afh - dbi + dch + gbf - gec  \\
+              \det(\vec{N}) & = 0
+          \end{align}
+          Illustrating Theorem 2 part $ f $ using $ 2 \times 2 $ matrices,
+          \begin{align}
+              \vec{M}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & b & c \\ d & e & f \\ g & h & i
+                                \end{bNiceMatrix}          &
+              \vec{N}       & = \begin{bNiceMatrix}[c, margin]
+                                    a & \lambda a & c \\
+                                    d & \lambda d & f \\
+                                    g & \lambda g & i
+                                \end{bNiceMatrix}              \\
+              \det(\vec{M}) & = aei - afh - dbi + dch + gbf - gec          \\
+              \det(\vec{N}) & = \lambda(adi - agf - dai + dgc + gaf - gdc) \\
+                            & = 0
+          \end{align}
+          Evaluating determinant by reuction to triangular form,
+          \begin{align}
+              \vec{M} & = \begin{bNiceMatrix}[c, margin]
+                              a & b & c \\
+                              d & e & f \\
+                              g & h & i
+                          \end{bNiceMatrix}                       \\
+                      & = \begin{bNiceMatrix}[r, margin]
+                              a & b                & c                \\
+                              0 & e - \frac{bd}{a} & f - \frac{cd}{a} \\
+                              0 & h - \frac{bg}{a} & i -\frac{cg}{a}
+                          \end{bNiceMatrix}             \\
+                      & = \frac{1}{a} \cdot \begin{bNiceMatrix}[r, margin]
+                                                a^2 & ab      & ac      \\
+                                                0   & ae - bd & af - cd \\
+                                                0   & ah - bg & ai - cg
+                                            \end{bNiceMatrix}     \\
+                      & = \frac{1}{a} \cdot \begin{bNiceMatrix}[r, margin]
+                                                a^2 & ab      & ac        \\
+                                                0   & ae - bd & af - cd   \\
+                                                0   & 0       & ai - cg -
+                                                \frac{(af - cd)(bg - ah)}{ae - bd}
+                                            \end{bNiceMatrix}
+          \end{align}
+          Using the fact that the determinant of a triangular matrix is the product of
+          its diagonal terms,
+          \begin{align}
+              \det(\vec{M}) & = \frac{(ai - cg)(ae - bd) - (af - cd)(ah - bg)}{a} \\
+                            & = aei - cge - bdi + bfg - afh + cdh                 \\
+                            & = a(ei - fh) - d(bi - ch) + g(bf - ce)
+          \end{align}
+          This result matches the row major expansion method.
+
+    \item Computaion of a determinant of order $ n $ requires the computation of
+          $ n $ determinants of order $ (n-1) $. Starting with $ n = 1 $,
+          \begin{align}
+              n & = 1 & \implies \text{comp} & = 1                 \\
+              n & = 2 & \implies \text{comp} & = 2                 \\
+              n & = 3 & \implies \text{comp} & = 3 \cdot 2         \\
+              n & = 4 & \implies \text{comp} & = 4 \cdot 3 \cdot 2
+          \end{align}
+          From this pattern it is easy to extrapolate the result that $ n! $
+          computations are required for a determinant of order $ n $.
+
+    \item Multiplying a matrix by a scalar imvolves scaling every element by the scalar.
+          However, dividing a determinant by a scalar only involves dividing one column by
+          that scalar. \par
+          Since $ n $ such divisions have to be performed to convert $ \det(\vec{kA}) $ into
+          $ \det(\vec{A}) $, the pre-factor is $ k^n $
+
+    \item Making a list of all 9 majors possible,
+          \begin{align}
+              M_{1,1} & = \begin{vNiceMatrix}[c,margin]
+                              e & f \\
+                              h & i \\
+                          \end{vNiceMatrix} &
+              M_{2,1} & = \begin{vNiceMatrix}[c,margin]
+                              b & c \\
+                              h & i \\
+                          \end{vNiceMatrix} &
+              M_{3,1} & = \begin{vNiceMatrix}[c,margin]
+                              b & c \\
+                              e & f \\
+                          \end{vNiceMatrix} \\
+              M_{1,2} & = \begin{vNiceMatrix}[c,margin]
+                              d & f \\
+                              g & i \\
+                          \end{vNiceMatrix} &
+              M_{2,2} & = \begin{vNiceMatrix}[c,margin]
+                              a & c \\
+                              g & i \\
+                          \end{vNiceMatrix} &
+              M_{3,2} & = \begin{vNiceMatrix}[c,margin]
+                              a & c \\
+                              d & f \\
+                          \end{vNiceMatrix} \\
+              M_{1,3} & = \begin{vNiceMatrix}[c,margin]
+                              d & e \\
+                              g & h \\
+                          \end{vNiceMatrix} &
+              M_{2,3} & = \begin{vNiceMatrix}[c,margin]
+                              a & b \\
+                              g & h \\
+                          \end{vNiceMatrix} &
+              M_{3,3} & = \begin{vNiceMatrix}[c,margin]
+                              a & b \\
+                              d & e \\
+                          \end{vNiceMatrix}
+          \end{align}
+          The cofactors are obtained by the formula
+          \begin{align}
+              C_{j,k} & = (-1)^{j+k}\ M_{j,k}
+          \end{align}
+
+    \item Finding the determinant,
+          \begin{align}
+              \det(\vec{M}) & = \begin{vNiceMatrix}[c,margin]
+                                    \cos \alpha & \sin \alpha \\
+                                    \sin \beta  & \cos \beta  \\
+                                \end{vNiceMatrix}                   &
+                            & = \cos \alpha \cos \beta - \sin \alpha \sin \beta \\
+                            & = \cos(\alpha + \beta)
+          \end{align}
+
+    \item Finding the determinant,
+          \begin{align}
+              \det(\vec{M}) & = \begin{vNiceMatrix}[c,margin]
+                                    0.4 & 4.9  \\
+                                    1.5 & -1.3 \\
+                                \end{vNiceMatrix} &
+                            & = 0.4(-1.3) - 1.5(4.9)         \\
+                            & = -7.87
+          \end{align}
+
+    \item Finding the determinant,
+          \begin{align}
+              \det(\vec{M}) & = \begin{vNiceMatrix}[c,margin]
+                                    \cos (n\theta)  & \sin (n\theta) \\
+                                    -\sin (n\theta) & \cos (n\theta) \\
+                                \end{vNiceMatrix} &
+                            & = \cos (n\theta) \cos (n\theta)
+              + \sin (n\theta) \sin (n\theta)                    \\
+                            & = \cos(0) = 1
+          \end{align}
+
+    \item Finding the determinant,
+          \begin{align}
+              \det(\vec{M}) & = \begin{vNiceMatrix}[c,margin]
+                                    \cosh(t) & \sinh(t) \\
+                                    \sinh(t) & \cosh(t) \\
+                                \end{vNiceMatrix} &
+                            & = \cosh^2(t) - \sinh^2(t)      \\
+                            & = 1
+          \end{align}
+
+    \item Finding the determinant,
+          \begin{align}
+              \det(\vec{M}) & = \begin{vNiceMatrix}[c,margin]
+                                    4 & -1 & 8 \\
+                                    0 & 2  & 3 \\
+                                    0 & 0  & 5
+                                \end{vNiceMatrix} &
+                            & = 4(10) - 0 + 0                \\
+                            & = 40
+          \end{align}
+
+    \item Finding the determinant,
+          \begin{align}
+              \det(\vec{M}) & = \begin{vNiceMatrix}[c,margin]
+                                    a & b & c \\
+                                    c & a & b \\
+                                    b & c & a
+                                \end{vNiceMatrix}           &
+                            & = a(a^2 - bc) - c(ab - c^2) + b(b^2 - ac) \\
+                            & = a^3 + b^3 + c^3 - 3abc
+          \end{align}
+
+    \item Finding the determinant,
+          \begin{align}
+              \det(\vec{M})
+               & = \begin{vNiceMatrix}[r,margin]
+                       0  & 4  & -1 & 5  \\
+                       -4 & 0  & 3  & -2 \\
+                       1  & -3 & 0  & 1  \\
+                       -5 & 2  & -1 & 0  \\
+                   \end{vNiceMatrix}             \\
+               & = 4 \cdot \begin{vNiceMatrix}[r,margin]
+                               4  & -1 & 5 \\
+                               -3 & 0  & 1 \\
+                               2  & -1 & 0 \\
+                           \end{vNiceMatrix}
+              +  1 \cdot \begin{vNiceMatrix}[r,margin]
+                             4 & -1 & 5  \\
+                             0 & 3  & -2 \\
+                             2 & -1 & 0  \\
+                         \end{vNiceMatrix}
+              + 5 \cdot \begin{vNiceMatrix}[r,margin]
+                            4  & -1 & 5  \\
+                            0  & 3  & -2 \\
+                            -3 & 0  & 1  \\
+                        \end{vNiceMatrix}        \\
+               & = 4 \Bigg[4(1) + 3(5) + 2(-1)\Bigg]
+              + 1 \cdot \Big[4(-2) + 2(-13)\Big]
+              + 5 \cdot \Big[4(3) - 3(-13)\Big]             \\
+               & = 4(17) + 1(-34) + 5(51) = \color{y_h} 289
+          \end{align}
+
+    \item Finding the determinant,
+          \begin{align}
+              \det(\vec{M})
+               & = \begin{vNiceMatrix}[r,margin]
+                       4 & 7 & 0  & 0 \\
+                       2 & 8 & 0  & 0 \\
+                       0 & 0 & 1  & 5 \\
+                       0 & 0 & -2 & 2 \\
+                   \end{vNiceMatrix}        &
+               & = \begin{vNiceMatrix}[r,margin]
+                       4 & 7           & 0  & 0 \\
+                       0 & \frac{9}{2} & 0  & 0 \\
+                       0 & 0           & 1  & 5 \\
+                       0 & 0           & -2 & 2 \\
+                   \end{vNiceMatrix}         \\
+               & = \begin{vNiceMatrix}[r,margin]
+                       4 & 7           & 0 & 0  \\
+                       0 & \frac{9}{2} & 0 & 0  \\
+                       0 & 0           & 1 & 5  \\
+                       0 & 0           & 0 & 12 \\
+                   \end{vNiceMatrix}        &
+               & = \frac{4 \cdot 9 \cdot 1 \cdot 12}{2} \\
+               & = 216
+          \end{align}
+
+    \item Finding the determinant,
+          \begin{align}
+              \det(\vec{M})
+               & = \begin{vNiceMatrix}[r,margin]
+                       1 & 2 & 0 & 0  \\
+                       2 & 4 & 2 & 0  \\
+                       0 & 2 & 9 & 2  \\
+                       0 & 0 & 2 & 16 \\
+                   \end{vNiceMatrix} &
+               & = \begin{vNiceMatrix}[r,margin]
+                       1 & 2 & 0 & 0  \\
+                       0 & 0 & 2 & 0  \\
+                       0 & 2 & 9 & 2  \\
+                       0 & 0 & 2 & 16 \\
+                   \end{vNiceMatrix}  \\
+               & = \begin{vNiceMatrix}[r,margin]
+                       1 & 2 & 0 & 0   \\
+                       0 & 2 & 9 & 2   \\
+                       0 & 0 & 2 & 16  \\
+                       0 & 0 & 0 & -16 \\
+                   \end{vNiceMatrix} &
+               & = 1 \cdot 2 \cdot 2 \cdot (-16) \\
+               & = -64
+          \end{align}
+
+    \item Starting with a matrix of order 2,
+          \begin{align}
+              \det(M^{(2)}) & = \begin{vNiceMatrix}[c,margin]
+                                    0 & 1 \\
+                                    1 & 0 \\
+                                \end{vNiceMatrix} = -1    \\
+              \det(M^{(3)}) & = \begin{vNiceMatrix}[c,margin]
+                                    0 & 1 & 1 \\
+                                    1 & 0 & 1 \\
+                                    1 & 1 & 0
+                                \end{vNiceMatrix} =
+              \begin{vNiceMatrix}[c,margin]
+                  0 & 1  & 1 \\
+                  0 & -1 & 1 \\
+                  1 & 1  & 0
+              \end{vNiceMatrix}  = \begin{vNiceMatrix}[c,margin]
+                                       0 & 0  & 2 \\
+                                       0 & -1 & 1 \\
+                                       1 & 1  & 0
+                                   \end{vNiceMatrix} \\
+              \det(M^{(4)}) & = \begin{vNiceMatrix}[c,margin]
+                                    0 & 1 & 1 & 1 \\
+                                    1 & 0 & 1 & 1 \\
+                                    1 & 1 & 0 & 1 \\
+                                    1 & 1 & 1 & 0
+                                \end{vNiceMatrix} =
+              \begin{vNiceMatrix}[c,margin]
+                  0 & 1  & 1  & 1 \\
+                  0 & -1 & 0  & 1 \\
+                  0 & 0  & -1 & 1 \\
+                  1 & 1  & 1  & 0
+              \end{vNiceMatrix} = \begin{vNiceMatrix}[c,margin]
+                                      0 & 0  & 0  & 3 \\
+                                      0 & -1 & 0  & 1 \\
+                                      0 & 0  & -1 & 1 \\
+                                      1 & 1  & 1  & 0
+                                  \end{vNiceMatrix}
+          \end{align}
+          Thus, the general matrix of order $ n $ can be recast into upper triangular
+          form with the last diagonal term being $ (n-1) $ and all other diagonal terms
+          $ -1 $. Thus,
+
+          \begin{align}
+              \det(\vec{M}^{(n)}) & = (-1)^{n-1}\ (n-1)
+          \end{align}
+          Interpretation in terms of incidence matrix and simplex TBC.
+
+    \item Row reduction gives,
+          \begin{align}
+              \vec{M}        & = \begin{bNiceMatrix}[r,margin]
+                                     4  & 9  \\
+                                     -8 & -6 \\
+                                     16 & 12
+                                 \end{bNiceMatrix} &
+                             & = \begin{bNiceMatrix}[r,margin]
+                                     4 & 9   \\
+                                     0 & 12  \\
+                                     0 & -24
+                                 \end{bNiceMatrix} \\
+                             & = \begin{bNiceMatrix}[r,margin]
+                                     4 & 9  \\
+                                     0 & 12 \\
+                                     0 & 0
+                                 \end{bNiceMatrix} &
+              \rank(\vec{M}) & = 2
+          \end{align}
+          Starting with some $ 2 \times 2 $ matrix with nonzero determinant,
+          \begin{align}
+              \det(\vec{N})  & = \begin{vNiceMatrix}[r,margin]
+                                     4  & 9  \\
+                                     -8 & -6
+                                 \end{vNiceMatrix} &  & = -24 + 72 \neq 0 \\
+              \rank(\vec{M}) & = \rank(\vec{N}) = 2
+          \end{align}
+
+    \item Row reduction gives,
+          \begin{align}
+              \vec{M}        & = \begin{bNiceMatrix}[r,margin]
+                                     0  & 4  & -6 \\
+                                     4  & 0  & 10 \\
+                                     -6 & 10 & 0
+                                 \end{bNiceMatrix} &
+                             & = \begin{bNiceMatrix}[r,margin]
+                                     -6 & 10 & 0  \\
+                                     0  & 4  & -6 \\
+                                     4  & 0  & 10 \\
+                                 \end{bNiceMatrix} \\
+                             & = \begin{bNiceMatrix}[r,margin]
+                                     -6 & 10           & 0  \\
+                                     0  & 4            & -6 \\
+                                     0  & \frac{20}{3} & 10 \\
+                                 \end{bNiceMatrix} &
+                             & = \begin{bNiceMatrix}[r,margin]
+                                     -6 & 10 & 0  \\
+                                     0  & 4  & -6 \\
+                                     0  & 0  & 20 \\
+                                 \end{bNiceMatrix} \\
+              \rank(\vec{M}) & = 3
+          \end{align}
+          Starting with $ \vec{M} $ itself,
+          \begin{align}
+              \det(\vec{M})  & = \begin{vNiceMatrix}[r,margin]
+                                     0  & 4  & -6 \\
+                                     4  & 0  & 10 \\
+                                     -6 & 10 & 0
+                                 \end{vNiceMatrix} &  & = -4(60) - 6(40) \neq 0 \\
+              \rank(\vec{M}) & = 3
+          \end{align}
+          The results match.
+
+    \item Row reduction gives,
+          \begin{align}
+              \vec{M}        & = \begin{bNiceMatrix}[r,margin]
+                                     1 & 5 & 2 & 2  \\
+                                     1 & 3 & 2 & 6  \\
+                                     4 & 0 & 8 & 48 \\
+                                 \end{bNiceMatrix} &
+                             & = \begin{bNiceMatrix}[r,margin]
+                                     1 & 5   & 2 & 2  \\
+                                     0 & -2  & 0 & 4  \\
+                                     0 & -20 & 0 & 40 \\
+                                 \end{bNiceMatrix} \\
+                             & = \begin{bNiceMatrix}[r,margin]
+                                     1 & 5  & 2 & 2 \\
+                                     0 & -2 & 0 & 4 \\
+                                     0 & 0  & 0 & 0 \\
+                                 \end{bNiceMatrix} \\
+              \rank(\vec{M}) & = 2
+          \end{align}
+          Starting with some $ 3 \times 3 $ submatrix, all of them
+          have determinant zero.  \par
+          Looking for some $ 2 \times 2 $ submatrix with nonzero determinant,
+          \begin{align}
+              \det(\vec{M})  & = \begin{vNiceMatrix}[r,margin]
+                                     1 & 5 \\ 1 & 3
+                                 \end{vNiceMatrix} &  & = -2 \neq 0 \\
+              \rank(\vec{M}) & = \rank(\vec{N}) = 2                 \\
+          \end{align}
+          The results match.
+
+    \item Using the determinant to find the locus,
+          \begin{enumerate}
+              \item A straight line passing through two points,
+                    \begin{align}
+                        \det(\vec{M}) & = \begin{vNiceMatrix}[r,margin]
+                                              x   & y   & 1 \\
+                                              x_1 & y_1 & 1 \\
+                                              x_2 & y_2 & 1 \\
+                                          \end{vNiceMatrix}  &
+                                      & =  \begin{vNiceMatrix}[r,margin]
+                                               x - x_1   & y - y_1   & 0 \\
+                                               x_1       & y_1       & 1 \\
+                                               x_2 - x_1 & y_2 - y_1 & 0 \\
+                                           \end{vNiceMatrix} \\
+                                      & = \begin{vNiceMatrix}[r,margin]
+                                              x_2 - x_1 & y_2 - y_1 \\
+                                              x - x_1   & y - y_1   \\
+                                          \end{vNiceMatrix}
+                    \end{align}
+                    This can be rearranged into the required form, if the denominators
+                    are nonzero.
+
+              \item A plane passing through 3 given points,
+                    \begin{align}
+                        \det(\vec{N}) & = \begin{vNiceMatrix}[r,margin]
+                                              x   & y   & z   & 1 \\
+                                              x_1 & y_1 & z_1 & 1 \\
+                                              x_2 & y_2 & z_2 & 1 \\
+                                              x_3 & y_3 & z_3 & 1 \\
+                                          \end{vNiceMatrix}          &
+                                      & = \begin{vNiceMatrix}[r,margin]
+                                              x - x_1   & y - y_1   & z - z_1   & 0 \\
+                                              x_1       & y_1       & z_1       & 1 \\
+                                              x_2 - x_1 & y_2 - y_1 & z_2 - z_1 & 0 \\
+                                              x_3 - x_1 & y_3 - y_1 & z_3 - z_1 & 0 \\
+                                          \end{vNiceMatrix} \\
+                                      & = \begin{vNiceMatrix}[r,margin]
+                                              x - x_1   & y - y_1   & z - z_1   \\
+                                              x_2 - x_1 & y_2 - y_1 & z_2 - z_1 \\
+                                              x_3 - x_1 & y_3 - y_1 & z_3 - z_1 \\
+                                          \end{vNiceMatrix}
+                    \end{align}
+                    The expansion of this determinant is not as elegant, but the
+                    correspondence to the 2-D case is clear. \par
+                    Applying the formula to the given points,
+                    \begin{align}
+                        \det(\vec{M}) = 0 & = \begin{vNiceMatrix}[r,margin]
+                                                  (x - 1) & (y - 1) & (z - 1) \\
+                                                  2       & 1       & 5       \\
+                                                  4       & -1      & 4       \\
+                                              \end{vNiceMatrix} \\
+                        0                 & = 9(x-1) + 12(y - 1) - 6(z-1)  \\
+                        15                & = 9x + 12y - 6z
+                    \end{align}
+              \item Circle in two dimensions through three given points.
+                    \begin{align}
+                        0             & = a(x^2 + y^2) + bx + cy + d    \\
+                        \det(\vec{M}) & = \begin{vNiceMatrix}[r,margin]
+                                              x^2 + y^2     & x   & y   & 1 \\
+                                              x_1^2 + y_1^2 & x_1 & y_1 & 1 \\
+                                              x_2^2 + y_2^2 & x_2 & y_2 & 1 \\
+                                              x_3^2 + y_3^2 & x_3 & y_3 & 1 \\
+                                          \end{vNiceMatrix} \\
+                                      & =
+                        \begin{vNiceMatrix}[r,margin]
+                            x^2 + y^2 - (x_1^2 + y_1^2)     & x - x_1   &
+                            y - y_1                         & 0           \\
+                            x_1^2 + y_1^2                   & x_1       &
+                            y_1                             & 1           \\
+                            x_2^2 + y_2^2 - (x_1^2 + y_1^2) & x_2 - x_1 &
+                            y_2 - y_1                       & 0           \\
+                            x_3^2 + y_3^2 - (x_1^2 + y_1^2) & x_3 - x_1 &
+                            y_3 - y_1                       & 0           \\
+                        \end{vNiceMatrix}   \\
+                                      & =
+                        \begin{vNiceMatrix}[r,margin]
+                            x^2 + y^2 - (x_1^2 + y_1^2)     & x - x_1   &
+                            y - y_1                                       \\
+                            x_2^2 + y_2^2 - (x_1^2 + y_1^2) & x_2 - x_1 &
+                            y_2 - y_1                                     \\
+                            x_3^2 + y_3^2 - (x_1^2 + y_1^2) & x_3 - x_1 &
+                            y_3 - y_1                                     \\
+                        \end{vNiceMatrix}
+                    \end{align}
+                    Using the determinant to find the circle passing through the
+                    three given points $ (2,6),\ (6,4),\ (7,1) $,
+                    \begin{align}
+                        \det(\vec{M}) & = \begin{vNiceMatrix}[r,margin]
+                                              x^2 + y^2 - (40) & x - 2 & y - 6 \\
+                                              52 - (40)        & 4     & -2    \\
+                                              50 - (40)        & 5     & -5    \\
+                                          \end{vNiceMatrix}   \\
+                                      & = \begin{vNiceMatrix}[r,margin]
+                                              x^2 + y^2 - (40) & x - 2 & y - 6 \\
+                                              12               & 4     & -2    \\
+                                              10               & 5     & -5    \\
+                                          \end{vNiceMatrix}   \\
+                        0             & = (x^2 + y^2 - 40)(-10) + (x-2)(40)
+                        + (y - 6)(20)                                        \\
+                        0             & = x^2 + y^2 - 40  - 4x + 8 - 2y + 12 \\
+                        5^2           & = (x - 2)^2 + (y - 1)^2
+                    \end{align}
+              \item Sphere in three dimensions through four given points.
+                    \begin{align}
+                        0             & = a(x^2 + y^2 + z^2) + bx + cy + dz + e \\
+                        \det(\vec{M}) & = \begin{vNiceMatrix}[r,margin]
+                                              x^2 + y^2 + z^2       &
+                                              x                     & y   & z   & 1 \\
+                                              x_1^2 + y_1^2 + z_1^2 &
+                                              x_1                   & y_1 & z_1 & 1 \\
+                                              x_2^2 + y_2^2 + z_2^2 &
+                                              x_2                   & y_2 & z_2 & 1 \\
+                                              x_3^2 + y_3^2 + z_3^2 &
+                                              x_3                   & y_3 & z_3 & 1 \\
+                                              x_4^2 + y_4^2 + z_4^2 &
+                                              x_4                   & y_4 & z_4 & 1 \\
+                                          \end{vNiceMatrix} \\
+                                      & =
+                        \begin{vNiceMatrix}[r,margin]
+                            x^2 + y^2 + z^2
+                            - (x_1^2 + y_1^2 + z_1^2) &
+                            x - x_1                   & y - y_1   & z - z_1   \\
+                            x_2^2 + y_2^2 + z_2^2
+                            - (x_1^2 + y_1^2 + z_1^2) &
+                            x_2 - x_1                 & y_2 - y_1 & z_2 - z_1 \\
+                            x_3^2 + y_3^2 + z_3^2
+                            - (x_1^2 + y_1^2 + z_1^2) &
+                            x_3 - x_1                 & y_3 - y_1 & z_3 - z_1 \\
+                            x_4^2 + y_4^2 + z_4^2
+                            - (x_1^2 + y_1^2 + z_1^2) &
+                            x_4 - x_1                 & y_4 - y_1 & z_4 - z_1 \\
+                        \end{vNiceMatrix}
+                    \end{align}
+                    Using the determinant to find the circle passing through the
+                    four given points \par
+                    $ (0,0,5),\ (4, 0, 1),\ (0,4,1),\ (0,0,-3)$,
+                    \begin{align}
+                        \det(\vec{M}) & =
+                        \begin{vNiceMatrix}[r,margin]
+                            x^2 + y^2 + z^2 - (25) & x & y & z - 5 \\
+                            17 - (25)              & 4 & 0 & -4    \\
+                            17 - (25)              & 0 & 4 & -4    \\
+                            9 - (25)               & 0 & 0 & -8    \\
+                        \end{vNiceMatrix}                   \\
+                                      & = \begin{vNiceMatrix}[r,margin]
+                                              x^2 + y^2 + z^2 - (25) & x & y & z - 5 \\
+                                              -8                     & 4 & 0 & -4    \\
+                                              -8                     & 0 & 4 & -4    \\
+                                              -16                    & 0 & 0 & -8    \\
+                                          \end{vNiceMatrix} \\
+                        0             & = (x^2 + y^2 + z^2 - 25)\big[4(-32)\big]
+                        - x \big[4(0)\big]                                       \\
+                                      & + y\big[(-4)(0)\big]
+                        - (z - 5)\big[(-4)(64)\big]                              \\
+                        0             & = x^2 + y^2 + z^2 - 25 - 2z + 10         \\
+                        4^2           & = x^2 + y^2 + (z - 1)^2
+                    \end{align}
+
+              \item General conic section has the equation,
+                    \begin{align}
+                        ax^2 + bxy + cy^2 + dx + ey + f           & = 0 \\
+                        \begin{vNiceMatrix}[r,margin]
+                            x^2   & xy     & y^2   & x   & y   & 1 \\
+                            x_1^2 & x_1y_1 & y_1^2 & x_1 & y_1 & 1 \\
+                            x_2^2 & x_2y_2 & y_2^2 & x_2 & y_2 & 1 \\
+                            x_3^2 & x_3y_3 & y_3^2 & x_3 & y_3 & 1 \\
+                            x_4^2 & x_4y_4 & y_4^2 & x_4 & y_4 & 1 \\
+                            x_5^2 & x_5y_5 & y_5^2 & x_5 & y_5 & 1 \\
+                        \end{vNiceMatrix} & = \det(\vec{M}) = 0
+                    \end{align}
+          \end{enumerate}
+
+    \item Solving by Cramer's rule,
+          \begin{align}
+              \vec{\tilde{A}} & =  \begin{bNiceArray}{rr|r}
+                                       3 & -5 & 15.5 \\
+                                       6 & 16 & 5    \\
+                                   \end{bNiceArray}       \\
+              D               & = \begin{vNiceMatrix}[r,margin]
+                                      3 & -5 \\
+                                      6 & 16 \\
+                                  \end{vNiceMatrix} = 78   &
+              D_1             & = \begin{vNiceMatrix}[r,margin]
+                                      15.5 & -5 \\
+                                      5    & 16 \\
+                                  \end{vNiceMatrix} = 273   \\
+              D_2             & = \begin{vNiceMatrix}[r,margin]
+                                      3 & 15.5 \\
+                                      6 & 5    \\
+                                  \end{vNiceMatrix} = -78   &
+              \vec{x}         & = \color{y_h} \begin{bNiceMatrix}
+                                                  3.5 \\  -1
+                                              \end{bNiceMatrix}
+          \end{align}
+
+          Solving by Gauss elimination,
+          \begin{align}
+              \vec{M} & = \begin{bNiceArray}{rr|r}
+                              3 & -5 & 15.5 \\
+                              6 & 16 & 5    \\
+                          \end{bNiceArray}        &
+                      & = \begin{bNiceArray}{rr|r}
+                              3 & -5 & 15.5 \\
+                              0 & 26 & -26  \\
+                          \end{bNiceArray}        \\
+              \vec{u} & = \color{y_p} \begin{bNiceMatrix}
+                                          3.5 \\ -1
+                                      \end{bNiceMatrix}
+          \end{align}
+
+    \item Solving by Cramer's rule,
+          \begin{align}
+              \vec{\tilde{A}} & =  \begin{bNiceArray}{rr|r}
+                                       2 & -4 & -24 \\
+                                       5 & 2  & 0   \\
+                                   \end{bNiceArray}       \\
+              D               & = \begin{vNiceMatrix}[r,margin]
+                                      2 & -4 \\
+                                      5 & 2  \\
+                                  \end{vNiceMatrix} = 24   &
+              D_1             & = \begin{vNiceMatrix}[r,margin]
+                                      -24 & -4 \\
+                                      0   & 2  \\
+                                  \end{vNiceMatrix} = -48   \\
+              D_2             & = \begin{vNiceMatrix}[r,margin]
+                                      2 & -24 \\
+                                      5 & 0   \\
+                                  \end{vNiceMatrix} = 120   &
+              \vec{x}         & = \color{y_h} \begin{bNiceMatrix}
+                                                  -2 \\  5
+                                              \end{bNiceMatrix}
+          \end{align}
+
+          Solving by Gauss elimination,
+          \begin{align}
+              \vec{\tilde{A}} & =  \begin{bNiceArray}{rr|r}
+                                       2 & -4 & -24 \\
+                                       5 & 2  & 0   \\
+                                   \end{bNiceArray}       &
+                              & = \begin{bNiceArray}{rr|r}
+                                      2 & -4 & -24 \\
+                                      0 & 12 & 60  \\
+                                  \end{bNiceArray}        \\
+              \vec{u}         & = \color{y_p} \begin{bNiceMatrix}
+                                                  -2 \\ 5
+                                              \end{bNiceMatrix}
+          \end{align}
+
+    \item Solving by Cramer's rule,
+          \begin{align}
+              \vec{\tilde{A}} & =  \begin{bNiceArray}{rrr|r}
+                                       0  & 3  & -4 & 16  \\
+                                       2  & -5 & 7  & -27 \\
+                                       -1 & 0  & -9 & 9   \\
+                                   \end{bNiceArray}      &
+              D               & = \begin{vNiceMatrix}[r,margin]
+                                      0  & 3  & -4 \\
+                                      2  & -5 & 7  \\
+                                      -1 & 0  & -9 \\
+                                  \end{vNiceMatrix} = 53   \\
+              D_1             & = \begin{vNiceMatrix}[r,margin]
+                                      16  & 3  & -4 \\
+                                      -27 & -5 & 7  \\
+                                      9   & 0  & -9 \\
+                                  \end{vNiceMatrix} = 0   &
+              D_2             & = \begin{vNiceMatrix}[r,margin]
+                                      0  & 16  & -4 \\
+                                      2  & -27 & 7  \\
+                                      -1 & 9   & -9 \\
+                                  \end{vNiceMatrix} = 212   \\
+              D_3             & = \begin{vNiceMatrix}[r,margin]
+                                      0  & 3  & 16  \\
+                                      2  & -5 & -27 \\
+                                      -1 & 0  & 9   \\
+                                  \end{vNiceMatrix} =  - 53   &
+              \vec{x}         & = \color{y_h} \begin{bNiceMatrix}
+                                                  0 \\ 4 \\ -1
+                                              \end{bNiceMatrix}
+          \end{align}
+
+          Solving by Gauss elimination,
+          \begin{align}
+              \vec{\tilde{A}} & =  \begin{bNiceArray}{rrr|r}
+                                       0  & 3  & -4 & 16  \\
+                                       2  & -5 & 7  & -27 \\
+                                       -1 & 0  & -9 & 9   \\
+                                   \end{bNiceArray}                &
+                              & = \begin{bNiceArray}{rrr|r}
+                                      2 & -5            & 7              & -27 \\
+                                      0 & 3             & -4             & 16  \\
+                                      0 & - \frac{5}{2} & - \frac{11}{2} &
+                                      - \frac{9}{2}                            \\
+                                  \end{bNiceArray} \\
+                              & = \begin{bNiceArray}{rrr|r}
+                                      2 & -5 & 7              & -27          \\
+                                      0 & 3  & -4             & 16           \\
+                                      0 & 0  & - \frac{53}{6} & \frac{53}{6} \\
+                                  \end{bNiceArray}   &
+              \vec{u}         & = \color{y_p} \begin{bNiceMatrix}
+                                                  0 \\ 4 \\ -1
+                                              \end{bNiceMatrix}
+          \end{align}
+
+    \item Solving by Cramer's rule,
+          \begin{align}
+              \vec{\tilde{A}} & =  \begin{bNiceArray}{rrr|r}
+                                       3  & -2 & 1  & 13  \\
+                                       -2 & 1  & 4  & 11  \\
+                                       1  & 4  & -5 & -31 \\
+                                   \end{bNiceArray}      &
+              D               & = \begin{vNiceMatrix}
+                                      3  & -2 & 1  \\
+                                      -2 & 1  & 4  \\
+                                      1  & 4  & -5 \\
+                                  \end{vNiceMatrix} = -60        \\
+              D_1             & = \begin{vNiceMatrix}[r,margin]
+                                      13  & -2 & 1  \\
+                                      11  & 1  & 4  \\
+                                      -31 & 4  & -5 \\
+                                  \end{vNiceMatrix} = -60   &
+              D_2             & = \begin{vNiceMatrix}[r,margin]
+                                      3  & 13  & 1  \\
+                                      -2 & 11  & 4  \\
+                                      1  & -31 & -5 \\
+                                  \end{vNiceMatrix} = 180   \\
+              D_3             & = \begin{vNiceMatrix}[r,margin]
+                                      3  & -2 & 13  \\
+                                      -2 & 1  & 11  \\
+                                      1  & 4  & -31 \\
+                                  \end{vNiceMatrix} =  -240   &
+              \vec{x}         & = \color{y_h} \begin{bNiceMatrix}
+                                                  1 \\ -3 \\ 4
+                                              \end{bNiceMatrix}
+          \end{align}
+
+          Solving by Gauss elimination,
+          \begin{align}
+              \vec{\tilde{A}}
+                      & = \begin{bNiceArray}{rrr|r}
+                              1  & 4  & -5 & -31 \\
+                              3  & -2 & 1  & 13  \\
+                              -2 & 1  & 4  & 11  \\
+                          \end{bNiceArray}               &
+                      & = \begin{bNiceArray}{rrr|r}
+                              1 & 4   & -5 & -31 \\
+                              0 & -14 & 16 & 106 \\
+                              0 & 9   & -6 & -51 \\
+                          \end{bNiceArray}               \\
+                      & = \begin{bNiceArray}{rrr|r}
+                              1 & 4   & -5           & -31           \\
+                              0 & -14 & 16           & 106           \\
+                              0 & 0   & \frac{30}{7} & \frac{120}{7} \\
+                          \end{bNiceArray} &
+              \vec{u} & = \color{y_p} \begin{bNiceMatrix}
+                                          1 \\ -3 \\ 4 \\
+                                      \end{bNiceMatrix}
+          \end{align}
+
+    \item Solving by Cramer's rule,
+          \begin{align}
+              \vec{\tilde{A}} & =  \begin{bNiceArray}{rrrr|r}
+                                       -4 & 1  & 1  & 0  & -10 \\
+                                       0  & 1  & 1  & -4 & 10  \\
+                                       1  & 0  & -4 & 1  & -7  \\
+                                       1  & -4 & 0  & 1  & 1   \\
+                                   \end{bNiceArray}     &
+              D               & = \begin{vNiceMatrix}
+                                      -4 & 0 & 0  & 4  \\
+                                      0  & 1 & 1  & -4 \\
+                                      0  & 0 & -8 & 16 \\
+                                      0  & 0 & 0  & -6 \\
+                                  \end{vNiceMatrix} = -192            \\
+              D_1             & = \begin{vNiceMatrix}
+                                      -10 & 1  & 1  & 0  \\
+                                      10  & 1  & 1  & -4 \\
+                                      -7  & 0  & -4 & 1  \\
+                                      1   & -4 & 0  & 1  \\
+                                  \end{vNiceMatrix} = -576          &
+              D_2             & =  \begin{vNiceMatrix}
+                                       -4 & -10 & 1  & 0  \\
+                                       0  & 10  & 1  & -4 \\
+                                       1  & -7  & -4 & 1  \\
+                                       1  & 1   & 0  & 1  \\
+                                   \end{vNiceMatrix} = 0              \\
+              D_3             & = \begin{vNiceMatrix}[r,margin]
+                                      -4 & 1  & -10 & 0  \\
+                                      0  & 1  & 10  & -4 \\
+                                      1  & 0  & -7  & 1  \\
+                                      1  & -4 & 1   & 1  \\
+                                  \end{vNiceMatrix} =  -384   &
+              D_4             & = \begin{vNiceMatrix}[r,margin]
+                                      -4 & 1  & 1  & -10 \\
+                                      0  & 1  & 1  & 10  \\
+                                      1  & 0  & -4 & -7  \\
+                                      1  & -4 & 0  & 1   \\
+                                  \end{vNiceMatrix} =  384        \\
+              \vec{x}         & = \color{y_h} \begin{bNiceMatrix}
+                                                  3 \\ 0 \\ 2 \\ -2
+                                              \end{bNiceMatrix}
+          \end{align}
+
+          Solving by Gauss elimination,
+          \begin{align}
+              \vec{\tilde{A}}
+                      & = \begin{bNiceArray}{rrrr|r}
+                              -4 & 1  & 1  & 0  & -10 \\
+                              0  & 1  & 1  & -4 & 10  \\
+                              1  & 0  & -4 & 1  & -7  \\
+                              1  & -4 & 0  & 1  & 1   \\
+                          \end{bNiceArray}                    &
+                      & = \begin{bNiceArray}{rrrr|r}
+                              1 & -4  & 0  & 1  & 1  \\
+                              0 & 4   & -4 & 0  & -8 \\
+                              0 & -15 & 1  & 4  & -6 \\
+                              0 & 1   & 1  & -4 & 10 \\
+                          \end{bNiceArray}                    \\
+                      & = \begin{bNiceArray}{rrrr|r}
+                              1 & -4 & 0   & 1  & 1   \\
+                              0 & 4  & -4  & 0  & -8  \\
+                              0 & 0  & -14 & 4  & -36 \\
+                              0 & 0  & 2   & -4 & 12  \\
+                          \end{bNiceArray}                    &
+                      & = \begin{bNiceArray}{rrrr|r}
+                              1 & -4 & 0   & 1              & 1            \\
+                              0 & 4  & -4  & 0              & -8           \\
+                              0 & 0  & -14 & 4              & -36          \\
+                              0 & 0  & 0   & - \frac{24}{7} & \frac{48}{7} \\
+                          \end{bNiceArray} \\
+              \vec{u} & = \color{y_p} \begin{bNiceMatrix}
+                                          3 \\ 0 \\ 2 \\ -2
+                                      \end{bNiceMatrix}
+          \end{align}
+\end{enumerate}

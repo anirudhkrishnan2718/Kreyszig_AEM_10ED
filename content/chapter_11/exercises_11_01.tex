@@ -1,0 +1,878 @@
+\section{Fourier Series}
+
+\begin{enumerate}
+    \item The fundamental period of the functions is, by trial and error,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec={
+                  Q[r, $$]|[dotted]Q[l, $$]|Q[r, $$]|[dotted]Q[l, $$]},
+                  colsep = 1em}
+                  \text{Function} & \text{Period} & \text{Function} & \text{Period}
+                  \\ \hline[dotted]
+                  \cos(x)         & 2\pi          & \sin(x)         & 2\pi          \\
+                  \cos(2x)        & \pi           & \sin(2x)        & \pi           \\
+                  \cos(\pi x)     & 2             & \sin(\pi x)     & 2             \\
+                  \cos(2\pi x)    & 1             & \sin(2\pi x)    & 1             \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item The fundamental period of the functions is, by trial and error,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec={
+                  Q[r, $$]|[dotted]Q[l, $$]|Q[r, $$]|[dotted]Q[l, $$]},
+                  colsep = 1em, rowsep = 0.75em}
+                  \text{Function}                      & \text{Period}  &
+                  \text{Function}                      & \text{Period}
+                  \\ \hline[dotted]
+                  \cos(nx)                             & \frac{2\pi}{n} &
+                  \sin(nx)                             & \frac{2\pi}{n}   \\
+                  \cos\left(\frac{2\pi\ x}{k}\right)   & k              &
+                  \sin\left(\frac{2\pi\ x}{k}\right)   & k                \\
+                  \cos\left(\frac{2\pi n\ x}{k}\right) & \frac{k}{n}    &
+                  \sin\left(\frac{2\pi n\ x}{k}\right) & \frac{k}{n}      \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item If the functions $ f, g $ both have period $ p $,
+          \begin{align}
+              h(x)     & = af(x) + bg(x)        &
+              h(x + p) & = af(x + p) + bg(x+ p)   \\
+              h(x + p) & = af(x) + bg(x) = h(x)
+          \end{align}
+          This means that $ h $ also has period $ p $
+
+    \item $ b = 1/a  $ proves the second half and is not covered here.
+          \begin{align}
+              f(x + p)           & = f(p)       &
+              a                  & \neq 0         \\
+              f(ax + q)          & = f(ax)      &
+              \implies f(ax + q) & = f(ax + ap)   \\
+              f(ax + ap)         & = f(ax)
+          \end{align}
+          This means that the period scales with the reciprocal of the factor $ a $.
+
+    \item Let the function $ f $ be a constant function.
+          \begin{align}
+              f(x + p)   & = f(x) = c        &
+              \forall\ c & \in \mathcal{R}^+
+          \end{align}
+          There is no smallest possible choice of $ p $ that satisfies this condition.
+          \par This means that a constant function has any positive real number as a
+          period, but cannot have a fundamental period.
+
+    \item Plotting the function in the given domain
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both, Ani, title = {$ \abs{x} $},
+                          PiStyleX, xtick distance = 0.5 * pi]
+                      \addplot[GraphSmooth, y_h, domain= -pi : pi] {abs(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the function in the given domain
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both, Ani, title = {$ \abs{\sin x} $},
+                              PiStyleX, xtick distance = 0.5 * pi]
+                          \addplot[GraphSmooth, y_h, domain= -pi : pi] {abs(sin(x))};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both, Ani, title = {$ \sin \abs{x} $},
+                              PiStyleX, xtick distance = 0.5 * pi]
+                          \addplot[GraphSmooth, y_p, domain= -pi : pi] {sin(abs(x))};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+    \item Plotting the function in the given domain
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both, Ani, title = {$ \abs{e^{-x}} $},
+                              PiStyleX, xtick distance = 0.5 * pi]
+                          \addplot[GraphSmooth, y_h, domain= -pi : pi] {abs(e^(-x))};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both, Ani, title = {$ e^{-\abs{x}} $},
+                              PiStyleX, xtick distance = 0.5 * pi]
+                          \addplot[GraphSmooth, y_p, domain= -pi : pi] {e^(-abs(x))};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+    \item Plotting the function in the given domain
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both, Ani, title = {$ f(x) $},
+                          PiStyleX, xtick distance = 0.5 * pi]
+                      \addplot[GraphSmooth, y_h, domain= -pi : 0] {x};
+                      \addplot[GraphSmooth, y_p, domain= 0 : pi] {pi - x};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the function in the given domain
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both, Ani, title = {$ g(x) $},
+                          PiStyleX, xtick distance = 0.5 * pi]
+                      \addplot[GraphSmooth, y_h, domain= -pi : 0] {-(cos(x))^2};
+                      \addplot[GraphSmooth, y_p, domain= 0 : pi] {cos(x)^2};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Performing integration by parts,
+          \begin{align}
+              \int_{-\pi}^{\pi} x\ \cos(nx)\ \dl x
+                & = \Bigg[\frac{x}{n}\ \sin(nx)\Bigg]_{-\pi}^{\pi}
+              - \int_{-\pi}^{\pi} \frac{\sin(nx)}{n}\ \dl x                         \\
+                & = \Bigg[ \frac{\cos(nx)}{n^2} \Bigg]_{-\pi}^{\pi} = \color{y_h} 0 \\
+              \int_{-\pi}^{\pi} x^2\ \sin(nx)\ \dl x
+                & = \Bigg[\frac{-x^2}{n}\ \cos(nx)\Bigg]_{-\pi}^{\pi}
+              + \int_{-\pi}^{\pi} \frac{2x\ \cos(nx)}{n}\ \dl x                     \\
+                & = \Bigg[ \frac{\cos(nx)}{n^2} \Bigg]_{-\pi}^{\pi} = \color{y_p} 0 \\
+              \int_{-\pi}^{\pi} e^{-2x}\ \cos(nx)\ \dl x
+                & = \Bigg[\frac{e^{-2x}}{n}\ \sin(nx)\Bigg]_{-\pi}^{\pi}
+              + \int_{-\pi}^{\pi} \frac{2e^{-2x}\ \sin(nx)}{n}\ \dl x               \\
+                & = \frac{2}{n}\ \int_{-\pi}^{\pi} e^{-2x}\ \sin(nx)\ \dl x         \\
+                & = \Bigg[ \frac{-2e^{-2x}}{n^2}\ \cos(nx) \Bigg]_{-\pi}^{\pi}
+              - \frac{4}{n^2}\ \int_{-\pi}^{\pi} e^{-2x}\ \cos(nx)\ \dl x           \\
+              I & = \frac{4\ \cos(n\pi)\ \sinh(2\pi)}{n^2} - \frac{4I}{n^2}         \\
+              I & = \color{brown6}\frac{4\cos(n\pi)\ \sinh(2\pi)}{n^2 + 4}
+          \end{align}
+
+    \item Finding the Fourier series using Euler's equations
+          \begin{align}
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{x}\ \dl x
+              = \frac{1}{2\pi} \Bigg[\int_{-\pi}^{0} -x\ \dl x
+              +  \int_{0}^{\pi} x\ \dl x\Bigg]                        \\
+                  & = \Bigg[ \frac{-x^2}{4\pi} \Bigg]_{-\pi}^0
+              + \Bigg[ \frac{x^2}{4\pi} \Bigg]_0^{\pi} = \color{y_h} \frac{\pi}{2}
+          \end{align}
+          Finding the cosine coefficients
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} \abs{x} \cos(nx)\ \dl x \\
+                  & = \frac{1}{\pi} \Bigg[\int_{-\pi}^{0} -x \cos(nx)\ \dl x
+              +  \int_{0}^{\pi} x \cos(nx)\ \dl x\Bigg]                       \\
+                  & = \frac{1}{\pi}\ \Bigg[ \frac{x\ \sin(nx)}{n}
+                  + \frac{\cos(nx)}{n^2} \Bigg]_{0}^{-\pi}
+              + \frac{1}{\pi}\ \Bigg[ \frac{x\ \sin(nx)}{n}
+              + \frac{\cos(nx)}{n^2} \Bigg]_0^{\pi}                           \\
+                  & = \frac{2(\cos(n\pi) - 1)}{\pi n^2}
+              = \color{y_p} \begin{dcases}
+                                0                  & n \quad \text{even} \\
+                                \frac{-4}{\pi n^2} & n \quad \text{odd}
+                            \end{dcases}
+          \end{align}
+          Finding the sine coefficients
+          \begin{align}
+              b_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} \abs{x} \sin(nx)\ \dl x \\
+                  & = \frac{1}{\pi} \Bigg[\int_{-\pi}^{0} -x \sin(nx)\ \dl x
+              +  \int_{0}^{\pi} x \sin(nx)\ \dl x\Bigg]                       \\
+                  & = \frac{1}{\pi}\ \Bigg[ \frac{x\ \cos(nx)}{n}
+                  - \frac{\sin(nx)}{n^2} \Bigg]_{-\pi}^{0}
+              + \frac{1}{\pi}\ \Bigg[ \frac{x\ \cos(nx)}{n}
+              - \frac{\sin(nx)}{n^2} \Bigg]_{\pi}^{0}                         \\
+                  & = \frac{2(\cos(n\pi) - 1)}{\pi n^2}
+              = \color{brown6} 0
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = pi/2;
+                              fou_c(\n, \x) = (-4/ (pi * \n * \n)) * cos(\n * \x);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) = \abs{x} $},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                          legend pos = south west]
+                      \addplot[GraphSmooth, black, dashed, forget plot] {abs(x)};
+                      \addplot[GraphSmooth, y_p]
+                      {a_0 + fou_c(1, x)};
+                      \addplot[GraphSmooth, brown6]
+                      {a_0 + fou_c(1, x) + fou_c(3, x)};
+                      \addplot[GraphSmooth, azure3]
+                      {a_0 + fou_c(1, x) + fou_c(3, x) + fou_c(5, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 3 $}
+                      \addlegendentry{$ n = 5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier series using Euler's equations
+          \begin{align}
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{2\pi} \Bigg[\int_{-\pi}^{0} x\ \dl x
+              +  \int_{0}^{\pi} (\pi - x)\ \dl x\Bigg]             \\
+                  & = \Bigg[ \frac{x^2}{4\pi} \Bigg]_{-\pi}^0
+              - \Bigg[ \frac{(\pi - x)^2}{4\pi} \Bigg]_0^{\pi}
+              = \color{y_h} 0
+          \end{align}
+          Finding the cosine coefficients
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} \abs{x} \cos(nx)\ \dl x \\
+                  & = \frac{1}{\pi} \Bigg[\int_{-\pi}^{0} x \cos(nx)\ \dl x
+              +  \int_{0}^{\pi} (\pi - x) \cos(nx)\ \dl x\Bigg]               \\
+                  & = \frac{1}{\pi}\ \Bigg[ \frac{x\ \sin(nx)}{n}
+                  + \frac{\cos(nx)}{n^2} \Bigg]_{-\pi}^{0}
+              + \frac{1}{\pi}\ \Bigg[\frac{\pi \sin(nx)}{n} - \frac{x \sin(nx)}{n}
+              - \frac{\cos(nx)}{n^2} \Bigg]_0^{\pi}                           \\
+                  & = \frac{2(1 - \cos(n\pi))}{\pi n^2}
+              = \color{y_p} \begin{dcases}
+                                0                 & \quad n \quad \text{even} \\
+                                \frac{4}{\pi n^2} & \quad n \quad \text{odd}
+                            \end{dcases}
+          \end{align}
+          Finding the sine coefficients
+          \begin{align}
+              b_n & = \frac{1}{\pi} \Bigg[\int_{-\pi}^{0} (x) \sin(nx)\ \dl x
+              +  \int_{0}^{\pi} (\pi - x) \sin(nx)\ \dl x\Bigg]               \\
+                  & = \frac{1}{\pi}\ \Bigg[ -\frac{x\ \cos(nx)}{n}
+                  + \frac{\sin(nx)}{n^2} \Bigg]_{-\pi}^{0}
+              + \frac{1}{\pi}\ \Bigg[-\frac{\pi \cos(nx)}{n} + \frac{x\ \cos(nx)}{n}
+              - \frac{\sin(nx)}{n^2} \Bigg]_{0}^{\pi}                         \\
+                  & = \frac{1}{\pi} \Bigg[\frac{-\pi \cos(n\pi)}{n}
+                  + \frac{\pi}{n}\Bigg]
+              = \color{brown6}  \begin{dcases}
+                                    0           & \quad n \quad \text{even} \\
+                                    \frac{2}{n} & \quad n \quad \text{odd}
+                                \end{dcases}
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = 0;
+                              fou_c(\n, \x) = (4/ (pi * \n * \n)) * cos(\n * \x);
+                              fou_s(\n, \x) = (2 / (\n)) * sin(\n * \x);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) $ piecewise},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = -pi:0] {x};
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = 0:pi] {pi - x};
+                      \addplot[GraphSmooth, y_p]
+                      {a_0 + fou_c(1, x) + fou_s(1, x)};
+                      \addplot[GraphSmooth, brown6]
+                      {a_0 + fou_c(1, x) + + fou_s(1, x) + fou_c(3, x)
+                          + fou_s(3, x)};
+                      \addplot[GraphSmooth, azure3]
+                      {a_0 + fou_c(1, x) + + fou_s(1, x) + fou_c(3, x)
+                          + fou_s(3, x) + fou_c(5, x) + fou_s(5, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 3 $}
+                      \addlegendentry{$ n = 5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier series using Euler's equations
+          \begin{align}
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{2\pi} \int_{-\pi}^{\pi} x^2\ \dl x        \\
+                  & = \Bigg[ \frac{x^3}{6\pi} \Bigg]_{-\pi}^{\pi}
+              = \color{y_h} \frac{\pi^2}{3}
+          \end{align}
+          Finding the cosine coefficients
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx)\ \dl x
+              = \frac{1}{\pi} \int_{-\pi}^{\pi} x^2  \cos(nx)\ \dl x            \\
+                  & = \Bigg[ \frac{(n^2x^2 - 2)\sin(nx) + 2nx\cos(nx)}{\pi n^3}
+              \Bigg]_{-\pi}^{\pi}                                               \\
+                  & = \frac{4 \cos(n\pi)}{n^2}
+              = \color{y_p} \begin{dcases}
+                                \frac{4}{n^2}  & \quad n \quad \text{even} \\
+                                \frac{-4}{n^2} & \quad n \quad \text{odd}
+                            \end{dcases}
+          \end{align}
+          Finding the sine coefficients
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin(nx)\ \dl x
+              = \frac{1}{\pi} \int_{-\pi}^{\pi} x^2  \sin(nx)\ \dl x            \\
+                  & = \Bigg[ \frac{(2 - n^2x^2)\cos(nx) + 2nx\sin(nx)}{\pi n^3}
+              \Bigg]_{-\pi}^{\pi}                                               \\
+                  & = \frac{4 \cos(n\pi)}{n^2}
+              = \color{brown6} 0
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = (pi^2) / 3;
+                              fou_c(\n, \x) = (4/ (\n * \n))*cos(\n * pi)*cos(\n * \x);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) = x^2$},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black, dashed, forget plot] {x^2};
+                      \addplot[GraphSmooth, y_h] {a_0 + fou_c(1, x)};
+                      \addplot[GraphSmooth, y_p] {a_0 + fou_c(1, x) + fou_c(2, x)
+                          + fou_c(3, x)};
+                      \addplot[GraphSmooth, brown6] {a_0 + fou_c(1, x) + fou_c(2, x)
+                          + fou_c(3, x) + fou_c(4, x) + fou_c(5, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 3 $}
+                      \addlegendentry{$ n = 5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier series using Euler's equations
+          \begin{align}
+              a_0 & = \frac{1}{2\pi} \int_{0}^{2\pi} f(x)\ \dl x
+              = \frac{1}{2\pi} \int_{0}^{2\pi} x^2\ \dl x        \\
+                  & = \Bigg[ \frac{x^3}{6\pi} \Bigg]_{0}^{2\pi}
+              = \color{y_h} \frac{4\pi^2}{3}
+          \end{align}
+          Finding the cosine coefficients
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{0}^{2\pi} f(x) \cos(nx)\ \dl x
+              = \frac{1}{\pi} \int_{0}^{2\pi} x^2  \cos(nx)\ \dl x              \\
+                  & = \Bigg[ \frac{(n^2x^2 - 2)\sin(nx) + 2nx\cos(nx)}{\pi n^3}
+                  \Bigg]_{0}^{2\pi}
+              = \color{y_p} \frac{4}{n^2}
+          \end{align}
+          Finding the sine coefficients
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{0}^{2\pi} f(x) \sin(nx)\ \dl x
+              = \frac{1}{\pi} \int_{0}^{2\pi} x^2  \sin(nx)\ \dl x              \\
+                  & = \Bigg[ \frac{(2 - n^2x^2)\cos(nx) + 2nx\sin(nx)}{\pi n^3}
+                  \Bigg]_{0}^{2\pi}
+              = \color{brown6}\frac{-4\pi}{n}
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = (4 * pi^2) / 3;
+                              fou_c(\n, \x) = (4/ (\n * \n)) * cos(\n * \x);
+                              fou_s(\n, \x) = (-4 * pi/ (\n)) * sin(\n * \x);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) = x^2$},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = 0:2*pi,
+                          legend pos = north west]
+                      \addplot[GraphSmooth, black, dashed, forget plot] {x^2};
+                      \addplot[GraphSmooth, y_h] {a_0 + fou_c(1, x) + fou_s(1, x)};
+                      \addplot[GraphSmooth, y_p] {a_0 + fou_c(1, x) + fou_s(1, x)
+                          + fou_c(2, x) + fou_s(2, x) + fou_c(3, x) + fou_s(3, x)};
+                      \addplot[GraphSmooth, brown6] {a_0 + fou_c(1, x) + fou_s(1, x)
+                          + fou_c(2, x) + fou_s(2, x) + fou_c(3, x) + fou_s(3, x)
+                          + fou_c(4, x) + fou_s(4, x) + fou_c(5, x) + fou_s(5, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 3 $}
+                      \addlegendentry{$ n = 5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The constant term is zero since the function is odd. \par
+          The cosine coefficients are zero since the function is odd. \par
+          Finding the sine coefficients
+          \begin{align}
+              b_n & = \frac{1}{\pi}\ \int_{-\pi/2}^{\pi/2} x \sin(nx)\ \dl x \\
+                  & = \frac{1}{\pi}\ \Bigg[ -\frac{x\ \cos(nx)}{n}
+              + \frac{\sin(nx)}{n^2} \Bigg]_{-\pi/2}^{\pi/2}                 \\
+                  & = \color{brown6}
+              \begin{dcases}
+                  \frac{-\cos(m\pi)}{n}              & \quad n = 2m     \\
+                  \frac{2}{\pi (2m-1)^2}\ (-1)^{m+1} & \quad n = 2m - 1
+              \end{dcases}
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = 0;
+                              fou_s(\m, \x) = (-cos(pi * \m) / (2 * \m))
+                              * sin(2 * \m * \x) + (2 / (pi * (2*\m - 1)^2))
+                              * sin(\m * pi - pi/2) * sin((2*\m - 1) * \x) ;
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) $ piecewise},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = -pi:-pi/2] {0};
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = pi/2:pi] {0};
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = -pi/2:pi/2] {x};
+                      \addplot[GraphSmooth, y_h] {fou_s(1, x)};
+                      \addplot[GraphSmooth, y_p] {fou_s(1, x) + fou_s(2, x)};
+                      \addplot[GraphSmooth, brown6] {fou_s(1, x) + fou_s(2, x)
+                          + fou_s(3, x)};
+                      \addlegendentry{$ n = 2 $}
+                      \addlegendentry{$ n = 4 $}
+                      \addlegendentry{$ n = 6 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier series using Euler's equations
+          \begin{align}
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{2\pi} \Bigg[\int_{-\pi}^{0} (x + \pi)\ \dl x
+              +  \int_{0}^{\pi} (\pi - x)\ \dl x\Bigg]                \\
+                  & = \Bigg[ \frac{(x + \pi)^2}{4\pi} \Bigg]_{-\pi}^0
+              - \Bigg[ \frac{(\pi - x)^2}{4\pi} \Bigg]_0^{\pi}
+              = \color{y_h} \frac{\pi}{2}
+          \end{align}
+          Finding the cosine coefficients
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx)\ \dl x          \\
+                  & = \frac{1}{\pi} \Bigg[\int_{-\pi}^{0} (x + \pi) \cos(nx)\ \dl x
+              +  \int_{0}^{\pi} (\pi - x) \cos(nx)\ \dl x\Bigg]                     \\
+                  & = \frac{1}{\pi}\ \Bigg[ \frac{(x + \pi)\ \sin(nx)}{n}
+                  + \frac{\cos(nx)}{n^2} \Bigg]_{-\pi}^{0}
+              + \frac{1}{\pi}\ \Bigg[\frac{(\pi - x) \sin(nx)}{n}
+              - \frac{\cos(nx)}{n^2} \Bigg]_0^{\pi}                                 \\
+                  & = \frac{2(1 - \cos(n\pi))}{\pi n^2}
+              = \color{y_p} \begin{dcases}
+                                0                 & \quad n \quad \text{even} \\
+                                \frac{4}{\pi n^2} & \quad n \quad \text{odd}
+                            \end{dcases}
+          \end{align}
+          Finding the sine coefficients
+          \begin{align}
+              b_n & = \frac{1}{\pi} \Bigg[\int_{-\pi}^{0} (x + \pi) \sin(nx)\ \dl x
+              +  \int_{0}^{\pi} (\pi - x) \sin(nx)\ \dl x\Bigg]                     \\
+                  & = \frac{1}{\pi}\ \Bigg[ -\frac{(x + \pi)\ \cos(nx)}{n}
+                  + \frac{\sin(nx)}{n^2} \Bigg]_{-\pi}^{0}
+              + \frac{1}{\pi}\ \Bigg[-\frac{(\pi - x) \cos(nx)}{n}
+              - \frac{\sin(nx)}{n^2} \Bigg]_{0}^{\pi}                               \\
+                  & = \color{brown6} 0
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = pi/2;
+                              fou_c(\n, \x) = (4/ (pi * \n * \n)) * cos(\n * \x);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) $ piecewise},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                          legend pos = north east]
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = -pi:0] {x + pi};
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = 0:pi] {pi - x};
+                      \addplot[GraphSmooth, y_p]
+                      {a_0 + fou_c(1, x) };
+                      \addplot[GraphSmooth, brown6]
+                      {a_0 + fou_c(1, x) + fou_c(3, x)};
+                      \addplot[GraphSmooth, azure3]
+                      {a_0 + fou_c(1, x) + fou_c(3, x)
+                          + fou_c(5, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 3 $}
+                      \addlegendentry{$ n = 5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier series using Euler's equations
+          \begin{align}
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
+              =  \frac{1}{2\pi}\ \int_{0}^{\pi} (1)\ \dl x         \\
+                  & = \Bigg[ \frac{x}{2\pi} \Bigg]_{0}^{\pi}
+              = \color{y_h} \frac{1}{2}
+          \end{align}
+          Finding the cosine coefficients
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx)\ \dl x
+              = \frac{1}{\pi}\ \int_{0}^{\pi} (1) \cos(nx)\ \dl x              \\
+                  & = \frac{1}{\pi}\ \Bigg[ \frac{\sin(nx)}{n}\Bigg]_{0}^{\pi}
+              = \color{y_p} 0
+          \end{align}
+          Finding the sine coefficients
+          \begin{align}
+              b_n & = \frac{1}{\pi}\ \int_{0}^{\pi} (1) \sin(nx)\ \dl x
+              = \frac{1}{\pi}\ \Bigg[-\frac{\cos(nx)}{n} \Bigg]_{0}^{\pi}
+              = \color{brown6}  \frac{1 - \cos(n\pi)}{n\pi}
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = 1/2;
+                              fou_s(\n, \x) = sin(\n * \x) * (1 - cos(\n * pi))
+                              / (\n * pi);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) $ piecewise},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = -pi:0] {0};
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = 0:pi] {1};
+                      \addplot[GraphSmooth, y_p] {a_0 + fou_s(1, x)};
+                      \addplot[GraphSmooth, brown6] {a_0 + fou_s(1, x) + fou_s(2, x)
+                          + fou_s(3, x) + fou_s(4, x) + fou_s(5, x)};
+                      \addplot[GraphSmooth, azure3] {a_0 + fou_s(1, x) + fou_s(2, x)
+                          + fou_s(3, x) + fou_s(4, x) + fou_s(5, x) + fou_s(6, x)
+                          + fou_s(7, x) + fou_s(8, x) + fou_s(9, x) + fou_s(10, x)
+                          + fou_s(11, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 5 $}
+                      \addlegendentry{$ n = 11 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier series using Euler's equations
+          \begin{align}
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{2\pi}\ \int_{0}^{\pi} x\ \dl x            \\
+                  & = \Bigg[ \frac{x^2}{4\pi} \Bigg]_0^{\pi}
+              = \color{y_h} \frac{\pi}{4}
+          \end{align}
+          Finding the cosine coefficients
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx)\ \dl x
+              = \frac{1}{\pi}\int_{0}^{\pi} x \cos(nx)\ \dl x              \\
+                  & = \frac{1}{\pi}\ \Bigg[ \frac{x\ \sin(nx)}{n}
+                  + \frac{\cos(nx)}{n^2} \Bigg]_0^{\pi}
+              = \color{y_p} \frac{(\cos(n\pi) - 1)}{\pi n^2}
+          \end{align}
+          Finding the sine coefficients
+          \begin{align}
+              b_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin(nx)\ \dl x
+              = \frac{1}{\pi}\ \int_{0}^{\pi} x \sin(nx)\ \dl x            \\
+                  & = \frac{1}{\pi}\ \Bigg[ -\frac{x\ \cos(nx)}{n}
+                  + \frac{\sin(nx)}{n^2} \Bigg]_{0}^{\pi}
+              = \color{brown6} \frac{-\cos(n\pi)}{n}
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = pi/4;
+                              fou_c(\n, \x) = ((cos(pi * \n) - 1)/ (pi * \n * \n))
+                              * cos(\n * \x);
+                              fou_s(\n, \x) = (-1/\n) * cos(\n * pi) * sin(\n * \x);
+                              fou(\n, \x) = fou_c(\n, \x) + fou_s(\n, \x);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) = \abs{x} $},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black, dashed, domain = 0:pi, forget plot]
+                      {x};
+                      \addplot[GraphSmooth, black, dashed, domain = -pi:0, forget plot]
+                      {0};
+                      \addplot[GraphSmooth, y_h]
+                      {a_0 + fou(1, x)};
+                      \addplot[GraphSmooth, y_p]
+                      {a_0 + fou(1, x) + fou(2, x) + fou(3, x) + fou(4, x) + fou(5, x)};
+                      \addplot[GraphSmooth, brown6]
+                      {a_0 + fou(1, x) + fou(2, x) + fou(3, x) + fou(4, x) + fou(5, x)
+                          + fou(6, x) + fou(7, x) + fou(8, x) + fou(9, x) + fou(10, x)
+                          + fou(11, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 5 $}
+                      \addlegendentry{$ n = 11 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The constant term is zero since the function is odd. \par
+          The cosine coefficients are zero since the function is odd. \par
+          Finding the sine coefficients
+          \begin{align}
+              b_n & = \frac{1}{\pi}\ \Bigg[
+                  \int_{-\pi}^{-\pi/2} (-\pi/2)\ \sin(nx)\ \dl x
+              + \int_{-\pi/2}^{\pi/2} x \sin(nx)\ \dl x                            \\
+                  & + \int_{\pi/2}^{\pi} (\pi/2)\ \sin(nx)\ \dl x\Bigg]            \\
+                  & = \frac{1}{2} \Bigg[ \frac{\cos(nx)}{n} \Bigg]_{-\pi}^{-\pi/2}
+              + \frac{1}{2} \Bigg[ \frac{-\cos(nx)}{n} \Bigg]_{\pi/2}^{\pi}        \\
+                  & + \frac{1}{\pi}\ \Bigg[ -\frac{x\ \cos(nx)}{n}
+              + \frac{\sin(nx)}{n^2} \Bigg]_{-\pi/2}^{\pi/2}                       \\
+                  & = \color{brown6} \frac{-\cos(n\pi)}{n}
+              + \frac{2\sin(n\pi/2)}{\pi n^2}
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = 0;
+                              fou_s(\n, \x) = ((- cos(\n * pi) / \n)
+                              + 2 * sin(0.5 * pi * \n) / (pi * \n^2)) * sin(\n * \x) ;
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) $ piecewise},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = -pi:-pi/2] {-pi/2};
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = pi/2:pi] {pi/2};
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = -pi/2:pi/2] {x};
+                      \addplot[GraphSmooth, y_h] {fou_s(1, x)};
+                      \addplot[GraphSmooth, y_p] {fou_s(1, x) + fou_s(2, x)
+                          + fou_s(3, x) + fou_s(4, x) + fou_s(5, x)};
+                      \addplot[GraphSmooth, brown6] {fou_s(1, x) + fou_s(2, x)
+                          + fou_s(3, x) + fou_s(4, x) + fou_s(5, x)
+                          + fou_s(6, x) + fou_s(7, x) + fou_s(8, x) + fou_s(9, x)
+                          + fou_s(10, x) + fou_s(11, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 5 $}
+                      \addlegendentry{$ n = 11 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier series using Euler's equations
+          \begin{align}
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{2\pi} \Bigg[\int_{-\pi}^{0} (-x - \pi)\ \dl x
+              +  \int_{0}^{\pi} (\pi - x)\ \dl x\Bigg]                 \\
+                  & = -\Bigg[ \frac{(x + \pi)^2}{4\pi} \Bigg]_{-\pi}^0
+              - \Bigg[ \frac{(\pi - x)^2}{4\pi} \Bigg]_0^{\pi}
+              = \color{y_h} 0
+          \end{align}
+          The cosine coefficients for an odd function are zero. \par
+          Finding the sine coefficients
+          \begin{align}
+              b_n & = \frac{1}{\pi} \Bigg[\int_{-\pi}^{0} -(x + \pi) \sin(nx)\ \dl x
+              +  \int_{0}^{\pi} (\pi - x) \sin(nx)\ \dl x\Bigg]                      \\
+                  & = \frac{1}{\pi}\ \Bigg[ \frac{(x + \pi)\ \cos(nx)}{n}
+                  - \frac{\sin(nx)}{n^2} \Bigg]_{-\pi}^{0}
+              + \frac{1}{\pi}\ \Bigg[-\frac{(\pi - x) \cos(nx)}{n}
+              - \frac{\sin(nx)}{n^2} \Bigg]_{0}^{\pi}                                \\
+                  & = \color{brown6} \frac{2}{n}
+          \end{align}
+          Graphing the function itself and its partial sums,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = 0;
+                              fou_s(\n, \x) = (2/\n) * sin(\n * \x);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ f(x) $ piecewise},
+                          PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = -pi:0] {-x - pi};
+                      \addplot[GraphSmooth, black, dashed, forget plot,
+                          domain = 0:pi] {pi - x};
+                      \addplot[GraphSmooth, y_h]
+                      {a_0 + fou_s(1, x) };
+                      \addplot[GraphSmooth, y_p]
+                      {a_0 + fou_s(1, x) + fou_s(2, x) +fou_s(3, x) + fou_s(4, x)
+                          + fou_s(5, x) };
+                      \addplot[GraphSmooth, brown6]
+                      {a_0 + fou_s(1, x) + fou_s(2, x) +fou_s(3, x) + fou_s(4, x)
+                          + fou_s(5, x) + fou_s(6, x) + fou_s(7, x) + fou_s(8, x)
+                          + fou_s(9, x) + fou_s(10, x) + fou_s(11, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 5 $}
+                      \addlegendentry{$ n = 11 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the Fourier series graphs to identify out the underlying function,
+          \begin{enumerate}
+              \item The function is a sawtooth wave $ y = x $ with a primary domain
+                    of $ [-\pi, \pi] $.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        fou_s(\n, \x) = (-1)^(\n+ 1) * (2/\n)
+                                        * sin(\n * \x);
+                                    }]
+                            \begin{axis}[
+                                    grid = both, Ani, title = Sawtooth,
+                                    PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                                    legend pos = south east]
+                                \addplot[GraphSmooth, black, dashed, forget plot]
+                                {x};
+                                \addplot[GraphSmooth, y_h]
+                                {fou_s(1, x) + fou_s(2, x) + fou_s(3, x) + fou_s(4, x)};
+                                \addplot[GraphSmooth, y_p]
+                                {fou_s(1, x) + fou_s(2, x) + fou_s(3, x) + fou_s(4, x)
+                                    + fou_s(5, x) + fou_s(6, x) + fou_s(7, x)
+                                    + fou_s(8, x) + fou_s(9, x) + fou_s(10, x)
+                                    + fou_s(11, x) + fou_s(12, x)};
+                                \addlegendentry{$ n = 1 $}
+                                \addlegendentry{$ n = 5 $}
+                                \addlegendentry{$ n = 11 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+              \item The function is a triangle wave with a primary domain
+                    of $ [-\pi, \pi] $ and range $ [0, 1] $.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        a_0 = 1/2;
+                                        fou_c(\n, \x) = (4/(\n^2 * pi^2))
+                                        * cos(\n * \x);
+                                    }]
+                            \begin{axis}[
+                                    grid = both, Ani, title = Piecewise,
+                                    PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                                    legend pos = north east]
+                                \addplot[GraphSmooth, black, dashed, forget plot,
+                                    domain = 0:pi]{-x/pi + 1};
+                                \addplot[GraphSmooth, black, dashed, forget plot,
+                                    domain = -pi:0]{x/pi + 1};
+                                \addplot[GraphSmooth, y_h]
+                                {a_0 + fou_c(1, x) + fou_c(3, x) + fou_c(5, x)};
+                                \addplot[GraphSmooth, y_p]
+                                {a_0 + fou_c(1, x) + fou_c(3, x) + fou_c(5, x)
+                                    + fou_c(7, x) + fou_c(9, x) + fou_c(11, x)};
+                                \addlegendentry{$ n = 5 $}
+                                \addlegendentry{$ n = 11 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+              \item The function is a downward parabola $ y = -x + \pi^2 $ with a
+                    primary domain of $ [-\pi, \pi] $.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        a_0 = (2/3) * pi^2;
+                                        fou_c(\n, \x) = (-1)^(\n+1) * (4/(\n^2))
+                                        * cos(\n * \x);
+                                    }]
+                            \begin{axis}[
+                                    grid = both, Ani, title = Piecewise,
+                                    PiStyleX, xtick distance = 0.5 * pi, domain = -pi:pi,
+                                    legend pos = north east]
+                                \addplot[GraphSmooth, black, dashed, forget plot,
+                                    domain = -pi:pi]{-x^2 + pi^2};
+                                \addplot[GraphSmooth, y_h]
+                                {a_0 + fou_c(1, x) + fou_c(2, x) + fou_c(3, x)};
+                                \addplot[GraphSmooth, y_p]
+                                {a_0 + fou_c(1, x) + fou_c(2, x) + fou_c(3, x)
+                                    + fou_c(4, x) + fou_c(5, x) + fou_c(6, x)
+                                    + fou_c(7, x) + fou_c(8, x) + fou_c(9, x)
+                                    + fou_c(10, x) + fou_c(11, x)};
+                                \addlegendentry{$ n = 3 $}
+                                \addlegendentry{$ n = 11 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+
+    \item The average of the left and right handed limits of $ f(x) $ at $ x = 0 $
+          needs to match the Fourier series expansion at $ x = 0 $
+          \begin{align}
+              \frac{f(0)^+ + f(0)^{-}}{2} & = \frac{\pi - \pi}{2} = 0 \\
+              F(x)                        & =
+              0 + \iser[n]{1} \frac{2}{n}\ \sin(nx)                   \\
+              F(0)                        & = 0
+          \end{align}
+          This verifies the statement.
+
+    \item Performing the integration,
+          \begin{align}
+              \int_{-a}^{a} \cos(mx)\ \cos(nx)\ \dl x &
+              = \frac{1}{2}\ \int_{-a}^{a} \cos(mx + nx)
+              + \cos(mx - nx)\ \dl x                    \\
+                                                      &
+              = \frac{1}{2}\Bigg[ \frac{\sin(\alpha x)}{\alpha}
+                  + \frac{\sin(\beta x)}{\beta}
+              \Bigg]_{-a}^{a}                           \\
+              I(a)                                    &
+              = \frac{\sin(\alpha a)}{\alpha} + \frac{\sin(\beta a)}{\beta}
+          \end{align}
+          Here $ \alpha = (m+n) $ and $ \beta = (m-n) $ with both being nonzero integers.
+          \begin{align}
+              I(a)       & = 0   &
+              \implies a & = \pi
+          \end{align}
+          For $ a \rightarrow a/k $, the condition becomes $ \alpha, \beta $ are
+          integer multiples of $ k $. \par
+          Performing the integration,
+          \begin{align}
+              \int_{-a}^{a} \sin(mx)\ \sin(nx)\ \dl x &
+              = \frac{1}{2}\ \int_{-a}^{a} \cos(mx - nx)
+              - \cos(mx + nx)\ \dl x                    \\
+                                                      &
+              = \frac{1}{2}\Bigg[ \frac{\sin(\beta x)}{\beta}
+                  - \frac{\sin(\alpha x)}{\alpha}
+              \Bigg]_{-a}^{a}                           \\
+              I(a)                                    &
+              = \frac{\sin(\beta a)}{\beta} - \frac{\sin(\alpha a)}{\alpha}
+          \end{align}
+          Performing the integration,
+          \begin{align}
+              \int_{-a}^{a} \sin(mx)\ \cos(nx)\ \dl x &
+              = \frac{1}{2}\ \int_{-a}^{a} \cos(mx - nx)
+              - \cos(mx + nx)\ \dl x                    \\
+                                                      &
+              = \frac{-1}{2}\Bigg[ \frac{\cos(\beta x)}{\beta}
+                  + \frac{\cos(\alpha x)}{\alpha}
+              \Bigg]_{-a}^{a}                           \\
+              I(a)                                    &
+              = 0 \qquad \text{identically}
+          \end{align}
+
+    \item Order of Fourier coefficients in terms of the discontinuity in $ f $ and
+          its higher-order derivatives. \par.
+          Start with $ f $ being discontinuous at $ x = a $
+          \begin{align}
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{a} f(x)\ \cos(nx)\ \dl x
+              + \frac{1}{\pi} \int_{a}^{\pi} f(x)\ \cos(nx)\ \dl x                    \\
+                  & = \frac{[f(a^-) - f(a^+)] \sin(na)}{\pi n} - \frac{1}{n\pi}\Bigg[
+                  \int_{-\pi}^{a} f'(x) \sin(nx)\ \dl x  + \int_{a}^{\pi}
+                  f'(x) \sin(nx)\ \dl x\Bigg]
+          \end{align}
+          Clearly, if $ f $ is continuous, the procedure is the exact same acting on 
+          $ f' $ with an extra $ 1/n $ factor introduced. \par
+          Thus, the order of the Fourier series is $ n^{-k} $ depending on the smallest
+          discontinouus derivative of $ f $ being $ f^{(k-1)} $. \par
+          The integral of a sine or consine function over the entire domain is
+          identically zero, which gets rid of the earlier powers of $ 1/n $ in the 
+          Fourier expansion when the current derivative is still continuous. \par
+          Integration by parts requires recursive usage of differentiation until 
+          some discontinuity is hit.
+\end{enumerate}

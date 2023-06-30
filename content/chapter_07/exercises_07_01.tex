@@ -1,0 +1,357 @@
+\section{Matrices, Vectors: Addition and Scalar Multiplication}
+\begin{enumerate}
+    \item Either the dimensions of the matrices do not match, or the elementwise
+          comparison among matrices fails. Thus, they are all different.
+
+    \item From the matrix in Example 2,
+          \begin{align}
+              a_{31} & = 10 & a_{13} & = 81 \\
+              a_{26} & = 96 & a_{33} & = 0
+          \end{align}
+
+    \item The matrices and their sizes are,
+          \begin{align}
+              \text{Example}\ 1 & = 3 \times 3                                   &
+              \text{Example}\ 2 & = 3 \times 7                                     \\
+              \text{Example}\ 3 & = 2 \times 2 \quad \text{and} \quad 2 \times 3 &
+              \text{Example}\ 5 & = 3 \times 2
+          \end{align}
+
+    \item The main diagonals are,
+          \begin{align}
+              \text{Example}\ 1 & = \{4, 0, 1\}                         &
+              \text{Example}\ 2 & = \{a_{11}, a_{22}\} \quad \text{and}
+              \quad \{4, -1\}
+          \end{align}
+
+    \item Starting with the given matrix $ \vec{A} $,
+          \begin{align}
+              \vec{A} & =
+              \begin{bmatrix*}[r]
+                  40 & 33 & 81 & 0  & 21 & 47 & 33 \\
+                  0  & 12 & 78 & 50 & 50 & 96 & 80 \\
+                  10 & 0  & 0  & 27 & 43 & 78 & 56
+              \end{bmatrix*}             \\
+              \vec{B} & = \frac{\vec{A}}{5} =
+              \begin{bmatrix*}[r]
+                  8.0 & 6.6 & 16.2 & 0    & 4.2  & 9.4  & 6.6  \\
+                  0   & 2.4 & 15.6 & 10.0 & 10.0 & 19.2 & 16.0 \\
+                  2.0 & 0   & 0    & 5.4  & 8.6  & 15.6 & 11.2
+              \end{bmatrix*} \\
+              \vec{C} & = \frac{\vec{A}}{10} =
+              \begin{bmatrix*}[r]
+                  4.0 & 3.3 & 8.1 & 0   & 2.1 & 4.7 & 3.3 \\
+                  0   & 1.2 & 7.8 & 5.0 & 5.0 & 9.6 & 8.0 \\
+                  1.0 & 0   & 0   & 2.7 & 4.3 & 7.8 & 5.6
+              \end{bmatrix*}
+          \end{align}
+
+    \item To convert from kilometers to miles,
+          \begin{align}
+              \vec{B} & = \frac{\vec{A}}{1.6}
+          \end{align}
+
+    \item \begin{itemize}
+              \item No, since they have different dimensions, regardless of a match in the
+                    number of their components.
+              \item Yes
+              \item No, since they are different tyes of mathematical object
+              \item No, since their dimensions do not match even though the number of
+                    elements might be the same.
+          \end{itemize}
+
+    \item Performing the given computations,
+          \begin{align}
+              2\vec{A} + 4\vec{B}     & = \begin{bmatrix*}[r]
+                                              0  & 24 & 16  \\
+                                              32 & 22 & 26  \\
+                                              -6 & 16 & -14
+                                          \end{bmatrix*}    &
+              4\Vec{B} + 2\vec{A}     & = \begin{bmatrix*}[r]
+                                              0  & 24 & 16  \\
+                                              32 & 22 & 26  \\
+                                              -6 & 16 & -14
+                                          \end{bmatrix*}    \\
+              0\vec{A} + \vec{B}      & = \begin{bmatrix*}[r]
+                                              0  & 5 & 2  \\
+                                              5  & 3 & 4  \\
+                                              -2 & 4 & -2
+                                          \end{bmatrix*}    &
+              0.4\vec{B} - 4.2\vec{A} & = \begin{bmatrix*}[r]
+                                              0     & - 6.4 & -16   \\
+                                              -23.2 & -19.8 & -19.4 \\
+                                              -5    & 1.6   & 11.8
+                                          \end{bmatrix*}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              3\vec{A}                        & = \begin{bmatrix*}[r]
+                                                      0  & 6  & 12 \\
+                                                      18 & 15 & 15 \\
+                                                      3  & 0  & -9
+                                                  \end{bmatrix*} &
+              0.5\Vec{B}                      & = \begin{bmatrix*}[r]
+                                                      0   & 2.5 & 1  \\
+                                                      2.5 & 1.5 & 2  \\
+                                                      -1  & 2   & -1
+                                                  \end{bmatrix*} \\
+              3\vec{A} + 0.5\vec{B}           & = \begin{bmatrix*}[r]
+                                                      0    & 8.5  & 13  \\
+                                                      20.5 & 16.5 & 17  \\
+                                                      2    & 2    & -10
+                                                  \end{bmatrix*} &
+              3\vec{A} + 0.5\vec{B} + \vec{C} & = \text{invalid}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (4 \cdot 3) \vec{A}  & = \begin{bmatrix*}[r]
+                                           0  & 24 & 48  \\
+                                           72 & 60 & 60  \\
+                                           12 & 0  & -36
+                                       \end{bmatrix*} &
+              4 (3\vec{A})         & = \begin{bmatrix*}[r]
+                                           0  & 24 & 48  \\
+                                           72 & 60 & 60  \\
+                                           12 & 0  & -36
+                                       \end{bmatrix*} \\
+              14\vec{B} - 3\vec{B} & = \begin{bmatrix*}[r]
+                                           0   & 55 & 22  \\
+                                           55  & 33 & 44  \\
+                                           -22 & 44 & -22
+                                       \end{bmatrix*} &
+              11\vec{B}            & = \begin{bmatrix*}[r]
+                                           0   & 55 & 22  \\
+                                           55  & 33 & 44  \\
+                                           -22 & 44 & -22
+                                       \end{bmatrix*}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              8\vec{C} + 10\vec{D}    & = \begin{bmatrix*}[r]
+                                              0  & 26  \\
+                                              34 & 32  \\
+                                              28 & -10
+                                          \end{bmatrix*} &
+              2 (5\vec{D} = 4\vec{C}) & = \begin{bmatrix*}[r]
+                                              0  & 26  \\
+                                              34 & 32  \\
+                                              28 & -10
+                                          \end{bmatrix*} \\
+              0.6\vec{C} - 0.6\vec{D} & = \begin{bmatrix*}[r]
+                                              5.4  & 0.6 \\
+                                              -4.2 & 2.4 \\
+                                              -0.6 & 0.6
+                                          \end{bmatrix*} &
+              0.6(\vec{C} - \vec{D})  & = \begin{bmatrix*}[r]
+                                              5.4  & 0.6 \\
+                                              -4.2 & 2.4 \\
+                                              -0.6 & 0.6
+                                          \end{bmatrix*}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (\vec{C} + \vec{D}) + \vec{E}   & = \begin{bmatrix*}[r]
+                                                      1 & 5  \\
+                                                      6 & 8  \\
+                                                      6 & -2
+                                                  \end{bmatrix*} &
+              (\vec{D} + \vec{E}) + \vec{C}   & = \begin{bmatrix*}[r]
+                                                      1 & 5  \\
+                                                      6 & 8  \\
+                                                      6 & -2
+                                                  \end{bmatrix*} \\
+              0(\vec{C} - \vec{E}) + 4\vec{D} & = \begin{bmatrix*}[r]
+                                                      -16 & 4  \\
+                                                      20  & 0  \\
+                                                      8   & -4
+                                                  \end{bmatrix*} &
+              \vec{A} - 0\vec{C}              & = \begin{bmatrix*}[r]
+                                                      0 & 2 & 4  \\
+                                                      6 & 5 & 5  \\
+                                                      1 & 0 & -3
+                                                  \end{bmatrix*}
+          \end{align}
+
+    \item  \begin{align}
+              (2 \cdot 7)\vec{C}                    & = \begin{bmatrix*}[r]
+                                                            70  & 28 \\
+                                                            -28 & 56 \\
+                                                            14  & 0
+                                                        \end{bmatrix*} &
+              2 (7\vec{C})                          & = \begin{bmatrix*}[r]
+                                                            70  & 28 \\
+                                                            -28 & 56 \\
+                                                            14  & 0
+                                                        \end{bmatrix*} \\
+              - \vec{D} + 0\vec{E}                  & = \begin{bmatrix*}[r]
+                                                            4  & -1 \\
+                                                            -5 & 0  \\
+                                                            -2 & 1
+                                                        \end{bmatrix*} &
+              \vec{E} - \vec{D} + \vec{C} + \vec{u} & = \text{invalid}
+          \end{align}
+
+    \item  \begin{align}
+              (5\vec{u} + 5\vec{v}) - \frac{1}{2}\ \vec{w} & = \begin{bmatrix*}[r]
+                                                                   5 \\ 30 \\ -10
+                                                               \end{bmatrix*} &
+              -20 (\vec{u} + \vec{v}) + 2\vec{w}           & = \begin{bmatrix*}[r]
+                                                                   -20 \\ -120 \\ 40
+                                                               \end{bmatrix*}    \\
+              \vec{E} - (\vec{u} + \vec{v})                & = \text{invalid}      &
+              10(\vec{u} + \vec{v}) + \vec{w}              & = \begin{bmatrix*}[r]
+                                                                   0 \\ 0 \\ 0
+                                                               \end{bmatrix*}
+          \end{align}
+
+    \item  \begin{align}
+              (\vec{u} + \vec{v}) - \vec{w} & = \begin{bmatrix*}[r]
+                                                    5.5 \\ 33 \\ -11
+                                                \end{bmatrix*}       &
+              \vec{u} + (\vec{v} - \vec{w}) & = \begin{bmatrix*}[r]
+                                                    5.5 \\ 33 \\ -11
+                                                \end{bmatrix*}          \\
+              \vec{C} + 0\vec{w}            & = \text{dimension mismatch} &
+              0\vec{E} + \vec{u} - \vec{v}  & = \text{dimension mismatch}
+          \end{align}
+
+    \item  \begin{align}
+              15\vec{v} - 3\vec{w} - 0\vec{u}       & = \begin{bmatrix*}[r]
+                                                            0 \\ 135 \\ 0
+                                                        \end{bmatrix*}     &
+              -3 (\vec{w} + 15\vec{v})              & = \begin{bmatrix*}[r]
+                                                            0 \\ 135 \\ 0
+                                                        \end{bmatrix*}        \\
+              \vec{D} - \vec{u} + 3\vec{C}          & = \text{invalid}          &
+              8.5\vec{w} - 11.1\vec{u} + 0.4\vec{v} & = \begin{bmatrix*}[r]
+                                                            -59.55 \\ -253.8 \\ 119.1
+                                                        \end{bmatrix*}
+          \end{align}
+
+    \item Resultant force is the sum of all the vectors,
+          \begin{align}
+              \vec{F_r} & = \vec{u} + \vec{v} + \vec{w} = \begin{bmatrix*}[r]
+                                                              -4.5 \\ -27 \\ 9
+                                                          \end{bmatrix*}
+          \end{align}
+
+    \item For the 4 forces to be in equilibrium, their vector sum is $ \vec{0} $
+          \begin{align}
+              \vec{0} & = \vec{u} + \vec{v} + \vec{w} + \vec{p} \\
+              \vec{p} & = \begin{bmatrix*}[r]
+                              4.5 \\ 27 \\ -9
+                          \end{bmatrix*}
+          \end{align}
+
+    \item TBC
+
+    \item Using matrices to represent network connectivity,
+          \begin{enumerate}
+              \item The start and end points of each branch are,
+                    \begin{align}
+                        1 :\  & A \rightarrow X & 2 :\  & B \rightarrow A &
+                        3 :\  & C \rightarrow A & 4 :\  & B \rightarrow X   \\
+                        5 :\  & B \rightarrow C & 6 :\  & X \rightarrow C &
+                    \end{align}
+                    This translates to the nodal incidence matrix,
+                    \begin{align}
+                        \begin{bmatrix*}[r]
+                            1 & -1 & 1 & 0 & 0  & 0  \\
+                            0 & 1  & 0 & 1 & 1  & 0  \\
+                            0 & 0  & 1 & 0 & -1 & -1
+                        \end{bmatrix*}
+                    \end{align}
+              \item The start and end points of each branch are,
+                    \begin{align}
+                        1 :\  & B \rightarrow A & 2 :\  & A \rightarrow B &
+                        3 :\  & C \rightarrow X & 4 :\  & X \rightarrow A   \\
+                        5 :\  & C \rightarrow A
+                    \end{align}
+                    This translates to the nodal incidence matrix,
+                    \begin{align}
+                        \begin{bmatrix*}[r]
+                            -1 & 1  & 0 & -1 & -1 \\
+                            1  & -1 & 0 & 0  & 0  \\
+                            0  & 0  & 1 & 0  & 1
+                        \end{bmatrix*}
+                    \end{align}
+                    The start and end points of each branch are,
+                    \begin{align}
+                        1 :\  & A \rightarrow B & 2 :\  & B \rightarrow C &
+                        3 :\  & C \rightarrow X & 4 :\  & D \rightarrow X   \\
+                        5 :\  & D \rightarrow A & 6 :\  & A \rightarrow C &
+                        7 :\  & C \rightarrow A &
+                    \end{align}
+                    This translates to the nodal incidence matrix,
+                    \begin{align}
+                        \begin{bmatrix*}[r]
+                            1  & 0  & 0 & 0 & -1 & 1  & -1 \\
+                            -1 & 1  & 0 & 0 & 0  & 0  & 0  \\
+                            0  & -1 & 1 & 0 & 0  & -1 & 1  \\
+                            0  & 0  & 0 & 1 & 1  & 0  & 0
+                        \end{bmatrix*}
+                    \end{align}
+
+              \item Converting the given nodal incidence matrices into graphs,
+                    \begin{figure}[H]
+                        \centering
+                        \tikzset{>={Triangle[scale=1.25]}}
+                        \begin{tikzpicture}
+                            \node[TreeNode] (a) at   (0:3) {$\vec{a}$};
+                            \node[TreeNode] (b) at  (90:3) {$\vec{b}$}
+                            edge ["\textcolor{y_h}{1}", <-] (a);
+                            \node[TreeNode] (c) at (180:3) {$\vec{c}$}
+                            edge ["\textcolor{y_h}{2}", <-] (b);
+                            \node[TreeNode] (x) at (270:3) {$\vec{x}$}
+                            edge ["\textcolor{y_h}{3}", <-] (a)
+                            edge ["\textcolor{y_h}{4}", <-] (c);
+                        \end{tikzpicture}
+                    \end{figure}
+                    Converting the given nodal incidence matrices into graphs,
+                    \begin{figure}[H]
+                        \centering
+                        \tikzset{>={Triangle[scale=1.25]}}
+                        \begin{tikzpicture}
+                            \node[TreeNode] (a) at   (0:3) {$\vec{a}$};
+                            \node[TreeNode] (b) at  (90:3) {$\vec{b}$}
+                            edge [bend left, "\textcolor{y_h}{1}", <-] (a)
+                            edge [bend right, "\textcolor{y_h}{2}", ->] (a);
+                            \node[TreeNode] (c) at (180:3) {$\vec{c}$}
+                            edge [bend left, "\textcolor{y_h}{3}", ->] (b)
+                            edge [bend right, "\textcolor{y_h}{4}", <-] (b);
+                            \node[TreeNode] (x) at (270:3) {$\vec{x}$}
+                            edge ["\textcolor{y_h}{5}", <-] (a);
+                        \end{tikzpicture}
+                    \end{figure}
+                    Converting the given nodal incidence matrices into graphs,
+                    \begin{figure}[H]
+                        \centering
+                        \tikzset{>={Triangle[scale=1.25]}}
+                        \begin{tikzpicture}
+                            \node[TreeNode] (a) at   (0:3) {$\vec{a}$};
+                            \node[TreeNode] (b) at  (90:3) {$\vec{b}$}
+                            edge ["\textcolor{y_h}{1}", <-] (a);
+                            \node[TreeNode] (c) at (270:3) {$\vec{c}$}
+                            edge ["\textcolor{y_h}{2}", <-] (b)
+                            edge ["\textcolor{y_h}{3}", <-] (a);
+                            \node[TreeNode] (x) at (180:3) {$\vec{x}$}
+                            edge ["\textcolor{y_h}{4}", <-] (b)
+                            edge ["\textcolor{y_h}{5}", <-] (c);
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Mesh incidence matrix, with all 4 meshes counter-clockwise.
+                    \begin{align}
+                        \begin{bmatrix*}[r]
+                            1 & 1  & 0 & -1 & 0  & 0 \\
+                            0 & 0  & 0 & 1  & -1 & 1 \\
+                            0 & -1 & 1 & 0  & 1  & 0 \\
+                            1 & 0  & 1 & 0  & 0  & 1
+                        \end{bmatrix*}
+                    \end{align}
+          \end{enumerate}
+\end{enumerate}

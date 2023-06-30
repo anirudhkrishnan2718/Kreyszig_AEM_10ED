@@ -1,0 +1,1400 @@
+\section{Linear ODEs, Bernoulli equation, Population Dynamics}
+
+\begin{enumerate}
+    \item To prove the two relations,
+
+          \begin{align}
+              \exp(-\ln x)      & = x^{-\ln e} = x^{-1} = \frac{1}{x}            \\
+              \exp(-\ln \sec x) & = \sec x ^{-\ln e} = \sec x ^{-1}   & = \cos x
+          \end{align}
+
+
+    \item Suppose $ c \neq 0 $,
+
+          \begin{align}
+              h & = \int\ p(x)\ \dl x + c                             \\
+              y & = e^{-c}\ e^{-h}\ \int\ e^{c}\ e^{h}r(x)\ \dl x + b \\
+              y & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + b
+          \end{align}
+
+          It is evident that the choice of $ c $ did not affect the final expression.
+          So, the easy way out is to set $ c = 0 $
+
+    \item Solving ODE and graphing,
+
+          \begin{align}
+              y'  - y & = 5.2                                                                          \\
+              p(x)    & = -1                                                 & r(x) & = 5.2            \\
+              h       & = \int\ p(x)\ \dl x                                  &      & = \int -1\ \dl x \\
+                      & = -x                                                                           \\
+              y       & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                           \\
+                      & = e^{x} \left[ \int\ e^{-x} (5.2)\ \dl x + c \right]                           \\
+              y       & = -5.2 + ce^{x}                                      & c    & = 5.2
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -5:10,
+                          restrict y to domain = -100:100]
+                      {-5.2 + 5.2 * e^(x)};
+                      \addplot[GraphSmooth, domain = -5:10,
+                          restrict y to domain = -100:100, dotted, red]
+                      {e^(x)};
+                      \node[GraphNode, label={0:{(0, 0)}}] at (axis cs:0, 0) {};
+                      \addlegendentry{$ y = 5.2 (e^{x} - 1)$};
+                      \addlegendentry{$y_{\text{transient}} = 5.2\ e^{x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing,
+
+          \begin{align}
+              y'  - 2y                   & = -4x                                                                            \\
+              p(x)                       & = -2                                                   & r(x) & = -4x            \\
+              h                          & = \int\ p(x)\ \dl x                                    &      & = \int -2\ \dl x \\
+                                         & = -2x                                                                            \\
+              y                          & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                             \\
+                                         & = e^{2x} \left[ \int\ e^{-2x} (-4x)\ \dl x + c \right]                           \\
+              \int\ e^{-2x} (-4x)\ \dl x & = 2x e^{-2x} - \int\ 2 e^{-2x}\ \dl x                                            \\
+                                         & = e^{-2x} (2x+1)                                                                 \\
+              y                          & = (2x+1) +  ce^{2x}                                    & c    & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -2:10,
+                          restrict y to domain = -2:10]
+                      {2*x + 1 + e^(2*x)};
+                      \addplot[GraphSmooth, domain = -2:10,
+                          restrict y to domain = -2:10, dotted, red]
+                      {e^(2*x)};
+                      \node[GraphNode, label={135:{(0, 2)}}] at (axis cs:0, 2) {};
+                      \addlegendentry{$ y = 2x + 1 + e^{2x}$};
+                      \addlegendentry{$y_{\text{transient}} = e^{2x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing,
+
+          \begin{align}
+              y'  + ky                    & = e^{-kx}                                                                           \\
+              p(x)                        & = k                                                      & r(x)   & = e^{-kx}       \\
+              h                           & = \int\ p(x)\ \dl x                                      &        & = \int k\ \dl x \\
+                                          & = kx                                                                                \\
+              y                           & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                \\
+                                          & = e^{-kx} \left[ \int\ e^{kx} e^{-kx}\ \dl x + c \right]                            \\
+              \int\ e^{kx} e^{-kx}\ \dl x & = x                                                                                 \\
+                                          & = e^{-kx} (x+c)                                                                     \\
+              y                           & = xe^{-kx} +  ce^{-kx}                                   & c  = k & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -4:10,
+                          restrict y to domain = -2:6]
+                      {e^(-x) * (x + 1)};
+                      \addplot[GraphSmooth, domain = -4:10,
+                          restrict y to domain = -2:6, dotted, red]
+                      {e^(-x)};
+                      \node[GraphNode, label={45:{(0, 1)}}] at (axis cs:0, 1) {};
+                      \addlegendentry{$ y = xe^{-x} + e^{-x}$};
+                      \addlegendentry{$y_{\text{transient}} = e^{-x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing, using the IC $ y(\pi/4) = 3 $
+
+          \begin{align}
+              y'  + 2y                     & = 4 \cos 2x                                                                                 \\
+              p(x)                         & = 2                                                         & r(x) & = 4 \cos 2x            \\
+              h                            & = \int\ p(x)\ \dl x                                         &      & = \int 2\ \dl x        \\
+                                           & = 2x                                                                                        \\
+              y                            & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                        \\
+                                           & = e^{-2x} \left[ \int\ e^{2x}\ 4 \cos 2x\ \dl x + c \right]                                 \\
+              4\int\ e^{2x} \cos 2x\ \dl x & = \frac{4e^{2x}}{2^{2} + 2^{2}}\ (2\cos 2x + 2 \sin 2x)                                     \\
+                                           & = e^{2x}(\cos 2x + \sin 2x)                                                                 \\                                                                 \\
+              y                            & = \cos 2x + \sin 2x +  ce^{-2x}                             & c    & = \frac{2}{e^{-\pi/2}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          PiStyleX,
+                          xtick distance = 0.25*\PI,
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -0.5:12,
+                          restrict y to domain = -10:20]
+                      {cos(2*x) + sin(2*x) + (2*e^(pi/2)) * e^(-2*x)};
+                      \addplot[GraphSmooth, domain = -0.5:12,
+                          restrict y to domain = -10:20, dotted, red]
+                      {(2*e^(pi/2)) * e^(-2*x)};
+                      \node[GraphNode, label={0:{($ \pi/4 $, 3)}}] at (axis cs:pi/4, 3) {};
+                      \addlegendentry{$ y = \cos 2x + \sin 2x +  2e^{\pi/2}\ e^{-2x}$};
+                      \addlegendentry{$y_{\text{transient}} = 2e^{\pi/2}\ e^{-2x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing, using the IC $ y(\pi/4) = 3 $
+
+          \begin{align}
+              xy'  - 2y & = x^{3}e^{x}                                                                                     \\
+              p(x)      & = \frac{-2}{x}                                               & r(x) & = x^{2}e^{x}               \\
+              h         & = \int\ p(x)\ \dl x                                          &      & = \int \frac{-2}{x}\ \dl x \\
+                        & = -2\ln (x)                                                                                      \\
+              y         & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                             \\
+                        & = x^{2} \left[ \int\ x^{-2}\ (x^{2}e^{x})\ \dl x + c \right]                                     \\
+              y         & = x^{2}e^{x} +  cx^{2}                                       & c    & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -2:2,
+                          %   restrict y to domain = -10:100
+                      ]
+                      {x^2 * (1  + e^(x))};
+                      \addplot[GraphSmooth, domain = -2:2,
+                          %   restrict y to domain = -10:100,
+                          dotted, red]
+                      {x^2};
+                      \node[GraphNode, label={90:{(0, 0)}}] at (axis cs:0, 0) {};
+                      \addlegendentry{$ y = x^{2}e^{x} + x^{2} $};
+                      \addlegendentry{$y_{\text{transient}} = x^{2} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing, using the IC $ y(0) = 0 $
+
+          \begin{align}
+              y'  + y\tan x & = e^{-0.01x}\cos x                                                                                              \\
+              p(x)          & = \tan x                                                                         & r(x) & = e^{-0.01x}\cos x    \\
+              h             & = \int\ p(x)\ \dl x                                                              &      & = \int\ \tan x\ \dl x \\
+                            & = \ln |\sec x|                                                                                                  \\
+              y             & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                                            \\
+                            & = \cos x \left[ \int\ \sec x\ \left( e^{-0.01x}\cos x \right)\ \dl x + c \right]                                \\
+              y             & = -100\ \cos x\ e^{-0.01x} + c\ \cos x                                           & c    & = 100                 \\
+              y             & = -100\ \cos x\ \left( e^{-0.01x}  - 1 \right)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   legend pos = outer north east,
+                          enlargelimits = false,
+                          grid = both,
+                          width = 16cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, samples = 2000,
+                          domain = -10:400,
+                          %   restrict y to domain = -10:100
+                      ]
+                      {-100*cos(x)*(e^(-0.01*x) - 1)};
+                      \addplot[GraphSmooth, samples = 2000,
+                          domain = -10:400,
+                          %   restrict y to domain = -10:100,
+                          dotted, red]
+                      {100*cos(x)};
+                      \node[GraphNode, label={90:{(0, 0)}}] at (axis cs:0, 0) {};
+                      %   \addlegendentry{$ y = -100\ \cos x\ \left( e^{-0.01x}  - 1 \right) $};
+                      %   \addlegendentry{$y_{\text{transient}} = 100\ \cos x $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing, using the IC $ y(0) = -2.5 $
+
+          \begin{align}
+              y'  + y\sin x & = e^{\cos x}                                                                                         \\
+              p(x)          & = \sin x                                                               & r(x) & = e^{\cos x}         \\
+              h             & = \int\ p(x)\ \dl x                                                    &      & = \int \sin x\ \dl x \\
+                            & = -\cos x                                                                                            \\
+              y             & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                                 \\
+                            & = e^{\cos x} \left[ \int\ e^{-\cos x}\ (e^{\cos x})\ \dl x + c \right]                               \\
+              y             & = e^{\cos x} (x + c)                                                   & c    & = \frac{-2.5}{e}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -2*pi:8*pi,
+                          %   restrict y to domain = -10:100
+                      ]
+                      {(x - 2.5/e) * e^(cos(x))};
+                      \addplot[GraphSmooth, domain = -2*pi:8*pi,
+                          %   restrict y to domain = -10:100,
+                          dotted, red]
+                      {(-2.5/e) * e^(cos(x))};
+                      \node[GraphNode, label={270:{(0, -2.5)}}] at (axis cs:0, -2.5) {};
+                      \addlegendentry{$ y = e^{\cos x} \left( x - \frac{2.5}{e} \right) $};
+                      \addlegendentry{$y_{\text{transient}} = - \frac{2.5}{e}\ e^{\cos x} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing, using the IC $ y(\pi/4) = 4/3 $
+
+          \begin{align}
+              y'\cos x                                & =  (1 - 3y)\sec x                                                                                                               \\
+              y' + 3\sec^{2} x\ y                     & = \sec^{2}x                                                                                                                     \\
+              p(x)                                    & = 3\sec^{2} x                                                             & r(x)                    & = \sec^{2} x              \\
+              h                                       & = \int\ p(x)\ \dl x                                                       &                         & = 3\int \sec^{2} x\ \dl x \\
+                                                      & = 3 \tan x                                                                                                                      \\
+              y                                       & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                                                            \\
+                                                      & = e^{-3\tan x} \left[ \int\ e^{3\tan x}\ (\sec ^{2} x)\ \dl x + c \right]                                                       \\
+              \int\ e^{3\tan x}\ (\sec ^{2} x)\ \dl x & = \int e^{3u}\ du                                                                                                               \\
+                                                      & =\frac{e^{3u}}{3}                                                         & = \frac{e^{3\tan x}}{3}                             \\
+              y                                       & = \frac{1}{3} + ce^{-3\tan x}                                             & c                       & = e^{3}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          PiStyleX,
+                          legend pos = north east,
+                          grid = both,
+                          width = 14cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[JumpPlot, domain = -2*pi:2*pi,
+                          restrict y to domain = -100:100
+                      ]
+                      {1/3 + e^(3 * (1 - tan(x)))};
+                      \addplot[JumpPlot, domain = -2*pi:2*pi,
+                          restrict y to domain = -100:100,
+                          dotted, red]
+                      {e^(3 * (1 - tan(x)))};
+                      \node[GraphNode, label={45:{($ \pi/4 $, 4/3)}}] at (axis cs:pi/4, 4/3) {};
+                      \addlegendimage{blue,mark size=2}
+                      \addlegendimage{red,mark size=2}
+                      \addlegendentry{$ y = \frac{1}{3} + e^{3 -3\tan x} $};
+                      \addlegendentry{$y_{\text{transient}} = e^{3 -3\tan x} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing, using the IC $ y(0) = -2.5 $
+
+          \begin{align}
+              y'             & = (y - 2)\cot x                                                                            \\
+              y' - \cot x\ y & = -2\cot x                                                                                 \\
+              p(x)           & = -\cot x                                                   & r(x) & = -2\cot x            \\
+              h              & = \int\ p(x)\ \dl x                                         &      & = -\int \cot x\ \dl x \\
+                             & = -\ln |\sin x|                                                                            \\
+              y              & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                       \\
+                             & = \sin x \left[ \int\ \csc x\ (-2\cot x)\ \dl x + c \right]                                \\
+              y              & = 2 + c\sin x                                               & c    & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          PiStyleX,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = 0:4*pi,
+                          %   restrict y to domain = -10:100
+                      ]
+                      {2 + sin(x)};
+                      \addplot[GraphSmooth, domain = 0:4*pi,
+                          %   restrict y to domain = -10:100,
+                          dotted, red]
+                      {sin(x)};
+                      \node[GraphNode, label={0:{($ \pi/2 $, 3)}}] at (axis cs:pi/2, 3) {};
+                      \addlegendentry{$ y = 2 + \sin x $};
+                      \addlegendentry{$y_{\text{transient}} = \sin x $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing, using the IC $ y(1) = 2 $
+
+          \begin{align}
+              xy'  + 4y & = 8x^{4}                                                                                    \\
+              p(x)      & = 4/x                                                    & r(x) & = 8x^{3}                  \\
+              h         & = \int\ p(x)\ \dl x                                      &      & = \int \frac{4}{x}\ \dl x \\
+                        & = 4\ln x                                                                                    \\
+              y         & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                        \\
+                        & = x^{-4} \left[ \int\ x^{4}\ (8x^{3})\ \dl x + c \right]                                    \\
+              y         & = cx^{-4} + x^{4}                                        & c    & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[JumpPlot, domain = 0:4, samples = 200,
+                          restrict y to domain = -1000:1000
+                      ]
+                      {x^4 + x^(-4)};
+                      \addplot[JumpPlot, domain = 0:4, samples = 200,
+                          restrict y to domain = -1000:1000,
+                          dotted, red]
+                      {x^(-4)};
+                      \node[GraphNode, label={90:{(1, 2)}}] at (axis cs:1, 2) {};
+                      \addlegendimage{blue,mark size=2}
+                      \addlegendimage{red,mark size=2}
+                      \addlegendentry{$ y = x^{-4} + x^{4} $};
+                      \addlegendentry{$y_{\text{transient}} = x^{0-4} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE by separation of variables and graphing
+
+          \begin{align}
+              y'                                                & = (6y - 15)\tanh (1.5x)          \\
+              \int\ \frac{1}{6y - 15}\ \dl y                    & =  \int\ \tanh(1.5x)\ \dl x      \\
+              \frac{1}{6}\ \ln \left( \frac{1}{6y - 15} \right) & = \frac{2}{3}\ \ln[\cosh (1.5x)] \\
+              6y - 15                                           & = b[\cosh (1.5x)]^{-4}           \\
+              y                                                 & = 2.5 + c\ [\cosh(1.5x)]^{4}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          % ymode = log,
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = 0:2,
+                          %   restrict y to domain = -10:100
+                      ]
+                      {2.5 + (cosh(1.5*x))^(4)};
+                      \node[GraphNode, label={90:{(0, 3.5)}}] at (axis cs:0, 3.5) {};
+                      \addlegendentry{$ y = 2.5 + [\cosh(1.5x)]^{4} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item
+          \begin{enumerate}
+              \item Solving ODE
+
+                    \begin{align}
+                        y' - \frac{y}{x} & = \frac{-1}{x}\ \cos(1/x)                                                                                           \\
+                        p(x)             & = -1/x                                                          & r(x) & = \frac{-1}{x}\ \cos(1/x)                  \\
+                        h                & = \int\ p(x)\ \dl x                                             &      & = \int \frac{-1}{x}\ \dl x                 \\
+                                         & = -\ln x                                                                                                            \\
+                        y                & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                                                \\
+                                         & = x \left[ \int\ \frac{-1}{x^{2}}\ \cos(1/x)\ \dl x + c \right]                                                     \\
+                        I                & =\int\ \frac{-1}{x^{2}}\ \cos(1/x)\ \dl x                                                                           \\
+                                         & =\int\ \cos(u)\ du                                              & u    & = \frac{1}{x}\quad du = \frac{-1}{x^{2}}dx \\
+                                         & = \sin u = \sin(1/x)                                                                                                \\
+                        y                & = cx + x\sin(1/x)
+                    \end{align}
+
+                    For $ c = 0 $, an IC is $ (2/\pi, 2/\pi) $
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    legend pos = north west,
+                                    grid = both,
+                                    width = 12cm,
+                                    height = 8cm,
+                                    Ani,
+                                    view     = {0}{90}, % for a view 'from above'
+                                ]
+                                \addplot[GraphSmooth, domain = -3:3, samples = 200,
+                                    %   restrict y to domain = -10:100
+                                ]
+                                {x*sin(1/x)};
+                                \node[GraphNode, label={-45:{($ 2/\pi $, $ 2/\pi $)}}] at (axis cs:2/pi, 2/pi) {};
+                                \addlegendentry{$ y = x\ \sin(1/x) $};
+                            \end{axis}
+                            ymode = log,
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = zoomed in,
+                                    legend pos = north west,
+                                    grid = both,
+                                    width = 12cm,
+                                    height = 8cm,
+                                    Ani,
+                                    view     = {0}{90}, % for a view 'from above'
+                                ]
+                                \addplot[GraphSmooth, domain = 0.001:0.05, samples = 1000,
+                                    %   restrict y to domain = -10:100
+                                ]
+                                {x*sin(1/x)};
+                                \addplot[GraphSmooth, domain = -0.05:-0.001, samples = 1000,
+                                    %   restrict y to domain = -10:100
+                                ]
+                                {x*sin(1/x)};
+                                \addlegendentry{$ y = x\ \sin(1/x) $};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+              \item Solving ODE for general $ n $
+
+                    \begin{align}
+                        y' - \frac{ny}{x} & = -x^{n-2}\ \cos(1/x)                                                                                          \\
+                        p(x)              & = -n/x                                                     & r(x) & = -x^{n-2}\ \cos(1/x)                      \\
+                        h                 & = \int\ p(x)\ \dl x                                        &      & = \int \frac{-n}{x}\ \dl x                 \\
+                                          & = -n\ln x                                                                                                      \\
+                        y                 & = e^{-h}\ \int\ e^{h}r(x)\ \dl x + c                                                                           \\
+                                          & = x^{n} \left[ \int\ -x^{-2}\ \cos(1/x)\ \dl x + c \right]                                                     \\
+                        I                 & =\int\ \frac{-1}{x^{2}}\ \cos(1/x)\ \dl x                                                                      \\
+                                          & =\int\ \cos(u)\ du                                         & u    & = \frac{1}{x}\quad du = \frac{-1}{x^{2}}dx \\
+                                          & = \sin u = \sin(1/x)                                                                                           \\
+                        y                 & = cx^{n} + x^{n}\sin(1/x)
+                    \end{align}
+
+                    The graph is untractable close to $ x = 0 $. For large positive powers, the expression
+                    is dominated by the polynomial term. TBC.
+          \end{enumerate}
+
+    \item $ y_{1} $ and $ y_{2} $ are solutions of the homogenous ODE, then
+
+          \begin{align}
+              \text{Let} \quad y_{1}' + py_{1}   & = 0 & y_{2}' + py_{2} & = 0            \\
+              y_{1}' + y_{2}' + (y_{1} + y_{2})p & = 0 &                 & \text{summing} \\
+              y_{3}' + py_{3}                    & = 0 & y_{1} + y_{2}   & = y_{3}
+          \end{align}
+
+          $ y_{1} + y_{2} $ is also a solution to the homogenous ODE. This does not hold true
+          for the nonhomogenous ODE as the RHS is $ 2r $ instead of $ r $.
+
+          \begin{align}
+              \text{Let} \quad y_{1}' + py_{1}   & = r    & y_{2}' + py_{2} & = r            \\
+              y_{1}' + y_{2}' + (y_{1} + y_{2})p & = 2r   &                 & \text{summing} \\
+              y_{3}' + py_{3}                    & \neq r & y_{1} + y_{2}   & = y_{3}
+          \end{align}
+
+
+          For a scalar multiple $ a $, $ y_{4} $ is also a solution to the homogenous ODE.
+          This does not hold for the inhomogenous ODE.
+
+          \begin{align}
+              \text{Let} \quad y_{1}' + py_{1} & = 0    & ay_{1}' + apy_{1} & = 0      \\
+              y_{4}' + py_{4}                  & = 0    & y_{4}             & = ay_{1} \\
+              \text{Let} \quad y_{1}' + py_{1} & = r    & ay_{1}' + apy_{1} & = ar     \\
+              y_{4}' + py_{4}                  & \neq r & y_{4}             & = ay_{1}
+          \end{align}
+
+
+    \item The trivial solution $ y_{t}(x) \equiv 0\ \forall\ x$ is a solution of every homogenous
+          ODE, but not every nonhomogenous ODE.
+
+          \begin{align}
+              \text{Let} \quad y_{1}' + py_{1} & = 0    \\
+              y_{t}' + py_{t}                  & = 0    \\
+              0                                & = 0    \\
+              \text{Let} \quad y_{1}' + py_{1} & = r    \\
+              y_{t}' + py_{t}                  & = r    \\
+              0                                & \neq r
+          \end{align}
+
+
+    \item Let $ y_{n} $ and $ y_{h} $ solve the nonhomogenous and homogenous ODE
+          respectively.
+
+          \begin{align}
+              \text{Let} \quad y_{h}' + py_{h}   & = 0     & y_{n}' + py_{n} & = r     \\
+              y_{h}' + y_{n}' + p(y_{h} + y_{n}) & = 0 + r                             \\
+              y_{c}' + py_{c}                    & = r     & y_{h} + y_{n}   & = y_{c}
+          \end{align}
+
+          Their sum is also a solution to the nonhomogenous ODE.
+
+    \item Let $ y_{1} $ and $ y_{2} $ solve the nonhomogenous ODE,
+
+          \begin{align}
+              \text{Let} \quad y_{1}' + py_{1}   & = r & y_{2}' + py_{2} & = r               \\
+              y_{1}' - y_{2}' + (y_{1} - y_{2})p & = 0 &                 & \text{difference} \\
+              y_{3}' + py_{3}                    & = 0 & y_{1} - y_{2}   & = y_{3}
+          \end{align}
+
+          Their difference solves the homogenous ODE.
+
+    \item Let $ y_{1} $ solve the nonhomogenous ODE and $ y_{2} = cy_{1} $,
+
+          \begin{align}
+              \text{Let} \quad y_{1}' + py_{1} & = r  & cy_{1}' + cpy_{1} & = cr \\
+              y_{2}' + py_{2}                  & = cr
+          \end{align}
+
+          $ cy_{1} $ solves a different nonhomogenous ODE with RHS being $ cr $.
+
+    \item Both ODEs have the same $ p $ and differ in their RHS.
+
+          \begin{align}
+              \text{Let} \quad y_{1}' + py_{1}   & = r_{1}         & y_{2}' + py_{2} & = r_{2}        \\
+              y_{1}' + y_{2}' + (y_{1} + y_{2})p & = r_{1} + r_{2} &                 & \text{summing} \\
+              y_{3}' + py_{3}                    & = r_{3}         & r_{1} + r_{2}   & = r_{3}
+          \end{align}
+
+          $ y_{1} + y_{2} $ solves the ODE with the same $ p $ and RHS $ r_{1} + r_{2} $.
+
+    \item Method of variation,
+
+          \begin{align}
+              y                                               & = c\ \exp\left( -\int\ p(x)\ \dl x \right)= cy_{*} \\
+              y_{*} \quad \text{solves the ODE} \quad y' + py & = 0                                                \\
+              y_{*}' + py_{*}                                 & = 0
+          \end{align}
+
+          $ uy_{*} $ is a solution of the nonhomogenous ODE $ y' +py = r $,
+
+          \begin{align}
+              y                             & = u(x)\ \exp\left( -\int\ p(x)\ \dl x \right) &   & = u(x)\ e^{-h}                                       \\
+              u'y_{*} + uy_{*}' + p(uy_{*}) & = r                                                                                                      \\
+              u'y_{*} + u (y_{*}' + py_{*}) & = r                                                                                                      \\
+              u'                            & = \frac{r}{y_{*}}                             & h & = \int\ p(x)\ \dl x                                  \\
+              u'                            & = re^{h}                                                                                                 \\
+              u                             & = \int\ e^{h}\ r(x)\ \dl x + c                                                                           \\
+              y                             & = u(x)\ e^{-h}                                &   & = e^{-h} \left[ \int\ e^{h}\ r(x)\ \dl x + c \right]
+          \end{align}
+
+          which matches the earlier result.
+
+    \item Solving ODE by separation of variables and graphing, given the IC $ y(0) = -1/3 $
+
+          \begin{align}
+              y' + y                          & = y^{2}                          \\
+              \int\ \frac{1}{y(y - 1)}\ \dl y & =  \int\ \dl x                   \\
+              \ln y - \ln (y-1)               & = x + b                          \\
+              \frac{y}{y-1}                   & = ce^{x}                         \\
+              y                               & = \frac{1}{1 - ce^{-x}} & c & =4
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          width = 14cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -4:6,
+                          restrict y to domain = -100:100
+                      ]
+                      {1/(1 - 4*e^(-x))};
+                      \node[GraphNode, label={90:{(0, -1/3)}}] at (axis cs:0, -1/3) {};
+                      \addlegendentry{$ y = \frac{1}{1 - 4e^{-x}} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE by separation of variables and graphing, given the IC $ y(0) = 3 $
+
+          \begin{align}
+              y' + xy                            & = xy^{-1}                           \\
+              \int\ \frac{y}{(1 - y^{2})}\ \dl y & =  \int\ x\ \dl x                   \\
+              \ln (1 - y^{2})                    & = -x^{2} + b                        \\
+              (1 - y^{2})                        & = ce^{-x^{2}}                       \\
+              y                                  & = \sqrt{1 - ce^{-x^{2}}} & c & = -8
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          width = 14cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -5:5,
+                          restrict y to domain = -100:100
+                      ]
+                      {(1 + 8*e^(-x*x))^(1/2)};
+                      \node[GraphNode, label={0:{(0, 3)}}] at (axis cs:0, 3) {};
+                      \addlegendentry{$ y = \sqrt{1 +8e^{-x^{2}}} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE and graphing,
+
+          \begin{align}
+              y' + y       & = -xy^{-1}                                                                         \\
+              y' +py       & = gy^{a}                                                  & a    & = -1            \\
+              p(x)         & = 1                                                       & g(x) & = -x            \\
+              u' + (1-a)pu & = (1-a)g                                                  & u    & = y^{(1-a)}     \\
+              u' + 2pu     & = 2g                                                                               \\
+              h            & = \int\ 2p(x)\ \dl x                                      &      & = \int 2\ \dl x \\
+                           & = 2x                                                                               \\
+              y            & = e^{-h}\ \int\ e^{h}\{2g(x)\}\ \dl x + c                                          \\
+                           & = e^{-2x} \left[ \int\ e^{2x}\ \{-2x\}\ \dl x + c \right]                          \\
+              I            & =\int\ e^{2x}\ \{2x\}\ \dl x                                                       \\
+                           & = xe^{2x} - \int\ e^{2x}\ \dl x                                                    \\
+                           & = \left( x - \frac{1}{2} \right)e^{2x}                                             \\
+                           & = \sin u = \sin(1/x)                                                               \\
+              y            & = \frac{1}{2} - x + ce^{-2x}                              & c    & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          width = 14cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -1:5,
+                          %   restrict y to domain = -100:100
+                      ]
+                      {0.5 - x + e^(-2*x)};
+                      \addplot[GraphSmooth, domain = -1:5,
+                          %   restrict y to domain = -10:100,
+                          dotted, red]
+                      {e^(-2*x)};
+                      \node[GraphNode, label={45:{(0, 1.5)}}] at (axis cs:0, 1.5) {};
+                      \addlegendentry{$ y = 1/2 - x + e^{-2x} $};
+                      \addlegendentry{$ y_{\text{transient}} = e^{-2x} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE by separation and graphing,
+
+          \begin{align}
+              y'                                     & = 3.2y - 10y^{2}                                                                 \\
+              \int\ \frac{1}{y(3.2 - 10y)}\ \dl y    & =  \int\ \dl x                                                                   \\
+              3.2A - 10Ay + By                       & = 1                                   & A & = \frac{1}{3.2},\ B = \frac{10}{3.2} \\
+              \ln \left( \frac{y}{3.2 - 10y} \right) & = 3.2x + b                                                                       \\
+              \frac{y}{3.2 - 10y}                    & = ce^{3.2x}                                                                      \\
+              y                                      & = \frac{3.2e^{3.2x}}{1 + 10ce^{3.2x}} & c & = 0.32
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north west,
+                          grid = both,
+                          width = 14cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -3:3,
+                          %   restrict y to domain = -100:100
+                      ]
+                      {1/(1 + (5/16)*e^(-3.2*x))};
+                      \node[GraphNode, label={-45:{(0, 32/42)}}] at (axis cs:0, 32/42) {};
+                      \addlegendentry{$ y = \left[ 1 + (5/16)e^{-3.2x} \right]^{-1} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE by separation and graphing,
+
+          \begin{align}
+              y'                  & = \frac{\tan y}{x-1}                     \\
+              \int\ \cot y\ \dl y & =  \int\ \frac{1}{x-1}\ \dl x            \\
+              \ln |\sin y|        & = \ln (x-1) + b                          \\
+              y                   & = \arcsin [c \cdot (x-1)]     & c & = -1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          PiStyleY,
+                          axis equal,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = 0:2,
+                          %   restrict y to domain = -100:100
+                      ]
+                      {asin(1-x)};
+                      \node[GraphNode, label={-0:{(0, $ \pi/2 $)}}] at (axis cs:0, pi/2) {};
+                      \addlegendentry{$ y = \arcsin(1-x) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE by separation and graphing, setting $ c = 1 $,
+
+          \begin{align}
+              y'            & = \frac{1}{6e^{y} - 2x}                                                                    \\
+              \frac{dx}{dy} & = 6e^{y} - 2x                                                                              \\
+              y' + 2y       & = 6e^{x}                                                     & x    & \rightleftharpoons y \\
+              p(x)          & = 2                                                          & r(x) & = 6e^{x}             \\
+              h             & = \int\ p(x)\ \dl x                                          &      & = \int 2\ \dl x      \\
+                            & = 2x                                                                                       \\
+              y             & = e^{-h}\ \int\ e^{h}\ r(x)\ \dl x + c                                                     \\
+                            & = e^{-2x} \left[ \int\ e^{2x}\ \{6e^{x}\}\ \dl x + c \right]                               \\
+              y             & =  2e^{x} + ce^{-2x}                                                                       \\
+              x             & = 2e^{y} + ce^{-2y}                                          & y    & \rightleftharpoons x
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xmode = log,
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -5:5, variable = \t,
+                          %   restrict y to domain = -100:100
+                      ]
+                      ({2*e^(t) + e^(-2*t)}, {t});
+                      \node[GraphNode, label={0:{(3, 0)}}] at (axis cs:3,0) {};
+                      \addlegendentry{$ x = 2e^{y} + e^{-2y} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -5:5, variable = \t,
+                          %   restrict y to domain = -100:100
+                      ]
+                      ({2*e^(t) + e^(-2*t)}, {t});
+                      \node[GraphNode, label={0:{(3, 0)}}] at (axis cs:3,0) {};
+                      \addlegendentry{$ x = 2e^{y} + e^{-2y} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving ODE by separation and graphing,
+
+          \begin{align}
+              2xyy' + (x-1)y^{2}    & = x^{2}e^{x}                                                                                           \\
+              y^{2}                 & = z                                                                   & 2yy' & = z'                    \\
+              z' + \frac{x-1}{x}\ z & = xe^{x}                                                                                               \\
+              p(x)                  & = 1 - 1/x                                                             & r(x) & = xe^{x}                \\
+              h                     & = \int\ p(x)\ \dl x                                                   &      & = \int (1 - 1/x)\ \dl x \\
+                                    & = x - \ln x                                                                                            \\
+              z                     & = e^{-h}\ \int\ e^{h}\ r(x)\ \dl x + c                                                                 \\
+                                    & = xe^{-x} \left[ \int\ \frac{e^{x}}{x}\ \{xe^{x}\}\ \dl x + c \right]                                  \\
+              z                     & =  cxe^{-x} + \frac{xe^{x}}{2}                                                                         \\
+              y                     & = \sqrt{\frac{xe^{x}}{2} \left( 1 + e^{-2x}\right)}                   & c    & =1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          %   axis equal,
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = 0:3,
+                          %   restrict y to domain = -100:100
+                      ]
+                      {(x*e^(x) * 0.5*(1 + e^(-2*x)))^(1/2)};
+                      \node[GraphNode, label={0:{(0, 0)}}] at (axis cs:0, 0) {};
+                      \addlegendentry{$ y = [(1/2)xe^{x} \left( 1 + e^{-2x}\right)]^{1/2} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Examples are in the exercises above.
+          \begin{enumerate}
+              \item Separable ODEs are of the form,
+
+                    \begin{align}
+                        \frac{dy}{dx}     & = \frac{g(x)}{f(y)} \\
+                        \int\ f(y)\ \dl y & = \int\ g(x)\ \dl x
+                    \end{align}
+
+              \item Exact ODEs are of the form,
+
+                    \begin{align}
+                        M(x, y)\ \dl x + N(x, y)\ \dl y & = 0            \\
+                        \diffp{M}{y}                    & = \diffp{N}{x}
+                    \end{align}
+
+                    They are useful when separation of variables is not possible.
+              \item Linear ODEs are of the form,
+
+                    \begin{align}
+                        y' + p(x)y & = r(x)                                 \\
+                        y          & = e^{-h}\ \int\ e^{h}\ r(x)\ \dl x + c \\
+                        h          & = \int\ p(x)\ \dl x
+                    \end{align}
+
+                    This form helps separate the transient response (term with $ c $) from
+                    the steady state response (term without $ c $).
+          \end{enumerate}
+
+    \item
+          \begin{enumerate}
+              \item Riccati's equation, (with $ p, g, h $ being functions of $ x $)
+
+                    \begin{align}
+                        y' + py                                                           & = gy^{2} + h                                                                \\
+                        Y' +pY                                                            & = gY^{2} + h                                  & Y & \ \text{solves the ODE} \\
+                        \left( Y + \frac{1}{u} \right)' + p\left( Y + \frac{1}{u} \right) & = g\left( Y + \frac{1}{u} \right)^{2} + h     & y & = Y + \frac{1}{u}       \\
+                        Y' + pY -\frac{u'}{u^{2}} + \frac{p}{u}                           & = gY^{2} + h + \frac{g}{u^{2}} +\frac{2Yg}{u}                               \\
+                        u' - pu                                                           & = -g - 2Ygu                                                                 \\
+                        u' + (2Yg - p)\ u                                                 & = -g
+                    \end{align}
+
+
+              \item $ Y = x $ is a solution of the ODE,
+
+                    \begin{align}
+                        y' - (2x^{3} + 1)y & = -x^{2}y^{2}-x^{4} -x +1                   \\
+                        y' + py            & = gy^{2} + h                                \\
+                        p(x)               & = -(2x^{3} + 1)           & g(x) & = -x^{2} \\
+                        h(x)               & = 1 - x - x^{4}
+                    \end{align}
+
+                    Checking if the given $ Y $ is a solution,
+
+                    \begin{align}
+                        1 - (2x^{3} + 1)x + (x^{4} + x -1) + x^{4} & = 0
+                    \end{align}
+
+                    Solving the Riccati equation,
+
+                    \begin{align}
+                        u' + (2Yg - p)\ u              & = -g                                                                                              \\
+                        u' + (-2x^{3} + 2x^{3} + 1)\ u & = x^{2}                                                                                           \\
+                        u' + u                         & = x^{2}                                                                                           \\
+                        u                              & = e^{-x}\ \left[ \int\ e^{x}\ x^{2}\ \dl x + c \right]                                            \\
+                        I                              & = \int\ e^{x}\ x^{2}\ \dl x                            &   & = x^{2}e^{x} - \int\ 2x e^{x}\ \dl x \\
+                                                       & = x^{2}e^{x} - 2xe^{x} + \int\ 2e^{x}\ \dl x                                                      \\
+                                                       & = (x^{2} - 2x + 2)e^{x}                                                                           \\
+                        u                              & = (x^{2} - 2x + 2) + ce^{-x}                           &   & = \frac{1}{y - x}                    \\
+                        y                              & = x + \frac{1}{(x^{2} - 2x + 2) + ce^{-x}}             & c & = 1
+                    \end{align}
+
+
+                    This graph passes through $ (0, 1/3) $.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    %   ymode = log,
+                                    %   axis equal,
+                                    legend pos = north west,
+                                    grid = both,
+                                    width = 12cm,
+                                    height = 8cm,
+                                    Ani,
+                                    view     = {0}{90}, % for a view 'from above'
+                                ]
+                                \addplot[GraphSmooth, domain = -1:4,
+                                    %   restrict y to domain = -100:100
+                                ]
+                                {x + (e^(-x) + (x^2 - 2*x + 2))^(-1)};
+                                \node[GraphNode, label={0:{(0, 1/3)}}] at (axis cs:0, 1/3) {};
+                                \addlegendentry{$ y = x + [(x^{2} - 2x + 2) + e^{-x}]^{-1} $};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+              \item Clairaut equation,
+
+                    \begin{align}
+                        y'^{2}- xy' + y       & = 0                                               \\
+                        2y'y'' -xy'' - y' +y' & = 0                  &   & \text{differentiating} \\
+                        y''\ (2y' - x)        & = 0                                               \\
+                        y''                   & = 0                  & y & = ax + b               \\
+                        y'                    & = x/2                & y & = x^{2}/4 + c          \\
+                        Y                     & = ax + b                                          \\
+                        Y'^{2}- xY' + Y       & =a^{2} - ax + ax + b &   & = 0                    \\
+                        -a^{2}                & = b                  & c & = 0
+                    \end{align}
+
+                    General solution is $ Y = ax - a^{2} $. A singular solution $ y = x^{2}/4 $ which
+                    cannot be obtained from the general solution also exists.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    %   ymode = log,
+                                    %   axis equal,
+                                    colormap/jet,
+                                    cycle list = {[of colormap]},
+                                    restrict y to domain = -20:40,
+                                    legend pos = south west,
+                                    grid = both,
+                                    width = 12cm,
+                                    height = 8cm,
+                                    Ani,
+                                    view     = {0}{90}, % for a view 'from above'
+                                ]
+                                \addplot[GraphSmooth, black, domain = -15:15]
+                                {0.25*x^2};
+                                \addlegendentry{Envelope $ y = x^{2}/4 $};
+                                \foreach [evaluate=\i as \n using (\i + 4)*100/(8)] \i in {-4,-3.75,...,4} {%
+                                        \edef\temp{%
+                                            \noexpand
+                                            \addplot[forget plot,
+                                                domain=-15:15,
+                                                color=red!\n!blue,
+                                            ]
+                                            {\i * (x - \i)};
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The general Clairaut equation is,
+
+                    \begin{align}
+                        y           & = xy' + g(y')              \\
+                        Y           & = cx +g(c)      & Y' & = c
+                        xY' + g(Y') & = xc + g(c) = Y
+                    \end{align}
+
+                    This straight line family $ Y = xc + g(c) $ is thus a solution to the ODE.
+
+                    \begin{align}
+                        g'(y') & = -x                   & g(y') & = \frac{-x^{2}}{2} \\
+                        y'     & = xy'' + y' +g'(y')y'' & 0     & = xy'' + g'(y')y'' \\
+                        -x     & = g'(y')
+                    \end{align}
+
+                    $g'(y') = -x$ is thus a solution to the ODE.
+          \end{enumerate}
+
+    \item Newton's law of cooling, with temperature $ y $ and time $ t $,
+
+          \begin{align}
+              y'              & = k(y - y_{a})                                               \\
+              \ln (y - y_{a}) & = kt + b            & y     & = y_{a} + ce^{kt}              \\
+              y(0)            & = 300               & c     & = 240                          \\
+              y(10)           & = 200               & k     & = \frac{1}{10} \ln (7/12)      \\
+              y(t^{*})        & = 61                & t^{*} & = 10\frac{\ln(240)}{\ln(12/7)} \\
+              t^{*}           & = \SI{101.68}{\min}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = Time ($ t $),
+                          ylabel = Temperature ($ y $),
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = 0:150,
+                          %   restrict y to domain = -100:100
+                      ]
+                      {60 + 240*e^(-0.054*x)};
+                      \node[GraphNode, label={45:{(101, 61)}}] at (axis cs:101, 61) {};
+                      \addlegendentry{$ y = y_{a} + ce^{-kt} $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Newton's law of cooling, with temperature $ y $ and time $ x $,
+
+          \begin{align}
+              y'                      & = k_{1}(y - y_{a}) + k_{2}(y - y_{\omega}) + P                                                                                    \\
+              y' - y\ (k_{1} + k_{2}) & = P - k_{1}y_{a} - k_{2}y_{\omega}                                                                                                \\
+                                      & = [ P - k_{2}y_{\omega} -k_{1}A ] + k_{1}C \cos(\lambda x)                                                                        \\
+              p(x)                    & = -m                                                                                                                              \\
+              r(x)                    & = a + b\cos(\lambda x)                                                                                                            \\
+              h                       & = \int\ p(x)\ \dl x                                                                                                               \\
+                                      & = \int -m\ \dl x                                                                                                                  \\
+                                      & = -mx                                                                                                                             \\
+              y                       & = e^{-h}\ \int\ e^{h}\ r(x)\ \dl x + c                                                                                            \\
+                                      & = e^{mx} \left[ \int\ e^{-mx}\ \left\{ a + b\cos (\lambda x)  \right\}\ \dl x + c \right]                                         \\
+              y                       & =  ce^{mx} -\frac{a}{m} + \left[ \frac{b}{m^{2}+\lambda^{2}} \right] \left( -m \cos (\lambda x) + \lambda \sin (\lambda x)\right) \\
+                                      & = ce^{(k_{1} + k_{2})x} - \frac{P - k_{1}y_{a} - k_{2}y_{\omega}}{k_{1} + k_{2}}                                                  \\
+                                      & + \frac{k_{1}C}{(k_{1} + k_{2})^{2} + \lambda^{2}}\ \left[ -(k_{1} + k_{2})\cos (\lambda x) + \lambda \sin (\lambda x) \right]    \\
+              y                       & = ce^{-\mu x} + \nu + \alpha \cos (\lambda x) + \beta \sin(\lambda x)
+          \end{align}
+
+          The solution contains a transient term (dependent on the IC), a constant term to vertically shift the
+          solution, and the sinusoidal terms with their own respective coefficients. The two sinusoidal terms,
+          share the same time period.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = Time ($ x $),
+                          ylabel = Temperature ($ y $),
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = -3:40,
+                          %   restrict y to domain = -100:100
+                      ]
+                      {1 + e^(-x) - cos(x) + sin(x)};
+                      \addplot[GraphSmooth, domain = -3:40, red, dotted,
+                          %   restrict y to domain = -100:100
+                      ]
+                      {e^(-x)};
+                      \addlegendentry{$ y = e^{-x} + 1 - \cos (\lambda x) + \sin(\lambda x) $};
+                      \addlegendentry{$ y_{\text{transient}} = e^{-x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Drug injection model, with drug quantity $ y $ and time $ x $,
+
+          \begin{align}
+              y'           & = A - ky                                     \\
+              \ln (A - ky) & = -kx + b                                    \\
+              y            & = \frac{A}{k} - ce^{-kx}                     \\
+              y(0)         & = 0                      & c & = \frac{A}{k} \\
+              A            & = 3                      & k & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = Time ($ t $),
+                          ylabel = Drug Quantity ($ y $),
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = 0:7,]
+                      {3 + 2*e^(-x)} node[pos = 0.75,above]{$ y_{0} = 5 $};
+                      \addplot[GraphSmooth, domain = 0:7, red]
+                      {3 - 3*e^(-x)} node[pos = 0.25, above left]{$ y_{0} = 0 $};
+                      \addlegendentry{$ y = 3 + 2e^{-x}$};
+                      \addlegendentry{$ y = 3 - 3e^{-x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Epidemic model. Let the fraction diseased be $ y $, and the healthy fraction be
+          $ 1-y $. Every diseased individual has contact with every healthy individual.
+
+          \begin{align}
+              y'                            & = Ky(1-y)               \\
+              \int\ \frac{1}{y(1-y)}\ \dl y & = K \int\ \dl x         \\
+              \ln y - \ln (y-1)             & = Kx + b                \\
+              \frac{y}{y-1}                 & =     ce^{Kx}           \\
+              y                             & = \frac{1}{1 - c^{-Kx}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = Time ($ x $),
+                          ylabel = Infected fraction ($ y $),
+                          legend pos = south east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = 0:15,OliveGreen]
+                      {(1   + (2/3)*e^(-x))^(-1)} node[pos = 0,below]{$ y_{0} = 0.6 $};
+                      \addplot[GraphSmooth, domain = 0:15,]
+                      {(1  + 9*e^(-x))^(-1)} node[pos = 0.25,right]{$ y_{0} = 0.1 $};
+                      \addplot[GraphSmooth, domain = 0:15,red]
+                      {(1  + 999*e^(-x))^(-1)} node[pos = 0.5, right]{$ y_{0} = 0.001 $};
+                      \addlegendentry{$ y = 1 + 0.67e^{-x}$};
+                      \addlegendentry{$ y = 1 + 9e^{-x}$};
+                      \addlegendentry{$ y = 1  + 999e^{-x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Water inflow and outflow rate is $ \lambda $, and total volume of
+          the lake is $ V $, with pollutant concentration $ y $ and time $ x $,
+
+          \begin{align}
+              y'       & = \frac{\lambda}{V} \left( \frac{p}{4} - y \right)                                       \\
+              y        & = \frac{p}{4} + ce^{-\lambda x/V}                                                        \\
+              y(0)     & = \frac{p}{4} + c = p                              & c     & = \frac{3p}{4}              \\
+              y        & = \frac{p}{4} \left( 1 + 3e^{-\lambda x/V} \right)                                       \\
+              y(t^{*}) & = \frac{p}{2}                                      & t^{*} & = \frac{\ln 3}{\lambda / V}
+          \end{align}
+
+          Time needed is $ t^{*} = 2.825 $ years.
+
+    \item Schaefer model, based on logistic equation, with quantity of fish $ y $,
+          time $ x $,
+
+          \begin{align}
+              y'                                                  & = (A-H)y - By^{2}                & H   & < A             \\
+              \int \frac{\lambda}{y} + \frac{\mu}{A-H -By}\ \dl y & = \int\ \dl x                                            \\
+              \lambda(A-H) + y(\mu - B\lambda)                    & = 1                                                      \\
+              \lambda                                             & = \frac{1}{A-H}                  & \mu & = \frac{B}{A-H} \\
+              \ln y - \ln (A-H - By)                              & = (A-H)x + D                                             \\
+              y                                                   & = \frac{(A-H)}{B + ce^{-(A-H)x}}
+          \end{align}
+
+          To find the equilibrium solutions,
+
+          \begin{align}
+              y'        & = 0                                                              \\
+              y_{1}     & = 0                                & y_{2} & = \frac{A-H}{B} > 0 \\
+              y'(y_{2}) & = Ay_{2} - By_{2}^{2} - Hy_{2} = 0
+          \end{align}
+
+          At $ y = y_{2} $, the harvesting term $ -Hy_{2} $ is equal to the natural change
+          term $ Ay_{2} - By_{2}^{2} $. This results in a steady state of the fish quantity
+          in spite of a non-zero harvesting of fish.
+
+    \item $ A = B = 1 $, $ H = 0.2 $, $ y(0) = 2 $,
+
+          \begin{align}
+              y'   & = 0.8y - y^{2}                            \\
+              y    & = \frac{0.8}{1 + ce^{-0.8x}}              \\
+              y(0) & = 2                          & c & = -0.6
+          \end{align}
+
+          From the direction field, $ y_{1} $ is an unstable equilibrium and
+          $ y_{2} $ is a stable equilibrium, and is the asymptotic value of $ y $.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{(0.8*y - y^2)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = -1:5,
+                          color = gray!50,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.2,},
+                          -stealth,
+                          samples=18,
+                      ] (x, y, 0);
+                      \addplot[GraphSmooth, domain = -1:5,
+                          restrict y to domain = -1:4]
+                      {0.8/(1 - 0.6*e^(-0.8*x))};
+                      \addplot[GraphSmooth, domain = -1:5, OliveGreen,
+                          restrict y to domain = -1:4]
+                      {1/(1 - 0.5*e^(-x))};
+                      %   \addplot[thick, GraphSmooth, domain = -1:1, color = red]
+                      %   {x - x^(3)/3 + x^(5)/factorial(5) - x^(7)/factorial(7) + x^(9)/factorial(9)};
+                      \node[GraphNode, label={0:{(0, 2)}}] at (axis cs:0, 2) {};
+                      \addlegendentry{fishing $ H = 0.2$};
+                      \addlegendentry{no fishing $ H = 0$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          In the absence of fishing the asymptotic value is $ A = 1 $.
+
+    \item Same equation as last problem with intermittient fishing every 3 years.
+
+          \begin{align}
+              y    & = \frac{0.8}{1 - 0.6e^{-0.8x}}   & y(0)  & = 2      \\
+              y(3) & = 1.0835                                            \\
+              z    & = \frac{1}{1 - c_{2}e^{-x}}      & c_{2} & = -3.655 \\
+              z(6) & = 0.991                                             \\
+              w    & = \frac{0.8}{1 - c_{3}e^{-0.8x}} & c_{3} & = 23.419
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = Time ($ x $),
+                          ylabel = Fish quantity ($ y $),
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, domain = 0:3,OliveGreen]
+                      {0.8/(1 - 0.6*e^(-0.8*x))} node[pos = 0.5,right]{Phase 1};
+                      \addplot[GraphSmooth, domain = 3:6,]
+                      {1/(1 + 3.655*e^(-x))} node[pos = 0.5,above]{Phase 2};
+                      \addplot[GraphSmooth, domain = 6:9,black]
+                      {0.8/(1 - 23.419*e^(-0.8*x))} node[pos = 0.5,above]{Phase 3};
+                      \node[GraphNode, label={0:{(0, 2)}}] at (axis cs:0, 2) {};
+                      \addlegendentry{$ y = 0.8/(1 - 0.6e^{-0.8x})$};
+                      \addlegendentry{$ y = 1/(1 + 3.655e^{-x})$};
+                      \addlegendentry{$ y = 0.8/(1 - 23.419e^{-0.8x})$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Death rate $ B $, Birth rate $ A $, with population $ y $ and time $ x $,
+
+          \begin{align}
+              y'                                          & = Ay^{2} - By               &       & = Ay(y - B/A) \\
+              y_{1}                                       & = 0                         & y_{2} & = B/A         \\
+              \int \frac{1}{y} - \frac{1}{y - B/A}\ \dl x & = -B\int\ \dl x                                     \\
+              \frac{y}{y - B/A}                           & = ce^{-Bx}                                          \\
+              y                                           & = \frac{(B/A)}{1 - ce^{Bx}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = Time ($ x $),
+                          ylabel = Population ($ y $),
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                          restrict y to domain = 0:3,
+                      ]
+                      \addplot[GraphSmooth, domain = 0:15,black]
+                      {(1   - (1/11)*e^(x))^(-1)} node[pos = 0.75,right]
+                      {\footnotesize$ y_{0} = 1.1$};
+                      \addplot[GraphSmooth, domain = 0:15,OliveGreen]
+                      {(1   - (1/101)*e^(x))^(-1)} node[pos = 0.75,right]
+                      {\footnotesize$ y_{0} = 1.01$};
+                      \addplot[GraphSmooth, domain = 0:15,]
+                      {(1  + (1/99)*e^(x))^(-1)} node[pos = 0.25,above right]
+                      {\footnotesize$ y_{0} = 0.99 $};
+                      \addplot[GraphSmooth, domain = 0:15,red]
+                      {(1  + 3*e^(x))^(-1)} node[pos = 0.25, above]
+                      {\footnotesize$ y_{0} = 0.25 $};
+                      \addlegendentry{$ y = [1 - (1/11)e^{-x}]^{-1}$};
+                      \addlegendentry{$ y = [1 - (1/101)e^{-x}]^{-1}$};
+                      \addlegendentry{$ y = [1 + (1/99e^{-x}]^{-1}$};
+                      \addlegendentry{$ y = [1 + (1/3)e^{-x}]^{-1}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          If $ y_{0} < B/A $, then $ y'_{0} < 0 $ and extinction happens.\\
+          If $ y_{0} > B/A $, then $ y'_{0} > 0 $ and exponential growth happens.
+
+    \item Air inflow and outflow rate is $ \lambda $, and total volume of
+          the room is $ V $, with fresh air $ y $ and time $ x $,
+
+          \begin{align}
+              y'              & = \lambda \left( 1 - \frac{y}{V} \right)                                          \\
+              \ln(1 - y/V)    & = \frac{-\lambda}{V}x + b                                                         \\
+              1 - \frac{y}{V} & = ce^{-\lambda x/V}                                                               \\
+              \frac{y}{V}     & =  1 - ce^{-\lambda x/V}                 & c     & = 1                            \\
+              y(t^{*})        & = 0.9V                                   & t^{*} & = \frac{\ln 0.1}{-\lambda / V}
+          \end{align}
+
+          Time needed is $ t^{*} = \SI{76.753}{\minute} $.
+\end{enumerate}

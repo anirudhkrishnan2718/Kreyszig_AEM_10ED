@@ -1,0 +1,918 @@
+\section{Linear Independence, Rank of a Matrix, Vector Space}
+\begin{enumerate}
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+4 & -2 & 6 \\ -2 & 1 & -3
+\end{bNiceMatrix}  &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+4 & -2 \\ -2 & 1 \\ 6 & -3
+\end{bNiceMatrix} \\
+\vec{R}   & = \begin{bNiceMatrix}[r, margin]
+4 & -2 & 6 \\ 0 & 0 & 0
+\end{bNiceMatrix}    &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+4 & -2 \\ 0 & 0 \\ 0 & 0
+\end{bNiceMatrix}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+rank is 1
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+2 & -1 & 3
+\end{bNiceMatrix} &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2
+\end{bNiceMatrix}              & = \begin{bNiceMatrix}[r, margin]
+2 \\ -1
+\end{bNiceMatrix}
+\end{align}
+
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+a & b \\ b & a
+\end{bNiceMatrix}                &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+a & b \\ b & a
+\end{bNiceMatrix}                  \\
+\vec{R}   & = \begin{bNiceMatrix}[r, margin]
+a & b \\ 0 & \frac{a^2 - b^2}{a}
+\end{bNiceMatrix} &
+\vec{Q}   & = \vec{R}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+a & b \\ 0 & a^2 - b^2
+\end{bNiceMatrix} &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+a & 0 \\ b & a^2 - b^2
+\end{bNiceMatrix}
+\end{align}
+\begin{itemize}
+    \item If $ a^2 = b^2 $ and $ a \neq 0 $, then rank is 1
+    \item Else if $ a^2 \neq b^2 $ and $ a \neq 0 $, rank is 2
+    \item Else if $ a = b = 0 $, rank is 0
+    \item Else if $ a = 0 $ and $ b \neq 0 $, rank is 2
+\end{itemize}
+
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+0 & 3 & 5 \\ 3 & 5 & 0 \\ 5 & 0 & 10
+\end{bNiceMatrix}             &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+0 & 3 & 5 \\ 3 & 5 & 0 \\ 5 & 0 & 10
+\end{bNiceMatrix}             \\
+\vec{R}   & = \begin{bNiceMatrix}[r, margin]
+3 & 5 & 0 \\ 0 & 3 & 5 \\ 0 & -\frac{25}{3} & 10
+\end{bNiceMatrix} &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+3 & 5 & 0 \\ 0 & 3 & 5 \\ 0 & -\frac{25}{3} & 10
+\end{bNiceMatrix} \\
+\vec{R}   & = \begin{bNiceMatrix}[r, margin]
+3 & 5 & 0 \\ 0 & 3 & 5 \\ 0 & 0 & \frac{215}{9}
+\end{bNiceMatrix}  &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+3 & 5 & 0 \\ 0 & 3 & 5 \\ 0 & 0 & \frac{215}{9}
+\end{bNiceMatrix}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+rank is 3.
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+3 & 5 & 0 \\ 0 & 3 & 5 \\ 0 & 0 & 1
+\end{bNiceMatrix} &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2 & \vec{u}_3
+\end{bNiceMatrix}  & = \begin{bNiceMatrix}[r, margin]
+3 & 0 & 0 \\ 5 & 3 & 0 \\ 0 & 5 & 1
+\end{bNiceMatrix}
+\end{align}
+
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+6 & -4 & 0 \\ -4 & 0 & 2 \\ 0 & 2 & 6
+\end{bNiceMatrix}           &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+6 & -4 & 0 \\ -4 & 0 & 2 \\ 0 & 2 & 6
+\end{bNiceMatrix}           \\
+\vec{R}   & = \begin{bNiceMatrix}[r, margin]
+6 & -4 & 0 \\ 0 & 2 & 6 \\ 0 & -\frac{8}{3} & 2
+\end{bNiceMatrix} &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+6 & -4 & 0 \\ 0 & 2 & 6 \\ 0 & -\frac{8}{3} & 2
+\end{bNiceMatrix} \\
+\vec{R}   & = \begin{bNiceMatrix}[r, margin]
+6 & -4 & 0 \\ 0 & 2 & 6 \\ 0 & 0 & 10
+\end{bNiceMatrix}           &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+6 & -4 & 0 \\ 0 & 2 & 6 \\ 0 & 0 & 10
+\end{bNiceMatrix}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+rank is 3.
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+3 & -2 & 0 \\ 0 & 1 & 3 \\ 0 & 0 & 1
+\end{bNiceMatrix} &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2 & \vec{u}_3
+\end{bNiceMatrix}  & = \begin{bNiceMatrix}[r, margin]
+3 & 0 & 0 \\ -2 & 1 & 0 \\ 0 & 3 & 1
+\end{bNiceMatrix}
+\end{align}
+
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+0.2 & -0.1 & 0.4  \\
+0   & 1.1  & -0.3 \\
+0.1 & 0    & -2.1
+\end{bNiceMatrix}              &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+0.2  & 0    & 0.1  \\
+-0.1 & 1.1  & 0    \\
+0.4  & -0.3 & -2.1
+\end{bNiceMatrix}             \\
+\vec{R}   & = \begin{bNiceMatrix}[r, margin]
+0.2 & -0.1 & 0.4  \\
+0   & 1.1  & -0.3 \\
+0   & 0.05 & -2.3
+\end{bNiceMatrix}              &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+0.2 & 0    & 0.1  \\
+0   & 1.1  & 0.05 \\
+0   & -0.3 & -2.3
+\end{bNiceMatrix}              \\
+\vec{R}   & = \begin{bNiceMatrix}[r, margin]
+0.2 & -0.1 & 0.4               \\
+0   & 1.1  & -0.3              \\
+0   & 0    & - \frac{503}{220}
+\end{bNiceMatrix} &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+0.2 & 0   & 0.1               \\
+0   & 1.1 & 0.05              \\
+0   & 0   & - \frac{503}{220}
+\end{bNiceMatrix}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+rank is 3.
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+2 & -1 & 4  \\
+0 & 11 & -3 \\
+0 & 0  & 1
+\end{bNiceMatrix} &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2 & \vec{u}_3
+\end{bNiceMatrix}  & = \begin{bNiceMatrix}[r, margin]
+2 & 0  & 0 \\
+0 & 22 & 0 \\
+1 & 1  & 1
+\end{bNiceMatrix}
+\end{align}
+
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+0  & 1 & 0  \\
+-1 & 0 & -4 \\
+0  & 4 & 0
+\end{bNiceMatrix}  &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+0 & -1 & 0 \\
+1 & 0  & 4 \\
+0 & -4 & 0
+\end{bNiceMatrix}   \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+-1 & 0 & -4 \\
+0  & 1 & 0  \\
+0  & 4 & 0
+\end{bNiceMatrix} &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+1 & 0  & 4 \\
+0 & -1 & 0 \\
+0 & -4 & 0
+\end{bNiceMatrix}   \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+-1 & 0 & -4 \\
+0  & 1 & 0  \\
+0  & 0 & 0
+\end{bNiceMatrix} &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+1 & 0  & 4 \\
+0 & -1 & 0 \\
+0 & 0  & 0
+\end{bNiceMatrix}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+rank is 2.
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+1 & 0 & 4 \\
+0 & 1 & 0
+\end{bNiceMatrix}       &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+1 & 0 \\ 0 & 1 \\ 4 & 0
+\end{bNiceMatrix}
+\end{align}
+
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+8 & 0 & 4 & 0 \\
+0 & 2 & 0 & 4 \\
+4 & 0 & 2 & 0 \\
+\end{bNiceMatrix}  &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+8 & 0 & 4 \\
+0 & 2 & 0 \\
+4 & 0 & 2 \\
+0 & 4 & 0
+\end{bNiceMatrix}   \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+8 & 0 & 4 & 0 \\
+0 & 2 & 0 & 4 \\
+0 & 0 & 0 & 0 \\
+\end{bNiceMatrix} &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+8 & 0 & 4 \\
+0 & 2 & 0 \\
+0 & 0 & 0 \\
+0 & 4 & 0
+\end{bNiceMatrix}   \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+8 & 0 & 4 & 0 \\
+0 & 2 & 0 & 4 \\
+0 & 0 & 0 & 0 \\
+\end{bNiceMatrix} &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+8 & 0 & 4 \\
+0 & 2 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{bNiceMatrix}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+rank is 2.
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+2 & 0 & 1 & 0 \\
+0 & 1 & 0 & 2
+\end{bNiceMatrix} &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+2 & 0 \\
+0 & 1 \\
+1 & 0
+\end{bNiceMatrix}
+\end{align}
+
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+2  & 4  & 8  & 16 \\
+16 & 8  & 4  & 2  \\
+4  & 8  & 16 & 2  \\
+2  & 16 & 8  & 4
+\end{bNiceMatrix}    &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+2  & 16 & 4  & 2  \\
+4  & 8  & 8  & 16 \\
+8  & 4  & 16 & 8  \\
+16 & 2  & 2  & 4
+\end{bNiceMatrix}     \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+2 & 4   & 8   & 16   \\
+0 & -24 & -60 & -126 \\
+0 & 0   & 0   & -30  \\
+0 & 12  & 0   & -12
+\end{bNiceMatrix} &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+2 & 16   & 4   & 2   \\
+0 & -24  & 0   & 12  \\
+0 & -60  & 0   & 0   \\
+0 & -126 & -30 & -12
+\end{bNiceMatrix}  \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+2 & 4   & 8   & 16   \\
+0 & -24 & -60 & -126 \\
+0 & 0   & -30 & -75  \\
+0 & 0   & 0   & -30  \\
+\end{bNiceMatrix} &
+\vec{Q}   & = \begin{bNiceMatrix}[r, margin]
+2 & 16  & 4   & 2   \\
+0 & -24 & 0   & 12  \\
+0 & 0   & -30 & -75 \\
+0 & 0   & 0   & -30 \\
+\end{bNiceMatrix}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+rank is 2.
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\
+\vec{v}_3 \\ \vec{v}_4
+\end{bNiceMatrix}                      & = \begin{bNiceMatrix}[r, margin]
+1 & 2 & 4  & 8  \\
+0 & 4 & 10 & 21 \\
+0 & 0 & 2  & 5  \\
+0 & 0 & 0  & 1
+\end{bNiceMatrix} &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2 & \vec{u}_3 & \vec{u}_4
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+1 & 0  & 0 & 0 \\
+8 & -2 & 0 & 0 \\
+2 & 0  & 2 & 0 \\
+1 & 1  & 5 & 1
+\end{bNiceMatrix}
+\end{align}
+
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 \\
+1 & 1 & 1 & 1 \\
+0 & 0 & 1 & 0
+\end{bNiceMatrix}          &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 \\
+1 & 1 & 1 & 1 \\
+0 & 0 & 1 & 0
+\end{bNiceMatrix}           \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1           & 0 \\
+0 & 1 & \frac{8}{9} & 1 \\
+0 & 0 & 1           & 0 \\
+0 & 0 & 1           & 0
+\end{bNiceMatrix} &
+\vec{Q}   & =\begin{bNiceMatrix}[r, margin]
+9 & 0 & 1           & 0 \\
+0 & 1 & \frac{8}{9} & 1 \\
+0 & 0 & 1           & 0 \\
+0 & 0 & 1           & 0
+\end{bNiceMatrix}   \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1           & 0 \\
+0 & 1 & \frac{8}{9} & 1 \\
+0 & 0 & 1           & 0 \\
+0 & 0 & 0           & 0
+\end{bNiceMatrix} &
+\vec{Q}   & =\begin{bNiceMatrix}[r, margin]
+9 & 0 & 1           & 0 \\
+0 & 1 & \frac{8}{9} & 1 \\
+0 & 0 & 1           & 0 \\
+0 & 0 & 0           & 0
+\end{bNiceMatrix}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+rank is 3.
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\
+\vec{v}_3 \\
+\end{bNiceMatrix}          & = \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1 & 0 \\
+0 & 9 & 8 & 9 \\
+0 & 0 & 1 & 0
+\end{bNiceMatrix} &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2 & \vec{u}_3
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+9 & 0 & 0 \\
+0 & 9 & 0 \\
+1 & 8 & 1 \\
+0 & 9 & 0
+\end{bNiceMatrix}
+\end{align}
+
+\item Finding the rank,
+\begin{align}
+\vec{A}   & = \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 \\
+1 & 1 & 1 & 1 \\
+0 & 0 & 1 & 0
+\end{bNiceMatrix}          &
+\vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 \\
+1 & 1 & 1 & 1 \\
+0 & 0 & 1 & 0
+\end{bNiceMatrix}           \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1           & 0 \\
+0 & 1 & \frac{8}{9} & 1 \\
+0 & 0 & 1           & 0 \\
+0 & 0 & 1           & 0
+\end{bNiceMatrix} &
+\vec{Q}   & =\begin{bNiceMatrix}[r, margin]
+9 & 0 & 1           & 0 \\
+0 & 1 & \frac{8}{9} & 1 \\
+0 & 0 & 1           & 0 \\
+0 & 0 & 1           & 0
+\end{bNiceMatrix}   \\
+\vec{R}   & =  \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1           & 0 \\
+0 & 1 & \frac{8}{9} & 1 \\
+0 & 0 & 1           & 0 \\
+0 & 0 & 0           & 0
+\end{bNiceMatrix} &
+\vec{Q}   & =\begin{bNiceMatrix}[r, margin]
+9 & 0 & 1           & 0 \\
+0 & 1 & \frac{8}{9} & 1 \\
+0 & 0 & 1           & 0 \\
+0 & 0 & 0           & 0
+\end{bNiceMatrix}
+\end{align}
+Using the L.I. rows of $ \vec{R} $ and L.I. columns of $ \vec{Q}^T $,
+rank is 3.
+\begin{align}
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\
+\vec{v}_3 \\
+\end{bNiceMatrix}          & = \begin{bNiceMatrix}[r, margin]
+9 & 0 & 1 & 0 \\
+0 & 9 & 8 & 9 \\
+0 & 0 & 1 & 0
+\end{bNiceMatrix} &
+\begin{bNiceMatrix}[r, margin]
+\vec{u}_1 & \vec{u}_2 & \vec{u}_3
+\end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+9 & 0 & 0 \\
+0 & 9 & 0 \\
+1 & 8 & 1 \\
+0 & 9 & 0
+\end{bNiceMatrix}
+\end{align}
+
+\item Proving the general case,
+\begin{enumerate}
+    \item All intermediate points in between $ A $ and $ B $ can be written
+          as
+          \begin{align}
+              P & = \lambda A + (1 - \lambda) B & \lambda & \in \mathcal{R}
+          \end{align}
+          For $ a_{jk} = j + k - 1 $, for some integer $ n > 1 $, consider the
+          elements of the first column,
+          \begin{align}
+              a_{1k}  & = k                                   &
+              a_{nk}  & = n + k - 1                             \\
+              a_{jk}  & = (1 - \lambda)(k) + (\lambda)(n+k-1) &
+              a_{jk}  & = j+k-1                                 \\
+              \lambda & = \frac{j - 1}{n-1}
+          \end{align}
+          The fact that $ \lambda $ is independent of $ k $, means that every
+          intermediate row has a separate $ \lambda $ that can be used to
+          express it as a linear combination of the first and last rows. \par
+          All but the first and last row can thus be zeroed out and the rank
+          is 2. \par
+
+    \item Replacing $ 1 $ with $ c $ in the above proof only changes
+          the expression for $ \lambda $ to
+          \begin{align}
+              j + k + c & = [1 + k + c](1 - \lambda) + \lambda[n+k+c] &
+              \lambda   & = \frac{j - 1}{n-1}
+          \end{align}
+          Since $ \lambda $ is still independent of $ k $, the result still
+          holds for some general $ c $.
+
+    \item Every row is a scalar multiple of the first row, as can be seen by
+          \begin{align}
+              a_{j,k}    & = 2^{j+k-2} & a_{j+1, k} & = 2^{j+k-1} \\
+              a_{j+1, k} & = 2a_{j,k}
+          \end{align}
+          Thus, rank is 1. \par
+          Other exmaples TBC
+\end{enumerate}
+
+\item To prove the relation,
+\begin{align}
+    \vec{C}        & = (\vec{AB})^T = \vec{B}^T\vec{A}^T &
+    \vec{C}^T      & = \vec{AB}                            \\
+    \rank(\vec{C}) & = \rank(\vec{C}^T)
+\end{align}
+
+\item Consider a nilpotent matrix $ \vec{A} $ and an identity matrix of equal
+rank $ \vec{B} $. This counterexample is now,
+\begin{align}
+    \rank(\vec{A}^2) & = 0              &
+    \rank(\vec{B}^2) & = \rank(\vec{A})
+\end{align}
+
+\item $\vec{A}$ is not a square matrix. Let it have $ m $ rows and $ n $ columns.
+\begin{align}
+    m                & > n    & \rank(\vec{A}) & = \rank(\vec{A}^T) \\
+    \rank(\vec{A}^T) & \leq n & \rank(\vec{A}) & < m
+\end{align}
+Since $ \rank(\vec{A}) $ is less than the number of rows, some of the rows are
+L.D. and can be row reduced to zero. \par
+A similar proof for the case $ m < n $ can be used to prove the column vectors
+of such a matrix are L.D.
+
+\item $\vec{A}$ is a square matrix of order $ n $ with L.I. rows.
+\begin{align}
+    \rank(\vec{A})   & = n & \rank(\vec{A}^T) & = \rank(\vec{A}) \\
+    \rank(\vec{A}^T) & = n
+\end{align}
+Since $ \vec{A}^T $ has rank $ n $, $ \vec{A} $ has L.I. columns. \par
+The exact same procedure can be used for the backwards proof, using the fact
+that the L.I. rows of $ \vec{A}^T $ is the same as the L.I. columns of
+$ \vec{A} $.
+
+\item Consider the column representation of $ \vec{AB} $,
+\begin{align}
+\vec{AB} & = \begin{bNiceMatrix}[r, margin]
+\vec{Ab}_1 & \vec{Ab}_2 & \dots & \vec{Ab}_n
+\end{bNiceMatrix}
+\end{align}
+Every column vector $ \vec{Ab}_k $ is a vector in the column space of
+$ \vec{A} $. So, the columns of $ \vec{AB} $ belong to the column space of
+$ \vec{A} $. \par
+The dimension of the column space of a vector is equal to its rank.
+\begin{align}
+    \color{y_h} \rank(\vec{AB}) \leq \rank(\vec{A})
+\end{align}
+Using the fact that $ \rank(\vec{A}) = \rank(\vec{A}^T) $
+\begin{align}
+    \rank\Big(\vec{(AB)}^T\Big) & = \rank(\vec{AB})               &
+    \rank(\vec{B}^T \vec{A}^T)  & \leq \rank(\vec{B}^T)             \\
+    \color{y_p} \rank(\vec{AB}) & \color{y_p} \leq \rank(\vec{B})
+\end{align}
+This proves the result.
+
+\item Checking if the set of vectors are L.I, \textcolor{y_p}{no}
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3
+\end{bNiceMatrix} &
+& = \begin{bNiceMatrix}[r, margin]
+3 & 4  & 0   & 2   \\
+2 & -1 & 3   & 7   \\
+1 & 16 & -12 & -22
+\end{bNiceMatrix}                 \\
+& = \begin{bNiceMatrix}[r, margin]
+1 & 16  & -12 & -22 \\
+0 & -33 & 27  & 51  \\
+0 & -44 & 36  & 68
+\end{bNiceMatrix}              &
+& =  \begin{bNiceMatrix}[r, margin]
+1 & 16  & -12 & -22 \\
+0 & -33 & 27  & 51  \\
+0 & 0   & 0   & 0
+\end{bNiceMatrix}
+\end{align}
+
+\item Checking if the set of vectors are L.I, \textcolor{y_h}{yes}
+\begin{align}
+\vec{A}                                                      & =
+\begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3 \\ \vec{v}_4
+\end{bNiceMatrix}             &
+& =
+\begin{bNiceMatrix}[r, margin]
+\frac{1}{1} & \frac{1}{2} & \frac{1}{3} & \frac{1}{4} \\
+\frac{1}{2} & \frac{1}{3} & \frac{1}{4} & \frac{1}{5} \\
+\frac{1}{3} & \frac{1}{4} & \frac{1}{5} & \frac{1}{6} \\
+\frac{1}{4} & \frac{1}{5} & \frac{1}{6} & \frac{1}{7} \\
+\end{bNiceMatrix}            \\
+& =
+\begin{bNiceMatrix}[r, margin]
+\frac{1}{1} & \frac{1}{2}  & \frac{1}{3}  & \frac{1}{4}   \\
+0           & \frac{1}{12} & \frac{1}{12} & \frac{3}{40}  \\
+0           & \frac{1}{12} & \frac{4}{45} & \frac{1}{12}  \\
+0           & \frac{3}{40} & \frac{1}{12} & \frac{9}{112} \\
+\end{bNiceMatrix} &
+& =
+\begin{bNiceMatrix}[r, margin]
+\frac{1}{1} & \frac{1}{2}  & \frac{1}{3}   & \frac{1}{4}   \\
+0           & \frac{1}{12} & \frac{1}{12}  & \frac{3}{40}  \\
+0           & 0            & \frac{1}{180} & \frac{1}{120} \\
+0           & 0            & \frac{1}{120} & \frac{9}{700} \\
+\end{bNiceMatrix}       \\
+& =
+\begin{bNiceMatrix}[r, margin]
+\frac{1}{1} & \frac{1}{2}  & \frac{1}{3}   & \frac{1}{4}    \\
+0           & \frac{1}{12} & \frac{1}{12}  & \frac{3}{40}   \\
+0           & 0            & \frac{1}{180} & \frac{1}{120}  \\
+0           & 0            & 0             & \frac{1}{2800} \\
+\end{bNiceMatrix}
+\end{align}
+
+\item Checking if the set of vectors are L.I, \textcolor{y_h}{yes}
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3
+\end{bNiceMatrix} &
+& = \begin{bNiceMatrix}[r, margin]
+0 & 1 & 1 \\
+1 & 1 & 1 \\
+0 & 0 & 1
+\end{bNiceMatrix}                     \\
+& = \begin{bNiceMatrix}[r, margin]
+1 & 1 & 1 \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bNiceMatrix}
+\end{align}
+
+\item Checking if the set of vectors are L.I, \textcolor{y_p}{no}
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3 \\ \vec{v}_4
+\end{bNiceMatrix} &
+& = \begin{bNiceMatrix}[r, margin]
+1 & 2 & 3 & 4 \\
+2 & 3 & 4 & 5 \\
+3 & 4 & 5 & 6 \\
+4 & 5 & 6 & 7
+\end{bNiceMatrix}                                  \\
+& = \begin{bNiceMatrix}[r, margin]
+1 & 2  & 3  & 4  \\
+0 & -1 & -2 & -3 \\
+0 & -2 & -4 & -6 \\
+0 & -3 & -6 & -9
+\end{bNiceMatrix}                              &
+& =  \begin{bNiceMatrix}[r, margin]
+1 & 2  & 3  & 4  \\
+0 & -1 & -2 & -3 \\
+0 & 0  & 0  & 0  \\
+0 & 0  & 0  & 0
+\end{bNiceMatrix}
+\end{align}
+
+\item Checking if the set of vectors are L.I, \textcolor{y_p}{no}
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3 \\ \vec{v}_4
+\end{bNiceMatrix} &
+& = \begin{bNiceMatrix}[r, margin]
+2 & 0 & 0 & 7 \\
+2 & 0 & 0 & 8 \\
+2 & 0 & 0 & 9 \\
+2 & 0 & 1 & 0
+\end{bNiceMatrix}                                  \\
+& = \begin{bNiceMatrix}[r, margin]
+2 & 0 & 0 & 7  \\
+0 & 0 & 0 & 1  \\
+0 & 0 & 0 & 2  \\
+0 & 0 & 1 & -7
+\end{bNiceMatrix}                                &
+& =  \begin{bNiceMatrix}[r, margin]
+2 & 0 & 0 & 7  \\
+0 & 0 & 1 & -7 \\
+0 & 0 & 0 & 1  \\
+0 & 0 & 0 & 0
+\end{bNiceMatrix}
+\end{align}
+
+\item Checking if the set of vectors are L.I, \textcolor{y_p}{no}
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3
+\end{bNiceMatrix} &
+& = \begin{bNiceMatrix}[r, margin]
+0.4 & -0.2 & 0.2 \\
+0   & 0    & 0   \\
+3   & -0.6 & 1.5
+\end{bNiceMatrix}                   \\
+& = \begin{bNiceMatrix}[r, margin]
+0.4 & -0.2         & 0.2 \\
+0   & \frac{9}{10} & 0   \\
+0   & 0            & 0   \\
+\end{bNiceMatrix}
+\end{align}
+
+\item Checking if the set of vectors are L.I, \textcolor{y_h}{yes}
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2
+\end{bNiceMatrix} &
+& = \begin{bNiceMatrix}[r, margin]
+9 & 8 & 7 & 6 & 5 \\
+9 & 7 & 5 & 3 & 1 \\
+\end{bNiceMatrix}     \\
+& = \begin{bNiceMatrix}[r, margin]
+9 & 8 & 7 & 6 & 5 \\
+0 & 1 & 2 & 3 & 4 \\
+\end{bNiceMatrix}
+\end{align}
+
+\item Checking if the set of vectors are L.I, \textcolor{y_p}{no}
+\par Since the number of vectors is greater than the number of components.
+
+\item Checking if the set of vectors are L.I, \textcolor{y_h}{yes}
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3
+\end{bNiceMatrix} &
+& = \begin{bNiceMatrix}[r, margin]
+6  & 0  & -1 & 3  \\
+2  & 2  & 5  & 0  \\
+-4 & -4 & -4 & -4 \\
+\end{bNiceMatrix}                  \\
+& = \begin{bNiceMatrix}[r, margin]
+6 & 0  & -1             & 3  \\
+0 & 2  & \frac{16}{3}   & -1 \\
+0 & -4 & - \frac{14}{3} & -2 \\
+\end{bNiceMatrix}     &
+& =  \begin{bNiceMatrix}[r, margin]
+6 & 0 & -1           & 3  \\
+0 & 2 & \frac{16}{3} & -1 \\
+0 & 0 & 6            & -4 \\
+\end{bNiceMatrix}
+\end{align}
+
+\item Finding the row echelon form,
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+\vec{v}_1 \\ \vec{v}_2 \\ \vec{v}_3 \\
+\vec{v}_4 \\ \vec{v}_5
+\end{bNiceMatrix} &
+& = \begin{bNiceMatrix}[r, margin]
+3  & 0 & 1 & 2 \\
+6  & 1 & 0 & 0 \\
+12 & 1 & 2 & 4 \\
+6  & 0 & 2 & 4 \\
+9  & 0 & 1 & 2 \\
+\end{bNiceMatrix}                      \\
+& = \begin{bNiceMatrix}[r, margin]
+3 & 0 & 1  & 2  \\
+0 & 1 & -2 & -4 \\
+0 & 1 & -2 & -4 \\
+0 & 0 & 0  & 0  \\
+0 & 0 & -2 & -4 \\
+\end{bNiceMatrix}                     &
+& =  \begin{bNiceMatrix}[r, margin]
+3 & 0 & 1  & 2  \\
+0 & 1 & -2 & -4 \\
+0 & 0 & 0  & 0  \\
+0 & 0 & 0  & 0  \\
+0 & 0 & -2 & -4 \\
+\end{bNiceMatrix}                    \\
+\end{align}
+The linearly independent set of vectors is $ \vec{v}_1, \vec{v}_2, \vec{v}_5 $
+
+\item Are the given set of vectors a vector space? \textcolor{y_h}{yes}
+\begin{align}
+    v_1 - v_2 + 2v_3           & = 0               &
+                               & \in \mathcal{R}^3   \\
+    \vec{A},\ \vec{B}          & \in V             &
+    \implies \vec{A} + \vec{B} & \in V               \\
+    \vec{A}                    & \in V             &
+    \implies k\vec{A}          & \in V
+\end{align}
+The dimension is 2, since the relation between the components has 2 d.o.f. \par
+A basis is any set of 2 L.I. members of $ V $, for example,
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+0 \\ 2 \\ 1
+\end{bNiceMatrix} &
+\vec{B} & = \begin{bNiceMatrix}[r, margin]
+-2 \\ 0 \\ 1
+\end{bNiceMatrix}
+\end{align}
+
+\item Are the given set of vectors a vector space? \textcolor{y_p}{no}
+\begin{align}
+    3v_2 + v_3                         & = k               &
+                                       & \in \mathcal{R}^3   \\
+    \vec{A},\ \vec{B}                  & \in V             &
+    \not\!\!\implies \vec{A} + \vec{B} & \in V               \\
+    \vec{A}                            & \in V             &
+    \not\!\!\implies k\vec{A}          & \in V
+\end{align}
+
+\item Are the given set of vectors a vector space? \textcolor{y_p}{no}
+\begin{align}
+    v_1                        & \geq v_2          &
+                               & \in \mathcal{R}^2   \\
+    \vec{A},\ \vec{B}          & \in V             &
+    \implies \vec{A} + \vec{B} & \in V               \\
+    \vec{A}                    & \in V             &
+    \not\!\!\implies k\vec{A}  & \in V
+\end{align}
+
+\item Are the given set of vectors a vector space? \textcolor{y_h}{yes}
+\begin{align}
+    \{v_1,v_2,\dots,v_{n-2}\}  & = 0               &
+                               & \in \mathcal{R}^n   \\
+    \vec{A},\ \vec{B}          & \in V             &
+    \implies \vec{A} + \vec{B} & \in V               \\
+    \vec{A}                    & \in V             &
+    \implies k\vec{A}          & \in V
+\end{align}
+
+The dimension is 2, since the relation between the components has 2 d.o.f. \par
+A basis is any set of 2 L.I. members of $ V $, for example,
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+0 \\ \vdots \\ 0\\ 1 \\ 0
+\end{bNiceMatrix} &
+\vec{B} & = \begin{bNiceMatrix}[r, margin]
+0 \\ \vdots \\ 0\\ 0 \\ 1
+\end{bNiceMatrix}
+\end{align}
+
+\item Are the given set of vectors a vector space? \textcolor{y_p}{no}
+\begin{align}
+    v_i                        & > 0\ \forall\ i   &
+                               & \in \mathcal{R}^5   \\
+    \vec{A},\ \vec{B}          & \in V             &
+    \implies \vec{A} + \vec{B} & \in V               \\
+    \vec{A}                    & \in V             &
+    \not\!\!\implies k\vec{A}  & \in V
+\end{align}
+
+\item Are the given set of vectors a vector space? \textcolor{y_h}{yes}
+\begin{align}
+    3v_1 - 2v_2 + v_3          & = 0                 \\
+    4v_1 + 5v_2                & = 0               &
+                               & \in \mathcal{R}^3   \\
+    \vec{A},\ \vec{B}          & \in V             &
+    \implies \vec{A} + \vec{B} & \in V               \\
+    \vec{A}                    & \in V             &
+    \implies k\vec{A}          & \in V
+\end{align}
+
+Since two components can be expressed in terms of the first, there is only
+1 d.o.f. and a basis is
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+5 \\ -4 \\ -23
+\end{bNiceMatrix}
+\end{align}
+
+\item Are the given set of vectors a vector space? \textcolor{y_h}{yes}
+\begin{align}
+    3v_1 - v_3                 & = 0                 \\
+    2v_1 + 3v_2 - 4v_3         & = 0               &
+                               & \in \mathcal{R}^3   \\
+    \vec{A},\ \vec{B}          & \in V             &
+    \implies \vec{A} + \vec{B} & \in V               \\
+    \vec{A}                    & \in V             &
+    \implies k\vec{A}          & \in V
+\end{align}
+
+Since two components can be expressed in terms of the first, there is only
+1 d.o.f. and a basis is
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+3 \\ 10 \\ 9
+\end{bNiceMatrix}
+\end{align}
+
+\item Are the given set of vectors a vector space? \textcolor{y_p}{no}
+\begin{align}
+    |v_j|                              & = 1\ \forall\ j \in \{1,\dots,n\} &
+                                       & \in \mathcal{R}^n                   \\
+    \vec{A},\ \vec{B}                  & \in V                             &
+    \not\!\!\implies \vec{A} + \vec{B} & \in V                               \\
+    \vec{A}                            & \in V                             &
+    \not\!\!\implies k\vec{A}          & \in V
+\end{align}
+
+\item Are the given set of vectors a vector space? \textcolor{y_h}{yes}
+\begin{align}
+    v_1 = 2v_2 = 3v_3          & = 4v_4            &
+                               & \in \mathcal{R}^4   \\
+    \vec{A},\ \vec{B}          & \in V             &
+    \implies \vec{A} + \vec{B} & \in V               \\
+    \vec{A}                    & \in V             &
+    \implies k\vec{A}          & \in V
+\end{align}
+
+Since three components can be expressed in terms of the first, there is only
+1 d.o.f. and a basis is
+\begin{align}
+\vec{A} & = \begin{bNiceMatrix}[r, margin]
+12 \\ 6 \\ 4 \\ 3
+\end{bNiceMatrix}
+\end{align}
+
+\end{enumerate}

@@ -1,0 +1,747 @@
+\chapter{Linear Algebra: Matrices, Vectors, Determinants, Linear Systems}
+\section{Matrices, Vectors: Addition and Scalar Multiplication}
+
+\begin{description}
+    \item[Matrix] A rectangular array of numbers in square brackets. A matrix with
+        one row or one column is called a row or column vector respectively. \par
+        The matrix is considered square if it has the same number of rows and columns.
+        \begin{align}
+            \begin{bNiceMatrix}[r, margin]
+                a_1 \\ a_2 \\ a_3
+            \end{bNiceMatrix} &  & \begin{bNiceMatrix}[r, margin]
+                                       b_1 & b_2 & b_3
+                                   \end{bNiceMatrix} &  & \begin{bNiceMatrix}[r, margin]
+                                                              c_{11} & c_{12} & c_{13} \\
+                                                              c_{21} & c_{22} & c_{23} \\
+                                                              c_{31} & c_{32} & c_{33}
+                                                          \end{bNiceMatrix}
+        \end{align}
+        Elements of a matrix are indexed by their row and column address in that order.
+    \item[Matrix notation] A capital boldface letter is used to denote a matrix (or
+        a vector). It can also be represented by putting its general term in square
+        brackets. For an $ m \times n $ matrix,
+        \begin{align}
+            \vec{A} \equiv [a_{jk}] \equiv \begin{bNiceMatrix}[r, margin]
+                                               a_{11} & a_{12} & \cdots & a_{1n} \\
+                                               a_{21} & a_{22} & \cdots & a_{2n} \\
+                                               \vdots & \vdots & \ddots & \vdots \\
+                                               a_{m1} & a_{m2} & \cdots & a_{mn}
+                                           \end{bNiceMatrix}
+        \end{align}
+    \item[Main diagonal] The diagonal entries of a square matrix from top left to
+        bottom right
+        \begin{align}
+            \{a_{jj}\} \quad \forall \quad j \in \{1,\dots,n\}
+        \end{align}
+    \item[Vector] A special matrix with one row or one column (called a column vector
+        or row vector respectively). \par
+        It is represented by small boldface letters or by the general term in square
+        brackets.
+        \begin{align}
+            \vec{v} & \equiv [v_j] \equiv \bmatcol{v_1}{v_2}             &
+            \vec{u} & \equiv [u_k] \equiv \begin{bNiceMatrix}[r, margin]
+                                              u_1 & u_2
+                                          \end{bNiceMatrix}
+        \end{align}
+    \item[Equality of matrices] Two matrices are equal if and only if each element of
+        the two matrices are equal. Matrices of different sizes are automatically not equal.
+    \item[Addition of matrices] Two matrices of equal size are added by element-wise
+        addition of their entries.
+        \begin{align}
+            \vec{C}         & = \vec{A} + \vec{B} &
+            \implies c_{jk} & = a_{jk} + b_{jk}
+        \end{align}
+    \item[Scalar Multiplication of matrices] Multiplying a matrix by a scalar
+        requires elementwise multiplication by that scalar.
+        \begin{align}
+            \vec{C}         & = \lambda \vec{A} &
+            \implies c_{jk} & = \lambda a_{jk}
+        \end{align}
+    \item[Properties of Matrices] Using the above definitions of addition and scalar
+        multiplication,
+        \begin{align}
+            \vec{A} + \vec{B}             & = \vec{B} + \vec{A}             &
+                                          & \text{commutative}                    \\
+            (\vec{A} + \vec{B}) + \vec{C} & = \vec{A} + (\vec{B} + \vec{C}) &
+                                          & \text{associative}                    \\
+            \vec{A} + (\vec{-A})          & = 0                             &
+                                          & \text{additive inverse}               \\
+            c(\vec{A} + \vec{B})          & = c\vec{A} + c\vec{B}           &   & \\
+            1\ \vec{A}                    & = \vec{A}
+        \end{align}
+\end{description}
+
+\section{Matrix Multiplication}
+
+\begin{description}
+    \item[Product of two matrices] Two matrices $ \vec{A} $ and $ \vec{B} $ can be
+        multiplied if their inner dimensions match,
+        \begin{align}
+            \vec{A}          & := m \times n                   &
+            \vec{B}          & := r \times p                     \\
+            n                & = r                             &
+            \implies \vec{C} & = \vec{A} \vec{B}                 \\
+            \vec{C}          & := m \times p                     \\
+            c_{jk}           & = \sum_{l=1}^{n} a_{jl}\ b_{lk}
+        \end{align}
+        In the summation above, $ l $is a dummy variable traversing over the common
+        inner dimension $ n $. The subscripts $ j $ and $ k $ have ranges $ m $ and
+        $ p $ respectively.
+
+    \item[Properties] Matrix multiplication is not commutative.
+        \begin{align}
+            \vec{AB} & \neq \vec{BA} &  & \text{in general}                   \\
+            \vec{AB} & = 0           &  & \not\!\!\implies \vec{BA} = \vec{0} \\
+                     &               &  & \not\!\!\implies \vec{A} = \vec{0}  \\
+                     &               &  & \not\!\!\implies \vec{B} = \vec{0}
+        \end{align}
+        This might be because the product is not defined or because the result happens to
+        be different even when the product is defined. \par
+        The second rule follows from the fact that the $ \vec{0} $ matrix requires all
+        of its elements to be $ 0 $. \par
+        Properties similar to multiplication of scalars are,
+        \begin{align}
+            (k\vec{A})\ \vec{B}          & = k\ (\vec{AB}) = \vec{A}\ (k\vec{B}) \\
+            \vec{A}\ (\vec{BC})          & = (\vec{AB})\ \vec{C}                 \\
+            (\vec{A} + \vec{B})\ \vec{C} & = \vec{AC} + \vec{BC}                 \\
+            \vec{C}\ (\vec{A} + \vec{B}) & = \vec{CA} + \vec{CB}
+        \end{align}
+        Parallel computation by computers uses the shortcut,
+        \begin{align}
+            \vec{AB} & = \vec{A} \begin{bNiceMatrix}[r, margin]
+                                     \vec{b}_1 & \vec{b}_2 & \cdots & \vec{b}_p
+                                 \end{bNiceMatrix} =
+            \begin{bNiceMatrix}[r, margin]
+                \vec{Ab}_1 & \vec{Ab}_2 & \cdots & \vec{Ab}_p
+            \end{bNiceMatrix}
+        \end{align}
+
+    \item[Linear Transforms] The most direct use of matrix multiplication is in
+        linear transforms of the form,
+        \begin{align}
+            \vec{y} = \bmatcol{y_1}{y_2} &
+            = \bmattt{a_{11}}{a_{12}}{a_{21}}{a_{22}} \bmatcol{x_1}{x_2} = \vec{Ax}
+        \end{align}
+        If another step takes the system $ \vec{x} $ to $ \vec{w} $, using
+        \begin{align}
+            \vec{x} & = \vec{Bw} & \vec{y} & = \vec{Ax} \\
+            \vec{y} & = \vec{Cw} & \vec{C} & = \vec{AB}
+        \end{align}
+        Thus, the definition of matrix multiplication follows from the act of linear
+        transforms or from systems of linear equations.
+
+    \item[Transpose] Writing a matrix's rows as columns (or columns as rows). For the
+        special case of a square matrix, the diagonal elements stay in place, as seen here.
+        \begin{align}
+            \vec{A}^T & = \begin{bNiceMatrix}[r, margin]
+                              a_{11} & a_{21} & \cdots & a_{n1} \\
+                              a_{12} & a_{22} & \cdots & a_{n2} \\
+                              \vdots & \vdots & \ddots & \vdots \\
+                              a_{1n} & a_{2n} & \cdots & a_{nn}
+                          \end{bNiceMatrix}
+        \end{align}
+        Some useful propoerties of the transpose are,
+        \begin{align}
+            \Big( \vec{A}^T \Big)^T & = A                     \\
+            (\vec{A} + \vec{B})^T   & = \vec{A}^T + \vec{B}^T \\
+            (c\vec{A})^T            & = c\ \vec{A}^T          \\
+            (\vec{AB})^T            & = \vec{B}^T\ \vec{A}^T
+        \end{align}
+
+    \item[Special names for matrices] Some square matrices have special names based
+        on their transpose,
+        \begin{align}
+            \vec{A}^T & = \vec{A}                  & a_{jk}      & = a_{kj}          &
+                      & \text{symmetric}                                               \\
+            \vec{A}^T & = -\vec{A}                 & a_{kk}      & = 0               &
+                      & \text{skew-symmetric}                                          \\
+            a_{jk}    & = 0                        & \forall\  j & > k               &
+                      & \text{upper-triangular}                                        \\
+            a_{jk}    & = 0                        & \forall\  j & < k               &
+                      & \text{lower-triangular}                                        \\
+            a_{jk}    & = 0                        & \forall\  j & \neq k            &
+                      & \text{diagonal}                                                \\
+            a_{kk}    & = c                        & \forall\  k & \in \{1,\dots,n\} &
+                      & \text{scalar}                                                  \\
+            a_{kk}    & = 1                        & \forall\  k & \in \{1,\dots,n\} &
+                      & \text{identity}\ (\vec{I})
+        \end{align}
+        The scalar matrix has the same effect on multiplying by another compatible matrix
+        $ \vec{A} $ as multiplication by the scalar $ c $.
+        \begin{align}
+            \vec{AS} & = \vec{SA} = c\ \vec{A} \\
+            \vec{AI} & = \vec{IA} = \vec{A}
+        \end{align}
+
+    \item[Stochastic matrix] A matrix whose entries are all non-negative and whose
+        columns all sum to $ 1 $. They can be used to represent the transition
+        probabilities between states of a system.
+
+    \item[Markov process] A process in which the current state of the system only depends
+        on the previous state of the system. \par
+        No other details of its state history are remembered by the system. \par
+        The transition matrix is a stochastic matrix used to convey the probablities of
+        transition from every state of the system to every other state possible.
+        \begin{align}
+            \vec{y}_{n} & = \vec{A}\ \vec{y}_{n-1} \\
+            \vec{y}_{n} & = \vec{A}^n \ \vec{y}_0
+        \end{align}
+\end{description}
+
+\section{Linear Systems of Equations, Gauss Elimination}
+\begin{description}
+    \item[Linear system] A system of $ m $ equations in $ n $ unknowns is represented as,
+        \begin{align}
+            a_{11}x_1 + \dots + a_{1n}x_n          & = b_1    \\
+            a_{21}x_1 + \dots + a_{2n}x_n          & = b_2    \\
+            \cdots\cdots\cdots\cdots\cdots\cdots\  & = \cdots \\
+            a_{m1}x_1 + \dots + a_{mn}x_n          & = b_m    \\
+        \end{align}
+
+    \item[Augmented matrix] Condensing the matrices $ \vec{A} $ and $ \vec{b} $ into one
+        onject, by adding $ \vec{b} $ after the last column of $ \vec{A} $,
+        \begin{align}
+            \vec{Ax}        & = \vec{b}                            &
+            \vec{\tilde{A}} & = \begin{bNiceArray}{rrr|r}
+                                    a_{11} & \dots  & a_{1n} & b_1    \\
+                                    a_{21} & \dots  & a_{2n} & b_2    \\
+                                    \vdots & \ddots & \vdots & \vdots \\
+                                    a_{m1} & \dots  & a_{mn} & b_m    \\
+                                \end{bNiceArray}
+        \end{align}
+
+    \item[Elementary row operations] Three kindds of manipulations of the rows of a
+        matrix, that leave its determinant unchanged.
+        \begin{itemize}
+            \item Interchange of two rows
+            \item Adding a constant multiple of one row to another
+            \item Multiplying a row by a nonzero constant
+        \end{itemize}
+
+    \item[Gauss Elimination] Repeated row operations on the augmented matrix in order
+        to convert it into upper triangular form. Then, simple back substitution from the
+        bottom-up can yield one element of the solution at a time.
+        \par The general procedure is as follows,
+        \begin{itemize}
+            \item Eliminate the first variable from all but the first row by performing
+                  the appropriate row operations on the augmented matrix.
+            \item Repeat this process for the next variable, keeping in mind that the
+                  first $ (k-1) $ rows remain unchanged when targeting variable $ x_k $.
+            \item After performing this operation $ k $ times, the first $ k $ columns
+                  of the coefficient matrix will be upper triangular.
+        \end{itemize}
+
+    \item[Row equivalnce] Two linear systems related by a finite number of row
+        operations. They necessarily have the same solution.
+
+    \item[Types of linear system] A system is called consistent if it has at least one
+        solution. \par
+        For a linear system with $ m $ equations and $ n $ unknowns, (translates to a
+        matrix with $ m $ rows and $ n $ columns),
+        \begin{align}
+            m & > n & \implies & \ \text{overdetermined}   \\
+            m & = n & \implies & \ \text{determined}       \\
+            m & < n & \implies & \ \text{under-determined}
+        \end{align}
+
+    \item[Infinitely many solutions] If reduction to upper triangular form leaves
+        one or more rows completely zero, then the system has infinitely many solutions,
+        and by convention the free variables are denoted by a different alphabet.
+
+    \item[No solution] Gauss elimination will simply produce a contradictory statement,
+        such as two unequal constants being related by an equality.
+
+    \item[Row Echelon form] The upper-triangular like form of the coefficient matrix
+        after completion of Gauss elimination. This may have some number or completely
+        zero rows at the bottom. \par
+        Starting from the first row, every row will have more zero elements starting from
+        the left edge before the first nonzero element.
+        \begin{align}
+            \Big[\vec{A}| \vec{b}\Big] & \iff \Big[\vec{R}| \vec{f}\Big] \\
+            \Big[\vec{R}| \vec{f}\Big] & =
+            \begin{bNiceArray}{rrrrr|r}
+                r_{11} & r_{12} & \dots  & \dots  & r_{1n} & f_1     \\
+                0      & r_{22} & \dots  & \dots  & r_{2n} & f_2     \\
+                0      & \ddots &        & \dots  &        & \vdots  \\
+                0      & 0      & r_{kk} & \dots  & r_{kn} & f_k     \\
+                0      & 0      & 0      & 0      & 0      & f_{k+1} \\
+                \vdots & \vdots & \vdots & \vdots & \vdots & \vdots  \\
+                0      & 0      & 0      & 0      & 0      & f_{m}   \\
+            \end{bNiceArray}
+        \end{align}
+        Here, $ k \leq m $
+
+    \item[Rank of matrix] The number of nonzero rows $ k $ in the row echelon form of
+        the matrix $ \vec{A} $ is called its rank. The rank can be used to classify the
+        type of solutions of the linear system.
+        \begin{itemize}
+            \item If the rank $ k $ is less than the number of rows $ m $, and at least
+                  one of the RHS elements $ \{f_{k+1}, \dots,f_m\} $ is non-zero, then the
+                  system has no solution.
+            \item If the system is consistent ($ r = m $ or $ r < m $ and all of the
+                  RHS elements $ \{f_{k+1}, \dots, f_m\} $) are zero, then the system
+                  has at least one solution.
+        \end{itemize}
+\end{description}
+
+\section{Linear Independence, Rank of a Matrix, Vector Space}
+\begin{description}
+    \item[Linear Independence of vectors] Given a set of vectors with the same number of
+        components $ \{\vec{a}_i\} $, the equation
+        \begin{align}
+            c_1 \vec{a}_1 + c_2\vec{a_2} + \dots + c_n\vec{a}_n & = \vec{0}
+        \end{align}
+        for some scalars $\{c_i\} $, always has the trivial solution
+        $ \{c_i\} = 0 $. \par
+        If this is the only solution to this equation, then the set of vectors $ \{a_i\} $
+        are considered L.I. \par
+        If there is some solution to the above equation which does not require the entire
+        set $ \{c_i\} $ to be zero, then the vectors are linearly dependent (L.D.)
+
+    \item[Rank of a matrix] The maximum  number of L.I. row vectors of a matrix. \par
+        Rank of a matrix is invariant under elementary row operations. \par
+        If the matrix formed by a set of vectors as rows, has rank equal to the number
+        of rows, then the set of vectors are L.I. \par
+        Using the result,
+        \begin{align}
+            \rank(\vec{A}) & = \rank(\vec{A}^T)
+        \end{align}
+        The rank of a matrix is also equal to the number of L.I. column vectors in it.
+
+    \item[Linear dependence of vectors] Consider a set of $ p $ vectors each having
+        $ n $ components. If $ n < p $, then the set of vectors are L.D.
+
+    \item[Vector Space] For a non-empty set of vectors $ V $, whose members all have the
+        same number of components, all linear combinations of elements of $ V $ are also
+        members of $ V $.
+        \begin{align}
+            \vec{a},\ \vec{b}                 & \in V &
+            \implies k_1 \vec{a} + k_2\vec{b} & \in V
+        \end{align}
+        Here $ \{k_1\} $ are real numbers.
+
+    \item[Dimension and basis of vector space] The maximum number of L.I. vectors
+        in $ V $. (for the special case of finite dimensional spaces) \par
+        Such a set of L.I. vectors in $ V $ is called a basis of $ V $. Adding another
+        vector to this set would make it L.D. \par
+        The number of vectors in a basis of $ V $ is equal to $ \text{dim}(V) $.
+
+    \item[Span] The set of all linear combinations of a set of vectors is called the span
+        of those vectors. If this set of vectors is L.I., then they form a basis for
+        that span (which is also a vector space).
+
+    \item[Subspace] Any non-empty subset of $ V $ that obeys the same rules for
+        addition and scalar multiplication as the parent vector space $ V $.
+
+    \item[Row space and Column space of a matrix] The span of the row vectors or column
+        vectors of a matrix. \par
+        The row space and column space of $ \vec{A} $ have the same dimension, equal to
+        $ \rank(\vec{A}) $.
+
+    \item[Null space, nullity] For a homogeneous system of equations,
+        \begin{align}
+            \vec{Ax} & = \vec{0}
+        \end{align}
+        The solution set of this system is called the null space of $ \vec{A} $. The
+        dimension of the null space is called the nullity.
+\end{description}
+
+\section{Solutions of Linear Systems: Existence, Uniqueness}
+\begin{description}
+    \item[Submatrix] A matrix obtained by omitting some rows or columns of a larger
+        matrix.
+
+    \item[Existence of solutions] A linear system of $ m $ equations in $ n $ variables
+        is consistent (has at least one solution) if and only if the coefficient matrix
+        $ \vec{A} $ and augmented matrix $ \vec{\tilde{A}} $ have the same rank. \par
+
+        \begin{itemize}
+            \item The solution is unique if and only if this common rank is equal to
+                  $ n $.
+            \item If the common rank $ r < n $, then the system has infinitely many
+                  solutions.
+            \item If the solutions exist, they can be obtained by Gauss elimination.
+        \end{itemize}
+
+    \item[Homogeneous Linear System] A homogeneous system $ \vec{Ax} = \vec{0} $ always
+        has a trivial solution, where $ A $ is an $ m \times n $ matrix. \par
+        Nontrivial solutions exist if and only if $ \rank(\vec{A})  < n $ \par
+
+        Homogeneous linear systems with fewer equations than unknowns $ (m < n) $
+        always has nontrivial solutions.
+        \begin{align}
+            \rank(\vec{A})          & \leq m & m & < n \\
+            \implies \rank(\vec{A}) & < n
+        \end{align}
+
+    \item[Solution space] Only in the case of homogeneous systems, the trivial and
+        nontrivial solutions together form a vector space called the solution space. \par
+
+        The dimension of the solution space is $ n-r $, where the system has $ n $
+        variables, but the matrix $ \vec{A} $ has rank $ r < n $. \par
+
+        This is also called the null space of $ \vec{A} $, and its dimension is called
+        the nullity. This leads to,
+        \begin{align}
+            \rank(\vec{A}) + \text{nullity}(\vec{A}) = n
+        \end{align}
+        Homogeneous linear systems with fewer equations than unknowns $ (m < n) $
+        always has nontrivial solutions.
+
+    \item[Nonhomogeneous Linear Systems] Analogous to the theorem for ODEs, the
+        set of all solutions to a nh-linear system is of the form,
+        \begin{align}
+            \vec{x} & = \vec{x}_p + \vec{x}_h
+        \end{align}
+        where $ \vec{x}_p $ is a particular solution to the nh-system and $ \vec{x}_h $
+        is the set of all solutions to the corresponding h-system.
+\end{description}
+
+\section{Second and Third-order determinants}
+\begin{description}
+    \item[Second order determinant] A square matrix of order 2 has the determinant
+        \begin{align}
+            D = \det(\vec{A}) & \equiv \begin{vNiceMatrix}[c, margin]
+                                           a & b \\ c & d
+                                       \end{vNiceMatrix} = ad - bc
+        \end{align}
+    \item[Minor of a matrix element] The determinant of the submatrix obtained by
+        removing the row and column in which the element is located.
+        For example, a $ 3 \times 3 $ matrix gives,
+        \begin{align}
+            M_{1,1} & = \begin{bNiceMatrix}[c,margin]
+                            \CodeBefore
+                            \cellcolor{y_p!10}{2-1,3-1,1-2,1-3}
+                            \cellcolor{y_h!10}{2-2,3-2,2-3,3-3}
+                            \Body
+                            a & b & c \\
+                            d & e & f \\
+                            g & h & i
+                        \end{bNiceMatrix} &
+            M_{2,1} & = \begin{bNiceMatrix}[c,margin]
+                            \CodeBefore
+                            \cellcolor{y_p!10}{1-1,3-1,2-2,2-3}
+                            \cellcolor{y_h!10}{1-2,1-3,3-2,3-3}
+                            \Body
+                            a & b & c \\
+                            d & e & f \\
+                            g & h & i
+                        \end{bNiceMatrix} &
+            M_{3,1} & = \begin{bNiceMatrix}[c,margin]
+                            \CodeBefore
+                            \cellcolor{y_p!10}{1-1,2-1,3-2,3-3}
+                            \cellcolor{y_h!10}{1-2,1-3,2-2,2-3}
+                            \Body
+                            a & b & c \\
+                            d & e & f \\
+                            g & h & i
+                        \end{bNiceMatrix} \\
+            M_{1,1} & = \begin{vNiceMatrix}[c,margin]
+                            e & f \\
+                            h & i \\
+                        \end{vNiceMatrix}     &
+            M_{2,1} & = \begin{vNiceMatrix}[c,margin]
+                            b & c \\
+                            h & i \\
+                        \end{vNiceMatrix}     &
+            M_{3,1} & = \begin{vNiceMatrix}[c,margin]
+                            b & c \\
+                            e & f \\
+                        \end{vNiceMatrix}       \\
+        \end{align}
+
+    \item[Cofactor of a matrix] In order to calculate higher order determinants,
+        \begin{align}
+            C_{i, j}      & = (-1)^{i+j} M_{i,j}                  \\
+            \det(\vec{A}) & = \sum_{i=1}^{n} a_{ik} \cdot C_{i,k}
+        \end{align}
+        For some column index $ k $. Alternatively the expansion can also be performed
+        along any row.
+
+    \item[Third order determinants] A square matrix of order 3 has the determinant,
+        \begin{align}
+            D = \det(\vec{A}) & \equiv \begin{vNiceMatrix}[c,margin]
+                                           a & b & c \\
+                                           d & e & f \\
+                                           g & h & i
+                                       \end{vNiceMatrix}                   \\
+                              & = a \cdot C_{1,1} + d \cdot C_{2,1} + g \cdot C_{3,1} \\
+                              & = a \cdot M_{1,1} - d \cdot M_{2,1} + g \cdot M_{3,1}
+        \end{align}
+\end{description}
+
+\section{Determinants, Cramer's Rule}
+\begin{description}
+    \item[Determinant properties] A scalar associated to a square matrix, used in linear
+        algebra and solving linera systems.
+    \item[Properties of determinants] Similar to the underlying matrices,
+        \begin{itemize}
+            \item Determinant is invariant when adding a scalar multiple of one row
+                  to another.
+            \item Interchanging rows however, introduces a global multiplier of (-1).
+            \item Multiplying a row by a scalar introduces a global multiplier by
+                  the same scalar.\begin{align}
+                      \det(c\vec{A}) & = c^n\ \det(\vec{A})
+                  \end{align}
+            \item Transposing a matrix does not change its determinant.
+            \item A zero row or column makes the determinant zero.
+            \item A row or column being a scalar multiple of another makes the
+                  determinant zero.
+        \end{itemize}
+
+    \item[Relating rank and determinant of a matrix] Let $ A_{m \times n} $ have non-zero
+        rank $ r $. \par
+        $ \rank(\vec{A}) = r \geq 1 $ ifand only if $ \vec{A} $ has at least one
+        $ r \times r $ submatrix with nonzero determinant. \par
+        The determinant of any submatrix with more than $ r $ rows contained in $ A $
+        is zero. \par
+        For the specific case of $ m = n $ (square matrix)
+        \begin{align}
+            \det(\vec{A}) \neq 0 \qquad \iff \qquad \rank(\vec{A})  = n
+        \end{align}
+
+    \item[Cramer's rule] A computationally inefficient method of solving linear systems
+        using quotients of determinants. \par
+        Consider a system of $ n $ equations in $ n $ variables
+        \begin{align}
+            \vec{Ax} & = \vec{b}                      \\
+            D_k      & = D\ \text{with k}^{\text{th}}
+            \text{ column replaced by}\ \vec{b}       \\
+            x_k      & = \frac{D_k}{D}
+        \end{align}
+        For the unique solution defined above to exist, the system has to have
+        $ \det(\vec{A}) \neq 0 $. \par
+        If the system is homogeneous, $ D \neq 0 $ guarantees only the trivial solution
+        exists.
+\end{description}
+
+\section{Inverse of a Matrix, Gauss-Jordan Elimination}
+\begin{description}
+    \item[Inverse of a matrix] Analog of the multilicative inverse of a number,
+        \begin{align}
+            \vec{AA}^{-1} & = \vec{A}^{-1}\vec{A} = \vec{I}
+        \end{align}
+        This is only defined for square matrices with $ \vec{I} $ being the identity
+        matrix of order $ n $. \par
+        The inverse of a matrix is unique, if it exsits.
+
+    \item[Singular matrix] A matrix which does not have an inverse.
+
+    \item[Existence of inverse] The inverse of a matrix exists if and only if it
+        has maximum possible rank $ n $. \par
+        or if and only if $ \det(\vec{A}) \neq 0 $.
+
+    \item[Gauss-Jordan method] Enhancement of Gauss elimination method to find the
+        inverse using the following steps,
+        \begin{itemize}
+            \item Construct the augmented matrix $ \vec{\tilde{A}} =
+                      \begin{bNiceArray}{c|c}[margin]
+                          \vec{A} & \vec{I}
+                      \end{bNiceArray} $
+            \item Apply Gauss elimination to $ \vec{A} $ until it is triangular
+                  \begin{align}
+                      \begin{bNiceArray}{c|c}[margin]
+                          \vec{A} & \vec{I}
+                      \end{bNiceArray} \rightarrow \begin{bNiceArray}{c|c}[margin]
+                                                       \vec{U} & \vec{H}
+                                                   \end{bNiceArray}
+                  \end{align}
+            \item Apply further row operations to convert $ \vec{U} $ into a diagonal
+                  matrix with all diagonal entries $ 1 $.
+                  \begin{align}
+                      \begin{bNiceArray}{c|c}[margin]
+                          \vec{U} & \vec{H}
+                      \end{bNiceArray} \rightarrow \begin{bNiceArray}{c|c}[margin]
+                                                       \vec{I} & \vec{K}
+                                                   \end{bNiceArray}
+                  \end{align}
+            \item The inverse is now directly read from the right half of
+                  $ \vec{\tilde{A}} $.
+                  \begin{align}
+                      \vec{K} & =  \vec{A}^{-1}
+                  \end{align}
+        \end{itemize}
+
+    \item[Inverse using Cramer's rule] Cramer's rule provides a direct formula to
+        calculate the inverse, using the cofactors of $ \det{\vec{A}} $
+        \begin{align}
+            \vec{A}^{-1} & = \frac{1}{\det(\vec{A})}\ \big[C_{jk}\big]^T
+            = \frac{1}{\det{\vec{A}}}\ \begin{bNiceMatrix}[c, margin]
+                                           C_{11} & C_{21} & \dots  & C_{n1} \\
+                                           C_{12} & C_{22} & \dots  & C_{n2} \\
+                                           \vdots & \vdots & \ddots & \vdots \\
+                                           C_{1n} & C_{2n} & \dots  & C_{nn} \\
+                                       \end{bNiceMatrix}
+        \end{align}
+        For the special case of $ 2 \times 2 $ matrices, where this is an easy
+        computation,
+        \begin{align}
+            \vec{A}      & = \begin{bNiceMatrix}[r, margin]
+                                 a & b \\ c & d
+                             \end{bNiceMatrix} \vec{A}^{-1}                          &
+            \vec{A}^{-1} & = \frac{1}{\det{\vec{A}}}\ \begin{bNiceMatrix}[r, margin]
+                                                          d & -b \\ -c & a
+                                                      \end{bNiceMatrix}
+        \end{align}
+
+    \item[Properties of inverse] Inverse of a matrix has some properties resembling
+        the transpose,
+        \begin{align}
+            (\vec{AB})^{-1}             & = \vec{B}^{-1}\ \vec{A}^{-1} \\
+            \big(\vec{A}^{-1}\big)^{-1} & = \vec{A}
+        \end{align}
+
+    \item[Cancellation laws] Laws explaining the unusual properties of matrix
+        multiplication.
+        \begin{itemize}
+            \item If $ \rank(\vec{A}) = n $ and $ \vec{AB} = \vec{AC} $ then,
+                  $ \vec{B} = \vec{C} $
+            \item If $ \rank(\vec{A}) = n $ and $ \vec{AB} = 0 $ then,
+                  $ \vec{B} = 0 $
+            \item  If $ \vec{AB} = 0 $ but $ \vec{A} \neq 0 $ and $ \vec{B} \neq 0 $,
+                  then $ \rank(\vec{B}) < n $ and $ \rank(\vec{A}) < n $
+            \item If $ \vec{A} $ is singular, then $ \vec{AB} $ and $ \vec{BA} $ are
+                  also singular.
+        \end{itemize}
+
+    \item[Determinant of matrix product] The determinant of the product of matrices
+        is given by,
+        \begin{align}
+            \det(\vec{AB}) = \det(\vec{BA}) \equiv \det(\vec{A}) \cdot \det(\vec{B})
+        \end{align}
+\end{description}
+
+\section{Vector Spaces, Inner Product Spaces, Linear Transformations}
+
+\begin{description}
+    \item[Real vector space] A vector space whose components are ordered $ n $-tuples
+        of real numbers. This is denoted $ \mathcal{R}^{n} $. \par
+
+    \item[Vector addition] With any two elements $ \vec{a} $ and $ \vec{b} $ of the
+        vector space $ V $, a unique member of $ V $ can be associated to the operation
+        $ \vec{a} + \vec{b} $ satisfying,
+        \begin{align}
+            \vec{a} + \vec{b}             & = \vec{b} + \vec{a}             &
+                                          & \text{commutativity}              \\
+            (\vec{a} + \vec{b}) + \vec{c} & = \vec{a} + (\vec{b} + \vec{c}) &
+                                          & \text{associativity}              \\
+            \vec{a} + \vec{0}             & = \vec{a}                       &
+                                          & \text{zero vector}                \\
+            \vec{a} + (-\vec{a})          & = \vec{0}                       &
+                                          & \text{additive inverse}           \\
+        \end{align}
+
+    \item[Scalar multiplication] For every element $ \vec{a} $ of the
+        vector space $ V $, and a scalar $ c $ a unique member of $ V $ can be associated
+        to the operation $ k\vec{a} $ satisfying,
+        \begin{align}
+            k(\vec{a} + \vec{b}) & = k\vec{a} + k\vec{b}              &
+                                 & \text{distributivity over vectors}   \\
+            (k + m) \vec{a}      & = k\vec{a} + m\vec{a}              &
+                                 & \text{distributivity over scalars}   \\
+            c\ (k\vec{a})        & = (ck)\ \vec{a}                    &
+                                 & \text{associativity}                 \\
+            1 \cdot \vec{a}      & = \vec{a}                          &
+                                 & \text{additive identity}
+        \end{align}
+
+        The above axioms are necessary and sufficient to define vector spaces.
+
+    \item[Dimension of vector space] The maximum size of a set of L.I. vectors in
+        $ V $, such that adding even one more vector to the set would make it L.I. \par
+        If a vector space contains a L.I. set of $ n $ vectors, no matter how large
+        $ n $ is, then $ V $ is an infinite dimensional vector space.
+
+    \item[Inner Product] Given two members $ \vec{a} $ and $ \vec{b} $ of a vector
+        space in $ \mathcal{R}^n $,
+        \begin{align}
+            \vec{a} \dotp \vec{b} = (\vec{a}, \vec{b}) & \equiv \vec{a}^T \vec{b}
+            = \begin{bNiceMatrix}
+                  a_1 & a_2 & \dots & a_n
+              \end{bNiceMatrix} \dotp \begin{bNiceMatrix}
+                                          b_1 \\ b_2 \\ \vdots \\ b_n
+                                      \end{bNiceMatrix} = \sum_{l=1}^{n} a_l b_l
+        \end{align}
+
+    \item[Real Inner Product space] Consider a real vector space $ V $ and two members
+        $ \vec{a} $ and $ \vec{b} $. \par
+        If there is a real number associated with these vectors denoted by
+        $ \vec{a} \dotp \vec{b} $ (with $ p,\ q $ being scalars)
+        \begin{align}
+            (p\vec{a} + q\vec{b}, \vec{c}) & = p (\vec{a}, \vec{c})
+            + q (\vec{b}, \vec{c})         &
+                                           &                        &
+            \text{linearity}                                          \\
+            (\vec{a}, \vec{b})             & = (\vec{b}, \vec{a})   &
+                                           &                        &
+            \text{symmetry}                                           \\
+            (\vec{a}, \vec{a})             & \geq 0                   \\
+            (\vec{a}, \vec{a})             & = 0 \iff \vec{a} = 0   &
+                                           &                        &
+            \text{positive-definite}
+        \end{align}
+
+    \item[Orthogonal] Two vectors are orthogonal if their inner product is zero.
+    \item[Norm] The norm (or length) of a vector is the square root of its inner product.
+        \begin{align}
+            \lVert \vec{a} \rVert & \equiv \sqrt{(\vec{a}, \vec{a})}   \\
+                                  & = \sqrt{a_1^2 + \dots + a_n^2}   &
+                                  & \text{Euclidean space}
+        \end{align}
+    \item[Unit vector] A vector with $ \lVert \vec{a} \rVert = 1 $
+
+    \item[Vector inequalities] Using the above definition of the norm,
+        \begin{align}
+            \abs{ (\vec{a}, \vec{b}) \rvert                                &
+            \leq \lVert \vec{a} \rVert\ \lVert \vec{b} \rVert               &
+                                                                            &   &
+            \text{Cauchy-Shwarz inequality}                                       \\
+            \lVert \vec{a} + \vec{b} \rVert                                 &
+            \leq \lVert \vec{a} \rVert + \lVert \vec{b} \rVert              &
+                                                                            &   &
+            \text{Triangle inequality}                                            \\
+            \lVert \vec{a} + \vec{b} \rVert^2
+            + \lVert \vec{a} - \vec{b} \rVert^2                             &
+            = 2\Big(\lVert \vec{a} \rVert^2 + \lVert \vec{b} \rVert^2 \Big) &
+                                                                            &   &
+            \text{Parallellogram equality}
+        \end{align}
+
+    \item[Linear Transform] A mapping from each vector $ \vec{x} $ in $ X $ to a
+        unique vector $ \vec{y} $ in $ Y $ denoted by
+        \begin{align}
+            F\vec{x} & = \vec{y} & F(x) & = y
+        \end{align}
+        For all vectors $ \vec{a} $ and $ \vec{b} $ in $ X $ and for all scalars $ c $,
+        \begin{align}
+            F(\vec{a} + \vec{b}) & = F(\vec{a}) + F(\vec{b}) \\
+            F(c\vec{a})          & = c\ F(\vec{a})
+        \end{align}
+
+    \item[Image] The result of a linear transform acting on a source vector.
+        In the above definition, $ \vec{y} $ is the image of $ \vec{x} $
+        under $ F $
+
+    \item[Matrices as linear transforms] All linear transforms of the form
+        $ \mathcal{R}^n \rightarrow \mathcal{R}^m $ can be represented by an
+        $ m \times n $ matrix.
+        \begin{align}
+            \vec{y} & = \vec{Ax}
+        \end{align}
+        The matrix $ \vec{A} $ is said to represent the linear transform $ F $.
+
+    \item[Composition of Linear Transforms] An ordered application of linear transforms
+        one after the other. \par
+        For some vector spaces $ W, X, Y $,
+        \begin{align}
+            F & : X \rightarrow Y              & G & : W \rightarrow X \\
+            H & \equiv (F \circ G) = FG = F(G) & H & : W \rightarrow Y
+        \end{align}
+        Compositions of linera transforms are also linear. In terms of matrices, this
+        is analogous to multiplication of matrices.
+        \begin{align}
+            \vec{y} &= \vec{Ax} & \vec{x} &= \vec{Bw} \\
+            \vec{y} &= \vec{Cw} & \vec{C} &= \vec{AB}
+        \end{align}
+
+\end{description}

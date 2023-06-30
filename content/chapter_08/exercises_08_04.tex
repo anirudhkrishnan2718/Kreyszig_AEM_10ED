@@ -1,0 +1,814 @@
+\section{Eigenbases, Diagonalization, Quadratic Forms}
+
+\begin{enumerate}
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                       & = \bmattt{3}{4}{4}{-3} &
+              0                             & = \lambda^2 - 9 - 16     \\
+              \{\lambda_i\}                 & = \{-5, 5\}              \\
+              \lambda_1                     & = \color{y_h} -5       &
+              \bmattt{8}{4}{4}{2} \vec{x}   & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{1}{-2}                  \\
+              \lambda_2                     & = \color{y_p} 5        &
+              \bmattt{-2}{4}{4}{-8} \vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{2}{1}
+          \end{align}
+          Finding the eigenvalues and eigenvectors of $ \vec{\hat{A}} $
+          \begin{align}
+              \vec{P}                              & = \bmattt{-4}{2}{3}{-1}     &
+              \vec{\hat{A}} = \vec{P}^{-1}\vec{AP} & = \bmattt{-25}{12}{-50}{25}   \\
+              0                                    & = \lambda^2 - 625 + 600     &
+              \{\lambda_i\}                        & = \{-5, 5\}                   \\
+              \lambda_1                            & = \color{y_h} -5            &
+              \bmattt{-20}{12}{-50}{30} \vec{x}    & = \vec{0},\
+              \vec{y}_1 = \color{y_h} \bmatcol{3}{5}                               \\
+              \lambda_2                            & = \color{y_p} 5             &
+              \bmattt{-30}{12}{-50}{20} \vec{x}    & = \vec{0},\
+              \vec{y}_2 = \color{y_p} \bmatcol{2}{5}
+          \end{align}
+          The eigenvalues match. Verifying the eigenvector relationship,
+          \begin{align}
+              \vec{Py}_1 & = \bmatcol{-2}{4} \propto \vec{x}_1 &
+              \vec{Py}_2 & = \bmatcol{2}{1} \propto \vec{x}_2
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                      & = \bmattt{1}{0}{2}{-1} &
+              0                            & = \lambda^2 - 1          \\
+              \{\lambda_i\}                & = \{-1, 1\}              \\
+              \lambda_1                    & = \color{y_h} -1       &
+              \bmattt{2}{0}{2}{0} \vec{x}  & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{0}{1}                  \\
+              \lambda_2                    & = \color{y_p} 1        &
+              \bmattt{0}{0}{2}{-2} \vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{1}{1}
+          \end{align}
+          Finding the eigenvalues and eigenvectors of $ \vec{\hat{A}} $
+          \begin{align}
+              \vec{P}                              & = \bmattt{7}{-5}{10}{-7}    &
+              \vec{\hat{A}} = \vec{P}^{-1}\vec{AP} & = \bmattt{-29}{20}{-42}{29}   \\
+              0                                    & = \lambda^2 - 841 + 840     &
+              \{\lambda_i\}                        & = \{-1, 1\}                   \\
+              \lambda_1                            & = \color{y_h} -1            &
+              \bmattt{-28}{20}{-42}{30} \vec{x}    & = \vec{0},\
+              \vec{y}_1 = \color{y_h} \bmatcol{5}{7}                               \\
+              \lambda_2                            & = \color{y_p} 1             &
+              \bmattt{-30}{20}{-42}{28} \vec{x}    & = \vec{0},\
+              \vec{y}_2 = \color{y_p} \bmatcol{2}{3}
+          \end{align}
+          The eigenvalues match. Verifying the eigenvector relationship,
+          \begin{align}
+              \vec{Py}_1 & = \bmatcol{0}{1} \propto \vec{x}_1   &
+              \vec{Py}_2 & = \bmatcol{-1}{-1} \propto \vec{x}_2
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                       & = \bmattt{8}{-4}{2}{2}       &
+              0                             & = \lambda^2 - 10\lambda + 24   \\
+              \{\lambda_i\}                 & = \{4, 6\}                     \\
+              \lambda_1                     & = \color{y_h} 4              &
+              \bmattt{4}{-4}{2}{-2} \vec{x} & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{1}{1}                         \\
+              \lambda_2                     & = \color{y_p} 6              &
+              \bmattt{2}{-4}{2}{-4} \vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{2}{1}
+          \end{align}
+          Finding the eigenvalues and eigenvectors of $ \vec{\hat{A}} $
+          \begin{align}
+              \vec{P}                              & = \bmattt{0.28}{0.96}
+              {-0.96}{0.28}                        &
+              \vec{\hat{A}} = \vec{P}^{-1}\vec{AP} & =
+              \bmattt{3.008}{-0.544}{5.456}{6.992}                                  \\
+              0                                    & = \lambda^2 - 10\lambda + 24 &
+              \{\lambda_i\}                        & = \{4, 6\}                     \\
+              \lambda_1                            & = \color{y_h} 4              &
+              \bmattt{-0.992}{-0.544}{5.456}{2.992}
+              \vec{x}                              & = \vec{0},\
+              \vec{y}_1 = \color{y_h} \bmatcol{-17}{31}                             \\
+              \lambda_2                            & = \color{y_p} 6              &
+              \bmattt{-2.992}{-0.544}{5.456}{0.992}
+              \vec{x}                              & = \vec{0},\
+              \vec{y}_2 = \color{y_p} \bmatcol{-2}{11}
+          \end{align}
+          The eigenvalues match. Verifying the eigenvector relationship,
+          \begin{align}
+              \vec{Py}_1 & = \bmatcol{25}{25} \propto \vec{x}_1 &
+              \vec{Py}_2 & = \bmatcol{10}{5} \propto \vec{x}_2
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                        & =
+              \begin{bNiceMatrix}[r, margin]
+                  0 & 0 & 2 \\
+                  0 & 3 & 2 \\
+                  1 & 0 & 1
+              \end{bNiceMatrix} &
+              0                              & = \lambda^3 - 4\lambda^2
+              + \lambda + 6                  &
+              \{\lambda_i\}                  & = \{-1, 2, 3\}             \\
+              \lambda_1                      & = \color{y_h} -1         &
+              \lambda_2                      & = \color{y_p} 2          &
+              \lambda_3                      & = \color{brown6} 3         \\
+              \vec{x}_1                      & = \color{y_h}
+              \begin{bNiceMatrix}[r, margin]
+                  -4 \\ -1 \\ 2
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = \color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  -1 \\ 2 \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_3                      & = \color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 1 \\ 0
+              \end{bNiceMatrix}
+          \end{align}
+          Finding the eigenvalues and eigenvectors of $ \vec{\hat{A}} $
+          \begin{align}
+              \vec{P}                        & = \begin{bNiceMatrix}[r, margin]
+                                                     2 & 0 & 3 \\
+                                                     0 & 1 & 0 \\
+                                                     3 & 0 & 5
+                                                 \end{bNiceMatrix} &
+              \vec{\hat{A}}                  & = \begin{bNiceMatrix}[r, margin]
+                                                     15 & 0 & 26  \\
+                                                     6  & 3 & 10  \\
+                                                     -8 & 0 & -14
+                                                 \end{bNiceMatrix} &
+              0                              & = \lambda^3 - 4\lambda^2
+              + \lambda + 6                                                       \\
+              \lambda_1                      & = \color{y_h} -1                 &
+              \lambda_2                      & = \color{y_p} 2                  &
+              \lambda_3                      & = \color{brown6} 3                 \\
+              \vec{x}_1                      & = \color{y_h}
+              \begin{bNiceMatrix}[r, margin]
+                  -26 \\ -1 \\ 16
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = \color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  -2 \\ 2 \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_3                      & = \color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 1 \\ 0
+              \end{bNiceMatrix}
+          \end{align}
+          The eigenvalues match. Verifying the eigenvector relationship,
+          \begin{align}
+              \vec{Py}_1 & = \begin{bNiceMatrix}[r, margin]
+                                 -4 \\ -1 \\ 2
+                             \end{bNiceMatrix} \propto \vec{x}_1 &
+              \vec{Py}_2 & = \begin{bNiceMatrix}[r, margin]
+                                 -1 \\ 2 \\ 1
+                             \end{bNiceMatrix} \propto \vec{x}_2 &
+              \vec{Py}_3 & = \begin{bNiceMatrix}[r, margin]
+                                 0 \\ 1 \\ 0
+                             \end{bNiceMatrix} \propto \vec{x}_3
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                        & =
+              \begin{bNiceMatrix}[r, margin]
+                  -5 & 0 & 15 \\
+                  3  & 4 & -9 \\
+                  -5 & 0 & 15
+              \end{bNiceMatrix} &
+              0                              & = \lambda^3 - 14\lambda^2
+              + 40\lambda                    &
+              \{\lambda_i\}                  & = \{0, 4, 10\}              \\
+              \lambda_1                      & = \color{y_h} 0           &
+              \lambda_2                      & = \color{y_p} 4           &
+              \lambda_3                      & = \color{brown6} 10         \\
+              \vec{x}_1                      & = \color{y_h}
+              \begin{bNiceMatrix}[r, margin]
+                  3 \\ 0 \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = \color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 1 \\ 0
+              \end{bNiceMatrix} &
+              \vec{x}_3                      & = \color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  1 \\ -1 \\ 1
+              \end{bNiceMatrix}
+          \end{align}
+          Finding the eigenvalues and eigenvectors of $ \vec{\hat{A}} $
+          \begin{align}
+              \vec{P}                        & = \begin{bNiceMatrix}[r, margin]
+                                                     0 & 1 & 0 \\
+                                                     1 & 0 & 0 \\
+                                                     0 & 0 & 1
+                                                 \end{bNiceMatrix} &
+              \vec{\hat{A}}                  & = \begin{bNiceMatrix}[r, margin]
+                                                     4 & 3  & -9 \\
+                                                     0 & -5 & 15 \\
+                                                     0 & -5 & 15
+                                                 \end{bNiceMatrix} &
+              0                              & = \lambda^3 - 14\lambda^2
+              + 40\lambda                                                         \\
+              \lambda_1                      & = \color{y_h} 0                  &
+              \lambda_2                      & = \color{y_p} 4                  &
+              \lambda_3                      & = \color{brown6} 10                \\
+              \vec{x}_1                      & = \color{y_h}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 3 \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = \color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  1 \\ 0 \\ 0
+              \end{bNiceMatrix} &
+              \vec{x}_3                      & = \color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  -1 \\ 1 \\ 1
+              \end{bNiceMatrix}
+          \end{align}
+          The eigenvalues match. Verifying the eigenvector relationship,
+          \begin{align}
+              \vec{Py}_1 & = \begin{bNiceMatrix}[r, margin]
+                                 3 \\ 0 \\ 1
+                             \end{bNiceMatrix} \propto \vec{x}_1 &
+              \vec{Py}_2 & = \begin{bNiceMatrix}[r, margin]
+                                 0 \\ 1 \\ 0
+                             \end{bNiceMatrix} \propto \vec{x}_2 &
+              \vec{Py}_3 & = \begin{bNiceMatrix}[r, margin]
+                                 1 \\ -1 \\ 1
+                             \end{bNiceMatrix} \propto \vec{x}_3
+          \end{align}
+
+    \item Similar matrices
+          \begin{enumerate}
+              \item Diagonalizing the matrix does not change its eigenvalues.
+                    \begin{align}
+                        \vec{D}                   & = \vec{X}^{-1}\vec{AX}      &
+                        \tr(\vec{D})              & = \sum_{k=1}^{n} \lambda_k    \\
+                        \tr(\vec{AB})             & = \tr(\vec{BA})             &
+                        \tr(\vec{X}^{-1}\vec{AX}) & = \tr(\vec{AX}\vec{X}^{-1})   \\
+                        \tr(\vec{D})              & = \tr(\vec{A})              &
+                        \implies \tr(\vec{A})     & = \sum_{k=1}^{n} \lambda_k
+                    \end{align}
+
+                    Using the eigenvalues calculated earlier,
+                    \begin{align}
+                        \vec{A}       & = \bmattt{3}{4}{4}{-3}           &
+                        \{\lambda_k\} & = \{-5, 5\}                      &
+                        \tr(\vec{A})  & = 0 = \sum \lambda_k               \\
+                        \vec{B}       & = \bmattt{8}{-4}{4}{2}           &
+                        \{\lambda_k\} & = \{4, 6\}                       &
+                        \tr(\vec{B})  & = 10 = \sum \lambda_k              \\
+                        \vec{C}       & = \begin{bNiceMatrix}[r, margin]
+                                              -5 & 0 & 15 \\
+                                              3  & 4 & -9 \\
+                                              -5 & 0 & 15
+                                          \end{bNiceMatrix} &
+                        \{\lambda_k\} & = \{0, 4, 10\}                   &
+                        \tr(\vec{C})  & = 14 = \sum \lambda_k
+                    \end{align}
+
+              \item Proving the result,
+                    \begin{align}
+                        \tr(\vec{AB}) & = \sum_{i = 1}^{n} (\vec{AB})_{ii}
+                        = \sum_{i=1}^{n} \sum_{k=1}^{n} a_{ik} b_{ki}      \\
+                        \tr(\vec{BA}) & = \sum_{i = 1}^{n} (\vec{BA})_{ii}
+                        = \sum_{i=1}^{n} \sum_{k=1}^{n} b_{ik} a_{ki}
+                        = \sum_{k=1}^{n} \sum_{i=1}^{n} b_{ik} a_{ki}
+                        = \sum_{k=1}^{n} \vec{(AB)}_{kk}
+                    \end{align}
+                    Refer to part $ a $ for the rest of the proof.
+
+              \item Finding the relation,
+                    \begin{align}
+                        \vec{B} & = \vec{P}^{-1} \vec{AP}                           &
+                        \vec{C} & = \vec{PA}\vec{P}^{-1}                              \\
+                        \vec{A} & = \vec{PB}\vec{P}^{-1}                            &
+                        \vec{C} & = (\vec{P})^2 \ \vec{B}\ \Big(\vec{P}^{-1}\Big)^2
+                    \end{align}
+
+              \item Swapping the columns of $ \vec{X} $ swaps the position of the
+                    corresponding eigenvalues in the diagonal of $ \vec{D} $.
+          \end{enumerate}
+
+    \item Matrices with all eigenvalues equal can have no eigenbasis
+          \begin{align}
+              \vec{A} & = \bmattt{1}{2}{0}{1} & \{\lambda_k\} & = \{1, 1\}       \\
+              \lambda & = 1                   & \vec{u}_1     & = \bmatcol{1}{0}
+          \end{align}
+          Clearly, this is not a basis for $ \mathcal{R}^2 $. \par
+          Similarly, for order 3,
+          \begin{align}
+              \vec{B}       & = \begin{bNiceMatrix}[r, margin]
+                                    1 & 0 & 2 \\
+                                    0 & 1 & 0 \\
+                                    0 & 0 & 1
+                                \end{bNiceMatrix}                   &
+              \{\lambda_k\} & = \{1, 1, 1\}                                        \\
+              \lambda       & = 1                                                &
+              \vec{u}_1     & = \begin{bNiceMatrix}[r, margin]
+                                    1 \\ 0 \\ 0
+                                \end{bNiceMatrix},\ \begin{bNiceMatrix}[r, margin]
+                                                        0 \\ 1 \\ 0
+                                                    \end{bNiceMatrix}
+          \end{align}
+          This fails to be a basis for $ \mathcal{R}^3 $
+
+    \item TBC
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                       & = \bmattt{1}{2}{2}{4}  &
+              0                             & = \lambda^2 - 5\lambda   \\
+              \{\lambda_i\}                 & = \{0, 5\}               \\
+              \lambda_1                     & = \color{y_h} 0        &
+              \bmattt{1}{2}{2}{4} \vec{x}   & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{-2}{1}                  \\
+              \lambda_2                     & = \color{y_p} 5        &
+              \bmattt{-4}{2}{2}{-1} \vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{1}{2}
+          \end{align}
+          Diagonalizing,
+          \begin{align}
+              \vec{X}                        & = \bmattt{-2}{1}{1}{2}             &
+              \vec{X}^{-1}                   & = \frac{1}{5} \bmattt{-2}{1}{1}{2}   \\
+              \vec{X}^{-1}\vec{AX} = \vec{D} & = \frac{1}{5} \bmattt{-2}{1}{1}{2}
+              \bmattt{0}{5}{0}{10}           &
+              \vec{D}                        & = \bmattt{0}{0}{0}{5}
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                      & = \bmattt{1}{0}{2}{-1} &
+              0                            & = \lambda^2 - 1          \\
+              \{\lambda_i\}                & = \{-1, 1\}              \\
+              \lambda_1                    & = \color{y_h} -1       &
+              \bmattt{2}{0}{2}{0} \vec{x}  & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{0}{1}                  \\
+              \lambda_2                    & = \color{y_p} 1        &
+              \bmattt{0}{0}{2}{-2} \vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{1}{1}
+          \end{align}
+          Diagonalizing,
+          \begin{align}
+              \vec{X}                        & = \bmattt{0}{1}{1}{1}  &
+              \vec{X}^{-1}                   & = \bmattt{-1}{1}{1}{0}   \\
+              \vec{X}^{-1}\vec{AX} = \vec{D} & = \bmattt{-1}{1}{1}{0}
+              \bmattt{0}{1}{-1}{1}           &
+              \vec{D}                        & = \bmattt{-1}{0}{0}{1}
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                          & = \bmattt{-19}{7}{-42}{16} &
+              0                                & = \lambda^2 + 3\lambda -10   \\
+              \{\lambda_i\}                    & = \{-5, 2\}                  \\
+              \lambda_1                        & = \color{y_h} -5           &
+              \bmattt{-14}{7}{-42}{21} \vec{x} & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{1}{2}                          \\
+              \lambda_2                        & = \color{y_p} 2            &
+              \bmattt{-21}{7}{-42}{14} \vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{1}{3}
+          \end{align}
+          Diagonalizing,
+          \begin{align}
+              \vec{X}                        & = \bmattt{1}{1}{2}{3}   &
+              \vec{X}^{-1}                   & = \bmattt{3}{-1}{-2}{1}   \\
+              \vec{X}^{-1}\vec{AX} = \vec{D} & = \bmattt{3}{-1}{-2}{1}
+              \bmattt{-5}{2}{-10}{6}         &
+              \vec{D}                        & = \bmattt{-5}{0}{0}{2}
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                                & = \bmattt{-4.3}{7.7}{1.3}{9.3} &
+              0                                      & = \lambda^2 - 5\lambda - 50      \\
+              \{\lambda_i\}                          & = \{-5, 10\}                     \\
+              \lambda_1                              & = \color{y_h} -5               &
+              \bmattt{0.7}{7.7}{1.3}{14.3} \vec{x}   & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{-11}{1}                                  \\
+              \lambda_2                              & = \color{y_p} 10               &
+              \bmattt{-14.3}{7.7}{1.3}{-0.7} \vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{7}{13}
+          \end{align}
+          Diagonalizing,
+          \begin{align}
+              \vec{X}                        & = \bmattt{-11}{7}{1}{13} &
+              \vec{X}^{-1}                   & = \frac{1}{-150}
+              \bmattt{13}{-7}{-1}{-11}                                    \\
+              \vec{X}^{-1}\vec{AX} = \vec{D} & = \frac{1}{-150}
+              \bmattt{13}{-7}{-1}{-11}
+              \bmattt{55}{70}{-5}{130}       &
+              \vec{D}                        & = \bmattt{-5}{0}{0}{10}
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                        & = \begin{bNiceMatrix}[r, margin]
+                                                     4  & 0  & 0 \\
+                                                     12 & -2 & 0 \\
+                                                     21 & -6 & 1
+                                                 \end{bNiceMatrix} &
+              0                              & = \lambda^3 - 3\lambda^2
+              - 6\lambda + 8                 &
+              \{\lambda_k\}                  & =  \{-2, 1, 4\}                    \\
+              \lambda_1                      & = \color{y_h} -2                 &
+              \lambda_2                      & = \color{y_p} 1                  &
+              \lambda_3                      & = \color{brown6} 4                 \\
+              \vec{x}_1                      & = \color{y_h}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 1 \\ 2
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = \color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 0 \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_3                      & = \color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  1 \\ 2 \\ 3
+              \end{bNiceMatrix}
+          \end{align}
+          Diagonalizing,
+          \begin{align}
+              \vec{X}              & = \begin{bNiceMatrix}[r, margin]
+                                           0 & 0 & 1 \\
+                                           1 & 0 & 2 \\
+                                           2 & 1 & 3
+                                       \end{bNiceMatrix} &
+              \vec{X}^{-1}         & = \begin{bNiceMatrix}[r, margin]
+                                           -2 & 1  & 0 \\
+                                           1  & -2 & 1 \\
+                                           1  & 0  & 0
+                                       \end{bNiceMatrix} \\
+              \vec{X}^{-1}\vec{AX} & = \begin{bNiceMatrix}[r, margin]
+                                           -2 & 0 & 0 \\
+                                           0  & 1 & 0 \\
+                                           0  & 0 & 4
+                                       \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                        & = \begin{bNiceMatrix}[r, margin]
+                                                     -5  & -6  & 6  \\
+                                                     -9  & -8  & 12 \\
+                                                     -12 & -12 & 16
+                                                 \end{bNiceMatrix} &
+              0                              & = \lambda^3 - 3\lambda^2
+              - 6\lambda + 8                 &
+              \{\lambda_k\}                  & =  \{-2, 1, 4\}                    \\
+              \lambda_1                      & = \color{y_h} -2                 &
+              \lambda_2                      & = \color{y_p} 1                  &
+              \lambda_3                      & = \color{brown6} 4                 \\
+              \vec{x}_1                      & = \color{y_h}
+              \begin{bNiceMatrix}[r, margin]
+                  2 \\ 1 \\ 2
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = \color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  -1 \\ 1 \\ 0
+              \end{bNiceMatrix} &
+              \vec{x}_3                      & = \color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 1 \\ 1
+              \end{bNiceMatrix}
+          \end{align}
+          Diagonalizing,
+          \begin{align}
+              \vec{X}              & = \begin{bNiceMatrix}[r, margin]
+                                           2 & -1 & 0 \\
+                                           1 & 1  & 1 \\
+                                           2 & 0  & 1
+                                       \end{bNiceMatrix} &
+              \vec{X}^{-1}         & = \begin{bNiceMatrix}[r, margin]
+                                           1  & 1  & -1 \\
+                                           1  & 2  & -2 \\
+                                           -2 & -2 & 3
+                                       \end{bNiceMatrix} \\
+              \vec{X}^{-1}\vec{AX} & = \begin{bNiceMatrix}[r, margin]
+                                           -2 & 0 & 0 \\
+                                           0  & 1 & 0 \\
+                                           0  & 0 & 4
+                                       \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                        & = \begin{bNiceMatrix}[r, margin]
+                                                     4 & 3 & 3 \\
+                                                     3 & 6 & 1 \\
+                                                     3 & 1 & 6
+                                                 \end{bNiceMatrix} &
+              0                              & = \lambda^3 - 16\lambda^2
+              + 65\lambda - 50               &
+              \{\lambda_k\}                  & =  \{1, 5, 10\}                    \\
+              \lambda_1                      & = \color{y_h} 1                  &
+              \lambda_2                      & = \color{y_p} 5                  &
+              \lambda_3                      & = \color{brown6} 10                \\
+              \vec{x}_1                      & = \color{y_h}
+              \begin{bNiceMatrix}[r, margin]
+                  -2 \\ 1 \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = \color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ -1 \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_3                      & = \color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  1 \\ 1 \\ 1
+              \end{bNiceMatrix}
+          \end{align}
+          Diagonalizing,
+          \begin{align}
+              \vec{X}              & = \begin{bNiceMatrix}[r, margin]
+                                           -2 & 0  & 1 \\
+                                           1  & -1 & 1 \\
+                                           1  & 1  & 1
+                                       \end{bNiceMatrix}            &
+              \vec{X}^{-1}         & = \frac{1}{6}\begin{bNiceMatrix}[r, margin]
+                                                      -2 & 1  & 1 \\
+                                                      0  & -3 & 3 \\
+                                                      2  & -2 & 2
+                                                  \end{bNiceMatrix} \\
+              \vec{X}^{-1}\vec{AX} & = \begin{bNiceMatrix}[r, margin]
+                                           1 & 0 & 0  \\
+                                           0 & 5 & 0  \\
+                                           0 & 0 & 10
+                                       \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the eigenvalues and eigenvectors of $ \vec{A} $,
+          \begin{align}
+              \vec{A}                        & = \begin{bNiceMatrix}[r, margin]
+                                                     1 & 1 & 0  \\
+                                                     1 & 1 & 0  \\
+                                                     0 & 0 & -4
+                                                 \end{bNiceMatrix} &
+              0                              & = \lambda^3 + 2\lambda^2
+              - 8\lambda                     &
+              \{\lambda_k\}                  & =  \{-4, 0, 2\}                    \\
+              \lambda_1                      & = \color{y_h} -4                 &
+              \lambda_2                      & = \color{y_p} 0                  &
+              \lambda_3                      & = \color{brown6} 2                 \\
+              \vec{x}_1                      & = \color{y_h}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 0 \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = \color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  -1 \\ 1 \\ 0
+              \end{bNiceMatrix} &
+              \vec{x}_3                      & = \color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  1 \\ 1 \\ 0
+              \end{bNiceMatrix}
+          \end{align}
+          Diagonalizing,
+          \begin{align}
+              \vec{X}              & = \begin{bNiceMatrix}[r, margin]
+                                           0 & -1 & 1 \\
+                                           0 & 1  & 1 \\
+                                           1 & 0  & 0
+                                       \end{bNiceMatrix}            &
+              \vec{X}^{-1}         & = \frac{1}{6}\begin{bNiceMatrix}[r, margin]
+                                                      0  & 0 & 2 \\
+                                                      -1 & 1 & 0 \\
+                                                      1  & 1 & 0
+                                                  \end{bNiceMatrix} \\
+              \vec{X}^{-1}\vec{AX} & = \begin{bNiceMatrix}[r, margin]
+                                           -4 & 0 & 0 \\
+                                           0  & 0 & 0 \\
+                                           0  & 0 & 2
+                                       \end{bNiceMatrix}
+          \end{align}
+
+    \item The quadratic form is,
+          \begin{align}
+              Q             & = \vec{x}^T \vec{Ax}          &
+              \vec{A}       & = \bmattt{7}{3}{3}{7}           \\
+              0             & = (\lambda - 7)^2 - 3^2       &
+              \{\lambda_i\} & = \{4, 10\}                     \\
+              \lambda_1     & = \color{y_h} 4               &
+              \vec{x}_1     & = \color{y_h} \bmatcol{1}{-1}   \\
+              \lambda_2     & = \color{y_p} 10              &
+              \vec{x}_2     & = \color{y_p} \bmatcol{1}{1}
+          \end{align}
+          Finding the principal axes in terms of the old axes,
+          \begin{align}
+              \vec{x} & = \vec{X}\vec{y}                      &
+              \vec{X} & = \bmattt{1}{1}{-1}{1}                  \\
+              Q       & = \sum_{i=1}^{n}\lambda_i\ y_i^2      &
+              200 = Q & = 4y_1^2 + 10y_2^2                      \\
+              1       & = \frac{y_1^2}{50} + \frac{y_2^2}{20}
+          \end{align}
+          This is an ellipse with the axes along $ \SI{-45}{\degree} $ and
+          $ \SI{45}{\degree} $
+
+    \item The quadratic form is,
+          \begin{align}
+              Q             & = \vec{x}^T \vec{Ax}          &
+              \vec{A}       & = \bmattt{3}{4}{4}{-3}          \\
+              0             & = \lambda^2 - 9 - 16          &
+              \{\lambda_i\} & = \{-5, 5\}                     \\
+              \lambda_1     & = \color{y_h} -5              &
+              \vec{x}_1     & = \color{y_h} \bmatcol{1}{-2}   \\
+              \lambda_2     & = \color{y_p} 5               &
+              \vec{x}_2     & = \color{y_p} \bmatcol{2}{1}
+          \end{align}
+          Finding the principal axes in terms of the old axes,
+          \begin{align}
+              \vec{x} & = \vec{X}\vec{y}                     &
+              \vec{X} & = \bmattt{1}{2}{-2}{1}                 \\
+              Q       & = \sum_{i=1}^{n}\lambda_i\ y_i^2     &
+              10 = Q  & = -5y_1^2 + 5y_2^2                     \\
+              1       & = -\frac{y_1^2}{2} + \frac{y_2^2}{2}
+          \end{align}
+          This is an hyperbola with the axes along $ \SI{-63.4}{\degree} $ and
+          $ \SI{26.56}{\degree} $
+
+    \item The quadratic form is,
+          \begin{align}
+              Q             & = \vec{x}^T \vec{Ax}          &
+              \vec{A}       & = \bmattt{3}{11}{11}{3}         \\
+              0             & = (\lambda - 3)^2 - 11^2      &
+              \{\lambda_i\} & = \{-8, 14\}                    \\
+              \lambda_1     & = \color{y_h} -8              &
+              \vec{x}_1     & = \color{y_h} \bmatcol{1}{-1}   \\
+              \lambda_2     & = \color{y_p} 14              &
+              \vec{x}_2     & = \color{y_p} \bmatcol{1}{1}
+          \end{align}
+          Finding the principal axes in terms of the old axes,
+          \begin{align}
+              \vec{x} & = \vec{X}\vec{y}                          &
+              \vec{X} & = \bmattt{1}{1}{-1}{1}                      \\
+              Q       & = \sum_{i=1}^{n}\lambda_i\ y_i^2          &
+              0 = Q   & = -8y_1^2 + 14y_2^2                         \\
+              y_2     & = \pm \Bigg(\frac{2}{\sqrt{7}}\Bigg)\ y_1
+          \end{align}
+          This is a pair of straight lines. with the axes rotated by $ \SI{45}{\degree} $
+
+    \item The quadratic form is,
+          \begin{align}
+              Q             & = \vec{x}^T \vec{Ax}          &
+              \vec{A}       & = \bmattt{9}{3}{3}{1}           \\
+              0             & = \lambda^2 - 10\lambda       &
+              \{\lambda_i\} & = \{0, 10\}                     \\
+              \lambda_1     & = \color{y_h} 0               &
+              \vec{x}_1     & = \color{y_h} \bmatcol{1}{-3}   \\
+              \lambda_2     & = \color{y_p} 10              &
+              \vec{x}_2     & = \color{y_p} \bmatcol{3}{1}
+          \end{align}
+          Finding the principal axes in terms of the old axes,
+          \begin{align}
+              \vec{x} & = \vec{X}\vec{y}                 &
+              \vec{X} & = \bmattt{1}{3}{-3}{1}             \\
+              Q       & = \sum_{i=1}^{n}\lambda_i\ y_i^2 &
+              10 = Q  & = 10y_2^2                          \\
+              y_2     & = \pm 1
+          \end{align}
+          This is a pair of straight lines. with the axes rotated by
+          $ \SI{-71.56}{\degree} $
+
+    \item The quadratic form is,
+          \begin{align}
+              Q             & = \vec{x}^T \vec{Ax}          &
+              \vec{A}       & = \bmattt{1}{-6}{-6}{1}         \\
+              0             & = (\lambda - 1)^2 - 6^2       &
+              \{\lambda_i\} & = \{-5, 7\}                     \\
+              \lambda_1     & = \color{y_h} -5              &
+              \vec{x}_1     & = \color{y_h} \bmatcol{1}{1}    \\
+              \lambda_2     & = \color{y_p} 7               &
+              \vec{x}_2     & = \color{y_p} \bmatcol{1}{-1}
+          \end{align}
+          Finding the principal axes in terms of the old axes,
+          \begin{align}
+              \vec{x} & = \vec{X}\vec{y}                       &
+              \vec{X} & = \bmattt{1}{1}{1}{-1}                   \\
+              Q       & = \sum_{i=1}^{n}\lambda_i\ y_i^2       &
+              70 = Q  & = -5y_1^2 + 7y_2^2                       \\
+              1       & = -\frac{y_1^2}{14} + \frac{y_2^2}{10}
+          \end{align}
+          This is a hyperbola, with the principal axes at
+          $ \SI{45}{\degree} $ and $ \SI{-45}{\degree} $
+
+    \item The quadratic form is,
+          \begin{align}
+              Q             & = \vec{x}^T \vec{Ax}          &
+              \vec{A}       & = \bmattt{4}{6}{6}{13}          \\
+              0             & = \lambda^2 - 17\lambda + 16  &
+              \{\lambda_i\} & = \{1, 16\}                     \\
+              \lambda_1     & = \color{y_h} 1               &
+              \vec{x}_1     & = \color{y_h} \bmatcol{2}{-1}   \\
+              \lambda_2     & = \color{y_p} 16              &
+              \vec{x}_2     & = \color{y_p} \bmatcol{1}{2}
+          \end{align}
+          Finding the principal axes in terms of the old axes,
+          \begin{align}
+              \vec{x} & = \vec{X}\vec{y}                 &
+              \vec{X} & = \bmattt{2}{1}{-1}{2}             \\
+              Q       & = \sum_{i=1}^{n}\lambda_i\ y_i^2 &
+              16 = Q  & = y_1^2 + 16y_2^2                  \\
+              1       & = \frac{y_1^2}{16} + y_2^2
+          \end{align}
+          This is an ellipse, with the principal axes at
+          $ \SI{-26.56}{\degree} $ and $ \SI{63.43}{\degree} $
+
+    \item The quadratic form is,
+          \begin{align}
+              Q             & = \vec{x}^T \vec{Ax}           &
+              \vec{A}       & = \bmattt{-11}{42}{42}{24}       \\
+              0             & = \lambda^2 - 13\lambda - 2028 &
+              \{\lambda_i\} & = \{-39, 52\}                    \\
+              \lambda_1     & = \color{y_h} 39               &
+              \vec{x}_1     & = \color{y_h} \bmatcol{-3}{2}    \\
+              \lambda_2     & = \color{y_p} -52              &
+              \vec{x}_2     & = \color{y_p} \bmatcol{2}{3}
+          \end{align}
+          Finding the principal axes in terms of the old axes,
+          \begin{align}
+              \vec{x} & = \vec{X}\vec{y}                     &
+              \vec{X} & = \bmattt{-3}{2}{2}{3}                 \\
+              Q       & = \sum_{i=1}^{n}\lambda_i\ y_i^2     &
+              156 = Q & = -39y_1^2 + 52y_2^2                   \\
+              1       & = -\frac{y_1^2}{4} + \frac{y_2^2}{3}
+          \end{align}
+          This is an hyperbola, with the principal axes at
+          $ \SI{-33.69}{\degree} $ and $ \SI{56.31}{\degree} $
+
+    \item Principal axis theorem,
+          \begin{enumerate}
+              \item Positive definite, assume all eigenvalues are positive
+                    \begin{align}
+                        Q          & = \sum_{k=1}^{n} \lambda_k\ y_k^2 &
+                        \vec{x}    & \neq 0 \implies \vec{y} \neq 0      \\
+                        \implies Q & > 0
+                    \end{align}
+                    The sum of squares not all of which are zero and all of which have
+                    a positive coefficient is guaranteed positive. \par
+
+                    Assume $ Q $ is positive definite,
+                    \begin{align}
+                        Q                        & = \vec{x}^T \vec{Ax}          &
+                        \vec{Ax}                 & = \lambda \vec{x}               \\
+                        \text{If} \quad  \lambda & < 0                           &
+                        Q                        & = \vec{x}^T (\lambda \vec{x})
+                        = \lambda \vec{x}^T \vec{x}                                \\
+                        \vec{x}^T \vec{x}        & > 0                           &
+                        \forall\ \vec{x}         & \neq \vec{0}                    \\
+                        Q                        & < 0
+                    \end{align}
+                    Thus, a contradiction occurs if $ \vec{A} $ has any negative
+                    eigenvalues, which makes it necessary to have all eigenvalues
+                    positive.
+
+              \item Positive definite, assume all eigenvalues are negative
+                    \begin{align}
+                        Q          & = \sum_{k=1}^{n} \lambda_k\ y_k^2 &
+                        \vec{x}    & \neq 0 \implies \vec{y} \neq 0      \\
+                        \implies Q & < 0
+                    \end{align}
+                    The sum of squares not all of which are zero and all of which have
+                    a negative coefficient is guaranteed negative. \par
+
+                    Assume $ Q $ is negative definite,
+                    \begin{align}
+                        Q                        & = \vec{x}^T \vec{Ax}          &
+                        \vec{Ax}                 & = \lambda \vec{x}               \\
+                        \text{If} \quad  \lambda & > 0                           &
+                        Q                        & = \vec{x}^T (\lambda \vec{x})
+                        = \lambda \vec{x}^T \vec{x}                                \\
+                        \vec{x}^T \vec{x}        & > 0                           &
+                        \forall\ \vec{x}         & \neq \vec{0}                    \\
+                        Q                        & > 0
+                    \end{align}
+                    Thus, a contradiction occurs if $ \vec{A} $ has any positive
+                    eigenvalues, which makes it necessary to have all eigenvalues
+                    negative.
+
+              \item Indefinite. Eigenvalues are both positive and negative.
+                    Neither of the above two special cases. Contradictions occur like
+                    the special cases above, which prove both the forward and backward
+                    statements.
+
+              \item From Prob. 22,
+                    \begin{align}
+                        Q       & = \vec{x}^T \vec{Ax}     &
+                        \vec{A} & = \bmattt{4}{6}{6}{13}     \\
+                        M_1     & = 4 > 0                  &
+                        M_2     & = \det(\vec{A}) = 16 > 0   \\
+                    \end{align}
+                    All principal minors are positive. So, the form is positive
+                    definite. \par
+                    From Prob. 23,
+                    \begin{align}
+                        Q          & = \vec{x}^T \vec{Ax}       &
+                        \vec{A}    & = \bmattt{-11}{42}{42}{24}   \\
+                        M_1        & = -11 < 0                    \\
+                        \vec{x}    & = \bmatcol{1}{0}           &
+                        \implies Q & = -11 \\
+                        \vec{x}    & = \bmatcol{0}{1}           &
+                        \implies Q & = 24
+                    \end{align}
+                    There exist some non-zero vectors $ \vec{x} $ for which $ Q $ takes
+                    positive and negative values. Thus, it is indefinite.
+          \end{enumerate}
+\end{enumerate}

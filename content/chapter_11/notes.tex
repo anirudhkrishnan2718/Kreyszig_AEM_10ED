@@ -1,0 +1,211 @@
+\chapter{Fourier Analysis}
+
+\section{Fourier Series}
+
+\begin{description}
+    \item[Periodic function] A function defined on the real line, except possibly at a
+        finite number of points such that,
+        \begin{align}
+            f(x + p)  & = f(x) & \forall\ x \in \mathcal{R} \\
+            f(x + np) & =f(x)  & \forall\ n \in \mathcal{I}
+        \end{align}
+        for some positive real $ p $, which is called the period. \par
+        The smallest positive period is called the fundamental period.
+
+    \item[Trigonometric system] A family of periodic functions all having period $ 2\pi $
+        which are the simplest basis used to represent all periodic functions.
+        \begin{align}
+            T & = \{1,\ \cos x,\ \sin x,\ \cos(2x),\ \sin(2x), \dots,\ \cos(nx),
+            \ \sin(nx), \dots\}
+        \end{align}
+
+    \item[Fourier Series] A periodic function si represented as a linear combination of
+        the above basis with each member assigned a coefficient (called the Fourier
+        coefficient).
+        \begin{align}
+            f(x) & = a_0 + \iser[n]{0} a_n \cos(nx) + b_n \sin(nx)          \\
+            a_0  & = \frac{1}{2\pi}\ \int_{-\pi}^{\pi} f(x)\ \dl x          \\
+            a_n  & = \frac{1}{\pi}\ \int_{-\pi}^{\pi} f(x)\ \cos(nx)\ \dl x \\
+            b_n  & = \frac{1}{\pi}\ \int_{-\pi}^{\pi} f(x)\ \sin(nx)\ \dl x
+        \end{align}
+
+    \item[Orthogonality of a trigonometric system] If integral over one period (taken to
+        be $ -\pi $ to $ \pi $ by convention) of the product of any two members of the
+        basis is zero, then the basis is orthogonal.
+        \begin{align}
+            \int_{-\pi}^{\pi}\ \cos(nx)\ \cos(mx)\ \dl x & = 0             &
+            n                                            & \neq m            \\
+            \int_{-\pi}^{\pi}\ \sin(nx)\ \sin(mx)\ \dl x & = 0             &
+            n                                            & \neq m            \\
+            \int_{-\pi}^{\pi}\ \cos(nx)\ \sin(mx)\ \dl x & = 0             &
+            n,m                                          & \in \mathcal{I}
+        \end{align}
+        The Euler formulas for the Fourier coefficients are derived from the application
+        of the orthogonality condition to the Fouier series definition.
+
+    \item[Convergence of Fourier series] Let $ f(x) $ be periodic with period $ 2\pi $
+        and be piecewise continuous in $ [-\pi, \pi] $. Also, let it have both
+        left-handed and right-handed derivatives defined everywhere in this interval.
+        \par Then, its Fourier series converges and is equal to $ f(x) $ at all points
+        except at the finitely many points of discontinuity of $ f(x) $. \par
+        At such points, the series converges to the average of the left and right-handed
+        limits of $ f(x) $.
+\end{description}
+
+\section{Arbitrary Period, Even and Odd Functions, Half-Range Expansions}
+
+\begin{description}
+    \item[Functions with arbitrary period] Instead of the standard period $ p = 2\pi $,
+        generalizing to $ p = 2L $ simply involves a change of variable
+        \begin{align}
+            2\pi \rightarrow 2L & \implies x \rightarrow \frac{\pi x}{L}    \\
+            f(x)                & \rightarrow a_0 + \iser[n]{0} \Bigg[
+                a_n\ \cos\left( \frac{n\pi x}{L} \right) +
+            b_n\ \sin\left( \frac{n\pi x}{L} \right) \Bigg]                 \\
+            a_0                 & = \frac{1}{2L}\ \int_{-L}^{L} f(x)\ \dl x \\
+            a_n                 & = \frac{1}{L}\ \int_{-L}^{L}
+            f(x)\ \cos\left( \frac{n\pi x}{L} \right) \dl x                 \\
+            b_n                 & = \frac{1}{L}\ \int_{-L}^{L}
+            f(x)\ \sin\left( \frac{n\pi x}{L} \right) \dl x
+        \end{align}
+
+    \item[Even and Odd functions] Even functions and odd functions can be
+        represented just by a Fourier cosine and sine series respectively.
+        \begin{align}
+            f(-x) = f(x)  & \implies b_n = 0 \qquad \text{even}      \\
+            f(-x) = -f(x) & \implies a_0 = a_n = 0 \qquad \text{odd}
+        \end{align}
+
+    \item[Lineraity] The Fourier series is linear under addition and scalar
+        multiplication.
+        \begin{align}
+            f(x) + g(x) & \rightarrow F(x) + G(x) \\
+            c\ f(x)     & \rightarrow c\ F(x)
+        \end{align}
+        Where the uppercase is the fourier series expansion of the lowercase function.
+
+    \item[Half-range expansions] Extending the function specified in the domain
+        $ [0, L] $ into the domain $ [-L, L] $ as either an even or odd function in order
+        to simplify the computation of Fourier coefficients.
+\end{description}
+
+\section{Forced Oscillations}
+
+\begin{description}
+    \item[Standard form ODE] A second order linear ODE is very common in physical systems
+        undergoing forced damped oscillations.
+        \begin{align}
+            my'' + cy' + ky = r(t)
+        \end{align}
+        Here, the output $ y(t) $ is the solution to the ODE, corresponding to the input
+        $ r(t) $. The constant coefficients $ m, c, k $ characterize the system.
+
+    \item[Solution to ODE] Since the input can be represented as a Fourier series,
+        the output can also be decomposed into a sum of outputs corresponding to each
+        input term. \par
+        The amplitude of each of the output terms happens to be a function of the input
+        frequency and typically, one or two frequencies dominate the output in most real
+        world systems.
+\end{description}
+
+\section{Approximation by Trigonometric Polynomials}
+
+\begin{description}
+    \item[Trigonometric polynomial] An approximation of a function using a series of
+        trigonometric functions. The fourier series expansion happens to be an example.
+        \begin{align}
+            f(x) & = A_0 + \iser[n]{1} \Big[ A_n \cos(nx) + B_n \sin(nx) \Big]
+        \end{align}
+        Here, $ N $ is called the order.
+
+    \item[Square Error] The error in this approximation is
+        \begin{align}
+            E & = \int_{-\pi}^{\pi} (f - F)^2\ \dl x
+        \end{align}
+        This error is a measure of the agreement between the approximation $ f $ and
+        the actual function $ F $ over the entire period of the trigonometric function.
+
+    \item[Minimum square error] The squared error of a trigonometric polynomial
+        $ F $ with fixed order $ N $ is smallest in the domainm $[-\pi, \pi] $ if the
+        coefficients are the Fourier coefficients $ A_n = a_n, B_n = b_n $
+        \begin{align}
+            E^* & = \int_{-\pi}^{\pi} f^2\ \dl x  - \pi\ \Bigg[ 2a_0^2
+                + \sum_{n=1}^{N} (a_n^2 + b_n^2) \Bigg]
+        \end{align}
+        The above squared error can only decrease with increasing $ N $.
+
+    \item[Bessel's Inequality] Given a function $ f $ and fourier coefficients $ a_0,
+            \{a_n\}, \{b_n\} $, the condition on minimized squared error gives,
+        \begin{align}
+            2a_0^2 + \iser[n]{1} (a_n^2 + b_n^2) & \leq \frac{1}{\pi}\ \int_{-\pi}^{\pi}
+            \ f(x)^2\ \dl x
+        \end{align}
+
+    \item[Parseval's identity] The integral of the square of a function over its
+        standardized period $ [-\pi, \pi] $ is equal to the sum of the squares of its
+        Fourier coefficients. (rough analog of the Pythagoras theorem)
+        \begin{align}
+            2a_0^2 + \iser[n]{1} (a_n^2 + b_n^2) & = \frac{1}{\pi}\ \int_{-\pi}^{\pi}
+            \ f(x)^2\ \dl x
+        \end{align}
+\end{description}
+
+\section{Sturm-Liouville Problems, Orthogonal Functions}
+
+\begin{description}
+    \item[Sturm-Liouville problem] A second order ODE, along with boundary conditions
+        of the form,
+        \begin{align}
+            \diff{}{x}\Bigg[p(x)\ \diff yx\Bigg] +
+            \Bigg[ q(x) + \lambda r(x) \Bigg]y & = 0                         \\
+            k_1 y + k_2 y'                     & = 0 \qquad \text{at}\ x = a \\
+            l_1 y + l_2 y'                     & = 0 \qquad \text{at}\ x = b
+        \end{align}
+        for some interval $ x \in [a,b] $. $ \lambda $ is a paramter and the two
+        $ k, l $ are real constants. \par
+        If $ p,q,r,p' $ are real valued and continuous in the interval $ [a,b] $ and
+        $ r $ is the same sign throughout, then all eigenvalues $ \lambda $ of the
+        Sturm-Liouville equation are real.
+
+    \item[Orthogonal functions] Using a weight function $ r(x) > 0 $, two functions
+        are orthogonal in the interval $ x \in [a, b] $ if,
+        \begin{align}
+            (y_m, y_n) & = \int_{a}^{b} r(x)\ y_m(x)\ y_n(x)\ \dl x = 0 &
+                       & \forall\quad m \neq n
+        \end{align}
+
+    \item[Norm of function] The square integral of the function $ f(x) $ with respect
+        to the weight function $ r(x) $.
+        \begin{align}
+            \lVert y_n \rVert = \sqrt{(y_n, y_n)} &
+            = \sqrt{\int_{a}^{b} r(x)\ y_n^2(x)\ \dl x}
+        \end{align}
+
+    \item[Orthonormal functions] A set of functions that are orthogonal in some interval
+        $ x \in [a, b] $ and additionally all have unit norm. Using the Kronecker Delta
+        functions,
+        \begin{align}
+            (y_m, y_n)  & = \int_{a}^{b} r(x)\ y_m(x)\ y_n(x)\ \dl x = \delta_{mn} \\
+            \delta_{mn} & = \begin{dcases}
+                                0 & \quad \text{if}\ m \neq n \\
+                                1 & \quad \text{if}\ m = n    \\
+                            \end{dcases}
+        \end{align}
+        The weight function is not mentioned when it is the identically equal to 1.
+
+    \item[Eigenfunctions of Sturm-Lioville problems] Let $ y_m(x) $ and $ y_n(x) $ be
+        eigenfunctions that correspond to different eigenvalues $ \lambda_m $ and
+        $ \lambda_n $ of the Sturm-Liouville problem. \par
+        Then, $ y_m, y_n $ are orthogonal on the interval $ [a, b] $ with respect to
+        their weight function $ r(x) $ \par
+        If $ p(a) = p(b) $, then the boundary conditions also become periodic,
+        \begin{align}
+            y(a) & = y(b) & y'(a) & = y'(b)
+        \end{align}
+
+    \item[Orthogonal system] Many real world systems can be cast into Sturm-Liouville
+        form leading to a set of orthonormal basis functions. Examples include the Bessel
+        functions, Legendre polynomials and Fourier series expansions.
+
+
+\end{description}

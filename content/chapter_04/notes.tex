@@ -1,0 +1,589 @@
+\chapter{Systems of ODEs, Phase Plane, Qualitative Methods}
+\section{Systems of ODEs as Models in Engineering Applications}
+\begin{description}
+    \item[Conversion to system of ODEs] Any ODE of order $ n $ can be converted to a system
+        of $ n $ ODEs of first order. Linear algebra provides easy methods of solving this
+        system of linear equations using eigenvectors and eigenvalues.
+        \begin{align}
+            y^{(n)}                          & = F\left( t,\ y,\ y',\ y'',\ \dots,\ y^{(n-1)} \right)  \\
+            \text{Set} \qquad y_1            & = y, \qquad y_2 = y', \quad \dots \quad y_n = y^{(n-1)} \\
+            \text{System becomes}\qquad y_1' & = y_2 \nonumber                                         \\
+            y_2'                             & = y_3 \nonumber                                         \\
+            \vdots \nonumber                                                                           \\
+            y_{n-1}'                         & = y_n \nonumber                                         \\
+            y_n'                             & = F(t,\ y_1,\ y_2,\ \dots,\ y_n)
+        \end{align}
+    \item[Eigenvalues] When a system of linear equations is expressed in vector form,
+        \begin{align}
+            \renewcommand*{\arraystretch}{1.5}
+            y_1'                 & = a_{11}y_1 + a_{12}y_2 \nonumber         \\
+            y_2'                 & = a_{21}y_1 + a_{22}y_2                   \\
+            \bmatcol{y_1'}{y_2'} & = \bmattt{a_{11}}{a_{12}}{a_{21}}{a_{22}} \\
+            \vec{y'}             & = \vec{A}\vec{y}
+        \end{align}
+        For a matrix equation to have a non-trivial solution,
+        \begin{align}
+            \vec{A}\vec{x}                     & = \lambda \vec{x}                         \\
+            (\vec{A} - \lambda\vec{I}) \vec{x} & = 0                                       \\
+            \det(\vec{A} - \lambda\vec{I})     & = \begin{vNiceMatrix}[r, margin]
+                                                       (a_{11} - \lambda) & a_{12}             \\
+                                                       a_{21}             & (a_{22} - \lambda)
+                                                   \end{vNiceMatrix}
+        \end{align}
+        This quadratic equation has solutions $ \lambda_1, \lambda_2 $ called eigenvalues.
+        The corresponding eigenvectors $ \vec{v^{(1)}}, \vec{v^{(2)}} $ are found as
+        solutions of the respective systems.
+        \begin{align}
+            (\vec{A} - \lambda_1\vec{I}) \vec{v^{(1)}} & = 0 \\
+            (\vec{A} - \lambda_2\vec{I}) \vec{v^{(2)}} & = 0
+        \end{align}
+\end{description}
+
+\section{Basic Theory of Systems of ODEs, Wronskian}
+\begin{description}
+    \item[General system of ODEs] Using a set of functions $ \{f_i\} $,
+        \begin{align}
+            y_1'     & = f_1(t,\ y_1,\ \dots,\ y_n) \\
+            y_2'     & = f_2(t,\ y_1,\ \dots,\ y_n) \\
+            \vdots                                  \\
+            y_n'     & = f_n(t,\ y_1,\ \dots,\ y_n) \\
+            \text{converting to vector notation,}   \\
+            \vec{y'} & = \vec{f}(t, \vec{y})
+        \end{align}
+        Introducing the set of solutions as a vector, and another vector for the I.C.
+        \begin{align}
+            \vec{y}      & = \vec{h}(t) = \begin{bNiceMatrix}[r, margin]
+                                              h_1(t) \\ h_2(t) \\ \vdots \\ h_n(t)
+                                          \end{bNiceMatrix} &
+            \vec{y}(t_0) & = \vec{K} = \begin{bNiceMatrix}[r, margin]
+                                           K(0) \\ K(1) \\ \vdots \\ K_n
+                                       \end{bNiceMatrix}
+        \end{align}
+    \item[Existence and Uniqueness] Given the preconditions,
+        \begin{align}
+            \{f_1,\ f_2,\ \dots,\ f_n\} \qquad       &
+            \text{are continuous}                      \\
+            \left\{ \diffp{f_i}{y_k} \right\} \qquad &
+            \text{are continuous for all}\ j,k
+        \end{align}
+        Continuity is guaranteed in some point $ (t_0,\ K_0,\ K_1,\ \dots,\ K_n) $ in
+        this interval of continuity in $ (t,\ y_0,\ y_1,\ \dots,\ y_n) $ space. \par
+        Then, a solution to the system of ODEs exists in some interval
+        $ t \in (t_0 - \alpha, t_0 + \alpha) $ and is guaranteed to be unique.
+    \item[Linear System] A subset of the above general system of ODEs obeying,
+        \begin{align}
+            \begin{bNiceMatrix}[r, margin]
+                y_1' \\ \vdots \\ y_n'
+            \end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin]
+                                      a_{11} & \dots  & a_{1n} \\
+                                      \vdots & \ddots & \vdots \\
+                                      a_{n1} & \dots  & a_{nn}
+                                  \end{bNiceMatrix} \begin{bNiceMatrix}[r, margin]
+                                                        y_1 \\ \vdots \\ y_n
+                                                    \end{bNiceMatrix} + \begin{bNiceMatrix}[r, margin]
+                                                                            g_1 \\ \vdots \\ g_n
+                                                                        \end{bNiceMatrix} \\
+            \vec{y'}                       & = \vec{Ay} + \vec{g}
+        \end{align}
+        The above system is homogeneous if $ \vec{g} = 0 $, with $ a_{jk} =
+            \difsp{f_j}{y_k} $. \par
+        If the elements of $ \vec{g} $ and $ \vec{a} $ are continuous functions of
+        $ t $ in some interval $ t \in (\alpha, \beta) $ which contains the point
+        $ t = t_0 $, then a solution exists and is guaranteed to be unique.
+    \item[Superposition Principle] If $ \vec{y^{(1)}} $ and $ \vec{y^{(2)}} $ are
+        solutions of the h-linear system of ODEs on some interval, then
+        \begin{align}
+            \vec{y^{(3)}} & = c_1 \vec{y^{(1)}} + c_2 \vec{y^{(2)}}
+        \end{align}
+        is also a solution. (using the linearity of matrix multiplication and of
+        differentiation)
+    \item[Basis] A set of L.I. solutions $ \{ \vec{y^{(i)}} \} $ form a basis in the
+        interval $ \mathcal{J} $ if the elements of $ \vec{a} $ are continuous in
+        $ \mathcal{J} $. \par
+
+        A linear combination of this basis is a general solution that contains all
+        possible solutions.
+    \item[Wronskian] The old Wronskian of a set of solutions $ \{z_i\} $ becomes
+        a matrix whose columns are members of the basis set $ \vec{y^{(i)}} $. \par
+
+        The rows are successive derivatives (transformed into subscript variables).
+        \begin{align}
+            \begin{bNiceMatrix}[r, margin]
+                z_1         & z_1         & \dots  & z_n         \\
+                z_1'        & z_2'        & \dots  & z_n'        \\
+                \vdots      & \vdots      & \ddots & \vdots      \\
+                z_1^{(n-1)} & z_2^{(n-1)} & \dots  & z_n^{(n-1)}
+            \end{bNiceMatrix} & \rightarrow
+            \begin{bNiceMatrix}[r, margin]
+                y_1^{(1)} & y_1^{(2)} & \dots  & y_1^{(n)} \\
+                y_2^{(1)} & y_2^{(2)} & \dots  & y_2^{(n)} \\
+                \vdots    & \vdots    & \ddots & \vdots    \\
+                y_n^{(1)} & y_n^{(2)} & \dots  & y_n^{(n)}
+            \end{bNiceMatrix}                                                \\
+            W = \det(\vec{Y})                                   &
+            = \det\begin{bNiceMatrix}[r, margin] \vec{y^{(1)}} &
+                   \dots                     & \vec{y^{(n)}}\end{bNiceMatrix} \\
+        \end{align}
+        The Wronskian is either identically zero everywhere (if L.D.) or nowhere
+        (if L.I.) in the interval $ \mathcal{J} $ under consideration.
+
+    \item[Fundamental matrix] The above matrix $ \vec{Y} $ is called a fundamental
+        matrix if the solutions $ \{\vec{y^{(i)}}\} $ form a basis.
+        \begin{align}
+            \vec{y}                        & = c_1\vec{y^{(1)}} + \dots + c_2\vec{y^{(n)}}                            \\
+            \vec{y}                        & = \vec{Yc}                                                               \\
+            \begin{bNiceMatrix}[r, margin]
+                y_1 \\ \vdots \\ y_n
+            \end{bNiceMatrix} & = \begin{bNiceMatrix}[r, margin] \vec{y^{(1)}} &
+                                             & \vec{y^{(n)}}\end{bNiceMatrix}
+            \begin{bNiceMatrix}[r, margin]
+                c_1 \\ \vdots \\ c_n
+            \end{bNiceMatrix}
+        \end{align}
+\end{description}
+
+\section{Constant-Coefficient Systems, Phase Plane Method}
+\begin{description}
+    \item[Constant coefficient system] If the matrix $ \vec{a} $ has terms
+        independent of $ t $, then the initial guess
+        \begin{align}
+            \vec{y'} & = \vec{Ay}        & \vec{y} & = \vec{x} e^{\lambda t} \\
+            \vec{Ax} & = \lambda \vec{x}
+        \end{align}
+        leads to an eigenvalue problem. Here, $ \lambda, \vec{x} $ are the pairs
+        of eigenvalues and eigenvectors respectively.
+    \item[L.I. eigenvectors condition] For the above matrix $ \vec{A} $ to have
+        a set of L.I. eigenvectors (as is common in real world applications), conditions
+        are one of
+        \begin{itemize}
+            \item $\vec{A}$ is symmetric. $ a_{jk} = a_{kj} $ or $\vec{A} = \vec{A^T} $.
+            \item $\vec{A}$ is skew symmetric. $ a_{jk} = -a_{kj} $
+                  or $\vec{A} = -\vec{A^T} $.
+            \item $ \vec{A} $ has $ n $ distinct eigenvalues.
+        \end{itemize}
+    \item[General solution] If $ \vec{A} $ has a set of L.I. eigenvectors as above,
+        then the corresponding solutions form a basis. \par
+        A general solution is of the form,
+        \begin{align}
+            \vec{y} & = c_1 \vec{x^{(1)}}e^{\lambda_1 t} + \quad \cdots \quad
+            + c_n \vec{x^{(n)}}e^{\lambda_n t}
+        \end{align}
+        From this point onwards, the limited case of two member families of
+        ODEs is taken up.
+\end{description}
+
+
+\begin{description}
+    \item[Phase plane] The use of a parameter to plot the two solutions $ y_1 $ vs.
+        $y_2$ instead of the usual pair of $ y $ vs. $ t $ curves.
+    \item[Critical Points] Points in the phase plane where the tangent direction is
+        not defined (for example at $ (0, 0) $ in the expression below).
+        \begin{align}
+            \diff{y_2}{y_1} & = \frac{y_2' \dl t}{y_1' \dl t} = \frac{y_2'}{y_1'}   \\
+                            & = \frac{a_{21}y_1 + a_{22}y_2}{a_{11}y_1 + a_{12}y_2}
+        \end{align}
+    \item[Improper Node] A critical point $ P_0 $ at which all but two trajectories
+        have the same limiting direction of the tangent $ L_1 $. The two exceptional
+        trajectories also have a different (and equal) limit $ L_2 $.
+
+    \item[Proper Node] A critical point at which every trajectory has a distinct
+        limiting direction, and for any given direction $ \vec{d} $, there is some
+        trajectory whose limiting direction at $ P_0 $ is equal to $ \vec{d} $.
+    \item[Saddle Point] Two incoming and two outgoing trajectories intersect $ P_0 $,
+        while all other trajectories bypass $ P_0 $.
+    \item[Center] A critical point, enclosed by many closed trajectories, none of
+        which ever pass through $ P_0 $.
+    \item[Spiral] A critical point which all trajectories approach as
+        $ t \rightarrow \infty $ which otherwise resembles a center.
+    \item[Degenerate Node] In the (almost never physical) case when no basis of
+        eigenvectors can be found. The usual condition is that $ \vec{A} $ is neither
+        symmetric nor skew-symmetric and happens to have degenerate eigenvalues.
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b]{0.49\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                            declare function = {
+                                    u(\x) = e^(-2*\x);
+                                    v(\x) = e^(-4*\x);
+                                },
+                            xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                            % restrict y to domain = -1:1,
+                            title = {Improper Node with
+                                    ${\color{y_p} \vec{x^{(1)}}}$ and
+                                    ${\color{y_h} \vec{x^{(2)}}}$},
+                            xlabel = $ y_1 $,
+                            ylabel = $ y_2 $, ylabel shift = {-1em},
+                            axis equal,
+                            width = 8cm,
+                            legend pos = north west,
+                            grid = both,
+                            domain = 0:3,
+                            Ani]
+                        \foreach \c in {-0.5, -1, 0.5, 1} {%
+                                \edef\temp{%
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.65}]
+                                    ({\c*u(x) + v(x)}, {\c*u(x) - v(x)});
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.65}]
+                                    ({\c*u(x) - v(x)}, {\c*u(x) + v(x)});
+                                }\temp
+                            }
+                        \addplot[ samples = 100, color=y_p,
+                            arrow inside={end=stealth,opt={scale=2}}{0.5}]
+                        ({u(x)}, {u(x)});
+                        \addplot[ samples = 100, color=y_h,
+                            arrow inside={end=stealth,opt={scale=2}}{0.5}]
+                        ({v(x)}, {-v(x)});
+                        \addplot[ samples = 100, color=y_p,
+                            arrow inside={end=stealth,opt={scale=2}}{0.5}]
+                        ({-u(x)}, {-u(x)});
+                        \addplot[ samples = 100, color=y_h,
+                            arrow inside={end=stealth,opt={scale=2}}{0.5}]
+                        ({-v(x)}, {v(x)});
+                        \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
+                    \end{axis}
+                \end{tikzpicture}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.49\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                            declare function = {
+                                    u(\x) = e^(\x);
+                                    v(\x) = e^(\x);
+                                },
+                            xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                            % restrict y to domain = -1:1,
+                            title = {Proper Node with
+                                    ${\color{y_p} \vec{x^{(1)}}}$ and
+                                    ${\color{y_h} \vec{x^{(2)}}}$},
+                            xlabel = $ y_1 $,
+                            ylabel = $ y_2 $, ylabel shift = {-1em},
+                            axis equal,
+                            width = 8cm,
+                            legend pos = north west,
+                            grid = both,
+                            domain = -4:0,
+                            Ani]
+                        \foreach \c in {-sqrt(3), -1/sqrt(3), sqrt(3), 1/sqrt(3)} {%
+                                \edef\temp{%
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.35}]
+                                    ({\c*u(x)}, {-v(x)});
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.35}]
+                                    ({\c*u(x)}, {v(x)});
+                                }\temp
+                            }
+                        \addplot[ samples = 100, color=y_p,
+                            arrow inside={end=stealth,opt={scale=2}}{0.65}]
+                        ({u(x)}, {0});
+                        \addplot[ samples = 100, color=y_h,
+                            arrow inside={end=stealth,opt={scale=2}}{0.65}]
+                        ({0}, {-v(x)});
+                        \addplot[ samples = 100, color=y_p,
+                            arrow inside={end=stealth,opt={scale=2}}{0.65}]
+                        ({-u(x)}, {0});
+                        \addplot[ samples = 100, color=y_h,
+                            arrow inside={end=stealth,opt={scale=2}}{0.65}]
+                        ({0}, {v(x)});
+                        \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
+                    \end{axis}
+                \end{tikzpicture}
+            \end{subfigure}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b]{0.48\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                            declare function = {
+                                    u(\x) = e^(\x);
+                                    v(\x) = e^(-\x);
+                                },
+                            xmin = -2, xmax = 2, ymin = -2, ymax = 2,
+                            % restrict y to domain = -1:1,
+                            title = {Saddle point with
+                                    ${\color{y_p} \vec{x^{(1)}}}$ and
+                                    ${\color{y_h} \vec{x^{(2)}}}$},
+                            xlabel = $ y_1 $,
+                            ylabel = $ y_2 $,
+                            axis equal,
+                            width = 8cm,
+                            legend pos = north west,
+                            grid = both,
+                            domain = -3:3,
+                            Ani]
+                        \foreach \c in {1/8, 1/2, 1} {%
+                                \edef\temp{%
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.5, 0.7, 0.8, 0.9}]
+                                    ({\c*u(x)}, {-v(x)});
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.5, 0.7, 0.8, 0.9}]
+                                    ({\c*u(x)}, {v(x)});
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.5, 0.7, 0.8, 0.9}]
+                                    ({-\c*u(x)}, {-v(x)});
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.5, 0.7, 0.8, 0.9}]
+                                    ({-\c*u(x)}, {v(x)});
+                                }\temp
+                            }
+                        \addplot[ samples = 100, color=y_p,
+                            arrow inside={end=stealth,opt={scale=2}}{0.05}]
+                        ({u(x)}, {0});
+                        \addplot[ samples = 100, color=y_h,
+                            arrow inside={end=stealth,opt={scale=2}}{0.95}]
+                        ({0}, {-v(x)});
+                        \addplot[ samples = 100, color=y_p,
+                            arrow inside={end=stealth,opt={scale=2}}{0.05}]
+                        ({-u(x)}, {0});
+                        \addplot[ samples = 100, color=y_h,
+                            arrow inside={end=stealth,opt={scale=2}}{0.95}]
+                        ({0}, {v(x)});
+                        \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
+                    \end{axis}
+                \end{tikzpicture}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.48\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                            % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                            % restrict y to domain = -1:1,
+                            title = {Center},
+                            xlabel = $ y_1 $,
+                            ylabel = $ y_2 $,
+                            axis equal,
+                            width = 8cm,
+                            legend pos = north west,
+                            grid = both,
+                            domain = 0:2*pi,
+                            Ani]
+                        \foreach \c in {0.4,0.8,...,2.0} {%
+                                \edef\temp{%
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0, 0.5}]
+                                    ({\c*sin(x)}, {\c*cos(x)});
+                                }\temp
+                            }
+                        \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
+                    \end{axis}
+                \end{tikzpicture}
+            \end{subfigure}
+        \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \begin{subfigure}[b]{0.49\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                            xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                            % restrict y to domain = -1:1,
+                            title = {Spiral},
+                            xlabel = $ y_1 $,
+                            ylabel = $ y_2 $, ylabel shift = {-1em},
+                            axis equal,
+                            width = 8cm,
+                            legend pos = north west,
+                            grid = both,
+                            domain = 0:2*pi,
+                            Ani]
+                        \foreach \c in {1,2,4} {%
+                                \edef\temp{%
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.8}]
+                                    ({\c*e^(-x)*sin(x)}, {\c*e^(-x)*cos(x)});
+                                    \noexpand \addplot[ samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.8}]
+                                    ({-\c*e^(-x)*sin(x)}, {-\c*e^(-x)*cos(x)});
+                                }\temp
+                            }
+                        \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
+                    \end{axis}
+                \end{tikzpicture}
+            \end{subfigure}
+            \hfill
+            \begin{subfigure}[b]{0.49\textwidth}
+                \begin{tikzpicture}
+                    \begin{axis}[
+                            xmin = -10, xmax = 10, ymin = -10, ymax = 10,
+                            % restrict y to domain = -1:1,
+                            title = {Degenerate Node with
+                                    ${\color{y_p} \vec{x^{(1)}}}$ and
+                                    ${\color{y_h} \vec{x^{(2)}}}$},
+                            xlabel = $ y_1 $,
+                            ylabel = $ y_2 $, ylabel shift = {-1em},
+                            axis equal,
+                            width = 8cm,
+                            legend pos = north west,
+                            grid = both,
+                            domain = -1:1,
+                            Ani]
+                        \foreach \c in {1/2,1/4,2} {%
+                                \edef\temp{%
+                                    \noexpand \addplot[thin, samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.15}]
+                                    ({(\c + x)*e^(3*x)}, {(-\c - x + 1)*e^(3*x)});
+                                    \noexpand \addplot[thin, samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.15}]
+                                    ({(\c - x)*e^(3*x)}, {(-\c + x - 1)*e^(3*x)});
+                                    \noexpand \addplot[thin, samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.15}]
+                                    ({(-\c + x)*e^(3*x)}, {(\c - x + 1)*e^(3*x)});
+                                    \noexpand \addplot[thin, samples = 100, color=blue3,
+                                        arrow inside={end=stealth,opt={scale=2}}{0.15}]
+                                    ({(-\c - x)*e^(3*x)}, {(\c + x - 1)*e^(3*x)});
+                                }\temp
+                            }
+                        \addplot[thick, samples = 100, color=y_p,
+                            arrow inside={end=stealth,opt={scale=2}}{0.3}]
+                        ({e^(3*x)}, {-e^(3*x)});
+                        \addplot[thick, samples = 100, color=y_p,
+                        arrow inside={end=stealth,opt={scale=2}}{0.3}]
+                        (-{e^(3*x)}, {e^(3*x)});
+                        \addplot[thick, samples = 100, color=y_h,
+                            arrow inside={end=stealth,opt={scale=2}}{0.3}]
+                        ({x*e^(3*x)}, {(-x+1)*e^(3*x)});
+                        \addplot[thick, samples = 100, color=y_h,
+                            arrow inside={end=stealth,opt={scale=2}}{0.3}]
+                        ({-x*e^(3*x)}, {-1*(-x+1)*e^(3*x)});
+                        \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
+                    \end{axis}
+                \end{tikzpicture}
+            \end{subfigure}
+        \end{figure}
+\end{description}
+
+\section{Criteria for Critical Points, Stability}
+\begin{description}
+    \item[Characteristic equation] For the two member system of linear ODEs with
+        constant coefficients,
+        \begin{align}
+            \vec{A}                        & = \bmattt{a_{11}}{a_{12}}{a_{21}}{a_{22}} \\
+            \det(\vec{A} - \lambda\vec{I}) & =
+            \lambda^{2} - (a_{11} + a_{22})\lambda + \det(\vec{A}) = 0                 \\
+            \lambda^{2} - p\lambda + q     & = 0
+        \end{align}
+    \item[Critical point categories] Rearranging the characteristic equation into its
+    factors $ \lambda_1,\ \lambda_2 $,
+        \begin{align}
+            p                           & = \lambda_1 + \lambda_2       &
+            q                           & = \lambda_1 \lambda_2           \\
+            \text{Discriminant}\ \Delta & = p^{2} - 4q                  &
+            \Delta                      & = (\lambda_1 - \lambda_2)^{2}
+        \end{align}
+        \begin{table}[ht]
+            \centering
+            \SetTblrInner{rowsep=0.5em}
+            \begin{tblr}{colspec={Q[r]|Q[l]}, colsep = 2em}
+                \textbf{Critical Point} &
+                \textbf{Eigenvalues} $ \lambda_1, \lambda_2 $            \\ \hline[dotted]
+                Node                    & Real, same sign                \\
+                Saddle point            & Real, opposite signs           \\
+                Center                  & Purely imaginary               \\
+                Spiral point            & Complex with nonzero real part \\ \hline
+            \end{tblr}
+        \end{table}
+    \item[Stability] From physics, stability is a measure of the effect in the future
+        of a small change in the system at present time.
+    \item[Stable critical point] If for every disk $ D_\epsilon $ centered on $ P_0 $,
+        there is a disk $ D_{\delta} $ with $ \delta, \epsilon >0 $, such that every trajectory
+        which has $ P(t = t_1) = P_1 \in D_{\delta}$ has all its points corresponding to
+        $ t \geq t_1 $ in $ D_{\epsilon} $.
+    \item[Attractive critical point] Every trajectory in $ D_\delta $ for a stable
+        critical point, approaches $ P_0 $ asymptotically as $ t \rightarrow \infty $.
+
+        \begin{table}[ht]
+            \centering
+            \SetTblrInner{rowsep=0.5em}
+            \begin{tblr}{colspec={Q[r]|Q[l]}, colsep = 2em}
+                \textbf{Stability}    &
+                \textbf{Condition on} $ \vec{p},\ \vec{q} $        \\ \hline[dotted]
+                Stable and attractive & $ p<0 $ and $ q > 0 $      \\
+                Stable                & $ p \leq 0 $ and $ q > 0 $ \\
+                Unstable              & $ p > 0 $ or $\ \ q < 0 $  \\ \hline
+            \end{tblr}
+        \end{table}
+\end{description}
+
+\section{Qualitative Methods for Nonlinear Systems}
+\begin{description}
+    \item[Assumptions] The system of ODEs is autonomous, and the functions $ f_1, f_2 $
+        are independent of $ t $. \par
+        Also, the system of ODEs has finitely many critical points. This
+        means that each critical point is isolated. \par
+        For analysis, each critical point is treated as the origin when being analyzed,
+        using the coordinate transformation,
+        \begin{align}
+            P_0         & = (a, b)  & (a, b)      & \rightarrow (0, 0) \\
+            \tilde{y_i} & = y_1 - a & \tilde{y_2} & = y_2 - b
+        \end{align}
+    \item[Linearization] The system is linearlised around its critical point
+        $ (0, 0) $ using,
+        \begin{align}
+            \vec{y} & = \vec{f}(\vec{y}) \equiv \vec{Ay} + \vec{h}(\vec{y}) \\
+            y_1'    & = a_{11}y_1 + a_{12}y_2 + h_1(y_1, y_2)               \\
+            y_2'    & = a_{21}y_1 + a_{22}y_2 + h_2(y_1, y_2)
+        \end{align}
+        Notice $ \vec{A} $ here is independent of $ y $ since $ P_0  = (0, 0)$ is
+        a critical point giving. \par
+        If $ f_1, f_2 $ are continuous and have continuous partial derivatives in a
+        region around $ P_0 $, and if $ \det(\vec{A}) \neq 0 $, then the kind and
+        stability of the critical points of the original system are the same as
+        those of the linearized system. \par
+        Exceptions occur if the linearized system has equal roots or purely imaginary
+        roots.
+        The general method is as follows,
+        \begin{enumerate}
+            \item Set up the mathematical model.
+            \item Identify the critical points as conditions for $ \vec{y} = 0 $
+            \item Drop all nonlinear terms in order to linearize the system
+            \item Treat each critical point in turn, transforming coordinates as
+                  needed.
+        \end{enumerate}
+    \item[Transformation to first order ODE] A second order autonomous ODE can
+        be transformed using,
+        \begin{align}
+            F(y, y', y'') & = 0                    & y & = y_1, \qquad y' = y_2 \\
+            y''           & = \diff{y_2}{y_1}\ y_2
+        \end{align}
+    \item[Limit Cycle] A closed trajectory in phase space into which other trajectories
+        spiral asymptotically. Similar to an attractive node, but instead of a single point
+        in phase space, this is a closed stable trajectory. \par
+
+        In the real world, this requires systems with variable damping (which can also be
+        negative), which push trajectories starting outside and inside the limit cycle
+        inward and outward towards it
+        respectively.
+\end{description}
+
+\section{Nonhomogeneous Linear Systems of ODEs}
+
+\begin{description}
+    \item[General solution] Assuming $ \vec{g} \not \equiv \vec{0}$ and the entries of
+        $ \vec{A} $ are continuous on some interval $ \mathcal{J} $ of the $t-$axis,\par
+        a general solution of the nh-system is given by,
+        \begin{align}
+            \vec{y'} & = \vec{Ay} + \vec{g}            \\
+            \vec{y}  & = \vec{y^{(h)}} + \vec{y^{(p)}}
+        \end{align}
+    \item[Undetermined coefficients] The method is analogous to the single ODE
+        procedure, for the same set of candidate functions. The only change is in the
+        modification rule.
+    \item[Variation of parameters] Start with a basis of solutions $ \vec{Z} $ of the
+        h-ODE system.
+        \begin{align}
+            \vec{Z'}      & = A\vec{Z}                      \\
+            \vec{y^{(p)}} & = \vec{Z}(t)\vec{u}(t)          \\
+            \vec{y'}      & = \vec{Ay} + \vec{g}  \nonumber \\
+            \vec{Zu'}     & = \vec{g}                       \\
+            \vec{u'}      & = \vec{Z^{-1}g}
+        \end{align}
+        $ \vec{Z^{-1}} $ is guaranteed to exist since $ \vec{Z} $ is a basis and
+        its Wronskian is nonzero.
+\end{description}

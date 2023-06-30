@@ -1,0 +1,364 @@
+\section{Calculus Review: Double Integrals}
+
+\begin{enumerate}
+    \item TBC.
+
+    \item The space between the lines $ y = x $ and $ y = 2x $ bounded by the vertical
+          lines $ x = 0 $ and $ x = 2 $. Trapezium
+          \begin{align}
+              I_1 & = \int_{x}^{2x} x^2 + 2xy + y^2\ \dl y                          &
+              I_1 & = \Bigg[ x^2 y + xy^2 + \frac{y^3}{3} \Bigg]_x^{2x}               \\
+              I_1 & = x^3 + 3x^3 + \frac{7x^3}{3} = \color{y_h} \frac{19x^3}{3}       \\
+              I   & = \int_{0}^{2} \frac{19x^3}{3}\ \dl x                           &
+                  & = \Bigg[ \frac{19x^4}{12} \Bigg]_0^2 = \color{y_p} \frac{76}{3}
+          \end{align}
+
+    \item The space between the lines $ x = -y $ and $ x = y $ bounded by the horizontal
+          lines $ y = 0 $ and $ y = 3 $. Triangle
+          \begin{align}
+              I_2 & = \int_{-y}^{y} x^2 + y^2\ \dl x                     &
+              I_2 & = \Bigg[ \frac{x^3}{3} + xy^2 \Bigg]_{-y}^{y}          \\
+              I_2 & = \frac{2y^3}{3} + 2y^3 = \color{y_h} \frac{8y^3}{3}   \\
+              I   & = \int_{0}^{3} \frac{8y^3}{3}\ \dl y                 &
+                  & = \Bigg[ \frac{2x^4}{3} \Bigg]_0^3 = \color{y_p} 54
+          \end{align}
+
+    \item The space between the lines $ x = -y $ and $ x = y $ bounded by the horizontal
+          lines $ y = 0 $ and $ y = 3 $. Triangle
+          \begin{align}
+              I & = \int_{-3}^{0}\int_{-x}^{3} (x^2 + y^2) \dl y \dl x
+              + \int_{0}^{3}\int_{x}^{3} (x^2 + y^2) \dl y \dl x                     \\
+                & = \int_{-3}^{0} \Bigg[ x^2 y + \frac{y^3}{3} \Bigg]_{-x}^{3} \dl x
+              + \int_{0}^{3} \Bigg[ x^2y + \frac{y^3}{3} \Bigg]_x^3 \dl x            \\
+                & = \int_{-3}^{0} \Bigg( {\color{y_h} 3x^2 + \frac{4x^3}{3} + 9}
+              \Bigg) \dl x
+              + \int_{0}^{3} \Bigg( {\color{y_h} 3x^2 - \frac{4x^3}{3} + 9}
+              \Bigg) \dl x                                                           \\
+                & = \Bigg[x^3 + \frac{x^4}{3} + 9x\Bigg]_{-3}^0
+              + \Bigg[x^3 - \frac{x^4}{3} + 9x\Bigg]_{0}^3  = \color{y_p} 54
+          \end{align}
+
+    \item The space between the curves $ y = x^2 $ and $ y = x $ bounded by the vertical
+          lines $ x = 0 $ and $ x = 1 $.
+          \begin{align}
+              I_1 & = \int_{x^2}^{x} (1 - 2xy)\ \dl y                      &
+              I_1 & = \Bigg[ y - xy^2 \Bigg]_{x^2}^{x}                       \\
+              I_1 & = \color{y_h} x^5 - x^3 - x^2 + x                        \\
+              I   & = \int_{0}^{1} (x^5 - x^3 - x^2 + x)\ \dl x            &
+                  & = \Bigg[ \frac{x^6}{6} - \frac{x^4}{4} - \frac{x^3}{3}
+                  + \frac{x^2}{2} \Bigg]_0^1  = \color{y_p} \frac{1}{12}
+          \end{align}
+
+    \item The space between the lines $ x = 0 $ and $ x = y $ bounded by the horizontal
+          lines $ y = 0 $ and $ y = 2 $. Triangle
+          \begin{align}
+              I_2 & = \int_{0}^{y} \sinh(x + y)\ \dl x                     &
+              I_2 & = \Bigg[ \cosh(x + y) \Bigg]_{0}^{y}                     \\
+              I_2 & = \color{y_h} \cosh(2y) - \cosh(y)                       \\
+              I   & = \int_{0}^{2} \Big( \cosh(2y) - \cosh(y) \Big)\ \dl y &
+                  & = \Bigg[ \frac{\sinh(2y)}{2} - \sinh(y) \Bigg]_0^2       \\
+                  & = \color{y_p} \frac{\sinh(4)}{2} - \sinh(2)
+          \end{align}
+
+    \item The space between the curves $ y = x $ and $ y = 2 $ bounded by the vertical
+          lines $ x = 0 $ and $ x = 2 $.
+          \begin{align}
+              I_1 & = \int_{x}^{2} \sinh(x + y)\ \dl y                        &
+              I_1 & = \Bigg[ \cosh(x + y) \Bigg]_{x}^{2}                        \\
+              I_1 & = \color{y_h} \cosh(x + 2) - \cosh(2x)                      \\
+              I   & = \int_{0}^{2} \Big(\cosh(x + 2) - \cosh(2x)\Big) \ \dl x &
+                  & = \Bigg[ \sinh(x + 2) - \frac{\sinh(2x)}{2} \Bigg]_0^2      \\
+                  & = \color{y_p} \frac{\sinh(4)}{2} - \sinh(2)
+          \end{align}
+
+    \item The space between the curves $ x = 0 $ and $ x = \cos(y) $ bounded by the
+          horizontal lines $ y = 0 $ and $ y = \pi/4 $. Triangle
+          \begin{align}
+              I_2     & = \int_{0}^{\cos y}  (x^2 \sin y) \dl x                    &
+              I_2     & = \Bigg[ \frac{x^3 \sin y}{3} \Bigg]_{0}^{\cos y}            \\
+              I_2     & = \color{y_h} \frac{\cos^3 y \sin y}{3}                      \\
+              I       & = \int_{0}^{\pi/4} \Bigg( \frac{\cos^3 y \sin y}{3} \Bigg)
+              \ \dl y &
+                      & = \Bigg[ \frac{-\cos^4 y}{12} \Bigg]_0^{\pi/4}
+              = \color{y_p} \frac{1}{16}
+          \end{align}
+
+    \item The double integral is over a rectangle, which simplifies the limits.
+          \begin{align}
+              I                     & = \int_{0}^{3} \Bigg[ \int_{0}^{2} (4x^2 + 9y^2)
+              \ \dl y \Bigg]\ \dl x &
+                                    & = \int_{0}^{3} \Bigg[ 4x^2y + 3y^3 \Bigg]_0^2
+              \ \dl x                                                                  \\
+                                    & = \int_{0}^{3} ({\color{y_h} 8x^2 + 24})
+              \ \dl x               &
+                                    & = \Bigg[ \frac{8x^3}{3} + 24x \Bigg]_0^3
+              = \color{y_p} 144
+          \end{align}
+
+    \item Performing the double integral, for the first octant with $ x \in [0, 1] $
+          \begin{align}
+              V & = \iint_R z(x, y)\ \dl x \dl y                               &
+                & = \int_{0}^{1} \Bigg[\int_{0}^{1 - x^2} (1 - x^2)\ \dl
+              y\Bigg] \dl x                                                      \\
+                & = \int_{0}^{1} \Bigg[ y - x^2y \Bigg]_0^{1 - x^2} \dl x      &
+                & = \int_{0}^{1} \bigg( {\color{y_h} (1 - x^2)^2} \bigg) \dl x   \\
+                & = \Bigg[ x - \frac{2x^3}{3} + \frac{x^5}{5} \Bigg]_0^1 =
+              \color{y_p} \frac{8}{15}
+          \end{align}
+
+    \item Performing the double integral, using polar coordinates where
+          $ r \in [0, 1] $,
+          \begin{align}
+              x            & = r \cos(\theta)                                       &
+              y            & = r\sin(\theta)                                          \\
+              J            & = \begin{vNiceMatrix}[margin]
+                                   \difcp {x}{r} & \difcp {x}{\theta} \\
+                                   \difcp {y}{r} & \difcp {y}{\theta} \\
+                               \end{vNiceMatrix}                  &
+              J            & = \begin{vNiceMatrix}[margin]
+                                   \cos \theta   & \sin \theta   \\
+                                   -r\sin \theta & r \cos \theta \\
+                               \end{vNiceMatrix} = \color{y_h} r                      \\
+              I            & = \iint_R (1 - x^2 - y^2) \dl x \dl y                  &
+              I^*          & = \iint_{R^*} (1 - r^2) {\color{y_h} (r)} \dl A          \\
+              I^*          & = \int_0^1 \Bigg[ \int_{0}^{2\pi} (r - r^3) \dl \theta
+              \Bigg] \dl r &
+              I^*          & =2\pi \Bigg[ \frac{r^2}{2} - \frac{r^4}{4} \Bigg]_0^1
+              = \color{y_p} \frac{\pi}{2}
+          \end{align}
+
+    \item Using the formula for $x$-CoM,
+          \begin{align}
+              l_1                & : y = \frac{2h}{b}\ x                           &
+              l_2                & : y = -\frac{2h}{b}\ x + 2h                       \\
+              M\bar{x}           & = \int_0^{h} \Bigg[ \int_{by/2h}^{b - by/2h} x
+              \dl x \Bigg] \dl y &
+              \bar{x}            & = \int_{0}^{h} \frac{1}{M} \Bigg[ \frac{x^2}{2}
+              \Bigg]_{y^-}^{y^+} \dl y                                               \\
+                                 & = \frac{1}{2M} \int_{0}^{h} \Bigg(
+              b^2 - \frac{b^2y}{h}
+              \Bigg) \dl y       &
+              \bar{x}            & = \frac{1}{2M} \left[ hb^2
+                  - \frac{hb^2}{2} \right]
+              = \color{y_h} \frac{b}{2}
+          \end{align}
+
+          Using the formula for $y$-CoM,
+          \begin{align}
+              l_1                & : y = \frac{2h}{b}\ x                          &
+              l_2                & : y = -\frac{2h}{b}\ x + 2h                      \\
+              M\bar{y}           & = \int_0^{h} \Bigg[ \int_{by/2h}^{b - by/2h} y
+              \dl x \Bigg] \dl y &
+              \bar{y}            & = \int_{0}^{h} \frac{1}{M} \Bigg[ xy
+              \Bigg]_{y^-}^{y^+}                                                    \\
+                                 & = \frac{1}{M} \int_{0}^{h} \Bigg(
+              by - \frac{by^2}{h}
+              \Bigg) \dl y       &
+              \bar{y}            & = \frac{1}{M} \left[ \frac{bh^2}{6} \right]
+              = \color{y_p} \frac{h}{3}
+          \end{align}
+
+    \item Using the formula for $x$-CoM,
+          \begin{align}
+              l_1                & : y = \frac{hx}{b}                               &
+              l_2                & : y = 0                                            \\
+              M\bar{x}           & = \int_0^{b} \Bigg[ \int_{0}^{hx/b} x
+              \dl y \Bigg] \dl x &
+              \bar{x}            & = \int_{0}^{b} \frac{1}{M} \Bigg[ xy
+              \Bigg]_{0}^{hx/b} \dl x                                                 \\
+                                 & = \frac{1}{M} \int_{0}^{b} \Bigg(
+              \frac{hx^2}{b}
+              \Bigg) \dl x       &
+              \bar{x}            & = \frac{1}{M} \left[ \frac{hx^3}{3b} \right]_0^b
+              = \color{y_h} \frac{2b}{3}
+          \end{align}
+
+          Using the formula for $y$-CoM,
+          \begin{align}
+              l_1                & : y = \frac{hx}{b}                              &
+              l_2                & : y = 0                                           \\
+              M\bar{y}           & = \int_0^{b} \Bigg[ \int_{0}^{hx/b} y
+              \dl y \Bigg] \dl x &
+              \bar{y}            & = \int_{0}^{b} \frac{1}{M} \Bigg[ \frac{y^2}{2}
+              \Bigg]_{0}^{hx/b} \dl x                                                \\
+                                 & = \frac{1}{M} \int_{0}^{b} \Bigg(
+              \frac{h^2 x^2}{2b^2}
+              \Bigg) \dl x       &
+              \bar{x}            & = \frac{1}{M} \left[ \frac{h^2x^3}{6b^2}
+                  \right]_0^b
+              = \color{y_p} \frac{h}{3}
+          \end{align}
+
+    \item Using the polar coordinate transformation, with $ J = r $,
+          \begin{align}
+              x                        & = r\cos \theta                            &
+              y                        & = r\sin \theta                              \\
+              \bar{x}                  & = \frac{1}{M} \int_{R_1}^{R_2}
+              \int_{0}^{\pi} \Bigg[ r^2 \cos \theta
+              \dl \theta \Bigg]  \dl r &
+              \bar{x}                  & = \frac{1}{M} \int_{R_1}^{R_2} r^2 \Bigg[
+              \sin \theta \Bigg]_0^{\pi} \dl r = \color{y_h} 0                       \\
+              \bar{y}                  & = \frac{1}{M} \int_{R_1}^{R_2}
+              \int_{0}^{\pi} \Bigg[ r^2 \sin \theta
+              \dl \theta \Bigg]  \dl r &
+                                       & = \frac{1}{M} \int_{R_1}^{R_2} r^2 \Bigg[
+              -\cos \theta \Bigg]_0^{\pi} \dl r                                      \\
+                                       & = \frac{2}{M} \int_{R_1}^{R_2} r^2 \dl r  &
+              \bar{y}                  & = \Bigg[\frac{2r^3}{3M}\Bigg]_{R_1}^{R_2}
+              = \color{y_p} \frac{4}{3\pi}\ \frac{(R_2^3 - R_1^3)}{(R_2^2 - R_1^2)}
+          \end{align}
+
+    \item Using the result from Problem $ 14 $, with $ R_1 = 0,\ R_2 = r $,
+          \begin{align}
+              \bar{x} & = 0 & \bar{y} & = \frac{4r}{3\pi}
+          \end{align}
+
+    \item Using the polar coordinate transformation, with $ J = r $,
+          \begin{align}
+              x                        & = r\cos \theta                        &
+              y                        & = r\sin \theta                          \\
+              \bar{x}                  & = \frac{1}{M} \int_{0}^{R}
+              \int_{0}^{\pi/2} \Bigg[ r^2 \cos \theta
+              \dl \theta \Bigg]  \dl r &
+              \bar{x}                  & = \frac{1}{M} \int_{0}^{R} r^2 \Bigg[
+              \sin \theta \Bigg]_0^{\pi/2} \dl r                                 \\
+                                       & = \frac{1}{M} \int_{0}^{R} r^2 \dl r  &
+              \bar{x}                  & = \frac{R^3}{3M}
+              = \color{y_h} \frac{4R}{3\pi}                                      \\
+              \bar{y}                  & = \color{y_p} \frac{4R}{3\pi}
+          \end{align}
+          By the symmetry of the problem, $ \bar{y} = \bar{x} $ and the computation can
+          be skipped.
+
+    \item Finding $ I_x $
+          \begin{align}
+              I_x & = \int_{0}^{b} \Bigg[\int_{0}^{hx/b} y^2 \dl y\Bigg] \dl x &
+                  & = \int_{0}^{b} \Bigg[ \frac{y^3}{3} \Bigg]_0^{hx/b} \dl x    \\
+                  & = \int_{0}^{b} \frac{h^3}{3b^3}\ x^3 \dl x                 &
+                  & = \Bigg[ \frac{h^3 x^4}{12b^3} \Bigg]_0^b
+              = \color{y_h} \frac{h^3b}{12}
+          \end{align}
+          Finding $ I_y $
+          \begin{align}
+              I_y & = \int_{0}^{b} \Bigg[\int_{0}^{hx/b} x^2 \dl y\Bigg] \dl x &
+                  & = \int_{0}^{b} \Bigg[ x^2y \Bigg]_0^{hx/b} \dl x             \\
+                  & = \int_{0}^{b} \frac{h}{b}\ x^3 \dl x                      &
+                  & = \Bigg[ \frac{hx^4}{4b} \Bigg]_0^b
+              = \color{y_p} \frac{hb^3}{4}
+          \end{align}
+          Finding $ I_z $ for a laminar object in the $ xy $ plane
+          \begin{align}
+              I_z   & = \int_{0}^{b} \Bigg[\int_{0}^{hx/b} (x^2 + y^2) \dl y\Bigg]
+              \dl x &
+              I_z   & = I_x + I_y
+              = \color{brown6} \frac{h^3b}{12} + \frac{hb^3}{4}
+          \end{align}
+
+    \item Finding $ I_x $
+          \begin{align}
+              I_x   & = \int_{0}^{h} \Bigg[\int_{by/2h}^{b - by/2h} y^2 \dl x \Bigg]
+              \dl y &
+                    & = \int_{0}^{h} \Bigg[xy^2\Bigg]_{by/2h}^{b - by/2h} \dl y        \\
+                    & = \int_{0}^{h} \Bigg(by^2 - \frac{by^3}{h}\Bigg) \dl y         &
+                    & = \Bigg[ \frac{by^3}{3} - \frac{by^4}{4h} \Bigg]_0^h
+              = \color{y_h} \frac{bh^3}{12}
+          \end{align}
+          Finding $ I_y $
+          \begin{align}
+              I_y   & = \int_{0}^{h} \Bigg[\int_{by/2h}^{b - by/2h} x^2 \dl x \Bigg]
+              \dl y &
+                    & = \int_{0}^{h} \Bigg[ \frac{x^3}{3} \Bigg]_{by/2h}^{b - by/2h}
+              \dl y                                                                   \\
+                    & = \frac{b^3}{3} \int_{0}^{h} \left( 1 - \frac{y}{2h}\right)^3 -
+              \left( \frac{y}{2h} \right)^3
+              \dl y &
+                    & = \frac{-2hb^3}{12} \Bigg[\left( 1 - \frac{y}{2h} \right)^4
+              + \left( \frac{y}{2h} \right)^4 \Bigg]_0^h                              \\
+                    & = \color{y_p} \frac{7b^3h}{48}
+          \end{align}
+          Finding $ I_z $ for a laminar object in the $ xy $ plane
+          \begin{align}
+              I_z   & = \int_{0}^{b} \Bigg[\int_{0}^{hx/b} (x^2 + y^2) \dl y\Bigg]
+              \dl x &
+              I_z   & = I_x + I_y                                                  \\
+                    & = \color{brown6} \frac{bh}{48}\ (7b^2 + 4h^2)
+          \end{align}
+
+    \item Finding the equations of the bounding lines,
+          \begin{align}
+              l_1 & : y + \frac{h}{2} = \frac{2h}{a - b}(x + a/2) &
+              l_2 & : y + \frac{h}{2} = \frac{2h}{b-a}(x - a/2)     \\
+              x^- & = \frac{(2y + h)(a-b)}{4h} - \frac{a}{2}      &
+              x^+ & = \frac{(2y + h)(b-a)}{4h} + \frac{a}{2}
+          \end{align}
+          Finding $ I_x $
+          \begin{align}
+              I_x     & = \int_{-h/2}^{h/2} \Bigg[\int_{x^-}^{x^+} y^2 \dl x \Bigg]
+              \dl y   &
+                      & = \int_{-h/2}^{h/2} \Bigg[ xy^2\Bigg]_{x^-}^{x^+}
+              \dl y                                                                   \\
+                      & = \int_{-h/2}^{h/2} \Bigg(2y^2\ x^+\Bigg) \dl y             &
+                      & = \Bigg[ \frac{ay^3}{3} + \frac{b-a}{2h}\ \left( \frac{y^4}
+              {4} + \frac{hy^3}{3} \right) \Bigg]_{-h/2}^{h/2}                        \\
+                      & = \frac{ah^3}{12} + \frac{(b-a)}{2h} \left( \frac{h^4}{12}
+              \right) &
+                      & = \color{y_h} \frac{(a + b)}{24}\ h^3
+          \end{align}
+          Finding $ I_y $
+          \begin{align}
+              I_y   & = \int_{-h/2}^{h/2} \Bigg[\int_{x^-}^{x^+} x^2 \dl x \Bigg]
+              \dl y &
+                    & = \int_{-h/2}^{h/2} \Bigg[ \frac{x^3}{3} \Bigg]_{x^-}^{x^+}
+              \dl y                                                                 \\
+                    & = \int_{-h/2}^{h/2} \Bigg(\frac{2}{3} (x^+)^3\Bigg) \dl y   &
+                    & = \Bigg[ \frac{2h}{6(b-a)} (x^+)^4 \Bigg]_{-h/2}^{h/2}        \\
+                    & = \frac{h}{3(b-a)} \left( \frac{b^4 - a^4}{16} \right)      &
+                    & = \color{y_p} \frac{h}{48}\ \frac{a^4 - b^4}{a - b}
+          \end{align}
+          Finding $ I_z $ for a laminar object in the $ xy $ plane
+          \begin{align}
+              I_z   & = \int_{0}^{b} \Bigg[\int_{0}^{hx/b} (x^2 + y^2) \dl y\Bigg]
+              \dl x &
+              I_z   & = I_x + I_y                                                      \\
+                    & = \color{brown6} \frac{ha^4 - hb^4 + 2h^3(a^2 - b^2)}{48(a - b)}
+          \end{align}
+
+    \item Finding the equations of the bounding lines,
+          \begin{align}
+              l_1 & : y = \frac{2h}{a - b}(x + a/2)     &
+              l_2 & : y = \frac{2h}{b-a}(x - a/2)         \\
+              x^- & = \frac{y\ (a-b)}{2h} - \frac{a}{2} &
+              x^+ & = \frac{y\ (b-a)}{2h} + \frac{a}{2}
+          \end{align}
+          Finding $ I_x $
+          \begin{align}
+              I_x   & = \int_{0}^{h} \Bigg[\int_{x^-}^{x^+} y^2 \dl x \Bigg]
+              \dl y &
+                    & = \int_{0}^{h} \Bigg[ xy^2\Bigg]_{x^-}^{x^+}
+              \dl y                                                            \\
+                    & = \int_{0}^{h} \Bigg(2y^2\ x^+\Bigg) \dl y             &
+                    & = \Bigg[ \frac{ay^3}{3} + \left( \frac{b-a}{h} \right)
+              \frac{y^4}{4} \Bigg]_{0}^{h}                                     \\
+                    & = \frac{ah^3}{3} + \frac{(b-a)h^3}{4}                  &
+                    & = \color{y_h} \frac{a + 3b}{12}\ h^3
+          \end{align}
+          Finding $ I_y $
+          \begin{align}
+              I_y   & = \int_{0}^{h} \Bigg[\int_{x^-}^{x^+} x^2 \dl x \Bigg]
+              \dl y &
+                    & = \int_{0}^{h} \Bigg[ \frac{x^3}{3} \Bigg]_{x^-}^{x^+}
+              \dl y                                                            \\
+                    & = \int_{0}^{h} \Bigg(\frac{2}{3} (x^+)^3\Bigg) \dl y   &
+                    & = \Bigg[ \frac{2h}{6(b-a)} (x^+)^4 \Bigg]_{0}^{h}        \\
+                    & = \frac{h}{3(b-a)} \left( \frac{b^4 - a^4}{16} \right) &
+                    & = \color{y_p} \frac{h}{48}\ \frac{a^4 - b^4}{a - b}
+          \end{align}
+          Finding $ I_z $ for a laminar object in the $ xy $ plane
+          \begin{align}
+              I_z   & = \int_{0}^{b} \Bigg[\int_{0}^{hx/b} (x^2 + y^2) \dl y\Bigg]
+              \dl x &
+              I_z   & = I_x + I_y                                                   \\
+                    & = \color{brown6} \frac{h(a^2 + b^2)(a+b) + 4h^3 (a + 3b)}{48}
+          \end{align}
+
+\end{enumerate}

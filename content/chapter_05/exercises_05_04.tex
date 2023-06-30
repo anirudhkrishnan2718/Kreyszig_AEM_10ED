@@ -1,0 +1,605 @@
+\section{Bessel's Equation, Bessel Functions Jv(x)}
+\begin{enumerate}
+    \item For Bessel functions with integer parameter,
+          \begin{align}
+              J_n                               & = x^n \iser{0}\frac{(-1)^m\ x^{2m}}
+              {2^{2m+n}\ m!\ (n+m)!}                                                  \\
+              \text{Ratio test} \quad
+              \frac{a_{m+1}}{a_m}               & = \frac{-x^2}{2^2(m+1)(n+m+1)}      \\
+              \lim_{m \rightarrow \infty}
+              \Bigg| \frac{a_{m+1}}{a_m} \Bigg| & = 0
+          \end{align}
+          This guarantees convergence for all $ x $. In case $ n < 0 $, the ratio
+          test can only be applied on terms with $ m + n > 0  $.
+
+    \item Reducing to Bessel ODE form,
+          \begin{align}
+              0   & = x^2y'' + xy' + \left( x^2 - \frac{2^2}{7^2} \right)y &
+              \nu & = \frac{2}{7}                                            \\
+              y_1 & = \color{y_h} J_{2/7}                                  &
+              y_2 & = \color{y_p} J_{-2/7}
+          \end{align}
+
+    \item Reducing to Bessel ODE form,
+          \begin{align}
+              0                & = xy'' + y' + \frac{1}{4}\ y              &
+              \sqrt{x}         & = z                                         \\
+              \diff zx         & = \frac{1}{2\sqrt{x}} = \frac{1}{2z}      &
+              \diff[2] yx      & = \frac{1}{2z} \left[ \frac{\ddot{y}}{2z}
+              - \frac{\dot{y}}{2z^2} \right]                                 \\
+              0                & = \ddot{y}\ \frac{z^2}{4z^2}
+              + \dot{y}\ \left[\frac{1}{2z} - \frac{z^2}{4z^3}\right]
+              + y\ \frac{1}{4} &
+              0                & = \ddot{y} + \frac{\dot{y}}{z} + y          \\
+              0                & = z^2 \ddot{y} + z\dot{y} + (z^2 - 0^2)y    \\
+              y_1              & = \color{y_h} J_0(\sqrt{x})
+          \end{align}
+          Second L.I. solution requires $ Y_{\nu}(\sqrt{x}) $.
+
+    \item Reducing to Bessel form ODE,
+          \begin{align}
+              0                      & = y'' + \left( e^{-2x} - \frac{1}{9} \right) y &
+              z                      & = e^{-x}                                         \\
+              \diff zx               & = -z                                           &
+              \diff[2] yx            & = z (\dot{y} + z\ddot{y})                        \\
+              0                      & = z^2 \ddot{y} + z\dot{y} + \left( z^2 -
+              \frac{1}{3^2} \right)y &
+              \nu                    & = 1/3                                            \\
+              y_1                    & = \color{y_h} J_{1/3}(e^{-x})                  &
+              y_2                    & = \color{y_p} J_{-1/3}(e^{-x})
+          \end{align}
+
+    \item Reducing to Bessel form ODE,
+          \begin{align}
+              0   & = x^2y'' + xy' + (\lambda^2x^2 - \nu^2) y  &
+              z   & = \lambda x                                  \\
+              y'  & = \lambda \dot{y}                          &
+              y'' & = \lambda^2 \ddot{y}                         \\
+              0   & = z^2 \ddot{y} + z\dot{y} + (z^2 - \nu^2)y   \\
+              y_1 & = \color{y_h} J_{\nu}(\lambda x)           &
+              y_2 & = \color{y_p} J_{-\nu}(\lambda x)
+          \end{align}
+          provided $ \nu \not\in \mathcal{I}$.
+
+    \item Transforming both dependent and independent variable,
+          \begin{align}
+              0               & = x^2y'' + \left( x + \frac{3}{4} \right) \frac{y}{4}   \\
+              y               & = u\sqrt{x}                                           &
+              \sqrt{x}        & = z                                                     \\
+              y'              & = \frac{1}{2z} \left( z\dot{u} + u \right)            &
+              y''             & = \frac{1}{2z} \diff**{z}{\left( \frac{\dot{u}}{2}
+              + \frac{u}{2z} \right)}                                                   \\
+              y''             & = \frac{1}{2z} \left( \frac{\ddot{u}}{2}
+              + \frac{\dot{u}} {2z} - \frac{u}{2z^2} \right)                            \\
+              0               & = \frac{z^3\ddot{u}}{4} + \frac{z^2\dot{u}}{4}
+              -\frac{zu}{4} + \frac{uz^3}{4}
+              +\frac{3uz}{16} &
+              0               & = z^2\ddot{u} + z\dot{u}
+              + u \left( z^2 - \frac{1}{4} \right)                                      \\
+              y_1             & = \color{y_h} \sqrt{x}\ J_{1/2}(\sqrt{x})             &
+              y_2             & = \color{y_p} \sqrt{x}\ J_{-1/2}(\sqrt{x})
+          \end{align}
+
+    \item Transforming both dependent and independent variable,
+          \begin{align}
+              0          & = x^2y'' + xy' + (x^2 - 1)\ \frac{y}{4}          &
+              x          & = 2z                                               \\
+              y'         & = \frac{\dot{y}}{2}                              &
+              y''        & = \frac{\ddot{y}}{4}                               \\
+              0          & = \ddot{y} + \dot{y} + \left( z^2
+              - \frac{1}{4} \right) y                                         \\
+              y_1        & = \color{y_h} J_{1/2}\left( \frac{x}{2} \right)
+              = \frac{\sin(x/2)}
+              {\sqrt{x}} &
+              y_2        & = \color{y_p} J_{-1/2}\left( \frac{x}{2} \right)
+              = \frac{\cos(x/2)}{\sqrt{x}}
+          \end{align}
+
+    \item Transforming both dependent and independent variable,
+          \begin{align}
+              0      & = (2x+1)^2y'' + 2(2x+1)y' + 16x(x+1)y  &
+              2x + 1 & = z                                      \\
+              y'     & = 2 \dot{y}                            &
+              y''    & = 4 \ddot{y}                             \\
+              0      & = z^2 \ddot{y} + z\dot{y} + (z^2 - 1)y   \\
+              y_1    & = \color{y_h} J_{1}(2x+1)
+          \end{align}
+          Second L.I. solution requires $ Y_1(x) $.
+
+    \item Transforming both dependent and independent variable,
+          \begin{align}
+              0   & = xy'' + (2\nu + 1)y' + xy                                    &
+              y   & = x^{-\nu} u                                                    \\
+              y'  & = x^{-\nu} u' - \nu x^{-\nu-1} u                                \\
+              y'' & = x^{-\nu} u'' - 2\nu x^{-\nu-1} u' + (\nu)(\nu+1)x^{-\nu-2}u   \\
+              0   & = u''[x^{-\nu+1}] + u'[x^{-\nu}] + u[(x^2-\nu^2)x^{-\nu-1}]     \\
+              0   & = x^2 u'' + x u' + u(x^2-\nu^2)                                 \\
+              y_1 & = \color{y_h}x^{-\nu}\ J_{\nu}(x)                             &
+              y_1 & = \color{y_p}x^{-\nu}\ J_{-\nu}(x)
+          \end{align}
+          provided $ \nu \not\in \mathcal{I}$.
+
+    \item Transforming both dependent and independent variable,
+          \begin{align}
+              0       & = x^2y'' + (1-2\nu)xy' + \nu^2(x^{2\nu} +1 - \nu^2)y   \\
+              y       & = x^{\nu}u                                           &
+              x^{\nu} & = z                                                    \\
+              y'      & = \nu x^{\nu-1} [z \dot{u} + u]                      &
+              y'      & = \nu z^{1 - 1/\nu} [z \dot{u} + u]                    \\
+              y''     & = \nu^2 z^{1 - 2/\nu}\ \Big[z^2\ddot{u}
+              + z\dot{u}(3 - 1/\nu) + u(1 - 1/\nu) \Big]                       \\
+              0       & = \ddot{u}(z^2) + \dot{u} [z]
+              + u[z^2 - \nu^2]                                                 \\
+              u_1     & =  J_{\nu}(z)                                        &
+              u_2     & =  J_{-\nu}(z)                                         \\
+              y_1     & = \color{y_h}x^\nu\ J_{\nu}(x^\nu)                   &
+              y_2     & = \color{y_p}x^\nu\ J_{-\nu}(x^\nu)
+          \end{align}
+          provided $ \nu \not\in \mathcal{I}$.
+
+    \item Graphing solutions of given ODE with varying $ k $, where $ k \in \mathcal{I}$
+          gives elementary functions as solutions. $  $
+          \begin{align}
+              y'' + \frac{k}{x}\ y' + y & = 0                                       \\
+              y(0) = 1 \qquad y'(0)     & = 0                                       \\
+              y_1                       & = \color{y_h} x^{(1-k)/2}\ J_{(k-1)/2}(x)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 12cm,
+                          Ani,
+                      ]
+                      \foreach [evaluate=\c as \n using (\c)*100/(10)] \c in {2,...,10}
+                          {%
+                              \edef\temp{%
+                                  \noexpand
+                                  \addplot[
+                                      samples = 200,
+                                      domain=0:4*pi,
+                                      color=blue!\n!red, thin,
+                                  ] gnuplot[id=besjn] {x^((1-\c)/2)*besjn((\c-1)/2, x)};
+                                  \noexpand \addlegendentry{$ k = \c$};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 12cm,
+                          Ani,
+                      ]
+                      \foreach [evaluate=\c as \n using (\c-1)*100/(1)] \c in {1,3,...,9}
+                          {%
+                              \edef\temp{%
+                                  \noexpand
+                                  \addplot[
+                                      samples = 200,
+                                      domain=0:4*pi,
+                                      color=blue!\n!red, thin,
+                                  ] gnuplot[id=besjn] {x^((1-\c)/2)*besjn((\c-1)/2, x)};
+                                  \noexpand \addlegendentry{$ k = \c$};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/bessel_many.csv}\anitable
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                          % restrict y to domain = -1:1,
+                          height = 12cm,
+                          legend pos = south east,
+                          legend style={nodes={scale=0.75}},
+                          grid = both,
+                          Ani]
+                      \addplot[GraphSmooth, color = red5] table[x index=0,y index=1,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 0.0$}
+                      \addplot[GraphSmooth, color = yellow8] table[x index=4,y index=5,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 0.4$}
+                      \addplot[GraphSmooth, color = green8] table[x index=8,y index=9,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 0.8$}
+                      \addplot[GraphSmooth, color = blue3] table[x index=12,y index=13,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 1.2$}
+                      \addplot[GraphSmooth, color = purple3]
+                      table[x index=16,y index=17,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 1.6$}
+                      \addplot[GraphSmooth, color = magenta3]
+                      table[x index=20,y index=21,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 2.0$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/bessel_many.csv}\anitable
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                          % restrict y to domain = -1:1,
+                          height = 12cm,
+                          legend pos = south east,
+                          legend style={nodes={scale=0.75}},
+                          grid = both,
+                          Ani]
+                      \addplot[GraphSmooth, color = red5] table[x index=2,y index=3,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 0.2$}
+                      \addplot[GraphSmooth, color = yellow8] table[x index=6,y index=7,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 0.6$}
+                      \addplot[GraphSmooth, color = green8] table[x index=10,y index=11,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 1.0$}
+                      \addplot[GraphSmooth, color = blue3] table[x index=14,y index=15,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 1.4$}
+                      \addplot[GraphSmooth, color = purple3]
+                      table[x index=18,y index=19,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$k = 1.8$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The locations of the zeros and extrema shift forward in $ x $ with increasing
+          $ k $. This looks like an increasingly damped sinusoidal oscilation with the
+          envelope not being exponential.
+
+    \item
+          \begin{enumerate}
+              \item Graphing on common axes, and using the asymptotic approximation for
+                    $ J_n(x) $,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    legend pos = north east,
+                                    grid = both,
+                                    width = 12cm,
+                                    height = 12cm,
+                                    Ani,
+                                ]
+                                \foreach [evaluate=\c as \n using (\c)*100/(5)]
+                                \c in {0,...,5}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand
+                                            \addplot[
+                                                samples = 200,
+                                                domain=1000:1010,
+                                                color=blue!\n!red, thin,
+                                            ] gnuplot[id=besjn] {besjn(\c, x)};
+                                            \noexpand \addlegendentry{$ n = \c$};
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    After the transients have decayed, the $ J_n(x) $ practically
+                    resembles $ k\cos(x) $ for even $ n $ and $ k\sin(x) $ for odd $ n $.
+
+              \item Checking the difference function between the $ J_n $ and its
+                    approximation, the difference goes to zero for around $ x_n = 200\pi $.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    legend pos = outer north east,
+                                    grid = both,
+                                    width = 12cm,
+                                    height = 8cm,
+                                    ylabel = Error,
+                                    Ani,
+                                    domain = 0:200*pi,
+                                    PiStyleX,
+                                    xtick distance = 40*pi,
+                                ]
+                                \foreach [evaluate=\c as \n using (\c)*100/(10)]
+                                \c in {0,...,10}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot[
+                                                samples = 200,
+                                                color=blue!\n!red, thin,
+                                            ] gnuplot[id = besjn] {besjn(\c, x)-
+                                                    ((cos(x - \c*0.5*pi
+                                                    - 0.25*pi))*sqrt(2/(x*pi)))};
+                                            \noexpand \addlegendentry{$ J_{\c}(x)$};
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    $ x_n $ decreases with increasing $ n $, since the decay is faster.
+
+              \item Using $ \nu = \pm 1/2 $, the error is analytically zero. To machine
+                    precision, this is also seen in the plot.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    legend pos = north west,
+                                    ylabel = Error,
+                                    grid = both,
+                                    width = 12cm,
+                                    height = 8cm,
+                                    Ani,
+                                    domain = 0:20*pi,
+                                    % ymin = -1e-9,ymax=1e-9,
+                                ]
+                                \addplot[samples = 200,
+                                    color=blue, thin,]
+                                gnuplot {(sin(x) - (cos(x - 0.5*0.5*pi - 0.25*pi)))
+                                        *sqrt(2/(x*pi))};
+                                \addlegendentry{$ J_{1/2}(x)$};
+                                \addplot[samples = 200,
+                                    color=red, thin,]
+                                gnuplot {(cos(x) - (cos(x + 0.5*0.5*pi - 0.25*pi)))
+                                        *sqrt(2/(x*pi))};
+                                \addlegendentry{$ J_{-1/2}(x)$};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Looking at the error in the approximation formula for fixed $ n $,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    legend pos = north east,
+                                    ylabel = Error,
+                                    grid = both,
+                                    width = 12cm,
+                                    height = 8cm,
+                                    Ani,
+                                    domain = 0.5*pi:20*pi,
+                                    PiStyleX,
+                                    xtick distance = 5*pi,
+                                ]
+                                \addplot[GraphSmooth, color = y_p]
+                                gnuplot[id = besjn] {besjn(1, x)-
+                                        ((cos(x - 1*0.5*pi - 0.25*pi))*sqrt(2/(x*pi)))};
+                                \addlegendentry{$ J_{1}(x)$};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Looking at the functions $ J_0 $ and $ J_1 $, the extrema of $ J_0 $
+                    seem to occur at the zeros of $ J_1 $.
+                    \begin{align}
+                        2J_0 ' & = J_{-1} - J_1 = -2J_1                          \\
+                        J_{-n} & = -1^{n}J_n \qquad \forall\ n \in \mathcal{I^+}
+                    \end{align}
+                    From the above relation, this is proved to be true.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    legend pos = south east,
+                                    ylabel = Error,
+                                    width = 12cm,
+                                    height = 12cm,
+                                    Ani,
+                                    domain = pi:5*pi,
+                                ]
+                                \addplot[GraphSmooth, color = y_p]
+                                gnuplot[id=besj0] {besj0(x)};
+                                \addlegendentry{$ J_{0}(x)$};
+                                \addplot[GraphSmooth, color = y_h]
+                                gnuplot[id=besj1] {besj1(x)};
+                                \addlegendentry{$ J_{1}(x)$};
+                                \draw[color=black, dotted, thick]
+                                (axis cs:3.8317, -0.5) -- (axis cs:3.8317, 0.5);
+                                \draw[color=black, dotted, thick]
+                                (axis cs:7.0156, -0.5) -- (axis cs:7.0156, 0.5);
+                                \draw[color=black, dotted, thick]
+                                (axis cs:10.1735, -0.5) -- (axis cs:10.1735, 0.5);
+                                \draw[color=black, dotted, thick]
+                                (axis cs:13.3237, -0.5) -- (axis cs:13.3237, 0.5);
+                                \draw[color=black]
+                                (axis cs:0, 0) -- (axis cs:20, 0);
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+
+    \item Using Rolle's theorem, and the fact that $ J_n(x) $ are continuous and
+          differentiable in $ \mathcal{R^+} $,
+          \begin{align}
+              J_n(a) = J_n(b)             & = 0       &
+              a^{-n}J_n(a) = b^{-n}J_n(b) & = 0         \\
+              [x^{-n}J_n(x)]'             & = 0       &
+              \text{for some}\ c          & \in (a,b)   \\
+              c^{-n}J_{n+1}(c)            & = 0       &
+              J_{n+1}(c)                  & = 0
+          \end{align}
+          If $ a,b $ are consecutive zeros, then $ c $ is guaranteed to be the only
+          extremum point within $ (a,b) $. This makes it the only zero of $ J_{n+1} $
+          within $ (a,b) $.
+
+    \item Using the approximation formula, it gets better as $ x $ increases. This is
+          seen as the reduction in error for successively higher zeros
+          \begin{align}
+              J_n(x) & = \sqrt{\frac{2}{\pi x}}\ \cos\left( x
+              - \frac{n\pi}{2} - \frac{\pi}{4} \right)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \SetTblrInner{rowsep=0.5em}
+              \begin{tblr}{colspec={Q[r]|Q[r]|Q[r]}, colsep = 1em}
+                  \SetCell[c=3]{c} $ J_0 $ &          &        \\ \hline[dotted]
+                  Approx.                  & Accurate & Error  \\ \hline[dotted]
+                  2.3562                   & 2.4048   & 0.0486 \\
+                  5.4978                   & 5.5201   & 0.0223 \\
+                  8.6394                   & 8.6537   & 0.0143 \\
+                  11.7810                  & 11.7915  & 0.0106 \\
+                  14.9226                  & 14.9309  & 0.0084 \\
+                  18.0642                  & 18.0711  & 0.0069 \\
+                  21.2058                  & 21.2116  & 0.0059 \\
+                  24.3473                  & 24.3525  & 0.0051 \\ \hline
+              \end{tblr}
+              \hspace{0.5in}
+              \begin{tblr}{colspec={Q[r]|Q[r]|Q[r]}, colsep = 1em}
+                  \SetCell[c=3]{c} $ J_1 $ &          &         \\ \hline[dotted]
+                  Approx.                  & Accurate & Error   \\ \hline[dotted]
+                  3.9270                   & 3.8317   & -0.0953 \\
+                  7.0686                   & 7.0156   & -0.0530 \\
+                  10.2102                  & 10.1735  & -0.0367 \\
+                  13.3518                  & 13.3237  & -0.0281 \\
+                  16.4934                  & 16.4706  & -0.0227 \\
+                  19.6350                  & 19.6159  & -0.0191 \\
+                  22.7765                  & 22.7601  & -0.0165 \\
+                  25.9181                  & 25.9037  & -0.0145 \\ \hline
+              \end{tblr}
+          \end{figure}
+    \item  Special case of Problem 13 with $ n = 0 $
+    \item Using the definition of $ v $,
+          \begin{align}
+              y   & = uv                                                     &
+              v   & = \exp\left( -\frac{1}{2}\int p\ \dl x \right)             \\
+              y'  & = u'v + uv'                                              &
+              y'  & = u''v + 2u'v' + uv''                                      \\
+              v'  & = \frac{-pv}{2}                                          &
+              v'' & = -\frac{pv'}{2} - \frac{p'v}{2}                           \\
+              0   & = y'' + py' + qy                                           \\
+              0   & = u''[v] + u'[-pv + pv]
+              + u\left[ \frac{- 2p'v - p^2v + 4qv}{4} \right]                  \\
+              0   & = u'' + u\left[ q - \frac{p^2}{4} - \frac{p'}{2} \right]   \\
+          \end{align}
+
+    \item According to Problem 16, the substitution is
+          \begin{align}
+              y    & = u \exp\left( -\frac{1}{2}\int p\ \dl x \right) &
+              0    & = y'' + \frac{1}{x}\ y' + \left( 1
+              - \frac{\nu^2}{x^2} \right)\ y                            \\
+              p(x) & = \frac{1}{x}                                    &
+              y    & = u \exp[\ln(x^{-1/2})]                            \\
+              0    & = u'' + u\left[ 1 - \frac{\nu^2}{x^2}
+              - \frac{1}{4x^2} + \frac{1}{2x^2} \right]                 \\
+              0    & =x^2u'' + u[x^2 - \nu^2 + 1/4]
+          \end{align}
+
+    \item Let $ \nu = \pm 0.5 $, then,
+          \begin{align}
+              0 & = x^2 u'' + u\left[ x^2 - 1/4 + 1/4 \right]                   &
+              0 & = u'' + u                                                       \\
+              u & = c_1 \cos(x) + c_2 \sin(x)                                   &
+              y & = \frac{c_1}{\sqrt{x}} \cos(x) + \frac{c_2}{\sqrt{x}} \sin(x)
+          \end{align}
+          Since $ J_\nu $ and $ J_{-\nu} $ are L.I. solutions, from the series expansions
+          of $ \sin(x) $ and $ \cos(x) $, it can be deduced that,
+          \begin{align}
+              J_{1/2}   & = \frac{c_1}{\sqrt{x}} \sin(x) &
+              J_{-1/2}  & = \frac{c_2}{\sqrt{x}} \cos(x)   \\
+              c_1 = c_2 & = \sqrt{\frac{2}{\pi}}
+          \end{align}
+          The normalization arises form the choice of $ a_0 $ in the power series
+          definition of $ J_\nu $.
+
+    \item Using the derivative recursion relations,
+          \begin{align}
+              2J_0'       & = J_{-1} - J_1                    &
+              J_{-1}      & = -J_1                              \\
+              J_0'        & = \color{y_h} -J_1                  \\
+              [x^{1}J_1]' & = x^{1}J_0                        &
+              xJ_1' + J_1 & = xJ_0                              \\
+              J_1'        & = \color{y_h} J_0 - \frac{J_1}{x}   \\
+              2J_2'       & = J_1 - J_3                       &
+              J_2'        & = \color{y_h} \frac{J_1 - J_3}{2}
+          \end{align}
+
+    \item Using the recursion relation to perform double derivative,
+          \begin{align}
+              [x^\nu J_\nu]'' & = [x^{\nu}J_{\nu-1}]'                                 \\
+                              & = [x^{2\nu-1}(x^{1-\nu}J_{\nu-1})]'                   \\
+              \text{RHS}      & =  x^{2\nu-1} [x^{1-\nu}J_{\nu-1}]'
+              + (2\nu-1)x^{2\nu-2}[x^{1-\nu}J_{\nu-1}]                                \\
+                              & = -x^{\nu}J_\nu + \frac{(2\nu-1)}{x}\ [x^{\nu}J_\nu]' \\
+                              & = \color{y_h} -x^{\nu}J_\nu +
+              (2\nu-1)x^{\nu-1}J_\nu' + (2\nu-1)\nu x^{\nu-2} J_\nu                   \\
+              \text{LHS}      & = [x^{\nu}J_\nu' + \nu x^{\nu-1}J_\nu]'               \\
+                              & = \color{y_p} x^{\nu} J_\nu '' + 2\nu x^{\nu-1}J_\nu'
+              + \nu(\nu-1) x^{\nu-2}J_\nu                                             \\
+              0               & = J_\nu'' \ [x^\nu]
+              + J_\nu'\ [2\nu - 2\nu + 1]x^{\nu-1}
+              - J_\nu \ [x^2 - \nu^2]x^{\nu-2}                                        \\
+              0               & = x^2 J_\nu'' + x J_\nu ' + (x^2 - \nu^2) J_\nu
+          \end{align}
+          This proves that $ J_\nu $ is a solution to the ODE,
+          \begin{align}
+              x^2y'' + xy' + (x^2 - \nu^2)y & = 0
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              \int x^\nu J_{\nu-1}\ \dl x & = \int \diff**{x}{[x^{\nu}J_{\nu}]}\ \dl x \\
+                                          & = x^{\nu} J_{\nu} + c
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              \int x^{-\nu} J_{\nu+1}\ \dl x &
+              = -\int \diff**{x}{[x^{-\nu}J_{\nu}]}\ \dl x             \\
+                                             & = -x^{-\nu} J_{\nu} + c
+          \end{align}
+
+          Using recurrence relation,
+          \begin{align}
+              2J_{\nu}'             & = J_{\nu-1} - J_{\nu+1} \\
+              \int J_{\nu+1}\ \dl x & = \int J_{\nu-1}\ \dl x
+              - 2\int \diff**{x}{J_{\nu}}\ \dl x              \\
+                                    & = \int J_{\nu-1}\ \dl x
+              - 2J_{\nu}                                      \\
+          \end{align}
+
+    \item Using recurrence relation,
+          \begin{align}
+              \int xJ_0 \dl x & = \int \diff**{x}{[xJ_1]} \dl x  = xJ_1 \\
+              -\int J_1 \dl x & = \int \diff**{x}{[J_0]} \dl x  = J_0   \\
+              [xJ_1]'         & = xJ_1' + J_1 = xJ_0                    \\
+          \end{align}
+          Applying these relations,
+          \begin{align}
+              \int x^2 J_0 \dl x & = x \int xJ_0 \dl x
+              - \int \left[  \int xJ_0 \dl x \right] \dl x                       \\
+                                 & = x^2 J_1 - \int x J_1 \dl x                  \\
+                                 & = x^2 J_1 - x \int J_1 \dl x + \int J_0 \dl x \\
+                                 & = x^2 J_1 + xJ_0 - \int J_0 \dl x             \\
+          \end{align}
+
+    \item Using recurrence relations,
+          \begin{align}
+              \int x^{-1}J_4 \dl x & = \int (-x^2)(-x^{-3}J_4) \dl x                \\
+                                   & = -x^2 (x^{-3}J_3) + \int 2x (x^{-3}J_3) \dl x \\
+                                   & = -x^{-1}J_3 - \int (2)(-x^{-2}J_3) \dl x      \\
+                                   & = -\frac{J_3}{x} - \frac{2J_2}{x^2} + c
+          \end{align}
+
+    \item Using recurrence relation, such that the result does not have any powers of
+    $ x $, and only linear combinations of loewr order $ J_n $,
+          \begin{align}
+              \int J_5 \dl x & = \int J_3 \dl x - 2 \int J_4' \dl x         \\
+                             & = -2J_4 + \int J_3 \dl x                     \\
+                             & = -2J_4 + \int J_1 \dl x - 2 \int J_2' \dl x \\
+                             & = -2J_4 - 2J_2 - J_0 + c
+          \end{align}
+\end{enumerate}

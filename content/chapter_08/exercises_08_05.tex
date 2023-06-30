@@ -1,0 +1,390 @@
+\section{Complex Matrices and Forms}
+
+\begin{enumerate}
+    \item $\vec{A}$ is Hermitian
+          \begin{align}
+              \vec{A}                        & = \bmattt{6}{i}{-i}{6} &
+              0                              & = (\lambda - 6)^2 - 1    \\
+              \{\lambda_i\}                  & = \{5, 7\}               \\
+              \lambda_1                      & = \color{y_h} 5        &
+              \bmattt{1}{i}{i}{1} \vec{x}    & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{i}{-1}                   \\
+              \lambda_2                      & = \color{y_p} 7        &
+              \bmattt{-1}{i}{-i}{-1} \vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{i}{1}
+          \end{align}
+
+    \item $\vec{A}$ is skew-Hermitian
+          \begin{align}
+              \vec{A}                             & = \bmattt{i}{1+i}{-1+i}{0}  &
+              0                                   & = \lambda^2 - i\lambda  + 2   \\
+              \{\lambda_i\}                       & = \{-i, 2i\}                  \\
+              \lambda_1                           & = \color{y_h} -i            &
+              \bmattt{2i}{1+i}{-1+i}{i} \vec{x}   & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{1+i}{-2i}                          \\
+              \lambda_2                           & = \color{y_p} 2i            &
+              \bmattt{-i}{1+i}{-1+i}{-2i} \vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{1+i}{i}
+          \end{align}
+
+    \item $\vec{A}$ is Unitary
+          \begin{align}
+              \vec{A}       & = \bmattt{\frac{1}{2}}{\frac{i\sqrt{3}}{2}}
+              {\frac{i\sqrt{3}}{2}}
+              {\frac{1}{2}} &
+              0             & = \lambda^2 - \lambda + 1                      \\
+              \{\lambda_i\} & = \Bigg\{\frac{1 \pm \sqrt{3}i}
+              {2}\Bigg\}    &
+              \vec{A}^{-1}  & = \bmattt{\frac{1}{2}}{\frac{-i\sqrt{3}}{2}}
+              {\frac{-i\sqrt{3}}{2}}{\frac{1}{2}}                            \\
+              \lambda_1     & = \color{y_h} \frac{1 - \sqrt{3}i}{2}        &
+              \bmattt{\frac{i\sqrt{3}}{2}}{\frac{i\sqrt{3}}{2}}
+              {\frac{i\sqrt{3}}{2}}{\frac{i\sqrt{3}}{2}}
+              \vec{x}       & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{1}{-1}                        \\
+              \lambda_2     & = \color{y_p} \frac{1 + \sqrt{3}i}{2}        &
+              \bmattt{-\frac{i\sqrt{3}}{2}}{\frac{i\sqrt{3}}{2}}
+              {\frac{i\sqrt{3}}{2}}{-\frac{i\sqrt{3}}{2}}
+              \vec{x}       & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{1}{1}
+          \end{align}
+
+    \item $\vec{A}$ is Unitary
+          \begin{align}
+              \vec{A}                      & = \bmattt{0}{i}{i}{0}   &
+              0                            & = \lambda^2 + 1           \\
+              \{\lambda_i\}                & = \{0 \pm i\}           &
+              \vec{A}^{-1}                 & = \bmattt{0}{-i}{-i}{0}   \\
+              \lambda_1                    & = \color{y_h} -i        &
+              \bmattt{i}{i}{i}{i}\vec{x}   & = \vec{0},\
+              \vec{x}_1 = \color{y_h} \bmatcol{1}{-1}                  \\
+              \lambda_2                    & = \color{y_p} i         &
+              \bmattt{-i}{i}{i}{-i}\vec{x} & = \vec{0},\
+              \vec{x}_2 = \color{y_p} \bmatcol{1}{1}
+          \end{align}
+
+    \item $\vec{A}$ is skew-Hermitian and Unitary
+          \begin{align}
+              \vec{A}                        & =
+              \begin{bNiceMatrix}[r, margin]
+                  i & 0 & 0 \\
+                  0 & 0 & i \\
+                  0 & i & 0
+              \end{bNiceMatrix} &
+              0                              & = \lambda^3 - i\lambda^2
+              + \lambda - i                  &
+              \{\lambda_i\}                  & = \{-i, i, i\}             \\
+              \vec{A}^{-1}                   & =
+              \begin{bNiceMatrix}[r, margin]
+                  -i & 0  & 0  \\
+                  0  & 0  & -i \\
+                  0  & -i & 0
+              \end{bNiceMatrix}                               \\
+              \lambda_1                      & = \color{y_h} -i         &
+              \lambda_2                      & = \color{y_p} i            \\
+              \vec{x}_1                      & = \color{y_h}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 1 \\ -1
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = {\color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  1 \\ 0 \\ 0
+              \end{bNiceMatrix}},\
+              \vec{x}_3 = {\color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 1 \\ 1
+              \end{bNiceMatrix}}
+          \end{align}
+
+    \item $\vec{A}$ is Hermitian
+          \begin{align}
+              \vec{A}                        & =
+              \begin{bNiceMatrix}[r, margin]
+                  0      & 2 + 2i & 0      \\
+                  2 - 2i & 0      & 2 + 2i \\
+                  0      & 2 - 2i & 0
+              \end{bNiceMatrix} &
+              0                              & = \lambda^3 - 16\lambda &
+              \{\lambda_i\}                  & = \{-4, 0, 4\}            \\
+              \vec{A}^{-1}                   & = \text{not defined}      \\
+              \lambda_1                      & = \color{y_h} -4        &
+              \lambda_2                      & = \color{y_p} 0         &
+              \lambda_2                      & = \color{brown6} 4        \\
+              \vec{x}_1                      & = \color{y_h} 4
+              \begin{bNiceMatrix}[r, margin]
+                  i \\ -1 - i \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_2                      & = \color{y_p}
+              \begin{bNiceMatrix}[r, margin]
+                  -i \\ 0 \\ 1
+              \end{bNiceMatrix} &
+              \vec{x}_3                      & = \color{brown6}
+              \begin{bNiceMatrix}[r, margin]
+                  i \\ 1 + i \\ 1
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Pauli spin matrices
+          \begin{align}
+              \vec{S}_x     & = \bmattt{0}{1}{1}{0}  &
+              \vec{S}_y     & = \bmattt{0}{-i}{i}{0} &
+              \vec{S}_z     & = \bmattt{1}{0}{0}{-1}   \\
+              \vec{S}_x^2   & = \bmattt{1}{0}{0}{1}  &
+              \vec{S}_y^2   & = \bmattt{1}{0}{0}{1}  &
+              \vec{S}_z^2   & = \bmattt{1}{0}{0}{1}    \\
+              0             & = \lambda^2 - 1        &
+              0             & = \lambda^2 - 1        &
+              0             & = \lambda^2 - 1          \\
+              \{\lambda_i\} & = \{-1, 1\}            &
+              \{\lambda_j\} & = \{-1, 1\}            &
+              \{\lambda_k\} & = \{-1, 1\}
+          \end{align}
+          Finding the eigenvectors
+          \begin{align}
+              \lambda_{x,1} & = \color{y_h} -1              &
+              \lambda_{y,1} & = \color{y_h} -1              &
+              \lambda_{z,1} & = \color{y_h} -1                \\
+              \vec{x}_1     & = \color{y_h} \bmatcol{-1}{1} &
+              \vec{y}_1     & = \color{y_h} \bmatcol{i}{1}  &
+              \vec{z}_1     & = \color{y_h} \bmatcol{0}{1}    \\
+              \lambda_{x,2} & = \color{y_p} 1               &
+              \lambda_{y,2} & = \color{y_p} 1               &
+              \lambda_{z,2} & = \color{y_p} 1                 \\
+              \vec{x}_2     & = \color{y_p} \bmatcol{1}{1}  &
+              \vec{y}_2     & = \color{y_p} \bmatcol{-i}{1} &
+              \vec{z}_2     & = \color{y_p} \bmatcol{1}{0}
+          \end{align}
+
+    \item $\vec{A}$ is Hermitian
+          \begin{align}
+              \vec{A}       & = \bmattt{4}{1-3i}{1+3i}{7}               &
+              0             & = \lambda^2 - 11\lambda + 18              &
+              \{\lambda_i\} & = \{2, 9\}                                  \\
+              \lambda_1     & = \color{y_h} 2                           &
+              \vec{0}       & = \bmattt{2}{1 - 3i}{1 + 3i}{5} \vec{x}   &
+              \vec{x}_1     & = \color{y_h} \bmatcol{-1 + 3i}{2}          \\
+              \lambda_2     & = \color{y_p} 9                           &
+              \vec{0}       & = \bmattt{-5}{1 - 3i}{1 + 3i}{-2} \vec{x} &
+              \vec{x}_2     & = \color{y_p} \bmatcol{1 - 3i}{5}
+          \end{align}
+          $\vec{B}$ is skew-Hermitian
+          \begin{align}
+              \vec{B}       & = \bmattt{3i}{2+i}{-2+i}{-i}          &
+              0             & = \lambda^2 - 2i\lambda + 8           &
+              \{\lambda_i\} & = \{-2i, 4i\}                           \\
+              \lambda_1     & = \color{y_h} -2i                     &
+              \vec{0}       & = \bmattt{5i}{2+i}{-2+i}{i} \vec{x}   &
+              \vec{y}_1     & = \color{y_h} \bmatcol{-1 + 2i}{5}      \\
+              \lambda_2     & = \color{y_p} 4i                      &
+              \vec{0}       & = \bmattt{-i}{2+i}{-2+i}{-5i} \vec{x} &
+              \vec{y}_2     & = \color{y_p} \bmatcol{1 - 2i}{1}
+          \end{align}
+          $\vec{C}$ is Unitary
+          \begin{align}
+              \vec{A}       & = \bmattt{\frac{i}{2}}{\frac{\sqrt{3}}{2}}
+              {\frac{\sqrt{3}}{2}}
+              {\frac{i}{2}} &
+              0             & = \lambda^2 - i\lambda - 1                         &
+              \{\lambda_i\} & = \Bigg\{\frac{i \pm \sqrt{3}}{2}\Bigg\}             \\
+              \vec{A}^{-1}  & = \bmattt{\frac{-i}{2}}{\frac{\sqrt{3}}{2}}
+              {\frac{\sqrt{3}}{2}}{\frac{-i}{2}}                                   \\
+              \lambda_1     & = \color{y_h} \frac{i - \sqrt{3}}{2}               &
+              \vec{0}       & = \bmattt{\frac{\sqrt{3}}{2}}{\frac{\sqrt{3}}{2}}
+              {\frac{\sqrt{3}}{2}}{\frac{\sqrt{3}}{2}}
+              \vec{x}       &
+              \vec{x}_1     & = \color{y_h} \bmatcol{1}{-1}                        \\
+              \lambda_2     & = \color{y_p} \frac{i + \sqrt{3}}{2}               &
+              \vec{0}       & = \bmattt{-\frac{\sqrt{3}}{2}}{\frac{\sqrt{3}}{2}}
+              {\frac{\sqrt{3}}{2}}{-\frac{\sqrt{3}}{2}}
+              \vec{x}       &
+              \vec{x}_2     & = \color{y_p} \bmatcol{1}{1}
+          \end{align}
+
+    \item $\vec{A}$ is Hermitian,
+          \begin{align}
+              \vec{A}               & = \bmattt{4}{3 - 2i}{3 + 2i}{-4} &
+              \vec{A}^\dag          & = \bmattt{4}{3 - 2i}{3 + 2i}{-4}   \\
+              \vec{x}               & = \bmatcol{-4i}{2 + 2i}          &
+              \vec{Ax}              & = \bmatcol{10 - 14i}{-20i}         \\
+              \vec{x}^\dag          & = \begin{bNiceMatrix}[r, margin]
+                                            4i & (2 - 2i)
+                                        \end{bNiceMatrix} &
+              \vec{x}^\dag \vec{Ax} & = 16
+          \end{align}
+
+    \item $\vec{A}$ is skew-Hermitian,
+          \begin{align}
+              \vec{A}               & = \bmattt{i}{-2 + 3i}{2 + 3i}{0} &
+              \vec{A}^\dag          & = \bmattt{-i}{2 - 3i}{2 - 3i}{0}   \\
+              \vec{x}               & = \bmatcol{2i}{8}                &
+              \vec{Ax}              & = \bmatcol{-18 + 24i}{4i - 6}      \\
+              \vec{x}^\dag          & = \begin{bNiceMatrix}[r, margin]
+                                            -2i & 8
+                                        \end{bNiceMatrix} &
+              \vec{x}^\dag \vec{Ax} & = 68i
+          \end{align}
+
+    \item $\vec{A}$ is skew-Hermitian,
+          \begin{align}
+              \vec{A}               & = \begin{bNiceMatrix}[r, margin]
+                                            i      & 1  & 2 + i \\
+                                            -1     & 0  & 3i    \\
+                                            -2 + i & 3i & i
+                                        \end{bNiceMatrix} &
+              \vec{A}^\dag          & = \begin{bNiceMatrix}[r, margin]
+                                            -i    & -1  & -2 - i \\
+                                            1     & 0   & -3i    \\
+                                            2 - i & -3i & -i
+                                        \end{bNiceMatrix} \\
+              \vec{x}               & = \begin{bNiceMatrix}[r, margin]
+                                            1 \\ i \\ -i
+                                        \end{bNiceMatrix} &
+              \vec{Ax}              & = \begin{bNiceMatrix}[r, margin]
+                                            1 \\ 2 \\ -4 + i
+                                        \end{bNiceMatrix} \\
+              \vec{x}^\dag          & = \begin{bNiceMatrix}[r, margin]
+                                            1 & -i & i
+                                        \end{bNiceMatrix} &
+              \vec{x}^\dag \vec{Ax} & = - 6i
+          \end{align}
+
+    \item $\vec{A}$ is Hermitian,
+          \begin{align}
+              \vec{A}               & = \begin{bNiceMatrix}[r, margin]
+                                            1  & i & 4 \\
+                                            -i & 3 & 0 \\
+                                            4  & 0 & 2
+                                        \end{bNiceMatrix} &
+              \vec{A}^\dag          & = \begin{bNiceMatrix}[r, margin]
+                                            1  & i & 4 \\
+                                            -i & 3 & 0 \\
+                                            4  & 0 & 2
+                                        \end{bNiceMatrix} \\
+              \vec{x}               & = \begin{bNiceMatrix}[r, margin]
+                                            1 \\ i \\ -i
+                                        \end{bNiceMatrix} &
+              \vec{Ax}              & = \begin{bNiceMatrix}[r, margin]
+                                            -4i \\ 2i \\ 4 - 2i
+                                        \end{bNiceMatrix} \\
+              \vec{x}^\dag          & = \begin{bNiceMatrix}[r, margin]
+                                            1 & -i & i
+                                        \end{bNiceMatrix} &
+              \vec{x}^\dag \vec{Ax} & = 4
+          \end{align}
+
+    \item Given $ \vec{A} $ is Hermitian, $ \vec{B} $ is skew-Hermitian and
+          $ \vec{C} $ is Unitary,
+          \begin{align}
+              (\vec{ABC})^\dag & = \vec{C}^\dag\ \vec{B}^\dag\ \vec{A}^\dag &
+                               & = -\vec{C}^{-1}\ \vec{BA}
+          \end{align}
+
+    \item Product of matrices, where $ \vec{A} $ is Hermitian, $ \vec{B} $ is
+          skew-Hermitian
+          \begin{align}
+              (\vec{BA})^\dag & = \vec{A}^\dag \vec{B}^\dag = -\vec{AB}
+          \end{align}
+          Showing this for the matrices in example 2,
+          \begin{align}
+              \vec{A}         & = \bmattt{4}{1-3i}{1+3i}{7}               &
+              \vec{B}         & = \bmattt{3i}{2+i}{-2+i}{-i}                \\
+              \vec{A}^\dag    & = \bmattt{4}{1-3i}{1+3i}{7}               &
+              \vec{B}^\dag    & = \bmattt{-3i}{-2-i}{2-i}{i}                \\
+              \vec{AB}        & = \bmattt{1 + 19i}{5 + 3i}{-23 + 10i}{-1} &
+              \vec{BA}        & = \bmattt{-1 + 19i}{23 + 10i}{-5 + 3i}{1}   \\
+              (\vec{BA})^\dag & = \bmattt{-1 - 19i}{-5 -3i}{23 - 10i}{1}
+          \end{align}
+          The relation holds.
+
+    \item Consider any square matrix $ \vec{A} $
+          \begin{align}
+              \frac{\vec{A} + \vec{A}^\dag}{2} & \quad \text{is Hermitian}      &
+              \frac{\vec{A} - \vec{A}^\dag}{2} & \quad \text{is skew-Hermitian}   \\
+              \vec{A}                          & = \vec{H} + \vec{S}            &
+              \vec{A}                          & =
+              \left( \frac{\vec{A} + \vec{A}^\dag}{2} \right)
+              + \left( \frac{\vec{A} - \vec{A}^\dag}{2} \right)
+          \end{align}
+          Examples TBC.
+
+    \item Product of unitary matrices is unitary
+          \begin{align}
+              (\vec{AB})^\dag & = \vec{B}^\dag\ \vec{A}^\dag &
+                              & = \vec{B}^{-1}\vec{A}^{-1}     \\
+                              & = (\vec{AB})^{-1}
+          \end{align}
+          Inverse of unitary matrix, is also unitary
+          \begin{align}
+              \vec{A}^\dag                & = \vec{A}^{-1}                            &
+              \Big(\vec{A}^{-1}\Big)^\dag & = \vec{A} = \Big( \vec{A}^{-1} \Big)^{-1}
+          \end{align}
+          Examples TBC
+
+    \item $\vec{C}$ is Unitary
+          \begin{align}
+              \vec{A}       & = \bmattt{\frac{i}{2}}{\frac{\sqrt{3}}{2}}
+              {\frac{\sqrt{3}}{2}}
+              {\frac{i}{2}} &
+              0             & = \lambda^2 - i\lambda - 1                 &
+              \{\lambda_i\} & = \Bigg\{\frac{i \pm \sqrt{3}}{2}\Bigg\}
+          \end{align}
+          Using the fact that raising a matrix to a positive integral power raises its
+          eigenvalues to the same power,
+          \begin{align}
+              \{\lambda_i\}    & = \left\{ \exp\left( \frac{i\pi}{6} \right),
+              \exp\left( \frac{i 5\pi}{6}
+              \right) \right\} &
+              \{\mu_i\}        & = \{1, 1\}
+          \end{align}
+          This requires both eigenvalues to me made into the form $ \exp(2n \pi) $.
+          Clearly, the smallest such power is 12.
+
+    \item Normal matrices.
+          \begin{align}
+              \text{Let} \quad \vec{A}      & = \vec{A}^\dag                      &
+              \vec{A}\vec{A}^\dag           & = \vec{A}^2 = \vec{A}^\dag \vec{A}    \\
+              \text{Let} \quad \vec{B}      & = -\vec{B}^\dag                     &
+              \vec{B}\vec{B}^\dag           & = -\vec{B}^2 = \vec{B}^\dag \vec{B}   \\
+              \text{Let} \quad \vec{C}^{-1} & = \vec{C}^\dag                      &
+              \vec{C}\vec{C}^\dag           & = \vec{I} = \vec{C}^{-1}\vec{C}
+              = \vec{C}^\dag \vec{C}
+          \end{align}
+          Examples TBC.
+
+    \item From Problem 15,
+          \begin{align}
+              \vec{A}              & = \vec{H} + \vec{S}                            &
+                                   & =
+              \left( \frac{\vec{A} + \vec{A}^\dag}{2} \right)
+              + \left( \frac{\vec{A} - \vec{A}^\dag}{2} \right)                       \\
+              \vec{A}\vec{A}^\dag  & = (\vec{H} + \vec{S})(\vec{H} + \vec{S})^\dag  &
+                                   & = \vec{HH} + \vec{SH} - \vec{HS} - \vec{SS}      \\
+              \vec{A}^\dag \vec{A} & = (\vec{H} + \vec{S})^\dag (\vec{H} + \vec{S}) &
+                                   & = \vec{HH} + \vec{HS} - \vec{SH} - \vec{SS}      \\
+              \vec{A}\vec{A}^\dag  & = \vec{A}^\dag \vec{A}
+              \iff \vec{HS}  = \vec{SH}
+          \end{align}
+
+    \item Simple matrix that is not normal
+          \begin{align}
+              \vec{A}             & = \bmattt{0}{i}{0}{0}  &
+              \vec{A}^\dag        & = \bmattt{0}{0}{-i}{0}   \\
+              \vec{A}\vec{A}^\dag & = \bmattt{1}{0}{0}{0}  &
+              \vec{A}^\dag\vec{A} & = \bmattt{0}{0}{0}{1}  &
+          \end{align}
+          Normal matrix that is not Hermitian, skew-Hermitian or Unitary,
+          \begin{align}
+              \vec{A}             & = \begin{bNiceMatrix}[r, margin]
+                                          1 & 1 & 0 \\
+                                          0 & 1 & 1 \\
+                                          1 & 0 & 1
+                                      \end{bNiceMatrix} &
+              \vec{A}^\dag        & = \begin{bNiceMatrix}[r, margin]
+                                          1 & 0 & 1 \\
+                                          1 & 1 & 0 \\
+                                          0 & 1 & 1
+                                      \end{bNiceMatrix} \\
+              \vec{A}\vec{A}^\dag & = \vec{A}^\dag \vec{A}
+          \end{align}
+
+\end{enumerate}

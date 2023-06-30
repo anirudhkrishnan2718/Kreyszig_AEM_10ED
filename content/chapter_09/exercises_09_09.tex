@@ -1,0 +1,536 @@
+\section{Curl of a Vector Field}
+
+\begin{enumerate}
+    \item Refer notes. TBC.
+
+    \item Direction of the curl
+          \begin{enumerate}
+              \item Vector is parallel to the $ yz $ plane. This means its $ x $
+                    component is zero.
+                    \begin{align}
+                        \nabla \times \vec{v} & =
+                        \begin{vNiceMatrix}[margin]
+                            \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                            \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                            0             & v_2           & v_3
+                        \end{vNiceMatrix} =
+                        \begin{bNiceMatrix}[margin]
+                            \difsp{v_3}{y} - \difsp{v_2}{z} \\
+                            -\difsp{v_3}{x}                 \\
+                            \difsp{v_2}{x}                  \\
+                        \end{bNiceMatrix}
+                    \end{align}
+              \item If $ \vec{v} $ is also independent of $ x $, then its curl is
+                    perpendicular to the $ yz $ plane.
+                    \begin{align}
+                        \nabla \times \vec{v} & = \begin{bNiceMatrix}[margin]
+                                                      \difsp{v_3}{y} - \difsp{v_2}{z} \\
+                                                      0                               \\
+                                                      0                               \\
+                                                  \end{bNiceMatrix}
+                    \end{align}
+          \end{enumerate}
+
+    \item Proving Theorem 2,
+          \begin{align}
+              \nabla \times (\nabla f)
+               & = \begin{vNiceMatrix}[margin]
+                       \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                       \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                       \difsp{f}{x}  & \difsp{f}{y}  & \difsp{f}{z}
+                   \end{vNiceMatrix} \\
+               & = \left[ \diffp{f}{y,z} - \diffp{f}{z, y} \right] \vec{\hat{i}}
+              + \dots
+              \\
+               & = 0
+          \end{align}
+          The other two components are also zero.
+          \begin{align}
+              \nabla \dotp (\nabla \times f) & =
+              \diffp{}{x} \Bigg[ \diffp{v_3}{y} - \diffp{v_2}{z} \Bigg] + \dots \\
+                                             & = 0
+          \end{align}
+          There are 6 total terms which cancel out using the commutativity of partial
+          differentiation. \par
+          Examples TBC.
+
+    \item Finding the curl,
+          \begin{align}
+              \vec{v}               & = \begin{bNiceMatrix}[margin]
+                                            2y^2 \\ 5x \\ 0
+                                        \end{bNiceMatrix}
+                                    &
+              \nabla \times \vec{v} &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                    2y^2          & 5x            & 0
+                \end{vNiceMatrix} \\
+              \nabla \times \vec{v} &
+              = \begin{bNiceMatrix}[margin]
+                    0 \\ 0 \\ 5 - 4y
+                \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the curl,
+          \begin{align}
+              \vec{v}               & = xyz \begin{bNiceMatrix}[margin]
+                                                x \\ y \\ z
+                                            \end{bNiceMatrix}
+                                    &
+              \nabla \times \vec{v} &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                    x^2 (yz)      & y^2 (xz)      & z^2 (xy)
+                \end{vNiceMatrix} \\
+              \nabla \times \vec{v} &
+              = \begin{bNiceMatrix}[margin]
+                    x(z^2 - y^2) \\ y(x^2 - z^2) \\ z(y^2 - x^2)
+                \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the curl,
+          \begin{align}
+              \vec{v}                                    &
+              = \frac{1}{(x^2 + y^2 + z^2)^{3/2}}
+              \begin{bNiceMatrix}[margin]
+                  x \\ y \\ z
+              \end{bNiceMatrix}
+                                                         &
+              \nabla \times \vec{v}                      &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                    x/r^3         & y/r^3         & z/r^3
+                \end{vNiceMatrix} \\
+              \nabla \times \vec{v}                      &
+              = \frac{1}{r^5}\begin{bNiceMatrix}[margin]
+                                 -3zy + 3yz \\
+                                 3zx - 3xz  \\
+                                 -3xy + 3yx
+                             \end{bNiceMatrix} &
+                                                         & = \vec{0}
+          \end{align}
+          This vector field is irrotational.
+
+    \item Finding the curl,
+          \begin{align}
+              \vec{v}               &
+              = \begin{bNiceMatrix}[margin]
+                    0 \\ 0 \\ e^{-x}\sin(y)
+                \end{bNiceMatrix}
+                                    &
+              \nabla \times \vec{v} &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                    0             & 0             & e^{-x}\sin(y)
+                \end{vNiceMatrix} \\
+              \nabla \times \vec{v} &
+              = \begin{bNiceMatrix}[margin]
+                    e^{-x}\cos(y) \\ e^{-x}\sin(y) \\ 0
+                \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the curl,
+          \begin{align}
+              \vec{v}               &
+              = \begin{bNiceMatrix}[margin]
+                    e^{-z^2} \\ e^{-x^2} \\ e^{-y^2}
+                \end{bNiceMatrix}
+                                    &
+              \nabla \times \vec{v} &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                    e^{-z^2}      & e^{-x^2}      & e^{-y^2}
+                \end{vNiceMatrix} \\
+              \nabla \times \vec{v} &
+              = \begin{bNiceMatrix}[margin]
+                    -2y\ e^{-y^2} \\ -2z\ e^{-z^2} \\ -2x\ e^{-x^2}
+                \end{bNiceMatrix}
+          \end{align}
+
+
+    \item Checking the given fluid flow,
+          \begin{align}
+              \nabla
+              \times \vec{v} & = \begin{vNiceMatrix}[margin]
+                                     \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                     \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                                     0             & 3z^2          & 0
+                                 \end{vNiceMatrix} &
+                             & = \begin{bNiceMatrix}[margin]
+                                     -6z \\ 0 \\ 0
+                                 \end{bNiceMatrix}
+              \\
+              \nabla
+              \dotp \vec{v}  & = 0
+          \end{align}
+          The field is incompressible.
+          \begin{align}
+              \vec{v} & = \diff{\vec{r}}{t} = \begin{bNiceMatrix}[margin]
+                                                  0 \\ 3z^2 \\ 0
+                                              \end{bNiceMatrix} &
+              \vec{r} & = \begin{bNiceMatrix}[margin]
+                              c_1 \\ 3z_0^2\ t + c_2 \\ c_3
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Checking the given fluid flow,
+          \begin{align}
+              \nabla
+              \times \vec{v} & = \begin{vNiceMatrix}[margin]
+                                     \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                     \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                                     \sec x        & \csc x        & 0
+                                 \end{vNiceMatrix} &
+                             & = \begin{bNiceMatrix}[margin]
+                                     0 \\ 0 \\ -\cot x \csc x
+                                 \end{bNiceMatrix}
+              \\
+              \nabla
+              \dotp \vec{v}  & = \tan x \sec x
+          \end{align}
+          \begin{align}
+              \vec{v}  & = \diff{\vec{r}}{t} = \begin{bNiceMatrix}[margin]
+                                                   \sec x \\ \csc x \\ 0
+                                               \end{bNiceMatrix} &
+              \vec{r}  & = \begin{bNiceMatrix}[margin]
+                               \arcsin(t + c_1)   \\
+                               \ln(t + c_1) + c_2 \\
+                               c_3
+                           \end{bNiceMatrix}                        \\
+              \diff xt & = \sec x                                          &
+              x        & = \arcsin(t + c_1)                                  \\
+              \diff yt & = \csc x                                          &
+              \dl y    & =  \frac{\dl t}{t + c_1}                            \\
+              y        & = \ln(t + c_1) + c_2                              &
+              z        & = c_3
+          \end{align}
+
+    \item Checking the given fluid flow,
+          \begin{align}
+              \nabla
+              \times \vec{v} & = \begin{vNiceMatrix}[margin]
+                                     \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                     \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                                     y             & -2x           & 0
+                                 \end{vNiceMatrix} &
+                             & = \begin{bNiceMatrix}[margin]
+                                     0 \\ 0 \\ -3
+                                 \end{bNiceMatrix}
+              \\
+              \nabla
+              \dotp \vec{v}  & = 0
+          \end{align}
+          The field is incompressible
+          \begin{align}
+              \vec{v}  & = \diff{\vec{r}}{t} = \begin{bNiceMatrix}[margin]
+                                                   y \\ -2x \\ 0
+                                               \end{bNiceMatrix}            \\
+              \diff xt & = y                                                       &
+              \diff yt & = -2x                                                       \\
+              x        & = c_1\cos(\sqrt{2}t) + c_2\sin(\sqrt{2}t)                 &
+              y        & = \sqrt{2}c_1\cos(\sqrt{2}t) - \sqrt{2}c_2\sin(\sqrt{2}t)   \\
+              z        & = c_3
+          \end{align}
+
+    \item Checking the given fluid flow,
+          \begin{align}
+              \nabla
+              \times \vec{v} & = \begin{vNiceMatrix}[margin]
+                                     \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                     \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                                     -y            & x             & \pi
+                                 \end{vNiceMatrix} &
+                             & = \begin{bNiceMatrix}[margin]
+                                     0 \\ 0 \\ 2
+                                 \end{bNiceMatrix}
+              \\
+              \nabla
+              \dotp \vec{v}  & = 0
+          \end{align}
+          The field is incompressible
+          \begin{align}
+              \vec{v}  & = \diff{\vec{r}}{t} = \begin{bNiceMatrix}[margin]
+                                                   -y \\ x \\ \pi
+                                               \end{bNiceMatrix}    \\
+              \diff xt & = y                                               &
+              \diff yt & = -2x                                               \\
+              x        & = c_1\cos(t) + c_2\sin(t)                         &
+              y        & = -c_2\cos(t) + c_1\sin(t)                          \\
+              z        & = \pi t + z_0
+          \end{align}
+
+    \item Checking the given fluid flow,
+          \begin{align}
+              \nabla
+              \times \vec{v} & = \begin{vNiceMatrix}[margin]
+                                     \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                     \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                                     x             & y             & -z
+                                 \end{vNiceMatrix} &
+                             & = \begin{bNiceMatrix}[margin]
+                                     0 \\ 0 \\ 0
+                                 \end{bNiceMatrix}
+              \\
+              \nabla
+              \dotp \vec{v}  & = 1
+          \end{align}
+          The field is irrotational
+          \begin{align}
+              \vec{v}  & = \diff{\vec{r}}{t} = \begin{bNiceMatrix}[margin]
+                                                   x \\ y \\ -z
+                                               \end{bNiceMatrix}    \\
+              \diff xt & = x                                               &
+              x        & = c_1 e^t                                           \\
+              \diff yt & = y                                               &
+              y        & = c_2 e^t                                           \\
+              \diff zt & = -z                                              &
+              z        & = c_3e^{-t}
+          \end{align}
+
+    \item Proving the relations,
+          \begin{enumerate}
+              \item Using the linearity of differentiation, or the properties of
+                    deterinant addition
+                    \begin{align}
+                        \nabla \times (\vec{u} + \vec{v}) & =
+                        \begin{vNiceMatrix}[margin]
+                            \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                            \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                            v_1 + u_1     & v_2 + u_2     & v_3 + u_3
+                        \end{vNiceMatrix} \\
+                                                          &
+                        = \begin{vNiceMatrix}[margin]
+                              \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                              \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                              u_1           & u_2           & u_3
+                          \end{vNiceMatrix} +
+                        \begin{vNiceMatrix}[margin]
+                            \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                            \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                            v_1           & v_2           & v_3
+                        \end{vNiceMatrix} \\
+                                                          &
+                        = \nabla \times \vec{u} + \nabla \times \vec{v}
+                    \end{align}
+
+              \item Calculating,
+                    \begin{align}
+                        \nabla \dotp (\nabla \times \vec{v}) & =
+                        \diffp*{\Bigg[ \difcp{v_3}{y} - \difcp{v_2}{z} \Bigg]}{x}
+                        +\diffp*{\Bigg[ \difcp{v_1}{z} - \difcp{v_3}{x} \Bigg]}{y}
+                        +\diffp*{\Bigg[ \difcp{v_2}{x} - \difcp{v_1}{y} \Bigg]}{z} \\
+                                                             & =
+                        \big[\difcp{v_3}{x, y} - \difcp{v_2}{x, z}\big] +
+                        \big[\difcp{v_1}{y, z} - \difcp{v_3}{y, x}\big] +
+                        \big[\difcp{v_2}{z, x} - \difcp{v_1}{z, y}\big]            \\
+                                                             & = 0
+                    \end{align}
+
+              \item Calculating,
+                    \begin{align}
+                        \nabla \times (f \vec{v}) & =
+                        \left[ \diffp{(fv_3)}{y} - \diffp{(fv_2)}{z} \right]
+                        \vec{\hat{i}} +
+                        \left[ \diffp{(fv_1)}{z} - \diffp{(fv_3)}{x} \right]
+                        \vec{\hat{j}}
+                        \\
+                                                  & +
+                        \left[ \diffp{(fv_2)}{x} - \diffp{(fv_1)}{y} \right]
+                        \vec{\hat{k}}
+                        \\
+                                                  & = f (\nabla \times \vec{v}) +
+                        \begin{vNiceMatrix}[margin]
+                            \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                            \difcp{f}{x}  & \difcp{f}{y}  & \difcp{f}{z}  \\
+                            v_1           & v_2           & v_3
+                        \end{vNiceMatrix} \\
+                                                  & =
+                        f (\nabla \times \vec{v}) + (\nabla f \times \vec{v})
+                    \end{align}
+
+              \item Calculating,
+                    \begin{align}
+                        \nabla \times (\nabla f) & =
+                        \begin{vNiceMatrix}[margin]
+                            \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                            \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                            \difcp fx     & \difcp fy     & \difcp fz
+                        \end{vNiceMatrix} \\
+                                                 & =
+                        \big[\difcp{f}{y, z} - \difcp{f}{z, y}\big]\ \vec{\hat{i}}
+                        + \dots =\vec{0}
+                    \end{align}
+                    The other components also cancel resulting in the zero vector.
+
+              \item Calculating,
+                    \begin{align}
+                        \nabla \dotp (\vec{a} \times \vec{b}) & =
+                        \diffp*{\Bigg[ a_2 b_3 - a_3 b_2 \Bigg]}{x}
+                        + \diffp*{\Bigg[ a_3 b_1 - a_1 b_3 \Bigg]}{y}
+                        + \diffp*{\Bigg[ a_1 b_2 - a_2 b_1 \Bigg]}{z}         \\
+                                                              & = \color{y_h}
+                        - a_1 \Bigg[ \diffp{b_3}{y} - \diffp{b_2}{z} \Bigg]
+                        - a_2 \Bigg[ \diffp{b_1}{z} - \diffp{b_3}{x} \Bigg]
+                        - a_3 \Bigg[ \diffp{b_2}{x} - \diffp{b_1}{y} \Bigg]   \\
+                                                              & \color{y_p}
+                        + b_1 \Bigg[ \diffp{a_3}{y} - \diffp{a_2}{z} \Bigg]
+                        + b_2 \Bigg[ \diffp{a_1}{z} - \diffp{a_3}{x} \Bigg]
+                        + b_3 \Bigg[ \diffp{a_2}{x} - \diffp{a_1}{y} \Bigg]   \\
+                                                              & =
+                        {\color{y_p}\vec{b} \dotp (\nabla \times \vec{a})} -
+                        {\color{y_h}\vec{a} \dotp (\nabla \times \vec{b})}
+                    \end{align}
+          \end{enumerate}
+
+    \item Calculating,
+          \begin{align}
+              \nabla \times (\vec{u} + \vec{v})             & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  y + yz        & z + zx        & x + xy
+              \end{vNiceMatrix}  = \begin{bNiceMatrix}[margin]
+                                       x - 1 - x \\ - 1 - y + y \\ z - 1 - z
+                                   \end{bNiceMatrix}
+              = \color{y_h} \begin{bNiceMatrix}[margin]
+                                -1 \\ -1 \\ -1
+                            \end{bNiceMatrix}          \\
+              \nabla \times \vec{u} + \nabla \times \vec{v} & =
+              \begin{bNiceMatrix}[margin]
+                  -1 \\ -1 \\ -1
+              \end{bNiceMatrix} + \begin{bNiceMatrix}[margin]
+                                      x - x \\ y - y \\ z - z
+                                  \end{bNiceMatrix} =
+              \color{y_p} \begin{bNiceMatrix}[margin]
+                              -1 \\ -1 \\ -1
+                          \end{bNiceMatrix}
+          \end{align}
+          As seen above, $ \nabla \times \vec{v} = \vec{0} $
+
+    \item Calculating,
+          \begin{align}
+              \nabla \times (g\vec{v})                            & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  (x+y+z)(yz)   & (x+y+z)(zx)   & (x+y+z)(xy)
+              \end{vNiceMatrix}    \\
+                                                                  & =
+              \begin{bNiceMatrix}[margin]
+                  (x + 2y + z - x - y - 2z)x \\
+                  (x + y + 2z - 2x - y - z)y \\
+                  (2x + y + z - x - 2y - z)z
+              \end{bNiceMatrix} = \color{y_h} \begin{bNiceMatrix}[margin]
+                                                  (y-z)x \\ (z - x)y \\ (x-y)z
+                                              \end{bNiceMatrix}
+              \\
+              \nabla g \times \vec{v} + g (\nabla \times \vec{v}) & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  1             & 1             & 1             \\
+                  yz            & zx            & xy
+              \end{vNiceMatrix} +
+              g\ \begin{vNiceMatrix}[margin]
+                     \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                     \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                     yz            & zx            & xy
+                 \end{vNiceMatrix} \\
+                                                                  & =
+              \begin{bNiceMatrix}[margin]
+                  (y-z)x \\ (z - x)y \\ (x-y)z
+              \end{bNiceMatrix} + \begin{bNiceMatrix}[margin]
+                                      x - x \\ -y + y \\ z - z
+                                  \end{bNiceMatrix} =
+              \color{y_p} \begin{bNiceMatrix}[margin]
+                              (y-z)x \\ (z - x)y \\ (x-y)z
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \vec{v} \dotp (\nabla \times \vec{u}) & =
+              \vec{v} \dotp \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                                y             & z             & x
+                            \end{vNiceMatrix} = -yz  -zx  -xy \\
+              \vec{u} \dotp (\nabla \times \vec{v}) & =
+              \vec{u} \dotp \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                                yz            & zx            & xy
+                            \end{vNiceMatrix} = y(0) + z(0) + x(0) = 0 \\
+              \vec{u} \dotp (\nabla \times \vec{u}) & =
+              \vec{u} \dotp \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                                y             & z             & x
+                            \end{vNiceMatrix} = -(x + y + z)
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \nabla \dotp (\vec{u} \times \vec{v}) & =
+              \nabla \dotp \begin{vNiceMatrix}[margin]
+                               \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                               y             & z             & x             \\
+                               yz            & zx            & xy            \\
+                           \end{vNiceMatrix} = \color{y_h} - (xy + yz + zx) \\
+          \end{align}
+          From Problem $ 17 $,
+          \begin{align}
+              \vec{v} \dotp (\nabla \times \vec{u})
+              - \vec{u} \dotp (\nabla \times \vec{v}) & = \color{y_p} - (xy + yz + zx)
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \nabla \times (g\vec{u} + \vec{v}) & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  (x + y + 2z)y & (2x + y + z)z & (x + 2y + z)x
+              \end{vNiceMatrix} \\
+                                                 & =
+              \begin{bNiceMatrix}[margin]
+                  2x - 2x - y  - 2z \\ -2x - 2y - z + 2y \\ 2z - x - 2z - 2y
+              \end{bNiceMatrix} = \color{y_h}
+              \begin{bNiceMatrix}[margin]
+                  -y - 2z \\ -z - 2x \\ - x - 2y
+              \end{bNiceMatrix}
+          \end{align}
+          Using the formulae,
+          \begin{align}
+              \nabla g \times \vec{u} + g (\nabla \times \vec{u}) + \nabla \times v
+               & = \begin{bNiceMatrix}[margin]
+                       x - z \\ y - x \\ z - y
+                   \end{bNiceMatrix}
+              + (x+y+z)\ \begin{bNiceMatrix}[margin]
+                             -1 \\ -1 \\ -1
+                         \end{bNiceMatrix} + \begin{bNiceMatrix}[margin]
+                                                 0 \\ 0 \\ 0
+                                             \end{bNiceMatrix} \\
+               & = \color{y_p}\begin{bNiceMatrix}[margin]
+                                  -y - 2z \\ -z - 2x \\ - x - 2y
+                              \end{bNiceMatrix}
+          \end{align}
+          The calculation of $ \nabla \times (g\vec{u}) $ is part of the above process.
+
+    \item Calculating,
+          \begin{align}
+              \nabla (fg)                & = \begin{bNiceMatrix}[margin]
+                                                 (2x + y + z)(yz) \\
+                                                 (x + 2y + z)(zx) \\
+                                                 (x + y + 2z)(xy)
+                                             \end{bNiceMatrix} \\
+              \nabla \dotp [\nabla (fg)] & = \color{y_h}
+              \begin{bNiceMatrix}[margin]
+                  2yz \\ 2zx \\ 2xy
+              \end{bNiceMatrix}
+          \end{align}
+\end{enumerate}

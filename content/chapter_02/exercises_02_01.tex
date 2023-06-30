@@ -1,0 +1,518 @@
+\section{Homogeneous Linear ODEs of Second Order}
+
+\begin{enumerate}
+    \item $ y $ does not occur explicitly.
+          \begin{align}
+              F(x, y', y'') & = 0               \\
+              z             & = y' & z' & = y'' \\
+              F(x, z, z')   & = 0
+          \end{align}
+          This is a fist order ODE in $ z $, which can be solved for $ z $. Then,
+          \begin{align}
+              y = \int z\ \dl x
+          \end{align}
+
+    \item F is not necessarily linear. $ x $ does not occur explicitly.
+          \begin{align}
+              F(y, y', y'')                    & = 0                                                \\
+              z                                & = y'                      & y'' & = \diff* {y'}{x} \\
+              y''                              & = \diff {y'}{y}\ \diff yx &     & = z \diff zy     \\
+              F\left( y, z, z \diff zy \right) & = 0
+          \end{align}
+          This is a fist order ODE in $ z $, with independent variable $ y $.
+          \begin{align}
+              y = \int z\ \dl x
+          \end{align}
+
+    \item Reducing to first order,
+          \begin{align}
+              y'' + y'      & = 0                                                        \\
+              z             & = y'          & y''                        & = z \diff zy  \\
+              z\diff zy + z & = 0           & \diff zy                   & = -1          \\
+              z = y'        & = -y + b      & \int\ \frac{1}{y-b}\ \dl y & = -\int \dl x \\
+              \ln(y-b)      & = -x + c^{*}                                               \\
+              y             & = b + ce^{-x}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = -2:2,
+                          % xmax = 2.3,
+                          % restrict y to domain = 0:3,
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {1 + e^(-x)};
+                      \addplot[GraphSmooth, color = red!50!blue]
+                      {-e^(-x)};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {e^(-x)};
+                      \node[GraphNode, label={90:{\footnotesize (0, 2)}}] at (axis cs:0, 2) {};
+                      \addlegendentry{$ y = 1 + e^{-x}$};
+                      \addlegendentry{$ y' = -e^{-x}$};
+                      \addlegendentry{$ y'' = e^{-x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Reducing to first order,
+          \begin{align}
+              2xy'' & = 3y'                                          \\
+              z     & = y'                        & y'' & = z'       \\
+              2xz'  & = 3z                                           \\
+              \ln z & =  \frac{3}{2}\ln x + c^{*} & y'  & = cx^{3/2} \\
+              y     & = b + cx^{5/2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = 0:4,
+                          % xmax = 2.3,
+                          % restrict y to domain = 0:3,
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {1 + x^(5/2)};
+                      \addplot[GraphSmooth, color = red!50!blue]
+                      {2.5*x^(3/2)};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {3.75*x^(1/2)};
+                      \node[GraphNode, label={90:{\footnotesize (0, 1)}}] at (axis cs:0, 1) {};
+                      \addlegendentry{$ y = 1 + x^{5/2}$};
+                      \addlegendentry{$ y' = 2.5x^{3/2}$};
+                      \addlegendentry{$ y'' = 3.75x^{1/2}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Reducing to first order,
+          \begin{align}
+              yy''            & = 3y'^{2}                                                         \\
+              z               & = y'              & y''                          & = z \diff zy   \\
+              yz\diff zy      & = 3z^{2}          & \diff zy                     & = \frac{3z}{y} \\
+              \ln z = y'      & = 3\ln y + b^{*}                                                  \\
+              z               & = by^{3}          & \int\ \frac{1}{y^{3}}\ \dl y & = b\int \dl x  \\
+              \frac{1}{y^{2}} & = bx +c                                                           \\
+              y               & = (bx + c)^{-1/2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = -0.9:4,
+                          % xmax = 2.3,
+                          restrict y to domain = -4:4,
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {(1 + x)^(-1/2)};
+                      \addplot[GraphSmooth, color = red!50!blue]
+                      {-0.5*(x+1)^(-3/2)};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {0.75*(x+1)^(-5/2)};
+                      \node[GraphNode, label={45:{\footnotesize (0, 1)}}] at (axis cs:0, 1) {};
+                      \addlegendentry{$ y = (x+1)^{-1/2}$};
+                      \addlegendentry{$ y' = -0.5(x+1)^{-3/2}$};
+                      \addlegendentry{$ y'' = 0.75(x+1)^{-5/2}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Reducing to first order,
+          \begin{align}
+              xy'' + 2y' + xy & = 0                                                        & y_{1} & = \frac{\cos x}{x} \\
+              y_{2}           & = uy_{1}                                                   & p(x)  & = \frac{2}{x}      \\
+              V = u'          & = \frac{1}{y_{1}^{2}} \exp\left( -\int p(x)\ \dl x \right)                              \\
+                              & = \frac{x^{2}}{\cos ^{2}x}\ x^{-2}                         &       & = \sec ^{2}x       \\
+              u               & = \int \sec ^{2}x\ \dl x                                   &       & = \tan x           \\
+              y               & = ay_{1} + by_{2}                                                                       \\
+                              & = \frac{a\cos x}{x} + \frac{b\sin x}{x}
+          \end{align}
+
+    \item Reducing to first order,
+          \begin{align}
+              y'' + y'^{3}\ \sin y & = 0                                                                    \\
+              z                    & = y'                   & y''                       & = z \diff zy      \\
+              z\diff zy            & = -z^{3}\sin y         & \diff zy                  & = -z^{2}\sin y    \\
+              \frac{-1}{z}         & = \cos y + b                                                           \\
+              z                    & =\frac{-1}{\cos y + b} & \int\ (b + \cos y)\ \dl y & = -\int \dl x     \\
+              by + \sin y          & = -x +c                & x                         & = -\sin y +by + c
+          \end{align}
+
+    \item Reducing to first order,
+          \begin{align}
+              y''        & = 1 + y'^{2}                                   \\
+              z          & = y'                     & y'' & = z'          \\
+              z'         & = 1 + z^{2}                                    \\
+              \arctan(z) & = x + b                  & z   & = \tan(x + b) \\
+              y          & = c + \ln |\sec (x + b)|
+          \end{align}
+
+    \item Reducing to first order,
+          \begin{align}
+              x^{2}y'' - 5xy' + 9y & = 0                                                        & y_{1} & = x^{3}        \\
+              y_{2}                & = uy_{1}                                                   & p(x)  & = \frac{-5}{x} \\
+              V = u'               & = \frac{1}{y_{1}^{2}} \exp\left( -\int p(x)\ \dl x \right)                          \\
+                                   & = x^{-6}\ x^{5}                                            &       & = 1/x          \\
+              u                    & = \int 1/x\ \dl x                                          &       & = \ln x        \\
+              y                    & = ay_{1} + by_{2}                                                                   \\
+                                   & = ax^{3} + bx^{3}\ln x
+          \end{align}
+
+    \item Reducing to first order,
+          \begin{align}
+              y'' + \left( 1 + \frac{1}{y} \right)y'^{2} & = 0                                                                                    \\
+              z                                          & = y'                                   & y''      & = z \diff zy                       \\
+              z\diff zy                                  & = -\left( 1 + \frac{1}{y} \right)z^{2} & \diff zy & = -\left( 1 + \frac{1}{y} \right)z \\
+              \ln (1/z)                                  & = y + \ln y                                                                            \\
+              \frac{1}{z}                                & = ye^{y}                               & z = y'   & = \frac{1}{ye^{y}}                 \\
+              by + \sin y                                & = -x +c                                & x        & = -\sin y +by + c
+          \end{align}
+
+    \item Curve passes through $ y(0) = 0 $ and $ y'(0) = 1 $,
+          \begin{align}
+              y'   & = z           & y''   & = z'          \\
+              y''  & = 2y'         & z'    & = 2z          \\
+              z    & = b^{*}e^{2x} & y     & = be^{2x} + c \\
+              y(0) & = b + c = 0   & y'(0) & = 2b = 1      \\
+              b    & = 0.5         & c     & = -0.5
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = -1:3,
+                          % xmax = 2.3,
+                          %   restrict y to domain = -2:2,
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {0.5*e^(2*x) - 0.5} node[pos = 1,right]
+                      {$ y$};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {e^(2*x)} node[pos = 1,right]
+                      {$ y'$};
+                      \addlegendentry{$ y = 0.5(e^{2x} - 1)$};
+                      \addlegendentry{$ y' = e^{2x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Curve passes through $ y(-1) = 0 $ and $ y(1) = 0 $,
+          \begin{align}
+              y''          & = \sqrt{1 + y'^{2}}                                                                               \\
+              y'           & = z                              & y''                                   & = z'                   \\
+              z'           & = \sqrt{1 + z^{2}}               & \int\frac{1}{\sqrt{1 + z^{2}}}\ \dl z & = x + b                \\
+              \sinh^{-1} z & = x + b                          & z                                     & = \sinh (x + b)        \\
+              y            & = c + \cosh (x + b)                                                                               \\
+              y(1)         & = c + \cosh(1+b) = 0             & y(-1)                                 & = c + \cosh (-1+b) = 0 \\
+              b            & = -b \quad \text{or} \quad b = 0                                                                  \\
+              b            & = 0                              & c                                     & = -\cosh(1)            \\
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = south east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = -3:3,
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {cosh(x) - cosh(1)} node[pos = 1,right]
+                      {$ y$};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {sinh(x)} node[pos = 1,right]
+                      {$ y'$};
+                      \node[GraphNode, label={-45:{\footnotesize (1, 0)}}] at (axis cs:1, 0) {};
+                      \node[GraphNode, label={90:{\footnotesize (-1, 0)}}] at (axis cs:-1, 0) {};
+                      \addlegendentry{$ y = \cosh x - \cosh(1)$};
+                      \addlegendentry{$ y' = \sinh x$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Sum of acceleration and velocity is constant, with initial velocity $ v_{0} $ and
+          initial position $ y_{0} $,
+          \begin{align}
+              y'' + y' & = \alpha                                                       & \alpha                          & > 0          \\
+              y'       & = z                                                            & y''                             & = z'         \\
+              z'       & = \alpha - z                                                   & \int\frac{1}{z - \alpha}\ \dl z & = -t + b^{*} \\
+              z        & = \alpha + be^{-t}                                                                                              \\
+              y        & = \alpha t - be^{-t}  + c                                                                                       \\
+              y(0)     & = -b + c                                                       & y'(0)                           & = \alpha + b \\
+              y''(0)   & = -b = \alpha - v_{0}                                                                                           \\
+              y        & = (y_{0} + v_{0} - \alpha) + \alpha t + (\alpha - v_{0})e^{-t}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = -1:6,
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {-1 + x + e^(-x)} node[pos = 1,right]
+                      {$ y$};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {1 - e^(-x)} node[pos = 1,right]
+                      {$ y'$};
+                      \node[GraphNode, label={-45:{\footnotesize (0, 0)}}] at (axis cs:0, 0) {};
+                      \addlegendentry{$ y = -1 + t + e^{-t}$};
+                      \addlegendentry{$ y' = 1 - e^{-t}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Velocity is the reciprocal of acceleration, with initial velocity $ v_{0} $ and
+          initial position $ y_{0} $,
+          \begin{align}
+              y''  & = \frac{1}{y'}                                                                                                   \\
+              y'   & = z                                                                                          & y''   & = z'      \\
+              z'   & = \frac{1}{z}                                                                                & z^{2} & = 2x + b  \\
+              z    & = (2x+ b)^{1/2}                                                                                                  \\
+              y    & = \frac{(2x + b)^{3/2}}{3}  + c                                                                                  \\
+              y(0) & = \frac{b^{3/2}}{3} + c                                                                      & y'(0) & = b^{1/2} \\
+              y    & = \frac{\left( 2x + v_{0}^{2} \right)^{3/2}}{3} + \left( y_{0} - \frac{v_{0}^{3}}{3} \right)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = -1:4,
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {(1/3)*((2*x)^(1.5))} node[pos = 1,right]
+                      {$ y$};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {(2*x)^(0.5)} node[pos = 1,right]
+                      {$ y'$};
+                      \node[GraphNode, label={-45:{\footnotesize (0, 0)}}] at (axis cs:0, 0) {};
+                      \addlegendentry{$ y = (2x)^{1.5}/3$};
+                      \addlegendentry{$ y' = (2x)^{0.5}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The given basis is L.I, since for some any non-zero constant $ \lambda $,
+          \begin{align}
+              y_{1}               & = \cos (2.5x) & y_{2} & = \sin (2.5x)      \\
+              \frac{y_{2}}{y_{1}} & = \tan (2.5x) &       & \not\equiv \lambda
+          \end{align}
+          Solving the IVP,
+          \begin{align}
+              4y'' + 25y & = 0                        & y & = a \cos(2.5x) + b\sin(2.5x) \\
+              y(0)       & = a = 3                                                       \\
+              y'(0)      & = 2.5b = -2.5              & b & = -1                         \\
+              y          & = 3\cos(2.5x) - \sin(2.5x)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          PiStyleX,
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = -pi:pi,
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {3*cos(2.5*x) - sin(2.5*x)} node[pos = 1,right]
+                      {$ y$};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {-2.5*cos(2.5*x) - 7.5*sin(2.5*x)} node[pos = 1,right]
+                      {$ y'$};
+                      \node[GraphNode, label={45:{\footnotesize (0, 3)}}] at (axis cs:0, 3) {};
+                      \node[GraphNode, label={-135:{\footnotesize (0, -2.5)}}] at (axis cs:0, -2.5) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The given basis is L.I, since for some any non-zero constant $ \lambda $,
+          \begin{align}
+              y_{1}               & = e^{-0.3x} & y_{2} & = xe^{-0.3x}       \\
+              \frac{y_{2}}{y_{1}} & = x         &       & \not\equiv \lambda
+          \end{align}
+          Solving the IVP,
+          \begin{align}
+              y'' + 0.6y' + 0.09y & = 0                           & y     & = (a + bx)e^{-0.3x} \\
+              y(0)                & = a = 2.2                                                   \\
+              y'                  & = e^{-0.3x}(b - 0.3a - 0.3bx) & y'(0) & = b - 0.66 = 0.14   \\
+              b                   & = 0.8                                                       \\
+              y                   & = (2.2 + 0.8x)e^{-0.3x}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = -5:5,
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {(2.2 + 0.8*x)*e^(-0.3*x)} node[pos = 1,right]
+                      {$ y$};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {(0.14 - 0.24*x)*e^(-0.3*x)} node[pos = 1,right]
+                      {$ y'$};
+                      \node[GraphNode, label={45:{\footnotesize (0, 2.2)}}] at (axis cs:0, 2.2) {};
+                      \node[GraphNode, label={-135:{\footnotesize (0, 0.14)}}] at (axis cs:0, 0.14) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The given basis is L.I, since for some any non-zero constant $ \lambda $,
+          \begin{align}
+              y_{1}               & = x^{3/2} & y_{2} & = x^{-1/2}         \\
+              \frac{y_{1}}{y_{2}} & = x^{2}   &       & \not\equiv \lambda
+          \end{align}
+          Solving the IVP,
+          \begin{align}
+              4x^{2}y'' & = 3y                          & y     & = x^{3/2}\left( a + \frac{b}{x^{2}} \right) \\
+              y(1)      & = a + b = -3                  & y'(1) & = 1.5a - 0.5b = 0                           \\
+              b         & = 3a                          & a     & = -3/4                                      \\
+              y         & = -0.75x^{3/2} - 2.25x^{-1/2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = 0:5,
+                          restrict y to domain = -10:10
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {-0.75*x^(3/2) - 2.25*x^(-1/2)} node[pos = 1,right]
+                      {$ y$};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {(-9/8)*x^(1/2) + (9/8)*x^(-3/2)} node[pos = 1,right]
+                      {$ y'$};
+                      \node[GraphNode, label={-90:{\footnotesize (1, -3)}}] at (axis cs:1, -3) {};
+                      \node[GraphNode, label={45:{\footnotesize (1, 0)}}] at (axis cs:1, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The given basis is L.I, since for some any non-zero constant $ \lambda $,
+          \begin{align}
+              y_{1}               & = x     & y_{2} & = x\ln x           \\
+              \frac{y_{2}}{y_{1}} & = \ln x &       & \not\equiv \lambda
+          \end{align}
+          Solving the IVP,
+          \begin{align}
+              x^{2}y'' - xy' + y & = 0                & y     & = ax + bx\ln x \\
+              y(1)               & = a  = 4.3                                  \\
+              y'                 & = a + b + b\ln x   & y'(1) & = a + b  = 0.5 \\
+              b                  & = -3.8                                      \\
+              y                  & = 4.3x - 3.8x\ln x
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = 0:8,
+                          restrict y to domain = -10:10
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {4.3*x - 3.8*x*ln(x)} node[pos = 1,right]
+                      {$ y$};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {0.5 - 3.8*ln(x)} node[pos = 1,right]
+                      {$ y'$};
+                      \node[GraphNode, label={90:{\footnotesize (1, 4.3)}}] at (axis cs:1, 4.3) {};
+                      \node[GraphNode, label={-135:{\footnotesize (1, 0.5)}}] at (axis cs:1, 0.5) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The given basis is L.I, since for some any non-zero constant $ \lambda $,
+          \begin{align}
+              y_{1}               & = e^{-x}\cos x & y_{2} & = e^{-x}\sin x     \\
+              \frac{y_{2}}{y_{1}} & = \tan x       &       & \not\equiv \lambda
+          \end{align}
+          Solving the IVP,
+          \begin{align}
+              y'' - 2y' + 2y & = 0                                 & y     & = e^{-x}(a\cos x + b\sin x) \\
+              y(0)           & = a  = 0                                                                  \\
+              y'             & = e^{-x}[(b-a)\cos x - (a+b)\sin x] & y'(0) & = b - a  = 15               \\
+              b              & = 15                                                                      \\
+              y              & = 15e^{-x}\sin x
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          domain = -0.25:8,
+                          %   restrict y to domain = -10:10
+                      ]
+                      \addplot[GraphSmooth, color = red!0!blue]
+                      {15*e^(-x)*sin(x)} node[pos = 0,left]
+                      {$ y$};
+                      \addplot[GraphSmooth, color = red!100!blue]
+                      {15*e^(-x)*(cos(x) - sin(x))} node[pos = 0,left]
+                      {$ y'$};
+                      \node[GraphNode, label={135:{\footnotesize (0, 0)}}] at (axis cs:0, 0) {};
+                      \node[GraphNode, label={45:{\footnotesize (0, 15)}}] at (axis cs:0, 15) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Outline of algorithm for program to test if two solutions defined on the
+          interval $ I $ are L.I.,
+          \begin{enumerate}
+              \item Define the Wronskian for the two functions as,
+                    \begin{align}
+                        W(y_{1}, y_{2})(x) := y_{2}y_{1}' - y_{1}y_{2}'
+                    \end{align}
+              \item If $ W \neq 0 $ for some $ x_{0} \in I $, return TRUE.
+              \item Else if $ W \equiv 0 \quad \forall \quad x \in I$, return FALSE.
+          \end{enumerate}
+\end{enumerate}

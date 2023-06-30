@@ -1,0 +1,319 @@
+\section{Existence and Uniqueness of Solutions, Wronskian}
+
+\begin{enumerate}
+    \item \begin{align}
+              W(y_{1}, y_{2})  & = y_{1}y_{2}' - y_{1}'y_{2}                              & W                & = -(y_{1}'y_{2} - y_{1}y_{2}')                              \\
+                               & = \frac{y_{1}y_{2}' - y_{1}'y_{2}}{y_{1}^{2}}\ y_{1}^{2} &                  & = -\frac{(y_{1}'y_{2} - y_{1}y_{2}')}{y_{2}^{2}}\ y_{2}^{2} \\
+                               & = \left( \frac{y_{2}}{y_{1}} \right)'\ y_{1}^{2}         &                  & = -\left( \frac{y_{1}}{y_{2}} \right)'\ y_{2}^{2}           \\
+              \text{if}\ y_{1} & \neq 0                                                   & \text{if}\ y_{2} & \neq 0
+          \end{align}
+
+    \item the functions are L.I. by the quotient method,
+          \begin{align}
+              y_{1} & = e^{4x}                         & y_{2} & = e^{-1.5x}                                \\
+              Q(x)  & = \frac{y_{1}}{y_{2}} = e^{5.5x} & Q     & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          the functions are L.I. using the Wronskian,
+          \begin{align}
+              W(y_{1}, y_{2}) & = -1.5e^{2.5x} - 4e^{2.5x}                 \\
+                              & = -5.5e^{2.5x}                             \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+
+    \item the functions are L.I. by the quotient method,
+          \begin{align}
+              y_{1} & = e^{-0.4x}                      & y_{2} & = e^{-2.6x}                                \\
+              Q(x)  & = \frac{y_{1}}{y_{2}} = e^{2.2x} & Q     & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          the functions are L.I. using the Wronskian,
+          \begin{align}
+              W(y_{1}, y_{2}) & = -2.6e^{-3x} + 0.4e^{-3x}                 \\
+                              & = -2.2e^{-3x}                              \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+
+    \item the functions are L.I. by the quotient method,
+          \begin{align}
+              y_{1} & = x                           & y_{2} & = 1/x                                      \\
+              Q(x)  & = \frac{y_{1}}{y_{2}} = x^{2} & Q     & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          the functions are L.I. using the Wronskian,
+          \begin{align}
+              W(y_{1}, y_{2}) & = \frac{-1}{x} - \frac{1}{x}               \\
+                              & =\frac{-2}{x}                              \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+
+    \item the functions are L.I. by the quotient method,
+          \begin{align}
+              y_{1} & = x^{3}                   & y_{2} & = x^{2}                                    \\
+              Q(x)  & = \frac{y_{1}}{y_{2}} = x & Q     & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          the functions are L.I. using the Wronskian,
+          \begin{align}
+              W(y_{1}, y_{2}) & = 2x^{4} - 3x^{4}                          \\
+                              & = -x^{4}                                   \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+
+    \item the functions are L.I. by the quotient method,
+          \begin{align}
+              y_{1} & = e^{-x}\cos(\omega x)                 & y_{2} & = e^{-x}\sin(\omega x)                     \\
+              Q(x)  & = \frac{y_{1}}{y_{2}} = \cot(\omega x) & Q     & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          the functions are L.I. using the Wronskian,
+          \begin{align}
+              W(y_{1}, y_{2}) & = e^{-2x}\cos(\omega x)[\omega \cos(\omega x) - \sin(\omega x)]  \\
+                              & - e^{-2x}\sin(\omega x)[-\omega \sin(\omega x) - \cos(\omega x)] \\
+                              & =e^{-2x}[\omega]                                                 \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+
+    \item the functions are L.I. by the quotient method,
+          \begin{align}
+              y_{1} & = \cosh ax                       & y_{2} & = \sinh ax                                 \\
+              Q(x)  & = \frac{y_{2}}{y_{1}} = \tanh ax & Q     & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          the functions are L.I. using the Wronskian,
+          \begin{align}
+              W(y_{1}, y_{2}) & = a\cosh^{2} ax - a\sinh^{2} ax            \\
+                              & = a                                        \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+
+    \item the functions are L.I. by the quotient method,
+          \begin{align}
+              y_{1} & = x^{k}\cos(\ln x)                  & y_{2} & = x^{k}\sin(\ln x)                         \\
+              Q(x)  & = \frac{y_{1}}{y_{2}} = \cot(\ln x) & Q     & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          the functions are L.I. using the Wronskian,
+          \begin{align}
+              W(y_{1}, y_{2}) & = x^{2k-2}\cos(\ln x)[ k\sin(\ln x) + \cos(\ln x)] \\
+                              & - x^{2k-2}\sin(\ln x)[-\sin(\ln x) + k\cos(\ln x)] \\
+                              & = x^{2k-2}                                         \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+
+    \item the functions are L.I. using the Wronskian,
+          \begin{align}
+              y_{1}           & = \cos(5x)                                 & y_{2} & = \sin(5x) \\
+              W(y_{1}, y_{2}) & = 5\cos^{2}(5x) + 5\sin^{2}(5x)                                 \\
+                              & = 5                                                             \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          to construct the ODE given these solutions,
+          \begin{align}
+              \alpha                   & = 0        & \beta & = 5               \\
+              \lambda_{1}, \lambda_{2} & = 0 \pm 5i & a     & = 0, \quad b = 25 \\
+              y'' + 25y                & = 0
+          \end{align}
+          solving the IVP $ y(0) = 3,\ y'(0) = -5 $,
+          \begin{align}
+              c_{1} & = 3                    & 5c_{2} & = -5 \\
+              y     & = 3\cos(5x) - \sin(5x)
+          \end{align}
+
+    \item the functions are L.I. using the Wronskian,
+          \begin{align}
+              y_{1}           & = x^{m_{1}}                                & y_{2} & = x^{m_{2}} \\
+              W(y_{1}, y_{2}) & = x^{m_{1} + m_{2} - 1}[m_{2} - m_{1}]                           \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          to construct the Euler-Cauchy ODE given these solutions,
+          \begin{align}
+              \lambda_{1}, \lambda_{2}                        & = m_{1}, m_{2}                        \\
+              (a-1)                                           & = -(m_{1} + m_{2}) & b & = m_{1}m_{2} \\
+              x^{2}y'' + (1 - m_{1} - m_{2})xy' + m_{1}m_{2}y & = 0
+          \end{align}
+          solving the IVP $ y(1) = -2,\ y'(1) = 2m_{1} - 4m_{2} $,
+          \begin{align}
+              c_{1} + c_{2} & = -2                      & m_{1}c_{1} + m_{2}c_{2} & = 2m_{1} - 4m_{2} \\
+              y             & = 2x^{m_{1}} -4 x^{m_{2}}
+          \end{align}
+
+    \item the functions are L.I. using the Wronskian,
+          \begin{align}
+              y_{1}           & = e^{-2.5x}\cos(0.3x)                               & y_{2} & = e^{-2.5x}\sin(0.3x) \\
+              W(y_{1}, y_{2}) & = e^{-5x}\cos(0.3x)[0.3\cos(0.3x) - 2.5\sin(0.3x)]                                  \\
+                              & - e^{-5x}\sin(0.3x)[-0.3\sin(0.3x) - 2.5\cos(0.3x)]                                 \\
+                              & = e^{-5x}[0.3]                                                                      \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          to construct the ODE given these solutions,
+          \begin{align}
+              \lambda_{1}, \lambda_{2} & = -2.5 \pm 0.3i              \\
+              a                        & = 5             & b & = 6.34 \\
+              y'' + 5y' + 6.34y        & = 0
+          \end{align}
+          solving the IVP $ y(0) = 3,\ y'(0) = -7.5 $,
+          \begin{align}
+              c_{1} & = 3                    & -2.5c_{1} + 0.3c_{2} & = -7.5 \\
+              c_{2} & = 0                                                    \\
+              y     & = 3e^{-2.5x}\cos(0.3x)
+          \end{align}
+
+    \item the functions are L.I. using the Wronskian,
+          \begin{align}
+              y_{1}           & = x^{2}                                    & y_{2} & = x^{2}\ln x \\
+              W(y_{1}, y_{2}) & = x^{3}[1 + 2\ln x - 2\ln x]                                      \\
+                              & = x^{3}                                                           \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          to construct the Euler-Cauchy ODE given these solutions,
+          \begin{align}
+              \lambda_{1}, \lambda_{2} & = 2            \\
+              (a-1)                    & = -4 & b & = 4 \\
+              x^{2}y'' - 3xy' + 4y     & = 0
+          \end{align}
+          solving the IVP $ y(1) = 4,\ y'(1) = 6 $,
+          \begin{align}
+              c_{1} & = 4                      & 2c_{1} + c_{2} & = 6 \\
+              c_{2} & = -2                                            \\
+              y     & = 4x^{2}  - 2 x^{2}\ln x
+          \end{align}
+
+    \item the functions are L.I. using the Wronskian,
+          \begin{align}
+              y_{1}           & = 1                                        & y_{2} & = e^{-2x} \\
+              W(y_{1}, y_{2}) & = -2e^{-2x}                                                    \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          to construct the ODE given these solutions,
+          \begin{align}
+              \lambda_{1}, \lambda_{2} & = 0, -2           \\
+              a                        & = 2     & b & = 0 \\
+              y'' + 2y'                & = 0
+          \end{align}
+          solving the IVP $ y(0) = 1,\ y'(0) = -1 $,
+          \begin{align}
+              c_{1} + c_{2} & = 1                 & -2c_{2} & = -1  \\
+              c_{2}         & = 0.5               & c_{1}   & = 0.5 \\
+              y             & = 0.5 (1 + e^{-2x})
+          \end{align}
+
+    \item the functions are L.I. using the Wronskian,
+          \begin{align}
+              y_{1}           & = e^{-kx}\cos(\pi x)                                    & y_{2} & = e^{-kx}\sin(\pi x) \\
+              W(y_{1}, y_{2}) & = e^{-2kx}\cos(\pi x)[\pi \cos(\pi x) - k\sin(\pi x)]                                  \\
+                              & - e^{-2kx}\sin(\pi x) [-\pi \sin(\pi x) - k\cos(\pi x)]                                \\
+                              & = \pi e^{-2kx}                                                                         \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          to construct the ODE given these solutions,
+          \begin{align}
+              \alpha                          & = -k          & \beta & = \pi                           \\
+              \lambda_{1}, \lambda_{2}        & = -k \pm i\pi & a     & = 2k, \quad b = k^{2} + \pi^{2} \\
+              y'' + 2ky' + (k^{2} + \pi^{2})y & = 0
+          \end{align}
+          solving the IVP $ y(0) = 1,\ y'(0) = -k - \pi $,
+          \begin{align}
+              c_{1} & = 1                                        & -kc_{1} + \pi c_{2} & = -k-\pi \\
+              c_{2} & = -1                                                                        \\
+              y     & =e^{-kx}\left[ \cos(kx) - \sin(kx) \right]
+          \end{align}
+
+    \item the functions are L.I. using the Wronskian,
+          \begin{align}
+              y_{1}           & = \cosh(1.8 x)                             & y_{2} & = \sinh(1.8 x) \\
+              W(y_{1}, y_{2}) & = 1.8\cosh^{2}x - 1.8\sinh^{2}x                                     \\
+                              & = 1.8                                                               \\
+              W               & \neq 0\ \text{for some}\ x \in \mathcal{R}
+          \end{align}
+          to construct the ODE given these solutions,
+          \begin{align}
+              \lambda_{1}, \lambda_{2} & = \pm 1.8 & a & = 0, \quad b = 3.24 \\
+              y'' - 3.24y              & = 0
+          \end{align}
+          solving the IVP $ y(0) = 14.20,\ y'(0) = 16.38 $,
+          \begin{align}
+              c_{1} & = 14.20                       & 1.8c_{2} & = 16.38 \\
+              c_{2} & = 9.1                                              \\
+              y     & = 14.20 \cosh x + 9.1 \sinh x
+          \end{align}
+
+    \item
+          \begin{enumerate}
+              \item Solving the ODE using both kinds of basis functions,
+                    \begin{align}
+                        y''  - y & = 0                                                                    \\
+                        y        & = c_{1}e^{x} + c_{2}e^{-x}      &       & \text{exponential functions} \\
+                        y        & = c_{3}\cosh(x) + c_{4}\sinh(x) &       & \text{hyperbolic functions}  \\
+                        c_{3}    & = 0.5(c_{1} + c_{2})            & c_{4} & = 0.5(c_{1} - c_{2})
+                    \end{align}
+
+              \item Claim : Solutions of a basis set can be $ 0 $ at the same point (say $ X $).
+                    \begin{align}
+                        y_{1}(X)                      & = y_{2}(X) = 0                                                                 \\
+                        c_{1}y_{1}(X) + c_{2}y_{2}(X) & = 0 \qquad \text{without needing}\ c_{1}, c_{2} = 0                            \\
+                        y_{2}(X)                      & = \frac{-c_{1}}{c_{2}}y_{1}                                                    \\
+                        W(X)                          & =  \Bigg[ y_{1}y_{2}' - y_{2}'y_{1} \Bigg]_{x = X}                             \\
+                                                      & = \frac{-c_{2}}{c_{1}}y_{1}(X)y_{1}'(X) + \frac{c_{2}}{c_{1}}y_{1}'(X)y_{1}(X) \\
+                                                      & = 0
+                    \end{align}
+                    The fact that $ W(X) = 0 $ means that the two functions are linearly dependent
+                    in $ \mathcal{I} $. But this contradicts the assumption that they are members of a
+                    basis set. This contradiction falsifies the original claim.
+
+              \item Refer previous part. Instead of $ y_{1}(X) = y_{2}(X) = 0 $, the new claim is that
+                    $ y_{1}'(X) = y_{2}'(X) = 0 $. Procedure is the same from the Wronskian step onward.
+
+              \item These formulas exist if one of the solutions is not the trivial solution,
+                    which is true for most physical systems.
+
+              \item Sketching,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    %   axis equal,
+                                    % restrict y to domain = -100:100,
+                                    legend pos = north west,
+                                    grid = both,
+                                    width = 12cm,
+                                    height = 8cm,
+                                    Ani,
+                                ]
+                                \addplot[GraphSmooth,domain=-1:0,thin]{0};
+                                \addplot[forget plot,GraphSmooth,domain=0:1, thin]{x^(3)};
+                                \addlegendentry{$y_{1}$};
+                                \addplot[GraphSmooth,domain=-1:0, red, dashed]{x^(3)};
+                                \addplot[forget plot,GraphSmooth,domain=0:1, red, dashed]{0};
+                                \addlegendentry{$y_{2}$};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    Wronskian is zero in $ (-1,0) $ and $ (0, 1) $ separately because one of the two
+                    functions is zero. It is also zero at $ x = 0 $. \newline
+                    However, over the entire interval $ (-1, 1) $, they are L.I, because,
+                    \begin{align}
+                        c_{1}y_{1} + c_{2}y_{2} & = 0                               \\
+                        x                       & < 0    & \implies  c_{2} & \neq 0 \\
+                        x                       & \geq 0 & \implies  c_{1} & \neq 0
+                    \end{align}
+                    Looking at the functions and their derivatives, both are continuous in $ (-1, 1) $,
+                    which means that these functions can be solutions to an ODE. \newline
+                    Consider an Euler-Cauchy equation with $ m_{1}, m_{2} = 0, 3 $
+                    \begin{align}
+                        (a - 1)             & = -3 & b              & = 0 \\
+                        m^{2}  - 3m         & = 0  & x^{2}y'' -2xy' & = 0 \\
+                        y'' - \frac{2}{x}y' & = 0
+                    \end{align}
+                    If the interval under consideration is $ (-1, 1) $, then $ p(x) = 2/x $ is
+                    discontinuous at $ x = 0 $, which means that Theorem 2 does not apply to
+                    this ODE.
+
+              \item Eliminating $ q(x) $,
+                    \begin{align}
+                        y_{1}'' + p(x)y_{1}' + q(x)y_{1}                                        & = 0                                                \\
+                        y_{2}'' + p(x)y_{2}' + q(x)y_{2}                                        & = 0                                                \\
+                        y_{2}'' + py_{2}' - y_{2}\left( \frac{y_{1}'' + py_{1}'}{y_{1}} \right) & = 0                                                \\
+                        y_{1}y_{2}'' - y_{1}''y_{2} + p (y_{1}y_{2}' - y_{1}'y_{2})             & = 0                                                \\
+                        \diff Wx                                                                & = \diff* {(y_{1}y_{2}' - y_{1}'y_{2})}{x}          \\
+                        \diff Wx = y_{1}y_{2}'' - y_{1}''y_{2} + y_{1}'y_{2}' - y_{1}'y_{2}'    & = y_{1}y_{2}'' - y_{1}''y_{2}                      \\
+                        W' + pW                                                                 & = 0                                                \\
+                        \int_{x_{0}}^{x}\frac{1}{W}\ \dl W                                      & = -\int_{x_{0}}^{t} p(t)\ \dl t                    \\
+                        \frac{W(x)}{W(x_{0})}                                                   & = \exp\left( -\int_{x_{0}}^{x} p(t)\ \dl t \right)
+                    \end{align}
+                    Applying Abel's formula to problem 6, TBC
+          \end{enumerate}
+\end{enumerate}

@@ -1,0 +1,306 @@
+\section{Systems of ODEs as Models in Engineering Applications}
+\begin{enumerate}
+    \item Looking at the system of ODEs, with tank size $ V $ and flow rate $ f $,
+          \begin{align}
+              y_1' & = \frac{f}{V}\ y_2 - \frac{f}{V}\ y_1 \\
+              y_2' & = \frac{f}{V}\ y_1 - \frac{f}{V}\ y_2
+          \end{align}
+          {\color{y_h} Yes}, the effect on this system of $ f \rightarrow 2f $ is
+          the same as the effect of $ V \rightarrow 0.5V $.
+
+    \item With $ V_1 = 200, V_2 = 100 $ the system of ODEs changes to,
+          \begin{align}
+              y_1'          & = \frac{f}{V_2}\ y_2 - \frac{f}{V_1}\ y_1               \\
+              y_2'          & = \frac{f}{V_1}\ y_1 - \frac{f}{V_2}\ y_2               \\
+              \vec{y'}      & = \bmattt{-2/200}{2/100}{2/200}{-2/100} \vec{y}         \\
+              \lambda_1     & = -0.03                                               &
+              \vec{v^{(1)}} & = \bmatcol{-1}{1}                                       \\
+              \lambda_1     & = 0                                                   &
+              \vec{v^{(2)}} & = \bmatcol{2}{1}                                        \\
+              \vec{y}       & = c_1 \bmatcol{-1}{1} e^{-0.03t} + c_2 \bmatcol{2}{1}
+          \end{align}
+          Using the initial conditions, $ y_1(0) = 150, y_2(0) = 150 $,
+          \begin{align}
+              \vec{y}(0)= \bmatcol{-c_1 + 2c_2}{c_1 + c_2} & = \bmatcol{150}{150} \\
+              c_1 = 50 \qquad c_2                          & = 100                \\
+              \vec{y}                                      & =
+              \bmatcol{-50}{50}e^{-0.03t} + \bmatcol{200}{100}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[
+                      declare function = {
+                              y_1 = (200 - 50*e^(-0.03*x)) / 200;
+                              y_2 = (100 + 50*e^(-0.03*x)) / 100;
+                          }
+                  ]
+                  \begin{axis}[
+                          ylabel = Concentration $ (y/V) $,
+                          xlabel = Time $ (t) $ in $ \unit{min} $,
+                          domain = 0:200,
+                          legend pos = north east,
+                          grid = both,
+                          Ani,
+                      ]
+                      \addplot[GraphSmooth, color = y_h]{y_1};
+                      \addlegendentry{$y - y_{p}$};
+                      \addplot[GraphSmooth, color = y_p]{y_2};
+                      \addlegendentry{$y$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The concentration in both tanks still approaches equality as is physically
+          expected.
+
+    \item To derive the eigenvectors
+          \begin{align}
+              \vec{A}                                & = \bmattt{-0.02}{0.02}{0.02}{-0.02} \\
+              \det(\vec{A} - \lambda \vec{I})        & = 0                                 \\
+                                                     & = \begin{vNiceMatrix}[r, margin]
+                                                             -0.02 - \lambda & 0.02            \\
+                                                             0.02            & -0.02 - \lambda
+                                                         \end{vNiceMatrix} \\
+                                                     & = \lambda^{2} + 0.04\lambda         \\
+              \lambda_1, \lambda_2                   & = 0, -0.04                          \\
+              (-0.02 + 0.04)x_1 + 0.02 x_2 = 0 \quad & \implies
+              \quad \vec{v^{(2)}} = \bmatcol{-1}{1}                                        \\
+              (-0.02 + 0)x_1 + 0.02 x_2 = 0 \quad    & \implies
+              \quad \vec{v^{(1)}} = \bmatcol{1}{1}
+          \end{align}
+
+    \item For a general $ a = f/V $, with both tanks having equal volume,
+          \begin{align}
+              \vec{A}                         & = \bmattt{-a}{a}{a}{-a}         \\
+              \det(\vec{A} - \lambda \vec{I}) & = 0                             \\
+                                              & = \begin{vNiceMatrix}[r, margin]
+                                                      -a - \lambda & a            \\
+                                                      a            & -a - \lambda
+                                                  \end{vNiceMatrix} \\
+                                              & = \lambda^{2} + 2a\lambda       \\
+              \lambda_1, \lambda_2            & = 0, -2a                        \\
+              (-a + 2a)x_1 + a x_2 = 0 \quad  & \implies
+              \quad \vec{v^{(2)}} = \bmatcol{-1}{1}                             \\
+              (-a + 0)x_1 + a x_2 = 0 \quad   & \implies
+              \quad \vec{v^{(1)}} = \bmatcol{1}{1}                              \\
+              y                               & = c_1 \bmatcol{1}{1} +
+              c_2 \bmatcol{-1}{1}e^{-2at}
+          \end{align}
+          The eigenvectors are independent of $ a $. Only the exponential decay rate
+          depends on $ a $.
+
+    \item Upon adding a third tank $ T_3 $ connected to $ T_2 $,
+          \begin{align}
+              y_1' & = \frac{-f}{V}\ y_1 + \frac{f}{V}\ y_2                      \\
+              y_1' & = \frac{-2f}{V}\ y_2 + \frac{f}{V}\ y_1  + \frac{f}{V}\ y_3 \\
+              y_3' & = \frac{-f}{V}\ y_3 + \frac{f}{V}\ y_2                      \\
+          \end{align}
+
+    \item Solving the system above,
+          \begin{align}
+              \vec{a} & = \begin{bNiceMatrix}[r, margin]
+                              -k & k   & 0  \\
+                              k  & -2k & k  \\
+                              0  & k   & -k
+                          \end{bNiceMatrix} \qquad \qquad \{\lambda_i\} = \{0, -k, -3k\} \\
+              y       & = c_1 \begin{bNiceMatrix}[r, margin]
+                                  1 \\ 1 \\ 1
+                              \end{bNiceMatrix} + c_2 \begin{bNiceMatrix}[r, margin]
+                                                          1 \\ -2 \\ 1
+                                                      \end{bNiceMatrix} e^{-3kt}
+              + c_3 \begin{bNiceMatrix}[r, margin]
+                        -1 \\ 0 \\ 1
+                    \end{bNiceMatrix} e^{-kt}
+          \end{align}
+
+    \item $ I_1 (0) = 0, I_2(0) = -3 $,
+          \begin{align}
+              \vec{J_h} + \vec{J_p}       & = {\color{y_p} \bmatcol{3}{0}}
+              + {\color{y_h} c_1 \bmatcol{2}{1}e^{-2t} + c_2 \bmatcol{1}{0.8}e^{-0.8t}} \\
+              \vec{J}(0)= \bmatcol{0}{-3} & = \bmatcol{3}{0} + c_1\bmatcol{2}{1}
+              +  c_2\bmatcol{1}{0.8}                                                    \\
+              c_1                         & = 1 \qquad c_2 = -5
+          \end{align}
+
+    \item Remaking the system of ODEs,
+          \begin{align}
+              I_1'                 & = -4I_1 + 4I_2 + 12                             \\
+              I_2'                 & = 0.4I_1' - 0.54I_2                             \\
+              I_2'                 & = -1.6I_1 + 1.06I_2 + 4.8                       \\
+              \vec{J'}             & = \vec{Aj} + \vec{g}                            \\
+              \bmatcol{I_1'}{I_2'} & = \bmattt{-4}{4}{-1.6}{1.06} \bmatcol{I_1}{I_2}
+              + \bmatcol{12}{4.8}                                                    \\
+          \end{align}
+          Solving the h-ODE,
+          \begin{align}
+              \{\lambda\} & = \{-1.5, -1.44\}, \qquad \vec{v^{(1)}} = \bmatcol{1.6}{1}
+              , \qquad \vec{v^{(2)}} = \bmatcol{25/16}{1}                              \\
+              \vec{I_h}   & = \color{y_h} c_1 \bmatcol{8}{5} e^{-1.5t}
+              + c_2 \bmatcol{25}{16} e^{-1.44t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{I_p}      & = \bmatcol{a_1}{a_2}                            \\
+              \bmatcol{0}{0} & = \bmattt{-4}{4}{-1.6}{1.06} \bmatcol{a_1}{a_2}
+              + \bmatcol{12}{4.8}                                              \\
+              \vec{I_p}      & = \color{y_p} \bmatcol{3}{0}
+          \end{align}
+
+    \item $ I_1 (0) = 28, I_2(0) = 14 $,
+          \begin{align}
+              \vec{J_h} + \vec{J_p}          & = {\color{y_p} \bmatcol{3}{0}}
+              + {\color{y_h} c_1 \bmatcol{2}{1}e^{-2t} + c_2 \bmatcol{1}{0.8}e^{-0.8t}} \\
+              \vec{J_h}(0)= \bmatcol{28}{14} & = \bmatcol{3}{0} + c_1\bmatcol{2}{1}
+              +  c_2\bmatcol{1}{0.8}                                                    \\
+              c_1                            & = 10 \qquad c_2 = 5
+          \end{align}
+
+    \item By the usual method,
+          \begin{align}
+              y'' + 3y' + 2y             & = 0                                    \\
+              \lambda^{2} + 3\lambda + 2 & = 0                                    \\
+              \{\lambda_i\}              & = \{-1, -2\}                           \\
+              y_h                        & = \color{y_h} c_1 e^{-x} + c_2 e^{-2x}
+          \end{align}
+          By converting to a system of first order ODEs,
+          \begin{align}
+              y_1           & = y                                    & y_2           & = y'              \\
+              y_2'          & = -3y_2 - 2y_1                                                             \\
+              y_1'          & = y_2                                                                      \\
+              \vec{a}       & = \bmattt{0}{1}{-2}{-3}                & \{\lambda_i\} & = \{-2, -1\}      \\
+              \vec{v^{(1)}} & = \bmatcol{-1}{2}                      & \vec{v^{(2)}} & = \bmatcol{-1}{1} \\
+              y_h           & = \color{y_h} c_1 e^{-2x} + c_2 e^{-x}
+          \end{align}
+          Both results match.
+
+    \item By the usual method,
+          \begin{align}
+              4y'' - 15y' - 4y              & = 0                                       \\
+              \lambda^{2} - 3.75\lambda - 1 & = 0                                       \\
+              \{\lambda_i\}                 & = \{-0.25, 4\}                            \\
+              y_h                           & = \color{y_h} c_1 e^{-0.25x} + c_2 e^{4x}
+          \end{align}
+          By converting to a system of first order ODEs,
+          \begin{align}
+              y_1           & = y                                       & y_2           & = y'             \\
+              y_2'          & = 3.75y_2 + y_1                                                              \\
+              y_1'          & = y_2                                                                        \\
+              \vec{a}       & = \bmattt{0}{1}{1}{3.75}                  & \{\lambda_i\} & = \{-0.25, 4\}   \\
+              \vec{v^{(1)}} & = \bmatcol{-4}{1}                         & \vec{v^{(2)}} & = \bmatcol{1}{4} \\
+              y_h           & = \color{y_h} c_1 e^{-0.25x} + c_2 e^{4x}
+          \end{align}
+          Both results match.
+
+    \item By the usual method,
+          \begin{align}
+              y''' + 2y'' - y' - 2y                    & = 0                       \\
+              \lambda^{3} + 2\lambda^{2} - \lambda - 2 & = 0                       \\
+              \{\lambda_i\}                            & = \{-2, -1, 1\}           \\
+              y_h                                      & = \color{y_h} c_1 e^{-2x}
+              + c_2 e^{-x} + c_3 e^{x}
+          \end{align}
+          By converting to a system of first order ODEs,
+          \begin{align}
+              y_3'          & = 2y_1 + y_2 - 2y_3                                             & y_2'          & = y_3 \\
+              y_1'          & = y_2                                                                                   \\
+              \vec{a}       & = \begin{bNiceMatrix}[r, margin]
+                                    0 & 1 & 0 \\ 0 & 0 & 1 \\ 2 & 1 & -2
+                                \end{bNiceMatrix}                            & \{\lambda_i\} & = \{-2, -1, 1\}        \\
+              \vec{v^{(1)}} & = \begin{bNiceMatrix}[r, margin] 1 \\ -2 \\ 4 \end{bNiceMatrix} &
+              \vec{v^{(2)}} & = \begin{bNiceMatrix}[r, margin] 1 \\ -1 \\ 1 \end{bNiceMatrix}                         \\
+              \vec{v^{(3)}} & = \begin{bNiceMatrix}[r, margin] 1 \\ 1 \\ 1 \end{bNiceMatrix}                          \\
+              y_h           & = \color{y_h} c_1 e^{-2x} + c_2 e^{-x} + c_3 e^{x}
+          \end{align}
+          Both results match.
+
+    \item By the usual method,
+          \begin{align}
+              y'' + 2y' - 24y             & = 0                                    \\
+              \lambda^{2} + 2\lambda - 24 & = 0                                    \\
+              \{\lambda_i\}               & = \{-6, 4\}                            \\
+              y_h                         & = \color{y_h} c_1 e^{-6x} + c_2 e^{4x}
+          \end{align}
+          By converting to a system of first order ODEs,
+          \begin{align}
+              y_1           & = y                                    & y_2           & = y'             \\
+              y_2'          & = -2y_2 + 24y_1                                                           \\
+              y_1'          & = y_2                                                                     \\
+              \vec{a}       & = \bmattt{0}{1}{24}{-2}                & \{\lambda_i\} & = \{-6, 4\}      \\
+              \vec{v^{(1)}} & = \bmatcol{-1}{6}                      & \vec{v^{(2)}} & = \bmatcol{1}{4} \\
+              y_h           & = \color{y_h} c_1 e^{-6x} + c_2 e^{4x}
+          \end{align}
+          Both results match.
+
+    \item Two spring-mass systems hanging in series.
+          \begin{enumerate}
+              \item Setting up the model,
+                    \begin{align}
+                        m_2 y_2''                      & = - k_2 (y_2 - y_1)                                   &
+                        y_2''                          & = - 2y_2 + 2y_1                                         \\
+                        m_1 y_1''                      & = k_2 (y_2 - y_1) - k_1 y_1                           &
+                        y_1''                          & = 2y_2 - 5y_1                                           \\
+                        \begin{bNiceMatrix}[r, margin]
+                            y_1'' \\ y_2''
+                        \end{bNiceMatrix} & + \begin{bNiceMatrix}[r, margin]
+                                                  5 & -2 \\ -2 & 2
+                                              \end{bNiceMatrix} \bmatcol{y_1}{y_2} = \bmatcol{0}{0} &
+                        \vec{y''}                      & + \vec{Ay} = \vec{0}
+                    \end{align}
+                    Using the guess, $ \vec{y} = \vec{x}\cos(\omega t) $,
+                    \begin{align}
+                        \vec{y''}                                                           &
+                        = -\omega^{2} \vec{x} \cos(\omega t)                                                    \\
+                        (-\omega^{2}\vec{I} + \vec{A})\ \vec{x}                             & = 0               \\
+                        \bmattt{-\omega^{2} + 5}{-2}{-2}{-\omega^{2} + 2}\bmatcol{x_1}{x_2} & = 0               \\
+                        \{\omega^{2}_i\}                                                    & = \{1, 6\}        \\
+                        \vec{v^{(1)}} = \bmatcol{1}{2} \qquad \vec{v^{(2)}}                 & = \bmatcol{-2}{1} \\
+                        \bmatcol{y_1}{y_2}                                                  &
+                        = \color{y_h} c_1 \bmatcol{1}{2}\cos(t)
+                        + c_2 \bmatcol{-2}{1}\cos\left( \sqrt{6}t \right)
+                    \end{align}
+              \item Initial conditions which guarantee $ c_1 = 0 $ or $ c_2  = 0$ are
+                    of interest, since the system oscillates purely according to one mode.
+                    \begin{align}
+                        \bmatcol{y_1(0)}{y_2(0)} & = \bmatcol{c_1 - 2c_2}{2c_1 + c_2}                                   \\
+                        y_2(0)                   & = 2\ y_1(0) \qquad \text{masses displaced in the same direction}     \\
+                        y_2(0)                   & = -0.5\ y_1(0) \qquad \text{masses displaced in opposite directions}
+                    \end{align}
+                    The above two kinds of I.C. correspond to only one mode remaining in $ \vec{y} $.
+          \end{enumerate}
+
+    \item From example 2, the system of ODEs is,
+          \begin{align}
+              I_1'          & = -4I_1 + 4I_2 + 12                                      \\
+              I_2'          & = -1.6I_1 + \left( 1.6 - \frac{1}{10C} \right) I_2 + 4.8 \\
+              \vec{A}       & = \bmattt{-4}{4}{-1.6}{(1.6 - 0.1/C)}                    \\
+              \{\lambda_i\} & = \frac{-(24C + 1) \pm \sqrt{576C^2 - 112C + 1}}{20C}
+          \end{align}
+          %   \begin{figure}[H]
+          %       \centering
+          %       \begin{tikzpicture}[
+          %               declare function = {
+          %                       sqin = (576*x^(2) - 112*x + 1)^(0.5);
+          %                       y_1 = (-24*x - 1 - sqin) / (20*x);
+          %                       y_2 = (-24*x - 1 + sqin) / (20*x);
+          %                   }
+          %           ]
+          %           \begin{axis}[
+          %                   ylabel = Eigenvalue,
+          %                   xlabel = Capacitance $ (C) $ in $ \unit{farad} $,
+          %                   domain = 0.186:5,
+          %                   legend pos = north east,
+          %                   grid = both,
+          %                   Ani,
+          %               ]
+          %               \addplot[GraphSmooth, color = y_h]{y_1};
+          %               \addlegendentry{$\lambda_2$};
+          %               \addplot[GraphSmooth, color = y_p]{y_2};
+          %               \addlegendentry{$\lambda_1$};
+          %           \end{axis}
+          %       \end{tikzpicture}
+          %   \end{figure}
+          From the CAS, letting capacitance approach infinity gives
+          \begin{align}
+              \lim_{C \rightarrow \infty}\lambda_1 & = 0^{-}    &
+              \lim_{C \rightarrow \infty}\lambda_2 & = -2.4^{+}
+          \end{align}
+\end{enumerate}

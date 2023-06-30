@@ -1,0 +1,157 @@
+\section{Differential Operators}
+
+\begin{enumerate}
+    \item Applying the operator to the given functions,
+          \begin{align}
+              L     & = D^{2} + 2D                                          \\
+              y_{1} & = \cosh(2x)       & Ly_{1} & = 4\sinh(2x)+ 4\sinh(2x) \\
+              y_{2} & = e^{-x} + e^{2x} & Ly_{2} & = -e^{-x} + 8e^{2x}      \\
+              y_{3} & = \cos x          & Ly_{3} & = -\cos x - 2\sin x
+          \end{align}
+
+    \item Applying the operator to the given functions,
+          \begin{align}
+              L     & = D - 3I                                                       \\
+              y_{1} & = 3x^{2} + 3x           & Ly_{1} & = -3x + 3 - 9x^{2}          \\
+              y_{2} & = 3e^{3x}               & Ly_{2} & = e^{3x}(9 - 9) = 0         \\
+              y_{3} & = \cos (4x) - \sin (4x) & Ly_{3} & = -7 \cos (4x)  - \sin (4x)
+          \end{align}
+
+    \item Applying the operator to the given functions,
+          \begin{align}
+              L     & = (D - 2I)^{2} &        & = D^{2} - 4D + 4I                  \\
+              y_{1} & = e^{2x}       & Ly_{1} & = e^{2x} (4 - 8 + 4) = 0           \\
+              y_{2} & = xe^{2x}      & Ly_{2} & = e^{2x}(4 + 4x - 4 - 8x + 4x) = 0 \\
+              y_{3} & = e^{-2x}      & Ly_{3} & = e^{-2x}(4 + 8 + 4) = 16e^{-2x}
+          \end{align}
+
+    \item Applying the operator to the given functions,
+          \begin{align}
+              L     & = (D + 6I)^{2}  &        & = D^{2} + 12D + 36I                      \\
+              y_{1} & = 6x + \sin(6x) & Ly_{1} & = 72 + 216x + 72\cos(6x)                 \\
+              y_{2} & = xe^{-6x}      & Ly_{2} & = e^{-6x}(36x - 12 + 12 - 72x + 36x) = 0
+          \end{align}
+
+    \item Applying the operator to the given functions,
+          \begin{align}
+              L     & = (D - 2I)(D + 3I) &        & = D^{2} + D - 6I                         \\
+              y_{1} & = e^{2x}           & Ly_{1} & = e^{2x} (4 + 2 - 6) = 0                 \\
+              y_{2} & = xe^{2x}          & Ly_{2} & = e^{2x}(4 + 4x + 1 + 2x - 6x) = 5e^{2x} \\
+              y_{3} & = e^{-3x}          & Ly_{3} & = e^{-3x}(9 - 3 - 6) = 0
+          \end{align}
+
+    \item Factorising $ P(D) $ and solving,
+          \begin{align}
+              P(D)y       & = 0                                                                & (D^{2} + 4D + 3.36I)y & = 0         \\
+              0           & = \left( D + \frac{6}{5}I \right)\left( D + \frac{14}{5}I \right)y                                       \\
+              \lambda_{1} & = -6/5                                                             & y_{1}                 & = e^{-1.2x} \\
+              \lambda_{2} & = -14/5                                                            & y_{2}                 & = e^{-2.8x} \\
+              y           & = c_{1}e^{-1.2x} + c_{2}e^{-2.8x}
+          \end{align}
+
+    \item Factorising $ P(D) $ and solving,
+          \begin{align}
+              P(D)y                                       & = 0                              & (4D^{2} - I)y & = 0         \\
+              \left( 2D + I \right)\left( 2D - I \right)y & = 0                                                            \\
+              \lambda_{1}                                 & = -1/2                           & y_{1}         & = e^{-0.5x} \\
+              \lambda_{2}                                 & = 1/2                            & y_{2}         & = e^{0.5x}  \\
+              y                                           & = c_{1}e^{-0.5x} + c_{2}e^{0.5x}
+          \end{align}
+
+    \item Factorising $ P(D) $ and solving,
+          \begin{align}
+              P(D)y                             & = 0                                           & (D^{2} + 3I)y & = 0               \\
+              (D + i\sqrt{3}I)(D - i\sqrt{3}I)y & = 0                                                                               \\
+              \lambda_{1}                       & = -i\sqrt{3}                                  & y_{1}         & = e^{-i\sqrt{3}x} \\
+              \lambda_{2}                       & = i\sqrt{3}                                   & y_{2}         & = e^{i\sqrt{3}x}  \\
+              y                                 & = c_{1}\cos(\sqrt{3}x) + c_{2}\sin(\sqrt{3}x)
+          \end{align}
+
+    \item Factorising $ P(D) $ and solving,
+          \begin{align}
+              P(D)y           & = 0                        & (D^{2} - 4.2D + 4.41I)y & = 0         \\
+              (D - 2.1I)^{2}y & = 0                                                                \\
+              \lambda_{1}     & = 2.1                      & y_{1}                   & = e^{2.1x}  \\
+              \lambda_{2}     & = 2.1                      & y_{2}                   & = xe^{2.1x} \\
+              y               & = (c_{1} + c_{2}x)e^{2.1x}
+          \end{align}
+
+    \item Factorising $ P(D) $ and solving,
+          \begin{align}
+              P(D)y                                 & = 0                         & (D^{2} + 4.8D + 5.76I)y & = 0          \\
+              \left( D + \frac{12}{5}I \right)^{2}y & = 0                                                                  \\
+              \lambda_{1}                           & = -2.4                      & y_{1}                   & = e^{-2.4x}  \\
+              \lambda_{2}                           & = -2.4                      & y_{2}                   & = xe^{-2.4x} \\
+              y                                     & = (c_{1} + c_{2}x)e^{-2.4x}
+          \end{align}
+
+    \item Factorising $ P(D) $ and solving,
+          \begin{align}
+              P(D)y                                                             & = 0                             & (D^{2} - 4D + 3.84I)y & = 0        \\
+              \left( D - \frac{12}{5}I \right) \left( D - \frac{8}{5}I \right)y & = 0                                                                  \\
+              \lambda_{1}                                                       & = 2.4                           & y_{1}                 & = e^{2.4x} \\
+              \lambda_{2}                                                       & = 1.6                           & y_{2}                 & = e^{1.6x} \\
+              y                                                                 & = c_{1}e^{1.6x} + c_{2}e^{2.4x}
+          \end{align}
+
+    \item Factorising $ P(D) $ and solving,
+          \begin{align}
+              P(D)y       & = 0                                                                                        & 0     & = (D^{2} + 3D + 2.5I)y  \\
+              0           & = \left( D + \frac{3}{2} - \frac{i}{2} \right)\left( D + \frac{3}{2} + \frac{i}{2} \right)                                   \\
+              \lambda_{1} & = - \frac{3}{2} + \frac{i}{2}                                                              & y_{1} & = e^{-1.5x}e^{i\ 0.5x}  \\
+              \lambda_{2} & = - \frac{3}{2} - \frac{i}{2}                                                              & y_{2} & = e^{-1.5x}e^{-i\ 0.5x} \\
+              y           & = [c_{1}\cos(x/2) + c_{2}\sin(x/2)]e^{-1.5x}
+          \end{align}
+
+    \item To illustrate the linearity of $ L $,
+          \begin{align}
+              c            & = 4                                 & k & = -6                 \\
+              y            & = e^{2x}                            & w & = \cos(2x)           \\
+              \mathcal{L}y & = P(D)y                             &   & = (D^{2} + aD + bI)y \\
+              L(cy + kw)   & = L[4e^{2x} -6 \cos(2x)]                                       \\
+                           & = 16e^{2x} + 24\cos (2x) \nonumber                             \\
+                           & + 8ae^{2x} + 12a \sin(2x) \nonumber                            \\
+                           & + 4be^{2x} - 6b \cos(2x)                                       \\
+                           & = c\ \mathcal{L}y+ k\ \mathcal{L}w
+          \end{align}
+          For the general case, using the linearity of the $ D^{n} $ and $ I $ operators,
+          \begin{align}
+              L(cy + kw) & = D^{2}(cy + kw) + aD(cy + kw) + bI(cy + kw)    \\
+                         & = (D^{2} + aD + bI)\ cy + (D^{2} + aD + bI)\ kw \\
+                         & = L(cy) + L(kw)                                 \\
+                         & = c\ \mathcal{L}y+ k\ \mathcal{L}w
+          \end{align}
+
+    \item Testing the given solution, if the ODE has roots $ \mu $ and $ \lambda $,
+          \begin{align}
+              0 & =   D^{2} + aD + bI                                                   \\
+              0 & = (D - \mu I)(D - \lambda I )                                         \\
+              y & = \frac{e^{\mu x} - e^{\lambda x}}{\mu - \lambda}                     \\
+              0 & = \frac{\mu ^{2}e^{\mu x} - \lambda ^{2}e^{\lambda x}}{\mu - \lambda}
+              +  a\left( \frac{\mu e^{\mu x} - \lambda e^{\lambda x}}{\mu - \lambda} \right)
+              +  b \left( \frac{e^{\mu x} - e^{\lambda x}}{\mu - \lambda} \right)       \\
+              0 & = \frac{e^{\mu x}(\mu ^{2} + a\mu + b)}{\mu - \lambda}
+              + \frac{e^{\lambda x}(\lambda ^{2} + a\lambda + b)}{\mu - \lambda}        \\
+                & = 0 + 0
+          \end{align}
+          Proving the relation for repeated roots, (here the variable is $ a = \mu - \lambda$),
+          \begin{align}
+              \lim_{\mu \rightarrow \lambda} \frac{e^{\mu x} - e^{\lambda x}}{\mu - \lambda} & =
+              \lim_{a \rightarrow 0} \frac{e^{\lambda x} (e^{ax} - 1)}{a}                                                                               \\
+                                                                                             & = \lim_{a \rightarrow 0} \diff*{(e^{\lambda x + ax})}{a} \\
+                                                                                             & = x\ e^{\lambda x + ax}                                  \\
+                                                                                             & = xe^{\mu x}
+          \end{align}
+          Thus, the second root is $ xe^{\mu x} $, using L'Hopital rule.
+
+    \item To prove linearity of $ L $,
+          \begin{align}
+              L = P(D)   & = D^{2} + aD + bI                                \\
+              L(cy + kw) & = D^{2}(cy + kw) + aD(cy + kw) + bI(cy + kw)     \\
+                         & = D^{2} + aD + bI (cy) + v\ (kw)                 \\
+                         & = c\ (D^{2} + aD + bI)y + k\ (D^{2} + aD + bI) w \\
+                         & = c\ \mathcal{L}y+k\ \mathcal{L}w
+          \end{align}
+          Since the differential operators $ D^{n} $ are linear operators, their composition
+          $ L $ is also linear.
+\end{enumerate}

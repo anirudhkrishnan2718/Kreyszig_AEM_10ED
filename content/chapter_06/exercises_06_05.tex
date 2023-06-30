@@ -1,0 +1,449 @@
+\section{Convolution, Integral Equations}
+\begin{enumerate}
+    \item Finding convolution using the integral definition,
+          \begin{align}
+              1 * 1 & = \int_{0}^{t} f(r)\ g(t - r)\ \dl r &
+                    & = \int_{0}^{t} (1)(1)\ \dl r           \\
+                    & = \Big[ r \Big]_0^t                  &
+                    & = t
+          \end{align}
+
+    \item Finding convolution using the integral definition,
+          \begin{align}
+              1 * \sin(\omega t) & = \int_{0}^{t} f(r)\ g(t - r)\ \dl r    &
+                                 & = \int_{0}^{t} \sin(\omega r)(1)\ \dl r   \\
+                                 & = \Big[ \frac{\cos(\omega r)}{\omega}
+              \Big]_t^0          &
+                                 & = \frac{1 - \cos(\omega t)}{\omega}
+          \end{align}
+
+    \item Finding convolution using the integral definition,
+          \begin{align}
+              e^t * e^{-t} & = \int_{0}^{t} f(r)\ g(t - r)\ \dl r         &
+                           & = \int_{0}^{t} e^{r}\ e^{r - t}\ \dl r         \\
+                           & = e^{-t}\ \Bigg[ \frac{e^{2r}}{2} \Bigg]_0^t &
+                           & = \sinh(t)
+          \end{align}
+
+    \item Finding convolution using the integral definition,
+          \begin{align}
+              \cos(\omega t)
+              * \cos(\omega t) & = \int_{0}^{t} f(r)\ g(t - r)\ \dl r             \\
+                               & = \int_{0}^{t} \cos(\omega r)\
+              \cos(\omega t - \omega r)\ \dl r                                    \\
+                               & = \frac{1}{2}\int_{0}^{t} [\cos(\omega t)
+              + \cos(2\omega r - \omega t)]\ \dl r                                \\
+                               & = \Bigg[ \frac{r\cos(\omega t)}{2}
+              + \frac{\sin(2\omega r - \omega t)}{4\omega} \Bigg]_0^t             \\
+                               & = \frac{\omega t\cos(\omega t) + \sin(\omega t)}
+              {2\omega}
+          \end{align}
+
+    \item Finding convolution using the integral definition,
+          \begin{align}
+              \sin(\omega t)
+              * \cos(\omega t) & = \int_{0}^{t} f(r)\ g(t - r)\ \dl r      \\
+                               & = \int_{0}^{t} \sin(\omega r)\
+              \cos(\omega t - \omega r)\ \dl r                             \\
+                               & = \frac{1}{2}\int_{0}^{t} [\sin(\omega t)
+              + \sin(2\omega r - \omega t)]\ \dl r                         \\
+                               & = \Bigg[ \frac{r\sin(\omega t)}{2}
+              - \frac{\cos(2\omega r - \omega t)}{4\omega} \Bigg]_0^t      \\
+                               & = \frac{t\sin(\omega t)}{2}
+          \end{align}
+
+    \item Finding convolution using the integral definition,
+          \begin{align}
+              e^{at} * e^{bt} & = \int_{0}^{t} f(r)\ g(t - r)\ \dl r                 &
+                              & = \int_{0}^{t} e^{ar}\ e^{bt - br}\ \dl r              \\
+                              & = e^{bt}\int_{0}^{t} e^{(a-b)r}\ \dl r               &
+                              & = \Bigg[ \frac{e^{bt}}{(a-b)}\ e^{(a-b)r} \Bigg]_0^t   \\
+                              & = \frac{e^{at} - e^{bt}}{(a-b)}
+          \end{align}
+
+    \item Finding convolution using the integral definition,
+          \begin{align}
+              t * e^{t} & = \int_{0}^{t} f(r)\ g(t - r)\ \dl r  &
+                        & = \int_{0}^{t} r\ e^{t - r}\ \dl r      \\
+                        & = e^{t}\int_{0}^{t} r\ e^{-r}\ \dl r  &
+                        & = e^t \Bigg[ -e^{-r} (1+r) \Bigg]_0^t   \\
+                        & = -(1+t) + e^t
+          \end{align}
+
+    \item Using convolution to solve the integral equation,
+          \begin{align}
+              2t            & = y(t) + 4 \int_{0}^{t} y(r)\ (t-r)\ \dl r   \\
+              f(t)          & = y(t)                                     &
+              g(t)          & = t                                          \\
+              F(s)          & = Y                                        &
+              G(s)          & = \frac{1}{s^2}                              \\
+              \frac{2}{s^2} & = Y + \frac{4Y}{s^2}                       &
+              Y             & = \color{y_p} \frac{2}{s^2 + 4}              \\
+              y(t)          & = \color{y_h} \sin(2t)
+          \end{align}
+
+    \item Using convolution to solve the integral equation,
+          \begin{align}
+              1           & = y(t) - \int_{0}^{t} y(r)\ \dl r   \\
+              f(t)        & = y(t)                            &
+              g(t)        & = 1                                 \\
+              F(s)        & = Y                               &
+              G(s)        & = \frac{1}{s}                       \\
+              \frac{1}{s} & = Y - \frac{Y}{s}                 &
+              Y           & = \color{y_p} \frac{1}{s - 1}       \\
+              y(t)        & = \color{y_h} e^{t}
+          \end{align}
+
+    \item Using convolution to solve the integral equation,
+          \begin{align}
+              \sin(2t)          & = y(t) - \int_{0}^{t} y(r)\ \sin(2t - 2r)\ \dl r   \\
+              f(t)              & = y(t)                                           &
+              g(t)              & = \sin(2t)                                         \\
+              F(s)              & = Y                                              &
+              G(s)              & = \frac{2}{s^2 + 4}                                \\
+              \frac{2}{s^2 + 4} & = Y - \frac{2Y}{s^2 + 4}                         &
+              Y                 & = \color{y_p} \frac{2}{s^2 + 2}                    \\
+              y(t)              & = \color{y_h} \sqrt{2}\sin(\sqrt{2}t)
+          \end{align}
+
+    \item Using convolution to solve the integral equation,
+          \begin{align}
+              1           & = y(t) + \int_{0}^{t} y(r)\ (t - r)\ \dl r   \\
+              f(t)        & = y(t)                                     &
+              g(t)        & = t                                          \\
+              F(s)        & = Y                                        &
+              G(s)        & = \frac{1}{s^2}                              \\
+              \frac{1}{s} & = Y + \frac{Y}{s^2}                        &
+              Y           & = \color{y_p} \frac{s}{s^2 + 1}              \\
+              y(t)        & = \color{y_h} \cos(t)
+          \end{align}
+
+    \item Using convolution to solve the integral equation,
+          \begin{align}
+              t + e^t           & = y(t) + \int_{0}^{t} y(r)\ \cosh(t - r)\ \dl r   \\
+              f(t)              & = y(t)                                          &
+              g(t)              & = \cosh(t)                                        \\
+              F(s)              & = Y                                             &
+              G(s)              & = \frac{s}{s^2 - 1}                               \\
+              \frac{1}{s^2}
+              + \frac{1}{(s-1)} & = Y + \frac{sY}{s^2 - 1}                        &
+              Y                 & = \color{y_p} \frac{s + 1}{s^2}                   \\
+              y(t)              & = \color{y_h} 1 + t
+          \end{align}
+
+    \item Using convolution to solve the integral equation,
+          \begin{align}
+              t e^t             & = y(t) + 2e^t\int_{0}^{t} y(r)\ e^{-r}\ \dl r   \\
+              f(t)              & = y(t)                                        &
+              g(t)              & = e^{t}                                         \\
+              F(s)              & = Y                                           &
+              G(s)              & = \frac{1}{s - 1}                               \\
+              \frac{1}{(s-1)^2} & = Y + \frac{2Y}{s - 1}                        &
+              Y                 & = \color{y_p} \frac{1}{(s-1)(s + 1)}            \\
+              y(t)              & = \color{y_h} \sinh(t)
+          \end{align}
+
+    \item Using convolution to solve the integral equation,
+          \begin{align}
+              2 - \frac{t^2}{2} & = y(t)  - \int_{0}^{t} y(r)\ (t - r)\ \dl r   \\
+              f(t)              & = y(t)                                      &
+              g(t)              & = t                                           \\
+              F(s)              & = Y                                         &
+              G(s)              & = \frac{1}{s^2}                               \\
+              \frac{2}{s}
+              - \frac{1}{s^3}   & = Y - \frac{Y}{s^2}                         &
+              Y                 & =  \frac{(2s^2 - 1)}{s(s^2 - 1)}              \\
+              Y                 & = \color{y_p} \frac{1}{s} + \frac{0.5}{s+1}
+              + \frac{0.5}{s-1} &
+              y(t)              & = \color{y_h} 1 + \cosh(t)
+          \end{align}
+
+    \item Variation of parameter $ k $,
+          \begin{enumerate}
+              \item Solving the general integral equation
+                    \begin{align}
+                        t e^t                     & = y(t) + ke^t\int_{0}^{t}
+                        y(r)\ e^{-r}
+                        \ \dl r                                                       \\
+                        f(t)                      & = y(t)                          &
+                        g(t)                      & = e^{t}                           \\
+                        F(s)                      & = Y                             &
+                        G(s)                      & = \frac{1}{s - 1}                 \\
+                        \frac{1}{(s-1)^2}         & = Y + \frac{kY}{s - 1}          &
+                        Y                         & = \frac{1}{(s-1)(s - 1 + k)}      \\
+                        Y                         & = \color{y_p} \frac{(1/k)}{s-1}
+                        - \frac{(1/k)}{s - 1 + k} &
+                        y                         & = \color{y_h} \frac{e^{t}
+                            - e^{(1-k)t}}{k}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        j(\k, \x) = (1/\k) * (e^(\x) - e^(\x - \k*\x));
+                                    }
+                            ]
+                            \begin{axis}[
+                                    legend pos = south west,
+                                    grid = both,
+                                    Ani,
+                                    % restrict y to domain = -2:1,
+                                    domain = -4:0,
+                                ]
+                                \foreach [evaluate=\k as \n using (\k + 2.3)*100/(0.5)]
+                                \k in {-2.3, -2.2,...,-1.8}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot[
+                                                samples = 200,
+                                                color=blue!\n!red, thin,
+                                            ] {j(\k, x)};
+                                            \noexpand \addlegendentry{$ k = $
+                                                \pgfmathprintnumber[precision = 1]{\k}};
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        j(\k, \x) = (1/\k) * (e^(\x) - e^(\x - \k*\x));
+                                    }
+                            ]
+                            \begin{axis}[
+                                    legend pos = north west,
+                                    grid = both,
+                                    Ani,
+                                    % restrict y to domain = -2:1,
+                                    domain = 0:1,
+                                ]
+                                \foreach [evaluate=\k as \n using (\k + 2.3)*100/(0.5)]
+                                \k in {-2.3, -2.2,...,-1.8}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot[
+                                                samples = 200,
+                                                color=blue!\n!red, thin,
+                                            ] {j(\k, x)};
+                                            \noexpand \addlegendentry{$ k = $
+                                                \pgfmathprintnumber[precision = 1]{\k}};
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item TBC. I suspect the changes are gradual and nothing drastic happens in
+                    the other integral equations as well.
+          \end{enumerate}
+
+    \item Proving properties of convolution,
+          \begin{enumerate}
+              \item Commutativity, with $ p = t-r $
+                    \begin{align}
+                        g * f & = \int_{0}^{t} g(r)\ f(t - r)\ \dl r       \\
+                              & = \int_{t}^{0} g(t - p)\ f(p)\ \dl (t - p) \\
+                              & = \int_{0}^{t} f(p)\ g(t-p)\ \dl p         \\
+                              & = f * g
+                    \end{align}
+              \item Associativity, with $ p = t-r $
+                    \begin{align}
+                        (f * g) * \nu & = \int_{p=0}^{t}\Bigg[ \int_{r=0}^{p} f(r)
+                        \ g(p-r) \dl r \Bigg] \nu(t-p) \dl p                          \\
+                                      & = \iint_{0 \leq r \leq p \leq t}
+                        f(r) \ g(p-r)\ \nu(t-p)\ \dl r \dl p                          \\
+                                      & = \int_{r=0}^{t} f(r) \int_{p=r}^{t} g(p - r)
+                        \ \nu(t - p)\ \dl p \dl r                                     \\
+                                      & = \int_{r=0}^{t} f(r) \int_{p=0}^{t-r} g(p)
+                        \ \nu(t - r - p)\ \dl p \dl r                                 \\
+                                      & = \int_{r=0}^{t} [f(r)]\ [(g * \nu)(t - r)]
+                        \dl r                                                         \\
+                                      & = f * (g * \nu)
+                    \end{align}
+
+              \item Distributivity, using the fact that integration is a linear
+                    operation,
+                    \begin{align}
+                        f * (g_1 + g_2) & = \int_{0}^{t} f(r)\ [(g_1 + g_2)(t-r)]
+                        \ \dl r                                                   \\
+                                        & = \int_{0}^{t} f(r)\ g_1(t-r)\ \dl r
+                        + \int_{0}^{t} f(r)\ g_2(t-r)\ \dl r                      \\
+                                        & = f * g_1 + f * g_2
+                    \end{align}
+
+              \item Dirac's delta function,
+                    \begin{align}
+                        f_k(t)        & = \begin{dcases}
+                                              1/k & t \in [0, k]     \\
+                                              0   & \text{otherwise}
+                                          \end{dcases}              \\
+                        \int_{0}^{\infty} g(t)
+                        f_k(t)\ \dl t & = \frac{1}{k}\int_{0}^{k} g(t)\ \dl t \\
+                                      & = g(\kappa)
+                    \end{align}
+                    For some $ \kappa $ in the interval $ [0, k] $. In the limit
+                    $ k \rightarrow 0 $, this means that $ \kappa \rightarrow 0 $, and the
+                    result of the integration is $ g(0) $.
+
+              \item Unspecified driving force $ r(t) $ with Laplace transform $ R(s) $,
+                    \begin{align}
+                        y'' + \omega^2 y               & = r(t) \\
+                        y(0) = K_1 \qquad y'(0)        & = K_2  \\
+                        s^2Y - sK_1 - K_2 + \omega^2 Y & = R    \\
+                        \color{y_p} \frac{R + K_2 + sK_1}
+                        {s^2 + \omega^2}               & = Y    \\
+                        \color{y_h} \frac{1}{\omega}
+                        \left[ r(t) * \sin(\omega t) \right]
+                        + K_1 \cos(\omega t) + \frac{K_2}
+                        {\omega} \sin(\omega t)        & = y(t)
+                    \end{align}
+                    The rule $ H = FG \implies h(t) = (f * g)(t) $ is used here.
+          \end{enumerate}
+
+    \item Finding invese Laplace transform by convolution,
+          \begin{align}
+              Y     & = \color{y_p} \frac{5.5}{(s+1.5)(s-4)}              \\
+              F(s)  & = \frac{1}{(s + 1.5)}                             &
+              G(s)  & = \frac{1}{(s-4)}                                   \\
+              f(t)  & = e^{-1.5 t}                                      &
+              g(t)  & = e^{4t}                                            \\
+              f * g & = \int_{0}^{t} f(r)\ g(t-r) \dl r                 &
+                    & = \int_{0}^{t} e^{-1.5r} e^{4t - 4r} \dl r          \\
+                    & = e^{4t} \int_{0}^{t} e^{-5.5r} \dl r             &
+                    & = e^{4t} \Bigg[ \frac{e^{-5.5r}}{-5.5} \Bigg]_0^t   \\
+                    & = \frac{e^{4t} - e^{-1.5t}}{5.5}                  &
+              y     & = \color{y_h} e^{4t} - e^{-1.5t}
+          \end{align}
+
+    \item Finding invese Laplace transform by convolution,
+          \begin{align}
+              Y     & = \color{y_p} \frac{1}{(s - a)^2}         \\
+              F(s)  & = \frac{1}{(s - a)}                     &
+              G(s)  & = \frac{1}{(s - a)}                       \\
+              f(t)  & = e^{at}                                &
+              g(t)  & = e^{at}                                  \\
+              f * g & = \int_{0}^{t} f(r)\ g(t-r) \dl r       &
+                    & = \int_{0}^{t} e^{ar} e^{at - ar} \dl r   \\
+                    & = e^{at} \int_{0}^{t} (1) \dl r         &
+                    & = \color{y_h} t\ e^{at}
+          \end{align}
+
+    \item Finding invese Laplace transform by convolution,
+          \begin{align}
+              Y     & = \color{y_p} \frac{2\pi s}{(s^2 + \pi^2)^2}               \\
+              F(s)  & = \frac{2\pi}{(s^2 + \pi^2)}                             &
+              G(s)  & = \frac{s}{(s^2 + \pi^2)}                                  \\
+              f(t)  & = 2\sin(\pi t)                                           &
+              g(t)  & = \cos(\pi t)                                              \\
+              f * g & = \int_{0}^{t} f(r)\ g(t-r) \dl r                        &
+                    & = 2\int_{0}^{t} \sin(\pi r)  \cos(\pi t - \pi r) \dl r     \\
+                    & = \int_{0}^{t} [\sin(2\pi r - \pi t) + \sin(\pi t)]\dl r &
+                    & = \Bigg[ r \sin(\pi t) + \cos(\pi t - 2\pi r) \Bigg]_0^t   \\
+              y     & = \color{y_h} t\sin(\pi t)
+          \end{align}
+
+    \item Finding invese Laplace transform by convolution,
+          \begin{align}
+              Y     & = \color{y_p} \frac{9}{s(s + 3)}        \\
+              F(s)  & = \frac{1}{(s + 3)}                   &
+              G(s)  & = \frac{1}{s}                           \\
+              f(t)  & = e^{-3t}                             &
+              g(t)  & = 1                                     \\
+              f * g & = \int_{0}^{t} f(r)\ g(t-r) \dl r     &
+                    & = \int_{0}^{t} e^{-3r} \dl r            \\
+                    & = \Bigg[ \frac{e^{-3r}}{3} \Bigg]_t^0 &
+                    & = \frac{1 - e^{-3t}}{3}                 \\
+              y     & = \color{y_h} 3\ [1 - e^{-3t}]
+          \end{align}
+
+    \item Finding invese Laplace transform by convolution,
+          \begin{align}
+              Y     & = \color{y_p} \frac{\omega}{s^2(s^2 + \omega^2)}            \\
+              F(s)  & = \frac{1}{s^2}                                           &
+              G(s)  & = \frac{\omega}{s^2 + \omega^2}                             \\
+              f(t)  & = t                                                       &
+              g(t)  & = \sin(\omega t)                                            \\
+              f * g & = \int_{0}^{t} f(r)\ g(t-r) \dl r                         &
+                    & = \int_{0}^{t} (t - r)\sin(\omega r) \dl r                  \\
+                    & = \Bigg[ \frac{-t\cos(\omega r)}{\omega}
+                  + \frac{\omega r \cos(\omega r) - \sin(\omega r)}{\omega^2}
+              \Bigg]_0^t                                                          \\
+              y     & = \color{y_h} \frac{-\sin(\omega t) + \omega t}{\omega^2}
+          \end{align}
+
+    \item Finding invese Laplace transform by convolution,
+          \begin{align}
+              Y     & = \color{y_p} \frac{e^{-as}}{s(s - 2)}         \\
+              F(s)  & = \frac{e^{-as}}{s}                          &
+              G(s)  & = \frac{1}{s - 2}                              \\
+              f(t)  & = u(t-a)                                     &
+              g(t)  & = e^{2t}                                       \\
+              f * g & = \int_{0}^{t} f(r)\ g(t-r) \dl r            &
+                    & = \int_{0}^{t} u(r - a) e^{2t - 2r} \dl r      \\
+                    & = e^{2t}\int_{a}^{t} e^{-2r} \dl r           &
+                    & = e^{2t} \Bigg[ \frac{e^{-2r}}{2} \Bigg]_t^a   \\
+              y     & = \color{y_h}
+              \begin{dcases}
+                  0                        & t < a \\
+                  \frac{e^{2(t-a)} - 1}{2} & t > a
+              \end{dcases}
+          \end{align}
+
+    \item Finding invese Laplace transform by convolution,
+          \begin{align}
+              Y     & = \color{y_p} \frac{40.5}{s(s^2 - 9)}       \\
+              F(s)  & = \frac{1}{s}                             &
+              G(s)  & = \frac{3}{s^2 - 9}                         \\
+              f(t)  & = 1                                       &
+              g(t)  & = \sinh(3t)                                 \\
+              f * g & = \int_{0}^{t} f(r)\ g(t-r) \dl r         &
+                    & = \int_{0}^{t} \sinh(3r) \dl r              \\
+                    & = \Bigg[ \frac{\cosh(3r)}{3} \Bigg]_0^t   &
+              y     & = \color{y_h} \frac{27[\cosh(3t) - 1]}{6}
+          \end{align}
+
+    \item Finding invese Laplace transform by convolution,
+          \begin{align}
+              Y     & = \color{y_p} \frac{240}{(s^2 + 1)(s^2 + 25)}                    \\
+              F(s)  & = \frac{1}{s^2 + 1}                                            &
+              G(s)  & = \frac{5}{s^2 + 25}                                             \\
+              f(t)  & = \sin(t)                                                      &
+              g(t)  & = \sin(5t)                                                       \\
+              f * g & = \int_{0}^{t} f(r)\ g(t-r) \dl r                              &
+                    & = \int_{0}^{t} \sin(r)\ \sin(5t - 5r) \dl r                      \\
+                    & = 0.5\int_{0}^{t} [\cos(6r - 5t) - \cos(4r - 5t)] \dl r        &
+                    & = \Bigg[ \frac{\sin(6r - 5t)}{6} - \frac{\sin(4r - 5t)}
+              {4} \Bigg]_0^t                                                           \\
+              f * g & = \frac{\sin(t) + \sin(5t)}{12} + \frac{\sin(t) - \sin(5t)}{8} &
+              y     & = \color{y_h} 5\sin(t) - \sin(5t)
+          \end{align}
+
+    \item Finding invese Laplace transform by convolution,
+          \begin{align}
+              Y     & = \color{y_p} \frac{18s}{(s^2 + 36)^2}                                \\
+              F(s)  & = \frac{6}{s^2 + 36}                                                &
+              G(s)  & = \frac{s}{s^2 + 36}                                                  \\
+              f(t)  & = \sin(6t)                                                          &
+              g(t)  & = \cos(6t)                                                            \\
+              f * g & = \int_{0}^{t} f(r)\ g(t-r) \dl r                                   &
+                    & = \int_{0}^{t} \sin(6r)\ \cos(6t - 6r) \dl r                          \\
+                    & = 0.5\int_{0}^{t} [\sin(6t) + \sin(12r - 6t)] \dl r                 &
+                    & = \Bigg[ \frac{r\sin(6t)}{2} - \frac{\cos(12r - 6t)}{24} \Bigg]_0^t   \\
+              f * g & = \frac{t \sin(6t)}{2}                                              &
+              y     & = \color{y_h} \frac{3t\sin(6t)}{2}
+          \end{align}
+
+    \item Solving instead by partial fractions,
+          \begin{align}
+              F(s) & = \color{y_p} \frac{5.5}{(s + 1.5)(s - 4)}                   &
+                   & = \frac{1}{s - 4} - \frac{1}{s + 1.5}                          \\
+              y(t) & = \color{y_h} e^{4t} - e^{-1.5t}                               \\
+              F(s) & = \color{y_p} \frac{\omega}{s^2(s^2 + \omega^2)}             &
+                   & = \frac{1}{\omega} \left[ \frac{1}{s^2}
+              - \frac{1}{s^2 + \omega^2} \right]                                    \\
+              y(t) & = \color{y_h} \frac{\omega t - \sin(\omega t)}{\omega^2}       \\
+              F(s) & = \color{y_p} \frac{40.5}{s(s^2 - 9)}                        &
+                   & = \frac{-4.5}{s} + \frac{(9/4)}{s + 3} + \frac{(9/4)}{s - 3}   \\
+              y(t) & = \color{y_h} 4.5[-1 + \cosh(3t)]
+          \end{align}
+\end{enumerate}

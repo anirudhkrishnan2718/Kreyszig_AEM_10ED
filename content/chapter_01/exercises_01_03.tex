@@ -1,0 +1,1080 @@
+\section{Separable ODEs. Modeling}
+
+\begin{enumerate}
+    \item Adding the constant of integration later might result in a vastly different general solution which is almost always wrong.
+          \stepcounter{equation}
+
+    \item Using $u = y/x$. Then substituting $(1 + u^{4}) = m$
+
+          \begin{align}
+              y'                               & = \frac{-x^{3}}{y^{3}} = \frac{-1}{u^{3}}      \\
+              \frac{du}{f(u) - u}              & =  \frac{dx}{x} = \frac{-u^{3}\ du}{1 + u^{4}} \\
+              \ln (|x|) + b                    & = \int \frac{-dm}{4m} = \frac{-1}{4} \ln m     \\
+              1 + \left(\frac{y}{x}\right)^{4} & = \frac{c}{x^{4}}                              \\
+              y^{4}                            & = c - x^{4}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north east]
+                      \addplot [GraphSmooth, domain=-5:5]
+                      {(1 - x^(4))^(1/4)};
+                      \node[GraphNode, label={270:{(0, 1)}}]
+                      at (axis cs:0,1) {};
+                      \addlegendentry{$(1 - x^{4})^{1/4}$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              4y^{3}\ \dl y     & = -4x^{3} dx \\
+              y^{3}\ y' + x^{3} & = 0
+          \end{align}
+
+
+    \item Separating variables,
+
+          \begin{align}
+              \int \cos ^{2}y\ \dl y                        & = \int \ \dl x \\
+              \int \frac{1}{2} + \frac{\cos (2y)}{2}\ \dl y & = \int \ \dl x \\
+              \frac{y}{2} + \frac{\sin (2y)}{4}             & =  x + c
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[PiStyleY, Ani, grid=both, legend pos = north west, trig format plots = rad]
+                      \addplot [GraphSmooth, domain=-pi:pi]
+                      ({x/2 + sin(2*x)/4}, {x});
+                      \node[GraphNode, label={270:{(0, 0)}}]
+                      at (axis cs:0,0) {};
+                      \addlegendentry{$x = y/2 + \sin(2y)/4$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              dx & = \frac{(1 + \cos(2y))\ dy}{2} \\
+              y' & = \sec ^{2}y
+          \end{align}
+
+
+    \item Separating variables, with $u = \sin(2 \pi x)$
+
+          \begin{align}
+              \int \frac{1}{y} \ \dl y & = \pi \int \frac{\cos(2 \pi x)}{\sin (2 \pi x)}\ \dl x \\
+              du                       & = 2 \pi \cos(2 \pi x)\ \dl x                           \\
+              \int \frac{2}{y}\ \dl y  & = \int \frac{1}{u}\ du                                 \\
+              2 \ln |y|                & =  \ln |u| + b                                         \\
+              y^{2}                    & = c\ |\sin(2 \pi x)|
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west, trig format plots = rad]
+                      \addplot [GraphSmooth, domain=-0.5:0.5, samples = 201]
+                      {(abs(sin(2 * pi * x)))^0.5};
+                      \node[GraphNode, label={0:{(0, 0)}}]
+                      at (axis cs:0,0) {};
+                      \addlegendentry{$\sqrt{ |\sin(2 \pi x)| }$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              y' & = \begin{dcases}
+                         \frac{\pi \ \cos(2 \pi x)}{\sqrt{\sin (2 \pi x)}} =  \frac{\pi y \ \cos(2 \pi x)}{\sin (2 \pi x)}      & \mathrm{for} \quad x >= 0 \\
+                         \frac{-\pi \ \cos(-2 \pi x)}{\sqrt{\sin (-2 \pi x)}} =  \frac{-\pi y \ \cos(2 \pi x)}{\sin (-2 \pi x)} & \mathrm{for} \quad  x < 0 \\
+                     \end{dcases}
+          \end{align}
+
+
+    \item Separating variables,
+
+          \begin{align}
+              \int y\ \dl y   & = -36 \int x\ \dl x \\
+              y^{2} + 36x^{2} & =  c
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west,                           xticklabel style={/pgf/number format/fixed}, axis equal]
+                      \addplot [GraphSmooth, domain=-pi:pi, variable=\t]
+                      ({sin(t)/6}, {cos(t)});
+                      \addlegendentry{$y^{2} + 36x^{2} = 1$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              2y\ y'      & = -72x\ \dl x \\
+              y\ y' + 36x & = 0
+          \end{align}
+
+
+    \item Separating variables,
+
+          \begin{align}
+              \int \frac{1}{y^2}\ \dl y & = \int \exp(2x - 1)\ \dl x   \\
+              \frac{-1}{y}              & = \frac{\exp(2x - 1)}{2} + b \\
+              y                         & =  \frac{-2}{c + e^{(2x-1)}}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = south east]
+                      \addplot [GraphSmooth, domain=-1:2]
+                      {-2 * (e^(2*x - 1))^(-1)};
+                      \node[GraphNode, label={270:{(1/2, -2)}}]
+                      at (axis cs:1/2,-2) {};
+                      \addlegendentry{$-2/\exp(2x-1)$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              y' & = \frac{4\ e^{(2x-1)}}{(c + e^{(2x-1)})^{2}} \\
+              y' & = y^{2}\ e^{(2x-1)}
+          \end{align}
+
+
+    \item Using $u = y/x$.
+
+          \begin{align}
+              y'                            & = u + \frac{2 y^{2}}{u^{2}} \sin^{2} u        \\
+              x\ du + u\ \dl x              & = (u + x^{2} \sin ^{2} u )\ \dl x             \\
+              \int \frac{1}{\sin ^{2}u}\ du & = \int x\ \dl x                               \\
+              - \cot u                      & = \frac{x^{2}}{2} + b                         \\
+              y                             & = x\ \arctan \left(\frac{2}{c - x^{2}}\right)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north east]
+                      \addplot [GraphSmooth, domain=-20:20]
+                      {x * atan(2 / (-1*x*x))};
+                      \node[GraphNode, label={0:{(0, 0)}}]
+                      at (axis cs:0,0) {};
+                      \addlegendentry{$x\ \arctan \frac{2}{c-x^{2}}$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              y' & = \arctan \left(\frac{2}{c - x^{2}}\right) + \frac{x\ (c - x^{2})^{2}}{4 + (c - x^{2})^{2}} \times \frac{4x}{(c - x^{2})^{2}}                    \\
+              y' & = \frac{y}{x} + x^{2}\ \frac{4}{4 + (c - x^{2})^{2}}                                                                                             \\
+              y' & = \frac{y}{x} + x^{2} \ \sin ^{2} \left[\arctan\left(\frac{2}{c - x^{2}}\right)\right] = \frac{y}{x} + x^{2}\ \sin ^{2} \left(\frac{y}{x}\right)
+          \end{align}
+
+
+    \item Using $u = y + 4x$.
+
+          \begin{align}
+              u' - 4                                       & = u^{2}                \\
+              \int \frac{1}{4 + u^{2}}\ du                 & = \int \ \dl x         \\
+              \frac{1}{2} \arctan \left(\frac{u}{2}\right) & = x + b                \\
+              y                                            & = 2 \tan (2x + c) - 4x
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west,
+                          trig format plots = rad]
+                      \addplot [GraphSmooth, domain=-pi/4.01:pi/4.01, samples = 201]
+                      {2 * tan(2*x) - 4*x};
+                      \node[GraphNode, label={270:{(0, 0)}}]
+                      at (axis cs:0,0) {};
+                      \addlegendentry{$2 \tan (2x) - 4x$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              y' & = -4 + \frac{4}{\cos ^{2}(2x + c)}                                     \\
+              y' & = 4 \frac{\sin ^{2}(2x + c)}{\cos ^{2}(2x + c)}  = (2 \tan (2x+c))^{2} \\
+              y' & = (y + 4x)^{2}
+          \end{align}
+
+
+    \item Using $u = y/x$.
+
+          \begin{align}
+              y'                       & = xu^{2} + u = u + xu'                  \\
+              \int \frac{1}{u^{2}}\ du & = \int \ \dl x                          \\
+              \frac{-1}{u}             & = x + b = \frac{-x}{y}                  \\
+              y                        & = \frac{-x}{x + c} = \frac{-1}{1 + c/x}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west,
+                          trig format plots = rad, restrict y to domain = -100:100]
+                      \addplot [GraphSmooth, domain=-2.5:0.5, samples = 200,
+                      ]
+                      {-x / (x + 1)};
+                      \node[GraphNode, label={270:{(0, 0)}}]
+                      at (axis cs:0,0) {};
+                      \addlegendentry{$-x / (x + 1)$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+
+          \begin{align}
+              xy'       & = \frac{-cx}{(x+c)^{2}}                 \\
+              y + y^{2} & = \frac{-x^{2} + x^{2} - cx}{(x+c)^{2}} \\
+              xy'       & = y + y^{2}
+          \end{align}
+
+
+    \item Using $u = y/x$.
+
+          \begin{align}
+              y'       & = 1 + u = u + xu'         \\
+              \int\ du & = \int \frac{1}{x}\ \dl x \\
+              u        & = \ln |x| + b             \\
+              y        & = x \ln |x| + cx
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west,
+                          trig format plots = rad]
+                      \addplot [GraphSmooth, domain=-1:1, samples = 100
+                      ]
+                      {x * ln(abs(x)) + x};
+                      \node[GraphNode, label={45:{(0, 0)}}]
+                      at (axis cs:0,0) {};
+                      \addlegendentry{$x\ (\ln|x| + 1)$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              xy'   & = xc + x\ln |x| + x \\
+              x + y & = xy'
+          \end{align}
+
+
+    \item Given IC is $y(4) = 6$
+
+          \begin{align}
+              y'                        & = \frac{-y}{x}                                           \\
+              \int \frac{-1}{y} \ \dl y & = \int \frac{1}{x} \ \dl x                               \\
+              \ln |y|                   & = -\ln |x|  - b                                          \\
+              |y|                       & = \frac{c}{ |x| }                                        \\
+              c                         & = 24                       & \implies y & = \frac{24}{x}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west,
+                          trig format plots = rad]
+                      \addplot [GraphSmooth, domain=-8:8, samples = 200,
+                          restrict y to domain = -100:100]
+                      {24/x};
+                      \node[GraphNode, label={45:{(4, 6)}}]
+                      at (axis cs:4, 6) {};
+                      \addlegendentry{$24 / x$}
+                      \addplot [GraphSmooth, domain=-8:8, samples = 200,
+                          restrict y to domain = -100:100, dashed]
+                      {-24/x};
+                      \node[GraphNode, label={45:{(4, 6)}}]
+                      at (axis cs:4, 6) {};
+                      \addlegendentry{$-24 / x$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              y            & = \frac{24}{x}      \\
+              y'           & = \frac{-24}{x^2}   \\
+              \frac{-y}{x} & = \frac{-24}{x^{2}}
+          \end{align}
+
+
+    \item Given IC is $y(1) = 0$
+
+          \begin{align}
+              y'                                 & = 1 + 4y^{2}             \\
+              \int \frac{1}{y^{2} + 1/4} \ \dl y & = \int 4 \ \dl x         \\
+              2 \arctan(2y)                      & = 4x + c                 \\
+              c                                  & = -4                     \\
+              y                                  & =\frac{\tan (2x - 2)}{2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west,
+                          trig format plots = rad, restrict y to domain = -100:100]
+                      \addplot [GraphSmooth, domain=1 - pi/4:1 + pi/4, samples = 200,
+                          restrict y to domain = -100:100]
+                      {0.5 * tan(2*x - 2)};
+                      \node[GraphNode, label={45:{(1, 0)}}]
+                      at (axis cs:1, 0) {};
+                      \addlegendentry{$24 / x$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              1 + 4y^{2} & = 1 + \tan ^{2} (2x - 2) = \sec ^{2} (2x - 2) \\
+              y'         & = \sec^{2} (2x - 2)
+          \end{align}
+
+
+    \item Given IC is $y(0) = \pi / 2$
+
+          \begin{align}
+              \int \frac{1}{\sin ^{2}y} \ \dl y & = \int \frac{1}{\cosh ^{2}x} \ \dl x          \\
+              -\cot y                           & = \tanh x + c                                 \\
+              y                                 & = \arctan \left(\frac{-1}{\tanh x + c}\right) \\
+              c                                 & = 0                                           \\
+              y                                 & = \arctan\left(\frac{-1}{\tanh x}\right)
+          \end{align}
+          Checking by differentiation and substitution,
+          \begin{align}
+              y'               & = \frac{\tanh ^{2}x}{1 + \tanh ^{2}x} \times \frac{1}{\tanh ^{2}x} \times \frac{1}{\cosh ^{2}x}                  \\
+              y' \cosh ^{2}(x) & = \frac{1}{1 + \tanh ^{2}x}                                                                                      \\
+                               & = \frac{(-1/\tanh x)^{2}}{1 + (-1/ \tanh x)^{2}} = \sin ^{2} \left[\arctan\left(\frac{-1}{\tanh x}\right)\right] \\
+                               & = \sin ^{2} y
+          \end{align}
+
+
+    \item Given IC is $r(0) = r_{0}$
+
+          \begin{align}
+              dr                       & = -2tr \ \dl t        \\
+              \int \frac{1}{r} \ \dl r & = \int -2t \ \dl t    \\
+              \ln |r|                  & = -t^{2} + b          \\
+              |r|                      & = c \exp (-t^{2})     \\
+              c                        & = r_{0}               \\
+              r                        & = r_{0} \exp (-t^{2})
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north east,
+                          trig format plots = rad, ]
+                      \addplot [GraphSmooth, domain=0:3,
+                      ]
+                      {e^(-x*x)};
+                      \node[GraphNode, label={270:{(0, $r_{0}$)}}]
+                      at (axis cs:0, 1) {};
+                      \addlegendentry{$r_{0} \exp(-t^{2})$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              r'   & = c \exp (-t^{2}) \times (-2t)  \\
+              -2tr & = (-2t) \times c \exp (-2t^{2})
+          \end{align}
+
+
+    \item Given IC is $y(2) = 3$
+
+          \begin{align}
+              \int y \ \dl y  & = \int -4x \ \dl x \\
+              \frac{y^{2}}{2} & = -2x^{2} + b      \\
+              y^{2} + 4x^{2}  & = c                \\
+              c               & = 25
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west, axis equal,
+                          trig format plots = rad,]
+                      \addplot [GraphSmooth, domain=-pi:pi, variable = \t
+                      ]
+                      ({2.5 * sin(t)}, {5*cos(t)});
+                      \node[GraphNode, label={45:{(2, 3)}}]
+                      at (axis cs:2, 3) {};
+                      \addlegendentry{$y^{2} + 4x^{2} = 25$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              2yy' + 8x & = 0             \\
+              y'        & = \frac{-4x}{y}
+          \end{align}
+
+
+    \item Given IC is $y(0) = 2$, and substituting $u = x+y-2$
+
+          \begin{align}
+              y'                          & = u^{2}  = u' - 1      \\
+              \int\ \frac{1}{1+u^{2}}\ du & = \int\ \dl x          \\
+              \arctan (u)                 & = x + c                \\
+              y                           & = 2 - x + \tan (x + c) \\
+              c                           & = 0
+          \end{align}
+          % \begin{figure}[H]
+          %     \centering
+          %     \begin{tikzpicture}
+          %         \begin{axis}[Ani, grid=both, legend pos = north east,
+          %                           %                 restrict y to domain = -25:25]
+          %             \addplot [JumpPlot, domain=-2*pi:2*pi, samples = 400
+          %             ]
+          %             {2 - x + tan(x)};
+          %             \node[GraphNode, label={45:{(0, 2)}}]
+          %             at (axis cs:0, 2) {};
+          %             \addlegendentry{$2 - x + \tan(x)$};
+          %         \end{axis}
+          %     \end{tikzpicture}
+          % \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              y'             & = -1 + \sec ^{2} (x + c) = \tan ^{2} ( x + c) \\
+              (x + y -2)^{2} & = \tan ^{2} (x + c)
+          \end{align}
+
+
+    \item Given IC is $y(1) = 0$, and substituting $u = y/x$
+
+          \begin{align}
+              y'                  & = u + 3x^{3} \cos ^{2} u = u + xu' \\
+              \int\ \sec^{2}u\ du & = \int\ 3x^{2}\ \dl x              \\
+              \tan u              & = x^{3} + c                        \\
+              y                   & = x\ \arctan (x^{3} + c)           \\
+              c                   & = -1
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north east,
+                          trig format plots = rad]
+                      \addplot [GraphSmooth, domain=-4:4, samples = 200
+                      ]
+                      {x * atan(x^3 - 1)};
+                      \node[GraphNode, label={0:{(1, 0)}}]
+                      at (axis cs:1, 0) {};
+                      \addlegendentry{$x\ \arctan(x^{3} + c)$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking by differentiation and substitution,
+          \begin{align}
+              y'                           & = \arctan (x^{3} + c) + \frac{3x^{3}}{1 + (x^{3} + c)^{2}} \\
+              xy' - y                      & = \frac{3x^{4}}{1 + (x^{3} + c)^{2}}                       \\
+              3x^{4} \times \cos ^{2}(y/x) & = 3x^{4} \times \frac{1}{1 + (x^{3} +c)^{2}}
+          \end{align}
+
+
+    \item Introducing limits into the equation
+
+          \begin{align}
+              \int\ g(y)\ \dl y                  & = \int\ f(x)\ \dl x + c                \\
+              y(x_{0})                           & = y_{0}                                \\
+              \int_{x_{0}}^{x}\ f(x) \ \dl x + c & = \int_{x_{0}}^{x} \ g(y) y'\ \dl x    \\
+                                                 & = \int_{y(x_{0})}^{y(x)} \ g(y)\ \dl y \\
+                                                 & = \int_{y_{0}}^{y} \ g(y)\ dy
+          \end{align}
+
+
+    \item Given IC is $y(t = 0) = y_{0}$ where $ t $ is the time in weeks, and $ y $ is the number of bacteria.
+
+          \begin{align}
+              \frac{dy}{dt}  & = ky                  \\
+              \ln        |y| & = kt + b              \\
+              y              & = c e^{kt} \qquad y>0 \\
+              c              & = y_{0}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west,
+                          xlabel = time ($ t $),
+                          ylabel = bacteria count ratio ($ y / y_{0} $)]
+                      \addplot [GraphSmooth, domain=0:5
+                      ]
+                      {e^(x*ln(2))};
+                      \node[GraphNode, label={90:{(0, 1)}}] at (axis cs:0, 1) {};
+                      \node[GraphNode, label={90:{(2, 4)}}] at (axis cs:2, 4) {};
+                      \node[GraphNode, label={-45:{(4, 16)}}] at (axis cs:4, 16) {};
+                      \addlegendentry{$y = y_{0}\   e^{t \ln 2 } = y_{0}2^{t}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Inserting into ODE solution,
+          \begin{align}
+              y(t = 2) & = 2y_{0}   \\
+              y(t = 4) & = 16 y_{0}
+          \end{align}
+
+
+    \item Given IC is $y(t = 0) = y_{0}$ where $ t $ is the time in weeks, and $ y $ is the number of bacteria, $ b $ is the birth rate and $ k $ is the death rate
+
+          \begin{align}
+              \frac{dy}{dt}  & = by - ky                 \\
+              \ln        |y| & = (b-k)t + c              \\
+              y              & = c e^{(b-k)t} \qquad y>0 \\
+              c              & = y_{0}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north west,
+                          xlabel = time ($ t $),
+                          ylabel = bacteria count ratio ($ y / y_{0} $)]
+                      \addplot [GraphSmooth, domain=0:2] {e^(x)};
+                      \addplot [GraphSmooth, domain=0:2, color = red] {e^(-x)};
+                      \addplot [GraphSmooth, domain=0:2, color = ForestGreen] {e^(0)};
+                      \node[GraphNode, label={90:{(0, 1)}}] at (axis cs:0, 1) {};
+                      \addlegendentry{$y = y_{0}\ e^{t}$};
+                      \addlegendentry{$y = y_{0}\ e^{-t}$};
+                      \addlegendentry{$y = y_{0}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Interpreting the results,
+          \begin{align}
+              \lim_{t \to \infty}\ y & =
+              \begin{cases}
+                  \infty & \quad \mathrm{if} \quad b>k \\
+                  0      & \quad \mathrm{if} \quad b<k \\
+                  y_{0}  & \quad \mathrm{if} \quad b=k
+              \end{cases}
+          \end{align}
+
+
+    \item Given IC is $y(t = 0) = y_{0}$ where $ t $ is the time in years, and $ y $ is the quantity of C-14.
+          Half life of C-14 is $ T_{1/2} = 5715 $ years.
+
+          \begin{align}
+              \frac{dy}{dt}  & = - ky                  \\
+              \ln        |y| & = -kt + c               \\
+              y              & = c e^{-kt} \qquad y>0  \\
+              c              & = y_{0}                 \\
+              k              & = \frac{\ln 2}{T_{1/2}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north east,
+                          xlabel = time in years ($ t $),
+                          ylabel = C-14 ratio ($ y / y_{0} $)]
+                      \addplot [GraphSmooth, domain=0:5800] {e^(-x * (ln(2)/5715))};
+                      \node[GraphNode, label={0:{(0, 1)}}] at (axis cs:0, 1) {};
+                      \node[GraphNode, label={45:{(3000, 0.695)}}] at (axis cs:3000, 0.695) {};
+                      \addlegendentry{$y = y_{0}\ e^{-1.213 \times 10^{-4}\ t}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          After 3000 years the C-14 content is $ 69.5 \% $ of $ y_{0} $.
+
+    \item For the particle, let $ v_{0} $ be initial velocity, $ v (t) $ be the velocity at time $ t $
+          in seconds.
+
+          \begin{align}
+              \frac{dv}{dt} & = v' = k                                                                                    \\
+              v             & = kt + c                                                                                    \\
+              c             & = v_{0}                                                                                     \\
+              k             & =\frac{v - v_{0}}{t} = \frac{\num{9e3}}{\num{1e-3}} = \SI{9e6}{\meter \per \square \second}
+          \end{align}
+          In order to find the distance traveled $ s $ in time $ t $,
+          \begin{align}
+              v = \frac{ds}{dt} & = kt + v_{0}                    \\
+              s                 & = \frac{kt^{2}}{2} + v_{0}t + b \\
+              b                 & = 0                             \\
+              s                 & = 4.5 + 1 = \SI{5.5}{\meter}
+          \end{align}
+
+
+    \item At constant temperature, pressure $ p $ and volume $ V $ are related by,
+
+          \begin{align}
+              \frac{dV}{dp} = \frac{-V}{p}                           \\
+              \int\ \frac{-1}{V}\ dV       & = \int\ \frac{1}{p}\ dp \\
+              \ln \left(\frac{1}{V}\right) & = \ln p + b             \\
+              Vp                           & = c
+          \end{align}
+
+
+    \item Standard mixing problem with brine $ y $ in lb and time $ t $ in minutes
+
+          \begin{align}
+              \frac{dy}{dt}            & = 0 - \frac{2y}{400}                                                        \\
+              \int\ \frac{1}{y}\ \dl y & = \frac{-1}{200} \int\ \dl t                                                \\
+              y                        & = c e^{-t/200}                                                              \\
+              y(t = 0)                 & = 100                                                           & c & = 100 \\
+              y(t = 60)                & = 100 \times \exp \left(\frac{-60}{200}\right) = \SI{74.08}{lb}
+          \end{align}
+
+          After 1 hour, 74.08 lb of salt remains in the tank
+
+    \item Newton's law of cooling problem, with temperature $ y $ in celsius and time $ t $ in minutes
+
+          \begin{align}
+              \frac{dy}{dt}                    & = k(y - y_{A})                                              \\
+              \int\ \frac{1}{y - y_{A}}\ \dl y & = k \int\ \dl t                                             \\
+              y                                & = y_{A} + c e^{kt}                                          \\
+              y_{A}                            & = 22                 & c & = -17                            \\
+              y(t = 1)                         & = 22 - 17 e^{k} = 12 & k & = \ln \left(\frac{10}{17}\right) \\
+              21.9                             & = 22 - 17e^{kt}      & t & =9.68
+          \end{align}
+
+          For the temperature to be \SI{21.9}{\celsius}, the time taken is $ \SI{9.68}{\minute} $
+
+    \item Gompertz growth model for tumours, with time $ t $ and mass of tumour $ y $,
+
+          \begin{align}
+              \frac{dy}{dt}       & = -Ay\ln y      & A          & >0                                  \\
+              y'                  & = 0             & \implies y & = 0 \qquad \mathrm{or} \qquad y = 1 \\
+              y''                 & = -A(1 + \ln y)                                                    \\
+              \implies y''(y = 0) & >0              &            & y''(y = 1)< 0
+          \end{align}
+          $ y = 0 $ is the unstable equilibrium solution of no tumour. $ y = 1 $ is the stable equilibrium solution. On solving the ODE explicitly,
+          \begin{align}
+              \frac{dy}{dt}                 & = -Ay \ln y                                     \\
+              \int\ \frac{1}{y\ln y}\ \dl y & = -A \int\ \dl t                                \\
+              u                             & = \ln y          & du        & = \frac{dy}{y}   \\
+              \int\ \frac{du}{u}            & = -At + b        & \ln u     & = -At + b        \\
+              \ln y                         & = ce^{-At}       & y         & = \exp(ce^{-At}) \\
+              y(t = 0)                      & = e^{c}          & y_{0} > 1 & \implies c > 0
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{-y*ln(y)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = 0:5,
+                          color = gray!50,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.2,},
+                          -stealth,
+                          samples=20,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=0:5]
+                      {e^(e^(-x))};
+                      \addlegendentry{$ c = 1 $ and $A = 1$};
+                      \addplot [thick, GraphSmooth, domain=0:5, color = red]
+                      {e^(-10*e^(-x))};
+                      \addlegendentry{$ c = -10 $ and $ A = 1 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Solutions with $ y_{0} > 1 $ decay to the steady state
+          solution $ y = 1 $, whereas $ y_{0} < 1$ increases sigmoidally to the same
+          stable equilibrium value.
+
+    \item Let $ y $ be the moisture content and $ t $ be time in minutes.
+
+          \begin{align}
+              \frac{dy}{dt} & = -ky                                                 \\
+              y             & = ce^{-kt}                 & c & = y_{0}              \\
+              y(t = 10)     & = y_{0} e^{-10k} = y_{0}/2 & k & = \frac{\ln 2}{10}   \\
+              y_{0} / 100   & = y_{0} e^{-kt}            & t & = \SI{66.4}{\minute}
+          \end{align}
+
+
+    \item It will take between 60 and 70 minutes since $ 64 < 100 < 128 $ and
+          thus $ 2^{6} < 2^{t*} < 2^{7} $. $ t* = 6.64$.
+          \stepcounter{equation}
+
+    \item Using Newton's Law of cooling, consider the temperature $ y $ in
+          Fahrenheit and time $ t $ in minutes
+
+          \begin{align}
+              \frac{dy}{dt}                    & = k(y - y_{A})                                         \\
+              \int\ \frac{1}{y - y_{A}}\ \dl y & = k \int\ \dl t                                        \\
+              y                                & = y_{A} + c e^{kt}                                     \\
+              y(t = 30)                        & = y_{A} + ce^{30k}     & y(t = 40) & =y_{A} + ce^{40k} \\
+              190 - 110 = 80                   & = c(e^{30k} - e^{40k})
+          \end{align}
+
+
+          Since Newton's law of cooling specifies that the rate of cooling slows down with time,
+          $ y_{20} - y_{30} > y_{30} - y_{40}$. This means $ y_{20} > 270$ F. Since this is above
+          boiling point of water, Jack can only have been inside the bar for about 6 minutes at
+          most.
+
+    \item In the first powered stage, the distance travelled by the rocket is,
+
+          \begin{align}
+              y''       & = 7t                                               \\
+              y         & = \frac{7t^{3}}{6} + bt + c                        \\
+              y(t = 0)  & = c = 0                     & y'(t=0)    & = b = 0 \\
+              y(t = 10) & = \frac{7000}{6}            & y'(t = 10) & = 350
+          \end{align}
+          In the next stage, under the influence of only gravity ($ g = \SI{10}{\meter\per\second\squared} $),
+          the distance traveled is,
+          \begin{align}
+              y_{f} & = \frac{0^{2} - 350^{2}}{-2g} = \SI{6125}{\meter}
+          \end{align}
+
+
+          The maximum height reached by the rocket is thus, $ \SI{7291.7}{\meter} $
+
+    \item Non-vertical straight line through the origin is of the form $ y = mx $
+          for finite $ m $.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{x}
+                  \def\V{-y}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [forget plot,
+                          domain = -4:4,
+                          color = gray!50,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.25,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [forget plot,thick, JumpPlot, domain=-4:4, color = blue!30,
+                          restrict y to domain = -4:4]
+                      {1/x};
+                      \addplot [forget plot,thick, JumpPlot, domain=-4:4, color = ForestGreen!30,
+                          restrict y to domain = -4:4]
+                      {4/x};
+                      \addplot [forget plot,thick, GraphSmooth, domain=-4:4, color = red!30]
+                      {x};
+                      \addlegendimage{gray,mark size=2}
+                      \addlegendimage{blue,mark size=2}
+                      \addlegendimage{ForestGreen,mark size=2}
+                      \addlegendimage{red,mark size=2}
+                      \addlegendentry{$ y' = -y/x $};
+                      \addlegendentry{$ y = 1/x $};
+                      \addlegendentry{$ y = 4/x $};
+                      \addlegendentry{$ y = x $}
+                      \draw[red,->, thick] (axis cs:1,1) -- (axis cs:2,2);
+                      \draw[blue,->, thick] (axis cs:1,1) -- (axis cs:2,0);
+                      \draw[red,->, thick] (axis cs:2,2) -- (axis cs:3,3);
+                      \draw[ForestGreen,->, thick] (axis cs:2,2) -- (axis cs:3,1);
+                      at (axis cs:1, 1) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          Consider the set of solutions to the ODE $ y' = g(y/x) $ intersecting
+          the line $ y = mx $. $ y' = g(m) $ by definition, which means that the tangents
+          to the family of solutions to the ODE are all parallel and aligned in the direction
+          $ g(m) $. This means that the line $ y = mx $ intersects all of the solutions of the
+          ODE at the angle between the directions $ m $ and $ g(m) $.
+
+    \item Resolving the gravitational force on the block into two components along and
+          perpendicular to the inclined plane,
+
+          \begin{align}
+              N  & = mg\ \cos \alpha                  &  & \text{perpendicular to plane}                         \\
+              ma & = mg\ \sin \alpha - f              &  & \text{along plane}                                    \\
+              f  & = \mu N = \mu mg\ \cos \alpha      &  & \text{kinetic friction}                               \\
+              a  & = g(\sin \alpha - \mu \cos \alpha) &  & = 10 \left(\frac{1}{2} - \frac{0.2\sqrt{3}}{2}\right)
+          \end{align}
+          Now, given the initial velocity $ u = \SI{0}{\meter\per\second} $, and the
+          distance to slide along the plane $ s = \SI{10}{\meter} $,
+          \begin{align}
+              v^{2} & = u^{2} + 2as                                                      \\
+                    & = (1 - 0.2 \sqrt{3}) \times 100                                    \\
+              v     & = 10 \times \sqrt{1 - 0.2 \sqrt{3}} = \SI{8.08}{\meter\per\second}
+          \end{align}
+
+
+    \item Given force $ S $ and angle $ \phi $,
+
+          \begin{align}
+              \Delta S              & = kS\ \Delta \phi                                     \\
+              \int\ \frac{1}{S}\ dS & = k \int\ d\phi                                       \\
+              S                     & = ce^{k\phi}              & c    & = S_{0}            \\
+              \phi                  & = \frac{\ln (1000)}{0.15} & \phi & = 2\pi \times 7.34
+          \end{align}
+
+          Thus, 7.5 revolutions of the rope around the bollard is enough to withstand a force 1000
+          times larger on the other end of the rope (because of the nature of exponential increase).
+
+    \item \begin{enumerate}
+              \item For cirlces with center as the origin, the equation is,
+
+                    \begin{align}
+                        y^{2} + x^{2} & = r^{2}        \\
+                        2yy' + 2x     & = 0            \\
+                        y'            & = \frac{-x}{y}
+                    \end{align}
+              \item For the family of parabolas $ xy = c $,
+                    \begin{align}
+                        xy' + y & = 0            \\
+                        y'      & = \frac{-y}{x}
+                    \end{align}
+                    % \begin{figure}[H]
+                    %   \centering
+                    %   \begin{tikzpicture}
+                    %     \def\U{x}
+                    %     \def\V{-y}
+                    %     \def\LEN{sqrt(\U * \U + \V * \V)}
+                    %     \begin{axis}[
+                    %         legend pos = outer north east,
+                    %         width = 8cm,
+                    %         height = 8cm,
+                    %         Ani,
+                    %         axis equal,
+                    %         view     = {0}{90}, % for a view 'from above'
+                    %       ]
+                    %       \addplot3 [
+                    %         forget plot,
+                    %         domain = -4:4,
+                    %         color = gray!75,
+                    %         point meta = {\LEN},
+                    %         quiver={u={(\U) / \LEN},
+                    %             v={(\V) / \LEN},
+                    %             scale arrows = 0.25,},
+                    %         -stealth,
+                    %         samples=16,
+                    %       ] (x, y, 0);
+                    %       \addplot [thick, JumpPlot, domain=-4:4,
+                    %         restrict y to domain= -4:4]
+                    %       {1/x};
+                    %       \addlegendentry{$ c = 1 $};
+                    %       \addplot [thick, JumpPlot, domain=-4:4, color = red,
+                    %         restrict y to domain= -4:4]
+                    %       {-4/x};
+                    %       \addlegendentry{$ c = -4 $};
+                    %     \end{axis}
+                    %   \end{tikzpicture}
+                    % \end{figure}
+              \item For the family of straight lines passing through the origin, $ y = mx $,
+                    \begin{align}
+                        y' & = m = \frac{y}{x}
+                    \end{align}
+
+              \item The product of the RHS of these two families of curves is,
+                    \begin{align}
+                        \frac{y}{x} \times \frac{-x}{y} & = -1 \\
+                        m_{1} \times m_{2}              & = -1
+                    \end{align}
+                    By definition, the product of slopes being -1 is the condition for the two curves
+                    to be orthogonal. This also extends to two families of curves being orthogonal.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \def\U{y}
+                            \def\V{-x}
+                            \def\LEN{sqrt(\U * \U + \V * \V)}
+                            \begin{axis}[
+                                    legend pos = outer north east,
+                                    width = 8cm,
+                                    height = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                ]
+                                \addplot3 [
+                                    forget plot,
+                                    domain = -4:4,
+                                    color = gray!50,
+                                    point meta = {\LEN},
+                                    quiver={u={(\U) / \LEN},
+                                            v={(\V) / \LEN},
+                                            scale arrows = 0.25,},
+                                    -stealth,
+                                    samples=16,
+                                ] (x, y, 0);
+                                \addplot [thick, GraphSmooth, domain=-pi:pi, variable = \t]
+                                ({cos(t)}, {sin(t)});
+                                \addplot [thick, GraphSmooth, domain=-pi:pi, variable = \t, color = red]
+                                ({3 * cos(t)}, {3 * sin(t)});
+                                \addplot [thick, GraphSmooth, domain = -4:4, color = ForestGreen]
+                                {x};
+                                \addplot [thick, GraphSmooth, domain = -4:4, color = Goldenrod]
+                                {-x};
+                                \addlegendentry{$ x^{2} + y^{2} = 1 $};
+                                \addlegendentry{$ x^{2} + y^{2} = 9 $};
+                                \addlegendentry{$ y = x $};
+                                \addlegendentry{$ y = -x $};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+              \item Does every one-parameter family of curves lead to a first order ODE?
+                    \begin{align}
+                        f(x, y, c)                           & = 0 &  & \text{parameter c}                                  \\
+                        g\left(x, y, \frac{dy}{dx}, c\right) & = 0 &  & \text{differentiating wrt }x                        \\
+                        F\left(x, y, \frac{dy}{dx}\right)    & = 0 &  & \text{eliminating c from the above two expressions}
+                    \end{align}
+
+                    The last step is the definition of a first order ODE.
+          \end{enumerate}
+
+    \item \begin{enumerate}
+              \item Plotting the direction field for the given ODE,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \def\U{1}
+                            \def\V{e^(-x^(2))}
+                            \def\LEN{sqrt(\U * \U + \V * \V)}
+                            \begin{axis}[
+                                    legend pos = outer north east,
+                                    width = 8cm,
+                                    height = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                ]
+                                \addplot3 [
+                                    forget plot,
+                                    domain = -3:3,
+                                    color = gray!50,
+                                    point meta = {\LEN},
+                                    quiver={u={(\U) / \LEN},
+                                            v={(\V) / \LEN},
+                                            scale arrows = 0.2,},
+                                    -stealth,
+                                    samples=16,
+                                ] (x, y, 0);
+                                \addplot[no marks, color = blue!0!red, thick, domain = -3:3]
+                                gnuplot[id=erf]{erf(x) - 2};
+                                \addplot[no marks, color = blue!25!red, thick, domain = -3:3]
+                                gnuplot[id=erf]{erf(x) - 1};
+                                \addplot[no marks, color = blue!50!red, thick, domain = -3:3]
+                                gnuplot[id=erf]{erf(x)};
+                                \addplot[no marks, color = blue!75!red, thick, domain = -3:3]
+                                gnuplot[id=erf]{erf(x) + 1};
+                                \addplot[no marks, color = blue!100!red, thick, domain = -3:3]
+                                gnuplot[id=erf]{erf(x) + 2};
+                                \node[GraphNode, label={0:\scriptsize {(0, -2)}}, fill = black] at (axis cs:0, -2) {};
+                                \node[GraphNode, label={0:\scriptsize {(0, -1)}}, fill = black] at (axis cs:0, -1) {};
+                                \node[GraphNode, label={0:\scriptsize {(0, 0)}}, fill = black] at (axis cs:0, 0) {};
+                                \node[GraphNode, label={0:\scriptsize {(0, 1)}}, fill = black] at (axis cs:0, 1) {};
+                                \node[GraphNode, label={0:\scriptsize {(0, 2)}}, fill = black] at (axis cs:0, 2) {};
+                                \addlegendentry{erf$(x) - 2 $};
+                                \addlegendentry{erf$(x) - 1 $};
+                                \addlegendentry{erf$(x) $};
+                                \addlegendentry{erf$(x) + 1 $};
+                                \addlegendentry{erf$(x) + 2 $};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Using the series expansion of $ y' = e^{-x^{2}} $, and integrating the
+                    terms in the expansion individually, an approximate solution to the ODE can be plotted
+
+                    \begin{align}
+                        y' = e^{-x^{2}} & = 1 - x^{2} + \frac{x^{4}}{4!} - \frac{x^{6}}{6!} + \dots                           \\
+                        y               & = x - \frac{x^{3}}{3} + \frac{x^{5}}{5 \cdot 4!} - \frac{x^{7}}{7 \cdot 6!} + \dots
+                    \end{align}
+
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \def\U{1}
+                            \def\V{e^(-x^(2))}
+                            \def\LEN{sqrt(\U * \U + \V * \V)}
+                            \begin{axis}[
+                                    legend pos = outer north east,
+                                    width = 8cm,
+                                    height = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                ]
+                                \addplot3 [
+                                    forget plot,
+                                    domain = -1:1,
+                                    color = gray!50,
+                                    point meta = {\LEN},
+                                    quiver={u={(\U) / \LEN},
+                                            v={(\V) / \LEN},
+                                            scale arrows = 0.1,},
+                                    -stealth,
+                                    samples=16,
+                                ] (x, y, 0);
+
+                                \addplot[no marks, color = blue, thick, domain = -1:1]
+                                gnuplot[id=erf]{erf(x)};
+                                \addplot[thick, GraphSmooth, domain = -1:1, color = red]
+                                {x - x^(3)/3 + x^(5)/factorial(5) - x^(7)/factorial(7) + x^(9)/factorial(9)};
+                                \node[GraphNode, label={0:{(0, 0)}}, fill = black] at (axis cs:0, 0) {};
+                                \addlegendentry{erf$(x) $};
+                                \addlegendentry{$x - x^{3}/3 + x^{5}/5! - x^{7}/7! + x^{9}/9!$};
+
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item TBC.
+          \end{enumerate}
+
+    \item Torricelli's law for a hemispherical tank (concave up). Same method as in Example 7,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{e^(-x^(2))}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          ticks = none,
+                          % axis lines = none,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                      ]
+                      \addplot[no marks, color = black, thick, domain = -pi:0, samples = 200, variable = \t]
+                      ({cos(t)}, {sin(t)});
+                      \addplot[no marks, color = black, thick, domain = -1:1]
+                      {0};
+                      \node[GraphNode, label={270:hole}, fill = white] at (axis cs:0, -1) {};
+                      \draw[->, red, thick, -stealth] (0,-1) -- (0,-0.5) node[midway, left]{y};
+                      \draw[->, red, thick, -stealth] (0,-0.5) -- (0.866,-0.5) node[midway, above]{r};
+                      \draw[fill opacity=0.25,fill=blue, dotted] (-0.866, -0.5) arc (-150:-30:1);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          With height $ y $, volume $ V $, radius of hemisphere $ R $, area of the hole $ A $,
+          and area of the water's top surface $ B $,
+
+          \begin{align}
+              v(t)                             & = 0.6\ \sqrt{2gy(t)}                                                                           \\
+              \Delta V                         & = Av \Delta t             &                 & \text{water outflow from hole}                   \\
+              \Delta V^{*}                     & = -B \Delta y             &                 & \text{decrease in water volume in vessel}        \\
+              \Delta V^{*}                     & = -\pi r^{2} \Delta y     &                 & = -\pi \left[R^{2} - (R - y)^{2}\right] \Delta y \\
+                                               & = \pi y (y - 2R) \Delta y                                                                      \\
+              0.6 A \sqrt{2g}\ \sqrt{y}\ \dl t & = \pi y (y - 2R) \ \dl y  & \lambda \ \dl t & = \sqrt{y} (y - 2R)\ \dl y
+          \end{align}
+          For simplicity, set $ y(t = 0) = R $, which means the tank is full initially,
+          and set $ \lambda = \num{1e-3} $ so that $ A \ll R $
+          \begin{align}
+              \lambda t + c & = \frac{2y^{5/2}}{5} - \frac{4Ry^{3/2}}{3}                                           \\
+              c             & = \frac{-14R^{5/2}}{15}                    & \lambda & = \frac{0.6 A \sqrt{2g}}{\pi}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, grid=both, legend pos = north east,
+                          xlabel = time ($ t $),
+                          ylabel = height of water ($ y / R $)]
+                      \addplot [GraphSmooth, domain=0:1, variable = \h]
+                      ({1000 * (14/15 + 0.4 * h^(5/2) - (4/3) * h^(3/2))}, {h});
+                      \node[GraphNode, label={270:{(0, 1)}}] at (axis cs:0, 1) {};
+                      % \addlegendentry{$y = y_{0}\ e^{-1.213 \times 10^{-4}\ t}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Time taken to empty the tank is $ t^{*} = \dfrac{14}{15 \lambda} $
+\end{enumerate}

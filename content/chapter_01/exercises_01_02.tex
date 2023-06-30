@@ -1,0 +1,1124 @@
+\section{Geometric Meaning of y' = f(x, y)}
+
+\begin{enumerate}
+    \item Plotting direction field and curve passing through $(\pi / 4, 0)$
+
+          \begin{align}
+              y'         & = 1 + y^{2}                         \\
+              dx         & = \int \frac{1}{1 + y^{2}} \quad dy \\
+              x          & = \arctan y + c                     \\
+              y          & = \tan(x + c)                       \\
+              y(\pi / 4) & = \tan(\pi / 4 + c) = 0             \\
+              c          & = -\pi / 4
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{(1 + y^2)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          PiStyleX,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [forget plot,
+                          domain = -6.28:6.28,
+                          color = gray!50,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.5,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [thick, JumpPlot, domain=-6.28:6.28,
+                          restrict y to domain = -6.28:6.28]
+                      {tan(x - pi/4)};
+                      \addlegendimage{blue,mark size=2}
+                      \addlegendentry{$ y' = \tan (x - \pi/4) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+
+    \item Plotting direction field and curve passing through $(1, 1)$ and $(0, 2)$
+
+          \begin{align}
+              y'                & = \frac{-4x}{y}       \\
+              \int -4x \quad dx & = \int y \quad dy     \\
+              \frac{y^{2}}{2}   & = -2 x^{2} + c        \\
+              y^{2} + 4x^{2}    & = c                   \\
+              c_{1}             & = 5 , \quad c_{2} = 4
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{y}
+                  \def\V{-4*x}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = -4:4,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.2,},
+                          -stealth,
+                          samples=20,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=-pi:pi, variable = \t]
+                      ({sqrt(5/4) * cos(deg(t))}, {sqrt(5) * sin(deg(t))});
+                      \addplot [thick, GraphSmooth, domain=-pi:pi, variable = \t, color = red]
+                      ({sqrt(4/4) * cos(deg(t))}, {sqrt(4) * sin(deg(t))});
+                      \addlegendentry{c = $5$};
+                      \addlegendentry{c = $4$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting direction field and curve passing through $(0, 0)$ and $(2, 1/2)$
+
+          \begin{align}
+              y'        & = 1 - y^{2}                                       \\
+              \int dx   & = \int \frac{1}{1 - y^{2}} \quad dy               \\
+              2 \int dx & = \int \frac{1}{1 + y} + \frac{1}{1 - y} \quad dy \\
+              2x + a    & = \ln \left(\frac{1+y}{1-y}\right)                \\
+              y         & = \left(\frac{ce^{2x} - 1}{ce^{2x} + 1}\right)    \\
+              c_{1}     & = 1 , \quad c_{2} = \frac{3}{e^4}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  % \def\U{1}
+                  % \def\V{1-y^(2)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = -6:6,
+                          color = gray,
+                          quiver={
+                                  %   u={(\U) / \LEN},
+                                  %   v={(\V) / \LEN},
+                                  u = 1 / sqrt(2 - 2 * y^2 + y^4),
+                                  v = (1 - y^(2)) / sqrt(2 - 2 * y^2 + y^4),
+                                  scale arrows = 0.5,},
+                          -stealth,
+                          samples=18,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=-6:6]
+                      {(exp(2*x) - 1) / (exp(2*x) + 1)};
+                      \addplot [thick, GraphSmooth, domain=-6:6, color = red]
+                      {((3 / exp(4))*exp(2*x) - 1) / ((3 / exp(4))*exp(2*x) + 1)};
+                      \addlegendentry{c = $1$};
+                      \addlegendentry{c = $3\ e^{-4}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting direction field and curve passing through $(0, 0), (0, 1), (0, 2)$ and $(0, 3)$
+
+          \begin{align}
+              y'                             & = 2y - y^{2}                                           \\
+              \int \quad dx                  & = \int \frac{1}{y (2 - y)} \quad dy                    \\
+              \int 2 \quad dx                & = \int \frac{1}{y} - \frac{1}{y - 2} \quad dy          \\
+              \ln \left(\frac{y}{y-2}\right) & = 2 x + b                                              \\
+              y                              & = \frac{2c\ e^{2x}}{c\ e^{2x} - 1}                     \\
+              c_{1} = 0 , \quad c_{2}        & = -1, \quad c_{3} = \mathrm{singular}, \quad c_{4} = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{y * (2 - y)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = -5:5,
+                          y domain = -4:6,
+                          color = gray!50,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.5,},
+                          -stealth,
+                          samples=20,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=-5:5]{0};
+                      \addplot [thick, GraphSmooth, domain=-5:5, color = red]{2};
+                      \addplot [thick, GraphSmooth, domain=-5:5, color = ForestGreen]
+                      {(2*e^(2*x)) / (1 + e^(2*x))};
+                      \addplot [thick, GraphSmooth, domain=0.2:5, color = yellow!80!black]
+                      {(2*e^(2*x)) / (e^(2*x) - 1)};
+                      \addplot [thick, GraphSmooth, domain=-5:-0.2, color = yellow!80!black]
+                      {(2*e^(2*x)) / (e^(2*x) - 1)};
+                      \addlegendentry{c = $0$};
+                      \addlegendentry{c = $-1$};
+                      \addlegendentry{singular};
+                      \addlegendentry{c = $1$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Chini's equation
+          %% Conpensating for the lack of any actual equations in this problem
+
+    \item Plotting direction field and curve passing through $(0, -0.4)$ and $(0, 1)$
+
+          \begin{align}
+              y'            & = \sin^{2}y                           \\
+              \int \quad dx & = \int \csc^{2} y \quad dy            \\
+              \tan y        & = \frac{-1}{x + c}                    \\
+              y             & = \arctan \left(\frac{-1}{x+c}\right) \\
+              c_{1}         & = \cot (0.4), \quad c_{2} = -\cot (1)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{sin(deg(y))^2}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = -7:5,
+                          color = gray!50,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 1,},
+                          -stealth,
+                          samples=10,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=-7:-cot(0.4)]
+                      {atan(-1/(x + cot(0.4)))};
+                      \addplot [forget plot, thick, GraphSmooth, domain=-cot(0.4):5]
+                      {atan(-1/(x + cot(0.4)))};
+                      \addplot [thick, GraphSmooth, color = red, domain=-7:cot(1)]
+                      {atan(-1/(x - cot(1)))};
+                      \addplot [forget plot, thick, GraphSmooth, color = red, domain=cot(1):5]
+                      {atan(-1/(x - cot(1)))};
+                      \addlegendentry{c = $\cot (0.4)$};
+                      \addlegendentry{c = $-\cot(1)$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting direction field and curve passing through $(2, 2)$ and $(3, 3)$, using the substitution $y = vx$
+
+          \begin{align}
+              y'             & = e^{y/x}                                                                               \\
+              y'             & = e^{v}                                            \qquad dv = -\frac{y}{x^{2}} \ \dl x \\
+              \int  \quad dy & = x e^{y/x} - \int \frac{-y\ e^{y/x}}{x}  \quad dx                                      \\
+              y              & = x e^{y/x} - \int \frac{y\ e^{v}}{v}  \quad dv                                         \\
+              y              & = x e^{y/x} - y\ \mathrm{Ei}(y/x) + c                                                   \\
+              c_{1}          & = 2 \mathrm{Ei}(1) - 2e, \quad c_{2} = 3 \mathrm{Ei}(1) - 3e
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{e^(y/x)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = -6:6,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 1,},
+                          -stealth,
+                          samples=10,
+                      ] (x, y, 0);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting direction field and curve passing through $(0, 1/2), (0, 1)$ and $(0, 2)$
+
+          \begin{align}
+              y'                        & = -2xy                                  \\
+              \int \frac{1}{y} \quad dy & = -2 \int x  \quad dx                   \\
+              \ln y                     & = -x^{2} + b                            \\
+              y                         & = c\ e^{-x^{2}}                         \\
+              c_{1}                     & = 1/2, \quad c_{2} = 1 \qquad c_{3} = 2
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{-2*x*y}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = -3:3,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.25,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=-3:3]
+                      {0.5 * e^(-1* x * x)};
+                      \addplot [thick, GraphSmooth, domain=-3:3, color = red]
+                      {1 * e^(-1* x * x)};
+                      \addplot [thick, GraphSmooth, domain=-3:3, color = ForestGreen]
+                      {2 * e^(-1* x * x)};
+                      \addlegendentry{c = $1/2$};
+                      \addlegendentry{c = $1$};
+                      \addlegendentry{c = $2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting direction field and curve passing through $(0, 1/2), (0, 1)$ and $(0, 2)$
+
+          \begin{align}
+              y' & = \cos (\pi x)                    \\
+              y  & = \frac{1}{\pi}\ \sin (\pi x) + c
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{cos(pi * x)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = -2:2,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.2,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=-2:2]
+                      {(1/pi) * sin(pi * x)};
+                      \addplot [thick, GraphSmooth, domain=-2:2, color = red]
+                      {(1/pi) * sin(pi * x) + 1};
+                      \addplot [thick, GraphSmooth, domain=-2:2, color = ForestGreen]
+                      {(1/pi) * sin(pi * x) - 1};
+                      \addlegendentry{c = $0$};
+                      \addlegendentry{c = $1$};
+                      \addlegendentry{c = $-1$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting direction field and curve passing through $(0, 1/2), (0, 1)$ and $(0, 2)$
+
+          \begin{align}
+              y'       & = -5y^{1/2} \\
+              \sqrt{y} & = -2.5x + c
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{-5 * y^(1/2)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = -1:0,
+                          y domain = 0:1,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.05,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=-1:0,
+                          restrict y to domain=0:1]
+                      ({x}, {(-2.5  * x)^(2)});
+                      \addplot [thick, GraphSmooth, domain=-1:0, color = red,
+                          restrict y to domain=0:1]
+                      ({x}, {(-2.5  * x -1)^(2)});
+                      \addplot [thick, GraphSmooth, domain=-1:0, color = green,
+                          restrict y to domain=0:1]
+                      ({x}, {(-2.5  * x - 0.2)^(2)});
+                      \addlegendentry{c = $0$};
+                      \addlegendentry{c = $-1$};
+                      \addlegendentry{c = $-0.2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Isoclines with an ODE of the form $y' = f(y)$ will be of the form $f(y) = c$.
+          These are straight lines parallel to the x axis.
+
+    \item Plotting direction field and curve passing through $(0, 2)$
+
+          \begin{align}
+              vy              & = 2              \\
+              \int y \quad dy & = 2\int \quad dt \\
+              y^{2}           & = 4t + c         \\
+              y(0)            & = \sqrt{c} = 2   \\
+              y               & =\sqrt{4t + 4}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{y}
+                  \def\V{2}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = 0:6,
+                          y domain = 0:6,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.2,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=0:6]
+                      {(4*x + 4)^(1/2)};
+                      \addlegendentry{c = $4$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting direction field and curve passing through $(1, 1)$
+
+          \begin{align}
+              y                         & = vt                        \\
+              \int \frac{1}{y} \quad dy & = \int \frac{1}{t} \quad dt \\
+              \ln y                     & = \ln t + b                 \\
+              y                         & = ct                        \\
+              c                         & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{1}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = 0:6,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.2,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=0:6]
+                      {x};
+                      \addlegendentry{c = $1$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting direction field and curve passing through $(0, 1/\sqrt{2})$
+
+          \begin{align}
+              y^{2} + v^{2}                           & = 1                \\
+              \frac{dy}{dt}                           & = \sqrt{1 - y^{2}} \\
+              \int \frac{1}{\sqrt{1- y^{2}}} \quad dy & = \int \quad dt    \\
+              \arcsin y                               & = t + c            \\
+              y                                       & = \sin (t + c)     \\
+              c                                       & = \frac{\pi}{4}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{cos(x + 0.25 * pi)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = 0 : 4 * pi,
+                          y domain = -2 * pi : 2 * pi,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.5,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=0:4*pi]
+                      {sin(x + 0.25 * pi)};
+                      \addlegendentry{c = $\pi / 4$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting direction field given $m = k = 1$ and $v_{0} = 10$ and drag proportional to $v^{2}$. \\
+          Terminal velocity is $v^{T} = \sqrt{g} = 3.13\ m/s^{2}$
+
+          \begin{align}
+              my''                                                                              & = mv' = mg - kv^{2}                                                   \\
+              \int \frac{1}{g - v^{2}}\quad dv                                                  & = \int \quad dt                                                       \\
+              \frac{1}{2 \sqrt{g}}\int \frac{1}{\sqrt{g} - v} + \frac{1}{\sqrt{g} + v} \quad dv & = \int \quad dt                                                       \\
+              \ln \left(\frac{v + \sqrt{g}}{v - \sqrt{g}}\right)                                & = 2 \sqrt{g} t + b                                                    \\
+              v                                                                                 & = \sqrt{g}\ \frac{c\ \exp(2 \sqrt{g}t) + 1}{c\ \exp(2 \sqrt{g}t) - 1} \\
+              c                                                                                 & = \frac{10 + \sqrt{g}}{10 - \sqrt{g}}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{-1 * (y^(2) - 9.8)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \def\c{(10 + (9.8)^(1/2)) / (10 - (9.8)^(1/2))}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = 0 : 6,
+                          y domain = 0  : 6 ,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.25,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=0:6, samples = 100,
+                          restrict y to domain = 0:6]
+                      {sqrt(9.8) * (\c * e^(2 * sqrt(9.8) * x) + 1) / (\c * e^(2 * sqrt(9.8) * x) - 1)};
+                      \addlegendentry{drag $\propto v^{2}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          Plotting direction field given $m = k = 1$ and $v_{0} = 10$ and drag proportional to $v$. \\
+          Terminal velocity is $v^{T} = g = 9.8\ m/s^{2}$
+          \begin{align}
+              my''                             & = mv' = mg - kv   \\
+              \int \frac{1}{g - v}\quad dv     & = \int \quad dt   \\
+              \ln \left(\frac{1}{v - g}\right) & = t + b           \\
+              v                                & = g + c e^{-t}    \\
+              c                                & = v_{0} - g = 0.2
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{1}
+                  \def\V{-1 * (y - 9.8)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          unbounded coords = jump,
+                          legend pos = outer north east,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          domain = 0 : 4,
+                          y domain = 8  : 12 ,
+                          color = gray,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.25,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot [thick, GraphSmooth, domain=0:4, color = red]
+                      {9.8 + 0.2 * e^(-x)};
+                      \addlegendentry{drag $\propto v$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item CAS Project using the ODE $y' = y + x$
+          \begin{enumerate}
+              \item Zooming in the regions $x \in [-5, 2]$ shows the upper part of the solutions which increase for large $x$ \\
+                    Zooming in the regions $y \in [-1, 5]$ shows the lower part of the solutions which decreases for large $x$, as well as the straight line unstable equilibrium solution
+
+                    \begin{figure}[H]
+                        \centering
+                        \begin{subfigure}[b]{0.49\textwidth}
+                            \begin{tikzpicture}
+                                \def\U{1}
+                                \def\V{(x + y)}
+                                \def\LEN{sqrt(\U * \U + \V * \V)}
+                                \begin{axis}[
+                                        unbounded coords = jump,
+                                        legend pos = outer north east,
+                                        width = 8cm,
+                                        height = 8cm,
+                                        Ani,
+                                        axis equal,
+                                        view     = {0}{90}, % for a view 'from above'
+                                    ]
+                                    \addplot3 [
+                                        forget plot,
+                                        domain = -5 : 2,
+                                        color = gray,
+                                        point meta = {\LEN},
+                                        quiver={u={(\U) / \LEN},
+                                                v={(\V) / \LEN},
+                                                scale arrows = 0.25,},
+                                        -stealth,
+                                        samples=16,
+                                    ] (x, y, 0);
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{subfigure}
+                        \hfill
+                        \begin{subfigure}[b]{0.49\textwidth}
+                            \begin{tikzpicture}
+                                \def\U{1}
+                                \def\V{(x + y)}
+                                \def\LEN{sqrt(\U * \U + \V * \V)}
+                                \begin{axis}[
+                                        unbounded coords = jump,
+                                        legend pos = outer north east,
+                                        width = 8cm,
+                                        height = 8cm,
+                                        Ani,
+                                        axis equal,
+                                        view     = {0}{90}, % for a view 'from above'
+                                    ]
+                                    \addplot3 [
+                                        forget plot,
+                                        domain = -1:5,
+                                        restrict y to domain = -1:5,
+                                        color = gray,
+                                        point meta = {\LEN},
+                                        quiver={u={(\U) / \LEN},
+                                                v={(\V) / \LEN},
+                                                scale arrows = 0.25,},
+                                        -stealth,
+                                        samples=16,
+                                    ] (x, y, 0);
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{subfigure}
+                    \end{figure}
+              \item Implicit differentiation gives the ODE
+
+                    \begin{align}
+                        x^{2} + 9y^{2} & = c \quad (y > 0)             \\
+                        x + 9yy'       & = 0                           \\
+                        y'             & = \frac{-x}{9y} \quad (y > 0)
+                    \end{align}
+                    The sign of the RHS determine whether the direction field is an ellipse or a hyperbola. A special case of the RHS being $-x/y$ gives a circle (a special ellipse)
+
+                    \begin{figure}[H]
+                        \centering
+                        \begin{subfigure}[b]{0.49\textwidth}
+                            \centering
+                            \begin{tikzpicture}
+                                \def\U{y}
+                                \def\V{x}
+                                \def\LEN{sqrt(\U * \U + \V * \V)}
+                                \begin{axis}[
+                                        unbounded coords = jump,
+                                        width = 8cm,
+                                        height = 8cm,
+                                        Ani,
+                                        axis equal,
+                                        view     = {0}{90}, % for a view 'from above'
+                                    ]
+                                    \addplot3 [
+                                        domain = -2 : 2,
+                                        restrict y to domain = -2:2,
+                                        color = gray,
+                                        point meta = {\LEN},
+                                        quiver={u={(\U) / \LEN},
+                                                v={(\V) / \LEN},
+                                                scale arrows = 0.2,},
+                                        -stealth,
+                                        samples=16,
+                                    ] (x, y, 0);
+                                    \addlegendentry{hyperbola: $x/y$};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{subfigure}
+                        \hfill
+                        \begin{subfigure}[b]{0.49\textwidth}
+                            \centering
+                            \begin{tikzpicture}
+                                \def\U{y}
+                                \def\V{-x}
+                                \def\LEN{sqrt(\U * \U + \V * \V)}
+                                \begin{axis}[
+                                        unbounded coords = jump,
+                                        width = 8cm,
+                                        height = 8cm,
+                                        Ani,
+                                        axis equal,
+                                        view     = {0}{90}, % for a view 'from above'
+                                    ]
+                                    \addplot3 [
+                                        domain = -2 : 2,
+                                        restrict y to domain = -2:2,
+                                        color = gray,
+                                        point meta = {\LEN},
+                                        quiver={u={(\U) / \LEN},
+                                                v={(\V) / \LEN},
+                                                scale arrows = 0.2,},
+                                        -stealth,
+                                        samples=16,
+                                    ] (x, y, 0);
+                                    \addlegendentry{circle: $-x/y$};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{subfigure}
+                        \vskip\baselineskip
+                        \begin{subfigure}[b]{0.49\textwidth}
+                            \centering
+                            \begin{tikzpicture}
+                                \def\U{9*y}
+                                \def\V{-x}
+                                \def\LEN{sqrt(\U * \U + \V * \V)}
+                                \begin{axis}[
+                                        unbounded coords = jump,
+                                        width = 8cm,
+                                        height = 8cm,
+                                        Ani,
+                                        axis equal,
+                                        view     = {0}{90}, % for a view 'from above'
+                                    ]
+                                    \addplot3 [
+                                        domain = -2 : 2,
+                                        restrict y to domain = -2:2,
+                                        color = gray,
+                                        point meta = {\LEN},
+                                        quiver={u={(\U) / \LEN},
+                                                v={(\V) / \LEN},
+                                                scale arrows = 0.2,},
+                                        -stealth,
+                                        samples=16,
+                                    ] (x, y, 0);
+                                    \addlegendentry{ellipse: $-x/9y$};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{subfigure}
+                        \hfill
+                        \begin{subfigure}[b]{0.49\textwidth}
+                            \centering
+                            \begin{tikzpicture}
+                                \def\U{1}
+                                \def\V{2*x}
+                                \def\LEN{sqrt(\U * \U + \V * \V)}
+                                \begin{axis}[
+                                        unbounded coords = jump,
+                                        width = 8cm,
+                                        height = 8cm,
+                                        Ani,
+                                        axis equal,
+                                        view     = {0}{90}, % for a view 'from above'
+                                    ]
+                                    \addplot3 [
+                                        domain = -2 : 2,
+                                        color = gray,
+                                        point meta = {\LEN},
+                                        quiver={u={(\U) / \LEN},
+                                                v={(\V) / \LEN},
+                                                scale arrows = 0.2,},
+                                        -stealth,
+                                        samples=16,
+                                    ] (x, y, 0);
+                                    \addlegendentry{parabola: $2x$};
+                                \end{axis}
+                            \end{tikzpicture}
+                        \end{subfigure}
+                    \end{figure}
+              \item From the figure above, $y' = -x/y$ produces a circle
+              \item For the ODE $y' = -y/2$
+                    \begin{align}
+                        y'    & = \frac{-1}{2y} \\
+                        y^{2} & = -x + c
+                    \end{align}
+
+                    For $y > 0$, the solutions decrease because the ODE is monotonically negative for all $y > 0$.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \def\U{y}
+                            \def\V{(-0.5)}
+                            \def\LEN{sqrt(\U * \U + \V * \V)}
+                            \begin{axis}[
+                                    unbounded coords = jump,
+                                    legend pos = outer north east,
+                                    width = 8cm,
+                                    height = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                ]
+                                \addplot3 [
+                                    forget plot,
+                                    domain = -2:2,
+                                    color = gray,
+                                    point meta = {\LEN},
+                                    quiver={u={(\U) / \LEN},
+                                            v={(\V) / \LEN},
+                                            scale arrows = 0.25,},
+                                    -stealth,
+                                    samples=16,
+                                ] (x, y, 0);
+                                \addplot [thick, GraphSmooth, domain=-2:0, samples = 100]
+                                {sqrt(-x)};
+                                \addlegendentry{c = $0$};
+                                \addplot [thick, GraphSmooth, domain=-1:1, samples = 100, color = red]
+                                {sqrt(-x + 1)};
+                                \addlegendentry{c = $1$};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+    \item Euler's method with $y(0) = 1$ and step size $h = 0.1$
+
+          \begin{align}
+              y' & = y      \\
+              y  & = ce^{x} \\
+              c  & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \centering
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              grid = both,
+                              legend pos = north west,
+                              unbounded coords = jump,
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                          ]
+                          \addplot[
+                              only marks,]
+                          table [
+                                  x index =1,
+                                  y index =2,
+                                  col sep=comma]
+                              {./tables/table_01_01_17.csv};
+                          \addplot [
+                              forget plot,
+                              GraphSmooth,
+                              domain=0:1]
+                          {e^(x)};
+                          \addlegendentry{numerical};
+                          \addplot[
+                              only marks,
+                              color = red,
+                              mark = square]
+                          table [
+                                  x index =1,
+                                  y index =3,
+                                  col sep=comma]
+                              {./tables/table_01_01_17.csv};
+                          \addlegendentry{exact};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{table}[H]
+                      \centering
+                      \csvautobooktabular{tables/table_01_01_17.csv}
+                  \end{table}
+              \end{subfigure}
+          \end{figure}
+
+    \item Euler's method with $y(0) = 1$ and step size $h = 0.01$
+
+          \begin{align}
+              y' & = y      \\
+              y  & = ce^{x} \\
+              c  & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \centering
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              xticklabel style={
+                                      /pgf/number format/fixed,
+                                      /pgf/number format/precision=5
+                                  },
+                              grid = both,
+                              legend pos = north west,
+                              unbounded coords = jump,
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                          ]
+                          \addplot[
+                              only marks,]
+                          table [
+                                  x index =1,
+                                  y index =2,
+                                  col sep=comma]
+                              {./tables/table_01_01_18.csv};
+                          \addplot [
+                              forget plot,
+                              GraphSmooth,
+                              domain=0:0.1]
+                          {e^(x)};
+                          \addlegendentry{numerical};
+                          \addplot[
+                              only marks,
+                              color = red,
+                              mark = square]
+                          table [
+                                  x index =1,
+                                  y index =3,
+                                  col sep=comma]
+                              {./tables/table_01_01_18.csv};
+                          \addlegendentry{exact};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{table}[H]
+                      \centering
+                      \csvautobooktabular{tables/table_01_01_18.csv}
+                  \end{table}
+              \end{subfigure}
+          \end{figure}
+
+    \item Euler's method with $y(0) = 0$ and step size $h = 0.1$
+
+          \begin{align}
+              y' & = (y - x)^{2} \\
+              y  & = x - \tanh x
+          \end{align}
+
+          \begin{figure}[H]
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \centering
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              grid = both,
+                              legend pos = north west,
+                              unbounded coords = jump,
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                          ]
+                          \addplot[
+                              only marks,]
+                          table [
+                                  x index =1,
+                                  y index =2,
+                                  col sep=comma]
+                              {./tables/table_01_01_19.csv};
+                          \addplot [
+                              forget plot,
+                              GraphSmooth,
+                              domain=0:1]
+                          {x - tanh(x)};
+                          \addlegendentry{numerical};
+                          \addplot[
+                              only marks,
+                              color = red,
+                              mark = square]
+                          table [
+                                  x index =1,
+                                  y index =3,
+                                  col sep=comma]
+                              {./tables/table_01_01_19.csv};
+                          \addlegendentry{exact};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{table}[H]
+                      \centering
+                      \csvautobooktabular{tables/table_01_01_19.csv}
+                  \end{table}
+              \end{subfigure}
+          \end{figure}
+
+    \item Euler's method with $y(0) = 1$ and step size $h = 0.2$
+
+          \begin{align}
+              y' & = -5x^{4}y^{2}          \\
+              y  & = \frac{1}{(c + x^{5})} \\
+              c  & = 1
+          \end{align}
+
+          \begin{figure}[H]
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \centering
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              grid = both,
+                              legend pos = north east,
+                              unbounded coords = jump,
+                              width = 8cm,
+                              height = 8cm,
+                              Ani,
+                          ]
+                          \addplot[
+                              only marks,]
+                          table [
+                                  x index =1,
+                                  y index =2,
+                                  col sep=comma]
+                              {./tables/table_01_01_20.csv};
+                          \addplot [
+                              forget plot,
+                              GraphSmooth,
+                              domain=0:2]
+                          {(1 + x^5)^(-1)};
+                          \addlegendentry{numerical};
+                          \addplot[
+                              only marks,
+                              color = red,
+                              mark = square]
+                          table [
+                                  x index =1,
+                                  y index =3,
+                                  col sep=comma]
+                              {./tables/table_01_01_20.csv};
+                          \addlegendentry{exact};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{table}[H]
+                      \centering
+                      \csvautobooktabular{tables/table_01_01_20.csv}
+                  \end{table}
+              \end{subfigure}
+          \end{figure}
+
+\end{enumerate}

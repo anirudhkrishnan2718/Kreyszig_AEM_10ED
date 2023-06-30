@@ -1,0 +1,560 @@
+\section{Qualitative Methods for Nonlinear Systems}
+
+\begin{enumerate}
+    \item Consider the closed trajectory intersecting with the two axes. This is an
+          ellipse with major axis $ 2a $ and minor axis $ 2b $.
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.5em}
+              \begin{tblr}{colspec={Q[r]|Q[l]|Q[l]|Q[l]}, colsep = 2em}
+                  \textbf{Intersection}    & \textbf{Position} $ y $ &
+                  \textbf{Velocity} $ y' $ & \textbf{Trajectory}       \\ \hline[dotted]
+                  $ +x $ axis              & $ a $                   &
+                  $0$                      & Right edge                \\
+                  $ -x $ axis              & $ -a $                  &
+                  $0$                      & Left edge                 \\
+                  $ +y $ axis              & $ 0 $                   &
+                  $b$                      & Mean position \newline
+                  traveling left                                       \\
+                  $ -y $ axis              & $ 0 $                   &
+                  $-b$                     & Mean position \newline
+                  traveling right                                      \\ \hline
+              \end{tblr}
+          \end{table}
+          For the open trajectory, the penduum never reverses angular direction.
+          Maxima and minima in the open trajectory represent the bottom and top of
+          the vertical plane circular trajectory. \par
+          When the trajectory intersects the $ y_2 $ axis, the pendulum is at the mean
+          position moving at maximum angular speed (because its potential energy is
+          lowest at this point in the cyclic path).
+
+    \item A limit cycle is the limiting set of a different trajectory that may
+          not have had its initial conditions close to the limit cycle. The limit
+          cycle is the steady state behaviour after all transient effects have worn
+          off.\par
+          A closed trajectory surrounding a center is constrained to start and always
+          stay on this trajectory.
+
+    \item System of ODEs for Van der Pol oscillator is,
+          \begin{align}
+              y_1' & = y_2 & y_2' & = \mu(1 - y_1^{2})y_2 - y_1
+          \end{align}
+          After simulating until steady state, the attractor is plotted here for
+          different values of $ \mu $,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/van_der_pol_many.csv}\anitable
+              \begin{subfigure}[b]{0.48\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                              % restrict y to domain = -1:1,
+                              xlabel = $ y_1 $,
+                              ylabel = $ y_2 $,
+                              axis equal,
+                              width = 8cm,
+                              legend pos = north west,
+                              legend style={nodes={scale=0.75}},
+                              grid = both,
+                              Ani]
+                          \addplot[GraphSmooth, color = red5] table[x index=0,y index=1,
+                                  col sep=comma, ]{\anitable};
+                          \addlegendentry{$\mu = 0.2$}
+                          \addplot[GraphSmooth, color = yellow8] table[x index=2,y index=3,
+                                  col sep=comma, ]{\anitable};
+                          \addlegendentry{$\mu = 0.4$}
+                          \addplot[GraphSmooth, color = green8] table[x index=4,y index=5,
+                                  col sep=comma, ]{\anitable};
+                          \addlegendentry{$\mu = 0.6$}
+                          \addplot[GraphSmooth, color = blue3] table[x index=6,y index=7,
+                                  col sep=comma, ]{\anitable};
+                          \addlegendentry{$\mu = 0.8$}
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.48\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                              % restrict y to domain = -1:1,
+                              xlabel = $ y_1 $,
+                              ylabel = $ y_2 $,
+                              axis equal,
+                              width = 8cm,
+                              legend pos = north west,
+                              legend style={nodes={scale=0.75}},
+                              grid = both,
+                              Ani]
+                          \addplot[GraphSmooth, color = red5] table[x index=8,y index=9,
+                                  col sep=comma, ]{\anitable};
+                          \addlegendentry{$\mu = 1.0$}
+                          \addplot[GraphSmooth, color = green8] table[x index=10,y index=11,
+                                  col sep=comma, ]{\anitable};
+                          \addlegendentry{$\mu = 1.5$}
+                          \addplot[GraphSmooth, color = blue3] table[x index=12,y index=13,
+                                  col sep=comma, ]{\anitable};
+                          \addlegendentry{$\mu = 2.0$}
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+          All the simulations have initial condition $ (1, 0) $. The spiraling of the
+          individual trajectories into the limit cycle is not plotted here, for the sake
+          of clarity. \par
+          The limit cycle starts very closely resembling the circle for
+          $ \mu \approxeq 0 $, then deforms into the shape in the graph smoothly as
+          $ \mu $ increases.
+
+    \item Finding critical points,
+          \begin{align}
+              y_1'         & = 4y_1 - y_1^{2}     & y_2' & = y_2 \\
+              y_1(4 - y_1) & = 0                  & y_2  & = 0   \\
+              P_1          & = \color{y_h}(0, 0)  &
+              P_2          & = \color{y_p} (4, 0)
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              \vec{y'}       & = \bmattt{4}{0}{0}{1} \vec{y}    &
+              0              & = \lambda^{2} - 5\lambda + 4       \\
+              p < 0 \qquad q & > 0 \qquad \Delta >0             &
+                             & \color{y_h} \text{Improper node}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1 - 4                       &
+              z_2            & = y_2                             \\
+              z_1'           & = 4(z_1 + 4) - (z_1 + 4)^{2}    &
+              z_2'           & = z_2                             \\
+              \vec{y'}       & = \bmattt{-4}{0}{0}{1} \vec{y}  &
+              0              & = \lambda^{2} + 3\lambda - 4      \\
+              p < 0 \qquad q & < 0 \qquad \Delta >0            &
+                             & \color{y_p} \text{Saddle point}
+          \end{align}
+
+    \item Finding critical points,
+          \begin{align}
+              y_1'            & = y_2                & y_2' & = -y_1 + 0.5y_1^{2} \\
+              y_1(0.5y_1 - 1) & = 0                  & y_2  & = 0                 \\
+              P_1             & = \color{y_h}(0, 0)  &
+              P_2             & = \color{y_p} (2, 0)
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              \vec{y'}       & = \bmattt{0}{1}{-1}{0} \vec{y} &
+              0              & = \lambda^{2} + 1                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0          &
+                             & \color{y_h} \text{Center}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1 - 2                       &
+              z_2            & = y_2                             \\
+              z_1'           & = z_2                           &
+              z_2'           & = 0.5(z_1 + 2)z_1                 \\
+              \vec{y'}       & = \bmattt{0}{1}{1}{0} \vec{y}   &
+              0              & = \lambda^{2} - 1                 \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0           &
+                             & \color{y_p} \text{Saddle point}
+          \end{align}
+
+    \item Finding critical points,
+          \begin{align}
+              y_1'         & = y_2                 & y_2' & = -y_1(1 + y_1) \\
+              y_1(y_1 + 1) & = 0                   & y_2  & = 0             \\
+              P_1          & = \color{y_h}(0, 0)   &
+              P_2          & = \color{y_p} (-1, 0)
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              \vec{y'}       & = \bmattt{0}{1}{-1}{0} \vec{y} &
+              0              & = \lambda^{2} + 1                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0          &
+                             & \color{y_h} \text{Center}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1 + 1                       &
+              z_2            & = y_2                             \\
+              z_1'           & = z_2                           &
+              z_2'           & = -(z_1 - 1)z_1                   \\
+              \vec{y'}       & = \bmattt{0}{1}{1}{0} \vec{y}   &
+              0              & = \lambda^{2} - 1                 \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0           &
+                             & \color{y_p} \text{Saddle point}
+          \end{align}
+
+    \item Finding critical points,
+          \begin{align}
+              y_1'                & = -y_1 + y_2(1 - y_2) &
+              y_2'                & = -y_1 - y_2            \\
+              -y_1 + y_2(1 - y_2) & = 0                   &
+              y_1 + y_2           & = 0                     \\
+              P_1                 & = \color{y_h}(0, 0)   &
+              P_2                 & = \color{y_p} (-2, 2)
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              \vec{y'}       & = \bmattt{-1}{1}{-1}{-1} \vec{y}     &
+              0              & = \lambda^{2} + 2\lambda + 2           \\
+              p < 0 \qquad q & > 0 \qquad \Delta < 0                &
+                             & \color{y_h} \text{Attractive Spiral}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1 + 2                         &
+              z_2            & = y_2 - 2                           \\
+              z_1'           & = 2 - z_1 - (z_2 + 2)(z_2 + 1)    &
+              z_2'           & = 2 - z_1 - z_2 - 2                 \\
+              \vec{y'}       & = \bmattt{-1}{-3}{-1}{-1} \vec{y} &
+              0              & = \lambda^{2} + 2\lambda - 2        \\
+              p < 0 \qquad q & < 0 \qquad \Delta > 0             &
+                             & \color{y_p} \text{Saddle point}
+          \end{align}
+
+    \item Finding critical points,
+          \begin{align}
+              y_1'         & = y_2(1 - y_2)          &
+              y_2'         & = y_1(1 - y_1)            \\
+              y_2(1 - y_2) & = 0                     &
+              y_1(1 - y_1) & = 0                       \\
+              P_1          & = \color{y_h}(0, 0)     &
+              P_2          & = \color{y_p} (0, 1)      \\
+              P_3          & = \color{brown6} (1, 0) &
+              P_4          & = \color{blue2} (1, 1)
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              \vec{y'}       & = \bmattt{0}{1}{1}{0} \vec{y}   &
+              0              & = \lambda^{2} - 1                 \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0           &
+                             & \color{y_h} \text{Saddle Point}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1                          &
+              z_2            & = y_2 - 1                        \\
+              z_1'           & =  -z_2(z_2 + 1)               &
+              z_2'           & = z_1(1 - z_1)                   \\
+              \vec{y'}       & = \bmattt{0}{-1}{1}{0} \vec{y} &
+              0              & = \lambda^{2} + 1                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0          &
+                             & \color{y_p} \text{Center}
+          \end{align}
+          Linearizing the system for $ P_3 $
+          \begin{align}
+              z_1            & = y_1 - 1                      &
+              z_2            & = y_2                            \\
+              z_1'           & =  z_2(1 - z_2)                &
+              z_2'           & = -z_1(1 + z_1)                  \\
+              \vec{y'}       & = \bmattt{0}{1}{-1}{0} \vec{y} &
+              0              & = \lambda^{2} + 1                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0          &
+                             & \color{brown6} \text{Center}
+          \end{align}
+          Linearizing the system for $ P_4 $
+          \begin{align}
+              z_1            & = y_1 - 1                         &
+              z_2            & = y_2 - 1                           \\
+              z_1'           & = -z_2(1 + z_2)                   &
+              z_2'           & = -z_1(1 + z_1)                     \\
+              \vec{y'}       & = \bmattt{0}{-1}{-1}{0} \vec{y}   &
+              0              & = \lambda^{2} - 1                   \\
+              p = 0 \qquad q & > 0 \qquad \Delta > 0             &
+                             & \color{blue2} \text{Saddle point}
+          \end{align}
+
+    \item Finding critical points,
+          \begin{align}
+              y'' - 9y + y^{3}       & = 0                       \\
+              y_1'                   & = y_2                   &
+              y_2'                   & = y_1(9 - y_1^{2})        \\
+              y_2                    & = 0                     &
+              y_1 (y_1 - 3)(y_1 + 3) & = 0                       \\
+              P_1                    & = \color{y_h}(0, 0)     &
+              P_2                    & = \color{y_p} (-3, 0)     \\
+              P_3                    & = \color{brown6} (3, 0)
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              \vec{y'}       & = \bmattt{0}{1}{9}{0} \vec{y}   &
+              0              & = \lambda^{2} - 2                 \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0           &
+                             & \color{y_h} \text{Saddle point}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1 + 3                       &
+              z_2            & = y_2                             \\
+              z_1'           & = z_2                           &
+              z_2'           & = (z_1 - 3)(z_1)(6 - z_1)         \\
+              \vec{y'}       & = \bmattt{0}{1}{-18}{0} \vec{y} &
+              0              & = \lambda^{2} + 18                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0           &
+                             & \color{y_p} \text{Center}
+          \end{align}
+          Linearizing the system for $ P_3 $
+          \begin{align}
+              z_1            & = y_1 - 3                       &
+              z_2            & = y_2                             \\
+              z_1'           & = z_2                           &
+              z_2'           & = -(z_1 + 3)(z_1)(6 + z_1)        \\
+              \vec{y'}       & = \bmattt{0}{1}{-18}{0} \vec{y} &
+              0              & = \lambda^{2} + 18                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0           &
+                             & \color{brown6} \text{Center}
+          \end{align}
+
+    \item Finding critical points,
+          \begin{align}
+              y'' + y - y^{3}        & = 0                       \\
+              y_1'                   & = y_2                   &
+              y_2'                   & = y_1(y_1^{2} - 1)        \\
+              y_2                    & = 0                     &
+              y_1 (y_1 + 1)(y_1 - 1) & = 0                       \\
+              P_1                    & = \color{y_h}(0, 0)     &
+              P_2                    & = \color{y_p} (-1, 0)     \\
+              P_3                    & = \color{brown6} (1, 0)
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              \vec{y'}       & = \bmattt{0}{1}{-1}{0} \vec{y} &
+              0              & = \lambda^{2} + 1                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0          &
+                             & \color{y_h} \text{Center}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1 + 1                       &
+              z_2            & = y_2                             \\
+              z_1'           & = z_2                           &
+              z_2'           & = (z_1 - 1)(z_1 - 2)(z_1)         \\
+              \vec{y'}       & = \bmattt{0}{1}{2}{0} \vec{y}   &
+              0              & = \lambda^{2} - 2                 \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0           &
+                             & \color{y_p} \text{Saddle point}
+          \end{align}
+          Linearizing the system for $ P_3 $
+          \begin{align}
+              z_1            & = y_1 - 1                          &
+              z_2            & = y_2                                \\
+              z_1'           & = z_2                              &
+              z_2'           & = (z_1 + 1)(z_1)(2 + z_1)            \\
+              \vec{y'}       & = \bmattt{0}{1}{2}{0} \vec{y}      &
+              0              & = \lambda^{2} - 2                    \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0              &
+                             & \color{brown6} \text{Saddle point}
+          \end{align}
+
+    \item Finding critical points,
+          \begin{align}
+              y'' + \cos y & = 0                                \\
+              y_1'         & = y_2                            &
+              y_2'         & = -\cos(y_1)                       \\
+              y_2          & = 0                              &
+              \cos(y_1)    & = 0                                \\
+              P_1          & = \color{y_h}(2n\pi - \pi/2, 0)  &
+              P_2          & = \color{y_p} (2n\pi + \pi/2, 0)   \\
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              z_1            & = y_1 - 2n\pi + \pi/2          &
+              z_2            & = y_2                            \\
+              z_1'           & = z_2                          &
+              z_2'           & = -\cos(z_1 + 2n\pi - \pi/2)     \\
+                             &                                &
+                             & = -\sin(z_1 + 2n\pi)             \\
+                             &                                &
+                             & = -z_1 + \frac{1}{6}z_1^{3}      \\
+              \vec{y'}       & = \bmattt{0}{1}{-1}{0} \vec{y} &
+              0              & = \lambda^{2} + 1                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0          &
+                             & \color{y_h} \text{Center}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1 - 2n\pi - \pi/2           &
+              z_2            & = y_2                             \\
+              z_1'           & = z_2                           &
+              z_2'           & = -\cos(z_1 + 2n\pi + \pi/2)      \\
+                             &                                 &
+                             & = \sin(z_1 + 2n\pi)               \\
+                             &                                 &
+                             & = z_1 - \frac{1}{6}z_1^{3}        \\
+              \vec{y'}       & = \bmattt{0}{1}{1}{0} \vec{y}   &
+              0              & = \lambda^{2} - 1                 \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0           &
+                             & \color{y_p} \text{Saddle point}
+          \end{align}
+
+    \item Finding critical points,
+          \begin{align}
+              y'' + 9y + y^{2} & = 0                     \\
+              y_1'             & = y_2                 &
+              y_2'             & = -y_1(y_1 + 9)         \\
+              y_2              & = 0                   &
+              y_1(y_1 + 9)     & = 0                     \\
+              P_1              & = \color{y_h}(0, 0)   &
+              P_2              & = \color{y_p} (-9, 0)   \\
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              \vec{y'}       & = \bmattt{0}{1}{-9}{0} \vec{y} &
+              0              & = \lambda^{2} + 9                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0          &
+                             & \color{y_h} \text{Center}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1 + 9                       &
+              z_2            & = y_2                             \\
+              z_1'           & = z_2                           &
+              z_2'           & = (9 - z_1)(z_1)                  \\
+              \vec{y'}       & = \bmattt{0}{1}{9}{0} \vec{y}   &
+              0              & = \lambda^{2} - 9                 \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0           &
+                             & \color{y_p} \text{Saddle point}
+          \end{align}
+
+    \item Finding critical points,
+          \begin{align}
+              y'' + \sin y & = 0                              \\
+              y_1'         & = y_2                          &
+              y_2'         & = -\sin(y_1)                     \\
+              y_2          & = 0                            &
+              \cos(y_1)    & = 0                              \\
+              P_1          & = \color{y_h}(2n\pi, 0)        &
+              P_2          & = \color{y_p} (2n\pi + \pi, 0)   \\
+          \end{align}
+          Linearizing the system for $ P_1 $
+          \begin{align}
+              z_1            & = y_1 - 2n\pi                  &
+              z_2            & = y_2                            \\
+              z_1'           & = z_2                          &
+              z_2'           & = -\sin(z_1 + 2n\pi)             \\
+                             &                                &
+                             & = -z_1 + \frac{1}{6}z_1^{3}      \\
+              \vec{y'}       & = \bmattt{0}{1}{-1}{0} \vec{y} &
+              0              & = \lambda^{2} + 1                \\
+              p = 0 \qquad q & > 0 \qquad \Delta < 0          &
+                             & \color{y_h} \text{Center}
+          \end{align}
+          Linearizing the system for $ P_2 $
+          \begin{align}
+              z_1            & = y_1 - 2n\pi - \pi             &
+              z_2            & = y_2                             \\
+              z_1'           & = z_2                           &
+              z_2'           & = -\sin(z_1 + 2n\pi + \pi)        \\
+                             &                                 &
+                             & = z_1 - \frac{1}{6}z_1^{3}        \\
+              \vec{y'}       & = \bmattt{0}{1}{1}{0} \vec{y}   &
+              0              & = \lambda^{2} - 1                 \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0           &
+                             & \color{y_p} \text{Saddle point}
+          \end{align}
+
+    \item
+          \begin{enumerate}
+              \item Van der Pol equation,
+                    \begin{align}
+                        y_1'             & = y_2                             &
+                        y_2'             & = \mu y_2 - y_1  -\mu y_1^{2} y_2   \\
+                        \vec{A}          & = \bmattt{0}{1}{-1}{\mu}          &
+                        0                & = \lambda^{2} - \mu\lambda + 1      \\
+                        p = \mu \qquad q & = 1                               &
+                        \Delta           & = \mu^{2} - 4
+                    \end{align}
+                    For $ \mu = 0, \mu > 0, \mu< 0 $, the critical point at $ (0, 0) $
+                    is a center, spiral source and spiral sink respectively.
+              \item Rayleigh equation,
+                    \begin{align}
+                        z'' - \mu \left( 1 - \frac{z'^{2}}{3} \right) z' + z & = 0 \\
+                        z''' - \mu\left( 1 - \frac{z'^2}{3} \right)z''
+                        + \mu z' \left( \frac{2z'}{3} \right)z'' + z'        & = 0 \\
+                        z''' - ( 1 - z'^2)\mu z''
+                        + z'                                                 & = 0 \\
+                    \end{align}
+                    Using the substitution $ z' \rightarrow y $, the above equation
+                    reduces to the Van der Pol ODE.
+              \item Duffing equation,
+                    \begin{align}
+                        y'' + \omega_0^{2}y + \beta y^{3}  & = 0                                \\
+                        y_1'                               & = y_2                            &
+                        y_2'                               & = -y_1(\omega_0^{2}
+                        + \beta y_1^{2})                                                        \\
+                        y_2                                & = 0                              &
+                        -y_1(\omega_0^{2} + \beta y_1^{2}) & = 0                                \\
+                        P_1                                & = \color{y_h}(0, 0)              &
+                        P_2                                & = \color{y_p}
+                        (-\alpha, 0)                                                            \\
+                        P_2                                & = \color{brown6}
+                        (\alpha, 0)                        &
+                        \alpha                             & = \frac{\omega_0}{\sqrt{-\beta}}
+                    \end{align}
+                    $ P_2 $ and $ P_3 $ require $ \beta < 0 $ in order to exist. \par
+                    Linearizing the system for $ P_1 $
+                    \begin{align}
+                        \vec{y'}       & = \bmattt{0}{1}{-\omega_0^{2}}{0} \vec{y} &
+                        0              & = \lambda^{2} + \omega_0^{2}                \\
+                        p = 0 \qquad q & > 0 \qquad \Delta < 0                     &
+                                       & \color{y_h} \text{Center}
+                    \end{align}
+                    Linearizing the system for $ P_2 $
+                    \begin{align}
+                        z_1            & = y_1 + \alpha                             &
+                        z_2            & = y_2                                        \\
+                        z_1'           & = z_2                                      &
+                        z_2'           & = (\alpha - z_1)(\beta z_1)(z_1 - 2\alpha)   \\
+                        \vec{y'}       & = \bmattt{0}{1}{\omega_0^{2}}{0} \vec{y}   &
+                        0              & = \lambda^{2} - \omega_0^{2}                 \\
+                        p = 0 \qquad q & < 0 \qquad \Delta > 0                      &
+                                       & \color{y_p} \text{Saddle point}
+                    \end{align}
+                    Linearizing the system for $ P_2 $
+                    \begin{align}
+                        z_1            & = y_1 - \alpha                              &
+                        z_2            & = y_2                                         \\
+                        z_1'           & = z_2                                       &
+                        z_2'           & = -(\alpha + z_1)(\beta z_1)(z_1 + 2\alpha)   \\
+                        \vec{y'}       & = \bmattt{0}{1}{\omega_0^{2}}{0} \vec{y}    &
+                        0              & = \lambda^{2} - \omega_0^{2}                  \\
+                        p = 0 \qquad q & < 0 \qquad \Delta > 0                       &
+                                       & \color{brown6} \text{Saddle point}
+                    \end{align}
+          \end{enumerate}
+
+    \item Reframing ODE as a phase plane parametric function,
+          \begin{align}
+              y'' - 4y + y^{3}     & = 0                             \\
+              \diff{y_2}{y_1}\ y_2 & = 4y_1 - y_1^{3}                \\
+              \diff{y_2}{y_1}      & = \frac{y_1 (4 - y_1^{2})}{y_2} \\
+              0.5 y_2^{2}          & = 2y_1^{2} - 0.25y_1^{4} + C
+          \end{align}
+          Drawing contour plots for this equation in $ y_1,\ y_2 $.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          set layers,
+                          enlargelimits = true,
+                          colorbar,
+                          colormap/jet,
+                          width = 12cm,
+                          height = 12cm,
+                          Ani, grid = both,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot3 [
+                          domain = -10:10,
+                          thick,
+                          contour gnuplot={
+                                  levels={-3,-1,...,11},
+                                  labels=false,
+                              },
+                          samples=200
+                      ] {0.5*y^(2) - 2*x^(2) + 0.25*x^(4)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+\end{enumerate}

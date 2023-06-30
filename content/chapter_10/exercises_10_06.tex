@@ -1,0 +1,806 @@
+\section{Surface Integrals}
+
+\begin{enumerate}
+    \item The surface is a plane, with domain $ u \in [0, 1.5],\ v \in [-2, 2] $
+          \begin{align}
+              \vec{F}       & = \begin{bNiceMatrix}[margin]
+                                    -x^2 \\ y^2 \\ 0
+                                \end{bNiceMatrix}
+                            &
+              S             & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  u \\ v \\ 3u - 2v
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u     & = \begin{bNiceMatrix}[margin]
+                                    1 \\ 0 \\ 3
+                                \end{bNiceMatrix}
+                            &
+              \vec{r}_v     & = \begin{bNiceMatrix}[margin]
+                                    0 \\ 1 \\ -2
+                                \end{bNiceMatrix}
+              \\
+              \vec{N}       & = \begin{vNiceMatrix}[margin]
+                                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                    1             & 0             & 3             \\
+                                    0             & 1             & -2            \\
+                                \end{vNiceMatrix} &
+              \vec{\hat{n}} & =  \frac{1}{\sqrt{14}}
+              \begin{bNiceMatrix}[margin]
+                  -3 \\ 2 \\ 1
+              \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I               & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A &
+                              & = \int_{-2}^{2}
+              \Bigg[\int_{0}^{1.5} \Big( 3u^2 + 2v^2 \Big)
+              \dl u \Bigg] \dl v                                               \\
+                              & = \int_{-2}^{2}
+              \Bigg[u^3 + 2v^2\ u \Bigg]_0^{1.5}
+              \ \dl v         &
+                              & = \int_{-2}^{2}
+              \Bigg( {\color{y_h} 1.5^3 + 3v^2} \Bigg)\ \dl v                  \\
+                              & = \Bigg[ \frac{27v}{8} + v^3
+              \Bigg]_{-2}^{2} &
+                              & = \color{y_p} 29.5
+          \end{align}
+
+    \item The surface is a plane, with domain $ u \in [0, 1-v],\ v \in [0, 1] $
+          \begin{align}
+              \vec{F}       & = \begin{bNiceMatrix}[margin]
+                                    e^y \\ e^x \\ 1
+                                \end{bNiceMatrix}
+                            &
+              S             & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  u \\ v \\ 1 - u - v
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u     & = \begin{bNiceMatrix}[margin]
+                                    1 \\ 0 \\ -1
+                                \end{bNiceMatrix}
+                            &
+              \vec{r}_v     & = \begin{bNiceMatrix}[margin]
+                                    0 \\ 1 \\ -1
+                                \end{bNiceMatrix}
+              \\
+              \vec{N}       & = \begin{vNiceMatrix}[margin]
+                                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                    1             & 0             & -1            \\
+                                    0             & 1             & -1            \\
+                                \end{vNiceMatrix} &
+              \vec{\hat{n}} & =  \frac{1}{\sqrt{3}}
+              \begin{bNiceMatrix}[margin]
+                  1 \\ 1 \\ 1
+              \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I              & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A        &
+                             & = \int_{0}^{1}
+              \Bigg[\int_{0}^{1 - v} \Big( e^u + e^v + 1 \Big)
+              \dl u \Bigg] \dl v                                                     \\
+                             & = \int_{0}^{1}
+              \Bigg[ e^u + u\ e^v + u \Bigg]_0^{1 - v}
+              \ \dl v        &
+                             & = \int_{0}^{1}
+              \Bigg( {\color{y_h} e^{1-v} + e^v - ve^v - v} \Bigg)\ \dl v            \\
+                             & = \Bigg[ e^v - \frac{v^2}{2} - e^{1-v} + (1 - v)e^v
+              \Bigg]_{0}^{1} &
+                             & = \color{y_p} 2e - 3.5
+          \end{align}
+
+    \item The surface is a sphere in the first octant,
+          $ u \in [0, \pi/2],\ v \in [0, \pi/2] $
+          \begin{align}
+              \vec{F}   & = \begin{bNiceMatrix}[margin]
+                                0 \\ x \\ 0
+                            \end{bNiceMatrix}
+                        &
+              S         & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  \cos u \cos v \\ \cos u \sin v \\ \sin u
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                -\sin u \cos v \\ -\sin u \sin v \\ \cos u
+                            \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                -\cos u \sin v \\ \cos u \cos v \\ 0
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}}  & \vec{\hat{j}}  & \vec{\hat{k}} \\
+                                -\sin u \cos v & -\sin u \sin v & \cos u        \\
+                                -\cos u \sin v & \cos u \cos v  & 0             \\
+                            \end{vNiceMatrix} &
+              \vec{N}   & = \begin{bNiceMatrix}[margin]
+                                -\cos^2 u \cos v \\ \cos^2 u \sin v \\ -\sin u \cos u
+                            \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I       & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A     \\
+                      & = \int_{0}^{\pi/2}
+              \Bigg[\int_{0}^{\pi/2} \Big( \cos^3 u \cos v \sin v \Big)
+              \dl u \Bigg] \dl v                                         \\
+                      & = \int_{0}^{\pi/2} \frac{\sin(2v)}{2}\
+              \Bigg[ \sin u - \frac{\sin^3 u}{3} \Bigg]_0^{\pi/2}
+              \ \dl v &
+                      & = \int_{0}^{\pi/2}
+              \Bigg( {\color{y_h} \frac{\sin(2v)}{3}} \Bigg)\ \dl v      \\
+                      & = \Bigg[ \frac{\cos(2v)}{6} \Bigg]_{\pi/2}^{0} &
+                      & = \color{y_p} \frac{1}{3}
+          \end{align}
+
+    \item The surface is a circular cylinder oriented along the $ z $ axis,
+          with domain $ u \in [0, \pi/2],\ v \in [0, 2] $
+          \begin{align}
+              \vec{F}   & = \begin{bNiceMatrix}[margin]
+                                e^y \\ -e^{z} \\ e^x
+                            \end{bNiceMatrix}
+                        &
+              S         & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  5 \cos u \\ 5 \sin u \\ v
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                -5\sin u \\ 5\cos u \\ 0
+                            \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                0 \\ 0 \\ 1
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                -5 \sin u     & 5 \cos u      & 0             \\
+                                0             & 0             & 1             \\
+                            \end{vNiceMatrix} &
+              \vec{N}   & = \begin{bNiceMatrix}[margin]
+                                5 \cos u \\ 5 \sin u \\ 0
+                            \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I       & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A   \\
+                      & = \int_{0}^{2}
+              \Bigg[\int_{0}^{\pi/2} \Big( 5\cos u\ e^{5\sin u} - 5 \sin u\ e^{v} \Big)
+              \dl u \Bigg] \dl v                                       \\
+                      & = \int_{0}^{2} \Bigg[
+                  5e^{v} \cos u + e^{5\sin u} \Bigg]_0^{\pi/2}
+              \ \dl v &
+                      & = \int_{0}^{2}
+              \Bigg( {\color{y_h} e^5 - 5e^{v} - 1} \Bigg)\ \dl v      \\
+                      & = \Bigg[ v\ e^5 - 5e^{v} - v \Bigg]_{0}^{2}  &
+                      & = \color{y_p} 2e^5 - 5e^{2} + 3
+          \end{align}
+
+    \item The surface is a paraboloid of revolution oriented along the $ z $ axis,
+          with domain $ u \in [0, 4],\ v \in [-\pi, \pi] $
+          \begin{align}
+              \vec{F}   & = \begin{bNiceMatrix}[margin]
+                                x \\ y \\ z
+                            \end{bNiceMatrix}
+                        &
+              S         & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  u\ \cos v \\ u\ \sin v \\ u^2
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                \cos v \\ \sin v \\ 2u
+                            \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                -u\ \sin v \\ u\ \cos v \\ 0
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                \cos v        & \sin v        & 2u            \\
+                                -u \sin v     & u \cos v      & 0             \\
+                            \end{vNiceMatrix} &
+              \vec{N}   & = \begin{bNiceMatrix}[margin]
+                                -2u^2  \cos v \\ -2u^2 \sin v \\ u
+                            \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I       & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A               \\
+                      & = \int_{-\pi}^{\pi}
+              \Bigg[\int_{0}^{4} \Big( -2 \cos^2 v - 2 \sin^2 v + 1 \Big)\ u^3
+              \dl u \Bigg] \dl v                                                   \\
+                      & = \int_{-\pi}^{\pi} \Bigg[ \frac{-u^4}{4} \Bigg]_{0}^{4}
+              \ \dl v &
+                      & = \int_{-\pi}^{\pi}
+              \Bigg( {\color{y_h} -64} \Bigg)\ \dl v                               \\
+                      & = -64\Bigg[ v \Bigg]_{-\pi}^{\pi}                        &
+                      & = \color{y_p} -128\pi
+          \end{align}
+
+    \item The surface is a parabolic canal resting on the $ z = x $ plane,
+          with domain $ v \in [0, u],\ u \in [0, 1] $
+          \begin{align}
+              \vec{F}   & = \begin{bNiceMatrix}[margin]
+                                \cosh y \\ 0 \\ \sinh x
+                            \end{bNiceMatrix}
+                        &
+              S         & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  u \\ v \\ u + v^2
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                1 \\ 0 \\ 1
+                            \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                0 \\ 1 \\ 2v
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                1             & 0             & 1             \\
+                                0             & 1             & 2v            \\
+                            \end{vNiceMatrix} &
+              \vec{N}   & = \begin{bNiceMatrix}[margin]
+                                -1 \\ -2v \\ 1
+                            \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I       & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A             &
+                      & = \int_{0}^{1}
+              \Bigg[\int_{0}^{u} \Big(-\cosh v + \sinh u \Big)
+              \dl v \Bigg] \dl u                                                   \\
+                      & = \int_{0}^{1} \Bigg[ -\sinh v + v\sinh u \Bigg]_{0}^{u}
+              \ \dl u &
+                      & = \int_{0}^{1}
+              \Bigg( {\color{y_h} (u-1)\sinh u} \Bigg)\ \dl u                      \\
+                      & = \Bigg[ (u-1)\cosh u - \sinh u \Bigg]_{0}^{1}           &
+                      & = \color{y_p} 1 - \sinh(1)
+          \end{align}
+
+    \item The surface is a cylinder $ z = x $ plane,
+          with domain $ v \in [0, u],\ u \in [0, \pi/4] $
+          \begin{align}
+              \vec{F}   & = \begin{bNiceMatrix}[margin]
+                                0 \\ \sin y \\ \cos z
+                            \end{bNiceMatrix}
+                        &
+              S         & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  u^2 \\ u \\ v
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                2u \\ 1 \\ 0
+                            \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                0 \\ 0 \\ 1
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                2u            & 1             & 0             \\
+                                0             & 0             & 1             \\
+                            \end{vNiceMatrix} &
+              \vec{N}   & = \begin{bNiceMatrix}[margin]
+                                1 \\ -2u \\ 0
+                            \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I       & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A            &
+                      & = \int_{0}^{\pi/4}
+              \Bigg[\int_{0}^{u} \Big( -2u \sin u\Big)
+              \dl v \Bigg] \dl u                                                  \\
+                      & = \int_{0}^{\pi/4} \Bigg[ (-2u\sin u)\ v \Bigg]_{0}^{u}
+              \ \dl u &
+                      & = \int_{0}^{\pi/4}
+              \Bigg( {\color{y_h} -2u^2\ \sin u} \Bigg)\ \dl u                    \\
+                      & = \Bigg[ (2u^2 - 4)\cos u - 4u\sin u \Bigg]_{0}^{\pi/4} &
+                      & = \color{y_p} \frac{\pi^2 - 8\pi - 32}{8\sqrt{2}} + 4
+          \end{align}
+
+    \item The surface is a cylinder whose axis is the $ x $ axis,
+          with domain $ v \in [2, 5],\ u \in [0, \pi/2] $
+          \begin{align}
+              \vec{F}   & = \begin{bNiceMatrix}[margin]
+                                \tan(xy) \\ x \\ y
+                            \end{bNiceMatrix}
+                        &
+              S         & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  v \\ \cos u \\ \sin u
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                0 \\ -\sin u \\ \cos u
+                            \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                1 \\ 0 \\ 0
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                0             & -\sin u       & \cos u        \\
+                                1             & 0             & 0             \\
+                            \end{vNiceMatrix} &
+              \vec{N}   & = \begin{bNiceMatrix}[margin]
+                                0 \\ \cos u \\ \sin u
+                            \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A               \\
+                & = \int_{0}^{\pi/2}
+              \Bigg[\int_{2}^{5} \Big( v\cos u + \cos u \sin u \Big)
+              \dl v \Bigg] \dl u                                             \\
+                & = \int_{0}^{\pi/2} \Bigg[ \frac{v^2\ \cos u}
+                  {2} + \frac{v\ \sin(2u)}{2}
+              \Bigg]_{2}^{5} \ \dl u                                         \\
+                & = \int_{0}^{\pi/2}
+              \Bigg( {\color{y_h} 10.5 \cos u + 1.5 \sin (2u)} \Bigg)\ \dl u \\
+                & = \Bigg[10.5\sin(u) - 0.75 \cos(2u)
+                  \Bigg]_{0}^{\pi/2} = \color{y_p} 12
+          \end{align}
+
+    \item The surface is a cylinder along the $ y $ axis,
+          with domain $ v \in [0, 5],\ u \in [\pi/4, \pi/2] $
+          \begin{align}
+              \vec{F}   & = \begin{bNiceMatrix}[margin]
+                                0 \\ \sinh z \\ \cosh x
+                            \end{bNiceMatrix}
+                        &
+              S         & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  2\cos u \\ v \\ 2\sin u
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                -2\sin u \\ 0 \\ 2\cos u
+                            \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                0 \\ 1 \\ 0
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                -2\sin u      & 0             & 2\cos u       \\
+                                0             & 1             & 0             \\
+                            \end{vNiceMatrix} &
+              \vec{N}   & = \begin{bNiceMatrix}[margin]
+                                -2\cos u \\ 0 \\ -2\sin u
+                            \end{bNiceMatrix}
+          \end{align}
+          Finding the integral, \textcolor{y_p}{Answer Key is incorrect}
+          \begin{align}
+              I & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A            \\
+                & = \int_{\pi/4}^{\pi/2}
+              \Bigg[\int_{0}^{5} \Big( -2\sin u\ \cosh(2 \cos u) \Big)
+              \dl v \Bigg] \dl u                                          \\
+                & = 5\int_{\pi/4}^{\pi/2}
+              \Bigg( {\color{y_h} -2\sin u\ \cosh(2\cos u)} \Bigg)\ \dl u \\
+                & = 5\Bigg[ \sinh(2 \cos u)
+                  \Bigg]_{\pi/4}^{\pi/2} = \color{y_p} -5 \sinh(\sqrt{2})
+          \end{align}
+
+    \item The surface is a cone along the $ z $ axis,
+          with domain $ v \in [0, \pi],\ u \in [0, 2] $
+          \begin{align}
+              \vec{F}   & = \begin{bNiceMatrix}[margin]
+                                y^2 \\ x^2 \\ z^4
+                            \end{bNiceMatrix}
+                        &
+              S         & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  u\cos v \\ u\sin v \\ 4u
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                \cos v \\ \sin v \\ 4
+                            \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                -u\sin v \\ u\cos v \\ 0
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                \cos v        & \sin v        & 4             \\
+                                -u\sin v      & u\cos v       & 0             \\
+                            \end{vNiceMatrix} &
+              \vec{N}   & = \begin{bNiceMatrix}[margin]
+                                -4u\cos v \\ -4u\sin v \\ u
+                            \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I & = \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A                    \\
+                & = \int_{0}^{2}
+              \Bigg[\int_{0}^{\pi} \Big( -4u^3 \cos v \sin^2 v -
+                  4u^3 \sin v \cos^2 v + 256u^5 \Big)
+              \dl v \Bigg] \dl u                                                  \\
+                & = \int_{0}^{2} \Bigg[ \frac{4u^3}{3}\ (-\sin^3 v + \cos^3 v)
+              + 256u^5\ v \Bigg]_{0}^{\pi}\ \dl u                                 \\
+                & = 5\int_{0}^{2}
+              \Bigg( {\color{y_h} \frac{-8u^3}{3} + 256\pi\ u^5} \Bigg)\ \dl u    \\
+                & = \Bigg[ \frac{-2u^4}{3} + \frac{256\pi\ u^6}{6} \Bigg]_{0}^{2}
+              = \color{y_p} \frac{-64 + 16384\ \pi}{6}
+          \end{align}
+
+    \item Sympy program written. TBC.
+
+    \item The surface is a plane, with domain $ u \in [0, 1-v],\ v \in [0, 1] $
+          \begin{align}
+              G         & = \cos x + \sin x
+                        &
+              S         & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  u \\ v \\ 1 - u - v
+              \end{bNiceMatrix}
+              \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                1 \\ 0 \\ -1
+                            \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                0 \\ 1 \\ -1
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                1             & 0             & -1            \\
+                                0             & 1             & -1            \\
+                            \end{vNiceMatrix} &
+              \vec{N}   & =
+              \begin{bNiceMatrix}[margin]
+                  1 \\ 1 \\ 1
+              \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I & = \iint_S G(\vec{r}) \dl A                                \\
+                & = \sqrt{3}\ \int_{0}^{1}
+              \Bigg[\int_{0}^{1 - v} \Big( \cos u + \sin u \Big)
+              \dl u \Bigg] \dl v                                            \\
+                & = \sqrt{3}\ \int_{0}^{1}
+              \Bigg[ \sin u - \cos u \Bigg]_0^{1 - v}
+              \ \dl v                                                       \\
+                & = \sqrt{3}\ \int_{0}^{1}
+              \Bigg( {\color{y_h} \sin(1- v) - \cos(1-v) + 1} \Bigg)\ \dl v \\
+                & = \sqrt{3}\ \Bigg[ \cos(1-v) + \sin(1-v) + v
+                  \Bigg]_{0}^{1} = \color{y_p} \sqrt{3}\ [2 - \cos(1) - \sin(1)]
+          \end{align}
+
+    \item The surface is a plane, with domain $ u \in [0, \pi],\ v \in [0, u] $
+          \begin{align}
+              G                  & = x + y + z
+                                 &
+              C                  & : x + 2y - z = 0             \\
+              S                  & : \vec{r} =
+              \begin{bNiceMatrix}[margin]
+                  u \\ v \\ u + 2v
+              \end{bNiceMatrix}
+                                 &
+              \vec{N} = \nabla f & = \begin{bNiceMatrix}[margin]
+                                         1 \\ 2 \\ -1
+                                     \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I                  & = \iint_S G(\vec{r}) \dl A        &
+              \abs{\vec{N}}      & = \sqrt{6}                          \\
+                                 & = \sqrt{6}\ \int_{0}^{\pi}
+              \Bigg[\int_{0}^{u} \Big( 2u + 3v \Big)
+              \dl v \Bigg] \dl u &
+                                 & = \sqrt{6}\ \int_{0}^{\pi}
+              \Bigg[ 2u\ v + \frac{3v^2}{2}
+              \Bigg]_0^{u} \ \dl u                                     \\
+                                 & = \sqrt{6}\ \int_{0}^{\pi}
+              \Bigg( {\color{y_h} 3.5\ u^2} \Bigg)
+              \ \dl u            &
+                                 & = \sqrt{6}\ \Bigg[ \frac{7u^3}{6}
+                  \Bigg]_{0}^{\pi} = \color{y_p} \frac{7\pi^3}{\sqrt{6}}
+          \end{align}
+
+    \item The surface is a sphere in the first and second octants,
+          $ u \in [0, \pi/2],\ v \in [0, \pi] $
+          \begin{align}
+              g                  & = ax + by + cz                           &
+              f                  & : x^2 + y^2 + z^2 = 1,\ y = 0,\ z = 0      \\
+              \vec{N} = \nabla f & = \begin{bNiceMatrix}[margin]
+                                         2x \\ 2y \\ 2z
+                                     \end{bNiceMatrix}            &
+              \vec{r}            & = \begin{bNiceMatrix}[margin]
+                                         \cos u \cos v \\ \cos u \sin v \\ \sin u
+                                     \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I             & = \iint_S G(\vec{r})\ \dl A                          \\
+              \abs{\vec{N}} & = 2\sqrt{x^2 + y^2 + z^2} = 2                        \\
+                            & = 2\ \int_{0}^{\pi}
+              \Bigg[\int_{0}^{\pi/2} \Big( a \cos u \cos v + b \sin u \sin v
+                  + c\sin u \Big)
+              \dl u \Bigg] \dl v                                                   \\
+                            & = 2\ \int_{0}^{\pi} \Bigg[ a\sin u \cos v
+              - b\cos u \sin v - c\cos u \Bigg]_0^{\pi/2}\ \dl v                   \\
+                            & = 2\ \int_{0}^{\pi}
+              \Bigg( {\color{y_h} a\cos v + b\sin v + c} \Bigg)\ \dl v             \\
+                            & = 2\ \Bigg[ a\sin v - b \cos v + cv \Bigg]_{0}^{\pi}
+              = \color{y_p} 4b + 2\pi\ c
+          \end{align}
+
+    \item The surface is a sphere in the first and second octants,
+          $ u \in [0, 1],\ v \in [-2, 2] $
+          \begin{align}
+              g       & = (1 + 9xz)^{3/2}                                                                                &
+              \vec{r} & : \begin{bNiceMatrix}[margin]
+                              u \\ v \\ u^3
+                          \end{bNiceMatrix}                                                                       \\
+              \vec{N} & = \begin{vNiceMatrix}[margin]
+                              \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                              1             & 0             & 3u^2          \\
+                              0             & 1             & 0             \\
+                          \end{vNiceMatrix} &
+              \vec{N} & = \begin{bNiceMatrix}[margin]
+                              -3u^2 \\ 0 \\ 1
+                          \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I & = \iint_S G(\vec{r})\ \dl A  \qquad\qquad
+              \abs{\vec{N}} = \sqrt{1 + 9u^4}                       \\
+                & = \int_{-2}^{2}
+              \Bigg[\int_{0}^{1} \Big( (1 + 9u^4)^2 \Big)
+              \dl u \Bigg] \dl v                                    \\
+                & = \int_{-2}^{2} \Bigg[ u + \frac{18u^5}{5} + 9u^9
+              \Bigg]_0^{1}\ \dl v                                   \\
+                & = \int_{-2}^{2}
+              \Bigg( {\color{y_h} 13.6} \Bigg)\ \dl v
+              = \Bigg[ 13.6v \Bigg]_{-2}^{2} = \color{y_p} 54.4
+          \end{align}
+
+    \item The surface is a sphere in the first and second octants,
+          $ u \in [1, 3],\ v \in [0, \pi/2] $
+          \begin{align}
+              g       & = \arctan(y/x)                                                                                   &
+              \vec{r} & : \begin{bNiceMatrix}[margin]
+                              u \cos v \\ u \sin v \\ u^2
+                          \end{bNiceMatrix}                                                                       \\
+              \vec{N} & = \begin{vNiceMatrix}[margin]
+                              \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                              \cos v        & \sin v        & 2u            \\
+                              -u \sin v     & u \cos v      & 0             \\
+                          \end{vNiceMatrix} &
+              \vec{N} & = \begin{bNiceMatrix}[margin]
+                              -2u^2\ \cos v \\ -2u^2\ \sin v \\ u
+                          \end{bNiceMatrix}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              I & = \iint_S G(\vec{r})\ \dl A  \qquad\qquad
+              \abs{\vec{N}} = \sqrt{4u^4 + u^2}                            \\
+                & = \int_{0}^{\pi/2}
+              \Bigg[\int_{1}^{3} \Big( vu\ \sqrt{4u^2 + 1} \Big)
+              \dl u \Bigg] \dl v                                           \\
+                & = \int_{0}^{\pi/2} \frac{v}{12}\ \Bigg[ (1 + 4u^2)^{3/2}
+              \Bigg]_{1}^{3}\ \dl v                                        \\
+                & = \int_{0}^{\pi/2}
+              \Bigg( {\color{y_h} \frac{37^{3/2} - 5^{3/2}}{12}\ v} \Bigg)\ \dl v
+              = \Bigg[ \frac{\lambda\ v^2}{2} \Bigg]_{0}^{\pi/2}
+              = \color{y_p}  21.98
+          \end{align}
+
+    \item Youtube videos animating this process. \par
+          \url{https://www.youtube.com/watch?v=XlQOipIVFPk}
+
+    \item TBC
+
+    \item Using the mass per unit area $ \rho $  of a surface $ S $,
+          \begin{align}
+              \bar{x} & = \frac{1}{M}\ \iint_S x \dl m
+              = \frac{1}{M} \iint_S x \rho\ \dl A
+          \end{align}
+          Similary for the other two coordinates.
+
+    \item Using the definition of moment of inertia,
+          \begin{align}
+              I_a & = \iint_S \ d_a^2\ \dl m             &
+              I_x & = \iint_S \ (y^2 + z^2)\ \rho\ \dl A
+          \end{align}
+          Similarly for the other coordinates. This uses the fact that the three
+          corrdinates are mutually orthogonal and then Pythogoras' theorem to get
+          $ d_x^2 = y^2 + z^2 $ and so on.
+
+    \item Moment of inertia about the line $ y = x,\ z = 0 $,
+          \begin{align}
+              I_a     & = \iint_S \ d_a^2\ \rho\ \dl A                       &
+              \vec{r} & = \vec{r}_{\parallel} + \vec{r}_{\perp}                \\
+              d_a     & = \frac{\abs{\vec{r} \times \vec{d}}}{\abs{\vec{d}}} &
+              I_a     & = \frac{1}{2}\ \iint_S \Big[(x - y)^2 + 2z^2\Big]
+              \rho\ \dl A
+          \end{align}
+          This uses the formula for the distance of a point from a given line with
+          direction $ \vec{d} $ and with $ \vec{r} $ pointing from any point on the line
+          to the given point $ P $,
+          \begin{align}
+              d_{\perp} & = \frac{\abs{\vec{r} \times \vec{d}}}{\abs{\vec{d}}}
+          \end{align}
+
+    \item Moment of inertial about the axis $ z = h/2 $ lying in the $ xz $ plane.
+          \begin{align}
+              S       & : x^2 + y^2 = 1 \quad z \in [0, h]                    \\
+              \vec{r} & = \begin{bNiceMatrix}[margin]
+                              \cos v \\ \sin v \\ u
+                          \end{bNiceMatrix}
+              \quad u \in [0, h] \quad v \in [0, 2\pi]                        \\
+              I_a     & = \iint_S \ d_a^2\ \rho \dl A
+              = \int_{0}^{h} \Bigg[\int_{0}^{2\pi} \sin^2 v + (u - h/2)^2
+              \ \dl v \Bigg] \dl u                                            \\
+                      & = \int_{0}^{h} \Bigg[\frac{v}{2} - \frac{\sin(2v)}{4}
+              + v\ (u - h/2)^2 \Bigg]_0^{2\pi} \dl u                          \\
+                      & = \pi\int_{0}^{h} {\color{y_h} 1 + 2 (u - h/2)^2}
+              \dl u                                                           \\
+                      & = \pi\Bigg[ u + \frac{2}{3}\ (u - h/2)^3 \Bigg]_0^h
+              = \color{y_p} \pi \Bigg[ h + \frac{h^3}{6} \Bigg]
+          \end{align}
+
+    \item Moment of inertial about the axis $ z $ axis. THe limits in the $ uv $ plane
+          are $ u \in [0, h],\ v \in [0, 2\pi] $
+          \begin{align}
+              S             & : x^2 + y^2 = z^2 \quad z \in [0, h]                  \\
+              \vec{r}       & = \begin{bNiceMatrix}[margin]
+                                    u\cos v \\ u\sin v \\ u
+                                \end{bNiceMatrix} \qquad\qquad
+              \vec{N} =           \begin{bNiceMatrix}[margin]
+                                      -u \cos v \\ - u\sin v \\ u
+                                  \end{bNiceMatrix} \qquad\qquad
+              \abs{\vec{N}} & = \sqrt{2}u                                           \\
+              I_a           & = \iint_S \ d_a^2\ \rho \dl A
+              = \int_{0}^{h} \Bigg[\int_{0}^{2\pi} \sqrt{2} u^3\
+                  \Big(\cos^2 v + \sin^2 v\Big)
+              \ \dl v \Bigg] \dl u                                                  \\
+                            & = \sqrt{2} \int_{0}^{h} \Bigg[ v\ u^3 \Bigg]_0^{2\pi}
+              \dl u
+              = 2\sqrt{2}\pi \int_{0}^{h} {\color{y_h} u^3} \dl u
+              = \color{y_p} \frac{\pi\ h^4}{\sqrt{2}}
+          \end{align}
+
+    \item To prove Steiner's theorem, assume that the axis $ B $ is the z axis and the
+          other axis is displaced from it in the $ x $ direction. \par
+          The two axes pass through $ (0, 0) $ and $ (d, 0) $ respectively in the $ xy $
+          plane.
+
+          \begin{align}
+              I_B       & = \iint \Big[x^2 + y^2\Big]\ \rho\ \dl x \dl y       &
+              I_K       & = \iint \Big[(x - d)^2 + y^2\Big]\ \rho\ \dl x \dl y   \\
+              I_K - I_B & = \iint (d^2 - 2dx)\ \rho \dl x \dl y                &
+                        & = \iint (d^2 - 2dx)\ \dl m
+          \end{align}
+          The integral $ \int x\ \dl m $ is the x co-ordinate of the center of gravity
+          which is zero by definition. This leaves,
+          \begin{align}
+              I_k & = I_B + d^2 \iint \dl m = I_B + Md^2
+          \end{align}
+
+    \item With the axis $ B $ being the $ z $ axis, and the limits in the $ uv $ plane
+          \newline $ u \in [-\pi/2, \pi/2],\ v \in [0, 2\pi] $
+          \begin{align}
+              \vec{r} & = \begin{bNiceMatrix}[margin]
+                              \cos u \cos v \\ \cos u \sin v \\ \sin u
+                          \end{bNiceMatrix}            &
+              \vec{N} & = \begin{bNiceMatrix}[margin]
+                              \cos^2 u \cos v \\ \cos^2 u \sin v \\ \cos u \sin u
+                          \end{bNiceMatrix} \qquad \abs{\vec{N}} = \cos u  \\
+              I_B     & = \iint_S (y^2 + x^2) \dl A                         &
+                      & = \int_{-\pi/2}^{\pi/2} \Bigg[ \int_{0}^{2\pi}
+                  (\cos^3 u)
+              \dl v \Bigg] \dl u                                              \\
+                      & = 2\pi \int_{-\pi/2}^{\pi/2} {\color{y_h}
+              \cos^3 u}\
+              \dl u   &
+                      & = 2\pi \Bigg[ \sin u - \frac{\sin^3 u}{3}
+              \Bigg]_{-\pi/2}^{\pi/2}                                         \\
+                      & = \color{y_p} \frac{8\pi}{3}
+          \end{align}
+          Using the density $ \rho = 1 $, the mass $ M = A \rho  = 4\pi$
+          \begin{align}
+              I_K & = I_B + Md^2 = \frac{8\pi}{3} + 4\pi \cdot 1^2 = \frac{20\pi}{3}
+          \end{align}
+
+    \item First fundamental form,
+          \begin{enumerate}
+              \item Proving the relation for arc length,
+                    \begin{align}
+                        \dl s^2                 & = E\ \dl u ^2 + 2F\ \dl u \dl v
+                        + G\ \dl v^2            &
+                        l                       & = \int_a^b \sqrt{\vec{r}' \dotp
+                        \vec{r}'}\ \dl t                                            \\
+                        \vec{r}'                & = \vec{r}_u\ u' + \vec{r}_v\ v' &
+                        \vec{r}' \dotp \vec{r}' & = E\ u'^2 + G\ v'^2 + 2F\ u'v'    \\
+                        l                       & = \int_{a}^{b} \sqrt{Eu'^2
+                            + 2Fu'v' + Gv'^2}\ \dl t
+                    \end{align}
+              \item Angle of intersection between two curves,
+                    \begin{align}
+                        \vec{r}_1             & = \bmatcol{g(t)}{h(t)}          &
+                        \vec{r}_2             & = \bmatcol{p(t)}{q(t)}            \\
+                        \vec{a}               & = \vec{r}_u\ g' + \vec{r}_v\ h' &
+                        \vec{b}               & = \vec{r}_u\ p' + \vec{r}_v\ q'   \\
+                        \vec{a} \dotp \vec{b} & = \abs{\vec{a}} \abs{\vec{b}}
+                        \cos\gamma
+                    \end{align}
+              \item The length of the normal vector is,
+                    \begin{align}
+                        \abs{\vec{N}}^2 & = \abs{\vec{r}_u \times \vec{r}_v}^2  &
+                                        & = \abs{\vec{r}_u}^2 \abs{\vec{r}_v}^2
+                        - \abs{\vec{r}_u \dotp \vec{r}_v}^2                       \\
+                                        & = EG - F^2
+                    \end{align}
+              \item For polar coordinates,
+                    \begin{align}
+                        u         & = r                             &
+                        v         & = \theta                          \\
+                        x         & = u\cos v                       &
+                        y         & = u\sin v                         \\
+                        \vec{r}_u & = \bmatcol{\cos v}{\sin v}      &
+                        \vec{r}_v & = \bmatcol{-u \sin v}{u \cos v}   \\
+                        E         & = \vec{r}_u \dotp \vec{r}_u     &
+                                  & = 1                               \\
+                        G         & = \vec{r}_v \dotp \vec{r}_v     &
+                                  & = u^2                             \\
+                        F         & = 0
+                    \end{align}
+                    To find the area of a disk of radius $ a $,
+                    \begin{align}
+                        A & = \iint_S \dl A                                        &
+                          & = \int_{0}^{a}\int_{0}^{2\pi} u\ \dl u \dl v             \\
+                          & = 2\pi \int_{0}^{a} u\ \dl u                           &
+                          & = 2\pi \Bigg[\frac{a^2}{2}\Bigg] = \color{y_p} \pi a^2
+                    \end{align}
+
+              \item For the torus,
+                    \begin{align}
+                        \vec{r}   & = \begin{bNiceMatrix}[margin]
+                                          (a + b\cos v)\ \cos u \\
+                                          (a + b\cos v)\ \sin u \\
+                                          b\sin v
+                                      \end{bNiceMatrix}    \\
+                        \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                          -(a + b\cos v)\ \sin u \\
+                                          (a + b\cos v)\ \cos u  \\
+                                          0
+                                      \end{bNiceMatrix} &
+                        \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                          (- b\sin v)\ \cos u \\
+                                          (- b\sin v)\ \sin u \\
+                                          b\cos v
+                                      \end{bNiceMatrix}    \\
+                        E         & = a + b\cos v                 &
+                        G         & = b, \qquad F = 0               \\
+                    \end{align}
+                    Using the first fundamental form to find the area of the torus,
+                    \begin{align}
+                        A & = \int_{0}^{2\pi} \Bigg[\int_{0}^{2\pi} (a + b\cos v)
+                        \dl u\Bigg] b\ \dl v                                          \\
+                          & =2b \pi \int_{0}^{2\pi} {\color{y_h} (a + b\cos v)} \dl v
+                        = 2b \pi \Bigg[av + b\sin v\Bigg]_{0}^{2\pi}                  \\
+                          & = 2b\pi (2\pi a + 0) = \color{y_p} 4\pi^2\ ab
+                    \end{align}
+                    The meridian length is $ 2\pi b $ and the length of the path traced
+                    by the center is $ 2\pi a $, arrives at the same value of $ A $.
+
+                    \item TBC. Sphere, Cone, Cylinder, Torus, Plane, Ellipsoid, 
+                    Paraboloid, Hyperboloid.
+          \end{enumerate}
+\end{enumerate}

@@ -1,0 +1,636 @@
+\section{Forced Oscillations}
+
+\begin{enumerate}
+    \item Deriving the terms $ C_n $,
+          \begin{align}
+              A_n & = \frac{1}{n\pi D_n} \Bigg[ \frac{4(25 - n^2)}{n} \Bigg] &
+              B_n & = \frac{1}{n\pi D_n} \Bigg[ 0.2 \Bigg]                     \\
+              C_n & = \sqrt{A_n^2 + B_n^2}                                   &
+                  & = \frac{1}{n\pi D_n}\sqrt{\frac{(25 - n^2)^2
+              + (0.05n)^2}{n^2/16}}                                            \\
+                  & = \frac{4}{n^2 \pi \sqrt{D_n}}
+          \end{align}
+
+    \item The effect of changing $ k $ is,
+          \begin{align}
+              C_n & \propto \frac{1}{\sqrt{D_n}} &
+              D_n & = (k - n^2)^2 + (cn)^2         \\
+          \end{align}
+          The maximum in amplitude shifts from $ n = 5 $ to $ n = 7 $, when $ k = 7^2 $.
+          \par The amplitude goes down as $ k $ increases, and as $ c $ increases.
+
+    \item The effect of $ c $ is to prevent the output being a pure cosine series by
+          introducing sine terms proportional to the damping.
+          \begin{align}
+              B_n             & \propto c                  &
+              c \rightarrow 0 & \implies B_n \rightarrow 0   \\
+              C_n             & \rightarrow A_n
+          \end{align}
+          In the limit of very large $ c $, $ B_n \gg  A_n $ and the output is completely
+          out of phase with the input.
+
+    \item The derivative of the input is,
+          \begin{align}
+              r'(t)          & = \frac{-4}{n\pi}\ \sin(nt) = \lambda \sin(nt) &
+              C_n            & = \frac{\lambda}{\sqrt{D_n}}                     \\
+              C_{\text{new}} & = n\ C_{\text{old}}
+          \end{align}
+          Differentiation leads to the amplitude $ C_n $  multiplied by a factor of
+          $ n $.
+
+    \item The fact that the driving frequency being larger than the resonant frequency
+          makes the output the opposite phase as the input is reflected in those $ A_n $
+          terms being negative. \par
+          No such effect happens as a result of the damping, which means that the $ B_n $
+          terms always remain positive.
+
+    \item Solving the ODE,
+          \begin{align}
+              r(t)             & = \sin(\alpha t) + \sin(\beta t) &
+              \omega^2         & \neq \alpha^2,\beta^2              \\
+              y'' + \omega^2 y & = r(t)
+          \end{align}
+          Using a guess for the solution, and solving the nh-ODE,
+          \begin{align}
+              y_p                       & = A_1 \cos(\alpha t) + A_2 \sin(\alpha t)
+              + B_1 \cos(\beta t) + B_2 \sin(\beta t)                               \\
+              [\cos(\alpha t)]\qquad  0 & = (-\alpha^2 + \omega^2)A_1               \\
+              [\sin(\alpha t)]\qquad  1 & = (-\alpha^2 + \omega^2)A_2               \\
+              [\cos(\beta t)]\qquad  0  & = (-\beta^2 + \omega^2)B_1                \\
+              [\sin(\beta t)]\qquad  1  & = (-\beta^2 + \omega^2)B_2                \\
+              y_p                       & = \color{y_p} \frac{\sin(\alpha t)}
+              {\omega^2 - \alpha^2} + \frac{\sin(\beta t)}{\omega^2 - \beta^2}
+          \end{align}
+          Finding the general solution, by solving the h-ODE,
+          \begin{align}
+              y'' + \omega^2 y & = 0                                                   \\
+              y_h              & = \color{y_h} C_1 \cos(\omega t) + C_2 \sin(\omega t) \\
+              y                & = {\color{y_h} y_h} + {\color{y_p} y_p}
+          \end{align}
+
+    \item Solving the ODE,
+          \begin{align}
+              r(t)             & = \sin(t) &
+              \omega^2         & \neq 1      \\
+              y'' + \omega^2 y & = r(t)
+          \end{align}
+          Using a guess for the solution, and solving the nh-ODE,
+          \begin{align}
+              y_p                & = A_1 \cos(t) + A_2 \sin(t)                \\
+              [\cos(t)]\qquad  0 & = (-1 + \omega^2)A_1                       \\
+              [\sin(t)]\qquad  1 & = (-1 + \omega^2)A_2                       \\
+              y_p                & = \color{y_p} \frac{\sin(t)}{\omega^2 - 1}
+          \end{align}
+          Finding the general solution, by solving the h-ODE,
+          \begin{align}
+              y'' + \omega^2 y & = 0                                                   \\
+              y_h              & = \color{y_h} C_1 \cos(\omega t) + C_2 \sin(\omega t) \\
+              y                & = {\color{y_h} y_h} + {\color{y_p} y_p}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              f(\x) = 1 / (\x^2 - 1);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani, title = {$ \abs{y_p} $ }]
+                      \addplot[GraphSmooth, y_p, domain = 0:11,
+                          restrict y to domain = -10:10] {f(x)};
+                      \addplot[only marks, mark options = {fill = black},
+                          samples at={0.5, 0.9, 1.1, 1.5, 10}]{f(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier series representation of the input
+          \begin{align}
+              r(t) & = \frac{\pi}{4}\ \abs{\cos t} \qquad\qquad
+              \forall \quad x \in [-\pi, \pi]                         \\
+              p    & = 2L = 2\pi                                      \\
+              a_0  & = \frac{1}{2\pi}\ \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{4}\ \int_{0}^{\pi} \abs{\cos x}\ \dl x       \\
+                   & =  \frac{1}{4}\ \Bigg[ \sin x \Bigg]_{0}^{\pi/2}
+              + \frac{1}{4} \Bigg[ \sin x \Bigg]_{\pi}^{\pi/2}
+              = \color{y_h} \frac{1}{2}
+          \end{align}
+          Finding the cosine coefficients
+          \begin{align}
+              a_1 & =  \frac{1}{2} \int_{0}^{\pi/2} (\cos^2 x)\ \dl x
+              + \frac{1}{2} \int_{\pi}^{\pi/2} (\cos^2 x)\ \dl x                  \\
+                  & = \frac{1}{4}\Bigg[ x + \frac{\sin(2x)}{2} \Bigg]_{0}^{\pi/2}
+              + \frac{1}{4}\Bigg[ x + \frac{\sin(2x)}{2} \Bigg]_{\pi}^{\pi/2}
+              = \color{y_p} 0                                                     \\
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \ \cos(nx)\ \dl x      \\
+                  & = \frac{1}{2} \int_{0}^{\pi/2} (\cos x) \cos(nx)\ \dl x
+              + \frac{1}{2} \int_{\pi}^{\pi/2} (\cos x) \cos(nx)\ \dl x           \\
+                  & = \frac{1}{4}\Bigg[ \frac{\sin[(1+n)x]}{1+n}
+                  + \frac{\sin[(1-n)x]}{1-n}
+              \Bigg]_{0}^{\pi/2}                                                  \\
+                  & + \frac{1}{4}\Bigg[ \frac{\sin[(1+n)x]}{1+n}
+                  + \frac{\sin[(1-n)x]}{1-n}
+                  \Bigg]_{\pi }^{\pi/2}
+              = \color{y_p} \frac{\cos(n\pi/2)}{1 - n^2}
+          \end{align}
+          Using a guess for the solution, and solving the nh-ODE,
+          \begin{align}
+              y_p                          & = C + A_n \cos(nt) + B_n \sin(nt) \\
+              \omega^2 C                   & = \frac{1}{2}                     \\
+              \frac{\cos(n\pi/2)}{1 - n^2} & = (-n^2 + \omega^2)A_n            \\
+              0                            & = (-n^2 + \omega^2)B_n            \\
+              y_p                          & = \color{y_p} \frac{1}{2\omega^2}
+              + \iser[n]{2} \frac{\cos(n\pi/2)}{(1 - n^2)(\omega^2 - n^2)}
+              \ \cos(nt)
+          \end{align}
+          Finding the general solution, by solving the h-ODE,
+          \begin{align}
+              y'' + \omega^2 y & = 0                                                   \\
+              y_h              & = \color{y_h} C_1 \cos(\omega t) + C_2 \sin(\omega t) \\
+              y                & = {\color{y_h} y_h} + {\color{y_p} y_p}
+          \end{align}
+
+    \item In Problem $ 8 $, even numbers for $ n $ give nonzero terms in the
+          expansion of $ y_p $, which can have zero in the denominator. \par
+          This means that no steady state solution exists for even number $ \omega $.
+
+    \item Finding the Fourier series representation of the input
+          \begin{align}
+              r(t) & = \frac{\pi}{4}\ \abs{\sin x} \qquad\qquad
+              \forall \quad x \in [-\pi, \pi]                        \\
+              p    & = 2L = 2\pi                                     \\
+              a_0  & = \frac{1}{2\pi}\ \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{4}\ \int_{0}^{\pi} \abs{\sin x}\ \dl x      \\
+                   & =  \frac{1}{4}\ \Bigg[ -\cos x \Bigg]_{0}^{\pi}
+              = \color{y_h} \frac{1}{2}
+          \end{align}
+          Finding the cosine coefficients
+          \begin{align}
+              a_1 & =  \frac{1}{2} \int_{0}^{\pi} (\sin x) \cos(x)\ \dl x    \\
+                  & = \Bigg[ \frac{-\cos(2x)}{8} \Bigg]_{0}^{\pi}
+              = \color{y_p} 0                                                \\
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \ \cos(nx)\ \dl x
+              = \frac{1}{2} \int_{0}^{\pi} (\sin x) \cos(nx)\ \dl x          \\
+                  & = -\frac{1}{4}\Bigg[ \frac{\cos[(1+n)x]}{1+n}
+                  + \frac{\cos[(1-n)x]}{1-n}
+              \Bigg]_{0}^{\pi}                                               \\
+                  & = \color{y_p} \frac{1}{2(1 - n^2)}\ [\cos(n\pi) + 1]
+          \end{align}
+          Using a guess for the solution, and solving the nh-ODE,
+          \begin{align}
+              y_p                               & = C + A_n \cos(nt) + B_n \sin(nt) \\
+              \omega^2 C                        & = \frac{1}{2}                     \\
+              \frac{1 + \cos(n\pi)}{2(1 - n^2)} & = (-n^2 + \omega^2)A_n            \\
+              0                                 & = (-n^2 + \omega^2)B_n            \\
+              y_p                               & = \color{y_p} \frac{1}{2\omega^2}
+              + \iser[n]{2} \frac{1 + \cos(n\pi)}{2(1 - n^2)(\omega^2 - n^2)}
+              \ \cos(nt)
+          \end{align}
+          Finding the general solution, by solving the h-ODE,
+          \begin{align}
+              y'' + \omega^2 y & = 0                                                   \\
+              y_h              & = \color{y_h} C_1 \cos(\omega t) + C_2 \sin(\omega t) \\
+              y                & = {\color{y_h} y_h} + {\color{y_p} y_p}
+          \end{align}
+
+    \item Finding the Fourier series representation of the input
+          \begin{align}
+              r(t) & = \begin{dcases}
+                           -1 & \quad x \in [-\pi, 0] \\
+                           1  & \quad x \in [0, \pi]
+                       \end{dcases}                     \\
+              p    & = 2L = 2\pi \qquad \abs{\omega} \neq 1,3,5,\dots \\
+              a_0  & = \color{y_h} 0                                  \\
+              a_n  & = \color{y_p} 0
+          \end{align}
+          Finding the sine coefficients
+          \begin{align}
+              b_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \ \sin(nx)\ \dl x
+              = \frac{2}{\pi} \int_{0}^{\pi} (1) \sin(nx)\ \dl x               \\
+                  & = -\frac{2}{\pi}\Bigg[ \frac{\cos(nx)}{n} \Bigg]_{0}^{\pi}
+              = \color{brown6} \frac{2}{n\pi}\ [1 - \cos(n\pi)]
+          \end{align}
+          Using a guess for the solution, and solving the nh-ODE,
+          \begin{align}
+              y_p            & = A_n \cos(nt) + B_n \sin(nt) \\
+              0              & = (-n^2 + \omega^2)A_n        \\
+              \frac{4}{n\pi} & = (-n^2 + \omega^2)B_n        \\
+              y_p            & = \color{y_p} \frac{2}{\pi}
+              \ \iser[n]{1} \frac{[1 - \cos(n\pi)]}{n\ (\omega^2 - n^2)} \ \sin(nt)
+          \end{align}
+          Finding the general solution, by solving the h-ODE,
+          \begin{align}
+              y'' + \omega^2 y & = 0                                                   \\
+              y_h              & = \color{y_h} C_1 \cos(\omega t) + C_2 \sin(\omega t) \\
+              y                & = {\color{y_h} y_h} + {\color{y_p} y_p}
+          \end{align}
+
+    \item Graphing the input and output in Problem $ 11 $, with $ C_1 = 0, C_2 = 1 $,
+          and $ \omega = 7.5 $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              om = 7.5;
+                              fou(\n, \x) = ((4)/ ((pi * \n) * (om^2 - \n^2)))
+                              * sin(\n * \x);
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {Undamped Driven Oscillations},
+                          domain = -pi:pi,
+                          PiStyleX, xtick distance = pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black, domain = -pi:0]{-1};
+                      \addplot[GraphSmooth, black, forget plot, domain = 0:pi]{1};
+                      \addplot[GraphSmooth, y_p]
+                      {sin(om * x) + fou(1, x) + fou(3, x) + fou(5, x) + fou(7, x)
+                          + fou(9, x) + fou(11, x) + fou(13, x) + fou(15, x)};
+                      \addlegendentry{Input}
+                      \addlegendentry{Output}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Graphing the input and output in Problem $ 7 $, with $ C_1 = 0, C_2 = 1 $,
+          and $ \omega = 0.5 $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              om = 0.5;
+                              fou(\x) = (sin(x) / (om^2 - 1));
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {Undamped Driven Oscillations},
+                          domain = -4*pi:4*pi,
+                          PiStyleX, xtick distance = pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black] {sin(0.5 * x)};
+                      \addplot[GraphSmooth, y_p] {sin(om * x) + fou(x)};
+                      \addlegendentry{Input}
+                      \addlegendentry{Output}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item For the damped oscillator, with $ k = 1 $,
+          \begin{align}
+              D_n & = (1 - n^2)^2 + (nc)^2        \\
+              y_n & = P_n \cos(nt) + Q_n \sin(nt)
+          \end{align}
+          Consider the two general terms in the input,
+          \begin{align}
+              y'' + cy' + y & = a_n \cos(nt) + b_n \sin(nt)             \\
+              a_n           & = (1 - n^2)P_n + nc Q_n                 &
+                            & \cdots[\cos(nt)]                          \\
+              b_n           & = (1 - n^2)Q_n - nc P_n                 &
+                            & \cdots[\sin(nt)]                          \\
+              P_n           & = \frac{a_n (1 - n^2)  - b_n (nc)}{D_n}   \\
+              Q_n           & = \frac{b_n (1 - n^2)  + a_n (nc)}{D_n}
+          \end{align}
+          The above system is linear in $ P_n $ and $ Q_n $.
+
+    \item From Problem $ 11 $, the Fourier series representation of the input is,
+          \begin{align}
+              r(t)          & = \iser[n]{1} \frac{2 [1 - \cos(n\pi)]}{n\pi} \sin(nt)   \\
+              y'' + cy' + y & = a_n \cos(nt) + b_n \sin(nt)                            \\
+              0             & = (1 - n^2)P_n + nc Q_n                                &
+                            & \cdots[\cos(nt)]                                         \\
+              b_n           & = (1 - n^2)Q_n - nc P_n                                &
+                            & \cdots[\sin(nt)]                                         \\
+              P_n           & = \frac{- b_n (nc)}{D_n}                                 \\
+              Q_n           & = \frac{b_n (1 - n^2)}{D_n}                              \\
+              D_n           & = (1 - n^2)^2 + (nc)^2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {Square Wave},
+                          PiStyleX, xtick distance = pi,
+                          legend pos = north east]
+                      \addplot[GraphSmooth, black, domain = -pi:0]{-1};
+                      \addplot[GraphSmooth, black, domain = 0:pi]{1};
+                      \addplot[GraphSmooth, black, domain = pi:2*pi]{-1};
+                      \addplot[GraphSmooth, black, domain = -2*pi:-pi]{1};
+                      \addlegendentry{Input}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the fourier series representation of the input (odd function),
+          \begin{align}
+              a_0  & = 0 \qquad\qquad a_n = 0                                         \\
+              b_n  & = \frac{2}{\pi} \int_{0}^{\pi} (\pi^2 x - x^3)\ \sin(nx)\ \dl x  \\
+                   & = \frac{2}{\pi}\ \Bigg[ \sin(nx) \left( \frac{\pi^2 - 3x^2}{n^2}
+                  + \frac{6}{n^4} \right) +
+                  \cos(nx) \left( \frac{x(x^2 - \pi^2)}{n} - \frac{6x}{n^3} \right)
+              \Bigg]_{0}^{\pi}                                                        \\
+                   & = \color{brown6} -\frac{12}{n^3}\ \cos(n\pi)                     \\
+              r(t) & = \iser[n]{1} \frac{-12\cos(n\pi)}{n^3}\ \sin(nt)
+          \end{align}
+          Using the standard result for a sinusoidal input to a damped oscillator,
+          \begin{align}
+              y'' + cy' + y & = a_n \cos(nt) + b_n \sin(nt)   \\
+              0             & = (1 - n^2)P_n + nc Q_n       &
+                            & \cdots[\cos(nt)]                \\
+              b_n           & = (1 - n^2)Q_n - nc P_n       &
+                            & \cdots[\sin(nt)]                \\
+              P_n           & = \frac{- b_n (nc)}{D_n}        \\
+              Q_n           & = \frac{b_n (1 - n^2)}{D_n}     \\
+              D_n           & = (1 - n^2)^2 + (nc)^2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function=
+                          {f(\x) = \x * (pi^2 - \x^2);}]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {Cubic polynomial wave},
+                          PiStyleX, xtick distance = pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, black, domain = -pi:pi]{f(x)};
+                      \addplot[GraphSmooth, black, domain = -3*pi:-pi]{f(x+2*pi)};
+                      \addplot[GraphSmooth, black, domain = pi:3*pi]{f(x-2*pi)};
+                      \addlegendentry{Input}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the fourier series representation of the input(odd function)
+          \begin{align}
+              a_0 & = \color{y_h} 0 \\
+              a_n & = \color{y_p} 0
+          \end{align}
+          Finding the sine coefficients,
+          \begin{align}
+              b_n  & = \frac{2}{\pi}\int_{0}^{\pi} f(x) \sin(nx)\ \dl x    \\
+                   & = \frac{2}{\pi} \int_{0}^{\pi/2}x \sin(nx)\ \dl x
+              + \frac{2}{\pi} \int_{\pi/2}^{\pi} (\pi - x)\sin(nx)\ \dl x  \\
+                   & = \frac{2}{\pi} \Bigg[ \frac{\sin(nx)}{n^2}
+                  - \frac{x\cos(nx)}{n} \Bigg]_{0}^{\pi/2} +
+              \frac{2}{\pi} \Bigg[ \frac{(x-\pi)\cos(nx)}{n} - \frac{\sin(nx)}{n^2}
+              \Bigg]_{\pi/2}^{\pi}                                         \\
+                   & = \color{brown6} \frac{4}{\pi n^2}\ \sin(n\pi/2)      \\
+              r(t) & = \iser[n]{1} \frac{4\sin(n\pi/2)}{\pi n^2}\ \sin(nt)
+          \end{align}
+          Using the standard result for a sinusoidal input to a damped oscillator,
+          \begin{align}
+              y'' + cy' + y & = a_n \cos(nt) + b_n \sin(nt)   \\
+              0             & = (1 - n^2)P_n + nc Q_n       &
+                            & \cdots[\cos(nt)]                \\
+              b_n           & = (1 - n^2)Q_n - nc P_n       &
+                            & \cdots[\sin(nt)]                \\
+              P_n           & = \frac{- b_n (nc)}{D_n}        \\
+              Q_n           & = \frac{b_n (1 - n^2)}{D_n}     \\
+              D_n           & = (1 - n^2)^2 + (nc)^2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function=
+                          {f(\x) = pi/2 - abs(\x - pi/2);}]
+                  \begin{axis}[
+                          grid = both, Ani, axis equal,
+                          title = {Cubic polynomial wave},
+                          PiStyleX, xtick distance = pi,
+                          legend pos = north east]
+                      \addplot[GraphSmooth, black, domain = -0.5*pi:1.5*pi]
+                      {f(x)};
+                      \addplot[GraphSmooth, black, domain = 1.5*pi:3.5*pi]
+                      {f(x - 2*pi)};
+                      \addplot[GraphSmooth, black, domain = -2.5*pi:-0.5*pi]
+                      {f(x + 2*pi)};
+                      \addlegendentry{Input}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The second order linear ODE for an RLC circuit with $ R = 10, L = 1, C = 0.1 $
+          is given by,
+          \begin{align}
+              Lj'' + Rj' + \frac{1}{C}\ j & = E'(t)                    &
+              E'(t)                       & = \begin{dcases}
+                                                  -100t & t \in [-\pi, 0] \\
+                                                  100t  & t \in [0, \pi]  \\
+                                              \end{dcases}
+          \end{align}
+          Finding the Fourier series representation of the input, (even function),
+          \begin{align}
+              b_n & = \color{brown6} 0                                                 \\
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{\pi} \int_{0}^{\pi} (100x) \dl x                              \\
+                  & = \Bigg[ \frac{50x^2}{\pi} \Bigg]_{0}^{\pi}
+              = \color{y_h} 50\pi                                                      \\
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx)\ \dl x
+              = \frac{2}{\pi} \int_{0}^{\pi} (100x) \cos(nx) \dl x                     \\
+                  & = \frac{200}{\pi}\Bigg[ \frac{x\sin(nx)}{n} + \frac{\cos(nx)}{n^2}
+                  \Bigg]_{0}^{\pi}
+              = \color{y_p} \frac{200}{\pi n^2}\ [\cos(n\pi) - 1]
+          \end{align}
+          Using the standard result for a sinusoidal input to a damped oscillator,
+          \begin{align}
+              y'' + cy' + y & = a_0 + \iser[n]{0}\ a_n \cos(nt) + b_n \sin(nt)   \\
+              10P_0         & = a_0 = 50\pi                                    &
+              P_0           & = 5\pi                                             \\
+              y_n           & = P_n \cos(nt) + Q_n\sin(nt)                       \\
+              a_n           & = (1 - n^2)P_n + nc Q_n                          &
+                            & \cdots[\cos(nt)]                                   \\
+              0             & = (1 - n^2)Q_n - nc P_n                          &
+                            & \cdots[\sin(nt)]                                   \\
+              P_n           & = \frac{a_n (10 - n^2)}{D_n}                     &
+              Q_n           & = \frac{a_n (10n)}{D_n}                            \\
+              D_n           & = (10 - n^2)^2 + (10n)^2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function=
+                          {f(\x) = abs(100 * \x);
+                              P_0 = 5*pi;
+                              D(\n) = (10 - \n^2)^2 + (10*\n)^2;
+                              a(\n) = (-400/(pi * \n^2));
+                              Q(\n) = (a(\n) * 10 * \n / D(\n));
+                              P(\n) = (a(\n) * (10 - \n^2)) / D(\n);
+                              fou(\n, \x) = P(\n) * cos(\n * \x)
+                              + Q(\n) * sin(\n * \x);}]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {Triangular wave},
+                          PiStyleX, xtick distance = 0.5*pi, domain = -pi:pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, y_h]{P_0 + fou(1, x)};
+                      \addplot[GraphSmooth, y_p]{P_0 + fou(1, x)
+                          + fou(3, x)};
+                      \addplot[GraphSmooth, brown6]{P_0 + fou(1, x)
+                          + fou(3, x) + fou(5, x)};
+                      \addplot[GraphSmooth, azure3]{P_0 + fou(1, x)
+                          + fou(3, x) + fou(5, x) + fou(7, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 3 $}
+                      \addlegendentry{$ n = 5 $}
+                      \addlegendentry{$ n = 7 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The second order linear ODE for an RLC circuit with $ R = 10, L = 1, C = 0.1 $
+          is given by,
+          \begin{align}
+              Lj'' + Rj' + \frac{1}{C}\ j & = E'(t)                          &
+              E'(t)                       & = \begin{dcases}
+                                                  100(1-2t)   & t \in [-\pi, 0] \\
+                                                  100(1 + 2t) & t \in [0, \pi]  \\
+                                              \end{dcases}
+          \end{align}
+          Finding the Fourier series representation of the input, (even function),
+          \begin{align}
+              b_n & = \color{brown6} 0                                      \\
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{\pi} \int_{0}^{\pi} (100)(1 + 2x) \dl x            \\
+                  & = \frac{100}{\pi}\Bigg[ x + x^2 \Bigg]_{0}^{\pi}
+              = \color{y_h} 100(1 + \pi)                                    \\
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx)\ \dl x
+              = \frac{2}{\pi} \int_{0}^{\pi} (100)(1 + 2x) \cos(nx) \dl x   \\
+                  & = \frac{200}{\pi}\Bigg[ \frac{\sin(nx)}{n} +
+              \frac{2x\sin(nx)}{n} + \frac{2\cos(nx)}{n^2} \Bigg]_{0}^{\pi} \\
+                  & = \color{y_p} \frac{400}{\pi n^2}\ [\cos(n\pi) - 1]
+          \end{align}
+          Using the standard result for a sinusoidal input to a damped oscillator,
+          \begin{align}
+              y'' + cy' + y & = a_0 + \iser[n]{0}\ a_n \cos(nt) + b_n \sin(nt)   \\
+              10P_0         & = a_0 = 100(1 + \pi)                             &
+              P_0           & = 10(1 + \pi)                                      \\
+              y_n           & = P_n \cos(nt) + Q_n\sin(nt)                       \\
+              a_n           & = (1 - n^2)P_n + nc Q_n                          &
+                            & \cdots[\cos(nt)]                                   \\
+              0             & = (1 - n^2)Q_n - nc P_n                          &
+                            & \cdots[\sin(nt)]                                   \\
+              P_n           & = \frac{a_n (10 - n^2)}{D_n}                     &
+              Q_n           & = \frac{a_n (10n)}{D_n}                            \\
+              D_n           & = (10 - n^2)^2 + (10n)^2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function=
+                          {f(\x) = abs(100 * \x);
+                              P_0 = 10 * (1 + pi);
+                              D(\n) = (10 - \n^2)^2 + (10*\n)^2;
+                              a(\n) = (-800/(pi * \n^2));
+                              Q(\n) = (a(\n) * 10 * \n / D(\n));
+                              P(\n) = (a(\n) * (10 - \n^2)) / D(\n);
+                              fou(\n, \x) = P(\n) * cos(\n * \x)
+                              + Q(\n) * sin(\n * \x);}]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {Triangular wave},
+                          PiStyleX, xtick distance = 0.5*pi, domain = -pi:pi,
+                          legend pos = south east]
+                      \addplot[GraphSmooth, y_h]{P_0 + fou(1, x)};
+                      \addplot[GraphSmooth, y_p]{P_0 + fou(1, x)
+                          + fou(3, x)};
+                      \addplot[GraphSmooth, brown6]{P_0 + fou(1, x)
+                          + fou(3, x) + fou(5, x)};
+                      \addplot[GraphSmooth, azure3]{P_0 + fou(1, x)
+                          + fou(3, x) + fou(5, x) + fou(7, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 3 $}
+                      \addlegendentry{$ n = 5 $}
+                      \addlegendentry{$ n = 7 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The second order linear ODE for an RLC circuit with $ R = 10, L = 1, C = 0.1 $
+          is given by,
+          \begin{align}
+              Lj'' + Rj' + \frac{1}{C}\ j & = E'(t)             &
+              E'(t)                       & = 200(\pi^2 - 3t^2)
+          \end{align}
+          Finding the Fourier series representation of the input, (even function),
+          \begin{align}
+              b_n & = \color{brown6} 0                                          \\
+              a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
+              = \frac{1}{\pi} \int_{0}^{\pi} (200)(\pi^2 - 3x^2) \dl x          \\
+                  & = \frac{200}{\pi}\Bigg[ \pi^2 x - x^3 \Bigg]_{0}^{\pi}
+              = \color{y_h} 0                                                   \\
+              a_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(nx)\ \dl x
+              = \frac{2}{\pi} \int_{0}^{\pi} (200)(\pi^2 - 3x^2) \cos(nx) \dl x \\
+                  & = \frac{400}{\pi}\Bigg[ \frac{(\pi^2 - 3x^2)\sin(nx)}{n} +
+              \frac{6\sin(nx)}{n^3} - \frac{6x\cos(nx)}{n^2} \Bigg]_{0}^{\pi}   \\
+                  & = \color{y_p} -\frac{2400\ \cos(n\pi)}{n^2}
+          \end{align}
+          Using the standard result for a sinusoidal input to a damped oscillator,
+          \begin{align}
+              y'' + cy' + y & = a_0 + \iser[n]{0}\ a_n \cos(nt) + b_n \sin(nt)   \\
+              10P_0         & = a_0 = 0                                        &
+              P_0           & = 0                                                \\
+              y_n           & = P_n \cos(nt) + Q_n\sin(nt)                       \\
+              a_n           & = (1 - n^2)P_n + nc Q_n                          &
+                            & \cdots[\cos(nt)]                                   \\
+              0             & = (1 - n^2)Q_n - nc P_n                          &
+                            & \cdots[\sin(nt)]                                   \\
+              P_n           & = \frac{a_n (10 - n^2)}{D_n}                     &
+              Q_n           & = \frac{a_n (10n)}{D_n}                            \\
+              D_n           & = (10 - n^2)^2 + (10n)^2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function=
+                          {f(\x) = abs(100 * \x);
+                              P_0 = 0;
+                              D(\n) = (10 - \n^2)^2 + (10*\n)^2;
+                              a(\n) = (-2400/ (\n^2)) * cos(\n * pi);
+                              Q(\n) = (a(\n) * 10 * \n / D(\n));
+                              P(\n) = (a(\n) * (10 - \n^2)) / D(\n);
+                              fou(\n, \x) = P(\n) * cos(\n * \x)
+                              + Q(\n) * sin(\n * \x);}]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {Cubic polynomial wave},
+                          PiStyleX, xtick distance = 0.5*pi, domain = -pi:pi,
+                          legend pos = north west]
+                          \addplot[GraphSmooth, y_h]{P_0 + fou(1, x)};
+                          \addplot[GraphSmooth, y_p]{P_0 + fou(1, x)
+                          + fou(2, x)};
+                          \addplot[GraphSmooth, brown6]{P_0 + fou(1, x)
+                          + fou(2, x) + fou(3, x)};
+                      \addplot[GraphSmooth, azure3]{P_0 + fou(1, x)
+                          + fou(2, x) + fou(3, x) + fou(4, x)};
+                      \addlegendentry{$ n = 1 $}
+                      \addlegendentry{$ n = 2 $}
+                      \addlegendentry{$ n = 3 $}
+                      \addlegendentry{$ n = 4 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the solution to the ODE in Example $ 1 $, for general $ c $
+          and $ k $,
+          \begin{align}
+              D_n & = (k-n^2)^2 + (cn)^2                           &
+              C_n & = \frac{4}{n^2 \pi} \cdot \frac{1}{\sqrt{D_n}}
+          \end{align}
+          Plotting a graph of $ C_n $ vs $ n $ for a fixed value of $ c = 0.05 $,
+          and integer square values of $ k $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {Amplitude of damped driven oscillator},
+                          domain = 0.2:6, restrict y to domain = 0:20,
+                          legend pos = north east,
+                          xlabel = $n$, ylabel = $ C_n $]
+                      \addplot[GraphSmooth, y_h]
+                      {(4/(pi * x^2)) * (1/sqrt((4 - x^2)^2 + (0.01*x)^2))};
+                      \addplot[GraphSmooth, y_p]
+                      {(4/(pi * x^2)) * (1/sqrt((9 - x^2)^2 + (0.01*x)^2))};
+                      \addplot[GraphSmooth, brown6]
+                      {(4/(pi * x^2)) * (1/sqrt((16 - x^2)^2 + (0.01*x)^2))};
+                      \addplot[GraphSmooth, azure3]
+                      {(4/(pi * x^2)) * (1/sqrt((25 - x^2)^2 + (0.01*x)^2))};
+                      \addlegendentry{$ k = 4 $}
+                      \addlegendentry{$ k = 9 $}
+                      \addlegendentry{$ k = 16 $}
+                      \addlegendentry{$ k = 25 $}
+                    \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+\end{enumerate}

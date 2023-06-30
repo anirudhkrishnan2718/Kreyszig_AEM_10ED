@@ -1,0 +1,690 @@
+\tikzstyle{force}=[-Triangle,y_p,thick,line cap=round]
+
+\chapter{Vector Differential Calculus: Grad, Div, Curl}
+
+\section{Vectors in 2-Space and 3-Space}
+\begin{description}
+    \item[Scalar] A quantity determined solely by its magnitude.
+    \item[Vector] A quantity determined by magnitude and direction. It is represented
+        by a directed line segment (an arrow).
+    \item[Norm] The length of a vector represented by $ \abs{ \vec{v} } $.
+    \item[Translation] Displacement without rotation (as a linear transform or operation
+        , usually acting on vectors)
+    \item[Unit vector] A vector with length 1
+    \item[Equality of vectors] Two vectors are equal if and only if their magnitudes and
+        directions are both equal.
+        \begin{align}
+            \vec{a} = \vec{b} \iff \abs{ \vec{a} } = \abs{ \vec{b} }
+            \quad \text{and} \quad \vec{\hat{a}} = \vec{\hat{b}}
+        \end{align}
+
+    \item[Components of a vector] If a vector has initial point $ P(x_1, y_1, z_1) $
+        and terminal point $ Q(x_2, y_2, z_2) $, then
+        \begin{align}
+            \vec{v}                                   & = \begin{bNiceMatrix}[r, margin]
+                                                              v_1 \\ v_2 \\ v_3
+                                                          \end{bNiceMatrix}
+            \equiv \begin{bNiceMatrix}[r, margin]
+                       (x_2 - x_1) \\ (y_2 - y_1) \\ (z_2 - z_1)
+                   \end{bNiceMatrix} &
+            \abs{ \vec{a} }                           & = \sqrt{v_1^2 + v_2^2 + v_3^2}
+        \end{align}
+        This definition of a vector's components is specific to a Cartesian coordinate
+        system in 3-d.
+
+    \item[Position vector] A vector whose initial point is the origin and terminal point
+        is a given point in 3-d space.
+
+    \item[Algebraic vector] Given a fixed Cartesian coordinate system, every ordered
+        triple of real numbers $ (a_1, a_2, a_3) $ is associated to a unique vector
+        $ \vec{a} $ (and vice versa). Only the zero vector has no direction. \par
+        A vector equation is the same as a scalar equation for each of its components.
+
+    \item[Vector addition] Adding two vectors is performed by adding their
+        corresponding components.
+        \begin{align}
+            \vec{a} + \vec{b} & \equiv \begin{bNiceMatrix}[r, margin]
+                                           a_1 + b_1 \\ a_2 + b_2 \\ a_3 + b_3
+                                       \end{bNiceMatrix}
+        \end{align}
+
+        Geometrically, the initial point of $ \vec{b} $ is placed at the terminal point
+        of $ \vec{a} $ and the vector sum is drawn from the initial point of $ \vec{a} $
+        to the terminal point of $ \vec{b} $.
+
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[scale = 3]
+                \draw[force, y_h] (0,0.05) -- (0,0.95) node[midway,right]
+                {$\vec{a}$};
+                \draw[force, y_p] (0,1) -- (0.95,1) node[midway, above]
+                {$\vec{b}$};
+                \draw[force, black] (0.05,0.05) -- (0.95,0.95) node[midway, right = 2]
+                {$\vec{a} + \vec{b}$};
+            \end{tikzpicture}
+            \hspace{2in}
+            \begin{tikzpicture}[scale = 2]
+                \def\ang{30}
+                \def\F{1.4}  % force magnitude
+                \coordinate (O) at (0,0);
+                \coordinate (a) at (1, 1);
+                \coordinate (b) at (-1, 1);
+                \coordinate (c) at (0, 2);
+                \draw[dotted,black] (a) -- (c);
+                \draw[dotted,black] (b) -- (c);
+                \draw[force, y_h] (O) -- (a) node[midway, right = 2] {$\vec{a}$};
+                \draw[force, y_p] (O) -- (b) node[midway, left = 2] {$\vec{b}$};
+                \draw[force,black] (O) -- (c) node[above] {$\vec{a} + \vec{b}$};
+            \end{tikzpicture}
+        \end{figure}
+
+        The paralleogram rule is used in physics to calculate the resultant (vector sum)
+        of many forces acting on the same point. \par
+
+    \item[Properties of vector addition] Similar to scalar addition,
+        \begin{align}
+            \vec{a} + \vec{b}             & = \vec{b} + \vec{a}             &
+                                          &                                 &
+            \text{commutative}                                                \\
+            (\vec{u} + \vec{v}) + \vec{w} & = \vec{u} + (\vec{v} + \vec{w}) &
+                                          &                                 &
+            \text{associative}                                                \\
+            \vec{a} + \vec{0}             & = \vec{a}                       &
+                                          &                                 &
+            \text{additive null}                                              \\
+            \vec{a} + (-\vec{a})          & = \vec{0}                       &
+                                          &                                 &
+            \text{additive inverse}
+        \end{align}
+
+    \item[Scalar multiplication] Multiplying a vector by a scalar multiplies it by
+        every component of the vector.
+        \begin{align}
+            c\ \vec{v}         & \equiv \begin{bNiceMatrix}[r, margin]
+                                            c\ v_1 \\ c\ v_2 \\ c\ v_3
+                                        \end{bNiceMatrix} &
+            \abs{ c\ \vec{v} } & = \abs{ c } \abs{ \vec{v} }
+        \end{align}
+        Geometrically, if $ c<0  $, then $ c \vec{v} $ faces the opposite direction.
+
+    \item[Properties of scalar multiplication] Similar to scalars,
+        \begin{align}
+            c(\vec{a} + \vec{b}) & = c\vec{a} + c\vec{b} &
+            (c + k)\vec{a}       & = c\vec{a} + k\vec{a}   \\
+            c\ (k\vec{a})        & = (ck)\ \vec{a}       &
+            1 \cdot \vec{a}      & = \vec{a}               \\
+            (-1) \cdot \vec{a}   & = -\vec{a}            &
+            0 \cdot \vec{a}      & = \vec{0}
+        \end{align}
+
+    \item[Standard basis] $ \mathcal{R}^3 $ represented geometrically by 3-d
+        Cartesian space, has dimension 3, and needs a set of 3 basis vectors defined by
+        \begin{align}
+            \vec{\hat{i}} & = \begin{bNiceMatrix}[r, margin]
+                                  1 \\ 0 \\ 0
+                              \end{bNiceMatrix}          &
+            \vec{\hat{j}} & = \begin{bNiceMatrix}[r, margin]
+                                  0 \\ 1 \\ 0
+                              \end{bNiceMatrix}          &
+            \vec{\hat{k}} & = \begin{bNiceMatrix}[r, margin]
+                                  0 \\ 0 \\ 1
+                              \end{bNiceMatrix}           \\
+            \vec{a}       & = a_1 \vec{\hat{i}} + a_2 \vec{\hat{j}} +
+            a_3 \vec{\hat{k}}
+        \end{align}
+\end{description}
+
+\section{Inner Product (Dot Product)}
+\begin{description}
+    \item[Inner product] The product of lengths of two vectors and the cosine of the angle
+        between them. This is a scalar.
+        \begin{align}
+            \vec{a} \dotp \vec{b} &
+            = \begin{dcases}
+                  \abs{\vec{a}} \abs{\vec{b}} \cos(\theta) &
+                  \abs{\vec{a}} \neq 0\ \text{and}\ \abs{\vec{b}} \neq 0 \\
+                  0                                        &
+                  \abs{\vec{a}} = 0\ \text{or}\ \abs{\vec{b}} = 0
+              \end{dcases}
+        \end{align}
+        Here $ \theta $ is the smaller angle between the vectors measured after
+        making their initial points coincide. \par
+        In terms of the components,
+        \begin{align}
+            \vec{a} \dotp \vec{b} & \equiv \sum_{k=1}^{n} a_k b_k
+        \end{align}
+
+    \item[Orthogonal vectors] Two vectors are perpendicular if and only if their
+        inner product is zero.
+
+    \item[Length of a vector] The square root of the inner product of a vector with
+        itself. This is geomatrically equal to its magnitude. \par
+        Additionally, the angle between two nonzero vectors can be found using,
+        \begin{align}
+            \abs{\vec{v}} & \equiv \sqrt{\vec{v} \dotp \vec{v}} \\
+            \cos \theta   & = \frac{\vec{a} \dotp \vec{b}}
+            {\abs{\vec{a}} \abs{\vec{b}}}
+        \end{align}
+
+    \item[Properties of inner product] Some properties similar to multiplication,
+        \begin{align}
+            (p\vec{a} + q\vec{b}) \dotp \vec{c} & = p \vec{a} \dotp \vec{c}
+            + q \vec{b} \dotp \vec{c}           &
+                                                & \text{linear}                \\
+            \vec{a} \dotp \vec{b}               & = \vec{b} \dotp \vec{a}    &
+                                                & \text{symmetry}              \\
+            \vec{a} \dotp \vec{a}               & \geq 0                       \\
+            \vec{a} \dotp \vec{a}               & = 0 \iff \vec{a = \vec{0}} &
+                                                & \text{positive-definite}     \\
+            (\vec{a} + \vec{b}) \dotp \vec{c}   & = \vec{a} \dotp \vec{c}
+            + \vec{b} \dotp \vec{c}             &
+                                                & \text{distributive}
+        \end{align}
+
+    \item[Inequality relations] The fact that $ \abs{\cos\theta} \leq 1$ gives,
+        \begin{align}
+            \abs{\vec{a} + \vec{b}}                               &
+            \leq \abs{\vec{a}} + \abs{\vec{b}}                    &
+                                                                  &
+            \text{Triangle inequality}                              \\
+            \abs{\vec{a} \dotp \vec{b}}                           &
+            \leq \abs{\vec{a}} \abs{\vec{b}}                      &
+                                                                  &
+            \text{Cauchy-Schwraz inequality}                        \\
+            \abs{\vec{a} + \vec{b}}^2 + \abs{\vec{a} - \vec{b}}^2 &
+            = 2 (\abs{\vec{a}}^2 + \abs{\vec{b}}^2)               &
+                                                                  &
+            \text{parallellogram equality}
+        \end{align}
+
+    \item[Orthogonal projection] The orthogonal projection (or component) of a vector
+        along a line whose unit vector is $ \vec{\hat{b}} $ is defined as
+        \begin{align}
+            p & = \vec{a} \dotp \vec{\hat{b}} = \abs{\vec{a}} \cos \theta
+        \end{align}
+        Here $ \theta $ is the angle between the vector $ \vec{a} $ and the line it is
+        projected upon. \par
+
+        A plane can be defined in Cartesian 3d by requiring the projection of all points
+        on it upon the normal vector to be constant.
+        \begin{align}
+            \vec{\hat{n}} \dotp \vec{r} & = p
+        \end{align}
+        Here, $ p $ is the distance of $ \vec{\hat{n}} $ from the origin. All planes
+        parallel to this plane simply vary in their $ p $ value.
+\end{description}
+
+\section{Vector Product (Cross Product)}
+
+\begin{description}
+    \item[Cross product] Geometrically, a vector orthogonal to the two given vectors
+        whose magnitude is equal to the area of the parallellogram formed by them.
+        \begin{align}
+            \vec{v} & \equiv \vec{a} \times \vec{b}
+        \end{align}
+        \begin{itemize}
+            \item If $ \vec{a} = 0 $ or $ \vec{b} = 0 $, then by definition,
+                  $ \vec{v}  = \vec{0} $.
+            \item Else if $ \vec{a} $ and $ \vec{b} $ are parallel, such that the angle
+                  between then is $ 0 $ or $ \pi $, then again $ \vec{v} = \vec{0} $
+            \item Outside of these special cases, the magnitude of the cross product is
+                  \begin{align}
+                      \abs{\vec{v}} & \equiv \abs{\vec{a} \times \vec{b}}
+                      = \abs{\vec{a}} \abs{\vec{b}} \sin \theta           \\
+                      \vec{v}       &
+                      = \begin{vNiceMatrix}[r, margin]
+                            \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                            a_1           & a_2           & a_3           \\
+                            b_1           & b_2           & b_3
+                        \end{vNiceMatrix}
+                  \end{align}
+                  Its direction is such that $ \vec{v} $ is perpendicular to both
+                  $ \vec{a} $ and $ \vec{b} $ and the three vectors $ \vec{a}, \vec{b},
+                      \vec{v} $ form a right-handed triple.
+        \end{itemize}
+
+    \item[Right handed triple] If the fingers of the right hand are on the plane formed
+        by $ \vec{a} $ and $ \vec{b} $, then the right thumb points in the direction of
+        $ \vec{c} $. \par
+        This convention picks one of the two possible choices for the direction of
+        $ \vec{c} $.
+
+    \item[Properties of cross product] Similar to scalar multiplication,
+        \begin{align}
+            (p\vec{a}) \times \vec{b}               & = p (\vec{a} \times \vec{b}) =
+            \vec{a} \times (p\vec{b})                                                  \\
+            \vec{a} \times (\vec{b} + \vec{c})      & = \vec{a} \times \vec{b}
+            + \vec{a} \times \vec{c}                                                   \\
+            (\vec{a} + \vec{b}) \times \vec{c}      & = \vec{a} \times \vec{c}
+            + \vec{b} \times \vec{c}                &
+                                                    & \text{distributive}              \\
+            \vec{a} \times \vec{b}                  & = - (\vec{b} \times \vec{a})   &
+                                                    & \text{anti-commutative}          \\
+            \vec{a} \times (\vec{b} \times \vec{c}) & \neq
+            (\vec{a} \times \vec{b}) \times \vec{c} &
+                                                    & \text{not associative}
+        \end{align}
+
+    \item[Scalar Triple product] Also called the mixed product or box product. This
+        is a scalar resulting from three input vectors. \par
+        \begin{align}
+            (\vec{a}\ \vec{b}\ \vec{c}) & \equiv \vec{a} \dotp
+            (\vec{b} \times \vec{c})                                      \\
+                                        & = \begin{vNiceMatrix}[r, margin]
+                                                a_1 & a_2 & a_3 \\
+                                                b_1 & b_2 & b_3 \\
+                                                c_1 & c_2 & c_3
+                                            \end{vNiceMatrix}
+        \end{align}
+
+    \item[Properties of box product] Some important properties,
+        \begin{itemize}
+            \item Geometrically, it is the volume of the parallellopiped with the three
+                  vectors as the edge vectors.
+            \item The dot and cross can be interchanged
+                  \begin{align}
+                      \vec{a} \dotp (\vec{b} \times \vec{c}) & =
+                      (\vec{a} \times \vec{b}) \dotp \vec{c}
+                  \end{align}
+            \item Three vectors in Cartesian $ \mathcal{R}^3 $ are L.I. if and only if
+                  their box product is nonzero.
+        \end{itemize}
+\end{description}
+
+\section{Vector and Scalar Functions and Their Fields, Vector Calculus: Derivatives}
+
+\begin{description}
+    \item[Vector function] Functions of scalars that produce vectors as outputs. Such a
+        function defines a vector field in the domain of definiton.
+        \begin{align}
+            \vec{v}(P)       & = \begin{bNiceMatrix}[margin]
+                                     v_1(P) \\ v_2(P) \\ v_3(P)
+                                 \end{bNiceMatrix}          &
+            \vec{v}(x, y, z) & = \begin{bNiceMatrix}[margin]
+                                     v_1(x,y,z) \\ v_2(x,y,z) \\ v_3(x,y,z)
+                                 \end{bNiceMatrix}
+        \end{align}
+        A vector function may additionally depend on some other variable such as time.
+
+    \item[Scalar function] Functions of scalars that produce scalars as outputs. Such a
+        function defines a scalar field in the domain of definiton.
+        \begin{align}
+            f \equiv f(P) & f & \equiv f(x, y, z)
+        \end{align}
+        A scalar function may additionally depend on some other variable such as time.
+        \par The value of the scalar function is independent of the choice of coordinate
+        system.
+
+    \item[Vector calculus] Many properties outlined here carry over from regular
+        calculus.
+
+    \item[Convergence] A sequence of vectors $ \{\vec{a}_k\} $ is said to converge if
+        there exists some vector $ \vec{a} $ such that
+        \begin{align}
+            \lim_{n \rightarrow \infty} \abs{\vec{a}_n - \vec{a}} &
+            = 0                                                     \\
+            \lim_{n \rightarrow \infty} \vec{a}_n                 &
+            = \vec{a} \qquad \text{(Limit vector)}
+        \end{align}
+        The corresponding definition of the convergence of vector functions of a scalar
+        are identical to the standard definition of the convergence of scalar functions
+        $ f(x) $ and omitted here.
+
+    \item[Continuity] If a vector function $ \vec{v}(t) $ is defined in some
+        neighbourhood of $ t = t_0 $ (including $ t_0 $ itself) and
+        \begin{align}
+            \lim_{t \rightarrow t_0} \vec{v}(t) & = \vec{v}(t_0)
+        \end{align}
+        then, the vector function is continuous at $ t = t_0 $.
+
+    \item[Derivative of vector function] The derivative of $ \vec{v}(t) $ at $ t= t_0 $
+        exists, is the limit
+        \begin{align}
+            \lim_{\Delta t \rightarrow 0} \frac{\vec{v}(t + \Delta t) - \vec{v}(t)}
+            {\Delta t} \equiv \vec{v}'(t)
+        \end{align}
+        assuming this limit exists. \par
+        When a coordinate system is defined, each component of the vector function is
+        differentiated separately to yield the derivative of the vector.
+
+    \item[Properties of vector derivatives] Similar to the properties of scalar
+        derivatives,
+        \begin{align}
+            (c\vec{v})'                  & = c\ \vec{v}'                  \\
+            (\vec{u} + \vec{v})'         & = \vec{u}' + \vec{v}'          \\
+            (\vec{u} \dotp \vec{v})'     &
+            = \vec{u}' \dotp \vec{v} + \vec{u} \dotp \vec{v}'             \\
+            (\vec{u} \times \vec{v})'    &
+            = \vec{u}' \times \vec{v} + \vec{u} \times \vec{v}'           \\
+            (\vec{u}\ \vec{v}\ \vec{w})' & = (\vec{u}'\ \vec{v}\ \vec{w})
+            + (\vec{u}\ \vec{v}'\ \vec{w}) + (\vec{u}\ \vec{v}\ \vec{w}')
+        \end{align}
+
+    \item[Partial derivatives of vector function] The operation to be applied to the
+        vector function is simply applied to each component individually.
+        \begin{align}
+            \vec{v}(\{t_k\})          & \equiv \vec{v}(t_1, t_2, \dots, t_n)   \\
+            \diffp{\vec{v}}{t_1}      & = \diffp{v_1}{t_1}\ \vec{\hat{i}}
+            + \diffp{v_2}{t_1}\ \vec{\hat{j}}
+            + \diffp{v_3}{t_1}\ \vec{\hat{k}}                                  \\
+            \diffp{\vec{v}}{t_1, t_2} & = \diffp{v_1}{t_1, t_2}\ \vec{\hat{i}}
+            + \diffp{v_2}{t_1, t_2}\ \vec{\hat{j}}
+            + \diffp{v_3}{t_1, t_2}\ \vec{\hat{k}}
+        \end{align}
+\end{description}
+
+\section{Curves, Arc Length, Curvature, Torsion}
+
+\begin{description}
+    \item[Parametric vector functions] Replacing the independent variable in each
+        component of a vector by a common parameter ($ t $) yields,
+        \begin{align}
+            \vec{v}(t) & =
+            \begin{bNiceMatrix}[r, margin]
+                x(t) \\ y(t) \\ z(t)
+            \end{bNiceMatrix}
+            = x(t)\ \vec{\hat{i}} + y(t)\ \vec{\hat{j}} + z(t)\ \vec{\hat{k}}
+        \end{align}
+        This makes the curve oriented in the direction of increasing $ t $. (called the
+        positive sense on the curce $ C $)
+
+    \item[Twisted curve] A curve that does not lie in a plane in $ 3d $ space. Else, it
+        is called a plane curve.
+
+    \item[Simple curve] A curve which does not touch or intersect itself. There is a
+        unique value of the parameter $ t $ for every point of the curve,
+
+    \item[Tangent vector] The limiting position of a straight line through $ P $ on
+        curve $ C $ and another close point $ Q $
+        \begin{align}
+            P           & : \vec{r}(t)                    &
+            Q           & : \vec{r}(t + \Delta t)           \\
+            \vec{r}'(t) & = \lim_{\Delta t \rightarrow 0}
+            \frac{\vec{r}(t + \Delta t) - \vec{r}(t)}{\Delta t}
+        \end{align}
+        If $ \vec{r} \neq \vec{0} $, it is called the tangent vector to curve $ C $ at
+        point $ P $.
+
+    \item[Parametric straight line] The equation of a line passing through $ \vec{a} $
+        in the direction of $ \vec{b} $ is given by
+        \begin{align}
+            \vec{v}    & = \vec{a} + t\vec{b}                           \\
+            \vec{q}(w) & = \vec{r} + w\vec{r}' &  & \text{Tangent line}
+        \end{align}
+        Here, both $ \vec{r} $ and $ \vec{r}' $ are functions of the original parameter
+        $ t $.
+
+    \item[Length of curve] If a curve $ C $ is specified using a paramteric vector
+        functionm $ \vec{r}(t) $, then the length of a curve corresponding to
+        $ t \in [a,b] $ is given by
+        \begin{align}
+            l & = \int_{a}^{b} \sqrt{\vec{r}' \dotp \vec{r}'}\ \dl t
+        \end{align}
+        assuming $ \vec{r} $ is differentiable.
+
+    \item[Arc length of a curve] The length of a curve from $ t = a $ to a variable end
+        point $ t = w $. It is defined as
+        \begin{align}
+            s(w) & = \int_{a}^{w} \sqrt{\vec{r}' \dotp \vec{r}'}\ \dl t
+        \end{align}
+
+    \item[Linear element] From the definition of Pythagoras theorem, the linear element
+        in $ 3d $ Cartesian space is
+        \begin{align}
+            \dl s^2 \equiv \vec{\dl r} \dotp  \vec{\dl r}
+            = \dl x^2 + \dl y^2 + \dl z^2
+        \end{align}
+
+    \item[Trajectories] In mechanics, the parameter is usually time $ (t) $ and a curve
+        represents the path taken by an object through $ 3d $ space. \par
+        The first and second derivaties of the position $ \vec{r}(t) $ represent the
+        velocity vector and acceleration vector respectively.
+        \begin{align}
+            \vec{v}(t) & \equiv \vec{r}'(t)  &
+            \vec{a}(t) & \equiv \vec{r}''(t) &
+        \end{align}
+        The acceleration can be split into tangential and normal components. \par
+        Defining the unit tangent vector in terms of the arc length $ s $,
+        \begin{align}
+            \vec{u}(s) & = \frac{\vec{r}'(t)}{\abs{\vec{r}'(t)}} = \vec{r}'(s) \\
+            \vec{v}(t) & = \vec{u}(s)\ \diff st                                \\
+            \vec{a}(t) & = \diff*{\vec{u(s)}}{s}\ \left( \diff st \right)^2 +
+            \vec{u}(s)\ \diff[2] st                                            \\
+        \end{align}
+        Since the tangent vector $ \vec{u}(s) $ is always a unit vector, the first
+        acceleration term has to be perpendicular to the velocity.
+
+    \item[Normal acceleration] The acceleration vector can be split into two
+        components, normal and tangential using the projection rule,
+        \begin{align}
+            \vec{a}(t)                 & = \vec{a}_{\text{norm}}
+            + \vec{a}_{\text{tangent}} &
+            \vec{a}_{\text{tangent}}   & = \vec{a} \dotp \vec{\hat{v}}
+        \end{align}
+
+    \item[Curvature] The rate of change of the unit tangent vector at a point $ P $ on
+        the curve $ C $, give by
+        \begin{align}
+            \kappa (s) & \equiv \abs{\diff*{\vec{u}(s)}{s}}
+            = \abs{\diff*[2]{\vec{r}(s)}{s}}
+        \end{align}
+        Here, the arc length $ (s) $ is used as the parameter of the curve instead of the
+        usual $ t $.
+
+    \item[Normal plane] The plane through $ P $ on curve $ C $ whose normal vector is
+        the tangent vector $ \vec{u} $.
+
+    \item[Osculating plane] The plane spanned by the tangent vector and its derivative
+        (which happens to be the normal vector at that point). \par
+        This plane contains the osculating (kissing) circle to the curve $ C $ at the
+        point $ P $. Its normal vector is $ \vec{b} = \vec{u} \times \vec{n} $.
+
+    \item[Rectifying plane] The third plane which is spanned by $ \vec{u} $ and
+        $ \vec{b} $. Its normal vector is the unit normal vector $ \vec{u}' = \vec{p} $.
+
+    \item[Torsion] The rate of change of the osculating plane defined as,
+        \begin{align}
+            \vec{p}       & \equiv \frac{1}{\kappa}\ \vec{u}'   &
+                          & \text{unit principal normal vector}   \\
+            \vec{b}       & \equiv \vec{u} \times \vec{p}       &
+                          & \text{unit binormal vector}           \\
+            \abs{\tau(s)} & = \abs{\vec{b}'(s)}                   \\
+            \tau (s)      & = -\vec{p}(s) \dotp \vec{b}'(s)
+        \end{align}
+        Since the unit tangent vector $ \vec{u} $ has constant magnitude, its derivate is
+        orthogonal to itself by definition. The right handed triple of vectors
+        $ \vec{u}, \vec{p}, \vec{b} $ are defined at each point on the curve.
+\end{description}
+
+\section{Calculus Review: Functions of Several Variables}
+
+\begin{description}
+    \item[Chain rule] Consider a mapping from the domain $ B $ in the $ uv $ plane
+        onto the domain $ D $ in $ xyz $ space using the mapping,
+        \begin{align}
+            x & \equiv x(u, v) & y & \equiv y(u, v) & z & \equiv z(u, v)
+        \end{align}
+        These functions are continuous and have continuous first partial derivatives in
+        $ B $. \par
+        Further, let $ f \equiv f(x, y, z) $ be continouous and have continouous first
+        partial derivatices in $ D $. Then,
+        \begin{align}
+            w         & = f\Big( x(u, v),\ y(u, v),\ z(u, v) \Big)    \\
+            \diffp wu & = \diffp wx\ \diffp xu + \diffp wy\ \diffp yu
+            + \diffp wz\ \diffp zu                                    \\
+            \diffp wv & = \diffp wx\ \diffp xv + \diffp wy\ \diffp yv
+            + \diffp wz\ \diffp zv
+        \end{align}
+
+    \item[Mean Value theorem] With $ f(x, y, z) $ and $ D $ as defined above, and any
+        two points $ P_0 $ and $ P $ connected by a straight line that lies entirely in
+        $ D $,
+        \begin{align}
+            P_0 : (x_0, y_0, z_0)  \qquad
+            P                                         & : (x_0 + h, y_0 + k, z_0 + l) \\
+            f(x_0 + h, y_0 + k, z_0 + l) - f(x, y, z) & = h\ \diffp fx + k\ \diffp fy
+            + l\ \diffp fz
+        \end{align}
+        This is a generalization of the much more familiar special case,
+        \begin{align}
+            f & \equiv f(x) & f(x_0 + h) - f(x_0) & = h\ \diffp fx
+        \end{align}
+\end{description}
+
+\section{Gradient of a Scalar Field, Directional Derivative}
+
+\begin{description}
+    \item[Gradient] A vector function derived from a scalar function $ f $ in the $ 3d $
+        Cartesian space, defined by,
+        \begin{align}
+            \nabla f & \equiv \diffp fx\ \vec{\hat{i}} + \diffp fy\ \vec{\hat{j}}
+            + \diffp fz\ \vec{\hat{k}}
+        \end{align}
+        The differential operator for $ 3d $ Cartsian coordinates is defined as
+        \begin{align}
+            \nabla & \equiv \diffp {}{x}\ \vec{\hat{i}} + \diffp {}{y}\ \vec{\hat{j}}
+            + \diffp {}{z}\ \vec{\hat{k}}
+        \end{align}
+
+    \item[Directional derivative] The directional derivative of a function $ f $ at a
+        point of $ P $ in the direction of $ \vec{b} $,
+        \begin{align}
+            D_{\vec{b}}f & \equiv \diff fs =
+            \lim_{s \rightarrow 0} \frac{f(Q) - f(P)}{s}
+        \end{align}
+        Here, $ Q $ is a point on the line passing through $ P $ in the direction of
+        $ \vec{b} $, and $ s $ is the distance between these two points. \par
+        Defining the line in terms of a unit vector $ \vec{b} $ and arc length $ s $ from
+        an intitial point $ \vec{p_0} $,
+        \begin{align}
+            \vec{r}                  & = \vec{p_0} + s\ \vec{b}       &
+            \diff{\vec{r}}{s}        & = \vec{b}                        \\
+            D_{\vec{b}}f = \diffp fs & = \vec{\hat{b}} \dotp \nabla f
+        \end{align}
+
+    \item[Gradient is a vector] The magnitude and direction of the gradient are
+        independent of the choice of Cartesian coordinates. \par
+        Also, the gradient (if it is a nonzero vector) points in the direction of maximum
+        increase of the function at that point.
+
+    \item[Normal vector to surface] For a function $ f $ whose level surface is defined
+        as $ S : f(x, y, z) = c $,
+        \begin{align}
+            0 & = \diffp fx\ \diffp xs + \diffp fy\ \diffp ys + \diffp fz\ \diffp zs &
+            0 & = \nabla f \dotp \vec{r}'
+        \end{align}
+        Since the gradient is perpendicluar all possible tangent vectors at the point
+        $ P $ on surface $ S $, it is the surface normal vector at $ P $.
+
+    \item[Potentials] A scalar field whose gradient happens to be a vector field.
+        \begin{align}
+            \vec{v}(P) & = \nabla f(P)
+        \end{align}
+        The corresponding vector field is called conservative.
+
+    \item[Gravitational field] THe force of gravitation between two particles is the best
+        known exmaple of a conservative force. \par
+        For two particles at $ P_0: (x_0, y_0, z_0) $ and $ P: (x, y, z) $ separated by
+        distance $ r $.
+        \begin{align}
+            \vec{p}                                      & = \frac{-c}{r^3}\ \vec{r}
+            = \frac{-c}{r^3} \begin{bNiceMatrix}[margin]
+                                 (x - x_0) \\ (y - y_0) \\ (z - z_0)
+                             \end{bNiceMatrix} &
+            \phi(x, y, z)                                & = \frac{c}{r}             \\
+            \vec{p}                                      & = \nabla \phi
+        \end{align}
+
+        The vector field of force produced by any mass distribution in a space is the
+        gradient of a scalar field (potential) $ \phi $ which satisfies Laplace's
+        equation in any region free of matter.
+
+    \item[Laplace's equation] A partial differential equation defined as
+        \begin{align}
+            \nabla^2 f & \equiv \diffp[2] fx + \diffp[2] fy + \diffp[2] fz = 0
+        \end{align}
+
+    \item[Laplacian] The operator which condenses the Laplacian equation, defined as
+        \begin{align}
+            \nabla \dotp \nabla f & \equiv \nabla^2 f              \\
+            \nabla^2              & \equiv \Delta \equiv \diffp[2]
+            {}{x} + \diffp[2] {}{y} + \diffp[2] {}{z}
+        \end{align}
+\end{description}
+
+\section{Divergence of a Vector Field}
+
+\begin{description}
+    \item[Divergence] This obtains a scalar field from a vector field. Consider a
+        differentiable vector function $ \vec{v} $ with components in $ 3d $ Cartesian
+        space, given by
+        \begin{align}
+            \vec{v}              & = \begin{bNiceMatrix}
+                                         v_1(x, y, z) \\ v_2(x, y, z) \\ v_3(x, y, z)
+                                     \end{bNiceMatrix} \\
+            \nabla \dotp \vec{v} & =
+            \begin{bNiceMatrix}
+                \difsp {}{x} \\ \difsp {}{y} \\ \difsp {}{z}
+            \end{bNiceMatrix} \dotp \begin{bNiceMatrix}
+                                        v_1 \\ v_2 \\ v_3
+                                    \end{bNiceMatrix} =
+            \diffp{v_1}{x} + \diffp{v_2}{y} + \diffp{v_3}{z}
+        \end{align}
+        Note that the dot product notation is not the usual multiplication. It represents
+        the partial derivative acting on the components of $ \vec{v} $.
+
+    \item[Invariance of divergence] Since the divergence is a scalar field, it is
+        independent of the choice of coordinate system. \par
+        It only depends on the point $ P $ in space and the form of $ \vec{v} $ for a
+        particular choice of coordinate system.
+
+    \item[Fluid flow] An example of divergence used in physical systems is the flow of
+        a fluid that has density $ \rho $ in a region $ R $ with no sources and sinks.
+        \par
+        Let $ \vec{v} $ be the velocity vector of the fluid.
+        \begin{align}
+            \diffp{\rho}{t} + \nabla \dotp (\rho\vec{v}) & = 0
+        \end{align}
+        This is the continuity equation of a compressible fluid flow
+
+    \item[Solenoidal vector field] A special case of the above system is steady flow,
+        which means that $ \rho $ is independent of time, and constant fluid density. This
+        gives the incompressibility condition
+        \begin{align}
+            \nabla \dotp \vec{v} & = 0
+        \end{align}
+        Such a vector field is called solenoidal.
+\end{description}
+
+\section{Curl of a Vector Field}
+
+\begin{description}
+    \item[Curl] Let $ \vec{v} $ be a differentiable vector function in $ 3d $ defined in
+        Cartesian coordinates,
+        \begin{align}
+            \nabla \times \vec{v} & =
+            \begin{vNiceMatrix}[margin]
+                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                \difsp{}{x}   & \difsp{}{y}   & \difsp{}{z}   \\
+                v_1           & v_2           & v_3
+            \end{vNiceMatrix}
+        \end{align}
+        This assumes the coordinate system is right handed. \par
+        The curl is a vector independent of the choice of coordinate system.
+
+    \item[Curl of rotating body] The curl is in the direction of the axis of rotation and
+        its magnitude is equal to twice the angular speed.
+
+    \item[Relating curl, grad and div] A vector function that is the gradient of a
+        continouous differentiable scalar function is irrotational.
+        \begin{align}
+            \nabla \times (\nabla f) & = 0 &  & \text{Irrotational}
+        \end{align}
+
+        For a vector function $ \vec{v} $ that is twice continuously differentiable,
+        \begin{align}
+            \nabla \dotp (\nabla \times \vec{v}) = 0
+        \end{align}
+        These relations are proved using the fact that second order partial derivaties
+        commute.
+\end{description}

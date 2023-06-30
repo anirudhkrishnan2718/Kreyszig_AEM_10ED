@@ -1,0 +1,598 @@
+\section{Transforms of Derivatives and Integrals, ODEs}
+\begin{enumerate}
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y' + 5.2y                & = 19.4\sin(2t)            &
+              y(0)                     & = 0                         \\
+              R = 19.4\Lap\{\sin(2t)\} & = \frac{2(19.4)}{s^2 + 4} &
+              a                        & = 1 \qquad b = 5.2          \\
+              a[sY - y(0)] + bY        & = R                       &
+              (s+5.2)Y                 & = \frac{38.8}{s^2+4}
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y             & = \color{y_p}\frac{(19.4)\cdot 2}{(s+5.2)(s^2 + 2^2)} &
+              Y             & = \frac{p_1}{s+5.2} + \frac{p_2 s + p_3}{s^2+4}         \\
+              p_1 + p_2     & = 0                                                   &
+              4p_1 + 5.2p_3 & = 38.8                                                  \\
+              5.2p_2 + p_3  & = 0                                                   & \\
+              Y             & = \frac{(5/4)}{(s+5.2)} + \frac{(-5s+26)}{4(s^2+4)}     \\
+              y             & = \color{y_h}\frac{5e^{-5.2t} - 5\cos(2t)
+                  + 13\sin(2t)}{4}
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y' + 2y           & = 0              &
+              y(0)              & = 1.5              \\
+              R = \Lap\{0\}     & = 0              &
+              a                 & = 1 \qquad b = 2   \\
+              a[sY - y(0)] + bY & = R              &
+              (s+2)Y - 1.5      & = 0
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y & = \color{y_p}\frac{1.5}{(s+2)} &
+              y & = \color{y_h}1.5e^{-2t}
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y'' - y' - 6y   & = 0                     &
+              y(0)            & = 11 \qquad y'(0) = 28    \\
+              R = \Lap\{0\}   & = 0                     &
+              a               & = -1 \qquad b = -6        \\
+              (s^2 + as + b)Y & = R + (s+a)y(0) + y'(0)   \\
+              (s^2 - s - 6)Y  & = 11(s-1) + 28
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y           & = \color{y_p}\frac{11(s-1) + 28}{s^2 - s - 6} &
+              Y           & = \frac{11s + 17}{(s-3)(s+2)}                   \\
+              Y           & = \frac{p_1}{s-3} + \frac{p_2}{s+2}             \\
+              p_1 + p_2   & = 11                                          &
+              2p_1 - 3p_2 & = 17                                            \\
+              Y           & = \frac{10}{(s-3)} + \frac{1}{(s+2)}            \\
+              y           & = \color{y_h} 10e^{3t} + e^{-2t}
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y'' + 9y             & = 10e^{-t}              &
+              y(0)                 & = 0 \qquad y'(0) = 0      \\
+              R = 10\Lap\{e^{-t}\} & = \frac{10}{s+1}        &
+              a                    & = 0 \qquad b = 9          \\
+              (s^2 + as + b)Y      & = R + (s+a)y(0) + y'(0)   \\
+              (s^2 + 9)Y           & = \frac{10}{s+1}
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y          & = \color{y_p}\frac{10}{(s^2+9)(s+1)}                  &
+              Y          & = \frac{p_1}{s+1} + \frac{p_2s + p_3}{s^2+9}            \\
+              p_1 + p_2  & = 0                                                   &
+              9p_1 + p_3 & = 10                                                    \\
+              p_2 + p_3  & = 0                                                     \\
+              Y          & = \frac{1}{(s+1)} + \frac{-s+1}{(s^2+9)}                \\
+              y          & = \color{y_h} e^{-t}  - \cos(3t) + \frac{\sin(3t)}{3}
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y'' - 0.25y     & = 0                     &
+              y(0)            & = 12 \qquad y'(0) = 0     \\
+              R = \Lap\{0\}   & = 0                     &
+              a               & = 0 \qquad b = -0.25      \\
+              (s^2 + as + b)Y & = R + (s+a)y(0) + y'(0)   \\
+              (s^2 - 0.25)Y   & = 12s
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y & = \color{y_p}\frac{12s}{(s^2-0.25)} &
+              y & = \color{y_h} 12\cosh(0.5t)
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y'' - 6y' + 5y         & = 29\cos(2t)                         &
+              y(0)                   & = 3.2 \qquad y'(0) = 6.2               \\
+              R = 29\Lap\{\cos(2t)\} & = \frac{29s}{s^2 + 4}                &
+              a                      & = -6 \qquad b = 5                      \\
+              (s^2 + as + b)Y        & = R + (s+a)y(0) + y'(0)                \\
+              (s^2 - 6s + 5)Y        & = \frac{29s}{s^2+4} + 3.2(s-6) + 6.2
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y & = \color{y_p}\frac{29s}{(s^2+4)(s-5)(s-1)}
+              + \frac{3.2s - 13}{(s-5)(s-1)}                       \\
+                & = \frac{p_3s + p_4}{(s^2+4)} + \frac{p_1}{(s-1)}
+              + \frac{p_2}{(s-5)}                                  \\
+              Y & = \frac{0.2s-4.8}{(s^2+4)}
+              + \frac{1}{(s-1)} + \frac{2}{(s-5)}                  \\
+              y & = \color{y_h} e^{t} + 2e^{5t} + 0.2\cos(2t)
+              - 2.4 \sin(2t)
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y'' + 7y' + 12y      & = 21e^{3t}                         &
+              y(0)                 & = 3.5 \qquad y'(0) = -10             \\
+              R = 21\Lap\{e^{3t}\} & = \frac{21}{s - 3}                 &
+              a                    & = 7 \qquad b = 12                    \\
+              (s^2 + as + b)Y      & = R + (s+a)y(0) + y'(0)              \\
+              (s^2 + 7s + 12)Y     & = \frac{21}{s - 3} + 3.5(s+7) - 10
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y                 & = \color{y_p}\frac{3.5s^2 + 4s - 22.5}
+              {(s+4)(s+3)(s-3)} &
+              Y                 & = \frac{p_1}{(s-3)} + \frac{p_2}{(s+3)}
+              + \frac{p_3}{(s+4)}                                           \\
+              3.5               & = p_1 + p_2 + p_3                       &
+              4                 & = 7p_1 + p_2                              \\
+              -22.5             & = 12p_1 - 12p_2 - 9p_3                    \\
+              Y                 & = \frac{0.5}{s-3} + \frac{0.5}{s+3}
+              + \frac{2.5}{s+4} &
+              y                 & = \color{y_h} \frac{e^{3t} + e^{-3t}
+                  + 5e^{-4t}}{2}
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y'' - 4y' + 4y  & = 0                      &
+              y(0)            & = 8.1 \qquad y'(0) = 3.9   \\
+              R = \Lap\{0\}   & = 0                      &
+              a               & = -4 \qquad b = 4          \\
+              (s^2 + as + b)Y & = R + (s+a)y(0) + y'(0)    \\
+              (s^2 - 4s + 4)Y & = 8.1(s - 4) + 3.9
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y & = \color{y_p}\frac{8.1(s-2) - 12.3}{(s-2)^2} \\
+              y & = \color{y_h} (8.1 - 12.3t)\ e^{2t}
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y'' - 4y' + 3y   & = 6t - 8                      &
+              y(0)             & = 0 \qquad y'(0) = 0            \\
+              R = \Lap\{6t-8\} & = \frac{6}{s^2} - \frac{8}{s} &
+              a                & = -4 \qquad b = 3               \\
+              (s^2 + as + b)Y  & = R + (s+a)y(0) + y'(0)         \\
+              (s^2 - 4s + 3)Y  & = \frac{6 - 8s}{s^2}
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y               & = \color{y_p}\frac{-8s+6}
+              {s^2(s-3)(s-1)} &
+              Y               & = \frac{p_1}{(s-3)} + \frac{p_2}{(s-1)}
+              + \frac{p_3 s + p_4}{s^2}                                   \\
+              0               & = p_1 + p_2 + p_3                       &
+              0               & = -p_1 - 3p_2 - 4p_3 + p_4                \\
+              -8              & = 3p_3 - 4p_4                           &
+              6               & = 3p_4                                    \\
+              Y               & = \frac{-1}{s-3} + \frac{1}{s-1}
+              + \frac{2}{s^2} &
+              y               & = \color{y_h} -e^{3t} + e^{t} + 2t
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y'' + 0.04y         & = 0.02t^2                   &
+              y(0)                & = -25 \qquad y'(0) = 0        \\
+              R = 0.02\Lap\{t^2\} & = \frac{0.04}{s^3}          &
+              a                   & = 0 \qquad b = 0.04           \\
+              (s^2 + as + b)Y     & = R + (s+a)y(0) + y'(0)       \\
+              (s^2 + 0.04)Y       & = \frac{-25s^4 + 0.04}{s^3}
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y                 & = \color{y_p}\frac{-25s^4 + 0.04}
+              {s^3(s^2 + 0.04)} &
+              Y                 & = \frac{(0.2 - 5s^2)(0.2 + 5s^2)}
+              {0.2s^3(5s^2 + 0.2)}                                    \\
+              Y                 & = \frac{1}{s^3} - \frac{25}{s}    &
+              y                 & = \color{y_h} 0.5t^2 - 25
+          \end{align}
+
+    \item Solving IVP using Laplace transform,
+          \begin{align}
+              y'' + 3y' + 2.25y   & = 9t^3 + 64                     &
+              y(0)                & = 1 \qquad y'(0) = 31.5           \\
+              R = \Lap\{9t^3+64\} & = \frac{54}{s^4} + \frac{64}{s} &
+              a                   & = 3 \qquad b = 2.25               \\
+              (s^2 + as + b)Y     & = R + (s+a)y(0) + y'(0)           \\
+              (s^2 + 3s + 2.25)Y  & = \frac{64s^3 + 54}{s^4}
+              + (s+3) + 31.5
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y & = \color{y_p}\frac{s^5 + 34.5s^4 + 64s^3 + 54}
+              {s^4\ (s+1.5)^2}                                              \\
+              Y & = \frac{(s + 1.5) + 1}{(s + 1.5)^2}
+              + \frac{32s^2 - 32s + 24}{s^4}                                \\
+              y & = \color{y_h} e^{-1.5t} + te^{-1.5t} + 32t - 16t^2 + 4t^3
+          \end{align}
+
+    \item Shifting the IVP using $ u = t-4 $,
+          \begin{align}
+              y'' - 2y' - 3y  & = 0                     &
+              u(0)            & = -3 \qquad u'(0) = -17   \\
+              R = \Lap\{0\}   & = 0                     &
+              a               & = -2 \qquad b = -3        \\
+              (s^2 + as + b)Y & = R + (s+a)y(0) + y'(0)   \\
+              (s^2 - 2s - 3)Y & = 0 - 3(s-2) - 17
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y   & = \color{y_p}\frac{-3s - 11} {(s-3)(s+1)} &
+              Y   & = \frac{p_1}{(s-3)} + \frac{p_2}{(s+1)}     \\
+              -3  & = p_1 + p_2                               &
+              -11 & = p_1 - 3p_2                                \\
+              Y   & = \frac{-5}{(s-3)} + \frac{2}{(s+1)}      &
+              y   & = -5e^{3u} + 2e^{-u}                        \\
+              y   & = \color{y_h} -5e^{3(t-4)} + 2e^{-(t-4)}
+          \end{align}
+
+    \item Shifting the IVP using $ u = t+1 $,
+          \begin{align}
+              y' - 6y           & = 0               &
+              u(0)              & = 4                 \\
+              R = \Lap\{0\}     & = 0               &
+              a                 & = 1 \qquad b = -6   \\
+              a[sY - y(0)] + bY & = R               &
+              (sY - 4) - 6Y     & = 0
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y & = \color{y_p}\frac{4}{(s - 6)}   \\
+              y & =  4e^{6u}                     &
+              y & = \color{y_h} 4e^{6(t+1)}
+          \end{align}
+
+
+    \item Shifting the IVP using $ u = t-2 $, which changes $ r(t) \rightarrow r(u) $
+          \begin{align}
+              y'' + 2y' + 5y  & = 50(u+2) - 100                &
+              u(0)            & = -4 \qquad u'(0) = 14           \\
+              R = \Lap\{50u\} & = \frac{50}{s^2}               &
+              a               & = 2 \qquad b = 5                 \\
+              (s^2 + as + b)Y & = R + (s+a)y(0) + y'(0)          \\
+              (s^2 + 2s + 5)Y & = \frac{50}{s^2} - 4(s+2) + 14
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y & = \color{y_p}\frac{-4s^3 + 6s^2 + 50}
+              {s^2 (s^2 + 2s + 5)}                                   \\
+              Y & = \frac{-4s + 10}{s^2}
+              + \frac{4}{(s+1)^2 + 4}                                \\
+              y & = -4 + 10u + e^{-u}\left[ 2\sin(2u) \right]        \\
+              y & = \color{y_h} e^{-(t-2)}\left[ 2\sin(2t-4) \right]
+              + 10t - 24
+          \end{align}
+
+    \item Shifting the IVP using $ u = t-1.5 $, which changes $ r(t) \rightarrow r(u) $
+          \begin{align}
+              y'' + 3y' - 4y      & = 6e^{2u}                      &
+              u(0)                & = 4 \qquad u'(0) = 5             \\
+              R = 6\Lap\{e^{2u}\} & = \frac{6}{s-2}                &
+              a                   & = 3 \qquad b = -4                \\
+              (s^2 + as + b)Y     & = R + (s+a)y(0) + y'(0)          \\
+              (s^2 + 3s - 4)Y     & = \frac{6}{(s-2)} + 4(s+3) + 5
+          \end{align}
+          Solving the subsidiary equation,
+          \begin{align}
+              Y                 & = \color{y_p}\frac{(s+4)(4s - 7)}
+              {(s-2)(s+4)(s-1)} &
+              Y                 & = \frac{1}{(s-2)} + \frac{3}{(s-1)}     \\
+              y                 & = e^{2u} + 3e^{u}                     &
+              y                 & = \color{y_h} e^{2t-3}  + 3e^{t- 1.5}
+          \end{align}
+
+    \item Finding Laplace transform using the derivative,
+          \begin{align}
+              y                          & = \color{y_h} t\cos(4t)                &
+              y'                         & = -4t\sin(4t) + \cos(4t)                 \\
+              y''                        & = -16t\cos(4t) - 8\sin(4t)             &
+              \Lap\{f''\}                & = s^2\Lap\{f\} - sf(0) - f'(0)           \\
+              -16Y - \frac{32}{s^2 + 16} & = s^2Y - 0 - 1                         &
+              Y                          & = \color{y_p}\frac{s^2-16}{(s^2+16)^2}
+          \end{align}
+
+    \item Finding Laplace transform using the derivative,
+          \begin{align}
+              y                  & = \color{y_h} te^{-at}         &
+              y'                 & = e^{-at}[1 - at]                \\
+              \Lap\{f'\}         & = s\Lap\{f\} - f(0)              \\
+              \frac{1}{s+a} - aY & = sY - 0                       &
+              Y                  & = \color{y_p}\frac{1}{(s+a)^2}
+          \end{align}
+
+    \item Finding Laplace transform using the derivative,
+          \begin{align}
+              y                  & = \color{y_h} \cos^2(2t)             &
+              y'                 & = -4\cos(2t)\sin(2t)                   \\
+              y''                & = -8 \cos(4t)                        &
+              y''                & = -8[2\cos^2(2t) - 1]                  \\
+              \Lap\{f''\}        & = s^2\Lap\{f\} - sf(0) - f'(0)         \\
+              -16Y + \frac{8}{s} & = s^2Y - s - 0                       &
+              Y                  & = \color{y_p}\frac{s^2+8}{s(s^2+16)}
+          \end{align}
+
+    \item Finding Laplace transform using the derivative,
+          \begin{align}
+              y             & = \color{y_h} \sin^2(\omega t)        &
+              y'            & = 2\omega\cos(\omega t)\sin(\omega t)   \\
+              y''           & = [\omega\sin(2\omega t)]'            &
+              y''           & = 2\omega^2[1 - 2\sin^2(\omega t)]      \\
+              \Lap\{f''\}   & = s^2\Lap\{f\} - sf(0) - f'(0)          \\
+              \frac{2\omega^2}{s}
+              - 4\omega^2 Y & = s^2Y - 0 - 0                        &
+              Y             & = \color{y_p}\frac{2\omega^2}
+              {s(s^2+4\omega^2)}
+          \end{align}
+
+    \item Finding Laplace transform using the derivative,
+          \begin{align}
+              y                            & = \color{y_h} \sin^4 t             &
+              y'                           & = 4\sin^3 t\cos t                    \\
+              y''                          & = 4[-\sin^4 t + 3\sin^2 t\cos^2 t] &
+              y''                          & = 4[-4\sin^4 t + 3\sin^2 t]          \\
+              \Lap\{f''\}                  & = s^2\Lap\{f\} - sf(0) - f'(0)       \\
+              -16Y + \frac{24}{s(s^2 + 4)} & = s^2Y - 0 - 0                     &
+              Y                            & = \color{y_p}\frac{24}
+              {s(s^2+4)(s^2 + 16)}
+          \end{align}
+
+    \item Finding Laplace transform using the derivative,
+          \begin{align}
+              y                & = \color{y_h} \cosh^2 t        &
+              y'               & = 2\cosh t \sinh t               \\
+              y''              & = 2[\cosh^2 t + \sinh^2 t]     &
+              y''              & = 2[2\cosh^2 t - 1]              \\
+              \Lap\{f''\}      & = s^2\Lap\{f\} - sf(0) - f'(0)   \\
+              4Y - \frac{2}{s} & = s^2Y - s - 0                 &
+              Y                & = \color{y_p}\frac{s^2-2}
+              {s(s^2 - 4)}
+          \end{align}
+
+    \item
+          \begin{enumerate}
+              \item Finding Laplace transform using the derivative,
+                    \begin{align}
+                        y            & = \color{y_h} t\cos(\omega t)             &
+                        y'           & = \cos(\omega t) -\omega t \sin(\omega t)   \\
+                        y''          & = -2\omega \sin(\omega t) -\omega^2 t
+                        \cos(\omega t)                                             \\
+                        \Lap\{f''\}  & = s^2\Lap\{f\} - sf(0) - f'(0)              \\
+                        \frac{-2\omega^2}
+                        {s^2 + \omega^2}
+                        - \omega^2 Y & = s^2Y - 0 - 1                            &
+                        Y            & = \color{y_p}\frac{s^2-\omega^2}
+                        {(s^2 + \omega^2)^2}
+                    \end{align}
+              \item Finding Laplace transform using the derivative,
+                    \begin{align}
+                        y         & = \color{y_h} \frac{\sin(\omega t)
+                            - \omega t\cos(\omega t)}
+                        {2\omega^3}                                                \\
+                        \Lap\{f\} & = \frac{1}{2\omega^3}\ \left[
+                            \frac{\omega}{s^2 + \omega^2}
+                        - \frac{\omega(s^2 - \omega^2)}{(s^2 + \omega^2)^2}\right] \\
+                        Y         & = \color{y_p}\frac{1}
+                        {(s^2 + \omega^2)^2}
+                    \end{align}
+              \item Finding Laplace transform using the derivative,
+                    \begin{align}
+                        y                    & = \color{y_h} \frac{t\sin(\omega t)}
+                        {2\omega}            &
+                        y'                   & = \frac{\omega t \cos(\omega t) +
+                        \sin(\omega t)}{2\omega}                                    \\
+                        \Lap\{f'\}           & = s\Lap\{f\} - f(0)                  \\
+                        sY - 0               & = \frac{s^2 - \omega^2}
+                        {2(s^2 + \omega^2)^2}
+                        + \frac{1}
+                        {2(s^2 + \omega^2 )} &
+                        Y                    & = \color{y_p}\frac{s}
+                        {(s^2+\omega^2)^2}
+                    \end{align}
+              \item Finding Laplace transform using the derivative,
+                    \begin{align}
+                        y         & = \color{y_h} \frac{\sin(\omega t)
+                            + \omega t\cos(\omega t)}
+                        {2\omega}                                                  \\
+                        \Lap\{f\} & = \frac{1}{2\omega}\ \left[
+                            \frac{\omega}{s^2 + \omega^2}
+                        + \frac{\omega(s^2 - \omega^2)}{(s^2 + \omega^2)^2}\right] \\
+                        Y         & = \color{y_p}\frac{s^2}
+                        {(s^2 + \omega^2)^2}
+                    \end{align}
+              \item Finding Laplace transform using the derivative,
+                    \begin{align}
+                        y           & = \color{y_h} t\cosh(at)       &
+                        y'          & = at\sinh(at) + \cosh(at)        \\
+                        y''         & = 2a\sinh(at) + a^2t\cosh(at)  &
+                        \Lap\{f''\} & = s^2\Lap\{f\} - sf(0) - f'(0)   \\
+                        s^2Y - 1    & = \frac{2a^2}{s^2 - a^2}
+                        + a^2Y      &
+                        Y           & = \color{y_p}\frac{s^2+a^2}
+                        {(s^2 - a^2)^2}
+                    \end{align}
+              \item Finding Laplace transform using the derivative,
+                    \begin{align}
+                        y           & = \color{y_h} t\sinh(at)       &
+                        y'          & = at\cosh(at) + \sinh(at)        \\
+                        y''         & = 2a\cosh(at) + a^2t\sinh(at)  &
+                        \Lap\{f''\} & = s^2\Lap\{f\} - sf(0) - f'(0)   \\
+                        s^2Y        & = \frac{2as}{s^2 - a^2} + a^2Y &
+                        Y           & = \color{y_p}\frac{2as}
+                        {(s^2 - a^2)^2}
+                    \end{align}
+          \end{enumerate}
+
+    \item Using integration to find inverse Laplace transform,
+          \begin{align}
+              G(s) = \frac{F(s)}{s}       & = \color{y_p} \frac{3}{s^2 + 0.25s}   &
+              \Lap\left\{ \int_{0}^{t}f(\tau)
+              \ \dl \tau \right\}         & =  \frac{F(s)}{s}                       \\
+              f(t)                        & = \Lap^{-1}\left\{
+              \frac{3}{s + 0.25} \right\} &
+              f(\tau)                     & =  3e^{-0.25\tau}                       \\
+              g(t)                        & =3\int_{0}^{t}e^{-0.25\tau}\ \dl \tau   \\
+                                          & = -12 \Big[ e^{-0.25\tau} \Big]_0^t     \\
+                                          & = \color{y_h} 12(1 - e^{-t/4})
+          \end{align}
+
+    \item Using integration to find inverse Laplace transform,
+          \begin{align}
+              G(s) = \frac{F(s)}{s}   & = \color{y_p} \frac{20}{s^3 - 2\pi s^2} &
+              G(s)                    & = \Lap\left\{ \int_{0}^{t}f(\tau)
+              \ \dl \tau \right\}                                                 \\
+              f(t)                    & = \Lap^{-1}\left\{ \frac{20}
+              {s^2 - 2\pi s} \right\} &
+              f(\tau)                 & =  \Lap^{-1}\left\{ \frac{20}
+              {(s-\pi)^2 - \pi^2} \right\}                                        \\
+              g(t)                    & = \frac{10}{\pi}\int_{0}^{t}
+              e^{2\pi \tau} - 1\ \dl \tau                                         \\
+                                      & = \frac{10}{\pi}
+              \left[ \frac{e^{2\pi \tau}}{2\pi} - \tau \right]_0^t                \\
+                                      & = \color{y_h}\frac{5}{\pi^2}\
+              [e^{2\pi t} - 1 - 2\pi t]
+          \end{align}
+
+    \item Using integration to find inverse Laplace transform,
+          \begin{align}
+              G(s) = \frac{F(s)}{s}     & = \color{y_p} \frac{1}{s(s^2 + \omega^2)} &
+              G(s)                      & = \Lap\left\{ \int_{0}^{t}f(\tau)
+              \ \dl \tau \right\}                                                     \\
+              f(t)                      & = \Lap^{-1}\left\{ \frac{1}
+              {s^2 + \omega^2} \right\} &
+              f(\tau)                   & =  \frac{\sin(\omega t)}{\omega}            \\
+              g(t)                      & = \frac{1}{\omega}\int_{0}^{t}
+              \sin(\omega \tau) \dl \tau                                              \\
+                                        & = \frac{-1}{\omega^2}
+              \Bigg[ \cos(\omega \tau) \Bigg]_0^t                                     \\
+                                        & = \color{y_h}\frac{1 - \cos(\omega t)}
+              {\omega^2}
+          \end{align}
+
+    \item Using integration to find inverse Laplace transform,
+          \begin{align}
+              G(s) = \frac{F(s)}{s}  & = \color{y_p} \frac{1}{s^2(s^2 - 1)} &
+              G(s)                   & = \Lap\left\{ \int_{0}^{t}f(\tau)
+              \ \dl \tau \right\}                                             \\
+              f(t)                   & = \Lap^{-1}\left\{ \frac{1}
+              {s(s+1)(s-1)} \right\} &
+              f(\tau)                & =  \Lap^{-1}\left\{ \frac{-1}{s}
+              + \frac{0.5}{s+1} + \frac{0.5}{s-1} \right\}                    \\
+              f(\tau)                & = -1 + 0.5e^{-\tau} + 0.5e^{\tau}    &
+              g(t)                   & = \int_{0}^{t}
+              f(\tau) \dl \tau                                                \\
+              f(t)                   & = \Bigg[ -t - 0.5e^{-\tau}
+              + 0.5e^{\tau} \Bigg]_0^t                                        \\
+                                     & = \color{y_h} -t + \sinh(t)
+          \end{align}
+
+    \item Using integration to find inverse Laplace transform,
+          \begin{align}
+              G(s) = \frac{F(s)}{s} & = \color{y_p} \frac{s+1}{s^2(s^2 + 9)}   &
+              G(s)                  & = \Lap\left\{ \int_{0}^{t}f(\tau)
+              \ \dl \tau \right\}                                                \\
+              f(t)                  & = \Lap^{-1}\left\{ \frac{s+1}
+              {s(s^2 + 9)} \right\} &
+              f(\tau)               & = \frac{1}{9} \left[ \frac{1}{s}
+              + \frac{9-s}{s^2 + 9} \right]                                      \\
+              f(\tau)               & =  \frac{1}{9}\left[ 1
+              + 3\sin(3\tau) - \cos(3\tau)\right]                                \\
+              g(t)                  & = \int_{0}^{t}
+              f(\tau) \dl \tau                                                   \\
+                                    & = \frac{1}{9}
+              \Bigg[ \tau - \cos(3\tau) - \frac{\sin(3\tau)}{3}
+              \Bigg]_0^t                                                         \\
+                                    & = \color{y_h} \frac{t + 1 - \cos(3t)}{9}
+              - \frac{\sin(3t)}{27}
+          \end{align}
+
+    \item Using integration to find inverse Laplace transform,
+          \begin{align}
+              G(s) = \frac{F(s)}{s}   & = \color{y_p} \frac{3s+4}{s^2(s^2 + k^2)}    &
+              G(s)                    & = \Lap\left\{ \int_{0}^{t}f(\tau)
+              \ \dl \tau \right\}                                                      \\
+              f(t)                    & = \Lap^{-1}\left\{ \frac{3s+4}
+              {s(s^2 + k^2)} \right\} &
+              f(\tau)                 & = \frac{1}{k^2} \left[ \frac{4}{s}
+              + \frac{3k^2 - 4s}{s^2 + k^2} \right]                                    \\
+              f(\tau)                 & =  \frac{1}{k^2}\left[ 4
+              + 3k\sin(k\tau) - 4\cos(k\tau)\right]                                    \\
+              g(t)                    & = \int_{0}^{t}
+              f(\tau) \dl \tau                                                         \\
+                                      & = \frac{1}{k^2}
+              \Bigg[ 4\tau - 3\cos(k\tau) - \frac{4\sin(k\tau)}{k}
+              \Bigg]_0^t                                                               \\
+                                      & = \color{y_h} \frac{4t + 3 - 3\cos(kt)}{k^2}
+              - \frac{4\sin(kt)}{k^3}
+          \end{align}
+
+    \item Using integration to find inverse Laplace transform,
+          \begin{align}
+              G(s) = \frac{F(s)}{s} & = \color{y_p} \frac{1}{s^2(s + a)}         &
+              G(s)                  & = \Lap\left\{ \int_{0}^{t}f(\tau)
+              \ \dl \tau \right\}                                                  \\
+              f(t)                  & = \Lap^{-1}\left\{ \frac{1}
+              {s(s + a)} \right\}   &
+              F(s)                  & = \frac{1}{a}\left[ \frac{1}{s}
+              - \frac{1}{s+a} \right]                                              \\
+              f(\tau)               & = \frac{1 - e^{-a\tau}}{a}                   \\
+              g(t)                  & = \int_{0}^{t}
+              f(\tau) \dl \tau      &
+                                    & = \frac{1}{a} \Bigg[ \tau
+              + \frac{e^{-a\tau}}{a} \Bigg]_0^t                                    \\
+                                    & = \color{y_h} \frac{e^{-at} + at - 1}{a^2}
+          \end{align}
+
+    \item
+          \begin{enumerate}
+              \item Theorems 1 and 2 directly help solve IVPs, whereas Theorem 3 only
+                    helps derive complicated $ \Lap^{-1} $ expressions from simple ones.
+              \item Let $ f(t) $ be continuous except for a finite jump discontinuity
+                    at $ x = a > 0 $,
+                    \begin{align}
+                        \Lap\{f'\} & = \int_{0}^{a^-} e^{-st}f'(t)\ \dl t
+                        + \int_{a^+}^{\infty} e^{-st}f'(t)\ \dl t         \\
+                                   & = \Bigg[e^{-st}f(t)\Bigg]_0^{a^-}
+                        + \Bigg[e^{-st}f(t)\Bigg]_{a^+}^{\infty}          \\
+                                   & + s\int_{0}^{a^-} e^{-st}f(t)\ \dl t
+                        + s\int_{a^+}^{\infty} e^{-st}f(t)\ \dl t
+                    \end{align}
+                    Solving each integral separately,
+                    \begin{align}
+                        \Lap\{f'\} & = f(a^-)e^{-as} - f(0) - e^{-as}f(a^+) + sF(s)    \\
+                                   & = s\Lap\{f\} - f(0) - e^{-as} [f(a^+) - f(a^{-})]
+                    \end{align}
+                    The existence of $ \Lap\{f\} $ is guaranteed by the fact that it only
+                    has a finite jump discontinuity.
+
+              \item Verifying,
+                    \begin{align}
+                        f(t)       & = \color{y_h}\begin{dcases}
+                                                      e^{-t} & t \in (0,1) \\
+                                                      0      & t > 1
+                                                  \end{dcases}             \\
+                        \Lap\{f'\} & = s \int_{0}^{1}e^{-st - t}\ \dl t - 1
+                        - e^{-s}[0 - e^{-1}]                                       \\
+                                   & = s\Bigg[ \frac{e^{-(s+1)t}}{(s+1)}\Bigg]_1^0
+                        - 1 + e^{-s-1}                                             \\
+                                   & = \Big[1 - e^{-(s+1)}\Big]\left[
+                        \frac{s}{s+1} - 1 \right]                                  \\
+                                   & = \color{y_p} \frac{e^{-(s+1)} - 1}{s+1}
+                    \end{align}
+                    Using the normal method to find $ \Lap\{f'\} $
+                    \begin{align}
+                        \Lap\{f'\} & = -\int_{0}^{1} e^{-(s+1)t}\ \dl t             &
+                                   & = \left[ \frac{e^{-(s+1)t}}{(s+1)} \right]_0^1   \\
+                                   & = \frac{e^{-(s+1)} - 1}{(s+1)}
+                    \end{align}
+                    Both methods agree.
+              \item Refer notes. TBC. \par
+              Laplace transform method deals with finite jump discontinuities well. 
+          \end{enumerate}
+\end{enumerate}

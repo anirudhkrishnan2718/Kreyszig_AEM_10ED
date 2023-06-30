@@ -1,0 +1,442 @@
+\section{Inner Product (Dot Product)}
+\begin{enumerate}
+      \item Performing the given computations,
+            \begin{align}
+                  \vec{a} \dotp \vec{b} & = 4 + 0 + 40 = 44 &
+                  \vec{b} \dotp \vec{a} & = 4 + 0 + 40 = 44   \\
+                  \vec{b} \dotp \vec{c} & = -8 + 0 + 8 = 0
+            \end{align}
+
+      \item Performing the given computations,
+            \begin{align}
+                  (-3\vec{a} + 5\vec{c}) \dotp \vec{b} & = -3 (\vec{a} \dotp \vec{b})
+                  + 5 (\vec{c} \dotp \vec{b})                                         \\
+                                                       & = -3 (4 + 0 + 44)
+                  + 5 (-8 + 0 + 8)                                                    \\
+                                                       & = -144
+            \end{align}
+
+      \item Performing the given computations,
+            \begin{align}
+                  \abs{\vec{a}}  & = \sqrt{1^2 + (-3)^2 + 5^2} = \sqrt{35}         &
+                  \abs{2\vec{b}} & = 2\sqrt{4^2 + 8^2} = 8\sqrt{5}                   \\
+                  \abs{-\vec{c}} & = \abs{-1}\sqrt{(-2)^2 + 9^2 + 1^2} = \sqrt{86}
+            \end{align}
+
+      \item Performing the given computations,
+            \begin{align}
+                  \abs{\vec{a}}           & = \sqrt{1^2 + (-3)^2 + 5^2} = \sqrt{35} &
+                  \abs{\vec{b}}           & = \sqrt{4^2 + 8^2} = 4\sqrt{5}            \\
+                  \abs{\vec{a} + \vec{b}} &
+                  = \sqrt{(5)^2 + (-3)^2 + 13^2} = \sqrt{203}
+            \end{align}
+
+      \item Performing the given computations,
+            \begin{align}
+                  \abs{\vec{c}}           & = \sqrt{(-2)^2 + 9^2 + 1^2} = \sqrt{86} &
+                  \abs{\vec{b}}           & = \sqrt{4^2 + 8^2} = 4\sqrt{5}            \\
+                  \abs{\vec{c} + \vec{b}} &
+                  = \sqrt{2^2 + 9^2 + 9^2} = \sqrt{166}
+            \end{align}
+
+      \item Performing the given computations,
+            \begin{align}
+                  \abs{\vec{a} + \vec{c}}^2            & = (-1)^2 + 6^2 + 6^2 = 73   &
+                  \abs{\vec{a} - \vec{c}}^2            & = 3^2 + (-12)^2 + 4^2 = 169   \\
+                  \abs{\vec{a}}^2                      & = 1^2 + (-3)^2 + 5^2 = 35   &
+                  \abs{\vec{c}}^2                      & = (-2)^2 + 9^2 + 1^2 = 86     \\
+                  \abs{\vec{a} + \vec{c}}^2
+                  + \abs{\vec{a} + \vec{c}}^2          & = 242                       &
+                  2(\abs{\vec{a}}^2 + \abs{\vec{c}}^2) & = 2(35 + 86) = 242
+            \end{align}
+
+      \item Performing the given computations,
+            \begin{align}
+                  \abs{\vec{c}}               & = \sqrt{(-2)^2 + 9^2 + 1^2}
+                  = \sqrt{86}                 &
+                  \abs{\vec{a}}               & = \sqrt{1^2 + (-3)^2 + 5^2}
+                  = \sqrt{35}                                                 \\
+                  \abs{\vec{a}
+                  \dotp \vec{c}}              & = \abs{-24} = \sqrt{576}    &
+                  \abs{\vec{a}} \abs{\vec{c}} & = \sqrt{3010}
+            \end{align}
+
+      \item Performing the given computations,
+            \begin{align}
+                  5\vec{a} \dotp 13\vec{b}   & = 5 \cdot 52 - 15 \cdot 0 + 25 \cdot 104
+                  = 2860                                                                \\
+                  65 (\vec{a} \dotp \vec{b}) & = 65 (4 + 40) = 65(44) = 2860
+            \end{align}
+
+      \item Performing the given computations,
+            \begin{align}
+                  15\vec{a} \dotp \vec{b} & = 15 \cdot 4 - 45 \cdot 0 + 75 \cdot 8
+                  = 660                                                              \\
+                  15\vec{a} \dotp \vec{c} & = -15 \cdot 2 - 45 \cdot 9 + 75 \cdot 1
+                  = -360                                                             \\
+                  15 \vec{a} \dotp
+                  (\vec{b} + \vec{c})     & = 15 [1 \cdot 2 - 3 \cdot 9 + 5 \cdot 9]
+                  = 15 (20) = 300
+            \end{align}
+
+      \item Performing the given computations,
+            \begin{align}
+                  \vec{a} \dotp (\vec{b} - \vec{c}) &
+                  = 1 \cdot 6 + 3 \cdot 9 + 5 \cdot 7 = 68 \\
+                  (\vec{a} - \vec{b}) \dotp \vec{c} &
+                  = 3 \cdot 2 - 3 \cdot 9 - 3 \cdot 1 = -24
+            \end{align}
+
+      \item The laws being shown are
+            \begin{align}
+                  1 & : \text{Symmetry}                  &
+                  4 & : \text{Triangle inequality}         \\
+                  5 & : \text{Triangle inequality}       &
+                  6 & : \text{Parallellogram equality}     \\
+                  7 & : \text{Cauchy-Schwarz inequality}
+            \end{align}
+
+      \item If $ \vec{u} = \vec{0} $, nothing is implied since, the definition of
+            inner product makes it an identity. \par
+            If $ \vec{u} \neq \vec{0} $,
+            \begin{align}
+                  \vec{u} \dotp (\vec{v} - \vec{w}) & = \vec{0} \\
+                  \implies \vec{v}                  & = \vec{w}
+            \end{align}
+
+      \item Using the definition of inner product,
+            \begin{align}
+                  \vec{a} \dotp \vec{b}       &
+                  = \abs{\vec{a}} \abs{\vec{b}} \cos(\theta)       \\
+                  \abs{\vec{a} \dotp \vec{b}} &
+                  = \abs{\vec{a}} \abs{\vec{b}} \abs{\cos(\theta)} \\
+            \end{align}
+            Since $ \abs{\cos \theta} $ is less than 1 by definition of cosine, the
+            inequality follows.
+
+      \item Verifying the triangle inequality
+            \begin{align}
+                  \abs{\vec{a}}           & = \sqrt{1^2 + (-3)^2 + 5^2} = \sqrt{35} &
+                  \abs{\vec{b}}           & = \sqrt{4^2 + 8^2} = 4\sqrt{5}            \\
+                  \abs{\vec{a} + \vec{b}} &
+                  = \sqrt{(5)^2 + (-3)^2 + 13^2} = \sqrt{203}                         \\
+                                          & \leq \abs{\vec{a}} + \abs{\vec{b}}
+            \end{align}
+            Verifying the Cauchy-Schwarz inequality,
+            \begin{align}
+                  \abs{\vec{b}}               & = \sqrt{4^2 + 8^2}
+                  = \sqrt{80}                 &
+                  \abs{\vec{a}}               & = \sqrt{1^2 + (-3)^2 + 5^2}
+                  = \sqrt{35}                                                      \\
+                  \abs{\vec{a}
+                  \dotp \vec{b}}              & = \abs{44} = \sqrt{1936}         &
+                  \abs{\vec{a}} \abs{\vec{b}} & = \sqrt{2800}                      \\
+                                              & \leq \abs{\vec{a}} \abs{\vec{b}}
+            \end{align}
+
+      \item For the parallellogram equality,
+            \begin{align}
+                  \abs{\vec{a} + \vec{b}}^2                             &
+                  = \sum_{k=1}^{n} (a_k + b_k)^2                        &
+                  \abs{\vec{a} - \vec{b}}^2                             &
+                  = \sum_{k=1}^{n} (a_k - b_k)^2                          \\
+                  \abs{\vec{a} + \vec{b}}^2 + \abs{\vec{a} - \vec{b}}^2 &
+                  = \sum_{k=1}^{n} (a_k + b_k)^2 + (a_k + b_k)^2          \\
+                                                                        &
+                  = \sum_{k=1}^{n} 2a_k^2 + 2b_k^2                        \\
+                                                                        &
+                  = 2\Big( \abs{\vec{a}}^2 + \abs{\vec{b}}^2 \Big)
+            \end{align}
+            This law is the general case of the Pythagoras' law for rectangles. When
+            adjacent sides are no longer perpendicular, a rectangle becomes a
+            parallellogram.
+
+      \item For triangle inequality, using Cauchy-Schwarz inequality,
+            \begin{align}
+                  \abs{\vec{a} + \vec{b}}^2 & = (\vec{a} + \vec{b}) \dotp
+                  (\vec{a} + \vec{b})                                                \\
+                                            & = \abs{\vec{a}}^2 + \abs{\vec{b}}^2
+                  + 2 (\vec{a} \dotp \vec{b})                                        \\
+                                            & \leq \abs{\vec{a}}^2 + \abs{\vec{b}}^2
+                  + 2 \abs{\vec{a}}\abs{\vec{b}}                                     \\
+                                            & \leq (\abs{\vec{a}} + \abs{\vec{b}})^2
+            \end{align}
+            Taking the square root of positive quantities proves the inequality.
+            \begin{align}
+                  \abs{\vec{a} + \vec{b}} & \leq \abs{\vec{a}} + \abs{\vec{b}}
+            \end{align}
+
+      \item To find the work done,
+            \begin{align}
+                  \vec{F} & = (2, 5, 0)             & \vec{d} & = (2, 2, 2)  \\
+                  \vec{W} & = \vec{F} \dotp \vec{d} & \vec{W} & = \SI{14}{N}
+            \end{align}
+
+      \item To find the work done,
+            \begin{align}
+                  \vec{F} & = (-1, -2, 4)           & \vec{d} & = (6, 7, 5) \\
+                  \vec{W} & = \vec{F} \dotp \vec{d} & \vec{W} & = \SI{0}{N}
+            \end{align}
+
+      \item To find the work done,
+            \begin{align}
+                  \vec{F} & = (0, 4, 3)             & \vec{d} & = (-3, -2, 1) \\
+                  \vec{W} & = \vec{F} \dotp \vec{d} & \vec{W} & = \SI{-5}{N}
+            \end{align}
+
+      \item To find the work done,
+            \begin{align}
+                  \vec{F} & = (6, -3, -3)           & \vec{d} & = (2, -1, -1) \\
+                  \vec{W} & = \vec{F} \dotp \vec{d} & \vec{W} & = \SI{18}{N}
+            \end{align}
+
+      \item Yes, because the associativity of vector addition gives,
+            \begin{align}
+                  \vec{F}_1 \dotp \vec{d} + \vec{F}_2 \dotp \vec{d} &
+                  = (\vec{F}_1 + \vec{F}_2) \dotp \vec{d}
+                  = \vec{F}_{\text{res}} \dotp \vec{d}                \\
+                  \vec{W}_1 + \vec{W}_2                             &
+                  = \vec{W}_{\text{res}}
+            \end{align}
+
+      \item Finding the angle between the vectors,
+            \begin{align}
+                  \cos \theta                   & = \frac{\vec{a} \dotp \vec{b}}
+                  {\abs{\vec{a}} \abs{\vec{b}}} &
+                                                & =\frac{5}{\sqrt{2 \cdot 14}}        \\
+                  \theta                        & = \arccos\left( \frac{5}{\sqrt{28}}
+                  \right)                       &
+                                                & = \SI{19.11}{\degree}
+            \end{align}
+
+      \item Finding the angle between the vectors,
+            \begin{align}
+                  \cos \theta                   & = \frac{\vec{b} \dotp \vec{c}}
+                  {\abs{\vec{b}} \abs{\vec{c}}} &
+                                                & =\frac{5}{\sqrt{14 \cdot 5}}        \\
+                  \theta                        & = \arccos\left( \frac{5}{\sqrt{70}}
+                  \right)                       &
+                                                & = \SI{53.3}{\degree}
+            \end{align}
+
+      \item Finding the angle between the vectors,
+            \begin{align}
+                  \cos \theta                & = \frac{(\vec{a} + \vec{c}) \dotp
+                        (\vec{b} + \vec{c})}
+                  {\abs{(\vec{a} + \vec{c})}
+                  \abs{(\vec{b} + \vec{c})}} &
+                                             & =\frac{16}{\sqrt{9 \cdot 29}}         \\
+                  \theta                     & = \arccos\left( \frac{16}{\sqrt{261}}
+                  \right)                    &
+                                             & = \SI{7.95}{\degree}
+            \end{align}
+
+      \item Finding the angle between the vectors, with the parameter $ n $,
+            \begin{align}
+                  \cos \theta                       & = \frac{(\vec{a} + n\vec{c}) \dotp
+                        (\vec{b} + n\vec{c})}
+                  {\abs{(\vec{a} + n\vec{c})}
+                  \abs{(\vec{b} + n\vec{c})}}       &
+                                                    & =\frac{5n^2 + 6n + 4}
+                  {\sqrt{(5n^2 + 2n + 2) \cdot (5n^2 + 10n + 11)}}                         \\
+                  \lim_{n \rightarrow \infty}\theta & = \arccos(1)                       &
+                                                    & = \SI{0}{\degree}
+            \end{align}
+
+      \item Law of cosines, with angle $ \theta $ between the $ \vec{a}, \vec{b} $. \par
+            Applying Pythagoras's theorem to the triangle $ ABC $,
+            \begin{align}
+                  \abs{\vec{a} - \vec{b}}^2 & = (\abs{\vec{a}} -
+                  \abs{\vec{b}}\cos \theta)^2 + (\abs{\vec{b}}\sin \theta)^2      \\
+                                            & = \abs{\vec{a}}^2 + \abs{\vec{b}}^2
+                  - 2\abs{\vec{a}} \abs{\vec{b}} \cos \theta
+            \end{align}
+            \begin{figure}[H]
+                  \centering
+                  \begin{tikzpicture}[scale = 1.5]
+                        \coordinate (O) at (0,0); \coordinate (a) at (3, 0);
+                        \coordinate (b) at (1, 2); \coordinate (c) at (1, 0);
+                        \draw[black] (O) -- (a); \draw[black] (O) -- (b);
+                        \draw[black] (b) -- (a); \draw[dashed] (b) -- (c);
+                        \node[below left] at (O) {$ O $};
+                        \node[above] at (b) {$ B $};
+                        \node[below right] at (a) {$ A $};
+                        \node[below] at (c) {$ C $};
+                  \end{tikzpicture}
+            \end{figure}
+
+      \item Given $ 0 \leq \alpha \leq \beta \leq 2\pi $
+            \begin{align}
+                  \vec{a}                                            &
+                  = \bmatcol{\cos \alpha}{\sin \alpha}               & \vec{b} &
+                  = \bmatcol{\cos \beta}{\sin \beta}                             \\
+                  \vec{a} \dotp \vec{b}                              &
+                  = \abs{\vec{a}} \abs{\vec{b}} \cos(\beta - \alpha) &
+                  \cos(\alpha)\cos(\beta) + \sin(\alpha)\sin(\beta)  & =
+                  \cos(\beta - \alpha)
+            \end{align}
+
+      \item Using the definition of the inner product,
+            \begin{align}
+                  A                                                                 &
+                  = (0, 0, 2)                                                       &
+                  B                                                                 &
+                  = (3, 0, 2)                                                         \\
+                  C                                                                 &
+                  = (1, 1, 1)                                                         \\
+                  \cos A                                                            &
+                  = \frac{(\vec{b} - \vec{a}) \dotp (\vec{c} - \vec{a})}
+                  {\abs{(\vec{b} - \vec{a})}\abs{(\vec{c} - \vec{a})}}
+                  = \frac{3 + 0 + 0}{3 \cdot \sqrt{3}} = \frac{1}{\sqrt{3}}         &
+                  \angle\ A                                                         &
+                  = \SI{54.73}{\degree}                                               \\
+                  \cos B                                                            &
+                  = \frac{(\vec{c} - \vec{b}) \dotp (\vec{a} - \vec{b})}
+                  {\abs{(\vec{c} - \vec{b})}\abs{(\vec{a} - \vec{b})}}
+                  = \frac{6 + 0 + 0}{\sqrt{6} \cdot \sqrt{9}} = \frac{6}{\sqrt{54}} &
+                  \angle\ B                                                         &
+                  = \SI{35.26}{\degree}                                               \\
+                  \cos C                                                            &
+                  = \frac{(\vec{a} - \vec{c}) \dotp (\vec{b} - \vec{c})}
+                  {\abs{(\vec{a} - \vec{c})}\abs{(\vec{b} - \vec{c})}}
+                  = \frac{-2 + 1 + 1}{\sqrt{3} \cdot \sqrt{6}} = 0                  &
+                  \angle\ C                                                         &
+                  = \SI{90}{\degree}
+            \end{align}
+
+      \item Finding the angles between adjacent sides.
+            \begin{align}
+                  \vec{a}     & = \bmatcol{6}{0}                                    &
+                  \vec{b}     & = \bmatcol{2}{3}                                      \\
+                  \cos \theta & = \frac{12 + 0}{6 \cdot \sqrt{13}}                  &
+                  \theta      & = \SI{56.31}{\degree}                                 \\
+                  \phi        & = \SI{180}{\degree} - \theta = \SI{123.69}{\degree}
+            \end{align}
+            In a parallellogra, opposite angles are equal and adjacent angles are
+            supplementary. So only one angle needs to be calculated.
+
+      \item Expressing the plane in normal form,
+            \begin{align}
+                  \vec{\hat{n}} \dotp \vec{r} & = p                           &
+                  A                           & : (1, 0, 2)                     \\
+                  \vec{\hat{n}}               & = \frac{1}{\sqrt{11}}
+                  \begin{bNiceMatrix}[margin]
+                        3 \\ 1 \\ 1
+                  \end{bNiceMatrix} &
+                  p                           & = \frac{9}{\sqrt{11}}           \\
+                  \vec{a}                     & = \begin{bNiceMatrix}[margin]
+                                                        1 \\ 0 \\ 2
+                                                  \end{bNiceMatrix} &
+                  \vec{b}                     & = \begin{bNiceMatrix}[margin]
+                                                        27 \\ 9 \\ 9
+                                                  \end{bNiceMatrix}    \\
+                  p                           & = {\color{y_p}d}
+                  + {\color{y_h} \vec{a}
+                  \dotp \vec{\hat{n}}}        &
+                  d                           & = \frac{9 - 5}{\sqrt{11}}
+                  = \frac{4}{\sqrt{11}}
+            \end{align}
+
+            \begin{figure}[H]
+                  \centering
+                  \begin{tikzpicture}[scale = 1]
+                        \coordinate (O) at (0,0); \coordinate (a) at (3, 3);
+                        \coordinate (b) at (-3, 3); \coordinate (c) at (2, 1);
+                        \coordinate (n) at (0, 3);
+                        \draw[black, dashed] (a) -- (b);
+                        \draw[force, y_h] (O) -- (c);
+                        \draw[force, black] (O) -- (n);
+                        \draw[thick, y_h] (-0.15, 0) -- (-0.15, 1);
+                        \draw[thick, y_p] (0.15, 1) -- (0.15, 3);
+                        \node[below = 2] at (O) {$ O $};
+                        \node[right] at (c) {$ A $};
+                        \node[above = 2] at (n) {$ N $};
+                  \end{tikzpicture}
+            \end{figure}
+            Here, the plane is viewed from the side (so it looks like a line). The red
+            and green segments add up to the distance of the plane from the origin.
+
+      \item Using the condition for orthogonality,
+            \begin{align}
+                  \vec{a} \perp \vec{b} & \iff \vec{a} \dotp \vec{b} = 0 &
+                  3a_1 - 8 + 36         & = 0                              \\
+                  a_1                   & = \frac{-28}{3}
+            \end{align}
+
+      \item Planes are orthogonal if their normal vectors are orthogonal,
+            \begin{align}
+                  \vec{n}_1                   & = \frac{1}{\sqrt{10}}
+                  \begin{bNiceMatrix}[margin]
+                        3 \\ 0 \\ 1
+                  \end{bNiceMatrix} &
+                  \vec{n}_2                   & = \frac{1}{\sqrt{c^2 + 65}}
+                  \begin{bNiceMatrix}[margin]
+                        8 \\ -1 \\ c
+                  \end{bNiceMatrix}                                  \\
+                  \vec{n}_1 \dotp \vec{n}_2   & = 0                         &
+                  \vec{c}                     & = -24
+            \end{align}
+
+      \item Unit vectors are of the form (in $2d$ Cartesian plane)
+            \begin{align}
+                  \vec{a} \dotp \vec{n} & = 0                                        &
+                  \abs{\vec{a}}         & = 1                                          \\
+                  4a_1 + 3a_2           & = 0                                        &
+                  a_1^2 + a_2^2         & = 1                                          \\
+                  a_1^2                 & = \frac{9}{25}                             &
+                  a_2^2                 & = \frac{16}{25}                              \\
+                  \vec{\hat{b}}_1       & = \left( \frac{3}{5}, -\frac{4}{5} \right) &
+                  \vec{\hat{b}}_2       & = \left( -\frac{3}{5}, \frac{4}{5} \right)
+            \end{align}
+
+      \item Each reflection reverses the component orthogonal to that mirror while
+            leaving the other two components unchanged. \par
+            After being reflected by all 3 mirrors, all 3 components have been reversed.
+            The angle between $ \vec{v}_i $ and $ \vec{v}_f $ is thus
+            $ \SI{180}{\degree} $
+            \begin{align}
+                  \vec{v}_i                 & = \begin{bNiceMatrix}[margin]
+                                                      a \\ b \\ c
+                                                \end{bNiceMatrix}  &
+                  \vec{v}_f                 & = \begin{bNiceMatrix}[margin]
+                                                      -a \\ -b \\ -c
+                                                \end{bNiceMatrix} = -\vec{v}_i \\
+                  \vec{v}_i \dotp \vec{v}_f & = \abs{\vec{v}_i}^2 \cdot (-1) &
+                  \cos \theta               & = -1
+            \end{align}
+
+      \item The two diagonals being orthogonal requires,
+            \begin{align}
+                  (\vec{a} + \vec{b}) \dotp (\vec{a} - \vec{b}) & = 0               &
+                  \abs{\vec{a}}^2                               & = \abs{\vec{b}}^2
+            \end{align}
+            Thus, the lengths of the sides have to be equal, which forces the
+            parallellogram into a square.
+
+      \item To find the projection of a vector onto another,
+            \begin{align}
+                  p & = \vec{a} \dotp \vec{\hat{b}} = \frac{6}{\sqrt{13}}
+            \end{align}
+
+      \item To find the projection of a vector onto another,
+            \begin{align}
+                  p & = \vec{a} \dotp \vec{\hat{b}} = \frac{0}{\sqrt{29}} = 0
+            \end{align}
+
+      \item To find the projection of a vector onto another,
+            \begin{align}
+                  p & = \vec{a} \dotp \vec{\hat{b}} = \frac{-34}{\sqrt{17}}
+                  = -2\sqrt{17}
+            \end{align}
+
+      \item To satisfy the condition,
+            \begin{align}
+                  \vec{a} \dotp \vec{\hat{b}} & = \vec{b} \dotp \vec{\hat{a}} &
+                  \abs{\vec{a}}\cos \theta    & = \abs{\vec{b}} \cos \theta
+            \end{align}
+            Either $ \cos \theta = 0 $ and the vectors are orthogonal or
+            $ \abs{\vec{a}} = \abs{\vec{b}} $ and the vectors are the same length.
+
+      \item The component does not change, since the only information about $ \vec{b} $
+            needed in the computation is its direction.
+\end{enumerate}

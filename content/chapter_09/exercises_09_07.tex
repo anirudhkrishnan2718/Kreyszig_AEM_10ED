@@ -1,0 +1,878 @@
+\section{Gradient of a Scalar Field, Directional Derivative}
+
+\begin{enumerate}
+    \item Finding the gradient,
+          \begin{align}
+              f        & = (x + 1)(2y - 1)          &
+              \nabla f & = \bmatcol{2y - 1}{2x + 2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{2*(y - 0.5)}
+                  \def\V{2*(x + 1)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          enlargelimits,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -6:4,
+                          restrict y to domain = -4.5:5.5,
+                          colormap/jet, colorbar
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={-9,-2, 2,9},
+                                  labels=false,
+                              },
+                          samples=100
+                      ] {(x+1)*(2*y - 1)};
+                      \foreach \k in {-2,9}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.5,},
+                                      -stealth,
+                                      samples=10,
+                                  ] ({x}, {0.5 * ((\k/(x+1)) + 1)}, {0});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the gradient,
+          \begin{align}
+              f        & = 9x^2 + 4y^2       &
+              \nabla f & = \bmatcol{18x}{8y}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{18 * x}
+                  \def\V{8 * y}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          enlargelimits,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -2:2,
+                          restrict y to domain = -2:2,
+                          colormap/jet, colorbar
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={3.25, 13},
+                                  labels=false,
+                              },
+                          samples=100
+                      ] {9*x^2 + 4*y^2};
+                      \foreach \k in {3.25,13}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.25,},
+                                      -stealth,
+                                      samples=10,
+                                  ] ({x}, {sqrt(0.25 * (\k - 9*x^2))}, {0});
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.25,},
+                                      -stealth,
+                                      samples=10,
+                                  ] ({x}, {-sqrt(0.25 * (\k - 9*x^2))}, {0});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the gradient,
+          \begin{align}
+              f        & = \frac{y}{x}           &
+              \nabla f & = \bmatcol{-y/x^2}{1/x}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{-y/(x*x)}
+                  \def\V{1/x}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          enlargelimits,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -5:5,
+                          restrict y to domain = -5:5,
+                          colormap/jet, colorbar
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={-0.25, -4, 4, 0.25},
+                                  labels=false,
+                              },
+                          samples=100
+                      ] {y/x};
+                      \foreach \k in {-0.25, 4}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.5,},
+                                      -stealth,
+                                      samples=10,
+                                  ] ({x}, {\k * x}, {0});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the gradient,
+          \begin{align}
+              f        & = (y+6)^2 + (x - 4)^2      &
+              \nabla f & = \bmatcol{2(x-4)}{2(y+6)}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{2 * (x - 4)}
+                  \def\V{2 * (y + 6)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          enlargelimits,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -15:15,
+                          restrict y to domain = -15:15,
+                          colormap/jet, colorbar
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 4,
+                                  levels={1, 4},
+                                  labels=false,
+                              },
+                          samples=100
+                      ] {(y+6)^2 + (x-4)^2};
+                      \foreach \k in {1, 4}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.5,},
+                                      -stealth,
+                                      samples=20,
+                                  ] ({x}, {sqrt(\k - (x-4)^2) - 6}, {0});
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.5,},
+                                      -stealth,
+                                      samples=20,
+                                  ] ({x}, {-sqrt(\k - (x-4)^2) - 6}, {0});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the gradient,
+          \begin{align}
+              f        & = x^4 + y^4            &
+              \nabla f & = \bmatcol{4x^3}{4y^3}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{4*x^3}
+                  \def\V{4*y^3}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          enlargelimits,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -3:3,
+                          restrict y to domain = -3:3,
+                          colormap/jet, colorbar
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 4,
+                                  levels={1, 16},
+                                  labels=false,
+                              },
+                          samples=100
+                      ] {y^4 + x^4};
+                      \foreach \k in {1, 16}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.5,},
+                                      -stealth,
+                                      samples=8,
+                                  ] ({x}, {(\k - x^4)^(1/4)}, {0});
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.5,},
+                                      -stealth,
+                                      samples=8,
+                                  ] ({x}, {-(\k - x^4)^(1/4)}, {0});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the gradient,
+          \begin{align}
+              f        & = \frac{x^2 - y^2}{x^2 + y^2}                    &
+              \nabla f & = \frac{1}{(x^2 + y^2)^2}\bmatcol{4xy^2}{-4x^2y}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{4 * x * y^2 / ((x^2 + y^2)^2)}
+                  \def\V{-4 * x^2 * y / ((x^2 + y^2)^2)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          enlargelimits,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -5:5,
+                          restrict y to domain = -5:5,
+                          colormap/jet, colorbar
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={-0.9, 0, 0.9},
+                                  labels=false,
+                              },
+                          samples=100
+                      ] {(x^2 - y^2)/ (x^2 + y^2)};
+                      \foreach \k in {-0.9, 0}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.5,},
+                                      -stealth,
+                                      samples=10,
+                                  ] ({x}, {sqrt((1 - \k)/(1 + \k)) * x}, {0});
+                                  \noexpand \addplot3 [
+                                      forget plot,
+                                      color = gray1,
+                                      point meta = {\LEN},
+                                      quiver={u={(\U) / \LEN},
+                                              v={(\V) / \LEN},
+                                              scale arrows = 0.5,},
+                                      -stealth,
+                                      samples=10,
+                                  ] ({x}, {-sqrt((1 - \k)/(1 + \k)) * x}, {0});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Proving the relation
+          \begin{align}
+              \nabla (f^n) & = \diffp{f^n}{x}\ \vec{\hat{i}}
+              + \diffp{f^n}{y}\ \vec{\hat{j}} + \diffp{f^n}{z}\ \vec{\hat{k}} \\
+              \nabla (f^n) & = nf^{n-1} \left[ \diffp{f}{x}\ \vec{\hat{i}}
+                  + \diffp{f}{y}\ \vec{\hat{j}} + \diffp{f}{z}\ \vec{\hat{k}} \right]
+              = nf^{n-1}\ \nabla f
+          \end{align}
+
+    \item Proving the relation
+          \begin{align}
+              \nabla (fg)  & = \diffp{(fg)}{x}\ \vec{\hat{i}}
+              + \diffp{(fg)}{y}\ \vec{\hat{j}} + \diffp{(fg)}{z}\ \vec{\hat{k}}   \\
+              \nabla (f^n) & = g \left[ \diffp{f}{x}\ \vec{\hat{i}}
+                  + \diffp{f}{y}\ \vec{\hat{j}} + \diffp{f}{z}\ \vec{\hat{k}} \right]
+              + f \left[ \diffp{g}{x}\ \vec{\hat{i}}
+              + \diffp{g}{y}\ \vec{\hat{j}} + \diffp{g}{z}\ \vec{\hat{k}} \right] \\
+                           & = g\ \nabla f + f\ \nabla g
+          \end{align}
+
+    \item Proving the relation
+          \begin{align}
+              \nabla (f/g) & = \diffp{(f/g)}{x}\ \vec{\hat{i}}
+              + \diffp{(f/g)}{y}\ \vec{\hat{j}} + \diffp{(f/g)}{z}\ \vec{\hat{k}} \\
+              \nabla (f^n) & = \frac{1}{g} \left[ \diffp{f}{x}\ \vec{\hat{i}}
+                  + \diffp{f}{y}\ \vec{\hat{j}} + \diffp{f}{z}\ \vec{\hat{k}} \right]
+              - \frac{f}{g^2} \left[ \diffp{g}{x}\ \vec{\hat{i}}
+              + \diffp{g}{y}\ \vec{\hat{j}} + \diffp{g}{z}\ \vec{\hat{k}} \right] \\
+                           & = \frac{1}{g^2}(g\ \nabla f - f\ \nabla g)
+          \end{align}
+
+    \item Proving the relation
+          \begin{align}
+              \nabla^2 (fg)            & = \nabla \dotp \big[ g\ \nabla f
+              + f\ \nabla g \big]                                                    \\
+              \nabla \dotp (g\nabla f) & = \left[ \diffp{}{x}\ \vec{\hat{i}}
+                  + \diffp{}{y}\ \vec{\hat{j}} + \diffp{}{z}\ \vec{\hat{k}} \right]
+              \dotp \left[ g\diffp{f}{x}\ \vec{\hat{i}}
+              + g\diffp{f}{y}\ \vec{\hat{j}} + g\diffp{f}{z}\ \vec{\hat{k}} \right]  \\
+                                       & =g\ \nabla^2 f + \nabla f \dotp \nabla g    \\
+              \nabla^2 (fg)            & = g\ \nabla^2 f + 2 \nabla g \dotp \nabla f
+              + f\ \nabla^2 g
+          \end{align}
+
+    \item Calculating the gradient,
+          \begin{align}
+              f                      & = xy              &
+              P                      & : (-4, 5)           \\
+              \nabla f               & = \bmatcol{y}{x}  &
+              \Big[ \nabla f \Big]_P & = \bmatcol{5}{-4}
+          \end{align}
+
+    \item Calculating the gradient,
+          \begin{align}
+              f                         & = \frac{x}{x^2 + y^2}        &
+              P                         & : (1, 1)                       \\
+              \nabla f                  & = \frac{1}{(x^2 + y^2)^2}
+              \bmatcol{y^2 - x^2}{-2xy} &
+              \Big[ \nabla f \Big]_P    & = \frac{1}{4}\bmatcol{0}{-2}
+          \end{align}
+
+    \item Calculating the gradient,
+          \begin{align}
+              f                      & = \ln(x^2 + y^2)                &
+              P                      & : (8, 6)                          \\
+              \nabla f               & = \frac{1}{(x^2 + y^2)}
+              \bmatcol{2x}{2y}       &
+              \Big[ \nabla f \Big]_P & = \frac{1}{100}\bmatcol{16}{12}
+          \end{align}
+
+    \item Calculating the gradient,
+          \begin{align}
+              f                              & = (x^2 + y^2 + z^2)^{-1/2}           &
+              P                              & : (12, 0, 16)                          \\
+              \nabla f                       & = \frac{-1}{(x^2 + y^2 + z^2)^{3/2}}
+              \begin{bNiceMatrix}[r, margin]
+                  x \\ y \\ z
+              \end{bNiceMatrix} &
+              \Big[ \nabla f \Big]_P         & = \frac{-1}{8000}
+              \begin{bNiceMatrix}[r, margin]
+                  12 \\ 0 \\ 16
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Calculating the gradient,
+          \begin{align}
+              f                      & = 4x^2 + 9y^2 + z^2              &
+              P                      & : (5, -1, -11)                     \\
+              \nabla f               & = \begin{bNiceMatrix}[r, margin]
+                                             8x \\ 18y \\ 2z
+                                         \end{bNiceMatrix} &
+              \Big[ \nabla f \Big]_P & = \begin{bNiceMatrix}[r, margin]
+                                             40 \\ -18 \\ -22
+                                         \end{bNiceMatrix}
+          \end{align}
+
+    \item Calculating the gradient,
+          \begin{align}
+              f                      & = 25x^2 + 9y^2 + 16z^2           &
+              P                      & : (a, b, c)                        \\
+              \nabla f               & = \begin{bNiceMatrix}[r, margin]
+                                             50x \\ 18y \\ 32z
+                                         \end{bNiceMatrix} &
+              \Big[ \nabla f \Big]_P & = \begin{bNiceMatrix}[r, margin]
+                                             50a \\ 18b \\ 32c
+                                         \end{bNiceMatrix}
+          \end{align}
+          Since this gradient is in the direction of the origin,
+          \begin{align}
+              \begin{bNiceMatrix}[r, margin]
+                  50a \\ 18b \\ 32c
+              \end{bNiceMatrix} & \propto \begin{bNiceMatrix}[r, margin]
+                                              a \\ b \\ c
+                                          \end{bNiceMatrix} \\
+          \end{align}
+          Points on one of the 3 axes will have two out of 3 components zero, which
+          satisfies the relation. THe origin is also a valid point.
+
+    \item Calculating the gradient,
+          \begin{align}
+              f                      & = 25x^2 + 4y^2      &
+              P                      & : (a, b)              \\
+              \nabla f               & = \bmatcol{50x}{8y} &
+              \Big[ \nabla f \Big]_P & = \bmatcol{50a}{8b}
+          \end{align}
+          Since this gradient is in the direction of the origin,
+          \begin{align}
+              \bmatcol{50a}{8b} & \propto \bmatcol{a}{b} \\
+          \end{align}
+          Points on one of the 2 axes will have one out of 2 components zero, which
+          satisfies the relation. THe origin is also a valid point.
+
+    \item Finding the gradient,
+          \begin{align}
+              f                      & = x^2 - 6x - y^2        &
+              P                      & : (-1, 5)                 \\
+              \nabla f               & = \bmatcol{2x - 6}{-2y} &
+              \Big[ \nabla f \Big]_P & = \bmatcol{-8}{-10}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{2*(x - 3)}
+                  \def\V{-2*y}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -10:10,
+                          restrict y to domain = -10:10,
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          color = gray!50,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.75,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \addplot[GraphSmooth, y_h] {sqrt(x^2 - 6*x + 18)};
+                      \addplot[GraphSmooth, y_h] {-sqrt(x^2 - 6*x + 18)};
+                      \node[GraphNode, label={-90:{\footnotesize $ P $}}]
+                      at (axis cs:-1, 5, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the gradient,
+          \begin{align}
+              f                      & = \cos(x)\cosh(y)                             &
+              P                      & : (\pi/2, \ln 2)                                \\
+              \nabla f               & = \bmatcol{-\sin(x)\cosh(y)}{\cos(x)\sinh(y)} &
+              \Big[ \nabla f \Big]_P & = \bmatcol{-1.25}{0}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{-sin(x) * cosh(y)}
+                  \def\V{cos(x) * sinh(y)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -5:5,
+                          restrict y to domain = -5:5,
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          color = gray!50,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.5,},
+                          -stealth,
+                          samples=16,
+                      ] (x, y, 0);
+                      \draw[thick, y_h] (pi/2, -6) -- (pi/2, 6);
+                      \draw[thick, y_h] (-pi/2, -6) -- (-pi/2, 6);
+                      \draw[thick, y_h] (-3*pi/2, -6) -- (-3*pi/2, 6);
+                      \draw[thick, y_h] (3*pi/2, -6) -- (3*pi/2, 6);
+                      \node[GraphNode, label={0:{\footnotesize $ P $}}]
+                      at (axis cs:pi/2, 0.693, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the gradient,
+          \begin{align}
+              f                                            & =
+              x + \frac{x}{x^2 + y^2}                      &
+              P                                            & : (1, 1)            \\
+              \nabla f                                     & =
+              \bmatcol{1 + \frac{y^2 - x^2}
+              {(x^2 + y^2)^2}}{\frac{-2xy}{(x^2 + y^2)^2}} &
+              \Big[ \nabla f \Big]_P                       & = \bmatcol{1}{-1/2}
+          \end{align}
+
+          Plot TBC
+
+    \item Finding the gradient,
+          \begin{align}
+              f                                   & =
+              e^x \cos(y)                         &
+              P                                   & : (1, \pi/2)      \\
+              \nabla f                            & =
+              \bmatcol{e^x \cos(y)}{-e^x \sin(y)} &
+              \Big[ \nabla f \Big]_P              & = \bmatcol{0}{-e}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \def\U{cos(y)}
+                  \def\V{-sin(y)}
+                  \def\LEN{sqrt(\U * \U + \V * \V)}
+                  \begin{axis}[
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -2*pi:2*pi,
+                          restrict y to domain = -2*pi:2*pi,
+                      ]
+                      \addplot3 [
+                          forget plot,
+                          color = gray!50,
+                          point meta = {\LEN},
+                          quiver={u={(\U) / \LEN},
+                                  v={(\V) / \LEN},
+                                  scale arrows = 0.5,},
+                          -stealth,
+                          samples=17,
+                      ] (x, y, 0);
+                      \addplot[GraphSmooth, y_h] {pi/2};
+                      \addplot[GraphSmooth, y_h] {-pi/2};
+                      \addplot[GraphSmooth, y_h] {3*pi/2};
+                      \addplot[GraphSmooth, y_h] {-3*pi/2};
+                      \node[GraphNode, label={-90:{\footnotesize $ P $}}]
+                      at (axis cs:1, pi/2, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item For the gradient to be vertically upward, $ y = \frac{(2n+1)\pi}{2} $
+
+    \item For the gradient to be horizontal, $ y = n\pi $.
+
+    \item Finding the gradient, and reversing it
+          \begin{align}
+              f                      & = 3x^2 - 2y^2         &
+              P                      & : (2.5, 1.8)            \\
+              \nabla f               & =
+              \bmatcol{6x}{-4y}      &
+              \Big[ \nabla f \Big]_P & = -\bmatcol{15}{-7.2}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          grid = both,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -5:5,
+                          restrict y to domain = -5:5,
+                          colormap/jet, colorbar
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 4,
+                                  levels={-100, -12.27, 0, 12.27, 100},
+                                  labels=false,
+                              },
+                          samples=100
+                      ] {3*x^2 - 2*y^2};
+                      \draw[force, black]
+                      (2.5, 1.8) -- (2.5 - 15/16.63, 1.8 + 7.2/16.63);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the gradient, and reversing it
+          \begin{align}
+              f                              & = \frac{z}{x^2 + y^2}          &
+              P                              & : (0, 1, 2)                      \\
+              \nabla f                       & = \frac{1}{(x^2 + y^2)^2}
+              \begin{bNiceMatrix}[r, margin]
+                  -2xz \\
+                  -2yz \\
+                  x^2 + y^2
+              \end{bNiceMatrix} &
+              \Big[ \nabla f \Big]_P         & = -\begin{bNiceMatrix}[margin]
+                                                      0 \\ -4 \\ 1
+                                                  \end{bNiceMatrix}
+          \end{align}
+
+          Figure TBC
+
+    \item Finding the gradient, and reversing it
+          \begin{align}
+              f                      & = x^2 + y^2 + 4z^2               &
+              P                      & : (2, -1, 2)                       \\
+              \nabla f               & = \begin{bNiceMatrix}[r, margin]
+                                             2x \\
+                                             2y \\
+                                             8z
+                                         \end{bNiceMatrix} &
+              \Big[ \nabla f \Big]_P & = -\begin{bNiceMatrix}[margin]
+                                              4 \\ -2 \\ 16
+                                          \end{bNiceMatrix}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[%
+                          view = {45}{45},
+                          width=8cm,
+                          axis equal,
+                          axis lines = center,
+                          xlabel = {$x$},
+                          ylabel = {$y$},
+                          zlabel = {$z$},
+                          ticks=none,
+                      ]
+                      \addplot3[%
+                          shader=interp,
+                          opacity = 0.3,
+                          fill opacity=0.3,
+                          surf,
+                          colormap/blackwhite,
+                          variable = \u,
+                          variable y = \v,
+                          domain = 0:180,
+                          y domain = 0:360,
+                      ]
+                      ({cos(u)*sin(v)}, {sin(u)*sin(v)}, {0.25*cos(v)});
+                      \draw[force, black]
+                      (2, -1, 2) -- (2 - 4/ 16.61, -1 + 2/ 16.61, 2 - 16/ 16.61);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item
+          \begin{enumerate}
+              \item Finding the gradient,
+                    \begin{align}
+                        f        & = x^3 - 3xy^2                 &
+                        \nabla f & = \bmatcol{3x^2 - 3y^2}{-6xy}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \def\U{3*x^2 - 3*y^2}
+                            \def\V{-6 * x * y}
+                            \def\LEN{sqrt(\U * \U + \V * \V)}
+                            \begin{axis}[
+                                    enlargelimits,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -8:8,
+                                    restrict y to domain = -8:8,
+                                    colormap/jet, colorbar
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-2, -80, 0},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {x^3 - 3*x*y^2};
+                                \foreach \k in {-80}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot3 [
+                                                forget plot,
+                                                color = gray1,
+                                                point meta = {\LEN},
+                                                quiver={u={(\U) / \LEN},
+                                                        v={(\V) / \LEN},
+                                                        scale arrows = 0.5,},
+                                                -stealth,
+                                                samples=6,
+                                            ] ({x}, {sqrt((x^3 - \k)/ (3*x))}, {0});
+                                            \noexpand \addplot3 [
+                                                forget plot,
+                                                color = gray1,
+                                                point meta = {\LEN},
+                                                quiver={u={(\U) / \LEN},
+                                                        v={(\V) / \LEN},
+                                                        scale arrows = 0.5,},
+                                                -stealth,
+                                                samples=6,
+                                            ] ({x}, {-sqrt((x^3 - \k)/ (3*x))}, {0});
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Finding the gradient,
+                    \begin{align}
+                        f        & = \sin(x)\sinh(y)                            &
+                        \nabla f & = \bmatcol{\cos(x)\sinh(y)}{\sin(x)\cosh(y)}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[
+                                declare function={arcsinh(\x) = ln(\x + sqrt(\x^2+1));}
+                            ]
+                            \def\U{cos(x) * sinh(y)}
+                            \def\V{sin(x) * cosh(y)}
+                            \def\LEN{sqrt(\U * \U + \V * \V)}
+                            \begin{axis}[
+                                    enlargelimits,
+                                    height = 12cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -10:10,
+                                    restrict y to domain = -10:10,
+                                    colormap/jet, colorbar
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            %   number = 10,
+                                            levels={-20, -2, 0, 2, 20},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {sin(x) * sinh(y)};
+                                \foreach \k in {2}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot3 [
+                                                forget plot,
+                                                color = gray1,
+                                                point meta = {\LEN},
+                                                quiver={u={(\U) / \LEN},
+                                                        v={(\V) / \LEN},
+                                                        scale arrows = 1,},
+                                                -stealth,
+                                                samples=10,
+                                            ] ({x}, {arcsinh(\k/sin(x))}, {0});
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Finding the gradient,
+                    \begin{align}
+                        f        & = e^x \cos(y)                         &
+                        \nabla f & = \bmatcol{e^x \cos(y)}{-e^x \sin(y)}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[
+                                declare function={arcsinh(\x) = ln(\x + sqrt(\x^2+1));}
+                            ]
+                            \def\U{cos(y)}
+                            \def\V{-sin(y)}
+                            \def\LEN{sqrt(\U * \U + \V * \V)}
+                            \begin{axis}[
+                                    enlargelimits,
+                                    height = 12cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -4:4,
+                                    restrict y to domain = -4:4,
+                                    colormap/jet, colorbar
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            %   number = 10,
+                                            levels={-2, -0.1, 0, 0.1, 2},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {e^(x) * cos(y)};
+                                \foreach \k in {0.1}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot3 [
+                                                forget plot,
+                                                color = gray1,
+                                                point meta = {\LEN},
+                                                quiver={u={(\U) / \LEN},
+                                                        v={(\V) / \LEN},
+                                                        scale arrows = 0.75,},
+                                                -stealth,
+                                                samples=16,
+                                            ] ({ln(\k/cos(x))}, {x}, {0});
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+
+    \item Finding the gradient,
+          \begin{align}
+              f                      & = 3000 - x^2 - 9y^2   &
+              P                      & : (4, 1)                \\
+              \nabla f               & = \bmatcol{-2x}{-18y} &
+              \Big[ \nabla f \Big]_P & = \bmatcol{-8}{-18}
+          \end{align}
+
+    \item Absolute value of gradient is larger $ P $ than at $ Q $ for two points in the
+    same scalar field. The magnitude of the gradient is the local rate of change
+    (steepness). So, the scalar field has a larger rate of change around $ P $ than
+    $ Q $.
+\end{enumerate}

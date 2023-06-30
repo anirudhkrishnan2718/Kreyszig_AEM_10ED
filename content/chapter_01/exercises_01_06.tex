@@ -1,0 +1,688 @@
+\section{Orthogonal Trajectories}
+
+\begin{enumerate}
+    \item All ellipses with foci -3 and +3 on the x axis, will have eccentricity $ c = 3 $,\\
+
+          \begin{align}
+              \frac{x^{2}}{a^{2}} + \frac{y^{2}}{a^{2} - 3^{2}}     & = 1                  \\
+              a^{2}yy' + x(a^{2} - 9)                               & = 0                  \\
+              a^{2}                                                 & = \frac{9x}{yy' + x} \\
+              \frac{x^{2}(x + yy')}{x} - \frac{y^{2}(x + yy')}{yy'} & = 9                  \\
+              x(x + yy')(yy') - y^{2}(x + yy')                      & = 9yy'               \\
+              y'^{2} (xy^{2}) + y' (x^{2}y - y^{3} - 9y) - xy^{2}   & = 0
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          %   axis equal,
+                          colormap/jet,
+                          cycle list = {[of colormap]},
+                          restrict y to domain = -20:40,
+                          legend pos = south west,
+                          grid = both,
+                          width = 8cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \foreach \i in {3.2,3.4,...,4} {%
+                              \addplot[forget plot, samples = 100, thin,
+                                  domain=-pi:pi, variable = \t, color = blue
+                              ]
+                              ({\i * cos(t)}, {sqrt(\i*\i - 9) * sin(t)});
+                          }
+                      \node[GraphNode, label={180:{\footnotesize (3, 0)}}] at (axis cs:3, 0) {};
+                      \node[GraphNode, label={0:{\footnotesize (-3, 0)}}] at (axis cs:-3, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item All circles passing through origin and having centre on $ y = x^{3} $
+
+          \begin{align}
+              (x - a)^{2} + (y - a^{3})^{2}                         & = c^{2}         \\
+              a^{2} + a^{6}                                         & = c^{2}         \\
+              (x - a)^{2} + (y - a^{3})^{2}                         & = a^{2} + a^{6} \\
+              \frac{x^{2}(x + yy')}{x} - \frac{y^{2}(x + yy')}{yy'} & = 9             \\
+              x(x + yy')(yy') - y^{2}(x + yy')                      & = 9yy'          \\
+              y'^{2} (xy^{2}) + y' (x^{2}y - y^{3} - 9y) - xy^{2}   & = 0
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          %   axis equal,
+                          restrict y to domain = -5:20,
+                          axis equal,
+                          legend pos = north west,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, ForestGreen, dotted, domain = 0:3]
+                      {x^3};
+                      \addlegendentry{Locus of centres $ y = x^{3} $};
+                      \foreach [evaluate=\i as \n using (\i)*100/(2)] \i in {0.5,1,1.5,1.75,2} {%
+                              \edef\temp{%
+                                  \noexpand
+                                  \addplot[forget plot,
+                                      samples = 100,
+                                      domain=-pi:pi,,
+                                      %   variable = \t,
+                                      color=blue!\n!red,
+                                  ]
+                                  ({\i + cos(x)*(\i^(2) +\i^(6))^(1/2)}, {\i^(3) + sin(x)*(\i^(2) +\i^(6))^(1/2)});
+                                  \noexpand \node[GraphNode,
+                                      inner sep = 1pt,
+                                      color = blue!\n!red] at (axis cs:\i,\i^3){};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The catenary is $ y = \cosh x $,
+
+          \begin{align}
+              y - a & = \cosh (x - a)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          %   axis equal,
+                          %   restrict y to domain = -5:20,
+                          legend pos = south east,
+                          grid = both,
+                          width = 12cm,
+                          height = 8cm,
+                          Ani,
+                          view     = {0}{90}, % for a view 'from above'
+                      ]
+                      \addplot[GraphSmooth, black, thin, domain = -7:7]
+                      {x + 1};
+                      \addlegendentry{Locus of minima $ y = x + 1$};
+                      \foreach [evaluate=\i as \n using (\i + 4)*100/(8)] \i in {-4, -3.5,...,4} {%
+                              \edef\temp{%
+                                  \noexpand
+                                  \addplot[forget plot,
+                                      samples = 100,
+                                      domain=\i - 4:\i + 4,
+                                      %   variable = \t,
+                                      color=blue!\n!red,
+                                  ]
+                                  {\i + cosh(x - \i)};
+                                  \noexpand \node[GraphNode,
+                                      inner sep = 1pt,
+                                      color = blue!\n!red] at (axis cs:\i,\i + 1){};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding OT for given family of curves $ z(x;b) $,
+
+          \begin{align}
+              y  & = x^{2} + c                                      \\
+              y' & = 2x                                             \\
+              y  & \rightarrow z   & y' & \rightarrow \frac{-1}{z'} \\
+              z' & = \frac{-1}{2x} & z  & = -0.5 \ln x + b
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          %   axis equal,
+                          axis equal,
+                          restrict y to domain = -5:10,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach [evaluate=\i as \n using (\i + 4)*100/(8)] \i in {-4,0,...,4} {%
+                              \edef\temp{%
+                                  \noexpand \addplot[forget plot, very thin,
+                                      samples = 100,
+                                      domain=-5:+5,
+                                      color=blue,
+                                  ]
+                                  {x^(2) + \i};
+                                  \noexpand \addplot[forget plot, very thin,
+                                      samples = 100,
+                                      domain=0.01:+5,
+                                      color=red,
+                                  ]
+                                  {-0.5*ln(x) + \i};
+                              }\temp
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Given $y = x^{2} + c$};
+                      \addlegendentry{Orthogonal $z = -0.5\ln x + b$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding OT for given family of curves $ z(x;b) $,
+
+          \begin{align}
+              y                              & = cx                                                       \\
+              \frac{y'}{x} - \frac{y}{x^{2}} & = 0            & y'            & = \frac{y}{x}             \\
+              y                              & \rightarrow z  & y'            & \rightarrow \frac{-1}{z'} \\
+              z'                             & = \frac{-x}{z} & z^{2} + x^{2} & = b^{2}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          %   axis equal,
+                          axis equal,
+                          restrict y to domain = -10:10,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach \i in {0,1,2,3,5,6,7,8} {%
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 50,
+                                  domain=-10:+10,
+                                  color=blue,
+                              ]
+                              {tan((pi/8)*\i) * x};
+                          }
+                      \foreach \i in {2,4,6,8} {%
+                              \addplot[forget plot, thin,
+                                  samples = 100,
+                                  domain=-pi:+pi,
+                                  color=red,
+                              ]
+                              ({\i*cos(x)},{\i*sin(x)});
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Given $y = cx$};
+                      \addlegendentry{Orthogonal $z^{2} + x^{2} = b^{2}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding OT for given family of curves $ z(x;b) $,
+
+          \begin{align}
+              xy      & = c                                                       \\
+              xy' + y & = 0           & y'            & = \frac{-y}{x}            \\
+              y       & \rightarrow z & y'            & \rightarrow \frac{-1}{z'} \\
+              z'      & = \frac{x}{z} & z^{2} - x^{2} & = b
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          %   axis equal,
+                          axis equal,
+                          restrict y to domain = -10:10,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach \i in {4,16,32,64} {%
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 100,
+                                  domain=-10:+10,
+                                  color=blue,
+                              ]
+                              {\i / x};
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 100,
+                                  domain=-10:+10,
+                                  color=Violet,
+                              ]
+                              {-\i / x};}
+                      \foreach \i in {1,3,...,7} {%
+                              \addplot[forget plot, thin,
+                                  samples = 100,
+                                  domain=-pi:+pi,
+                                  color=red,
+                              ]
+                              ({\i*tan(x)},{\i*sec(x)});
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Given $xy = c$};
+                      \addlegendentry{Orthogonal $z^{2} - x^{2} = b^{2}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding OT for given family of curves $ z(x;b) $,
+
+          \begin{align}
+              y             & = \frac{c}{x^{2}}                                              \\
+              x^{2}y' + 2xy & = 0               & y'             & = \frac{-2y}{x}           \\
+              y             & \rightarrow z     & y'             & \rightarrow \frac{-1}{z'} \\
+              z'            & = \frac{x}{2z}    & 2z^{2} - x^{2} & = b^{2}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          enlargelimits = false,
+                          axis equal,
+                          restrict y to domain = -10:10,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach \i in {4,64,256} {%
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 100,
+                                  domain=-10:+10,
+                                  color=blue,
+                              ]
+                              {\i / (x^2)};
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 100,
+                                  domain=-10:+10,
+                                  color=Violet,
+                              ]
+                              {-\i / (x^2)};}
+                      \foreach \i in {1,5,7} {%
+                              \addplot[forget plot, thin,
+                                  samples = 100,
+                                  domain=-pi:+pi,
+                                  color=red,
+                              ]
+                              ({\i*tan(x)},{(\i / sqrt(2))*sec(x)});
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Given $x^{2}y = c$};
+                      \addlegendentry{Orthogonal $2z^{2} - x^{2} = b^{2}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding OT for given family of curves $ z(x;b) $,
+
+          \begin{align}
+              y        & = \sqrt{x + c}                                     \\
+              2yy' - 1 & = 0            & y'    & = \frac{1}{2y}            \\
+              y        & \rightarrow z  & y'    & \rightarrow \frac{-1}{z'} \\
+              z'       & = -2z          & \ln z & = -2x + b^{*}             \\
+              z        & = be^{-2x}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          enlargelimits = false,
+                          axis equal,
+                          restrict y to domain = -10:10,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach \i in {-8,-4,...,8} {%
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 200,
+                                  domain=-\i:10,
+                                  color=blue,
+                              ]
+                              {sqrt(x + \i)};
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 200,
+                                  domain=-\i:10,
+                                  color=Violet,
+                              ]
+                              {-sqrt(x + \i)};
+                          }
+                      \foreach \j in {-1000,-10,0,10, 1000} {%
+                              \addplot[forget plot, thin,
+                                  samples = 100,
+                                  domain=-2:10,
+                                  color=red,
+                              ]
+                              {\j * e^(-2*x)};
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Given $y = \sqrt{x + c}$};
+                      \addlegendentry{Orthogonal $z = be^{-2x}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding OT for given family of curves $ z(x;b) $,
+
+          \begin{align}
+              y                          & = ce^{-x^{2}}                                       \\
+              e^{x^{2}}y' + 2xe^{x^{2}}y & = 0             & y'    & = -2xy                    \\
+              y                          & \rightarrow z   & y'    & \rightarrow \frac{-1}{z'} \\
+              z'                         & = \frac{1}{2xz} & z^{2} & = \ln x + b
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          enlargelimits = false,
+                          axis equal,
+                          restrict y to domain = -5:5,
+                          domain = -5:5,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach \i in {-8,-4,-2,0,2,4,8} {%
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 100,
+                                  domain=-5:+5,
+                                  color=blue,
+                              ]
+                              {\i * e^(-(x^2))};
+                          }
+                      \foreach \i in {-4,...,4} {%
+                              \addplot[forget plot, thin,
+                                  samples = 100,
+                                  domain=-5:5,
+                                  color=red,
+                              ]
+                              {sqrt(ln(x) + \i)};
+                              \addplot[forget plot, thin,
+                                  samples = 100,
+                                  domain=-5:5,
+                                  color=BrickRed,
+                              ]
+                              {-sqrt(ln(x) + \i)};
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Given $y = ce^{-x^{2}}$};
+                      \addlegendentry{Orthogonal $z^{2} = \ln x + b$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding OT for given family of curves $ z(x;b) $,
+
+          \begin{align}
+              x^{2} + (y-c)^{2}                                                  & = c^{2}                                                                                                           \\
+              x + (y-c)y'                                                        & = 0                                             & c                                   & =  y + \frac{x}{y'}       \\
+              x^{2}  + \frac{x^{2}}{y'^{2}}                                      & = y^{2} + \frac{x^{2}}{y'^{2}} + \frac{2xy}{y'}                                                                   \\
+              y'                                                                 & = \frac{2xy}{x^{2} - y^{2}}                                                                                       \\
+              y                                                                  & \rightarrow z                                   & y'                                  & \rightarrow \frac{-1}{z'} \\
+              z'                                                                 & = \frac{z^{2} - x^{2}}{2xz}                     & (x^{2} - z^{2})\ \dl x + 2xz\ \dl z & = 0                       \\
+              F                                                                  & = e^{-2\ln x}                                   &                                     & = x^{-2}                  \\
+              \left( 1 - \frac{z^{2}}{x^{2}}\right)\ \dl x + \frac{2z}{x}\ \dl z & = 0                                                                                                               \\
+              \frac{z^{2}}{x} + l(x)                                             & = u(x, z)                                       & 1                                   & = \diff{l(x)}{x}          \\
+              u(x, y)                                                            & = \frac{z^{2}}{x} + x                           & z^{2} + x^{2}                       & = 2bx                     \\
+              z^{2} + (x - b)^{2}                                                & = b^{2}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          axis equal,
+                          restrict y to domain = -12:12,
+                          domain = -5:5,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach \i in {1,3,...,5} {%
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 100,
+                                  domain=-pi:+pi,
+                                  color=blue,
+                              ]
+                              ({\i*cos(x)}, {\i + \i*sin(x)});
+                          }
+                      \foreach \i in {1,3,...,5} {%
+                              \addplot[forget plot, thin,
+                                  samples = 100,
+                                  domain=-pi:pi,
+                                  color=red,
+                              ]
+                              ({\i + \i*cos(x)}, {\i*sin(x)});
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Given $x^{2} + (y-c)^{2} = c^{2}$};
+                      \addlegendentry{Orthogonal $z^{2} + (x - b)^{2} = b^{2}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding OT for given family of curves $ z(x;b) $,
+
+          \begin{align}
+              x^{2} + y^{2} & = c                                            \\
+              2x + 2yy'     & = 0           & y' & = \frac{-x}{y}            \\
+              y             & \rightarrow z & y' & \rightarrow \frac{-1}{z'} \\
+              z'            & = \frac{z}{x} & z  & = bx
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          %   axis equal,
+                          enlargelimits = false,
+                          axis equal,
+                          restrict y to domain = -10:10,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach \i in {0,1,2,3,5,6,7,8} {%
+                              \addplot[GraphSmooth, thin, forget plot,
+                                  samples = 50,
+                                  domain=-10:+10,
+                                  color=red,
+                              ]
+                              {tan((pi/8)*\i) * x};
+                          }
+                      \foreach \i in {2,4,6,8} {%
+                              \addplot[forget plot, thin,
+                                  samples = 100,
+                                  domain=-pi:+pi,
+                                  color=blue,
+                                  dashed
+                              ]
+                              ({\i*cos(x)},{\i*sin(x)});
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Equipotential lines \\ $y^{2} + x^{2} = b^{2}$};
+                      \addlegendentry{Electric lines of force \\ $z = bx$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Locus of circles passing through $ (1, 0) $ and $ (-1, 0) $,
+
+          \begin{align}
+              x^{2} + (y-c)^{2}             & = r^{2}                                                                                & r^{2}               & = 1  + c^{2}              \\
+              x + (y-c)y'                   & = 0                                                                                    & c                   & =  y + \frac{x}{y'}       \\
+              x^{2}  + \frac{x^{2}}{y'^{2}} & = y^{2} + \frac{x^{2}}{y'^{2}} + \frac{2xy}{y'} + 1                                                                                      \\
+              y'                            & = \frac{2xy}{x^{2} - y^{2} - 1}                                                                                                          \\
+              y                             & \rightarrow z                                                                          & y'                  & \rightarrow \frac{-1}{z'} \\
+              z'                            & = \frac{1 + z^{2} - x^{2}}{2xz}                                                                                                          \\
+              0                             & = (x^{2} - z^{2} - 1)\ \dl x + 2xz\ \dl z                                                                                                \\
+              F                             & = e^{-2\ln x}                                                                          &                     & = x^{-2}                  \\
+              0                             & = \left( 1 - \frac{z^{2}}{x^{2}} - \frac{1}{x^{2}}\right)\ \dl x + \frac{2z}{x}\ \dl z                                                   \\
+              \frac{z^{2}}{x} + l(x)        & = u(x, z)                                                                              & 1 - \frac{1}{x^{2}} & = \diff{l(x)}{x}          \\
+              u(x, z)                       & = \frac{z^{2}}{x} + x + \frac{1}{x}                                                    & z^{2} + x^{2}  +1   & = -2bx                    \\
+              z^{2} + (x + b)^{2}           & = b^{2} - 1
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          axis equal,
+                          restrict y to domain = -12:12,
+                          domain = -5:5,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach \i in {-8, -6,...,8} {%
+                              \addplot[GraphSmooth, very thin, forget plot,
+                                  samples = 100,
+                                  domain=-pi:+pi,
+                                  color=blue,
+                              ]
+                              ({sqrt(1 + \i*\i)*cos(x)}, {\i + sqrt(1 + \i*\i)*sin(x)});
+                          }
+                      \foreach \i in {-8,-6,-4,-2,2,4,6,8} {%
+                              \addplot[forget plot, very thin,
+                                  samples = 100,
+                                  domain=-pi:pi,
+                                  color=red,
+                              ]
+                              ({sqrt(\i*\i - 1)*cos(x) - \i}, {sqrt(\i*\i - 1)*sin(x)});
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Electric lines of force \\ $1 + c^{2} = x^{2} + (y - c)^{2}$};
+                      \addlegendentry{Equipotential lines \\ $z^{2} + (x + b)^{2} = b^{2} - 1$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding OT of given family $g(z, x;b) $,
+
+          \begin{align}
+              4x^{2} + 9y^{2} & = c                                               \\
+              4x + 9yy'       & = 0                                               \\
+              y'              & = \frac{-4x}{9y}                                  \\
+              y               & \rightarrow z    & y' & \rightarrow \frac{-1}{z'} \\
+              z'              & = \frac{9z}{4x}                                   \\
+              4\ln z          & = 9\ln x + b^{*} & z  & = bx^{9/4}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          %   ymode = log,
+                          axis equal,
+                          restrict y to domain = -12:15,
+                          domain = -5:5,
+                          legend pos = outer north east,
+                          grid = both,
+                          width = 8cm,
+                          Ani,
+                      ]
+                      \foreach \i in {0,5,...,25} {%
+                              \addplot[GraphSmooth, very thin, forget plot,
+                                  samples = 100,
+                                  domain=0:+pi,
+                                  color=blue,
+                              ]
+                              ({(\i/2)*cos(x)}, {(\i/3)*sin(x)});
+                          }
+                      \foreach \i in {0.01, 0.1, 0.5, 2} {%
+                              \addplot[forget plot, very thin,
+                                  samples = 100,
+                                  domain=0:15,
+                                  color=red,
+                              ]
+                              {\i * x^(9/4)};
+                          }
+                      \addlegendimage{color = blue}
+                      \addlegendimage{color = red}
+                      \addlegendentry{Isotherms \\ $4x^{2} + 9y^{2} + c$};
+                      \addlegendentry{Heat flow curves \\ $z^{4} = bx^{9}$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding condition for OT of family of ellipses $g(z, x;b) $, being a conic section
+
+          \begin{align}
+              \frac{x^{2}}{a^{2}} + \frac{y^{2}}{b^{2}} & = c^{2}                                                             \\
+              \frac{x}{a^{2}} + \frac{yy'}{b^{2}}       & = 0                                                                 \\
+              y'                                        & =\frac{b^{2}}{a^{2}}\ \frac{-x}{y}                                  \\
+              y                                         & \rightarrow z                      & y' & \rightarrow \frac{-1}{z'} \\
+              z'                                        & = \frac{b^{2}}{a^{2}}\ \frac{z}{x}                                  \\
+              a^{2}\ln z                                & = b^{2}\ln x + m^{*}               & z  & = mx^{b^{2}/a^{2}}
+          \end{align}
+
+          For OT to be a straight lines, $ b^{2} = a^{2} $. For a family of ellipses, $ b, a > 0 $.
+          This rules out $ b = 0 $. A parabola requires $ b^{2} = 2a^{2} $ or $ 2b^{2} = a^{2} $. These
+          are the only conic section OT possible.\\
+          $ a \rightarrow 0 $ makes the ellipse a straight line segment along the x-axis. (Analogous
+          for $ b \rightarrow 0 $). TBC
+
+    \item Cauchy-Riemann equations,
+
+          \begin{align}
+              u(x, y)  & = c                                    & \diffp{u}{x}\ \dl x + \diffp{u}{y}\ \dl y & = 0                                                 \\
+              \diff yx & = \frac{-\difsp ux}{\difsp uy} = m_{1} & \frac{-1}{\difs yx} = \frac{-1}{m_{1}}    & = \frac{\difsp uy}{\difsp ux}                       \\
+              v(x, y)  & = b                                    & \diffp{v}{x}\ \dl x + \diffp{v}{y}\ \dl y & = 0                                                 \\
+              \diff yx & = \frac{-\difsp vx}{\difsp vy}         & \frac{-1}{\difs yx} = m_{2}                                                                     \\
+              m_{2}    & = \frac{-1}{m_{1}}                     & \text{if} \qquad                          & u_{x} = v_{y} \quad \text{and} \quad u_{y} = -v_{x}
+          \end{align}
+
+          This is only the forward proof, since no complex differentiation is involved. \\
+          To find the OT of the given curves,
+
+          \begin{align}
+              e^{x}\sin y                    & = c                                    \\
+              v_{y}                          & = e^{x}\sin y & v_{x} & = -e^{x}\cos y \\
+              -\cos y\ \dl x + \sin y\ \dl y & = 0                                    \\
+              \ln |\cos y| + x               & = b
+          \end{align}
+
+
+    \item Consider the family of curves whose direction field is given by $ (1, f(x)) $.
+          Since the direction field of every point with the same y-coordinate is identical,
+
+          \begin{align}
+              y' & = f(x)                   & y = \int\ f(x)\ \dl x & = g(x) + c \\
+              z' & = \frac{-1}{f(x)} = h(x) & z = \int\ h(x)\ \dl x & = j(x) + b
+          \end{align}
+
+          Two members of the family of curves $ y(x;c) $ cannot intersect at the same $ x $ value,
+          as they will always be separated by an additive non-zero constant $ c_{1} - c_{2} $.\\
+          $ y_{1}(x) = y_{2}(x) $ automatically means that $ z_{1}(x) = z_{2}(x) $, where
+          $ z(x;b) $ is the OT family. \\
+          $ y' $ being independent of $ y $ means that $ z' $ is also independent of $ z $. So
+          the same congruence condition holds for the OT family.
+\end{enumerate}

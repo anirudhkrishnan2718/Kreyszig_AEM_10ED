@@ -1,0 +1,312 @@
+\section{Further Applications of the Divergence Theorem}
+
+\begin{enumerate}
+    \item Verifying Theorem 1,
+          \begin{align}
+              f             & = 2z^2 - x^2 - y^2                                     &
+              \nabla^2 f    & = -2 - 2 + 4 = \color{y_h} 0                             \\
+              \nabla f      & = \begin{bNiceMatrix}[margin]
+                                    -2x \\ -2y \\ 4z
+                                \end{bNiceMatrix}                             \\
+              I_1           & = \int_{0}^{a} \int_{0}^{b} (4c \cdot 1 + 0 \cdot -1)
+              \ \dl y \dl x &
+                            & = 4abc                                                   \\
+              I_2           & = \int_{0}^{c} \int_{0}^{b} (-2a \cdot 1 + 0 \cdot -1)
+              \ \dl y \dl z &
+                            & = -2abc                                                  \\
+              I_3           & = \int_{0}^{c} \int_{0}^{a} (-2b \cdot 1 + 0 \cdot -1)
+              \ \dl x \dl z &
+                            & = -2abc
+          \end{align}
+          The sum of the three integrals is zero, which verifies the theorem.
+
+    \item Verifying Theorem 1,
+          \begin{align}
+              f                & = x^2 - y^2                                        &
+              \nabla^2 f       & = 2 - 2 = \color{y_h} 0                              \\
+              \nabla f         & = \begin{bNiceMatrix}[margin]
+                                       2x \\ -2y \\ 0
+                                   \end{bNiceMatrix}                         \\
+              I_1              & = \int_{0}^{2} \int_{0}^{2\pi} \Big( 0+0 \Big) \ r
+              \ \dl \phi \dl r &
+                               & = 0                                                  \\
+              I_2              & = \int_{0}^{h} \int_{0}^{2\pi} \Big( 4\cos(2\phi)
+              \Big) \ (2)
+              \ \dl \phi \dl z &
+                               & = 0
+          \end{align}
+          The sum of the two integrals is zero, which verifies the theorem.
+
+    \item Verifying Green's first form,
+          \begin{align}
+              f                       & = 4y^2                         &
+              g                       & =  x^2                           \\
+              \vec{F}                 & = f\ \nabla g                  &
+                                      & =  \begin{bNiceMatrix}[margin]
+                                               8xy^2 \\ 0 \\ 0
+                                           \end{bNiceMatrix}    \\
+              f\ \nabla^2 g           & = 8y^2                         &
+              \nabla f \dotp \nabla g & = 0
+          \end{align}
+          The left-hand side computes to
+          \begin{align}
+              \iiint_T \Bigl( f\ \nabla^2 g + \nabla f \dotp \nabla g \Bigr)
+               & = \iiint_T (8y^2)\ \dl x \dl y \dl z                               \\
+               & = \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} (8y^2)\ \dl x \dl y \dl z
+              = \color{y_h} \frac{8}{3}
+          \end{align}
+          The right-hand side computes to
+          \begin{align}
+              \iint_S\ f\ (\vec{n} \dotp \nabla g)\ \dl A
+                  & = I_x + I_y + I_z                                  \\
+              I_x & = \int_{0}^{1} \int_{0}^{1} 4y^2\ \Bigl( 2 \cdot 1
+              - 0 \cdot 1 \Bigr) \dl y \dl z = \color{y_p} \frac{8}{3} \\
+              I_y & = \int_{0}^{1} \int_{0}^{1} 4y^2\ \Bigl( 0
+              \Bigr) \dl x \dl z = \color{y_p} 0                       \\
+              I_z & = \int_{0}^{1} \int_{0}^{1} 4y^2\ \Bigl( 0
+              \Bigr) \dl x \dl y = \color{y_p} 0
+          \end{align}
+          Both sides match, verifying the theorem.
+
+    \item Verifying Green's first form,
+          \begin{align}
+              f                       & = x                            &
+              g                       & = y^2 + z^2                      \\
+              \vec{F}                 & = f\ \nabla g                  &
+                                      & =  \begin{bNiceMatrix}[margin]
+                                               0 \\ 2xy \\ 2xz
+                                           \end{bNiceMatrix}    \\
+              f\ \nabla^2 g           & = 4x                           &
+              \nabla f \dotp \nabla g & = 0
+          \end{align}
+          The left-hand side computes to
+          \begin{align}
+              \iiint_T \Bigl( f\ \nabla^2 g + \nabla f \dotp \nabla g \Bigr)
+               & = \iiint_T (4x)\ \dl x \dl y \dl z                               \\
+               & = \int_{0}^{3} \int_{0}^{2} \int_{0}^{1} (4x)\ \dl x \dl y \dl z
+              = \color{y_h} 12
+          \end{align}
+          The right-hand side computes to
+          \begin{align}
+              \iint_S\ f\ (\vec{n} \dotp \nabla g)\ \dl A
+                  & = I_x + I_y + I_z                                           \\
+              I_x & = \int_{0}^{3} \int_{0}^{2} x\ \Bigl( 0
+              \Bigr) \dl y \dl z = \color{y_p} 0                                \\
+              I_y & = \int_{0}^{3} \int_{0}^{1} x\ \Bigl( 4 \cdot 1 - 0 \cdot 1
+              \Bigr) \dl x \dl z = \color{y_p} 6                                \\
+              I_z & = \int_{0}^{2} \int_{0}^{1} x\ \Bigl( 6 \cdot 1 - 0 \cdot 1
+              \Bigr) \dl x \dl y = \color{y_p} 6
+          \end{align}
+          Both sides match, verifying the theorem.
+
+    \item Verifying Green's second form,
+          \begin{align}
+              f                           & = 6y^2                        &
+              g                           & = 2x^2                          \\
+              f \nabla^2 g - g \nabla^2 f & = 24(y^2 - x^2)               &
+              \nabla f                    & = \begin{bNiceMatrix}[margin]
+                                                  0 \\ 12y \\ 0
+                                              \end{bNiceMatrix} \quad
+              \nabla g                    = \begin{bNiceMatrix}[margin]
+                                                4x \\ 0 \\ 0
+                                            \end{bNiceMatrix}
+          \end{align}
+          The left-hand side computes to
+          \begin{align}
+              \iiint_T \Bigl( f\ \nabla^2 g - g\ \nabla^2 f \Bigr)
+               & = \iiint_T (24y^2 - 24x^2)\ \dl x \dl y \dl z          \\
+               & = \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} 24(y^2 - x^2)
+              \ \dl x \dl y \dl z = \color{y_h} 0
+          \end{align}
+          The right-hand side computes to
+          \begin{align}
+              \iint_S\ f\ (\vec{n} \dotp \nabla g)\ \dl A
+                  & = I_x + I_y + I_z                                              \\
+              I_x & = \int_{0}^{1} \int_{0}^{1} 6y^2\ \Bigl( 4 \cdot 1 - 0 \cdot 1
+              \Bigr) \dl y \dl z = \color{y_p} 8                                   \\
+              I_y & = \int_{0}^{1} \int_{0}^{1} 6y^2\ \Bigl( 0
+              \Bigr) \dl x \dl z = \color{y_p} 0                                   \\
+              I_z & = \int_{0}^{1} \int_{0}^{1} 6y^2\ \Bigl( 0
+              \Bigr) \dl x \dl y = \color{y_p} 0
+          \end{align}
+
+          \begin{align}
+              \iint_S\ g\ (\vec{n} \dotp \nabla f)\ \dl A
+                  & = J_x + J_y + J_z                                               \\
+              J_x & = \int_{0}^{1} \int_{0}^{1} 2x^2\ \Bigl( 0
+              \Bigr) \dl y \dl z = \color{y_p} 0                                    \\
+              J_y & = \int_{0}^{1} \int_{0}^{1} 2x^2\ \Bigl( 12 \cdot 1 - 0 \cdot 1
+              \Bigr) \dl x \dl z = \color{y_p} 8                                    \\
+              J_z & = \int_{0}^{1} \int_{0}^{1} 2x^2\ \Bigl( 0
+              \Bigr) \dl x \dl y = \color{y_p} 0
+          \end{align}
+          Both sides match, verifying the theorem.
+
+    \item Verifying Green's second form,
+          \begin{align}
+              f                           & = x^2                         &
+              g                           & = y^4                           \\
+              f \nabla^2 g - g \nabla^2 f & = 12x^2 y^2 - 2y^4            &
+              \nabla f                    & = \begin{bNiceMatrix}[margin]
+                                                  2x \\ 0 \\ 0
+                                              \end{bNiceMatrix} \quad
+              \nabla g                    = \begin{bNiceMatrix}[margin]
+                                                0 \\ 4y^3 \\ 0
+                                            \end{bNiceMatrix}
+          \end{align}
+          The left-hand side computes to
+          \begin{align}
+              \iiint_T \Bigl( f\ \nabla^2 g - g\ \nabla^2 f \Bigr)
+               & = \iiint_T (12x^2y^2 -2y^4)\ \dl x \dl y \dl z             \\
+               & = \int_{0}^{1} \int_{0}^{1} \int_{0}^{1} (12x^2y^2 - 2y^4)
+              \ \dl x \dl y \dl z = \color{y_h} \frac{4}{3} - \frac{2}{5}
+          \end{align}
+          The right-hand side computes to
+          \begin{align}
+              \iint_S\ f\ (\vec{n} \dotp \nabla g)\ \dl A
+                  & = I_x + I_y + I_z                                             \\
+              I_x & = \int_{0}^{1} \int_{0}^{1} x^2\ \Bigl( 0
+              \Bigr) \dl y \dl z = \color{y_p} 0                                  \\
+              I_y & = \int_{0}^{1} \int_{0}^{1} x^2\ \Bigl( 4 \cdot 1 - 0 \cdot 1
+              \Bigr) \dl x \dl z = \color{y_p} \frac{4}{3}                        \\
+              I_z & = \int_{0}^{1} \int_{0}^{1} x^2\ \Bigl( 0
+              \Bigr) \dl x \dl y = \color{y_p} 0
+          \end{align}
+
+          \begin{align}
+              \iint_S\ g\ (\vec{n} \dotp \nabla f)\ \dl A
+                  & = J_x + J_y + J_z                                             \\
+              J_x & = \int_{0}^{1} \int_{0}^{1} y^4\ \Bigl( 2 \cdot 1 - 0 \cdot 1
+              \Bigr) \dl y \dl z = \color{y_p} \frac{2}{5}                        \\
+              J_y & = \int_{0}^{1} \int_{0}^{1} y^4\ \Bigl( 0
+              \Bigr) \dl x \dl z = \color{y_p} 8                                  \\
+              J_z & = \int_{0}^{1} \int_{0}^{1} y^4\ \Bigl( 0
+              \Bigr) \dl x \dl y = \color{y_p} 0
+          \end{align}
+          Both sides match, verifying the theorem.
+
+    \item Using Green's theorem to find the volume,
+          \begin{align}
+              \iiint_T\ (\nabla \dotp \vec{F})\ \dl V
+                        & = \iint_S\ (F_1)\ \dl y \dl z + (F_2)\ \dl x \dl z + (F_3)
+              \dl x \dl y                                                            \\
+              \vec{F}_a & = \begin{bNiceMatrix}[margin]
+                                x \\ 0 \\ 0
+                            \end{bNiceMatrix} \quad
+              \vec{F}_b = \begin{bNiceMatrix}[margin]
+                              0 \\ y \\ 0
+                          \end{bNiceMatrix} \quad
+              \vec{F}_c = \begin{bNiceMatrix}[margin]
+                              0 \\ 0 \\ z
+                          \end{bNiceMatrix} \quad
+              \vec{F}_d = \frac{1}{3}\ \begin{bNiceMatrix}[margin]
+                                           x \\ y \\ z
+                                       \end{bNiceMatrix}
+          \end{align}
+          Each of the four equalities are obtained by applying Green's theorem to these
+          vector functions one by one.
+
+    \item Circular cone of height $ h $ and radius of base $ a $, with the cone facing
+          upwards for convenience.
+          \begin{align}
+              3V  & = \iint_S\ (x)\ \dl y \dl z + (y)\ \dl x \dl z + (z) \dl x \dl y \\
+              I_1 & = \int_{0}^{a}\int_{0}^{2\pi}
+              (h)\ r \dl r \dl \phi
+              = \int_{0}^{a}\ 2\pi(h)\ r\ \dl r = \color{y_h} \pi h a^2              \\
+              V   & = \frac{\pi a^2}{3}\ h
+          \end{align}
+
+    \item Circular cone of height $ h $ and radius of base $ a $, with the cone facing
+          upwards for convenience.
+          \begin{align}
+              3V  & = \iint_S\ (x)\ \dl y \dl z + (y)\ \dl x \dl z + (z) \dl x \dl y \\
+              I_1 & = \int_{0}^{a}\int_{0}^{2\pi}
+              (0)\ r \dl r \dl \phi = \color{y_h} 0                                  \\
+              I_2 & = \int_{0}^{2\pi} \int_{0}^{\pi/2} (a)\ a^2 \sin \theta
+              \dl \theta \dl \phi = 2\pi a^3 \int_{0}^{\pi/2} \sin \theta \dl \theta
+              = \color{y_h} 2\pi a^3                                                 \\
+              V   & = \frac{0 + 2 \pi a^3}{3} = \color{y_p} \frac{2\pi}{3}\ a^3
+          \end{align}
+
+    \item A variable point $ P $ has the position vector
+          \begin{align}
+              P                     & : \vec{r} = \begin{bNiceMatrix}[margin]
+                                                      x \\ y \\ z
+                                                  \end{bNiceMatrix}   &
+              \vec{r} \dotp \vec{n} & = \abs{\vec{r}} \cdot 1 \cdot \cos \phi     \\
+              \iiint_T \nabla \dotp \vec{r}\ \dl A
+                                    & = \iint_S \vec{r} \dotp \vec{n}\ \dl A    &
+              \iiint_T \dl V        & = \frac{1}{3}\ \iint_S\ \abs{\vec{r}}
+              \cos \phi \dl A                                                     \\
+              V                     & = \frac{1}{3} \iint_S\ r \cos \phi\ \dl A
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          ymin = 0, ymax = 2, xmin = 0, xmax = 3.5,
+                          axis lines = middle,
+                          axis equal,
+                          Ani]
+                      \addplot[GraphSmooth, y_h, dashed,
+                          domain= 0 : pi/2, variable=\t] ({3 * cos(\t)}, {1 * sin(\t)})
+                      node[midway, above] {$ S $};
+                      \draw[force, black] (0, 0) -- (2.548, 0.45)
+                      node[midway, above] {$ \vec{r} $};
+                      \draw[force, y_p] (2.648, 0.55) -- (2.887, 1)
+                      node[midway, left] {$ \vec{n} $};
+                      \node[GraphNode] at (axis cs:2.598,0.5) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item For the special case of a sphere, with $ \phi = 0 $,
+          \begin{align}
+              V & = \frac{1}{3} \int_{0}^{2\pi} \int_{0}^{\pi} (r)
+              \ (r) \dl \theta\ (r \sin \theta) \dl \phi                        \\
+                & = \frac{a^3}{3}\ \int_{0}^{\pi} 2\pi\ \sin \theta\ \dl \theta
+              = \Bigg[\frac{2\pi a^3}{3}\ \cos(\theta)\Bigg]_{\pi}^{0}
+              = \color{y_p} \frac{4\pi}{3}\ a^3
+          \end{align}
+
+    \item Potential Theory. Examples TBC.
+          \begin{enumerate}
+              \item Using the first form of Green's theorem, with $ f = g $
+                    \begin{align}
+                        \iiint_T\ \Biggl( f \nabla^2 g + \nabla f \dotp \nabla g
+                        \Biggr) \dl V & = \iint_S\ \Biggl( f\ \diffp gn \Biggr) \dl A \\
+                        \iiint_T\ \abs{\nabla g}^2
+                        \ \dl V       & = \iint_S\ \Biggl( g\ \diffp gn \Biggr) \dl A
+                    \end{align}
+
+              \item Using the result from part $ a $,
+                    starting with the fact that everywhere in $ T $
+                    \begin{align}
+                        \diffp gn               & = 0               &
+                        \implies \abs{\nabla g} & = 0                 \\
+                        \implies \nabla g       & = \vec{0}         &
+                        \implies g              & = \text{constant}
+                    \end{align}
+              \item Using the second form of Green's theorem with $ f, g $ both being
+                    harmonic, proves the result.
+              \item Let $ h = f - g $, which is also harmonic, and using the result from
+                    part $ b $,
+                    \begin{align}
+                        \diffp hn               & = 0               &
+                        \implies \abs{\nabla h} & = 0                 \\
+                        \implies \nabla h       & = \vec{0}         &
+                        \implies h              & = \text{constant}
+                    \end{align}
+              \item Replace $ \vec{F} $ with $ \nabla f $ in the definition of the
+                    coordinate independent divergence,
+                    \begin{align}
+                        \nabla \dotp \vec{F}(P) & = \lim_{d(T) \rightarrow 0}
+                        \ \frac{1}{V(T)}\ \iint_{S(T)}\ \vec{F} \dotp \vec{n}\ \dl A \\
+                        \nabla^2 f              & = \lim_{d(T) \rightarrow 0}
+                        \ \frac{1}{V(T)}\ \iint_{S(T)}\ \Biggl( \diffp fn
+                        \Biggr)\ \dl A
+                    \end{align}
+          \end{enumerate}
+\end{enumerate}

@@ -1,0 +1,631 @@
+\chapter{Vector Integral Calculus, Integral Theorems}
+
+\section{Line Integrals}
+
+\begin{description}
+    \item[Curve integral] A generalization of the usual definite integral, which now
+        integrates over a general one-dimensional curve in space, instead of the $ x $
+        axis.
+        \begin{align}
+            I          & = \int_{a}^{b} f(x)\ \dl x              \\
+            \vec{r}(t) & = \begin{bNiceMatrix}[margin]
+                               x(t) \\ y(t) \\ z(t)
+                           \end{bNiceMatrix} \qquad t \in [a, b]
+        \end{align}
+        The path of integration is parametrized using a single parameter $ (t) $.
+        \par If the initial and terminal point of the curve coincide, it is called a
+        closed path. \par
+
+    \item[Smooth curve] A curve which has a unique tangent defined at each point that
+        varies continuously when traversing $ C $. \par
+        $ \vec{r}(t) $ is differentiable and $ \vec{r}'(t) $ is continuous and not the
+        zero vector at any point along $ C $.
+
+    \item[Line Integral] Curve integrals are commonly called line integrals, even if the
+        path itself is not a straight line. They are defined for some vector function
+        $ \vec{F}(\vec{r}) $ over a curve $ C $ by,
+        \begin{align}
+            \int_{C} \vec{F}(\vec{r}) \dotp \dl{\vec{r}} & =
+            \int_{a}^{b} \vec{F}(\vec{r}(t)) \dotp \vec{r}'(t)\ \dl t \\
+            \int_{C} (F_1 \dl x + F_2 \dl y + F_3 \dl z) & =
+            \int_{a}^{b} (F_1 x' + F_2 y' + F_3 z')\ \dl t
+        \end{align}
+        The above definition requires right-handed $ 3d $ Cartesian coordinates. \par
+        The differentiation is w.r.t. the parameter $ t $.
+
+        The line integral can be thought of as the sum of many infinitesimal vectors each
+        of which is the tangential component of $ \vec{F} $ at $ \vec{r} $. Thus,
+        \begin{align}
+            \dl I & = \vec{F} \dotp \frac{\vec{r}'}{\abs{\vec{r'}}}
+        \end{align}
+        The integrand is piecewise continuous if $ \vec{F} $ is continuous and the curve
+        $ C $ is at least piecewise smooth.
+
+    \item[Properties of line integral] Similar to the definite scalar integral,
+        \begin{align}
+            \int_{C} k\vec{F}  \dotp \dl{\vec{r}}           & =
+            k\ \int_{C} \vec{F} \dotp \dl{\vec{r}}              \\
+            \int_{C} (\vec{F} + \vec{G}) \dotp \dl{\vec{r}} & =
+            \int_{C} \vec{F} \dotp \dl{\vec{r}} +
+            \int_{C} \vec{G} \dotp \dl{\vec{r}}                 \\
+            \int_{C} \vec{F} \dotp \dl{\vec{r}}             & =
+            \int_{C_1} \vec{F} \dotp \dl{\vec{r}} +
+            \int_{C_2} \vec{F} \dotp \dl{\vec{r}}
+        \end{align}
+        Splitting a path into pieces that have the same orientation does not change
+        the line integral.
+
+    \item[Invariance of line integral] Any representation of the path $ C $ that
+        preserve the orientation of the curve, do not change the line integral.
+
+    \item[Work done by a force] When the path is no longer a straight line, the total
+        work done by a force is the sum of many small displacements along the path $ C $
+        \begin{align}
+            \dl W & = \vec{F}(\vec{r}) \dotp \dl{\vec{r}}          &
+            W     & = \int_{C} \vec{F}(\vec{r}) \dotp \dl{\vec{r}}
+        \end{align}
+
+    \item[Vector line integral] Without taking the dot product, the line integral
+        can be evaluated separately for each component to give,
+        \begin{align}
+            \int_{C} \vec{F}(\vec{r})\ \dl t &
+            = \int_{a}^{b} \vec{F}(\vec{r}(t))\ \dl t =
+            \begin{bNiceMatrix}[margin]
+                \int_{a}^{b} F_1 (\vec{r}(t))\ \dl t \\
+                \int_{a}^{b} F_2 (\vec{r}(t))\ \dl t \\
+                \int_{a}^{b} F_3 (\vec{r}(t))\ \dl t \\
+            \end{bNiceMatrix}
+        \end{align}
+
+    \item[Path Dependence] Generally, the path taken affects the outcome of the line
+        integral even if the function $ \vec{F}(\vec{r}) $ and the endpoints remain the
+        same.
+\end{description}
+
+\section{Path Independence of Line Integrals}
+
+\begin{description}
+    \item[Path Independene] A line integral is path independent in domain $ D $ if for
+        all pairs of points $ (A, B) $ in this domain, the path integral has the same
+        value regardless of the path taken from $ A $ to $ B $.
+
+    \item[Gradient of scalar function] A line integral (with continouous vector
+        components in the integrand) is path independent if and only if the vector
+        happens to
+        be the gradient of some scalar function in the same domain.
+        \begin{align}
+            \vec{F} = \nabla f \quad \iff \quad
+            \int_{A}^{B} \vec{F} \dotp \dl{\vec{r}} = f(B) - f(A)
+        \end{align}
+        This scalar function $ f $ is called the potential of the vector field
+        $ \vec{F} $.
+
+    \item[Closed line integral] A line integral is path independent if and only if
+        its value around any possible closed path is zero.
+
+    \item[Conservative field] In physics, if the work done by a force $ \vec{F} $ is
+        path independent, then the vector field is called conservative. Else, it is called
+        dissipative.
+
+    \item[Exact differential form] If the integrand $ \vec{F} \dotp \dl{\vec{r}} $ is
+        equal to an infinitesimal change in some scalar function $ f $,
+        \begin{align}
+            \vec{F} \dotp \dl{\vec{r}} & = F_1 \dl x + F_2 \dl y + F_3 \dl z    \\
+                                       & =\diffp fx\ \dl x + \diffp fy\ \dl y +
+            \diffp fz\ \dl z = \dl f
+        \end{align}
+        Here, $ f(x, y, z) $ is some differentiable function in the domain $ D $. \par
+        This reduces to the condition that the above equation is exact if and only if
+        the vector function $ \vec{F} $ is the gradient of the differentiable scalar
+        function $ f $ everywhere in the domain $ D $.
+
+    \item[Simply connected domain] Any closed curve in the domain $ D $ can be
+        continuously shrunk to any point in $ D $ without leaving $ D $.
+
+    \item[Criterion for exactness] Let the components of a vector function be continuous
+        and have continuous first partial derivatives  in a domain $ D $. Then,
+
+        \begin{itemize}
+            \item If the differential form is exact in $ D $ then the vector field is
+                  irrotational.
+                  \begin{align}
+                      \vec{F} \dotp \dl{\vec{r}} = \dl f \quad \implies
+                      \quad  \nabla \times F = 0
+                  \end{align}
+
+            \item Conversely, if the vector field $ \vec{F} $ is irrotational in a
+                  simply connected domain $ D $, then the line integral is path
+                  independent.
+        \end{itemize}
+\end{description}
+
+\section{Calculus Review: Double Integrals}
+
+\begin{description}
+    \item[Area] Double integration happens over any bounded region in $ \mathcal{R}^2 $
+        whose boundary curve has a unique tanget at all points. \par
+        The only exception is a finite number of cusps. (Discontinuity in the tangent
+        vector over the boundary). \par
+        This is analogous to a regular integral having at most a finite number of jump
+        discontinuities.
+
+    \item[Definition of double integral] Assuming some function $ f(x, y) $ is
+        continuous in $ \mathcal{R} $ and this region is bounded by finitely many smooth
+        curves, the integral over the area is
+        \begin{align}
+            I & \equiv \iint_R f(x, y)\ \dl A = \iint_R f(x, y)\ \dl x\ \dl y
+        \end{align}
+
+    \item[Properties of double integral] Similar to the definite single integral,
+        \begin{align}
+            \iint_R\ kf\ \dl A    & = k\ \iint_R f\ \dl A                          \\
+            \iint_R\ (f+g)\ \dl A & = \iint_R f\ \dl A +  \iint_R g\ \dl A         \\
+            \iint_R\ (f+g)\ \dl A & = \iint_{R_1} f\ \dl A +  \iint_{R_2} f\ \dl A
+        \end{align}
+        The area to be integrated over can be split into parts just like the line segment
+        for the case of the single integral.
+
+    \item[Mean value theorem] If the area of integration $ R $ as defined above is also
+        simply connected, then
+        \begin{align}
+            \iint_R f(x, y)\ \dl A & = f(x_0, y_0)\ A
+        \end{align}
+        for some point $ (x_0, y_0) $ in $ R $ and $ A $ being the total area of $ R $.
+
+    \item[Evaluation] Sucessively integrating over $ x $ then $ y $ is the most
+        common means of performing double integration.
+        \begin{align}
+            \iint_R f\ \dl x\ \dl y & = \int_{a}^{b} \left[ \int_{g(x)}^{h(x)}
+                f(x, y)\ \dl y \right] \dl x
+        \end{align}
+        Here, $ x $ is considered a constant when performing the integration over $ y $.
+        \par The order of integration can also be reversed if the computation happens to
+        be simpler.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[
+                        width = 8cm, height = 8cm,
+                        xmin = 0, xmax = 3.5, ymin = 0, ymax = 3.5,
+                        axis lines = middle,
+                        xlabel = \normalsize $ x $, ylabel = \normalsize $ y $,
+                        ymajorticks = false,
+                        axis equal, xtick = {1, 3},
+                        xticklabels = {\normalsize $ a $, \normalsize $ b $},
+                        Ani]
+                    \addplot[GraphSmooth, y_h, domain= pi : 2*pi, variable=\t]
+                    ({2 + cos(\t)}, {2 + sin(\t)})
+                    node[midway, below] {$ g(x) $};
+                    \addplot[GraphSmooth, y_p, domain= 0 : pi, variable=\t]
+                    ({2 + cos(\t)}, {2 + sin(\t)})
+                    node[midway, above] {$ h(x) $};
+                    \draw[dashed, black] (1, 0) -- (1, 2);
+                    \draw[dashed, black] (3, 0) -- (3, 2);
+                    \filldraw[draw = black!0, fill=gray!15](2, 2) circle (0.975);
+                    \node[GraphNode] at (axis cs:1,2) {};
+                    \node[GraphNode] at (axis cs:3,2) {};
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+        If the region $ R $ cannot be represented in the above form, it must at least be
+        divisible into a finite number of areas that can.
+
+    \item[Applications] The double integral of the unit function is simply
+        the area enclosed by the boundary curves.
+        \begin{align}
+            \iint_R \dl A & = A_{\text{total}}
+        \end{align}
+        The volume beneath a surface $ z = f(x, y) > 0 $ and the $ xy $ plane is equal
+        to its double integral over the area projected onto the $ xy $ plane.
+        \begin{align}
+            \iint_R f(x, y)\ \dl x\ \dl y = V
+        \end{align}
+        This is analogous to the area between the $ x $ axis and a one dimensional curve
+        being its definite integral.
+
+    \item[Change of variables] Starting with the single integral analog
+        \begin{align}
+            \int_{a}^{b}f(x) \dl x      & = \int_{\alpha}^{\beta}
+            f\Big(x(u)\Big)\ \diff xu \dl u                       \\
+            \iint_R f(x, y) \dl x \dl y & =
+            \iint_{R^*} f\Big(x(u, v),\ y(u, v)\Big)\ \abs{J} \dl u \dl v
+        \end{align}
+
+    \item[Jacobian] A determinant that supplies the partial derivatives of each of the
+        old variables w.r.t. each of the new variables.
+        \begin{align}
+            J & = \begin{vNiceMatrix}[r, margin]
+                      \difcp xu & \difcp xv \\ \difcp yu & \difcp yv
+                  \end{vNiceMatrix} =
+            \diffp xu \ \diffp yv - \diffp xv \ \diffp yu
+        \end{align}
+        Assuming the functions $ x(u, v) $ and $ y(u, v) $ are continuous and have
+        continuous first partial derivatives in some region $ R^* $ in the $ uv $ plane.
+
+        \par There has to be a bijective mapping from $ (u, v) $ in $ R^* $ to $ (x, y) $
+        in $ R $. The Jacobian has the same sign throughout $ R^* $
+
+\end{description}
+
+\section{Green's Theorem in the Plane}
+
+\begin{description}
+    \item[Utility] Converting a double integral over a region $ R $ into a line integral
+        over its boundary in order to simplify computations.
+
+    \item[Green' theorem] For a closed region $ R $ in 2 dimensions bounded by a finite
+        number of smooth curves. Call this boundary $ C $. \par
+        Let $ F_1(x, y) $ and $ F_2(x, y) $ be continuous functions in $ R $. Let the
+        derivatives $ \difsp{F_1}{y} $ and $ \difsp{F_2}{x} $ also be continuous in a
+        domain that is a superset of $ R $.
+
+        \begin{align}
+            \iint_R \left( \diffp{F_1}{y} - \diffp{F_2}{x} \right) \dl A & =
+            \oint_C F_1 \dl x + F_2 \dl y                                    \\
+            \iint (\nabla \times \vec{F}) \dotp \vec{k}\ \dl A           & =
+            \oint_C \vec{F} \dotp \dl{\vec{r}}
+        \end{align}
+        The region $ R $ is to the left when moving along its boundary in order to
+        preserve orientation. (in accordance with the direction of cross product)
+
+    \item[Proof] General proof is complex and not covered here. For a specific kind of
+        region $ R $ which can be represented by boundary curves in $ x $ or $ y $,
+        \begin{align}
+            \iint_R \diffp {F_1}{y}\ \dl A & = \int_{a}^{b} \Bigg[
+            \int_{u(x)}^{v(x)} \diffp{F_1}{y}\ \dl y \Bigg]\ \dl x                   \\
+                                           & = \int_{a}^{b} \Bigg[F_1
+            \big( x, v(x) \big) - F_1 \big( x, u(x) \big) \Bigg] \dl x               \\
+                                           & = -\int_{a}^{b} F_1 \big( x, u(x) \big)
+            - \int_{b}^{a} F_1 \big( x, v(x) \big) = -\oint_C F_1 \big( x, y \big)
+        \end{align}
+        Since $ u(x) $ and $ v(x) $ both travel from $ x = a $ to $ x = b $, the above
+        relation is a round trip starting and ending at $ x = a $, which reduces it
+        to the closed line integral needed. \par
+        A similar procedure for the closed region traversed from $ y = c $ to $ y = d $,
+        via the two curves $ p(y) $ and $ q(y) $ gives the other half of the proof. \par
+
+    \item[Area of region] Using Green's theorem to bypass the double integration,
+        \begin{align}
+            \iint_R \dl A & = \frac{1}{2} \oint_C \ (x \dl y) - (y \dl x) &
+                          & \text{cartesian}                                \\
+                          & = \frac{1}{2} \oint_C r^2 \dl \theta          &
+                          & \text{polar}
+        \end{align}
+
+    \item[Normal derivative] Consider a scalar functionm $ w(x, y) $ that is continuous
+        and has continuous first partial derivatives in the region $ R $.
+        \begin{align}
+            \vec{r}'               & = \diff {\vec{r}}{s} &
+            \vec{r}' \dotp \vec{n} & = 0
+        \end{align}
+        Here, the parameter $ s $ is the arc length of the boundary curve. This ensures that
+        the derivative $ \vec{r}' $ is the unit tangent vector. \par
+        The outward facing vector perpendicular to $ \vec{r}' $ is the unit normal vector
+        $ \vec{n} $. \par
+        The component of the gradient along the unit normal vector is called the normal
+        derivative.
+        \begin{align}
+            \nabla w \dotp \vec{n} = \diffp wn
+        \end{align}
+
+    \item[Relating Laplacian and normal derivative] Using the substitutions,
+        \begin{align}
+            F_1                       & = - \diffp wy               &
+            F_2                       & = \diffp wx                   \\
+            \iint_R \nabla^2 w\ \dl A & = \oint_C\ \diffp wn\ \dl s
+        \end{align}
+\end{description}
+
+\section{Surfaces for Surface Integrals}
+
+\begin{description}
+    \item[Parametric representation] Similar to curves, surfaces can be parametrized
+        using two parameters $ (u, v) $ to give
+        \begin{align}
+            \vec{r} & = \begin{bNiceMatrix}[margin]
+                            x \\ y \\ z
+                        \end{bNiceMatrix} \equiv
+            \begin{bNiceMatrix}[margin]
+                x(u, v) \\ y(y, v) \\ z(u, v)
+            \end{bNiceMatrix}
+        \end{align}
+        This maps every point $ (u, v) $ in a region $ R $ of the $ uv $ plane onto
+        the surface $ S $ in $ \mathcal{R}^3 $.
+
+    \item[Tangent Plane] Consider one possible curve $ C $ on surface $ S $ that passes
+        through a given point $ P $. \par
+        Since the curve can be parametrized using a single parameter ($ t $), the chain
+        rule gives,
+        \begin{align}
+            u,\ v                      & \equiv u(t),\ v(t)                  &
+            \vec{\tilde{r}}(t)         & \equiv \vec{r}\Big(u(t),\ v(t)\Big)   \\
+            \diff {\vec{\tilde{r}}}{t} & = \vec{\tilde{r}}'
+            = \diffp {\vec{r}}{u}\ u'
+            + \diffp {\vec{r}}{v}\ v'  &
+            \vec{\tilde{r}}'           & = \vec{r}_u\ u' + \vec{r}_v\ v'
+        \end{align}
+        Here the functions $ u(t) $ and $ v(t) $ are continuous and have continuous
+        derivatives w.r.t. $ t $.
+
+    \item[Surface Normal vector] The partial derivatives are assumed L.I. and thus span
+        the tangent plane at $ P $. Their cross product becomes the normal to the surface
+        at $ P $
+        \begin{align}
+            \vec{N} & = \vec{r}_u \times \vec{r}_v \neq \vec{0}
+        \end{align}
+        Using the fact that the gradient of a level curve at a given point is the
+        surface normal vector,
+        \begin{align}
+            g(x, y, z) = 0 \quad & \implies \quad \vec{N} = \nabla g
+        \end{align}
+
+    \item[Smooth surface] A surface whose normal vector depends continuously on the
+        points of the surface.  \par
+        At best, the surfaces encountered in practical applications can have a finite
+        number of smooth portions.
+\end{description}
+
+\section{Surface Integrals}
+
+\begin{description}
+    \item[Parametrized surface integral] If the surface $ S $ is parametrized using
+        the parameters $ u, v $which lie in region $ R $ of the $ uv $ plane, then,
+        \begin{align}
+            S :\ \vec{r}(u, v) & = \begin{bNiceMatrix}[margin]
+                                       x(u, v) \\ y(u, v) \\ z(u, v)
+                                   \end{bNiceMatrix}
+        \end{align}
+        This surface is piecewise smooth with a normal vector defined at every point.
+        \begin{align}
+            \vec{N}       & = \vec{r}_u \times \vec{r}_v                          &
+            \vec{\hat{n}} & = \frac{\vec{N}}{\abs{\vec{N}}}                         \\
+            \iint_S \vec{F} \dotp \vec{\hat{n}}
+            \ \dl A       & = \iint_R \vec{F}(\vec{r}) \dotp \vec{N}\ \dl u \dl v
+        \end{align}
+        The area element of the actual surface $ \vec{\hat{n}}\ \dl A $ maps on to the
+        area element $ \abs{\vec{N}} \dl u \dl v $ of the parameter plane $ R $.
+
+    \item[Flux] In physics, the flux through a surface is the amount of some physical
+        quantity (mass, heat) passing through the surface. \par
+        It can mathematically be represented as the component of a vector field normal
+        to the surface.
+        \begin{align}
+            \iint_S \vec{F} \dotp \vec{\hat{n}}\ \dl A &
+            = \iint_S F_1\ \dl y \dl z + F_2\ \dl x \dl z + F_3\ \dl x \dl y
+        \end{align}
+
+    \item[Orientation of Surfaces] Changing the orientation of the surface (by choosing
+        $ -\vec{n}$ instead of $ \vec{n} $), the value of the surface integral gets
+        multiplied by $ -1 $.
+
+    \item[Non-Orientable surface] Usually surfaces which have a positive direction of
+        the normal vector at a given point $ P $ also have the same positive direction of
+        the normal vector at all other points that can be reached by smoothly translating
+        $ P $ along the surface. \par
+        Surfaces like the Mobius strip are non-oreintable, because they do not satisfy
+        this condition.
+
+    \item[Surface Integral disregarding orientation] Consider a scalar function of
+        position $ G(\vec{r}) $ to be integrated over a surface,
+        \begin{align}
+            \iint_S G(\vec{r})\ \dl A & = \iint_R G(\vec{r})\ \abs{\vec{N}}
+            \ \dl u \dl v
+        \end{align}
+        Here, the normal vector and position vector are both parametrized using
+        $ (u, v) $. \par
+        One application is to find the mass of a surface, in which case the scalar
+        function $ G(\vec{r}) $ is its area density. \par
+        The total area of a surface $ A $ can be found using
+        \begin{align}
+            A & = \iint_S \dl A = \iint_R \abs{\vec{r}_u \times \vec{r}_v}\ \dl u \dl v
+        \end{align}
+
+    \item[Parametrization using coordinates] If the parameters chosen happen to be the
+        $ x $ and $ y $ coordinates themselves, then,
+        \begin{align}
+            \vec{r}                   & = \begin{bNiceMatrix}[margin]
+                                              x \\ y \\ f(x, y)
+                                          \end{bNiceMatrix} \\
+            \iint_S G(\vec{r})\ \dl A & = \iint_{R^*} G(x, y, f)\
+            \Bigg[ \sqrt{1 + (\difcp fx)^2 + (\difcp fy)^2} \Bigg]\ \dl x \dl y
+        \end{align}
+        Here the parameter plane $ R^* $ is the $ xy $ plane and geometrically is the
+        projection of the surface $ S $ onto the $ xy $ plane. \par
+        By convention the normal vector points upwards away from the $ xy $ plane.
+
+\end{description}
+
+\section{Triple Integrals, Divergence Theorem of Gauss}
+
+\begin{description}
+    \item[Triple Integral] An integral over a closed, bounded $ 3d $ region in space.
+        This volume is bounded by finitely many smooth surfaces. \par
+        \begin{align}
+            I & = \iiint_T\ f(x, y, z)\ \dl V
+        \end{align}
+
+    \item[Gauss' Divergence theorem] Triple integrals over a volume can be transformed
+        into double integrals over the boundary surface using the divergence of the
+        position vector,
+        \begin{align}
+            \vec{r}              & = \begin{bNiceMatrix}[margin]
+                                         F_1 \\ F_2 \\ F_3
+                                     \end{bNiceMatrix}                       &
+            \nabla \dotp \vec{r} & = \diffp {F_1}{x} + \diffp{F_2}{y} + \diffp{F_3}{z}
+        \end{align}
+        For some continuous vector function $ \vec{F} $ in the region $ T $ which is
+        continuous and has continuous first partial derivatives in some domain
+        containing $ T $,
+        \begin{align}
+            \iiint_T\ \nabla \dotp F\ \dl V           &
+            = \iint_S\ \vec{F} \dotp \vec{n}\ \dl S                        \\
+            \iiint_T\ \Bigg[\diffp {F_1}{x} + \diffp{F_2}{y}
+            + \diffp{F_3}{z}\Bigg]\ \dl x \dl y \dl z &
+            = \iint_S\ F_1 \dl y \dl z + F_2 \dl x \dl z + F_3 \dl x \dl y \\
+        \end{align}
+
+    \item[Co-ordinate Invariance of divergence] Since the divergence is a scalar
+        function of the position $ P $ in space, it is invariant under change of
+        co-ordinate system.
+        \begin{align}
+            \nabla \dotp \vec{F}(P) & = \lim_{d(T) \rightarrow 0}
+            \ \frac{1}{V(T)}\ \iint_{S(T)}\ \vec{F} \dotp \vec{n}\ \dl A
+        \end{align}
+        Here, $ V(T) $ is the volume of the region in space $ T $. \par
+        $ S(T) $ is the boundary surface of the region $ T $.
+        $ d(T) $ is the distance of the points in $ T $ from a specific point $ P $
+        chosen in $ T $ to satisfy the mean value theorem for triple integrals.
+\end{description}
+
+\section{Further Applications of the Divergence Theorem}
+
+\begin{description}
+    \item[Fluid flow] Consider an incompressible fluid with density $ \rho = 1 $, with
+        steady flow that does not varyin time. \par
+        If the outward normal vector is $ \vec{n} $ and the fluid flow is characterized by
+        the velocity field $ \vec{v} $, then
+        \begin{align}
+            \iint_S \vec{v} \dotp \vec{n}\ \dl A
+        \end{align}
+        represents the total mass of fluid flowing out of the region $ T $ bounded by the
+        surface $ S $. \par
+        There are no sources or sinks in a region $ T $ if and only if
+        $ \nabla \dotp \vec{v} = 0$ everywhere in $ T $.
+
+    \item[Heat equation] Since heat flows in the direction of decreasing temperature at a
+        rate proportional to the gradient,
+        \begin{align}
+            \vec{v} & = -K\ \nabla U & \nabla \dotp \vec{v} & = -K\ \nabla^2 U
+        \end{align}
+        where $ U $ is the temperature, $ t $ is the time and $ K $ is the thermal
+        conductivity of the body. \par
+        Equating the rate of decrease of heat of the region $ T $ to the total heat
+        flowing out of the bounding surface $ S $,
+        \begin{align}
+            \diffp Ut & = c^2\ \nabla^2 U
+        \end{align}
+        where $ c $ is the thermal diffusivity of the material. This equation is also
+        called the diffusion equation.
+
+    \item[Potential theory] Looking at solutions of Laplace's equation,
+        \begin{align}
+            \nabla^2 f & = \diff[2] fx + \diffp[2] fy + \diffp[2] fz = 0
+        \end{align}
+        Any solution of Laplace's equation $ f $ with continuous second-order partial
+        derivatives is called a harmonic function.
+
+    \item[Solutions of Laplace's equation] Using the definition of directional derivative
+        to define the normal derivative in the direction of the outward normal,
+        \begin{align}
+            \diffp fn & \equiv \nabla f \dotp \vec{n}
+        \end{align}
+        If the underlying scalar function $ f $ is such that $ \vec{F} = \nabla f $,
+        \begin{align}
+            \iiint_T\ \nabla^2 f\ \dl V & = \iint_S\ \diffp fn\ \dl A
+        \end{align}
+        If $ f $ is a harmonic function then the integral of the normal derivative over
+        the bounding surface $ S $ of some region in space $ T $ is zero.
+
+    \item[Green's first formula] A special case of Green's theorem when the vector
+        function $ \vec{F} $ is
+        \begin{align}
+            \vec{F}              & = f\ \nabla g                                 &
+            \nabla \dotp \vec{F} & = f\ \nabla^2 g + (\nabla f) \dotp (\nabla g)
+        \end{align}
+        Substituting into Green's theorem gives,
+        \begin{align}
+            \iiint_T\ \Big[f\ \nabla^2 g + (\nabla f) \dotp (\nabla g)\Big]\ \dl V
+             & = \iint_S \ f\ \diffp gn\ \dl A
+        \end{align}
+
+    \item[Green's second formula] An even more special case of Green's theorem, using
+        the symmetry in Green's first formula upon interchange of $ f $ and $ g $.
+        \begin{align}
+            \iiint_T\ \Big[f\ \nabla^2 g - g\ \nabla^2 f \Big]\ \dl V
+             & = \iint_S \ \left( f\ \diffp gn - g\ \diffp fn \right)\ \dl A
+        \end{align}
+
+    \item[Uniqueness of Harmonic functions] Let $ f $ be harmonic in some domain $ D $
+        and equal to zero at every point of the bounding surface $ S $  of a region in
+        space $ T $ as defined above. \par
+        Then, $ f $ is identically zero in $ T $ \par
+        This harmonic function $ f $ is uniquely determined in $ T $ by its values on the
+        bounding surface $ S $
+\end{description}
+
+\section{Stokes' Theorem}
+
+\begin{description}
+    \item[Stokes' theorem] A generalization of Green's theorem in the plane to the full
+        $ 3d $ space, using the curl. \par
+        Consider a surface $ S $ whose bounding curve is parametrized using the arc length
+        $ s $, with the outward normal unit vector being $ \vec{n} $
+        \begin{align}
+            \iint_R\ (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+             & = \oint_C\ \vec{F} \dotp \vec{r}'(s)\ \dl s
+        \end{align}
+        The unit tangent vector $ \vec{r}' $ is differentiated w.r.t. the arc length
+        $ s $. \par
+        The orientation of the curve is the same convention as for the cross product.
+        \begin{align}
+            \vec{n}\ \dl A  & = \vec{N}\ \dl u \dl v                      \\
+            \vec{r}'\ \dl s & = \dl x \vec{\hat{i}} + \dl y \vec{\hat{j}}
+            + \dl z \vec{\hat{k}}
+        \end{align}
+        In terms of the $ xyz $ coordinate system,
+        \begin{align}
+             & \iint_R \Bigg[\left( \diffp {F_3}{y} - \diffp{F_2}{z} \right) N_1
+                + \left( \diffp {F_1}{z} - \diffp{F_3}{x} \right) N_2
+                + \left( \diffp {F_2}{x} - \diffp{F_1}{y} \right) N_3\Bigg]
+            \ \dl u \dl v                                                        \\
+             & = \oint_C\ F_1\ \dl x + F_2\ \dl y + F_3\ \dl z
+        \end{align}
+
+    \item[Relation to Green's theorem] Green's theorem in the plane is a special case
+        of Stokes' theorem,
+        \begin{align}
+            \vec{F}               & = \begin{bNiceMatrix}[margin]
+                                          F_1 \\ F_2 \\ 0
+                                      \end{bNiceMatrix}    &
+            \nabla \times \vec{F} & =
+            \begin{bNiceMatrix}[margin]
+                -\difcp {F_2}{z} \\
+                \difcp {F_1}{z}  \\
+                \difcp {F_2}{x} - \difcp{F_1}{y}
+            \end{bNiceMatrix}                          \\
+            \vec{n}               & = \begin{bNiceMatrix}[margin]
+                                          0 \\ 0 \\ 1
+                                      \end{bNiceMatrix}    &
+            \vec{r}'              & = \begin{bNiceMatrix}[margin]
+                                          \dl x \\ \dl y \\ 0
+                                      \end{bNiceMatrix}     \\
+            \iint_S\ \Biggl( \diffp{F_2}{x} - \diffp{F_1}{y} \Biggr) \dl A
+                                  & = \oint_C\ F_1 \dl x + F_2 \dl y
+        \end{align}
+
+    \item[Physical meaning of curl] Consider a disk of radius $ r_0 $ whose boundary
+        is $ C_0 $ and the enlosed area is $ S_0 $,
+        \begin{align}
+            \oint_{C_0} \vec{v} \dotp \vec{r}'\ \dl s
+             & = \iint_{S_0}\ (\nabla \times \vec{v}) \dotp \vec{n}\ \dl A \\
+             & = \Big[(\nabla \times \vec{v}) \dotp \vec{n}\Big]_{Q}\ A_0
+        \end{align}
+        This is the $ 2d $ analog of the mean value theorem with the area of the disk
+        $ A_0 $ and $ Q $ being some point in the area for which the equality holds.
+
+        \begin{align}
+            \Big[(\nabla \times \vec{v}) \dotp \vec{n}\Big]_Q
+             & = \lim_{r_0 \rightarrow 0}
+            \ \frac{1}{A_0}\ \oint_{C_0}\ \Biggl( \vec{v} \dotp \vec{r}'
+            \Biggr)\ \dl s
+        \end{align}
+        If $ \vec{v} $ is the velocity vector, then the component of the curl in the
+        outward normal direction can be visualized as a measure of the circulation of
+        the fluid flow around the point $ Q $.
+
+    \item[Path Independence] The proof for path independence of a line integral is
+        straightforward using Stokes' theorem. \par
+        Starting with the fact that the curl is zero, which means that the vector 
+        function is the divergence of a scalar field, Stokes' theorem makes the 
+        line integral over any closed path identically zero. \par
+\end{description}

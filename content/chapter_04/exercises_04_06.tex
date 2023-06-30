@@ -1,0 +1,518 @@
+\section{Nonhomogeneous Linear Systems of ODEs}
+
+\begin{enumerate}
+    \item Following the proof for second order linear nh-ODEs,
+          Start with the fact that the solution $ \vec{y^{(h)}} $ of the
+          h-ODE includes all possible solutions. \par
+
+          Let $ \vec{y^{*}} $ be a solution of the nh-ODE on the interval
+          $ \mathcal{I} $ and some point $ t_0 \in \mathcal{I} $.
+          \begin{align}
+              \vec{y}       & = \vec{y^{(p)}} + \vec{y^{(h)}}\
+              \text{be a solution of the nh-ODE}                        \\
+              \vec{Y}       & \equiv \vec{y^{*}} - \vec{y^{(p)}}        \\
+              \vec{Y}\      & \text{solves the h-ODE}                   \\
+              \vec{Y}(t_0)  & = \vec{y^{*}}(t_0) - \vec{y^{(p)}}(t_0)   \\
+              \vec{Y'}(t_0) & = \vec{y^{*'}}(t_0) - \vec{y^{(p)'}}(t_0) \\
+          \end{align}
+          For any I.C. in $ \mathcal{I} $, there exists a unique $ c_1, c_2 $
+          which goes into $ \vec{y^{(h)}} $. Since $ \vec{y^{(h)}} $ and
+          $\vec{y^{*}}$ no longer have any arbitrary constants, $ \vec{Y} $
+          has also been uniquely determined. \par
+
+          This proves that every possible IVP has a solution contained in the
+          general solution of the nh-ODE and that no singular solution exists.
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                         & = \bmattt{1}{1}{3}{-1} \vec{y}
+              + \bmatcol{10\cos(t)}{10\sin(t)} &
+              \lambda^{2} - 4                  & = 0                              \\
+              \lambda_1                        & = -2                           &
+              \vec{v^{(1)}}                    & = \bmatcol{-1}{3}                \\
+              \lambda_2                        & = 2                            &
+              \vec{v^{(2)}}                    & = \bmatcol{1}{1}                 \\
+              \vec{y^{(h)}}                    & = \color{y_h}
+              c_1 \bmatcol{-1}{3}e^{-2t} + c_2 \bmatcol{1}{1} e^{2t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}             & = \bmatcol{A_1\cos(t) + B_1\sin(t)}
+              {A_2\cos(t) + B_2\sin(t)} &
+              \vec{g}                   & = \bmatcol{10 \cos(t)}{10 \sin(t)}    \\
+              \vec{y^{(p)'}}            & = \vec{Ay^{(p)}} + \vec{g}            \\
+              -A_1\sin(t) + B_1\cos(t)  & = [A_1 + A_2 + 10]\cos(t)           &
+                                        & + [B_1 + B_2]\sin(t)                  \\
+              -A_2\sin(t) + B_2\cos(t)  & = [3A_1 - A_2]\cos(t)               &
+                                        & + [3B_1 - B_2 + 10]\sin(t)            \\
+              \vec{y^{(p)}}             & = \color{y_p} \bmatcol
+              {-2}{-8}\cos(t) + \bmatcol{0}{2}\sin(t)
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                     & = \bmattt{0}{1}{1}{0} \vec{y}
+              + \bmatcol{e^{3t}}{-3e^{3t}} &
+              \lambda^{2} - 1              & = 0                             \\
+              \lambda_1                    & = -1                          &
+              \vec{v^{(1)}}                & = \bmatcol{-1}{1}               \\
+              \lambda_2                    & = 1                           &
+              \vec{v^{(2)}}                & = \bmatcol{1}{1}                \\
+              \vec{y^{(h)}}                & = \color{y_h}
+              c_1 \bmatcol{-1}{1}e^{-t} + c_2 \bmatcol{1}{1} e^{t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}  & = \bmatcol{A_1 e^{3t}}{A_2 e^{3t}}  &
+              \vec{g}        & = \bmatcol{e^{3t}}{-3 e^{3t}}         \\
+              \vec{y^{(p)'}} & = \vec{Ay^{(p)}} + \vec{g}            \\
+              3A_1           & = A_2 + 1                           &
+              3A_2           & = A_1 - 3                             \\
+              \vec{y^{(p)}}  & = \color{y_p} \bmatcol{0}{-1}e^{3t}
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                   & = \bmattt{4}{-8}{2}{-6} \vec{y}
+              + \bmatcol{2\cosh(t)}
+              {\cosh(t) + 2\sinh(t)}     &
+              \lambda^{2} + 2\lambda - 8 & = 0                               \\
+              \lambda_1                  & = -4                            &
+              \vec{v^{(1)}}              & = \bmatcol{1}{1}                  \\
+              \lambda_2                  & = 2                             &
+              \vec{v^{(2)}}              & = \bmatcol{4}{1}                  \\
+              \vec{y^{(h)}}              & = \color{y_h}
+              c_1 \bmatcol{1}{1}e^{-4t} + c_2 \bmatcol{4}{1} e^{2t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}               & = \bmatcol{A_1\cosh(t) + B_1\sinh(t)}
+              {A_2\cosh(t) + B_2\sinh(t)} &
+              \vec{g}                     & = \bmatcol{2 \cosh(t)}
+              {\cosh(t) + 2\sinh(t)}                                                \\
+              \vec{y^{(p)'}}              & = \vec{Ay^{(p)}} + \vec{g}              \\
+              B_1                         & = 4A_1 - 8A_2 + 2                     &
+              A_1                         & = 4B_1 - 8B_2                           \\
+              B_2                         & = 2A_1 - 6A_2 + 1                     &
+              A_2                         & = 2B_1 - 6B_2 + 2                       \\
+              \vec{y^{(p)}}               & = \color{y_p}
+              \bmatcol{2}{1} \sinh(t)
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                    & = \bmattt{4}{1}{2}{3} \vec{y}
+              + \bmatcol{0.6t}{-2.5t}     &
+              \lambda^{2} - 7\lambda + 10 & = 0                             \\
+              \lambda_1                   & = 2                           &
+              \vec{v^{(1)}}               & = \bmatcol{-1}{2}               \\
+              \lambda_2                   & = 5                           &
+              \vec{v^{(2)}}               & = \bmatcol{1}{1}                \\
+              \vec{y^{(h)}}               & = \color{y_h}
+              c_1 \bmatcol{-1}{2}e^{2t} + c_2 \bmatcol{1}{1} e^{5t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}  & = \bmatcol{A_1 t + B_1}{A_2 t + B_2}  &
+              \vec{g}        & = \bmatcol{0.6t}{-2.5t}                 \\
+              \vec{y^{(p)'}} & = \vec{Ay^{(p)}} + \vec{g}              \\
+              A_1            & = [4A_1 + A_2 + 0.6]t + [4B_1 + B_2]    \\
+              A_2            & = [2A_1 + 3A_2 - 2.5]t +[2B_1 + 3B_2]   \\
+              \vec{y^{(p)}}  & = \color{y_p} \bmatcol{-0.43}{1.12}t
+              + \bmatcol{-0.241}{0.534}
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                  & = \bmattt{0}{4}{4}{0} \vec{y}
+              + \bmatcol{0}{-16t^2 + 2} &
+              \lambda^{2} - 16          & = 0                             \\
+              \lambda_1                 & = -4                          &
+              \vec{v^{(1)}}             & = \bmatcol{-1}{1}               \\
+              \lambda_2                 & = 4                           &
+              \vec{v^{(2)}}             & = \bmatcol{1}{1}                \\
+              \vec{y^{(h)}}             & = \color{y_h}
+              c_1 \bmatcol{-1}{1}e^{-4t} + c_2 \bmatcol{1}{1} e^{4t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}           & = \bmatcol{A_1 t^2 + B_1 t + D_1}
+              {A_2 t^2 + B_2 t + D_2} &
+              \vec{g}                 & = \bmatcol{0}{-16t^2 + 2}         \\
+              \vec{y^{(p)'}}          & = \vec{Ay^{(p)}} + \vec{g}        \\
+              [2A_1]t + [B_1]         & = 4A_2 t^2 + 4B_2 t + 4D_2        \\
+              [2A_2]t + [B_2]         & = [4A_1 - 16]t^2 + 4B_1 t
+              + [4D_1 + 2]                                                \\
+              \vec{y^{(p)}}           & = \color{y_p} \bmatcol{4}{0}t^2
+              + \bmatcol{0}{2}t
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                   & = \bmattt{-3}{-4}{5}{6} \vec{y}
+              + \bmatcol{11t + 15}
+              {3e^{-t} -15t - 20}        &
+              \lambda^{2} - 3\lambda + 2 & = 0                               \\
+              \lambda_1                  & = 1                             &
+              \vec{v^{(1)}}              & = \bmatcol{-1}{1}                 \\
+              \lambda_2                  & = 2                             &
+              \vec{v^{(2)}}              & = \bmatcol{-4}{5}                 \\
+              \vec{y^{(h)}}              & = \color{y_h}
+              c_1 \bmatcol{-1}{1}e^{t} + c_2 \bmatcol{-4}{5} e^{2t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}              & = \bmatcol{A_1 e^{-t} + B_1 t + D_1}
+              {A_2 e^{-t} + B_2 t + D_2} &
+              \vec{g}                    & = \bmatcol{11t + 15}
+              {3e^{-t} -15t - 20}                                               \\
+              \vec{y^{(p)'}}             & = \vec{Ay^{(p)}} + \vec{g}           \\
+              [2A_1]t + [B_1]            & = 4A_2 t^2 + 4B_2 t + 4D_2           \\
+              [2A_2]t + [B_2]            & = [4A_1 - 16]t^2 + 4B_1 t
+              + [4D_1 + 2]                                                      \\
+              \vec{y^{(p)}}              & = \color{y_p} \bmatcol{4}{0}t^2
+              + \bmatcol{0}{2}t
+          \end{align}
+
+    \item As in the case of a second order linear ODE, the method of undetermined
+          coefficients requires a guess to be the superposition of the candidate
+          functions that make up $ \vec{g} $. \par
+          If the modification rule comes into play, only that part of the guess needs
+          to be modified which appears in $ \vec{g} $.
+
+    \item When using the modification rule, and if $ \vec{u} $ is the eigenvector
+          corresponding to $ \lambda $
+          \begin{align}
+              \vec{y^{(p)}} & = [\vec{u}t + \vec{v}] \exp(\lambda t)
+          \end{align}
+          The linear system of equation in $ a,\ v_1,\ v_2 $ yields a straight line
+          results and not a single point. This means that there is one DOF in
+          choosing $ \vec{v} $ becuase the system is missing one equation. \par
+          This resembles the single DOF in choosing eigenvectors corresponding
+          to each eigenvalue.
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                   & = \bmattt{-3}{-4}{5}{6} \vec{y}
+              + \bmatcol{5}{-6}e^t       &
+              \lambda^{2} - 3\lambda + 2 & = 0                               \\
+              \lambda_1                  & = 1                             &
+              \vec{v^{(1)}}              & = \bmatcol{-1}{1}                 \\
+              \lambda_2                  & = 2                             &
+              \vec{v^{(2)}}              & = \bmatcol{-4}{5}                 \\
+              \vec{y^{(h)}}              & = \color{y_h}
+              c_1 \bmatcol{-1}{1}e^{t} + c_2 \bmatcol{-4}{5} e^{2t}
+          \end{align}
+          Solving the nh-ODE, using the modification rule
+          \begin{align}
+              \vec{y^{(p)}}                         & = \left( \bmatcol{-a}{a}t
+              + \bmatcol{B_1}{B_2} \right) e^{t}    &
+              \vec{g}                               & = \bmatcol{5}{-6}e^{t}        \\
+              \vec{y^{(p)'}}                        & = \vec{Ay^{(p)}} + \vec{g}    \\
+              \bmatcol{-a+B_1-at}{a+B_2+at}         & = \bmatcol{-at-3B_1-4B_2+5}
+              {at+5B_1+6B_2-6}                                                      \\
+              \bmattt{4}{4}{5}{5}\bmatcol{B_1}{B_2} & = \bmatcol{a+5}{a+6}        &
+              a                                     & = 1                           \\
+              \vec{y^{(p)}}                         & = \color{y_p}
+              \left( \bmatcol{-1}{1}t + \bmatcol{0}{1.5} \right)e^{t}
+          \end{align}
+          Applying the I.C.,
+          \begin{align}
+              \bmatcol{19}{-23} & = \bmatcol{-c_1 - 4c_2}{c_1 + 5c_2 + 1.5} \\
+              c_1               & = 3 \qquad\qquad c_2 = -6.5               \\
+              \vec{y}           & = {\color{y_h} \bmatcol{-1}{1}e^{t}
+              + \bmatcol{22}{-32.5} e^{2t}} + {\color{y_p}
+              \bmatcol{11/3}{4/3}e^{2t}}
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                & = \bmattt{0}{1}{1}{0} \vec{y}
+              + \bmatcol{6}{-1}e^{2t} &
+              \lambda^{2} - 1         & = 0                             \\
+              \lambda_1               & = -1                          &
+              \vec{v^{(1)}}           & = \bmatcol{-1}{1}               \\
+              \lambda_2               & = 1                           &
+              \vec{v^{(2)}}           & = \bmatcol{1}{1}                \\
+              \vec{y^{(h)}}           & = \color{y_h}
+              c_1 \bmatcol{-1}{1}e^{-t} + c_2 \bmatcol{1}{1} e^{t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}  & = \bmatcol{A_1}{A_2}e^{2t}              &
+              \vec{g}        & = \bmatcol{6}{-1}e^{2t}                   \\
+              \vec{y^{(p)'}} & = \vec{Ay^{(p)}} + \vec{g}                \\
+              2A_1           & = A_2 + 6                               &
+              2A_2           & = A_1 - 1                                 \\
+              \vec{y^{(p)}}  & = \color{y_p} \bmatcol{11/3}{4/3}e^{2t}
+          \end{align}
+          Applying the I.C.,
+          \begin{align}
+              \bmatcol{1}{0} & = \bmatcol{-c_1 + c_2 + 11/3}
+              {c_1 + c_2 + 4/3}                                     \\
+              c_1            & = 3 \qquad\qquad c_2 = -6.5          \\
+              \vec{y}        & = {\color{y_h} \bmatcol{-2}{-2}e^{t}
+              + \bmatcol{-2/3}{2/3} e^{-t}} + {\color{y_p}
+              \bmatcol{11/3}{4/3}e^{2t}}
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                            & = \bmattt{1}{4}{1}{1} \vec{y}
+              + \bmatcol{-t^2+6t}{-t^2+t-1}e^{2t} &
+              \lambda^{2} - 2\lambda - 3          & = 0                             \\
+              \lambda_1                           & = -1                          &
+              \vec{v^{(1)}}                       & = \bmatcol{-2}{1}               \\
+              \lambda_2                           & = 3                           &
+              \vec{v^{(2)}}                       & = \bmatcol{2}{1}                \\
+              \vec{y^{(h)}}                       & = \color{y_h}
+              c_1 \bmatcol{-2}{1}e^{-t} + c_2 \bmatcol{2}{1} e^{3t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}           & = \bmatcol{A_1 t^2 + B_1 t + D_1}
+              {A_2 t^2 + B_2 t + D_2} &
+              \vec{g}                 & = \bmatcol{-t^2 + 6t}{-t^2 + t - 1}   \\
+              \vec{y^{(p)'}}          & = \vec{Ay^{(p)}} + \vec{g}            \\
+              2A_1                    & = B_1 + 4B_2 + 6                    &
+              2A_2                    & = B_1 + B_2 + 1                       \\
+              B_1                     & = D_1 + 4D_2                        &
+              B_2                     & = D_1 + D_2 - 1                       \\
+              0                       & = A_1 + 4A_2 - 1                    &
+              0                       & = A_1 + A_2 - 1                       \\
+              \vec{y^{(p)}}           & = \color{y_p} \bmatcol{t^2 + t}{-t}
+          \end{align}
+          Applying the I.C.,
+          \begin{align}
+              \bmatcol{2}{-1} & = \bmatcol{-2c_1 + 2c_2}
+              {c_1 + c_2}                                             \\
+              c_1             & = -1 \qquad\qquad c_2 = 0             \\
+              \vec{y}         & = {\color{y_h} \bmatcol{2}{-1}e^{-t}}
+              + {\color{y_p} \bmatcol{t^2 + t}{-t}}
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                          & = \bmattt{0}{1}{-4}{0} \vec{y}
+              + \bmatcol{-5\sin(t)}{17\cos(2t)} &
+              \lambda^{2} + 4                   & = 0                              \\
+              \lambda_1                         & = -2i                          &
+              \vec{v^{(1)}}                     & = \bmatcol{i}{2}                 \\
+              \lambda_2                         & = 2i                           &
+              \vec{v^{(2)}}                     & = \bmatcol{-i}{2}                \\
+              \vec{y^{(h)}}                     & = c_1 \bmatcol{i}{2}e^{-2it}
+              + c_2 \bmatcol{1}{2i} e^{2it}                                        \\
+              \vec{y^{(h)}}                     & = \color{y_h}
+              c_1 \bmatcol{\sin(2t)}{2\cos(2t)}
+              + c_2 \bmatcol{\cos(2t)}{-2\sin(2t)}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}             & = \bmatcol{A_1\cos(t) + B_1\sin(t)}
+              {A_2\cos(t) + B_2\sin(t)} &
+              \vec{g}                   & = \bmatcol{-5 \sin(t)}{17 \cos(t)}    \\
+              \vec{y^{(p)'}}            & = \vec{Ay^{(p)}} + \vec{g}            \\
+              B_1                       & = A_2                               &
+              -A_1                      & = B_2 - 5                             \\
+              B_2                       & = -4A_1 + 17                        &
+              -A_2                      & = -4B_1                               \\
+              \vec{y^{(p)}}             & = \color{y_p}
+              \bmatcol{4\cos(t)}{\sin(t)}
+          \end{align}
+          Applying the I.C.,
+          \begin{align}
+              \bmatcol{5}{2} & = \bmatcol{c_2 + 4}
+              {2c_1}                                    \\
+              c_1            & = 1 \qquad\qquad c_2 = 1 \\
+              \vec{y}        & = {\color{y_h}
+              \bmatcol{\cos(2t) + \sin(2t)}{2\cos(2t) - 2\sin(2t)}}
+              + {\color{y_p} \bmatcol{4\cos(t)}{\sin(t)}}
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                    & = \bmattt{0}{4}{-1}{0} \vec{y}
+              + \bmatcol{5e^t}{-20e^{-t}} &
+              \lambda^{2} + 4             & = 0                              \\
+              \lambda_1                   & = -2i                          &
+              \vec{v^{(1)}}               & = \bmatcol{2i}{1}                \\
+              \lambda_2                   & = 2i                           &
+              \vec{v^{(2)}}               & = \bmatcol{-2i}{1}               \\
+              \vec{y^{(h)}}               & = c_1 \bmatcol{2i}{1}e^{-2it}
+              + c_2 \bmatcol{2}{i} e^{2it}                                   \\
+              \vec{y^{(h)}}               & = \color{y_h}
+              c_1 \bmatcol{2\sin(2t)}{\cos(2t)}
+              + c_2 \bmatcol{2\cos(2t)}{-\sin(2t)}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}            & = \bmatcol{A_1 e^{t} + B_1 e^{-t}}
+              {A_2 e^{t} + B_2 e^{-t}} &
+              \vec{g}                  & = \bmatcol{5 e^{t}}{-20 e^{-t}}      \\
+              \vec{y^{(p)'}}           & = \vec{Ay^{(p)}} + \vec{g}           \\
+              A_1                      & = 4A_2 + 5                         &
+              -B_1                     & = 4B_2                               \\
+              A_2                      & = -A_1                             &
+              -B_2                     & = -B_1 - 20                          \\
+              \vec{y^{(p)}}            & = \color{y_p}
+              \bmatcol{e^t - 16e^{-t}}{-e^{t} + 4e^{-t}}
+          \end{align}
+          Applying the I.C.,
+          \begin{align}
+              \bmatcol{1}{0} & = \bmatcol{2c_2 - 15}{c_1 + 3} \\
+              c_1            & = -3 \qquad\qquad c_2 = 8      \\
+              \vec{y}        & = {\color{y_h}
+              \bmatcol{16\cos(2t) - 6\sin(2t)}{-3\cos(2t) - 8\sin(2t)}}
+              + {\color{y_p} \bmatcol{1}{-1}e^{t}
+              + \bmatcol{-16}{4}e^{-t}}
+          \end{align}
+
+    \item Solving the h-ODE,
+          \begin{align}
+              \vec{y'}                       & = \bmattt{1}{2}{0}{-1} \vec{y}
+              + \bmatcol{e^{2t} - 2t}{t + 1} &
+              \lambda^{2} - 1                & = 0                              \\
+              \lambda_1                      & = -1                           &
+              \vec{v^{(1)}}                  & = \bmatcol{-1}{1}                \\
+              \lambda_2                      & = 1                            &
+              \vec{v^{(2)}}                  & = \bmatcol{1}{0}                 \\
+              \vec{y^{(h)}}                  & = \color{y_h}
+              c_1 \bmatcol{-1}{1}e^{-t} + c_2 \bmatcol{1}{0} e^{t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}              & = \bmatcol{A_1 e^{2t} + B_1 t + D_1}
+              {A_2 e^{2t} + B_2 t + D_2} &
+              \vec{g}                    & = \bmatcol{e^{2t} - 2t}{t + 1}         \\
+              \vec{y^{(p)'}}             & = \vec{Ay^{(p)}} + \vec{g}             \\
+              2A_1                       & =  A_1 + 2A_2 + 1                    &
+              2A_2                       & =  -A_2                                \\
+              B_1                        & =  [B_1 + 2B_2 - 2] t + [D_1 + 2D_2] &
+              B_2                        & =  [-B_2 + 1] t + [-D_2 + 1]           \\
+              \vec{y^{(p)}}              & = \color{y_p} \bmatcol{1}{0}e^{2t}
+              + \bmatcol{0}{1}t + \bmatcol{0}{0}
+          \end{align}
+          Applying the I.C.,
+          \begin{align}
+              \bmatcol{1}{-4} & = \bmatcol{-c_1 + c_2 + 1}{c_1} \\
+              c_1             & = -4 \qquad\qquad c_2 = -4      \\
+              \vec{y}         & = {\color{y_h}
+              \bmatcol{4}{-4}e^{-t} + \bmatcol{-4}{0} e^{t}}
+              + {\color{y_p} \bmatcol{1}{0}e^{2t}
+              + \bmatcol{0}{1}t}
+          \end{align}
+
+    \item Refer to notes
+
+    \item Setting up the model,
+          \begin{align}
+              LI_1' + R_1 (I_1 - I_2) - E                             & = 0    \\
+              \frac{1}{C} \int I_2\ \dl t + R_2 I_2 + R_1 (I_2 - I_1) & = 0    \\
+              \frac{1}{C}I_2 + I_2' (R_2 + R_1) - I_1' R_1            & = 0    \\
+              -\frac{1}{C}I_2
+              + R_1 \left[ \frac{R_1 (I_2 - I_1) + E}{L} \right]      &
+              = I_2' (R_1 + R_2)                                               \\
+              \frac{R_1 (I_2 - I_1) + E}{L}                           & = I_1'
+          \end{align}
+          Applying the given values to the above equation,
+          \begin{align}
+              I_1' & = -2I_1 + 2I_2 + 200     \\
+              I_2' & = - 0.4I_I + 0.2I_2 + 40
+          \end{align}
+          Solving the h-ODE,
+          \begin{align}
+              \vec{y'}            & = \bmattt{-2}{2}{-0.4}{0.2} \vec{y}
+              + \bmatcol{200}{40} &
+              0                   & = \lambda^{2} + 1.8\lambda + 0.4      \\
+              \lambda_1           & = -0.9 - \sqrt{0.41}                &
+              \vec{v^{(1)}}       & = \bmatcol{2}{1.1 - \sqrt{0.41}}      \\
+              \lambda_2           & = -0.9 + \sqrt{0.41}                &
+              \vec{v^{(2)}}       & = \bmatcol{2}{1.1 + \sqrt{0.41}}      \\
+              \vec{y^{(h)}}       & = \color{y_h}
+              c_1 \vec{v^{(1)}}e^{\lambda_1 t}
+              + c_2 \vec{v^{(2)}} e^{\lambda_2 t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}          & = \bmatcol{B_1 t + D_1}
+              {B_2 t + D_2} \qquad\qquad
+              \vec{g} = \bmatcol{200}{40}                             \\
+              \vec{y^{(p)'}}         & = \vec{Ay^{(p)}} + \vec{g}     \\
+              B_1                    & =  [-2B_1 + 2B_2] t
+              + [-2D_1 + 2D_2 + 200] &                                \\
+              B_2                    & =  [-0.4B_1 + 0.2B_2] t
+              + [-0.4D_1 + 0.2D_2 + 40]                               \\
+              \vec{y^{(p)}}          & = \color{y_p} \bmatcol{100}{0}
+          \end{align}
+
+    \item Now $ E = 440\sin(t) $,
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}               & = \bmatcol{A_1\cos(t) + B_1 \sin(t)}
+              {A_2 \cos(t) + B_2 \sin(t)} &
+              \vec{g}                     & = \bmatcol{-440\sin(t)}{-88\sin(t)}    \\
+              \vec{y^{(p)'}}              & = \vec{Ay^{(p)}} + \vec{g}             \\
+              B_1                         & = -2A_1 + 2A_2                       &
+              B_2                         & =  -0.4A_1 + 0.2A_2                    \\
+              -A_1                        & = -2B_1 + 2B_2 - 440                 &
+              -A_2                        & =  -0.4B_1 + 0.2B_2 - 88               \\
+              \vec{y^{(p)}}               & = \color{y_p}
+              \bmatcol{352/3}{44/3} \cos(t) + \bmatcol{-616/3}{-44} \sin(t)
+          \end{align}
+
+    \item Applying the I.C, $ I_1(0) = I_2(0) = Q(0) = 0 $
+          \begin{align}
+              \bmatcol{0}{0} & = \bmatcol
+              {2c_1 + 2c_2 + 100}
+              {(1.1 - \sqrt{0.41})c_1 + (1.1 + \sqrt{0.41})4c_2} \\
+              c_1            & = -4 \qquad\qquad c_2 = -4        \\
+              \vec{y}        & = {\color{y_h}
+              -67.9 \vec{v^{(1)}}e^{\lambda_1 t}
+              + 17.9 \vec{v^{(2)}} e^{\lambda_2 t}}
+              + {\color{y_p} \bmatcol{100}{0}}
+          \end{align}
+
+    \item Setting up the model,
+          \begin{align}
+              L_1 I_1' + R_1 (I_1 - I_2) + R_2 I_1 - E & = 0    \\
+              L_2 I_2' + R_2 (I_2 - I_1)               & = 0    \\
+              -3I_1 + 1.25I_2 + 125                    & = I_1' \\
+              1.4I_1 - 1.4I_2                          & = I_2'
+          \end{align}
+          Solving the h-ODE,
+          \begin{align}
+              \vec{y'}           & = \bmattt{-3}{1.25}{1.4}{-1.4} \vec{y}
+              + \bmatcol{125}{0} &
+              0                  & = \lambda^{2} + (22/5)\lambda + (49/20)   \\
+              \lambda_1          & = -2.2 -  \sqrt{2.39}                   &
+              \vec{v^{(1)}}      & = \bmatcol{-8 -\sqrt{239}}{14}            \\
+              \lambda_2          & = -2.2 +  \sqrt{2.39}                   &
+              \vec{v^{(2)}}      & = \bmatcol{-8 +\sqrt{239}}{14}            \\
+              \vec{y^{(h)}}      & = \color{y_h}
+              c_1 \vec{v^{(1)}}e^{\lambda_1 t}
+              + c_2 \vec{v^{(2)}} e^{\lambda_2 t}
+          \end{align}
+          Solving the nh-ODE,
+          \begin{align}
+              \vec{y^{(p)}}             & = \bmatcol{B_1 t + D_1}
+              {B_2 t + D_2} \qquad\qquad
+              \vec{g} = \bmatcol{125}{0}                                       \\
+              \vec{y^{(p)'}}            & = \vec{Ay^{(p)}} + \vec{g}           \\
+              B_1                       & =  [-3B_1 + 1.25B_2] t
+              + [-3D_1 + 1.25D_2 + 125] &                                      \\
+              B_2                       & =  [1.4B_1 - 1.4B_2] t
+              + [1.4D_1 - 1.4D_2]                                              \\
+              \vec{y^{(p)}}             & = \color{y_p} \bmatcol{500/7}{500/7}
+          \end{align}
+          Applying the I.C, $ I_1(0) = I_2(0)$
+          \begin{align}
+              \bmatcol{0}{0} & = \bmatcol
+              {(-8-\sqrt{239})c_1 + (-8+\sqrt{239})c_2 + 500/7}
+              {14c_1 + 14c_2 + 500/7}                     \\
+              c_1            & = -4 \qquad\qquad c_2 = -4 \\
+              \vec{y}        & = {\color{y_h}
+              1.079 \vec{v^{(1)}}e^{\lambda_1 t}
+              - 6.181 \vec{v^{(2)}} e^{\lambda_2 t}}
+              + {\color{y_p} \bmatcol{500/7}{500/7}}
+          \end{align}
+\end{enumerate}

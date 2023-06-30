@@ -1,0 +1,1306 @@
+\section{Unit Step Function, Second Shifting Theorem}
+\begin{enumerate}
+    \item Refer notes. TBC. \par
+          First shitfing theorem helps identify the effect on $ \Lap^{-1} $ of
+          translations of the Laplace transfor along the $ s$ -axis.
+          \begin{align}
+              F(s)                 & \rightarrow F(s-a)     \\
+              \implies \qquad f(t) & \rightarrow e^{at}f(t)
+          \end{align}
+          Second shitfing theorem helps identify the effect on $ \Lap $ of
+          translations of the original function along the $ t$ -axis.
+          \begin{align}
+              f(t)                 & \rightarrow f(t-a)u(t-a) \\
+              \implies \qquad F(s) & \rightarrow e^{-as}F(s)
+          \end{align}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t) & = \begin{dcases}
+                           t & t \in (0,2)
+                       \end{dcases}                           \\
+              f(t) & = \color{y_h} t [u(t-0) - u(t-2)]           \\
+                   & = [(t-0)]u(t-0) -  [(t-2) + 2]u(t-2)        \\
+              F(s) & = \color{y_p} \frac{1 - e^{-2s}(2s+1)}{s^2}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              f(\t) = ifthenelse(and(\x < 2, \x > 0), 1, 0);}]
+                  \begin{axis}[
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h,
+                          domain = 0:1.99]{x * (Hea(x) - Hea(x-2))};
+                      \addplot[GraphSmooth, y_h,
+                          domain = 2.01:4]{x * (Hea(x) - Hea(x-2))};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:2,2) {};
+                      \node[OpenInt] at (axis cs:2,0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t) & = \begin{dcases}
+                           t-2 & t > 2
+                       \end{dcases}                  &
+              f(t) & = \color{y_h} (t-2) [u(t-2)]      \\
+              F(s) & = \color{y_p} \frac{e^{-2s}}{s^2}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              f(\t) = ifthenelse(and(\x < 2, \x > 0), 1, 0);}]
+                  \begin{axis}[
+                          legend pos = north west,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h,
+                          domain = 0:1.99]{(x-2) * Hea(x-2)};
+                      \addplot[GraphSmooth, y_h,
+                          domain = 2.01:4]{(x-2) * Hea(x-2)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:2,0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t) & = \begin{dcases}
+                           \cos(4t) & t \in (0, \pi)
+                       \end{dcases}                      \\
+              f(t) & = \color{y_h} cos(4t) [u(t) - u(t-\pi)]          \\
+                   & = [\cos(4t)]u(t) - [\cos(4t - 4\pi)]u(t-\pi)     \\
+              F(s) & = \color{y_p} \frac{s(1 - e^{-\pi s})}{s^2 + 16}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              f(\x) = cos(4*\x) * (Hea(\x) - Hea(\x - pi));}]
+                  \begin{axis}[
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                          PiStyleX,
+                          xtick distance = 0.5*pi,
+                      ]
+                      \addplot[GraphSmooth, y_h,
+                          domain = 0.01:pi-0.01]{f(x)};
+                      \addplot[GraphSmooth, y_h,
+                          domain = pi+0.01:2*pi]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:pi,1) {};
+                      \node[OpenInt] at (axis cs:pi,0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t) & = \begin{dcases}
+                           e^{t} & t \in (0, \pi/2)
+                       \end{dcases}                                 \\
+              f(t) & = \color{y_h} e^{t} [u(t) - u(t-\pi/2)]                    \\
+                   & = [e^t]u(t) - [e^{\pi/2}\ e^{t-\pi/2}]u(t-\pi/2)           \\
+              F(s) & = \color{y_p} \frac{1}{s-1} - \frac{\exp(\pi/2 - \pi s/2)}
+              {s - 1}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a =0; b = 0.5*pi;
+                              g(\x) = e^(x);
+                              f(\x) = g(\x) * (Hea(\x - a) - Hea(\x - b));}]
+                  \begin{axis}[
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                          PiStyleX,
+                          xtick distance = 0.5*pi,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = a+0.01:b-0.01]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = b+0.01:2*pi]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:b,0) {};
+                      \node[OpenInt] at (axis cs:b,4.806) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t) & = \begin{dcases}
+                           \sin(\pi t) & t \in (2, 4)
+                       \end{dcases}                             \\
+              f(t) & = \color{y_h} \sin(\pi t) [u(t - 2) - u(t - 4)]          \\
+                   & = [\sin(\pi t - 2\pi)]u(t - 2)
+              - [\sin(\pi t - 4\pi)]u(t - 4)                                  \\
+              F(s) & = \color{y_p} \frac{\pi[e^{-2s} - e^{-4s}]}{s^2 + \pi^2}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a =2; b = 4;
+                              g(\x) = sin(pi * \x);
+                              f(\x) = g(\x) * (Hea(\x - a) - Hea(\x - b));}]
+                  \begin{axis}[
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0+0.01:b-0.01]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = b+0.01:2*pi]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t) & = \begin{dcases}
+                           e^{-\pi t} & t \in (2, 4)
+                       \end{dcases}                               \\
+              f(t) & = \color{y_h} e^{-\pi t} [u(t - 2) - u(t - 4)]            \\
+                   & = e^{-2\pi}[e^{-\pi t + 2\pi}]u(t - 2)
+              - e^{-4\pi}[e^{-\pi t + 4\pi}]u(t - 4)                           \\
+              F(s) & = \color{y_p} \frac{e^{-2s-2\pi} - e^{-4s-4\pi}}{s + \pi}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a =2; b = 4;
+                              g(\x) = exp(-pi * \x);
+                              f(\x) = g(\x) * (Hea(\x - a) - Hea(\x - b));}]
+                  \begin{axis}[
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:b-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = b+0.001:6]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:2,0) {};
+                      \node[OpenInt] at (axis cs:2,0.001867) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t)               & = \begin{dcases}
+                                         t^2 & t \in (1, 2)
+                                     \end{dcases}                             \\
+              f(t)               & = \color{y_h} t^2 [u(t - 1) - u(t - 2)]          \\
+              \Lap\{g(t)u(t-a)\} & = e^{-as}\Lap\{g(t+a)\}                          \\
+              F(s)               & = e^{-s}\Lap\{(t+1)^2\} - e^{-2s}\Lap\{(t+2)^2\} \\
+              F(s)               & = e^{-s} \left[ \frac{2!}{s^3}
+                  + \frac{2}{s^2} + \frac{1}{s} \right] - e^{-2s} \left[
+              \frac{2!}{s^3} + \frac{4}{s^2} + \frac{4}{s} \right]                  \\
+                                 & = \color{y_p} \frac{e^{-s}(s^2 + 2s + 2)
+                  - e^{-2s}(4s^2 + 4s + 2)}{s^3}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = 1; b = 2;
+                              g(\x) = \x^2;
+                              f(\x) = g(\x) * (Hea(\x - a) - Hea(\x - b));}]
+                  \begin{axis}[
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:b-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = b+0.001:6]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:2,4) {};
+                      \node[OpenInt] at (axis cs:1,1) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t)               & = \begin{dcases}
+                                         t^2 & t > 1.5
+                                     \end{dcases}                   \\
+              f(t)               & = \color{y_h} t^2 [u(t - 1.5)]    \\
+              \Lap\{g(t)u(t-a)\} & = e^{-as}\Lap\{g(t+a)\}           \\
+              F(s)               & = e^{-1.5s}\Lap\{(t+1.5)^2\}      \\
+              F(s)               & = e^{-1.5s} \left[ \frac{2!}{s^3}
+              + \frac{3}{s^2} + \frac{2.25}{s} \right]               \\
+                                 & = \color{y_p}
+              \frac{e^{-1.5s}(2.25s^2 + 3s + 2)}{s^3}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = 1.5;
+                              g(\x) = \x^2;
+                              f(\x) = g(\x) * Hea(\x - a);}]
+                  \begin{axis}[
+                          legend pos = north west,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:4]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:1.5,0) {};
+                      \node[OpenInt] at (axis cs:1.5,2.25) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t)               & = \begin{dcases}
+                                         \sinh(t) & t \in (0, 2)
+                                     \end{dcases}                      \\
+              f(t)               & = \color{y_h} \sinh(t) [u(t) - u(t - 2)]       \\
+              \Lap\{g(t)u(t-a)\} & = e^{-as}\Lap\{g(t+a)\}                        \\
+              F(s)               & = \Lap\{\sinh(t)\} - e^{-2s}\Lap\{\sinh(t+2)\} \\
+              F(s)               & = \frac{1}{s^2 - 1} - e^{-2s} \left[
+              \frac{e^2}{2(s-1)} - \frac{e^{-2}}{2(s+1)} \right]                  \\
+                                 & = \color{y_p} \frac{1 - e^{-2s}
+                  (s\sinh(2) + \cosh(2))} {s^2 - 1}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = 0; b = 2;
+                              g(\x) = sinh(\x);
+                              f(\x) = g(\x) * (Hea(\x - a) - Hea(\x - b));}]
+                  \begin{axis}[
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:b-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = b+0.001:6]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:2,3.627) {};
+                      \node[OpenInt] at (axis cs:2,0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding Laplace transform,
+          \begin{align}
+              f(t)               & = \begin{dcases}
+                                         \sin(t) & t \in (\pi/2, \pi)
+                                     \end{dcases}                     \\
+              f(t)               & = \color{y_h} \sinh(t) [u(t - \pi/2) - u(t - \pi)] \\
+              \Lap\{g(t)u(t-a)\} & = e^{-as}\Lap\{g(t+a)\}                            \\
+              F(s)               & = e^{-\pi s/2}\Lap\{\sin(t + \pi/2)\}
+              - e^{-\pi s}\Lap\{\sin(t+\pi)\}                                         \\
+              F(s)               & = e^{-\pi s/2}\Lap\{\cos(t)\}
+              - e^{-\pi s}\Lap\{-\sin(t)\}                                            \\
+              F(s)               & = \color{y_p} \frac{e^{-\pi s/2}s + e^{-\pi s}}
+              {s^2 + 1}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = 0.5*pi; b = pi;
+                              g(\x) = sin(\x);
+                              f(\x) = g(\x) * (Hea(\x - a) - Hea(\x - b));}]
+                  \begin{axis}[
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                          PiStyleX,
+                          xtick distance = 0.5*pi
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:b-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = b+0.001:2*pi]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:1.57,0) {};
+                      \node[OpenInt] at (axis cs:1.57,1) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding inverse Laplace transform,
+          \begin{align}
+              F(s) & = \color{y_p} \frac{e^{-3s}} {(s-1)^3}                    &
+              G(s) & = \frac{1}{(s-1)^3}                                                    \\
+              g(t) & = \frac{t^2\ e^t}{2}                                      &
+              f(t) & = g(t-3)u(t-3)                                                         \\
+              f(t) & = \color{y_h} \begin{dcases}
+                                       \frac{(t-3)^2\ e^{t-3}}{2} & t > 3
+                                   \end{dcases}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = 3;
+                              g(\x) = 0.5 * e^(\x - 3) * (\x - 3)^2;
+                              f(\x) = g(\x) * Hea(\x - a);}]
+                  \begin{axis}[
+                          legend pos = north west,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 2:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:4]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:a,0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding inverse Laplace transform,
+          \begin{align}
+              F(s) & = \color{y_p} \frac{6(1 - e^{-\pi s})} {s^2 + 9} &
+              G(s) & = \frac{3}{s^2 + 9}                                \\
+              g(t) & = \sin(3t)                                       &
+              f(t) & = 2g(t) - 2g(t-\pi)u(t- \pi)                       \\
+              f(t) & = \color{y_h}
+              \begin{dcases}
+                  2\sin(3t) & t < \pi \\
+                  4\sin(3t) & t > \pi
+              \end{dcases}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = pi;
+                              g(\x) = 2*sin(3*\x);
+                              f(\x) = g(\x) * (1 + Hea(\x - a));}]
+                  \begin{axis}[
+                          legend pos = north west,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                          PiStyleX,
+                          xtick distance = 0.5*pi,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:2*pi]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:a,0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding inverse Laplace transform,
+          \begin{align}
+              F(s) & = \color{y_p} \frac{4e^{-2s} - 8e^{-5s}}{s} &
+              G(s) & = \frac{1}{s}                                 \\
+              g(t) & = 1                                         &
+              f(t) & = 4u(t-2) - 8u(t - 5)                         \\
+              f(t) & = \color{y_h}
+              \begin{dcases}
+                  0  & t < 2        \\
+                  4  & t \in (2, 5) \\
+                  -4 & t > 5
+              \end{dcases}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = 2; b = 5;
+                              g(\x) = 1;
+                              f(\x) = g(\x) * (4*Hea(\x-a) - 8*Hea(\x-b));
+                          }
+                  ]
+                  \begin{axis}[
+                          legend pos = north west,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:b - 0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = b + 0.001:b+2]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:a,4) {};
+                      \node[OpenInt] at (axis cs:b,4) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding inverse Laplace transform,
+          \begin{align}
+              F(s) & = \color{y_p} \frac{e^{-3s}}{s^4} &
+              G(s) & = \frac{1}{s^4}                     \\
+              g(t) & = \frac{t^3}{3!}                  &
+              f(t) & = g(t - 3)u(t - 3)                  \\
+              f(t) & = \color{y_h}
+              \begin{dcases}
+                  0                 & t < 3 \\
+                  \frac{(t-3)^3}{6} & t > 3
+              \end{dcases}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = 3;
+                              g(\x) = (\x - 3)^3 / 6;
+                              f(\x) = g(\x) * (Hea(\x-a));
+                          }
+                  ]
+                  \begin{axis}[
+                          legend pos = north west,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:6]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:a,0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding inverse Laplace transform,
+          \begin{align}
+              F(s) & = \color{y_p} \frac{2(e^{-s} - e^{-3s})}{s^2 - 4} &
+              G(s) & = \frac{2}{s^4 - 4}                                 \\
+              g(t) & = \sinh(2t)                                         \\
+              f(t) & = g(t - 1)u(t - 1) - g(t - 3)u(t - 3)               \\
+              f(t) & = \color{y_h}
+              \begin{dcases}
+                  0                             & t < 1        \\
+                  \sinh(2t - 2)                 & t \in (1, 3) \\
+                  \sinh(2t - 2) - \sinh(2t - 6) & t > 3
+              \end{dcases}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = 1; b = 3;
+                              g(\x) = sinh(2*\x);
+                              f(\x) = g(\x - a) * (Hea(\x - a))
+                              - g(\x - b) * Hea(\x - b);
+                          }
+                  ]
+                  \begin{axis}[
+                          legend pos = north west,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                      ]
+                      \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001:b - 0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = b + 0.001:3.5]{f(x)};
+                      \addlegendentry{$ f(t)$};
+                      \node[OpenInt] at (axis cs:a,0) {};
+                      \node[OpenInt] at (axis cs:b,27.29) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing and finding inverse Laplace transform,
+          \begin{align}
+              F(s) & = \color{y_p} \frac{(s+1)[1 + e^{-2\pi(s+1)}]}{(s+1)^2 + 1} &
+              G(s) & = \frac{s(1 + e^{-2\pi s})}{s^2 + 1}                          \\
+              g(t) & = \cos(t) + \cos(t - 2\pi)u(t - 2\pi)                         \\
+              f(t) & = e^{-t}\ g(t)                                                \\
+              f(t) & = \color{y_h}
+              \begin{dcases}
+                  e^{-t}\cos(t)  & t < 2\pi \\
+                  2e^{-t}\cos(t) & t > 2\pi
+              \end{dcases}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a = 0; b = 2*pi;
+                              g(\x) = e^(-\x) * cos(\x);
+                              f(\x) = g(\x) * (Hea(\x - a) + Hea(\x - b));
+                          }
+                  ]
+                  \begin{axis}[name = main,
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          grid = both,
+                          unbounded coords = jump,
+                          PiStyleX,
+                          xtick distance = pi,
+                      ]
+                      %   \addplot[GraphSmooth, y_h, domain = a+0.001:b - 0.001]{f(x)};
+                      %   \addplot[GraphSmooth, y_h, domain = b + 0.001:4*pi]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = a+0.001*pi:b - 0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, dashed, domain = b + 0.001:3*pi]{f(x)};
+                      \node[OpenInt] at (axis cs:b,0.001867) {};
+                      \node[OpenInt] at (axis cs:b,0.003734) {};
+                  \end{axis}
+                  \begin{axis}[at = {(main.north east)},
+                          anchor = north east,
+                          footnotesize,
+                          xshift=-10pt,
+                          yshift=-10pt,
+                          grid = both,
+                          axis background/.style={fill=white},
+                          legend pos = north east,
+                          xlabel = $ t $,
+                          Ani,
+                          unbounded coords = jump,
+                          PiStyleX,
+                          xtick distance = 0.5*pi,
+                      ]
+                      %   \addplot[GraphSmooth, y_h, domain = a+0.001:b - 0.001]{f(x)};
+                      %   \addplot[GraphSmooth, y_h, domain = b + 0.001:4*pi]{f(x)};
+                      \addplot[GraphSmooth, y_h, domain = 1.4*pi:b - 0.001]{f(x)};
+                      \addplot[GraphSmooth, y_h, dashed, domain = b + 0.001:3*pi]{f(x)};
+                      \node[OpenInt] at (axis cs:b,0.001867) {};
+                      \node[OpenInt] at (axis cs:b,0.003734) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving the ODE,
+          \begin{align}
+              0    & = 9y'' - 6y'  + y                                        \\
+              y(0) & = 3 \qquad y'(0) = 1                                     \\
+              0    & = 9[s^2Y - sy(0) - y'(0)] - 6[sY - y(0)] + Y             \\
+              0    & = Y[9s^2 - 6s + 1] - (9s - 6) y(0) - 9y'(0)              \\
+              Y    & = \frac{9(3s-1)}{(3s-1)^2} = \color{y_p} \frac{3}{s-1/3} \\
+              y    & = \color{y_h} 3e^{t/3}
+          \end{align}
+
+    \item Finding the laplace transform of the input,
+          \begin{align}
+              r(t) & = \color{y_h}e^{-3t} - e^{-5t}      \\
+              R(s) & = \frac{1}{(s+3)} - \frac{1}{(s+5)}
+              = \color{y_p} \frac{2}{(s+5)(s+3)}
+          \end{align}
+          Solving the ODE,
+          \begin{align}
+              r(t) & = y'' + 6y'  + 8y                                               \\
+              y(0) & = 0 \qquad y'(0) = 0                                            \\
+              R(s) & = [s^2Y - sy(0) - y'(0)] + 6[sY - y(0)] + 8Y                    \\
+              R(s) & = Y[s^2 + 6s + 8] - (s + 6) y(0) - y'(0)                        \\
+              Y    & = \frac{2}{(s+5)(s+3)} \ \frac{1}{(s+2)(s+4)}                   \\
+              Y    & = \color{y_p} \frac{1}{3} \left[ \frac{1}{(s+2)}
+              - \frac{3}{(s+3)} + \frac{3}{(s+4)} - \frac{1}{(s+5)} \right]          \\
+              y    & = \color{y_h} \frac{e^{-2t} - 3e^{-3t} + 3e^{-4t} - e^{-5t}}{3}
+          \end{align}
+
+    \item Finding the laplace transform of the input,
+          \begin{align}
+              r(t) & = \color{y_h}144t^2           \\
+              R(s) & = \color{y_p} \frac{288}{s^3}
+          \end{align}
+          Solving the ODE,
+          \begin{align}
+              r(t) & = y'' + 10y'  + 24y                                         \\
+              y(0) & = 19/12 \qquad y'(0) = -5                                   \\
+              R(s) & = [s^2Y - sy(0) - y'(0)] + 10[sY - y(0)] + 24Y              \\
+              R(s) & = Y[s^2 + 10s + 24] - (s + 10) y(0) - y'(0)                 \\
+              Y    & = \frac{1}{(s+4)(s+6)}\ \left[ \frac{288}{s^3}
+              + \frac{19s+130}{12}\right]                                        \\
+              Y    & = \frac{1}{(s+4)(s+6)}\ \left[ \frac{3456 + 19s^4 + 130s^3}
+              {12s^3}\right]                                                     \\
+              Y    & = \color{y_p} \frac{(19/12)s^2 - 5s + 12}{s^3}              \\
+              y    & = \color{y_h} \frac{19}{12} - 5t + 6t^2
+          \end{align}
+
+    \item Finding the laplace transform of the input,
+          \begin{align}
+              r(t)                         & = \color{y_h}
+              \begin{dcases}
+                  8\sin(t) & t \in (0, \pi) \\
+                  0        & t > \pi
+              \end{dcases} &
+              r(t)                         & = 8\sin(t)[1 - u(t - \pi)]          \\
+              r(t)                         & = 8\sin(t) + 8\sin(t-\pi)u(t-\pi) &
+              R(s)                         & = \color{y_p} \frac{8(1
+                  + e^{-\pi s})}{s^2 + 1}
+          \end{align}
+          Solving the ODE,
+          \begin{align}
+              r(t) & = y'' + 9y                                          \\
+              y(0) & = 0 \qquad y'(0) = 4                                \\
+              R(s) & = [s^2Y - sy(0) - y'(0)] + 9Y                       \\
+              R(s) & = Y[s^2 + 9] - s y(0) - y'(0)                       \\
+              Y    & = \frac{1}{(s^2 + 9)}\ \left[
+              \frac{8e^{-\pi s} + 4s^2 + 12}{s^2 + 1}\right]             \\
+              Y    & = \color{y_p} \frac{1}{s^2 + 1} + \frac{3}{s^2 + 9}
+              + e^{-\pi s}\left[ \frac{1}{s^2 + 1} - \frac{1}{s^2 + 9} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              y & = \sin(t) + \sin(3t)
+              + \sin(t-\pi)u(t - \pi) - \frac{1}{3} \sin(3t - 3\pi)u(t - \pi) \\
+              y & = \sin(t)[1 - u(t - \pi)]
+              + \sin(3t) [1 + (1/3)u(t - \pi)]                                \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  \sin(t) + \sin(3t)   & t \in (0, \pi) \\
+                  \frac{4}{3} \sin(3t) & t > \pi
+              \end{dcases}
+          \end{align}
+
+    \item Finding the laplace transform of the input,
+          \begin{align}
+              r(t)                 & = \color{y_h}
+              \begin{dcases}
+                  4t & t \in (0, 1) \\
+                  8  & t > 1
+              \end{dcases} &
+              r(t)                 & = 4t[1 - u(t-1)] + 8[u(t-1)]                   \\
+              r(t)                 & = 4t + [4 - 4(t - 1)]u(t-1)                  &
+              R(s)                 & = \color{y_p} \frac{4 + 4e^{-s}(s - 1)}{s^2}
+          \end{align}
+          Solving the ODE,
+          \begin{align}
+              r(t) & = y'' + 3y' + 2y                                  \\
+              y(0) & = 0 \qquad y'(0) = 0                              \\
+              R(s) & = [s^2Y - sy(0) - y'(0)] + 3[sY - y(0)] + 2Y      \\
+              R(s) & = Y[s^2 + 3s + 2] - (s+3)y(0) - y'(0)             \\
+              Y    & = \frac{4 + 4e^{-s}(s-1)}{s^2(s+1)(s+2)}          \\
+              Y    & = \color{y_p} \frac{-3s+2}{s^2} + \frac{4}{s + 1}
+              - \frac{1}{s+2} + e^{-s}\left[ \frac{5s-2}{s^2}
+                  - \frac{8}{s + 1} + \frac{3}{s + 2} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              y & = -3 + 2t + 4e^{-t} - e^{-2t} +
+              [7 - 2t - 8e^{1-t} + 3e^{2-2t}]u(t-1) \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  -3 + 2t + 4e^{-t} - e^{-2t}            & t < 1 \\
+                  4 + (4 - 8e)e^{-t} + (3e^2 - 1)e^{-2t} & t > 1
+              \end{dcases}
+          \end{align}
+
+    \item Finding the laplace transform of the input,
+          \begin{align}
+              r(t) & = \color{y_h}
+              \begin{dcases}
+                  3\sin(t) - \cos(t)   & t < 2\pi \\
+                  3\sin(2t) - \cos(2t) & t > 2\pi
+              \end{dcases}                           \\
+              r(t) & = [3\sin(t) - \cos(t)][1 - u(t-2\pi)]
+              + [3\sin(2t) - \cos(2t)]u(t - 2\pi)                       \\
+              r(t) & = 3\sin t - \cos t - [3\sin t - \cos t - 3\sin(2t)
+              + \cos(2t)]u(t - 2\pi)                                    \\
+              R(s) & = \color{y_p} \frac{3 - s}{s^2 + 1} + e^{-2\pi s}
+              \left[ \frac{s-3}{s^2 + 1} + \frac{6-s}{s^2 + 4} \right]
+          \end{align}
+          Solving the ODE,
+          \begin{align}
+              r(t) & = y'' + y' - 2y                                  \\
+              y(0) & = 1 \qquad y'(0) = 0                             \\
+              R(s) & = [s^2Y - sy(0) - y'(0)] + [sY - y(0)] - 2Y      \\
+              R(s) & = Y[s^2 + s - 2] - (s+1)y(0) - y'(0)             \\
+              Y    & = \frac{4 + s^3 + s^2}{(s^2 + 1)(s+2)(s-1)}
+              +\frac{e^{-2\pi s}}{(s+2)(s-1)}\left[ \frac{s-3}{s^2 + 1}
+              + \frac{6-s}{s^2 + 4} \right]                           \\
+              Y    & = \color{y_p} \frac{-1}{s^2 + 1} + \frac{1}{s-1}
+              + e^{-2\pi s}\left[ \frac{1}{s^2 + 1} - \frac{1}{s^2 + 4} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              y & = -\sin(t) + e^t + [\sin(t) - 0.5\sin(2t)]u(t - 2\pi) \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  -\sin(t) + e^t     & t < 2\pi \\
+                  -0.5\sin(2t) + e^t & t > 2\pi
+              \end{dcases}
+          \end{align}
+
+    \item Finding the laplace transform of the input,
+          \begin{align}
+              r(t)           & = \color{y_h}
+              \begin{dcases}
+                  1 & t < 1 \\
+                  0 & t > 1
+              \end{dcases} &
+              r(t)           & = [1 - u(t-1)]                     \\
+              R(s)           & = \color{y_p} \frac{1 - e^{-s}}{s}
+          \end{align}
+          Solving the ODE,
+          \begin{align}
+              r(t) & = y'' + 3y' + 2y                               \\
+              y(0) & = 0 \qquad y'(0) = 0                           \\
+              R(s) & = [s^2Y - sy(0) - y'(0)] + 3[sY - y(0)] + 2Y   \\
+              R(s) & = Y[s^2 + 3s + 2] - (s+2)y(0) - y'(0)          \\
+              Y    & = \frac{1 - e^{-s}}{s(s+2)(s+1)}               \\
+              Y    & = \color{y_p} [1 - e^{-s}]\left[ \frac{0.5}{s}
+                  - \frac{1}{s+1} + \frac{0.5}{s+2} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              y & = 0.5 - e^{-t} + 0.5e^{-2t} - \Big[0.5 - e^{1-t}
+              + 0.5e^{2-2t}\Big]u(t - 1)                           \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  0.5 - e^{-t} + 0.5e^{-2t}       & t < 1 \\
+                  e^{-t}[e-1] + 0.5e^{-2t}[1-e^2] & t > 1
+              \end{dcases}
+          \end{align}
+
+    \item Finding the laplace transform of the input,
+          \begin{align}
+              r(t)           & = \color{y_h}
+              \begin{dcases}
+                  t & t < 1 \\
+                  0 & t > 1
+              \end{dcases} &
+              r(t)           & = t[1 - u(t-1)]                                             \\
+              r(t)           & = t - [(t-1) + 1]u(t-1)                                   &
+              R(s)           & = \color{y_p} \frac{1}{s^2} - e^{-s}\ \frac{(1 + s)}{s^2}
+          \end{align}
+          Solving the ODE,
+          \begin{align}
+              r(t) & = y'' + y                                       &
+              y(0) & = 0 \qquad y'(0) = 0                              \\
+              R(s) & = [s^2Y - sy(0) - y'(0)] + Y                    &
+              R(s) & = Y[s^2 + 1] - (s)y(0) - y'(0)                    \\
+              Y    & = \frac{1 - e^{-s}(1 + s)}{s^2(s^2 + 1)}          \\
+              Y    & = \color{y_p} \frac{1}{s^2} - \frac{1}{s^2 + 1}
+              -e^{-s}\left[ \frac{s+1}{s^2} - \frac{(s+1)}{s^2 + 1} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              y & = t - \sin(t) - \Big[ t - \cos(t-1) - \sin(t-1) \Big]u(t-1) \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  t - \sin(t)                      & t < 1 \\
+                  -\sin(t) + \cos(t-1) + \sin(t-1) & t > 1
+              \end{dcases}
+          \end{align}
+
+    \item Finding the laplace transform of the input, with $ x = t-\pi $
+          \begin{align}
+              r(t)                 & = \color{y_h}
+              \begin{dcases}
+                  10\sin(x+\pi) &
+                  x \in (-\pi, \pi) \\
+                  0             &
+                  x > \pi
+              \end{dcases} &
+              r(t)                 & = [-10\sin(x)][1 - u(x-\pi)]                  \\
+              r(t)                 & = -10\sin(x) - [10\sin(x - \pi)]u(x - \pi)  &
+              R(s)                 & = \color{y_p} - \frac{10\ (1 + e^{-\pi s})}
+              {s^2 + 1}
+          \end{align}
+          Solving the ODE,
+          \begin{align}
+              r(t) & = y'' + 2y' + 5y                                     \\
+              y(0) & = 1 \qquad y'(0) = 2e^{-\pi} - 2                     \\
+              R(s) & = [s^2Y - sy(0) - y'(0)] + 2[sY - y(0)] + 5Y         \\
+              R(s) & = Y[s^2 + 2s + 5] - (s+2)y(0) - y'(0)                \\
+              Y    & = \frac{-10 + s^3 + s + 2e^{-\pi}(s^2 + 1)}
+              {(s^2 + 1)(s^2 + 2s + 5)} - \frac{10e^{-\pi s}}
+              {(s^2 + 1)(s^2 + 2s + 5)}                                   \\
+              Y    & = \color{y_p} \frac{s-2}{s^2 + 1} + \frac{2e^{-\pi}}
+              {s^2 + 2s + 5} + e^{-\pi s} \left[ \frac{s-2}{s^2 + 1}
+                  - \frac{(s+1) - 1}{(s+1)^2 + 4} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              y & = \cos x - 2\sin x + e^{-\pi-x}\sin(2x)               \\
+                & + \Big[ -\cos(x) + 2\sin(x)
+              - e^{-x + \pi} \{\cos(2x) - 0.5\sin(2x)\} \Big]u(x-\pi)   \\
+              y & = -\cos(t) + 2\sin(t) + e^{-t}\sin(2t)                \\
+                & + \Big[ \cos(t) - 2\sin(t)
+              - e^{-t + 2\pi} \{\cos(2t) - 0.5\sin(2t)\} \Big]u(t-2\pi) \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  2\sin(t) - \cos(t) + e^{-t}\sin(2t)                   & t < \pi \\
+                  e^{-t}\sin(2t)[1 + 0.5e^{2\pi}] - e^{-t+2\pi}\cos(2t) & t > \pi
+              \end{dcases}
+          \end{align}
+
+    \item Finding the laplace transform of the input, with $ x = t - 1 $
+          \begin{align}
+              r(t) & = \color{y_h}
+              \begin{dcases}
+                  8(x+1)^2 & x \in (-1, 4) \\
+                  0        & x > 4
+              \end{dcases}                                    \\
+              r(t) & = 8[x^2 + 2x + 1][1 - u(x-4)]                        \\
+              r(t) & = 8[x^2 + 2x + 1]- 8u(x-4) [(x-4)^2 + 5^2 + 10(x-4)] \\
+              R(s) & = \color{y_p} \frac{8(2 + 2s + s^2)}{s^3} -
+              8e^{-4s} \left[ \frac{2 + 10s + 25s^2}{s^3} \right]
+          \end{align}
+          Solving the ODE,
+          \begin{align}
+              r(t) & = y'' + 4y                                           \\
+              y(0) & = 1 + \cos(2) \qquad y'(0) = 4 - 2\sin(2)            \\
+              R(s) & = [s^2Y - sy(0) - y'(0)] + 4Y                        \\
+              R(s) & = Y[s^2 + 4] - (s)y(0) - y'(0)                       \\
+              Y    & = \frac{-10 + s^3 + s + 2e^{-\pi}(s^2 + 1)}
+              {(s^2 + 1)(s^2 + 2s + 5)} - \frac{10e^{-\pi s}}
+              {(s^2 + 1)(s^2 + 2s + 5)}                                   \\
+              Y    & = \color{y_p} \frac{s-2}{s^2 + 1} + \frac{2e^{-\pi}}
+              {s^2 + 2s + 5} + e^{-\pi s} \left[ \frac{s-2}{s^2 + 1}
+                  - \frac{(s+1) - 1}{(s+1)^2 + 4} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              y & = \cos x - 2\sin x + e^{-\pi-x}\sin(2x)               \\
+                & + \Big[ -\cos(x) + 2\sin(x)
+              - e^{-x + \pi} \{\cos(2x) - 0.5\sin(2x)\} \Big]u(x-\pi)   \\
+              y & = -\cos(t) + 2\sin(t) + e^{-t}\sin(2t)                \\
+                & + \Big[ \cos(t) - 2\sin(t)
+              - e^{-t + 2\pi} \{\cos(2t) - 0.5\sin(2t)\} \Big]u(t-2\pi) \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  2\sin(t) - \cos(t) + e^{-t}\sin(2t)                   & t < \pi \\
+                  e^{-t}\sin(2t)[1 + 0.5e^{2\pi}] - e^{-t+2\pi}\cos(2t) & t > \pi
+              \end{dcases}
+          \end{align}
+
+    \item Solving the given RL circuit,
+          \begin{align}
+              v(t) & = \color{y_h}\begin{dcases}
+                                      0         & t \in (0,\pi) \\
+                                      40\sin(t) & t > \pi
+                                  \end{dcases}                &
+              v(t) & = [40\sin(t)]u(t - \pi)                       \\
+              v(t) & = [-40\sin(t-\pi)]u(t-\pi)                  &
+              V(s) & = \color{y_p} \frac{-40e^{-\pi s}}{s^2 + 1}
+          \end{align}
+          Solving the ODE, with $ R = 1000, L = 1 $
+          \begin{align}
+              v(t) & = j' + 1000j                                             \\
+              y(0) & = 0                                                      \\
+              V(s) & = sJ - j(0) + 1000J                                      \\
+              V(s) & = J[s + 1000] - 0                                        \\
+              J    & = \frac{-40e^{-\pi s}}{(s^2 + 1)(s + 1000)} \qquad\qquad
+              \mu  = \frac{40}{10^6 + 1}                                      \\
+              J    & = \color{y_p} \mu e^{-\pi s} \left[ \frac{(s - 1000)}
+                  {s^2 + 1} - \frac{1}{s + 1000} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              j & = \mu [-\cos t + 1000\sin t - e^{-1000(t - \pi)}] U(t - \pi) \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  0                                              & t < \pi \\
+                  \mu[-\cos(t) + 1000\sin(t) - e^{-1000(t-\pi)}] & t > \pi
+              \end{dcases}
+          \end{align}
+
+    \item Solving the given RL circuit,
+          \begin{align}
+              v(t) & = \color{y_h}\begin{dcases}
+                                      490e^{-5t} & t < 1 \\
+                                      0          & t > 1
+                                  \end{dcases}                               &
+              v(t) & = 490e^{-5t}[1 - u(t-1)]                                  \\
+              v(t) & = 490e^{-5t} - [490e^{-5}\ \exp(-5t+5)]u(t-1)             \\
+              V(s) & = \color{y_p} \frac{490}{s+5} - \frac{490e^{-(s+5)}}{s+5}
+          \end{align}
+          Solving the ODE, with $ R = 25, L = 0.1 $
+          \begin{align}
+              v(t) & = 0.1j' + 25j                                       \\
+              y(0) & = 0                                                 \\
+              V(s) & = 0.1sJ - 0.1j(0) + 25J                             \\
+              V(s) & = J[0.1s + 25] - 0                                  \\
+              J    & = \frac{4900}{(s+5)(s+250)} - \frac{4900e^{-(s+5)}}
+              {(s+5)(s+250)}                                             \\
+              J    & = \color{y_p} [1 - e^{-(s+5)}]\left[ \frac{20}{s+5}
+                  - \frac{20}{s+250} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              j & = 20e^{-5t} - 20e^{-250t}  - e^{-5}\Big[20e^{-5t+5}
+              - 20e^{-250t+250}\Big]u[t - 1]                          \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  20e^{-5t} - 20e^{-250t}   & t < 1 \\
+                  20e^{-250t} [e^{245} - 1] & t > 1
+              \end{dcases}
+          \end{align}
+
+    \item Solving the given RL circuit,
+          \begin{align}
+              v(t) & = \color{y_h}\begin{dcases}
+                                      200t & t < 2 \\
+                                      0    & t > 2
+                                  \end{dcases}                                &
+              v(t) & = 200t [1 - u(t-2)]                                        \\
+              v(t) & = 200t - 200\Big[ (t-2) + 2 \Big]u(t-2)                    \\
+              V(s) & = \color{y_p} \frac{200}{s^2} - 200e^{-2s}\ \left[ \frac{1
+                      + 2s}{s^2} \right]
+          \end{align}
+          Solving the ODE, with $ R = 10, L = 0.5 $
+          \begin{align}
+              v(t) & = 0.5j' + 10j                                                   \\
+              y(0) & = 0                                                             \\
+              V(s) & = 0.5sJ - 0.5j(0) + 10J                                         \\
+              V(s) & = J[0.5s + 10] - 0                                              \\
+              J    & = \frac{400}{s^2(s+20)} - \frac{400e^{-2s}(1+2s)}
+              {s^2(s+20)}                                                            \\
+              J    & = \color{y_p} \left[ \frac{-s+20}{s^2} + \frac{1}{s+20} \right]
+              - e^{-2s}\left[ \frac{39s + 20}{s^2} - \frac{39}{s+20} \right]
+          \end{align}
+          Restating the function using the piecewise method,
+          \begin{align}
+              j & = -1 + 20t + e^{-20t} + \Big[ 1 - 20t + 39e^{-20t + 40} \Big]u(t-2) \\
+              y & = \color{y_h}
+              \begin{dcases}
+                  -1 + 20t + e^{-20t}    & t < 2 \\
+                  [39e^{40} + 1]e^{-20t} & t > 2
+              \end{dcases}
+          \end{align}
+
+    \item Initial charge $ q(0) = CV_0 $, switch is closed at $ t = 0 $,
+          \begin{align}
+              Rq' + \frac{q}{C}   & = 0                                      &
+              RCq'                & = -q                                       \\
+              (RC)[sQ - q(0)] + Q & = 0                                      &
+              Q                   & = \frac{(RC) \cdot CV_0}{RCs + 1}          \\
+              Q                   & = \color{y_p} \frac{CV_0}{s + (1/RC)}    &
+              q(t)                & = \color{y_h} CV_0\ \exp\left( \frac{-t}
+              {RC} \right)
+          \end{align}
+
+    \item Finding the Laplace transform of the input,
+          \begin{align}
+              v(t) & = \begin{dcases}
+                           0                  & t< 4 \\
+                           \num{14e6} e^{-3t} & t> 4
+                       \end{dcases}                             \\
+              v(t) & = [\num{14e6} e^{-3t}]u(t - 4)                        &
+              v(t) & = [\num{14e6} e^{-12}e^{-3t+12}]u(t-4)                  \\
+              V(s) & = \color{y_p} \frac{[\num{14e6} e^{-12}]e^{-4s}}{s+3}
+          \end{align}
+          Initial charge $ q(0) = 0,\ R = 10,\ C = 0.01 $,
+          \begin{align}
+              Rq' + \frac{q}{C}    & = v(t)                                       \\
+              10[sQ - q(0)] + 100Q & = V(s)                                       \\
+              Q                    & = \frac{\num{14e5}\ e^{-12-4s}}{(s+3)(s+10)} \\
+              Q                    & = \color{y_p} e^{-4s-12}(\num{2e5})\ \left[
+              \frac{1}{(s+3)} - \frac{1}{(s+10)}\right]                           \\
+              q(t)                 & =   \num{2e5} e^{-12}
+              \Big[e^{-3t+12} - e^{-10t + 40} \Big]u(t-4)
+          \end{align}
+          Restating the charge and current in piecewise form,
+          \begin{align}
+              q(t)         & = \color{y_h} \num{2e5} \Big[ e^{-3t}
+              - e^{-10t+28} \Big]u(t-4)                                            \\
+              q'(t) = j(t) & = \begin{dcases}
+                                   0                                           & t < 4 \\
+                                   \num{-6e5}e^{-3t} + \num{2e6}e^{28}e^{-10t} & t > 4
+                               \end{dcases}
+          \end{align}
+
+    \item Finding the Laplace transform of the input,
+          \begin{align}
+              v(t) & = \begin{dcases}
+                           0        & t< 2 \\
+                           100(t-2) & t> 2
+                       \end{dcases}                      \\
+              v(t) & = [100(t-2)]u(t - 2)                 &
+              V(s) & = \color{y_p} \frac{100e^{-2s}}{s^2}
+          \end{align}
+          Initial charge $ q(0) = 0,\ R = 10,\ C = 0.01 $,
+          \begin{align}
+              v(t) & = Rq' + \frac{q}{C}                                \\
+              V(s) & = 10[sQ - q(0)] + 100Q                             \\
+              Q    & = \frac{10e^{-2s}}{s^2(s+10)}                      \\
+              Q    & = \color{y_p} \frac{e^{-2s}}{10}\ \left[
+              \frac{-s+10}{s^2} + \frac{1}{s+10}\right]                 \\
+              q(t) & =   0.1\Big[ -21 + 10t + e^{-10t+20} \Big]u(t - 2)
+          \end{align}
+          Restating the charge and current in piecewise form,
+          \begin{align}
+              q(t)         & = \color{y_h} 0.1\Big[ -21 + 10t + e^{-10t+20} \Big]
+              u(t - 2)                                                            \\
+              q'(t) = j(t) & = \begin{dcases}
+                                   0               & t < 2 \\
+                                   1 - e^{-10t+20} & t > 2
+                               \end{dcases}
+          \end{align}
+
+    \item Finding the Laplace transform of the input,
+          \begin{align}
+              v(t) & = \begin{dcases}
+                           0   & t < 0.5          \\
+                           100 & t \in (0.5, 0.6) \\
+                           0   & t  > 0.6
+                       \end{dcases}                             \\
+              v(t) & = 100[u(t - 0.5) - u(t - 0.6)]                     &
+              V(s) & = \color{y_p} \frac{100[e^{-0.5s} - e^{-0.6s}]}{s}
+          \end{align}
+          Initial charge $ q(0) = 0,\ R = 10,\ C = 0.01 $,
+          \begin{align}
+              v(t) & = Rq' + \frac{q}{C}                         \\
+              V(s) & = 10[sQ - q(0)] + 100Q                      \\
+              Q    & = \frac{10[e^{-0.5s} - e^{-0.6s}]}{s(s+10)} \\
+              Q    & = \color{y_p} [e^{-0.5s} - e^{-0.6s}]\left[
+              \frac{1}{s} - \frac{1}{s+10}\right]                \\
+              q(t) & =   \Big[ 1 - e^{-10t + 5} \Big]u(t - 0.5)
+              - \Big[1 - e^{-10t + 6}\Big]u(t - 0.6)
+          \end{align}
+          Restating the charge and current in piecewise form,
+          \begin{align}
+              q(t)         & = \color{y_h}
+              \begin{dcases}
+                  0                   & t < 0.5          \\
+                  1 - e^5(e^{-10t})   & t \in (0.5, 0.6) \\
+                  e^{-10t}[e^6 - e^5] & t > 0.6
+              \end{dcases} \\
+              q'(t) = j(t) & =
+              \begin{dcases}
+                  0                      & t < 0.5          \\
+                  10e^5(e^{-10t})        & t \in (0.5, 0.6) \\
+                  -10[e^6 - e^5]e^{-10t} & t > 0.6
+              \end{dcases}
+          \end{align}
+          Looking at the jumps in current when the voltage source is switched on and off,
+          \begin{align}
+              j(0.5^+) - j(0.5^-) & = 10                              \\
+              j(0.6^+) - j(0.6^-) & = -10 + 10e^{-1} - 10e^{-1} = -10
+          \end{align}
+          That part of the current flowing through the circuit because of the resistor,
+          instantly gets turned on and off respectively along with the voltage source.
+
+    \item Finding the Laplace transform of the input,
+          \begin{align}
+              v(t)  & = \begin{dcases}
+                            0            & t < \pi           \\
+                            -9900\cos(t) & t \in (\pi, 3\pi) \\
+                            0            & t  > 3\pi
+                        \end{dcases}                            \\
+              v'(t) & = 9900\sin(t)[u(t - \pi) - u(t - 3\pi)]                       \\
+              v'(t) & = -9900\sin(t - \pi)[u(t - \pi)]
+              + 9900\sin(t - 3\pi)[u(t - 3\pi)]                                     \\
+              V'(s) & = \color{y_p} \frac{-9900[e^{-\pi s} - e^{-3\pi s}]}{s^2 + 1}
+          \end{align}
+          Initial charge $ q(0) = 0,\ L = 1,\ C = 0.01 $, \par
+          This gives, $ j(0) = j'(0) = 0 $
+          \begin{align}
+              v'(t) & = Lj'' + \frac{j}{C}                              \\
+              V'(s) & = [s^2J - sj(0) - j'(0)] + 100J                   \\
+              J     & = \frac{-9900[e^{-\pi s} - e^{-3\pi s}]}
+              {(s^2+1)(s^2+100)}                                        \\
+              J     & = \color{y_p}[e^{-\pi s} - e^{-3\pi s}]
+              \left[ \frac{-100}{s^2+1} + \frac{100}{s^2 + 100} \right] \\
+              j(t)  & =   \Big[ 100\sin(t) + 10\sin(10t) \Big]
+              [u(t - \pi)- u(t - 3\pi)]
+          \end{align}
+          Restating the charge and current in piecewise form,
+          \begin{align}
+              j(t) & = \color{y_h}
+              \begin{dcases}
+                  0                        & t < \pi           \\
+                  100\sin(t) + 10\sin(10t) & t \in (\pi, 3\pi) \\
+                  0                        & t > 3\pi
+              \end{dcases}
+          \end{align}
+
+    \item Finding the Laplace transform of the input,
+          \begin{align}
+              v(t)  & = \begin{dcases}
+                            200t - \frac{200t^3}{3} & t < 1  \\
+                            0                       & t  > 1
+                        \end{dcases}     \\
+              v'(t) & = 200(1 - t^2)\ [1 - u(t-1)]           \\
+              v'(t) & = 200(1 - t^2)
+              + 200\Big[ (t-1)^2  + 2(t-1) \Big][u(t - 1)]   \\
+              V'(s) & = \color{y_p} \frac{200(s^2 - 2)}{s^3}
+              + \frac{400(1 + s)e^{-s}}{s^3}
+          \end{align}
+          Initial charge $ q(0) = 0,\ L = 1,\ C = 0.25 $, \par
+          This gives, $ j(0) = j'(0) = 0 $
+          \begin{align}
+              v'(t) & = Lj'' + \frac{j}{C}                                             \\
+              V'(s) & = [s^2J - sj(0) - j'(0)] + 4J                                    \\
+              J     & = \frac{200(s^2 - 2)}{s^3(s^2 + 4)}
+              + \frac{400(s + 1)e^{-s}}{s^3(s^2 + 4)}                                  \\
+              J     & = \color{y_p} \frac{75s^2 - 100}{s^3} - \frac{75s}{s^2 + 4}
+              + \left[ \frac{-25s^2 + 100s + 100}{s^3}
+              + \frac{25s - 100}{s^2 + 4} \right]e^{-s}                                \\
+              j(t)  & = 75 - 50t^2 - 75\cos(2t)                                        \\
+                    & + \Big[ -75 + 50t^2 + 25\cos(2t - 2) - 50\sin(2t - 2)\Big]u(t-1)
+          \end{align}
+          Restating the charge and current in piecewise form,
+          \begin{align}
+              j(t) & = \color{y_h}
+              \begin{dcases}
+                  75 - 50t^2 - 75\cos(2t)                   & t < 1 \\
+                  -75\cos(2t) + 25\cos(2t-2) - 50\sin(2t-2) & t > 1
+              \end{dcases}
+          \end{align}
+
+    \item Finding the Laplace transform of the input,
+          \begin{align}
+              v(t)  & = \begin{dcases}
+                            78\sin(t) & t < \pi  \\
+                            0         & t  > \pi
+                        \end{dcases}                \\
+              v'(t) & = 78\cos(t)[1 - u(t - \pi)]           \\
+              v'(t) & = 78\cos(t) + [78\cos(t-\pi)]u(t-\pi) \\
+              V'(s) & = \color{y_p} \frac{78s}{s^2 + 1}
+              + e^{-\pi s}\ \frac{78s}{s^2 + 1}
+          \end{align}
+          Initial charge $ q(0) = 0,\ L = 0.5,\ C = 0.05 $, \par
+          This gives, $ j(0) = j'(0) = 0 $
+          \begin{align}
+              v'(t) & = Lj'' + \frac{j}{C}                                    \\
+              V'(s) & = 0.5[s^2J - sj(0) - j'(0)] + 20J                       \\
+              J     & = \frac{156s(1 + e^{-\pi s})}{(s^2 + 1)(s^2 + 40)}      \\
+              J     & = \color{y_p} (1 + e^{-\pi s})\left[ \frac{4s}{s^2 + 1}
+              - \frac{4s}{s^2 + 40} \right]                                   \\
+              j(t)  & = 4\cos(t) - 4\cos(\sqrt{40}t)
+              - [4\cos(t) + 4\cos(\sqrt{40}t - \sqrt{40}\pi)]u(t-\pi)
+          \end{align}
+          Restating the charge and current in piecewise form,
+          \begin{align}
+              j(t) & = \color{y_h}
+              \begin{dcases}
+                  4\cos(t) - 4\cos(\sqrt{40}t)                           & t < \pi \\
+                  -4\cos(\sqrt{40}t) - 4\cos(\sqrt{40}t - \sqrt{40} \pi) & t > \pi
+              \end{dcases}
+          \end{align}
+
+    \item Finding the Laplace transform of the input,
+          \begin{align}
+              v(t) & = \begin{dcases}
+                           34e^{-t} & t < 4  \\
+                           0        & t  > 4
+                       \end{dcases}                                        \\
+              v(t) & = 34e^{-t}[1 - u(t - 4)]                                   \\
+              v(t) & = 34e^{-t} - [34e^{-4}\ e^{-(t-4)}]u(t - 4)                \\
+              V(s) & = \color{y_p} \frac{34}{s+1} - \frac{34e^{-4}e^{-4s}}{s+1}
+          \end{align}
+          Initial charge $ q(0) = 0,\ R = 4,\ L = 1,\ C = 0.05 $, \par
+          This gives, $ j(0) = j'(0) = 0 $
+          \begin{align}
+              v(t) & = Lj' + Rj + \frac{1}{C}\int_{0}^{t} j\ \dl t      \\
+              V(s) & = sJ - j(0) + 4J + \frac{20J}{s}                   \\
+              V(s) & = \frac{J(s^2 + 4s + 20)}{s}                       \\
+              J    & = \frac{34s}{(s+1)(s^2 + 4s + 20)}
+              - \frac{34e^{-4}e^{-4s}\ s}{(s+1)(s^2 + 4s + 20)}         \\
+              J    & = \color{y_p} [1 - e^{-4-4s}]\left[ \frac{-2}{s+1}
+              + \frac{2(s + 2) + 36}{(s + 2)^2 + 16} \right]            \\
+              j(t) & = -2e^{-t} + e^{-2t}[2\cos(4t) + 9\sin(4t)]        \\
+                   & +  \Big[ 2e^{-t} - e^{-2t + 4}\Big\{2\cos(4t - 16)
+                  + 9\sin(4t - 16)\Big\} \Big]u(t - 4)
+          \end{align}
+          Restating the charge and current in piecewise form,
+          \begin{align}
+              j(t) & = \color{y_h}
+              \begin{dcases}
+                  -2e^{-t} + e^{-2t}[2\cos(4t) + 9\sin(4t)]                  & t < 4 \\
+                  e^{-2t}\Big[ 2\cos(4t) + 9\sin(4t) \Big]
+                  - e^{-2t + 4}\Big\{ 2\cos(4t - 16) + 9\sin(4t - 16) \Big\} & t > 4
+              \end{dcases}
+          \end{align}
+
+    \item Finding the Laplace transform of the input,
+          \begin{align}
+              v(t) & = \begin{dcases}
+                           1000 & t < 2  \\
+                           0    & t  > 2
+                       \end{dcases}                           \\
+              v(t) & = 1000[1 - u(t - 2)]                      \\
+              V(s) & = \color{y_p} \frac{1000(1 - e^{-2s})}{s}
+          \end{align}
+          Initial charge $ q(0) = 0,\ R = 2,\ L = 1,\ C = 0.5 $, \par
+          This gives, $ j(0) = j'(0) = 0 $
+          \begin{align}
+              v(t) & = Lj' + Rj + \frac{1}{C}\int_{0}^{t} j\ \dl t                 \\
+              V(s) & = sJ - j(0) + 2J + \frac{2J}{s}                               \\
+              V(s) & = \frac{J(s^2 + 2s + 2)}{s}                                   \\
+              J    & = \frac{1000(1 - e^{-2s})}{(s^2 + 2s + 2)}                    \\
+              J    & = \color{y_p} [1 - e^{-2s}]\left[
+              \frac{1000}{(s+1)^2 + 1} \right]                                     \\
+              j(t) & = 1000e^{-t}\sin(t) - \Big[1000e^{-t+2}\sin(t-2)\Big]u(t - 2)
+          \end{align}
+          Restating the charge and current in piecewise form,
+          \begin{align}
+              j(t) & = \color{y_h}
+              \begin{dcases}
+                  1000e^{-t}\sin(t)                     & t < 2 \\
+                  1000e^{-t} [\sin(t) - e^2\sin(t - 2)] & t > 2
+              \end{dcases}
+          \end{align}
+
+    \item Finding the Laplace transform of the input,
+          \begin{align}
+              v(t) & = \begin{dcases}
+                           255\sin(t) & t < 2\pi  \\
+                           0          & t  > 2\pi
+                       \end{dcases}                            \\
+              v(t) & = 255\sin(t)[1 - u(t - 2\pi)]                       \\
+              V(s) & = \color{y_p} \frac{255}{s^2 + 1} [1 - e^{-2\pi s}]
+          \end{align}
+          Initial charge $ q(0) = 0,\ R = 2,\ L = 1,\ C = 0.1 $, \par
+          This gives, $ j(0) = j'(0) = 0 $
+          \begin{align}
+              v(t) & = Lj' + Rj + \frac{1}{C}\int_{0}^{t} j\ \dl t             \\
+              V(s) & = sJ - j(0) + 2J + \frac{10J}{s}                          \\
+              V(s) & = \frac{J(s^2 + 2s + 10)}{s}                              \\
+              J    & = \frac{255s( 1 - e^{-2\pi s})}{(s^2 + 2s + 10)(s^2 + 1)} \\
+              J    & = \color{y_p} [1 - e^{-2\pi s}]\left[ \frac{27s + 6}
+              {s^2 + 1} - \frac{27(s+1) + 33}{(s+1)^2 + 9} \right]             \\
+              j(t) & = \color{y_h}
+              27\cos(t) + 6\sin(t) - e^{-t}\Big[ 27\cos(3t) + 11\sin(3t) \Big] \\
+                   & \color{y_h}
+              - \Big[ 27\cos(t) + 6\sin(t) - e^{-t+2\pi}\Big\{ 27\cos(3t)
+                  + 11\sin(3t) \Big\} \Big] u(t - 2\pi)
+          \end{align}
+          Restating the charge and current in piecewise form,
+          \begin{align}
+              j(t) & = \color{y_h}
+              \begin{dcases}
+                  27\cos(t) + 6\sin(t) - e^{-t}\Big[ 27\cos(3t)
+                  + 11\sin(3t) \Big]                                         & t < 2\pi \\
+                  e^{-t}\Big\{ 27\cos(3t) + 11\sin(3t) \Big\} [e^{2\pi} - 1] & t > 2\pi
+              \end{dcases}
+          \end{align}
+\end{enumerate}

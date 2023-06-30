@@ -1,0 +1,593 @@
+\section{Stokes' Theorem}
+
+\begin{enumerate}
+    \item Calculating the surface integral directly,
+          \begin{align}
+              \vec{F}               & = \begin{bNiceMatrix}[margin]
+                                            z^2 \\ -x^2 \\ 0
+                                        \end{bNiceMatrix} &
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  z^2           & -x^2          & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 2z \\ -2x
+                                  \end{bNiceMatrix} \\
+              \vec{n}               & = \begin{bNiceMatrix}[margin]
+                                            0 \\ -1 \\ 1
+                                        \end{bNiceMatrix} &
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            u \\ v \\ v
+                                        \end{bNiceMatrix} \quad
+              u \in [0, 1] \quad v \in [0, 4]
+          \end{align}
+          Performing the integration,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{N}\ \dl u \dl v
+               & = \int_{0}^{1} \Bigg[ \int_{0}^{4} (-2v - 2u)\ \dl v \Bigg] \dl u \\
+               & = \int_{0}^{1} \Bigg[ (-v^2 - 2uv)\Bigg]_0^4 \dl u                \\
+               & = \int_{0}^{1} {\color{y_h}(-16 - 8u)} \dl u
+              =  \Bigg[ -16u - 4u^2 \Bigg]_0^1 = \color{y_p} -20
+          \end{align}
+
+    \item Calculating the surface integral directly,
+          \begin{align}
+              \vec{F}               & = \begin{bNiceMatrix}[margin]
+                                            -13\sin y \\ 3 \sinh z \\ x
+                                        \end{bNiceMatrix} &
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  -13 \sin y    & 3\sinh z      & x             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      -3 \cosh z \\ -1 \\ 13\cos y
+                                  \end{bNiceMatrix} \\
+              \vec{n}               & = \begin{bNiceMatrix}[margin]
+                                            0 \\ 0 \\ 1
+                                        \end{bNiceMatrix} &
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            u \\ v \\ 2
+                                        \end{bNiceMatrix} \quad
+              u \in [0, 4] \quad v \in [0, \pi/2]
+          \end{align}
+          Performing the integration,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{N}\ \dl u \dl v
+               & = \int_{0}^{4} \Bigg[ \int_{0}^{\pi/2} (13\cos v)\ \dl v \Bigg]
+              \dl u                                                              \\
+               & = \int_{0}^{4} \Bigg[ 13\sin v \Bigg]_{0}^{\pi/2} \dl u         \\
+               & = \int_{0}^{4} {\color{y_h}(13)} \dl u
+              =  \Bigg[ 13u \Bigg]_{0}^{4} = \color{y_p} 52
+          \end{align}
+
+    \item Calculating the surface integral directly,
+          \begin{align}
+              \vec{F}               & = \begin{bNiceMatrix}[margin]
+                                            e^{-z} \\ e^{-z}\cos y \\ e^{-z}\sin y
+                                        \end{bNiceMatrix} &
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            u \\ v \\ v^2/2
+                                        \end{bNiceMatrix} \quad
+              u \in [-1, 1] \quad v \in [0, 1]                                \\
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  e^{-z}        & e^{-z}\cos y  & e^{-z}\sin y  \\
+              \end{vNiceMatrix}
+                                    &
+                                    & = \begin{bNiceMatrix}[margin]
+                                            2e^{-z}\cos y \\ -e^{-z} \\ 0
+                                        \end{bNiceMatrix}          \\
+              \vec{n}               & = \vec{r}_u \times \vec{r}_v =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  1             & 0             & 0             \\
+                  0             & 1             & v             \\
+              \end{vNiceMatrix}
+                                    &
+                                    & = \begin{bNiceMatrix}[margin]
+                                            0 \\ -v \\ 1
+                                        \end{bNiceMatrix}
+          \end{align}
+          Performing the integration,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{N}\ \dl u \dl v
+               & = \int_{-1}^{1} \Bigg[ \int_{0}^{1} (v e^{-v^2/2})\ \dl v \Bigg]
+              \dl u                                                               \\
+               & = \int_{-1}^{1} \Bigg[ -e^{-v^2/2} \Bigg]_{0}^{1} \dl u          \\
+               & = \int_{-1}^{1} {\color{y_h}(1 - e^{-0.5})} \dl u
+              =  \Bigg[ \lambda u \Bigg]_{-1}^{1} = \color{y_p} 2(1 -e^{-0.5})
+          \end{align}
+
+    \item Calculating the surface integral directly,
+          \begin{align}
+              \vec{F}               & = \begin{bNiceMatrix}[margin]
+                                            z^2 \\ -x^2 \\ 0
+                                        \end{bNiceMatrix} &
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  z^2           & -x^2          & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 2z \\ -2x
+                                  \end{bNiceMatrix} \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            u \\ v \\ uv
+                                        \end{bNiceMatrix} \quad
+              u \in [0, 1] \quad v \in [0, 4]
+                                    &
+              \vec{n}               & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  1             & 0             & v             \\
+                  0             & 1             & u             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      -v \\ -u \\ 1
+                                  \end{bNiceMatrix}
+          \end{align}
+          Performing the integration,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{N}\ \dl u \dl v
+               & = \int_{0}^{1} \Bigg[ \int_{0}^{4} (-2u^2v - 2u)\ \dl v \Bigg] \dl u \\
+               & = \int_{0}^{1} \Bigg[ (-u^2 v^2 - 2uv)\Bigg]_0^4 \dl u               \\
+               & = \int_{0}^{1} {\color{y_h}(-16u^2 - 8u)} \dl u
+              =  \Bigg[ \frac{-16u^3}{3} - 4u^2 \Bigg]_0^1 = \color{y_p} \frac{-28}{3}
+          \end{align}
+
+    \item Calculating the surface integral directly,
+          \begin{align}
+              \vec{F}               & = \begin{bNiceMatrix}[margin]
+                                            z^2 \\ 1.5x \\ 0
+                                        \end{bNiceMatrix} &
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  z^2           & 1.5x          & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 2z \\ 1.5
+                                  \end{bNiceMatrix} \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            u \\ v \\ 1
+                                        \end{bNiceMatrix} \quad
+              u \in [0, a] \quad v \in [0, a]
+                                    &
+              \vec{n}               & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  1             & 0             & 0             \\
+                  0             & 1             & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 0 \\ 1
+                                  \end{bNiceMatrix}
+          \end{align}
+          Performing the integration,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{N}\ \dl u \dl v
+               & = \int_{0}^{a} \Bigg[ \int_{0}^{a} (1.5)\ \dl v \Bigg] \dl u \\
+               & = \int_{0}^{a} \Bigg[ (1.5v)\Bigg]_0^a \dl u                 \\
+               & = \int_{0}^{a} {\color{y_h}(1.5a)} \dl u
+              =  \Bigg[ 1.5au \Bigg]_0^a = \color{y_p} 1.5 a^2
+          \end{align}
+
+    \item Calculating the surface integral directly,
+          \begin{align}
+              \vec{F}               & = \begin{bNiceMatrix}[margin]
+                                            y^3 \\ -x^3 \\ 0
+                                        \end{bNiceMatrix} &
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  y^3           & -x^3          & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 0 \\ -3(x^2 + y^2)
+                                  \end{bNiceMatrix} \\
+              g                     & = z - (x^2 + y^2)             &
+              \vec{n} = \nabla g    & = \begin{bNiceMatrix}[margin]
+                                            -2x \\ -2y \\ 1
+                                        \end{bNiceMatrix}
+          \end{align}
+          Performing the integration,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{N}\ \dl u \dl v
+               & = \int_{0}^{1} \Bigg[ \int_{0}^{2\pi} (-3r^2)\ r \dl \phi
+              \Bigg] \dl r                                                    \\
+               & = \int_{0}^{1} \Bigg[ -3r^3\ \phi \Bigg]_{0}^{2\pi} \dl \phi \\
+               & = \int_{0}^{1} {\color{y_h}(-6\pi\ r^3)} \dl r
+              =  \Bigg[ \frac{-6\pi}{4}\ r^4 \Bigg]_0^1 = \color{y_p} \frac{-3\pi}{2}
+          \end{align}
+
+    \item Calculating the surface integral directly,
+          \begin{align}
+              \vec{F}               & = \begin{bNiceMatrix}[margin]
+                                            e^y \\ e^z \\ e^x
+                                        \end{bNiceMatrix} &
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  e^y           & e^z           & e^x           \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      -e^z \\ -e^x \\ -e^y
+                                  \end{bNiceMatrix} \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            u \\ v \\ u^2
+                                        \end{bNiceMatrix} \quad
+              u \in [0, 2] \quad v \in [0, 1]
+                                    &
+              \vec{n}               & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  1             & 0             & 2u            \\
+                  0             & 1             & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      -2u \\ 0 \\ 1
+                                  \end{bNiceMatrix}
+          \end{align}
+          Performing the integration,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{N}\ \dl u \dl v
+               & = \int_{0}^{2} \Bigg[ \int_{0}^{1} (2ue^{u^2} - e^v)
+              \ \dl v \Bigg] \dl u                                         \\
+               & = \int_{0}^{2} \Bigg[ 2ue^{u^2}\ v - e^v \Bigg]_0^1 \dl u \\
+               & = \int_{0}^{2} {\color{y_h}2u\ e^{u^2} + (1 - e)} \dl u
+              =  \Bigg[ e^{u^2} + u(1 - e) \Bigg]_0^2                      \\
+               & = \color{y_p} e^4 + 1 - 2e
+          \end{align}
+
+    \item Calculating the surface integral directly,
+          \begin{align}
+              \vec{F}               & = \begin{bNiceMatrix}[margin]
+                                            z^2 \\ x^2 \\ y^2
+                                        \end{bNiceMatrix}     \\
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  z^2           & x^2           & y^2           \\
+              \end{vNiceMatrix} =
+              \begin{bNiceMatrix}[margin]
+                  2y \\ 2z \\ 2x
+              \end{bNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      2r \sin \phi \\ 2r \\ 2r \cos \phi
+                                  \end{bNiceMatrix}    \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            r \cos \phi \\ r \sin \phi \\ r
+                                        \end{bNiceMatrix} \quad
+              r \in [0, h] \quad \phi \in [0, \pi]
+              \\
+              \vec{n}               & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \cos \phi     & \sin \phi     & 1             \\
+                  -r \sin \phi  & r \cos \phi   & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      -r\cos \phi \\ -r\sin \phi \\ r
+                                  \end{bNiceMatrix}
+          \end{align}
+          Performing the integration,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{N}\ \dl u \dl v
+               & = \int_{0}^{h} \Bigg[ \int_{0}^{\pi} (-r^2 \sin(2\phi)
+              - 2r^2 \sin \phi + 2r^2 \cos \phi)\ r \dl \phi
+              \Bigg] \dl r                                              \\
+               & = \int_{0}^{h} r^3\ \Bigg[ 2\sin \phi + 2\cos \phi
+              + \frac{\cos(2\phi)}{2} \Bigg]_{0}^{\pi} \dl \phi         \\
+               & = \int_{0}^{h} {\color{y_h}(-4\ r^3)} \dl r
+              =  \Bigg[ -r^4 \Bigg]_0^h = \color{y_p} -h^4
+          \end{align}
+
+    \item Verifying Stokes' theorem in Problem $ 5 $,
+          \begin{align}
+              \vec{F} & = \begin{bNiceMatrix}[margin]
+                              z^2 \\ 1.5x \\ 0
+                          \end{bNiceMatrix}                       &
+              \vec{r} & = \begin{bNiceMatrix}[margin]
+                              u \\ v \\ 1
+                          \end{bNiceMatrix} \quad
+              u \in [0, a] \quad v \in [0, a]                                 \\
+              \oint_C \vec{F} \dotp \vec{r}'(s)\ \dl s
+                      & = I_1 + I_2 + I_3 + I_4                               \\
+              I_1     & = \int_{0}^{a} 1^2\ \dl x = \color{y_h} a           &
+              I_2     & = \int_{0}^{a} (1.5a)\ \dl y = \color{y_h} 1.5a^2     \\
+              I_3     & = \int_{a}^{0} 1^2\ \dl x = \color{y_h} -a          &
+              I_4     & = \int_{a}^{0} (1.5 \cdot 0)\ \dl y = \color{y_h} 0
+          \end{align}
+          The results match.
+
+    \item Verifying Stokes' theorem in Problem $ 5 $,
+          \begin{align}
+              \vec{F} & = \begin{bNiceMatrix}[margin]
+                              y^3 \\ -x^3 \\ 0
+                          \end{bNiceMatrix}                             &
+              \vec{r} & = \begin{bNiceMatrix}[margin]
+                              \cos \phi \\ \sin \phi \\ 0
+                          \end{bNiceMatrix} \quad
+              \phi \in [0, 2\pi]                                                    \\
+              \oint_C \vec{F} \dotp \vec{r}'(s)\ \dl s
+                      & = \int_{0}^{2\pi} (-\sin^4 \phi - \cos^4 \phi)\ \dl \phi  &
+                      & = \Bigg[ \frac{-\sin(4\phi) - 12\phi}{16} \Bigg]_0^{2\pi}   \\
+                      & = \color{y_p} \frac{-3\pi}{2}
+          \end{align}
+          The results match.
+
+    \item Calculating,
+          \begin{align}
+              \vec{F}                     & = \frac{1}{x^2 + y^2}
+              \begin{bNiceMatrix}[margin]
+                  -y \\ x \\ 0
+              \end{bNiceMatrix} &
+              \nabla \times \vec{F}       & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  -y/r^2        & x/r^2         & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 0 \\ 0
+                                  \end{bNiceMatrix}
+          \end{align}
+
+          The left-hand side of Stokes' theorem gives,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+               & = \color{y_h} 0
+          \end{align}
+          The right-hand side of Stokes' theorem gives,
+          \begin{align}
+              \vec{F}  & = \frac{1}{r^2} \begin{bNiceMatrix}[margin]
+                                             -r\sin \phi \\ r \cos \phi \\ 0
+                                         \end{bNiceMatrix}    &
+              \vec{r}' & = \begin{bNiceMatrix}[margin]
+                               -\sin \phi \\ \cos \phi \\ 0
+                           \end{bNiceMatrix}                  \\
+              \oint_C \vec{F} \dotp \vec{r}'(s)\ \dl s
+                       & = \int_{0}^{2\pi}\ \dl \phi = \color{y_p} 2\pi
+          \end{align}
+          The mismatch is because $ \vec{F} $ is not continuous everywhere in $ S $.
+          An extra factor of $ -1 $ needs to be added to the result of the RHS to
+          make the orientation clockwise.
+
+    \item Refer notes. TBC
+
+    \item Applying reverse Stokes' theorem,
+          \begin{align}
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  -5y           & 4x            & z             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 0 \\ 9
+                                  \end{bNiceMatrix} \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            u\cos v \\ u\sin v \\ 4
+                                        \end{bNiceMatrix} &
+              \vec{n}               & = \begin{bNiceMatrix}[margin]
+                                            0 \\ 0 \\ 1
+                                        \end{bNiceMatrix}
+          \end{align}
+          Calculating the surface integral,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+               & = \int_{0}^{4} \Bigg[ \int_{0}^{2\pi} 9\ (r)
+              \ \dl \phi \Bigg] \dl r                         \\
+               & = \int_{0}^{4} {\color{y_h} 18\pi r } \dl r
+              = \Bigg[9r^2\Bigg]_{0}^{4} = \color{y_p} 144\pi
+          \end{align}
+
+    \item Applying reverse Stokes' theorem,
+          \begin{align}
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  z^3           & x^3           & y^3           \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      3y^2 \\ 3z^2 \\ 3x^2
+                                  \end{bNiceMatrix} \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            2 \\ r \cos\phi \\ r \sin\phi
+                                        \end{bNiceMatrix} &
+              \vec{n}               & = \begin{bNiceMatrix}[margin]
+                                            1 \\ 0 \\ 0
+                                        \end{bNiceMatrix}
+          \end{align}
+          Calculating the surface integral,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+               & = \int_{0}^{3} \Bigg[ \int_{0}^{2\pi} 3r^2\ \cos^2\phi\ (r)
+              \ \dl \phi \Bigg] \dl r                                        \\
+               & = \int_{0}^{3} \Bigg[ 3r^3\ \left( \frac{\phi}{2} +
+              \frac{\sin(2\phi)}{4} \right)\Bigg]_0^{2\pi}\ \dl r            \\
+               & = \int_{0}^{3} {\color{y_h} \left( 3\pi r^3 \right) } \dl r
+              = \Bigg[ \frac{3\pi}{4}\ r^4 \Bigg]_{0}^{3}
+              = \color{y_p} \frac{243 \pi}{4}
+          \end{align}
+
+    \item Applying reverse Stokes' theorem,
+          \begin{align}
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  y^2           & x^2           & z + x         \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ -1 \\ 2x - 2y
+                                  \end{bNiceMatrix} \\
+              \vec{n}               & = \begin{bNiceMatrix}[margin]
+                                            0 \\ 0 \\ 1
+                                        \end{bNiceMatrix}
+          \end{align}
+          Calculating the surface integral,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+               & = \int_{0}^{1} \int_{0}^{x} (2x - 2y)\ \dl y \dl x   \\
+               & = \int_{0}^{1} \Bigg[ 2xy - y^2 \Bigg]_{0}^{x} \dl x
+              = \int_{0}^{1} \left( {\color{y_h} x^2} \right) \dl x   \\
+               & = \Bigg[ \frac{x^3}{3} \Bigg]_0^1
+              = \color{y_p} \frac{1}{3}
+          \end{align}
+
+    \item Applying reverse Stokes' theorem,
+          \begin{align}
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  e^y           & 0             & e^x           \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ -e^x \\ -e^y
+                                  \end{bNiceMatrix} \\
+              \vec{n}               & = \begin{bNiceMatrix}[margin]
+                                            0 \\ 0 \\ 1
+                                        \end{bNiceMatrix}
+          \end{align}
+          Calculating the surface integral,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+               & = \int_{0}^{1} \int_{0}^{x} (-e^y)\ \dl y \dl x        \\
+               & = \int_{0}^{1} \Bigg[ -e^y \Bigg]_{0}^{x} \dl x
+              = \int_{0}^{1} \left( {\color{y_h} 1 - e^x} \right) \dl x \\
+               & = \Bigg[ x - e^x \Bigg]_0^1
+              = \color{y_p} 2 - e
+          \end{align}
+
+    \item Applying reverse Stokes' theorem,
+          \begin{align}
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  0             & z^3           & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      -3z^2 \\ 0 \\ 0
+                                  \end{bNiceMatrix} \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            \cos \phi \\ \sin \phi \\ z
+                                        \end{bNiceMatrix}
+              \\
+              g                     & = x^2 + y^2 - 1 \qquad
+              \nabla g = \begin{bNiceMatrix}[margin]
+                             2x \\ 2y \\ 0
+                         \end{bNiceMatrix} \qquad
+              \vec{n} = \begin{bNiceMatrix}[margin]
+                            \cos \phi \\ \sin \phi \\ 0
+                        \end{bNiceMatrix}
+          \end{align}
+          Calculating the surface integral,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+               & = \int_{0}^{1} \int_{0}^{\pi/2} (-3z^2\ \cos \phi)\ (1)
+              \dl \phi \dl z                                                    \\
+               & = \int_{0}^{1} \Bigg[ -3z^2 \sin \phi \Bigg]_{0}^{\pi/2} \dl z
+              = \int_{0}^{1} \left( {\color{y_h} -3z^2} \right) \dl z           \\
+               & = \Bigg[ -z^3 \Bigg]_0^1
+              = \color{y_p} -1
+          \end{align}
+
+    \item Applying reverse Stokes' theorem,
+          \begin{align}
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  -y            & 2z            & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      -2 \\ 0 \\ 1
+                                  \end{bNiceMatrix} \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            x \\ \cos \phi \\ \sin \phi
+                                        \end{bNiceMatrix}
+              \\
+              g                     & = y^2 + z^2 - 4 \qquad
+              \nabla g = \begin{bNiceMatrix}[margin]
+                             0 \\ 2y \\ 2z
+                         \end{bNiceMatrix} \qquad
+              \vec{n} = \begin{bNiceMatrix}[margin]
+                            0 \\ \cos \phi \\ \sin \phi
+                        \end{bNiceMatrix}
+          \end{align}
+          Calculating the surface integral,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+               & = \int_{0}^{h} \int_{0}^{\pi} (2\sin \phi)
+              \ \dl \phi \dl x                                             \\
+               & = \int_{0}^{h} \Bigg[ -2 \cos \phi \Bigg]_{0}^{\pi} \dl x
+              = \int_{0}^{h} \left( {\color{y_h} 4} \right) \dl x          \\
+               & = \Bigg[ 4z \Bigg]_0^h
+              = \color{y_p} 4h
+          \end{align}
+
+    \item Applying reverse Stokes' theorem,
+          \begin{align}
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  z             & e^z           & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      -e^z \\ 1 \\ 0
+                                  \end{bNiceMatrix} \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            r \cos \phi \\ r \sin \phi \\ r
+                                        \end{bNiceMatrix}
+              \\
+              g                     & = x^2 + y^2 - z^2  \qquad
+              \nabla g = \begin{bNiceMatrix}[margin]
+                             2x \\ 2y \\ -2z
+                         \end{bNiceMatrix} \qquad
+              \vec{n} = \begin{bNiceMatrix}[margin]
+                            r \cos \phi \\ r \sin \phi \\ -r
+                        \end{bNiceMatrix}
+          \end{align}
+          Calculating the surface integral,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+               & = \int_{0}^{1} \int_{0}^{\pi/2} (-e^r\ r\cos \phi + r\sin \phi)\
+              \dl \phi \dl r                                                      \\
+               & = \int_{0}^{1} \Bigg[ -r e^r \sin \phi - r \cos \phi
+              \Bigg]_{0}^{\pi/2} \dl r                                            \\
+               & = \int_{0}^{1} \left( {\color{y_h} -re^r + r} \right) \dl r
+              = \Bigg[ e^r (1 - r) + \frac{r^2}{2} \Bigg]_0^1
+              = \color{y_p} -\frac{1}{2}
+          \end{align}
+
+    \item Applying reverse Stokes' theorem,
+          \begin{align}
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  0             & \cos x        & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 0 \\ -\sin x
+                                  \end{bNiceMatrix} \\
+              \vec{r}               & = \begin{bNiceMatrix}[margin]
+                                            x \\ \cos \phi \\ \sin \phi
+                                        \end{bNiceMatrix}
+              \\
+              g                     & = y^2 + z^2 - 4 \qquad
+              \nabla g = \begin{bNiceMatrix}[margin]
+                             0 \\ 2y \\ 2z
+                         \end{bNiceMatrix} \qquad
+              \vec{n} = \begin{bNiceMatrix}[margin]
+                            0 \\ 2\cos \phi \\ 2\sin \phi
+                        \end{bNiceMatrix}
+          \end{align}
+          Calculating the surface integral,
+          \begin{align}
+              \iint_S (\nabla \times \vec{F}) \dotp \vec{n}\ \dl A
+               & = \int_{0}^{\pi} \int_{0}^{\pi/2} (-2\sin x \sin \phi)
+              \ \dl \phi \dl x                                                       \\
+               & = \int_{0}^{\pi} \Bigg[ 2 \sin x \cos \phi \Bigg]_{0}^{\pi/2} \dl x
+              = \int_{0}^{\pi} \left( {\color{y_h} -2\sin x} \right) \dl x           \\
+               & = \Bigg[ 2\cos x \Bigg]_0^\pi
+              = \color{y_p} -4
+          \end{align}
+
+\end{enumerate}

@@ -1,0 +1,361 @@
+\chapter{Laplace Transforms}
+\section{Laplace Transform, Linearity, First Shifting Theorem (s-Shifting)}
+\begin{description}
+    \item[Operational calculus] The process of transforming a calculus problem to an
+        algebraic problem. Laplace transforms are one example.
+    \item[Integral transform] The operation of transforming a function in one space
+        $ (t) $ to another space $ (s) $by performing an integration.
+        \begin{align}
+            F(s) & = \infint k(s, t)\ f(t)\ \dl t
+        \end{align}
+        Here, the function $ k(s, t) $ is called the kernel, since it is the bridge
+        function of both variables $ s $ and $ t $.
+    \item[Laplace transform] The integral transform with kernel,
+        \begin{align}
+            k(s, t) & = \exp(-st)                                   \\
+            F(s)    & = \Lap\{f\} \equiv \infint e^{-st}f(t)\ \dl t
+        \end{align}
+    \item[Inverse Laplace transform] The inverse of the above operation defined as,
+        \begin{align}
+            f(t)                   & \equiv \Lap^{-1}\{F\} \\
+            \Lap^{-1}\{\Lap\{f\}\} & = f                   \\
+            \Lap\{\Lap^{-1}\{F\}\} & = F
+        \end{align}
+        Original functions ($ t $ domain) are written in small letters and their
+        Laplace transforms ($ s $ domain) are written in capital letters.
+    \item[Linearity of Laplace transform] Since integration is a linear opeartion,
+        \begin{align}
+            \Lap\{af(t) + bg(t)\} & = a\Lap\{f(t)\}
+            + b\Lap\{g(t)\}                         \\
+                                  & = aF(s) + G(s)
+        \end{align}
+        assuming $ F(s) $ and $ G(s) $ already exist.
+        \begin{table}[H]
+            \centering
+            \begin{tblr}{
+                colspec={
+                Q[r, $$, azure9!20]|[white,1pt]Q[l, $$, purple9!20]|[white,1pt]
+                    Q[r, $$, azure9!20]|[white,1pt]Q[l, $$, purple9!20]},
+                colsep = 1em, rowsep = 1em}
+                \SetCell{azure9!50}\mathbf{f(t)}  &
+                \SetCell{purple9!50}\mathbf{F(s)} &
+                \SetCell{azure9!50}\mathbf{f(t)}  &
+                \SetCell{purple9!50}\mathbf{F(s)}                                       \\
+                \hline
+                1                                 & \frac{1}{s}                       &
+                t                                 & \frac{1}{s^2}                       \\
+                \hline[white, 1pt]
+                t^2                               & \frac{2!}{s^3}                    &
+                t^n                               & \frac{n!}{s^{n+1}}                  \\
+                \hline[white, 1pt]
+                t^a\ (a>0)                        & \frac{\Gamma(a+1)}{s^{a+1}}       &
+                e^{at}                            & \frac{1}{s-a}                       \\
+                \hline[white, 1pt]
+                \cos(\omega t)                    & \frac{s}{s^2 + \omega^2}          &
+                \sin(\omega t)                    & \frac{\omega}{s^2 + \omega^2}       \\
+                \hline[white, 1pt]
+                \cosh(at)                         & \frac{s}{s^2 - a^2}               &
+                \sinh(at)                         & \frac{a}{s^2 - a^2}                 \\
+                \hline[white, 1pt]
+                e^{at}\cos(\omega t)              & \frac{s-a}{(s-a)^2 + \omega^2}    &
+                e^{at}\sin(\omega t)              & \frac{\omega}{(s-a)^2 + \omega^2}   \\
+                \hline
+            \end{tblr}
+        \end{table}
+    \item[First shifting theorem] Performing the equivalent of a shift along the
+        $ s $ axis in transformed space has the following effect,
+        \begin{align}
+            \Lap\left\{ e^{at} f(t) \right\} & = F(s-a)              \\
+            e^{at} f(t)                      & = \Lap^{-1}\{F(s-a)\}
+        \end{align}
+    \item[Existence theorem] If $ f(t) $ is piecewise continuous ( only has
+        finite jump discontinuities if any) and satisfies the growth restriction,
+        \begin{align}
+            |f(t)| & \leq Me^{kt}
+        \end{align}
+        for some $ M, k >0 $ for all $ t geq 0 $. The linear index of $ e $ is the
+        fastest rate at which the function is allowed to grow. \par
+        A function satisfying these (sufficient) conditions has a Laplace transform.
+    \item[Uniqueness theorem] A Laplace transform, if it exists, is uniquely determined.
+        \par
+        Two functions with the same Laplace transform cannot differ over any finite
+        interval. At most they can differ at specific points on the $ t $ axis. \par
+        If two continuous functions have the same transform, they are identical.
+\end{description}
+
+\section{Transforms of Derivatives and Integrals, ODEs}
+\begin{description}
+    \item[Transforming derivaties] In order to solve ODEs, the effect on $ \Lap\{f(t)\} $
+        of performing differentiation needs to be used,
+        \begin{align}
+            \Lap\{f'\}  & = s\Lap\{f\} - f(0)            \\
+            \Lap\{f''\} & = s^2\Lap\{f\} - sf(0) - f'(0)
+        \end{align}
+        These relations require the terms on the RHS to be continuous for all $t \geq 0$
+        and satisfy the exponential growth restriction. \par
+        The terms on the LHS need to be piecewise continuous on every finite interval in
+        $ t \geq 0 $
+        The generalised rule for transforming $ n $-th order derivatives is,
+        \begin{align}
+            \Lap\{f^{(n)}\} & = s\Lap\{f^{(n-1)}\} - f^{(n-1)}(0)          \\
+                            & = s^n \Lap\{f\} - s^{n-1}f(0) - s^{n-2}f'(0)
+            - \dots - f^{(n-1)}(0)
+        \end{align}
+        One of the important uses of this relation is to use $ \Lap\{f''\} $ to
+        work backwards and find $ \Lap\{f\} $
+
+    \item[Transforming Integrals] For a piecewise continuous function $ f(t) $ in
+        $ t \geq 0 $ which obeys the exponential growth restriction for all $ t \geq 0 $,
+        \begin{align}
+            |f(t)|                                          & \leq M\exp(kt)   \\
+            M                                               & > 0 \qquad k > 0 \\
+            \Lap\left\{ \int_0^t f(\tau)\ \dl \tau \right\} & = \frac{F(s)}{s} \\
+            \int_0^t f(\tau)\ \dl \tau                      & =
+            \Lap^{-1}\left\{ \frac{F(s)}{s} \right\}
+        \end{align}
+
+    \item[Subsidiary equation] The equation obtained by Laplace transforming the ODE.
+        \begin{align}
+            \Lap\{y(t)\} = Y(s)  \qquad \text{and}
+            \qquad \Lap\{r(t)\}                           & = R(s)            \\
+            [s^2 Y - sy(0) - y'(0)] + a\ [sY - y(0)] + bY & = R(s)            \\
+            (s+a)y(0) + y'(0) + R(s)                      & = (s^2 + as + b)Y
+        \end{align}
+
+    \item[Transfer function] A function that models the system's output for all possible
+        inputs.
+        \begin{align}
+            Q(s) & = \frac{1}{s^2 + as + b}                    \\
+                 & = \frac{Y(s)}{R(s)} \qquad \text{if} \qquad
+            y(0) = y'(0) = 0
+        \end{align}
+        The transfer funtion does not depend on the input $ r(t) $ or on the I.C.
+        and only depends on the system itself.
+
+    \item[Application to IVPs] Consider the standard form of the second order IVP with
+        constant coefficients, whose subsidiary equation is first found as,
+        \begin{align}
+            y'' + ay' + by          & = r(t)                      \\
+            y(0) = K_0 \qquad y'(0) & = K_1                       \\
+            Y                       & = [(s+a)y(0) + y'(0)]Q + RQ
+        \end{align}
+        The final step is simply the decomposition of $ Y(s) $ into partial fractions
+        whose inverse Laplace transforms are standard results. \par
+        The advantages of solving ODEs using this method are,
+        \begin{itemize}
+            \item Avoid having to solve the h-ODE first.
+            \item Avoid having to find a general solution and then apply the I.C to
+                  get a particular solution.
+            \item Handle complicated $ r(t) $ very easily.
+            \item Initial conditions for $ t_0 \neq 0 $ are dealt with by a change of
+                  variable $ u = t - t_0 $ so that the new I.C. are at $ u = 0 $
+        \end{itemize}
+
+\end{description}
+
+\section{Unit Step Function, Second Shifting Theorem}
+\begin{description}
+    \item[Heaviside function] A constant function that is shifted upwards by distance
+        $ 1 $, at $ t = a $, defined by
+        \begin{align}
+            u(t-a) & = \begin{dcases}
+                           0 & t < a \\
+                           1 & t > a
+                       \end{dcases}
+        \end{align}
+        The function is not defined at $ t = a $ by convention. Its Laplace transform from
+        the integral definition is,
+        \begin{align}
+            \Lap\{u(t-a)\} & = \frac{e^{-as}}{s}
+        \end{align}
+        Multiplying a function $ f(t) $ by the Heaviside function $ u(t-a) $ (for some
+        positive $ a $) simply sets the function to $ 0\ \forall\ x < a $.
+
+    \item[Second shifting theorem] This theorem deals with a $ t-$shifted function with
+        a Heaviside function nullifying it upto the shift distance $ a $.
+        \begin{align}
+            f(t)              & \rightarrow \tilde{f} \equiv f(t-a)u(t-a) \\
+            \tilde{f}         & = \begin{dcases}
+                                      0      & x < a \\
+                                      f(t-a) & x > a
+                                  \end{dcases}                          \\
+            \Lap\{\tilde{f}\} & = e^{-as}\Lap\{f(t)\}                     \\
+            f(t-a)u(t-a)      & = \Lap^{-1}\{e^{-as}F(s)\}
+        \end{align}
+        A corollary to the above relation is to replace $ (t-a) \rightarrow t $
+        \begin{align}
+            \Lap\{f(t)u(t-a)\} & = e^{-as}\Lap\{f(t+a)\}
+        \end{align}
+        Inputs in engineering problems often have finite duration before they are
+        switched off. This is modeled very easily by the Heaviside function. \par
+        Linear sums of Heaviside functions can be used to model functions being
+        nullified for a small time-window before being switched on again, or vice
+        versa.
+        \begin{align}
+            r(t) & = \begin{dcases}
+                         0 & x < a       \\
+                         k & x \in (a,b) \\
+                         0 & x > b
+                     \end{dcases}    \\
+            r(t) & = k[u(t-a) - u(t-b)]
+        \end{align}
+\end{description}
+
+\section{Short Impulses, Dirac's Delta Function, Partial Fractions}
+\begin{description}
+    \item[Finite analog] A function that has unit area under the curve and is a finite
+        duration rectangular wave.
+        \begin{align}
+            f_k(t-a)                    & =
+            \begin{dcases}
+                0           & t < a          \\
+                \frac{1}{k} & t \in [a, a+k] \\
+                0           & t > k
+            \end{dcases}                                        \\
+            \int_{0}^{\infty} f_k \dl t & =\int_{a}^{a+k} \frac{1}{k} \dl t = 1
+        \end{align}
+    \item[Impulse] From, physics, the integral of a force taken over the duration
+        it acts on the system. Consider a time dependent force $ F(t) $ acting on the
+        system for a duration $ \delta t $ starting at time $ t_0 $.
+        \begin{align}
+            I & = \int_{t_0}^{t_0 + \delta t} f(t) \dl t
+        \end{align}
+    \item[Dirac's delta function] The infiniteismal width limit of the finite
+        rectangular wave defined above. The unit area under the curve is still preserved.
+        \begin{align}
+            \delta(t-a) & = \lim_{k \rightarrow 0} f_k (t - a) \\
+            \delta(t-a) & = \begin{dcases}
+                                \infty & t = a    \\
+                                0      & t \neq a
+                            \end{dcases}
+        \end{align}
+    \item[Sifting property] The Dirac delta function picks out the value of its
+        coefficient under an integration.
+        \begin{align}
+            \infint g(t)\ \delta(t-a) & = g(a)
+        \end{align}
+    \item[Laplace transform of Dirac's delta] Using the limit $ k \rightarrow 0 $ of the
+        finite analog delta fucntion to find the Laplace transform,
+        \begin{align}
+            \Lap\{f_k(t-a)\}    & = \frac{e^{-as} - e^{-(a+k)s}}{ks} \\
+            \Lap\{\delta(t-a)\} & = e^{-as}
+        \end{align}
+    \item[Partial fractions] In the case of higher powers of polynomial factors
+        in the denominator, the numerator is a generalized polynomial of one less order.
+        \begin{align}
+            \frac{P(nk - 1)}{[Q(k)]^n} & = \frac{P_1}{Q(k)} + \frac{P_2}{[Q(k)]^2}
+            + \dots + \frac{P_n}{[Q(k)]^n}
+        \end{align}
+        Here, $\{P_1, \dots, P_n\}$ are each polynomials of order $ k-1 $ \par
+        The specific case of $ Q(k) $ having only complex roots, requires convolution and
+        is not covered here.
+\end{description}
+
+\section{Convolution, Integral Equations}
+\begin{description}
+    \item[Multiplication of Laplace transforms]  Unlike the addition of functions, which
+        leads simply to the addition of their Laplace transforms, multiplication needs to be
+        dealth with using convolution
+        \begin{align}
+            \Lap\{fg\} & \neq \Lap\{f\} \Lap\{g\}
+        \end{align}
+    \item[Convolution] The process of filtering a function using the other as a mask,
+        which leads to their respective Laplace transforms being multiplied.
+        \begin{align}
+            h(t) & = (f * g)(t) = \int_{0}^{t} f(\tau)\ g(t - \tau)\ \dl \tau \\
+            H(s) & = F(s) \cdot G(s)
+        \end{align}
+        This assumes that $ f(t) $ and $ g(t) $ satisfy the conditions for their
+        Laplace transforms to exist individually.
+    \item[Properties of convolution] Using the integral definition above,
+        \begin{align}
+            f * g           & = g * f             &  & \text{commutative law}  \\
+            f * (g_1 + g_2) & = f * g_1 + f * g_2 &  & \text{distributive law} \\
+            (f * g) * \nu   & = f * (g * \nu)     &  & \text{associative law}  \\
+            f * 0           & = 0
+        \end{align}
+        Now for some unusual properties which do not resemble the corresponding
+        properties for the multiplication of real numbers,
+        \begin{align}
+            f * 1 & \neq f &  & \text{in general}        \\
+            f * f & \geq 0 &  & \text{is not guaranteed}
+        \end{align}
+        When solving partial fractions, convolution helps deal with the case of
+        repeated complex roots in the denominator.
+    \item[nh-ODEs using Convolution] Consider the specific case of an ODE of the form,
+        \begin{align}
+            y'' + ay' + by & = r(t) & y(0) & = 0 \quad y'(0) = 0                 \\
+            Y              & = RQ   & y(t) & = \int_{0}^{t} q(t - \tau)\ r(\tau)
+            \ \dl \tau
+        \end{align}
+        The limits of integration need to be applied very carefully in case the input
+        $ r(t) $ happens to act only for a limited time window.
+    \item[Integral equations] For the specific case where the unknown function $ y(t) $
+        happens to appear in an integral that can be rearranged to resemble a convolution
+        integral, convolution can immediately be used to simplify the Laplace transform.
+\end{description}
+
+\section{Differentiation and Integration of Transforms, ODEs with Variable Coefficients}
+\begin{description}
+    \item[Differentiation of transforms] To find the derivative of the Laplace transform,
+        (w.r.t $ s $), the operation on $ f(t) $ is,
+        \begin{align}
+            F'(s)              & = \diff**{s}{\infint e^{-st}\ f(t)\ \dl t}
+            = - \infint e^{-st}\ t \cdot f(t)\ \dl t                        \\
+            F'(s)              & = -\Lap\{t \cdot f(t)\}                    \\
+            \Lap^{-1}\{F'(s)\} & = -t \cdot f(t)
+        \end{align}
+        Differentiating the Laplace transform thus is equivalent to multiplying the
+        original function by $ (-t) $.
+    \item[Integration of transforms] Assuming the limit of $ f(t) / t $ exists for
+        $ t \rightarrow 0^+ $, and the Laplace transform of $ f(t) $ exists, then,
+        \begin{align}
+            \Lap\left\{ \frac{f(t)}{t} \right\} & = \int_{s}^{\infty} F(p)\ \dl p \\
+        \end{align}
+    \item[Special Linear ODEs with variable coefficients] Using the relation above,
+        \begin{align}
+            \Lap\{ty'\}  & = -\diff**{s}{[sY - y(0)]} = -Y - s \diff Ys \\
+            \Lap\{ty''\} & = -\diff**{s}{[s^2Y - sy(0) - y'(0)]}
+            = -2sY - s^2 \diff Ys + y(0)
+        \end{align}
+    \item[Laguerre ODE] A special ODE which is amenable to the above Laplace transform
+        manipulation,
+        \begin{align}
+            ty'' + (1 - t)y' + ny             & = 0                         \\
+            (s - s^2) \diff Ys + (n + 1 - s)Y & = 0                       &
+                                              & \text{(subsidiary eqn.)}    \\
+            Y                                 & = \frac{(s-1)^n}{s^{n+1}}   \\
+            l_n                               & = \Lap^{-1}\{Y\}
+        \end{align}
+        By convention, take $ l_0 = 1 $ and for higher order polynomials, the Rodrigues'
+        formula is
+        \begin{align}
+            l_n & = \frac{e^t}{n!}\ \difoverride{n} \diff**[n]{t}{(t^n e^{-t})} \\
+            l_0 & = 1                                                           \\
+            l_1 & = -t + 1                                                      \\
+            l_2 & =\frac{1}{2}\ (t^2 - 4t + 2)                                  \\
+            l_3 & = \frac{1}{6}\ (-t^3 + 9t^2 - 18t + 6)
+        \end{align}
+\end{description}
+
+\section{Systems of ODEs}
+
+\begin{description}
+    \item[First order linear system with constant coefficients] The Laplace transform of
+        such a system is,
+        \begin{align}
+            y_1'                          & = a_{11}y_1 + a_{12}y_2 + g_1(t) \\
+            y_2'                          & = a_{21}y_1 + a_{22}y_2 + g_2(t) \\
+            (a_{11} - s)Y_1 + (a_{12})Y_2 & = -y_1(0) - G_1(s)               \\
+            (a_{21})Y_1 + (a_{22} - s)Y_2 & = -y_2(0) - G_2(s)
+        \end{align}
+        Written in vector form, (using small and capital letters for functions and
+        Laplace transforms respectively as for scalars),
+        \begin{align}
+            \vec{y'}                    & = \vec{A}\vec{y} + \vec{g} \\
+            (\vec{A} - s\vec{I})\vec{Y} & = -\vec{y}(0) - \vec{G}
+        \end{align}
+        This system of equations in $ Y_1,\ Y_2$ can be solved and then inverse
+        transformed to solve the given system of ODEs.
+        
+\end{description}

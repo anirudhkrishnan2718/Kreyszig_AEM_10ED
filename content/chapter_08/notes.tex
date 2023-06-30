@@ -1,0 +1,273 @@
+\chapter{Linear Algebra: Matrix Eigenvalue Problems}
+\section{The Matrix Eigenvalue Problem, Determining Eigenvalues and Eigenvectors}
+
+\begin{description}
+    \item[Matrix Eigenvalue problem] The process of finding scalars $ \lambda $ and
+        nonzero vectors $ \vec{v} $ satisfying,
+        \begin{align}
+            \vec{Ax} & = \lambda \vec{x}
+        \end{align}
+        This equation is always solved by the trivial $ \vec{v}  = \vec{0}$ which is
+        not of interest.
+
+    \item[Characteristic determinant] The determinant which is set to zero in order to
+        obtain non-trivial solutions of the eigenvalue problem,
+        \begin{align}
+            (\vec{A} - \lambda \vec{I})\ \vec{x} & = 0   \\
+            \det(\vec{A} - \lambda \vec{I})      & = 0 &
+            D(\lambda)                           & = 0
+        \end{align}
+        The eigenvalues are solutions to this polynomial equation in $ \lambda $. An
+        $ n \times n $ matrix has at least one and at most $ n $ distinct eigenvalues.
+
+    \item[Eigenspace] The set of all eigenvectors corresponding to the same eigenvalue,
+        along with the zero vector, form a vector space called the eigenspace of the
+        matrix corresponding to that eigenvalue.
+
+    \item[Algebraic multiplicity] The order $ (M_\lambda) $ of an eigenvalue $ \lambda $
+        as a root of the characteristic equation.
+
+    \item[Geometric multiplicity] The number of L.I. eigenvectors $ (m_\lambda) $
+        corresponding to a particular eigenvalue.
+
+    \item[Defect of eigenvalue] The difference,
+        \begin{align}
+            \Delta_\lambda & \equiv M_\lambda - m_\lambda \\
+            \Delta_\lambda & \geq 0
+        \end{align}
+
+    \item[Eigenvalues of transpose] Using the properties of determinant, $ \vec{A}^T $
+        has the same eigenvalues as $ \vec{A} $.
+\end{description}
+
+\section{Some Applications of Eigenvalue Problems}
+
+\begin{description}
+    \item[Applications] Systems which can be reduced to a system of linear equations or
+        a system of linear ODEs can be solved using the eigenvalue problem
+
+    \item[Steady state] The unity eigenvalue represents the steady state of a system,
+        since the action of the system on the input state causes no change
+        \begin{align}
+            \lambda & = 1 & \implies \vec{Ax} & = x
+        \end{align}
+
+    \item[Interpretation of eigenvectors] Usually, the eigenvector can be interpreted as
+        the privileged initial state of the system, which produces a final state in
+        proportion to it.
+\end{description}
+
+\section{Symmetric, Skew-Symmetric, and Orthogonal Matrices}
+
+\begin{description}
+    \item[Orthogonal matrix] A special square matrix whose transpose is equal to its
+        inverse.
+        \begin{align}
+            \vec{A}^T & = \vec{A}^{-1}
+        \end{align}
+
+    \item[Eigenvalues conditions] The eigenvalues of a symmetric matrix are real. \par
+        The eigenvalues of a skew-symmetric matrix are pure imaginary or zero.
+
+    \item[Orthogonal transforms] Transforms that are defined as
+        \begin{align}
+            \vec{y} & = \vec{Ax} &  & \vec{A}\ \text{is orthogonal}
+        \end{align}
+        Any orthogonal transform in Euclidean $ \mathcal{R}^2 $ is a rotation ( that may
+        be combined with a reflection in a straight line). \par
+        Any orthogonal transform in Euclidean $ \mathcal{R}^3 $ is a rotation ( that may
+        be combined with a reflection in a plane).
+
+    \item[Invariance of Inner product] The inner product of two vectors undergoing the
+        same orthogonal transform is preserved. For some orthogonal matrix $ C $,
+        \begin{align}
+            \vec{u}               & = \vec{Ca}              & \vec{v} & = \vec{Cb} \\
+            \lVert \vec{a} \rVert & =\lVert \vec{u} \rVert  &
+            \lVert \vec{b} \rVert & =\lVert \vec{v} \rVert                         \\
+            \vec{a} \dotp \vec{b} & = \vec{u} \dotp \vec{v}
+        \end{align}
+
+    \item[Orthonormality System] A system whose elements have nonzero dot product
+        only when the other vector is the same element.
+        \begin{align}
+            \vec{a}_j \dotp \vec{a}_k & = \begin{dcases}
+                                              0 & j \neq k \\
+                                              1 & j = k
+                                          \end{dcases}
+        \end{align}
+        A real square matrix is orthogonal if and only if its column vectors form
+        an orthonormal system. (Also applies to its row vectors)
+
+    \item[Determinant of orthogonal matrix] This is always $ \pm 1 $.
+        \begin{align}
+            \vec{AA}^T                          & = \vec{I} &
+            \det(\vec{A}) \cdot \det(\vec{A}^T) & = 1         \\
+            \det(\vec{A})^2                     & = 1       &
+            \det(\vec{A})                       & = \pm 1
+        \end{align}
+
+    \item[Eigenvalues of orthogonal matrix] Since the entries are real, the eigenvalues
+        are real or complex conjugate pairs. \par
+        Additionally, their absolute value is 1.
+\end{description}
+
+\section{Eigenbases, Diagonalization, Quadratic Forms}
+
+\begin{description}
+    \item[Eigenbasis] A basis for $ \mathcal{R}^n $ formed by the set of eigenvectors of
+        a matrix $ \vec{A} $. This means,
+        \begin{align}
+            \vec{y} & = \vec{Ax}                                            &
+            \vec{x} & = \sum_{j=1}^{n} c_j\ \vec{b}_j                         \\
+            \vec{y} & = \sum_{j=1}^{n} c_j\ \Big( \lambda_j \vec{b}_j \Big)
+        \end{align}
+        Thus, the multiplication $ \vec{Ax} $ is replaced by the much simpler linear
+        superposition of eigenvectors. \par
+
+        For the special case of all eigenvalues being distinct, an eigenbasis exists
+        for $ \mathcal{R}^n $. \par
+
+    \item[Symmetric matrix eigenbasis] A symmetric matrix has an orthonormal basis
+        for eigenvectors for $ \mathcal{R}^n $.
+
+    \item[Similar matrices] Two matrices are similar if
+        \begin{align}
+            \vec{\hat{A}} & = \vec{P}^{-1}\vec{AP}
+        \end{align}
+        and $ \vec{P} $ is some non-singular matrix. \par
+        Such a transformation is called a similarity transformation.
+
+    \item[Similarity transformation] These transformations preserve eigenvalues and
+        transoform the corresponding eigenvectors by,
+        \begin{align}
+            \vec{y}_j & = \vec{P}^{-1}\vec{x}_j &
+            \mu_j     & = \lambda_j
+        \end{align}
+
+    \item[Diagonalization] If a matrix $ \vec{A} $ of order $ n $, has a basis of
+        eigenvectors, then
+        \begin{align}
+            \vec{D} & = \vec{X}^{-1}\vec{AX}
+        \end{align}
+        $ \vec{D} $ is diagonal with the eigenvalues being the entries of the main
+        diagonal. \par
+        Additionally, $ \vec{X} $ is simply a matrix composed of these eigenvectors as
+        columns.
+        \begin{align}
+            \vec{D}^m & = \vec{X}^{-1}\vec{A}^m \vec{X}
+        \end{align}
+        for some positive integer $ m $.
+
+    \item[Quadratic Form] A quadratic form $ Q $ in a vector $ \vec{x} $ is a sum of the
+        $ n^2 $ terms. It is a scalar defined as,
+        \begin{align}
+            Q & \equiv \vec{x}^T \vec{Ax} = \sum_{j=1}^{n}\sum_{k=1}^{n}
+            x_j\ a_{jk}\ j_k                                             \\
+              & \equiv \begin{bNiceMatrix}
+                           x_1 & x_2 & \dots & x_n
+                       \end{bNiceMatrix} \cdot
+            \begin{bNiceMatrix}
+                a_{11} & a_{12} & \dots  & a_{1n} \\
+                a_{21} & a_{22} & \dots  & a_{2n} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_{n1} & a_{12} & \dots  & a_{nn} \\
+            \end{bNiceMatrix} \cdot
+            \begin{bNiceMatrix}
+                x_1 \\ x_2 \\ \vdots \\ x_n
+            \end{bNiceMatrix}
+        \end{align}
+
+        Additionally, $ \vec{A} $ is called the coefficient matrix of this form.
+
+    \item[Symmetric coefficient matrix] Any coefficient matrix can be replaced in the
+        quadratic form by its another symmetric matrix using,
+        \begin{align}
+            \vec{C} & = \frac{\vec{A} + \vec{A}^T}{2}           &
+            Q       & = \vec{x}^T \vec{Cx} = \vec{x}^T \vec{Ax}
+        \end{align}
+
+    \item[Canonical form] Also called principal axis form. Starting with,
+        \begin{align}
+            \vec{A}      & = \vec{A}^T & \vec{A} & = \vec{XD}\vec{X}^{-1} \\
+            \vec{X}^{-1} & = \vec{X}^T & Q       & = \vec{x}^T \vec{Ax}
+        \end{align}
+        Since an orthonormal basis of eigenvectors is guaranteed.
+
+    \item[Principal axis theorem] Any quadratic form can be transformed into the
+        simplified form, (with symmetric matrix $ \vec{A} $)
+        \begin{align}
+            Q       & = \vec{x}^T\vec{Ax}                                   &
+            \vec{y} & = \vec{X}^{-1}\vec{x}                                   \\
+            Q       & = \vec{y}^T\vec{Dy} = \sum_{j=1}^{n} \lambda_j\ y_j^2
+        \end{align}
+        Here, the eigenvalues need not be distinct.
+\end{description}
+
+\section{Complex Matrices and Forms}
+
+\begin{description}
+    \item[Conjugate transpose] The process of applying a complex conjugate operation
+        before taking the transpose of a matrix. Useful in quantum physics etc.
+        \begin{align}
+            \vec{A}^\dag & \equiv \big( \vec{\bar{A}} \big)^T
+        \end{align}
+
+    \item[Special complex matrices] Some complex matrices are special analogous to the
+        symmetric and skew-symmetric matrices defined earlier
+        \begin{align}
+            \vec{A}^\dag & = \vec{A}      &  & \text{Hermitian}      \\
+            \vec{A}^\dag & = -\vec{A}     &  & \text{Skew-Hermitian} \\
+            \vec{A}^\dag & = \vec{A}^{-1} &  & \text{Unitary}
+        \end{align}
+
+    \item[Eigenvalues of special matrices] The eigenvalues of
+        \begin{itemize}
+            \item Hermitian matrices are real
+            \item skew-Hermitian matrices are either zero or purely imaginary
+            \item unitary matrix have absolute value 1
+        \end{itemize}
+
+    \item[Inner Product] For complex numbers, the inner product generalizes to
+        \begin{align}
+            \vec{a} \dotp \vec{b} & \equiv \vec{a}^\dag \vec{b}
+        \end{align}
+
+    \item[Norm of complex vector] Even when the components of a vector are complex
+        numbers $ (\vec{v} \in \mathcal{C}^n) $,
+        \begin{align}
+            \lVert\vec{a}\rVert & \equiv \sqrt{\vec{a} \dotp \vec{a}}
+            = \sqrt{\vec{a}^\dag \vec{a}} = \sum_{i=1}^{n} \abs{ a_i }^2
+        \end{align}
+
+    \item[Unitary transformation] A transformation of the form $ \vec{y} = \vec{Ax} $,
+        where $ \vec{A} $ is unitary, preserves the inner product and the norm.
+
+    \item[Unitary system] A set of vectors obeying
+        \begin{align}
+            \vec{a}_j \dotp \vec{a}_k = \vec{a}_{j}^\dag\ \vec{a}_k &
+            = \begin{dcases}
+                  1 & j = k    \\
+                  0 & j \neq k
+              \end{dcases}
+        \end{align}
+
+    \item[Unitary matrix] The determinant of a unitary matrix has absolute value 1.
+        \par A complex square matrix is unitary if and only if its column vectors form a
+        unitary system. (also its row vectors)
+
+    \item[Eigenbasis] A Hermitian, skew-Hermitian, or unitary matrix has a basis of
+        eigenvectors for $ \mathcal{C}^n $ that form a unitary system.
+
+    \item[Complex quadratic forms] Similar to quadratic real forms, complex forms are
+        defined as,
+        \begin{align}
+            \vec{x}^\dag \vec{Ax} & = \sum_{j=1}^{n} \sum_{k=1}^{n}
+            a_{jk}\ \bar{x_j} x_k
+        \end{align}
+        This is a summation of $ n^2 $ terms that can now be complex.
+        For the special cases of
+        \begin{itemize}
+            \item Hermitian matrices, the form is real.
+            \item skew-Hermitian matrices, the form is zero or purely imaginary.
+        \end{itemize}
+\end{description}

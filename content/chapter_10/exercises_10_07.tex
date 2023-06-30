@@ -1,0 +1,540 @@
+\section{Triple Integrals, Divergence Theorem of Gauss}
+
+\begin{enumerate}
+     \item Finding the mass, given density $ \rho $,
+           \begin{align}
+                \rho & = x^2 + y^2 + z^2                                        \\
+                T    & : x \in [-4, 4] \quad y \in [-1, 1] \quad z \in [0, 2]   \\
+                I_1  & = \int_{-4}^{4} (x^2 + y^2 + z^2)\ \dl x
+                = \Bigg[ \frac{x^3}{3} + xy^2 + xz^2 \Bigg]_{-4}^{4}
+                = {\color{y_h} \frac{128}{3} + 8(y^2 + z^2)}                    \\
+                I_2  & = \int_{-1}^{1}I_1 \dl y = \int_{-1}^{1}
+                \Bigg(\frac{128}{3} + 8y^2 + 8z^2\Bigg) \dl y                   \\
+                     & = \Bigg[ \frac{128y + 8y^3}{3} + 8z^2\ y \Bigg]_{-1}^{1}
+                = {\color{y_p} \frac{272}{3} + 16z^2}                           \\
+                I_3  & = \int_{0}^{2} I_2 \dl z = \int_{0}^{2}
+                \Bigg( \frac{272}{3} + 16z^2 \Bigg) \dl z
+                = \Bigg[ \frac{272 z + 16 z^3}{3} \Bigg]_0^2
+                = {\color{brown6} 224}
+           \end{align}
+
+     \item Finding the mass, given density $ \rho $,
+           \begin{align}
+                \rho & = xyz                                                \\
+                T    & : x \in [0, a] \quad y \in [0, b] \quad z \in [0, c] \\
+                I_1  & = \int_{0}^{a} (xyz)\ \dl x
+                = \Bigg[ yz\ \frac{x^2}{2} \Bigg]_{0}^{a}
+                = {\color{y_h} \frac{a^2}{2}\ yz}                           \\
+                I_2  & = \int_{0}^{b}I_1 \dl y = \int_{0}^{b}
+                \Bigg( \frac{a^2}{2}\ yz \Bigg) \dl y                       \\
+                     & = \Bigg[ \frac{a^2y^2}{4}\ z \Bigg]_{0}^{b}
+                = {\color{y_p} \frac{a^2b^2}{4}\ z}                         \\
+                I_3  & = \int_{0}^{c} I_2 \dl z = \int_{0}^{c}
+                \Bigg( a^2 b^2\ \frac{z}{4} \Bigg) \dl z
+                = \Bigg[ \frac{a^2b^2\ z^2}{8} \Bigg]_0^c
+                = {\color{brown6} \frac{(abc)^2}{8}}
+           \end{align}
+
+     \item Finding the mass, given density $ \rho $,
+           \begin{align}
+                \rho & = \exp(-x-y-z)                                         \\
+                T    & : x \in [0, 1-y] \quad y \in [0, 1] \quad z \in [0, 2] \\
+                I_1  & = \int_{0}^{1-y} \exp(-x-y-z)\ \dl x
+                = \Bigg[ -\exp(-y-z)e^{-x} \Bigg]_{0}^{1-y}                   \\
+                     & = {\color{y_h} \exp(-y-z) [1 - e^{y-1}]}               \\
+                I_2  & = \int_{0}^{b}I_1 \dl y = \int_{0}^{1}
+                \Bigg( e^{-y-z} - e^{-z-1} \Bigg) \dl y                       \\
+                     & = \Bigg[ -e^{-z}e^{-y} - y\ e^{-z-1} \Bigg]_{0}^{1}
+                = {\color{y_p} e^{-z} (1 - 2e^{-1})}                          \\
+                I_3  & = \int_{0}^{c} I_2 \dl z = \int_{0}^{2}
+                \Bigg( e^{-z} (1 - 2e^{-1}) \Bigg) \dl z
+                = \Bigg[ (2e^{-1} - 1)e^{-z} \Bigg]_0^2                       \\
+                     & = {\color{brown6} (2e^{-1} - 1)(e^{-2} - 1)}
+           \end{align}
+
+     \item Finding the mass, given density $ \rho $,
+           \begin{align}
+                \rho & = \exp(-x-y-z)                                             \\
+                T    & : x \in [0, 3] \quad y \in [0, 3-x] \quad z \in [0, 3-x-y] \\
+                I_1  & = \int_{0}^{3-x-y} \exp(-x-y-z)\ \dl z
+                = \Bigg[ -\exp(-x-y)e^{-z} \Bigg]_{0}^{3-x-y}                     \\
+                     & = {\color{y_h} \exp(-x-y) [1 - e^{x+y-3}]}                 \\
+                I_2  & = \int_{0}^{3-x}I_1 \dl y = \int_{0}^{3-x}
+                \Bigg( e^{-x-y} - e^{-3} \Bigg) \dl y                             \\
+                     & = \Bigg[ -e^{-x}e^{-y} - y\ e^{-3} \Bigg]_{0}^{3-x}
+                = {\color{y_p} e^{-x} + (x-4)e^{-3}}                              \\
+                I_3  & = \int_{0}^{3} I_2 \dl z = \int_{0}^{3}
+                \Bigg( e^{-x} + (x-4)e^{-3} \Bigg) \dl x                          \\
+                     & = \Bigg[ -e^{-x} + \frac{(x-4)^2}{2}\ e^{-3} \Bigg]_0^3
+                = {\color{brown6} 1 - 8.5e^{-3}}
+           \end{align}
+
+     \item Finding the mass, given density $ \rho $,
+           \begin{align}
+                \rho & = \sin(2x)\cos(2y)                                      \\
+                T    & : x \in [0, \pi/4] \quad y \in [\pi/4 - x, \pi/4]
+                \quad z \in [0, 6]                                             \\
+                I_1  & = \int_{\pi/4 - x}^{\pi/4} \sin(2x) \cos(2y)\ \dl y
+                = \Bigg[ \frac{\sin(2x)\sin(2y)}{2} \Bigg]_{\pi/4 - x}^{\pi/4} \\
+                     & = {\color{y_h} \frac{\sin(2x)}{2}\ [1 - \cos(2x)]}      \\
+                I_2  & = \int_{0}^{\pi/4}I_1 \dl x = \int_{0}^{\pi/4}
+                \Bigg( \frac{2\sin(2x) - \sin(4x)}{4} \Bigg) \dl x             \\
+                     & = \Bigg[ \frac{-\cos(2x)}{4} + \frac{\cos(4x)}{16}
+                     \Bigg]_{0}^{\pi/4}
+                = {\color{y_p} \frac{1}{8} }                                   \\
+                I_3  & = \int_{0}^{6} I_2 \dl z = \int_{0}^{6}
+                \Bigg( \frac{1}{8} \Bigg) \dl z
+                = \Bigg[ \frac{z}{8} \Bigg]_0^6
+                = {\color{brown6} \frac{3}{4}}
+           \end{align}
+
+     \item Finding the mass, given density $ \rho $,
+           \begin{align}
+                \rho & = x^2y^2z^2 \qquad x = r\cos \theta \qquad z = r\sin \theta     \\
+                T    & : r \in [0, 4] \qquad \theta \in [0, 2\pi]
+                \qquad y \in [-4, 4]                                                   \\
+                I_1  & = \int_{0}^{4} (y^2\ r^5 \sin^2 \theta \cos^2 \theta)
+                \ \dl r
+                = \Bigg[ \frac{y^2 \sin^2 (\theta) \cos^2 (\theta)\ r^6}{6}
+                \Bigg]_{0}^{4}                                                         \\
+                     & = {\color{y_h} \frac{y^2 \sin^2(\theta)\cos^2(\theta)\ 4^6}{6}} \\
+                I_2  & = \int_{0}^{2\pi}I_1 \dl \theta = \int_{0}^{2\pi}
+                \Bigg( \frac{4^6y^2}{6}\ \frac{1 - \cos(4\theta)}{8} \Bigg) \dl \theta \\
+                     & = \frac{256y^2}{3}\Bigg[ \theta - \frac{\sin(4\theta)}{4}
+                     \Bigg]_{0}^{2\pi}
+                = {\color{y_p} \frac{256y^2}{3}\ [2\pi] }                              \\
+                I_3  & = \int_{-4}^{4} I_2 \dl y = \int_{-4}^{4}
+                \Bigg( \frac{512\pi}{3}\ y^2 \Bigg) \dl y
+                = \Bigg[ \frac{512\pi\ y^3}{9} \Bigg]_{-4}^{4}
+                = {\color{brown6} \frac{4^8\ \pi}{9}}
+           \end{align}
+
+     \item Finding the mass, given density $ \rho $,
+           \begin{align}
+                \rho & = \arctan(y/x) \qquad x = r\sin \theta \cos \phi
+                \qquad y = r\sin \theta \sin \phi \qquad z = r \cos \theta              \\
+                T    & : r \in [0, a] \qquad \theta \in [0, \pi/2]
+                \qquad y \in [0, 2\pi]                                                  \\
+                I_1  & = \int_{0}^{2\pi} (\phi)
+                \ \dl \phi
+                = \Bigg[ \frac{\phi^2}{2} \Bigg]_{0}^{2\pi}
+                = {\color{y_h} 2\pi^2}                                                  \\
+                I_2  & = \int_{0}^{\pi/2}I_1 \sin \theta\ \dl \theta = \int_{0}^{\pi/2}
+                \Bigg( 2\pi^2 \sin(\theta) \Bigg) \dl \theta                            \\
+                     & = \Bigg[  -2\pi^2 \cos(\theta) \Bigg]_{0}^{\pi/2}
+                = {\color{y_p} 2\pi^2 }                                                 \\
+                I_3  & = \int_{-4}^{4} I_2 \dl y = \int_{0}^{a}
+                \Bigg( 2\pi^2 \Bigg)\ r^2 \dl r
+                = \Bigg[ 2\pi^2 \frac{r^3}{3} \Bigg]_{0}^{a}
+                = {\color{brown6} \frac{2\pi^2a^3}{3}}
+           \end{align}
+
+     \item Finding the mass, given density $ \rho $,
+           \begin{align}
+                \rho & = x^2 + y^2 \qquad x = r\sin \theta \cos \phi
+                \qquad y = r\sin \theta \sin \phi \qquad z = r \cos \theta              \\
+                T    & : r \in [0, a] \qquad \theta \in [0, \pi/2]
+                \qquad y \in [0, 2\pi]                                                  \\
+                I_1  & = \int_{0}^{2\pi} (r^2 \sin^2 \theta)
+                \ \dl \phi
+                = r^2 \sin^2 \theta \Bigg[ \phi \Bigg]_{0}^{2\pi}
+                = {\color{y_h} 2\pi r^2 \sin^2 \theta}                                  \\
+                I_2  & = \int_{0}^{\pi/2}I_1 \sin \theta\ \dl \theta = \int_{0}^{\pi/2}
+                \Bigg( 2\pi r^2 \sin^3(\theta) \Bigg) \dl \theta                        \\
+                     & = \Bigg[ 2\pi r^2 \left( \frac{\cos^3 \theta}{3}
+                     - \cos \theta \right) \Bigg]_{0}^{\pi/2}
+                = {\color{y_p} \frac{4\pi r^2}{3} }                                     \\
+                I_3  & = \int_{0}^{a} I_2\ r^2\ \dl r = \int_{0}^{a}
+                \Bigg( \frac{4\pi r^2}{3} \Bigg)\ r^2 \dl r
+                = \Bigg[ 4\pi \frac{r^5}{15} \Bigg]_{0}^{a}
+                = {\color{brown6} \frac{4\pi a^5}{15}}
+           \end{align}
+
+     \item Applying the divergence theorem,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 x^2 \\ 0 \\ z^2
+                            \end{bNiceMatrix} \qquad\qquad
+                \nabla \dotp \vec{F} = 2x + 2z                                     \\
+                T       & : x \in [-1, 1] \qquad y \in [-3, 3] \qquad z \in [0, 2] \\
+                I_1     & = \int_{-1}^{1} (2x + 2z) \ \dl x
+                = \Bigg[ x^2 + 2zx \Bigg]_{-1}^{1}
+                = {\color{y_h} 4z}                                                 \\
+                I_2     & = \int_{-3}^{3}I_1 \dl y
+                = \int_{-3}^{3} \Bigg( 4z \Bigg) \dl y
+                = \Bigg[ 4zy \Bigg]_{-3}^{3}
+                = {\color{y_p} 24z }                                               \\
+                I_3     & = \int_{0}^{2} I_2 \dl z = \int_{0}^{2}
+                \Bigg( 24z \Bigg) \dl z
+                = \Bigg[ 12z^2 \Bigg]_{0}^{2}
+                = {\color{brown6} 48}
+           \end{align}
+
+     \item Solving Problem $ 9 $ by direct integration over the surface,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 x^2 \\ 0 \\ z^2
+                            \end{bNiceMatrix}                             \\
+                T       & : x \in [-1, 1] \qquad y \in [-3, 3] \qquad z \in [0, 2] \\
+                I_1     & = \int_{-1}^{1} \int_{-3}^{3}
+                \Big[ 0^2 \cdot (-1) + 2^2 \cdot 1 \Big] \ \dl x \dl y
+                = {\color{y_h} 48}                                                 \\
+                I_2     & = \int_{-3}^{3} \int_{0}^{2}
+                \Big[ (-1) \cdot 1 + 1 \cdot 1 \Big] \dl y \dl z
+                = {\color{y_p} 0}                                                  \\
+                I_3     & = \int_{-1}^{1}\int_{0}^{2} \Big[
+                     (-1) \cdot 0 + 1 \cdot 0 \Big]  \dl z \dl x
+                = {\color{brown6} 0}
+           \end{align}
+           The results match. The surfaces integrated are pairs of opposite faces
+           of the cuboid.
+
+     \item Applying the divergence theorem,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 e^x \\ e^y \\ e^z
+                            \end{bNiceMatrix} \qquad\qquad
+                \nabla \dotp \vec{F} = e^x + e^y + e^z                              \\
+                T       & : x \in [-1, 1] \qquad y \in [-1, 1] \qquad z \in [-1, 1] \\
+                I_1     & = \int_{-1}^{1} (e^x + e^y + e^z) \ \dl x
+                = \Bigg[ e^x + x(e^y + e^z) \Bigg]_{-1}^{1}
+                = {\color{y_h} e - e^{-1} + 2(e^y + e^z)}                           \\
+                I_2     & = \int_{-1}^{1} I_1 \dl y
+                = \int_{-1}^{1} \Bigg( 2(e^y + e^z) + e - e^{-1} \Bigg) \dl y       \\
+                        & = \Bigg[ (2e^z + e - e^{-1})\ y + 2e^y \Bigg]_{-1}^{1}
+                = {\color{y_p} 4e^z + 4e - 4e^{-1} }                                \\
+                I_3     & = \int_{-1}^{1} I_2 \dl z = \int_{-1}^{1}
+                \Bigg( 4(e^z + e - e^{-1}) \Bigg) \dl z                             \\
+                        & = \Bigg[ 4e^z + 4z(e - e^{-1}) \Bigg]_{-1}^{1}
+                = {\color{brown6} 12 (e - e^{-1})}
+           \end{align}
+
+     \item Applying the divergence theorem,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 x^3 - y^3 \\ y^3 - z^3 \\ z^3 - x^3
+                            \end{bNiceMatrix} \qquad\qquad
+                \nabla \dotp \vec{F} = 3(x^2 + y^2 + z^2) = 3r^2                     \\
+                x       & = r\sin \theta \cos \phi \qquad y = r\sin \theta \sin \phi
+                \qquad z = r\cos \theta                                              \\
+                T       & : r \in [0, 5] \qquad \theta \in [0, \pi/2]
+                \qquad \phi \in [0, 2\pi]                                            \\
+                I_1     & = \int_{0}^{2\pi} (3r^2) \ \dl \phi
+                = \Bigg[ 3r^2 \phi \Bigg]_{0}^{2\pi}
+                = {\color{y_h} 6\pi\ r^2}                                            \\
+                I_2     & = \int_{0}^{\pi/2} I_1 \sin \theta\ \dl \theta
+                = \int_{0}^{\pi/2} \Bigg( 6\pi r^2\ \sin \theta \Bigg) \dl \theta    \\
+                        & = \Bigg[ -6\pi r^2\ \cos \theta \Bigg]_{0}^{\pi/2}
+                = {\color{y_p} 6\pi r^2 }                                            \\
+                I_3     & = \int_{0}^{5} I_2\ r^2\ \dl r = \int_{0}^{5}
+                \Bigg( 6\pi r^4 \Bigg) \dl r
+                = \Bigg[ \frac{6\pi}{5}\ r^5 \Bigg]_{0}^{5}
+                = {\color{brown6} 3750 \pi }
+           \end{align}
+
+     \item Applying the divergence theorem,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 \sin y \\ \cos x \\ \cos z
+                            \end{bNiceMatrix} \qquad\qquad
+                \nabla \dotp \vec{F} = -\sin z                       \\
+                x       & = r\cos \theta \qquad y = r\sin \theta
+                \qquad z = z                                         \\
+                T       & : r \in [0, 2] \qquad \theta \in [0, 2\pi]
+                \qquad z \in [-2, 2]                                 \\
+                I_1     & = \int_{0}^{2\pi} (-\sin z) \ \dl \theta
+                = \Bigg[ -\sin(z)\ \theta \Bigg]_{0}^{2\pi}
+                = {\color{y_h} -2\pi\ \sin z}                        \\
+                I_2     & = \int_{-2}^{2} I_1 \ \dl z
+                = \int_{-2}^{2} \Bigg( -2\pi\ \sin z \Bigg) \dl z    \\
+                        & = \Bigg[ 2\pi\ \cos z \Bigg]_{-2}^{2}
+                = {\color{y_p} 0 }                                   \\
+           \end{align}
+
+     \item Applying the divergence theorem,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 \sin y \\ \cos x \\ \cos z
+                            \end{bNiceMatrix} \qquad\qquad
+                \nabla \dotp \vec{F} = -\sin z                                     \\
+                x       & = r\cos \theta \qquad y = r\sin \theta
+                \qquad z = z                                                       \\
+                T       & : r \in [0, 3] \qquad \theta \in [0, 2\pi]
+                \qquad \phi \in [0, 2]                                             \\
+                I_1     & = \int_{0}^{2\pi} (-\sin z) \ \dl \theta
+                = \Bigg[ -\sin(z)\ \theta \Bigg]_{0}^{2\pi}
+                = {\color{y_h} -2\pi\ \sin z}                                      \\
+                I_2     & = \int_{0}^{2} I_1 \ \dl z
+                = \int_{-2}^{2} \Bigg( -2\pi\ \sin z \Bigg) \dl z                  \\
+                        & = \Bigg[ 2\pi\ \cos z \Bigg]_{0}^{2}
+                = {\color{y_p} 2\pi (\cos 2 - 1) }                                 \\
+                I_3     & = \int_{0}^{3} I_2\ r\ \dl r = \int_{0}^{3}
+                \Bigg( 2\pi (\cos 2 - 1)\ r \Bigg) \dl r                           \\
+                        & = \Bigg[ 2\pi (\cos 2 - 1)\ \frac{r^2}{2} \Bigg]_{0}^{3}
+                = {\color{brown6} 9\pi\ (\cos 2 - 1)}
+           \end{align}
+
+     \item Applying the divergence theorem,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 2x^2 \\ y^2/2 \\ \sin(\pi z)
+                            \end{bNiceMatrix} \qquad\qquad
+                \nabla \dotp \vec{F} = 4x + y + \pi\ \cos(\pi z)                     \\
+                T       & : x \in [0, 1] \quad y \in [0, 1-x] \quad z \in [0, 1-x-y] \\
+                I_1     & = \int_{0}^{1-x-y} (4x + y + \pi\ \cos(\pi z))\ \dl z
+                = \Bigg[ z(4x + y) + \sin(\pi z) \Bigg]_{0}^{1-x-y}                  \\
+                        & = {\color{y_h} (1 - x - y)(4x + y)
+                + \sin \Big(\pi(1-x-y)\Big)}                                         \\
+                I_2     & = \int_{0}^{1-x}I_1 \dl y = \int_{0}^{1-x}
+                \Bigg( 4x - 4x^2 - 5xy + y - y^2 + \sin(\pi - \pi x - \pi y)
+                \Bigg) \dl y                                                         \\
+                        & = \Bigg[ (4x - 4x^2)y + \frac{(1 - 5x)\ y^2}{2}
+                     -\frac{y^3}{3} + \frac{\cos(\pi - \pi x - \pi y)}{\pi}
+                \Bigg]_{0}^{1-x}                                                     \\
+                        & = {\color{y_p} \frac{1 + 9x - 21x^2 + 11x^3}{6}
+                + \frac{1 - \cos(\pi - \pi x)}{\pi}}                                 \\
+                I_3     & = \int_{0}^{1} I_2 \dl z = \int_{0}^{1}
+                \Bigg( \frac{1}{6} + \frac{3x}{2} - \frac{7x^2}{2}
+                + \frac{11x^3}{6} + \frac{1 - \cos(\pi - \pi x)}{\pi} \Bigg) \dl x   \\
+                        & = \Bigg[ \frac{x}{6} + \frac{3x^2}{4} - \frac{7x^3}{6}
+                     + \frac{11x^4}{24} + \frac{x}{\pi}
+                     + \frac{\sin(\pi - \pi x)}{\pi^2} \Bigg]_0^1
+                = {\color{brown6} \frac{5}{24} + \frac{1}{\pi}}
+           \end{align}
+
+     \item Applying the divergence theorem,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 \cosh x \\ z \\ y
+                            \end{bNiceMatrix} \qquad\qquad
+                \nabla \dotp \vec{F} = \sinh x                                       \\
+                T       & : x \in [0, 1] \quad y \in [0, 1-x] \quad z \in [0, 1-x-y] \\
+                I_1     & = \int_{0}^{1-x-y} (\sinh x)\ \dl z
+                = \Bigg[ z\ \sinh x \Bigg]_{0}^{1-x-y}
+                = {\color{y_h} (1 - x - y)\ \sinh x}                                 \\
+                I_2     & = \int_{0}^{1-x}I_1 \dl y = \int_{0}^{1-x}
+                \Bigg( (1-x-y)\ \sinh x \Bigg) \dl y                                 \\
+                        & = \Bigg[ \sinh x\ \left( y - xy
+                     - \frac{y^2}{2} \right) \Bigg]_{0}^{1-x}
+                = {\color{y_p} \sinh(x)\ \frac{1+x^2 - 2x}{2}}                       \\
+                I_3     & = \int_{0}^{1} I_2 \dl z = \int_{0}^{1}
+                \Bigg( (x-1)^2\ \frac{\sinh(x)}{2} \Bigg) \dl x                      \\
+                        & = \Bigg[ \sinh(x)\ (x-1) + \cosh(x)\
+                     \frac{3 + x^2 - 2x}{2} \Bigg]_0^1
+                = {\color{brown6} \cosh(1) - \frac{3}{2}}
+           \end{align}
+
+     \item Applying the divergence theorem,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 x^2 \\ y^2 \\ z^2
+                            \end{bNiceMatrix} \qquad\qquad
+                \nabla \dotp \vec{F} = 2x + 2y + 2z                         \\
+                x       & = r\cos \theta \qquad y = r\sin \theta
+                \qquad z = z                                                \\
+                T       & : r \in [0, z] \qquad \theta \in [0, 2\pi] \qquad
+                z \in [0, h]                                                \\
+                I_1     & = \int_{0}^{2\pi} \Bigg(2r(\cos \theta
+                + \sin \theta) + 2z\Bigg)
+                \ \dl \theta
+                = \Bigg[ 2r\ (\sin \theta - \cos \theta) + 2z\ \theta \Bigg]_{0}^{2\pi}
+                = {\color{y_h} 4\pi z}                                      \\
+                I_2     & = \int_{0}^{z} I_1 \ r\ \dl r
+                = \int_{0}^{z} \Bigg( 4\pi z\ r \Bigg) \dl r
+                = \Bigg[ 2\pi z\ r^2 \Bigg]_{0}^{z}
+                = {\color{y_p} 2\pi\ z^3 }                                  \\
+                I_3     & = \int_{0}^{h} I_2\ \dl z = \int_{0}^{h}
+                \Bigg( 2\pi\ z^3 \Bigg) \dl z
+                = \Bigg[ \frac{\pi\ z^4}{2} \Bigg]_{0}^{h}
+                = {\color{brown6} \frac{\pi h^4}{2}}
+           \end{align}
+
+     \item Applying the divergence theorem,
+           \begin{align}
+                \vec{F} & = \begin{bNiceMatrix}[margin]
+                                 xy \\ yz \\ zx
+                            \end{bNiceMatrix} \qquad\qquad
+                \nabla \dotp \vec{F} = y + z + x                              \\
+                x       & = r\cos \theta \qquad y = r\sin \theta
+                \qquad z = z                                                  \\
+                T       & : r \in [0, 2z] \qquad \theta \in [0, 2\pi] \qquad
+                z \in [0, 2]                                                  \\
+                I_1     & = \int_{0}^{2\pi} \Bigg(r\sin \theta + r\cos \theta
+                + z\Bigg)
+                \ \dl \theta
+                = \Bigg[ -r\cos \theta + r\sin \theta + z \theta \Bigg]_{0}^{2\pi}
+                = {\color{y_h} 4\pi z}                                        \\
+                I_2     & = \int_{0}^{2z} I_1 \ r\ \dl r
+                = \int_{0}^{2z} \Bigg( 2\pi z\ r \Bigg) \dl r
+                = \Bigg[ \pi z\ r^2 \Bigg]_{0}^{2z}
+                = {\color{y_p} 4\pi\ z^3 }                                    \\
+                I_3     & = \int_{0}^{2} I_2\ \dl z = \int_{0}^{2}
+                \Bigg( 4\pi\ z^3 \Bigg) \dl z
+                = \Bigg[ \pi z^4 \Bigg]_{0}^{2}
+                = {\color{brown6} 16\pi}
+           \end{align}
+
+     \item Finding the moment of inertia about the x-axis,
+           \begin{align}
+                I_x & = \iiint_T (y^2 + z^2)\ \dl x \dl y \dl z \qquad\qquad \rho = 1 \\
+                x   & \in [-a, a] \qquad y \in [-b, b] \qquad z \in [-c, c]           \\
+                I_1 & = \int_{-c}^{c} \Bigg(y^2 + z^2\Bigg)\ \dl z
+                = \Bigg[ zy^2 + \frac{z^3}{3} \Bigg]_{-c}^{c}
+                = {\color{y_h} 2cy^2 + \frac{2c^3}{3}}                                \\
+                I_2 & = \int_{-b}^{b} I_1 \ \dl y
+                = \int_{-b}^{b} \Bigg( 2cy^2 + \frac{2c^3}{3} \Bigg) \dl y
+                = \Bigg[ \frac{2c\ y^3}{3} + \frac{2c^3\ y}{3} \Bigg]_{-b}^{b}        \\
+                    & = {\color{y_p} \frac{4cb(b^2 + c^2)}{3} }                       \\
+                I_3 & = \int_{-a}^{a} I_2\ \dl x = \int_{-a}^{a}
+                \Bigg( \frac{4bc\ (b^2 + c^2)}{3} \Bigg) \dl x
+                = \Bigg[ \frac{4bc (b^2 + c^2)}{3}\ x \Bigg]_{-a}^{a}                 \\
+                    & = {\color{brown6} \frac{8abc}{3}\ (b^2 + c^2)}
+           \end{align}
+
+     \item Finding the moment of inertia about the x-axis,
+           \begin{align}
+                I_x & = \iiint_T (y^2 + z^2)\ \dl x \dl y \dl z \qquad\qquad \rho = 1 \\
+                x   & = r \cos \theta \qquad y = r\sin \theta \cos \phi
+                \qquad z = r \sin \theta \sin \phi                                    \\
+                T   & : r \in [0, a] \qquad \theta \in [0, \pi]
+                \qquad \phi \in [0, 2\pi]                                             \\
+                I_1 & = \int_{0}^{2\pi} (r^2 \sin^2 \theta )\ \dl \phi
+                = \Bigg[ \phi\ r^2 \sin^2 \theta \Bigg]_{0}^{2\pi}
+                = {\color{y_h} 2\pi r^2 \sin^2 \theta}                                \\
+                I_2 & = \int_{0}^{\pi} I_1 \ (\sin \theta)\ \dl \theta
+                = \int_{0}^{\pi} \Bigg( 2\pi r^2 ( \sin^3 \theta)  \Bigg) \dl \theta  \\
+                    & = \Bigg[  2\pi r^2\ \left( \frac{\cos^3 \theta}{3}
+                     - \cos \theta \right) \Bigg]_{0}^{\pi}
+                = {\color{y_p} \frac{8\pi}{3}\ r^2 }                                  \\
+                I_3 & = \int_{-4}^{4} I_2 \ r^2\ \dl r = \int_{0}^{a}
+                \Bigg( \frac{8\pi}{3} \Bigg)\ r^4 \dl r
+                = \Bigg[ 2\pi^2 \frac{r^3}{3} \Bigg]_{0}^{a}
+                = {\color{brown6} \frac{8\pi a^5}{15}}
+           \end{align}
+
+     \item Finding the moment of inertia about the x-axis,
+           \begin{align}
+                I_x & = \iiint_T (y^2 + z^2)\ \dl x \dl y \dl z \qquad\qquad \rho = 1 \\
+                x   & = x \qquad y = r \cos \phi \qquad z = r \sin \phi               \\
+                T   & : r \in [0, a] \qquad x \in [0, h]
+                \qquad \phi \in [0, 2\pi]                                             \\
+                I_1 & = \int_{0}^{2\pi} (r^2) \ \dl \phi
+                = \Bigg[ r^2\ \phi \Bigg]_{0}^{2\pi}
+                = {\color{y_h} 2\pi\ r^2}                                             \\
+                I_2 & = \int_{0}^{h} I_1 \ \dl x
+                = \int_{0}^{h} \Bigg( 2\pi r^2 \Bigg) \dl x
+                = \Bigg[ 2\pi r^2\ x \Bigg]_{0}^{h}
+                = {\color{y_p} 2\pi h r^2 }                                           \\
+                I_3 & = \int_{0}^{a} I_2\ r\ \dl r = \int_{0}^{a}
+                \Bigg( 2\pi h\ r^3 \Bigg) \dl r
+                = \Bigg[ \frac{\pi h\ r^4}{2} \Bigg]_{0}^{a}
+                = {\color{brown6} \frac{\pi h a^4}{2}}
+           \end{align}
+
+     \item Finding the moment of inertia about the x-axis,
+           \begin{align}
+                I_x & = \iiint_T (y^2 + z^2)\ \dl x \dl y \dl z \qquad\qquad \rho = 1 \\
+                x   & = r^2 \qquad y = r \cos \phi \qquad z = r \sin \phi             \\
+                T   & : r \in [0, \sqrt{x}] \qquad x \in [0, h]
+                \qquad \phi \in [0, 2\pi]                                             \\
+                I_1 & = \int_{0}^{2\pi} (r^2) \ \dl \phi
+                = \Bigg[ r^2\ \phi \Bigg]_{0}^{2\pi}
+                = {\color{y_h} 2\pi\ r^2}                                             \\
+                I_2 & = \int_{0}^{\sqrt{x}} I_1 \ r\ \dl r
+                = \int_{0}^{\sqrt{x}} \Bigg( 2\pi r^3 \Bigg) \dl r
+                = \Bigg[ \pi \frac{r^4}{2} \Bigg]_{0}^{\sqrt{x}}
+                = {\color{y_p} \frac{\pi x^2}{2} }                                    \\
+                I_3 & = \int_{0}^{h} I_2\ \dl x = \int_{0}^{h}
+                \Bigg( \frac{\pi x^2}{2} \Bigg) \dl x
+                = \Bigg[ \frac{\pi x^3}{6} \Bigg]_{0}^{h}
+                = {\color{brown6} \frac{\pi h^3}{6}}
+           \end{align}
+
+     \item Finding the moment of inertia about the x-axis,
+           \begin{align}
+                I_x & = \iiint_T (y^2 + z^2)\ \dl x \dl y \dl z \qquad\qquad \rho = 1 \\
+                x   & = r \qquad y = r \cos \phi \qquad z = r \sin \phi               \\
+                T   & : r \in [0, x] \qquad x \in [0, h]
+                \qquad \phi \in [0, 2\pi]                                             \\
+                I_1 & = \int_{0}^{2\pi} (r^2) \ \dl \phi
+                = \Bigg[ r^2\ \phi \Bigg]_{0}^{2\pi}
+                = {\color{y_h} 2\pi\ r^2}                                             \\
+                I_2 & = \int_{0}^{x} I_1 \ r\ \dl r
+                = \int_{0}^{x} \Bigg( 2\pi r^3 \Bigg) \dl r
+                = \Bigg[ \pi \frac{r^4}{2} \Bigg]_{0}^{x}
+                = {\color{y_p} \frac{\pi x^4}{2} }                                    \\
+                I_3 & = \int_{0}^{h} I_2\ \dl x = \int_{0}^{h}
+                \Bigg( \frac{\pi x^4}{2} \Bigg) \dl x
+                = \Bigg[ \frac{\pi x^5}{10} \Bigg]_{0}^{h}
+                = {\color{brown6} \frac{\pi h^5}{10}}
+           \end{align}
+
+     \item The moment of inertia is a measure of how far from the axis the masses
+           are distributed. Using $ \sqrt{x} > x $ when $ x \in [0, 1] $ and
+           vice versa when $ x > 1 $. \par
+
+           The envelope in the $ xz $ plane is a straight line and parabola respectively.
+           This means that the moment of inertia is smaller in the case of the cone
+           for small $ h $ since the masses are closer to the axis. \par
+
+           For large $ h $, $ \sqrt{x} < x $ and thus the paraboloid has masses grouped
+           much closer to the origin than the cone, making its $ I_x $ smaller.
+
+     \item A solid of revolution is symmetric in the azimuthal axis.
+           \begin{align}
+                g   & = y^2 + z^2 = r^2                                        \\
+                I_x & = \int_{0}^{h}\ \Bigg[\int_{0}^{r} \Bigg(\int_{0}^{2\pi}
+                g\ \dl \phi \Bigg) r\ \dl r\Bigg]\ \dl x                       \\
+                I_x & = \frac{2\pi}{4} \int_{0}^{h} r(x)^4\ \dl x
+           \end{align}
+           Using the above formula to solve
+           \begin{enumerate}
+                \item Problem 20,
+                      \begin{align}
+                           T               & : x^2 + y^2 + z^2 \leq a^2         &
+                           r(x)            & \in [-\sqrt{a^2 - x^2},
+                           \sqrt{a^2 - x^2}]                                      \\
+                           I_x             & = \frac{\pi}{2}\ \int_{-a}^{a}
+                           \ (a^2 - x^2)^2
+                           \ \dl x         &
+                                           & = \frac{\pi}{2}\ \Bigg[ a^4\ x
+                           - \frac{2a^2x^3}{3} + \frac{x^5}{5} \Bigg]_{-a}^{a}    \\
+                                           & = \frac{\pi}{2} \Bigg[ 2a^5
+                                - \frac{4a^5}{3} +
+                                \frac{2a^5}{5}
+                           \Bigg]_{-a}^{a} &
+                                           & = \color{y_p} \frac{8\pi\ a^5}{15}
+                      \end{align}
+                \item Problem 21,
+                      \begin{align}
+                           T       & : y^2 + z^2 \leq a^2                          &
+                           r(x)    & \in [-a, a]                                     \\
+                           I_x     & = \frac{\pi}{2}\ \int_{0}^{h}\ a^4
+                           \ \dl x &
+                                   & = \frac{\pi}{2}\ \Bigg[ a^4\ x \Bigg]_{0}^{h}
+                           = \color{y_p} \frac{\pi h\ a^4}{2}
+                      \end{align}
+                \item Problem 22,
+                      \begin{align}
+                           T       & : y^2 + z^2 \leq a^2                  &
+                           r(x)    & \in [-\sqrt{x}, \sqrt{x}]               \\
+                           I_x     & = \frac{\pi}{2}\ \int_{0}^{h}\ x^2
+                           \ \dl x &
+                                   & = \frac{\pi}{2}\ \Bigg[ \frac{x^3}{3}
+                                \Bigg]_{0}^{h}
+                           = \color{y_p} \frac{\pi h^3}{6}
+                      \end{align}
+                \item Problem 23,
+                      \begin{align}
+                           T       & : y^2 + z^2 \leq a^2                  &
+                           r(x)    & \in [x, x]               \\
+                           I_x     & = \frac{\pi}{2}\ \int_{0}^{h}\ x^4
+                           \ \dl x &
+                                   & = \frac{\pi}{2}\ \Bigg[ \frac{x^5}{5}
+                                \Bigg]_{0}^{h}
+                           = \color{y_p} \frac{\pi h^5}{10}
+                      \end{align}
+           \end{enumerate}
+
+
+\end{enumerate}

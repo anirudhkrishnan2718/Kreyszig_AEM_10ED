@@ -1,0 +1,760 @@
+\section{Vector Product (Cross Product)}
+\begin{enumerate}
+    \item Proving Equation 4, using the commutativity of real numbers
+          \begin{align}
+              l\vec{a} \times \vec{b}    & = \abs{l} \abs{\vec{a}} \abs{\vec{b}}
+              \sin\theta                 &
+              \vec{a} \times l\vec{b}    & = \abs{\vec{a}} \abs{l} \abs{\vec{b}}
+              \sin\theta                                                          \\
+              l (\vec{a} \times \vec{b}) & = \abs{l} (\abs{\vec{a}} \abs{\vec{b}}
+              \sin\theta)
+          \end{align}
+          The three expressions are equivalent. \par
+          For the specific case of Cartersian $ \mathcal{R}^3 $, the vectors can be
+          expressed in terms of their 3 components.
+          \begin{align}
+              \vec{a} \times (\vec{b} + \vec{c}) & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  a_1           & a_2           & a_3           \\
+                  b_1 + c_1     & b_2 + c_2     & b_3 + c_3
+              \end{vNiceMatrix} \\
+                                                 &
+              = \begin{vNiceMatrix}[r, margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    a_1           & a_2           & a_3           \\
+                    b_1           & b_2           & b_3
+                \end{vNiceMatrix} +
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  a_1           & a_2           & a_3           \\
+                  c_1           & c_2           & c_3
+              \end{vNiceMatrix} = \vec{a} \times \vec{b} + \vec{a} \times \vec{c} \\
+              (\vec{a} + \vec{b}) \times \vec{c} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  a_1 + b_1     & a_2 + b_2     & a_3 + b_3     \\
+                  c_1           & c_2           & c_3
+              \end{vNiceMatrix} \\
+                                                 &
+              = \begin{vNiceMatrix}[r, margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    a_1           & a_2           & a_3           \\
+                    c_1           & c_2           & c_3
+                \end{vNiceMatrix} +
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  b_1           & b_2           & b_3           \\
+                  c_1           & c_2           & c_3
+              \end{vNiceMatrix} = \vec{a} \times \vec{c} + \vec{b} \times \vec{c}
+          \end{align}
+          The relation follows from the properties of determinant addition
+
+    \item The relation with $ \vec{a} \neq \vec{0} $ gives
+          \begin{align}
+              \vec{a} \times \vec{b}             & = \vec{a} \times \vec{c}        &
+              \vec{a} \times (\vec{b} - \vec{c}) & = 0                               \\
+              \implies \vec{b}                   & = \vec{c} \quad \text{or} \quad
+              \vec{a} \parallel (\vec{b} - \vec{c})
+          \end{align}
+
+    \item Swapping two rows of a determinant introduces a multiplier of $ (-1) $. This
+          proves Equation 6. \par
+          Alternatively, enforcing the right-handed triple rule introduces a $ (-1) $
+          factor into the result when swapping $ \vec{a} $ and $ \vec{b} $ in the
+          cross product. \par
+          To prove Equation 11,
+          \begin{align}
+              \vec{a} \dotp (\vec{b} \times \vec{c}) &
+              = \begin{vNiceMatrix}[r, margin]
+                    a_1 & a_2 & a_3 \\
+                    b_1 & b_2 & b_3 \\
+                    c_1 & c_2 & c_3
+                \end{vNiceMatrix}
+              = \begin{vNiceMatrix}[r, margin]
+                    c_1 & c_2 & c_3 \\
+                    a_1 & a_2 & a_3 \\
+                    b_1 & b_2 & b_3
+                \end{vNiceMatrix} = \vec{c} \dotp (\vec{a} \times \vec{b}) \\
+                                                     &
+              = (\vec{a} \times \vec{b}) \dotp \vec{c}
+          \end{align}
+          The properties of row swapping in the underlying determinant are used to
+          prove the properties of the box product.
+
+    \item Proving the identity,
+          \begin{align}
+              \abs{\vec{a} \times \vec{b}}^2 & = \abs{\vec{a}}^2 \abs{\vec{b}}^2
+              \sin^2 \theta                  &
+              \abs{\vec{a} \dotp \vec{b}}^2  & = \abs{\vec{a}}^2 \abs{\vec{b}}^2
+              \cos^2 \theta                                                      \\
+              \abs{\vec{a} \times \vec{b}}^2 + \abs{\vec{a} \dotp \vec{b}}^2
+                                             & = (\vec{a} \dotp \vec{a})
+              (\vec{b} \dotp \vec{b})                                            \\
+              \abs{\vec{a} \times \vec{b}}   & = \sqrt{(\vec{a} \dotp \vec{a})
+                  (\vec{b} \dotp \vec{b}) - \abs{\vec{a} \dotp \vec{b}}^2}
+          \end{align}
+          Verifying the relation for the given vectors,
+          \begin{align}
+              \vec{a} \times \vec{b}           &
+              = \begin{vNiceMatrix}[r, margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    3             & 4             & 2             \\
+                    1             & 0             & 2
+                \end{vNiceMatrix} = 8 \vec{\hat{i}} - 4 \vec{\hat{j}}
+              - 4\vec{\hat{k}}                 &
+              \abs{\vec{a} \times \vec{b}}     & = \sqrt{96}          \\
+              (\vec{a} \dotp \vec{b})^2        & = 49               &
+              \abs{\vec{a}}^2 \abs{\vec{b}}^2  & = 5 \cdot 29 = 145   \\
+              \sqrt{(\vec{a} \dotp \vec{a})
+                  (\vec{b} \dotp \vec{b})
+              - \abs{\vec{a} \dotp \vec{b}}^2} & = \sqrt{96}
+          \end{align}
+
+    \item Replacing $ \vec{p} $ with $ -\vec{p} $, reverses the direction of the
+          moment $ \vec{m} \rightarrow -\vec{m} $. \par
+          Physically, the body rotates in the opposite direction when the direction of
+          the force is reversed.
+
+    \item $\vec{r}$ is the position vector of the point whose velocity is to be
+          found. $ d \rightarrow 2d $ makes $ \abs{\vec{v}} \rightarrow 2\abs{\vec{v}} $
+
+    \item From the details,
+          \begin{align}
+              \boldsymbol{\omega} & = \SI{20}{\per\s}\ \vec{\hat{j}}     &
+              \vec{r}             & = (8, 6, 0)
+              \\
+              \vec{v}             & = \boldsymbol{\omega} \times \vec{r} &
+                                  & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  0             & 20            & 0             \\
+                  8             & 6             & 0
+              \end{vNiceMatrix} \\
+              \vec{v}             & = \SI{-160}{\m\per\s}\ \vec{\hat{k}} &
+              \abs{\vec{v}}       & = \SI{160}{\m\per\s}
+          \end{align}
+
+    \item New angular velocity is,
+          \begin{align}
+              \boldsymbol{\omega} & = \SI{10}{\per\s}\
+              \left( \frac{\vec{\hat{i}} + \vec{\hat{j}}}{\sqrt{2}}
+              \right)             &
+              \vec{r}             & = (4, 2, -2)
+              \\
+              \vec{v}             & = \boldsymbol{\omega} \times \vec{r} &
+                                  &
+              =  \begin{vNiceMatrix}[r, margin]
+                     \vec{\hat{i}}       & \vec{\hat{j}}       & \vec{\hat{k}} \\
+                     \frac{10}{\sqrt{2}} & \frac{10}{\sqrt{2}} & 0             \\
+                     4                   & 2                   & -2
+                 \end{vNiceMatrix} \\
+                                  & = -10\sqrt{2}\ \vec{\hat{i}}
+              + 10\sqrt{2}\ \vec{\hat{j}} - 10\sqrt{2}\ \vec{\hat{k}}
+          \end{align}
+
+    \item Box product is zero,
+          \begin{align}
+              \vec{a} \dotp (\vec{b} \times \vec{c}) & = 0 &
+              \begin{vNiceMatrix}[r, margin]
+                  a_1 & a_2 & a_3 \\
+                  b_1 & b_2 & b_3 \\
+                  c_1 & c_2 & c_3
+              \end{vNiceMatrix}         & = 0
+          \end{align}
+          At least 2 of the vectors are L.D. Geometrically, at least 2 of the 3 edge
+          vectors of the parallellopiped are collinear.
+
+    \item Refer notes. TBC
+
+    \item Performing the given computations,
+          \begin{align}
+              \vec{a} \times \vec{b} & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  2             & 1             & 0             \\
+                  -3            & 2             & 0
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      0 \\ 0 \\ 7
+                                  \end{bNiceMatrix} \\
+              \vec{b} \times \vec{a} & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -3            & 2             & 0             \\
+                  2             & 1             & 0
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      0 \\ 0 \\ -7
+                                  \end{bNiceMatrix} \\
+              \vec{a} \dotp \vec{b}  & = -4
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              3\vec{c} \times 5\vec{d} & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  3             & 12            & -6            \\
+                  25            & -5            & 15
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      150 \\ -195 \\ -315
+                                  \end{bNiceMatrix} \\
+              15\vec{d} \times \vec{c} & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  75            & -15           & 45            \\
+                  1             & 4             & -2
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      -150 \\ 195 \\ 315
+                                  \end{bNiceMatrix} \\
+              15\vec{d} \dotp \vec{c}  & = 75 - 60 - 90 = -75
+              \\
+              15\vec{c} \dotp \vec{d}  & = 75 - 60 - 90 = -75
+              \\
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              \vec{c} \times (\vec{a} + \vec{b}) & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  1             & 4             & -2            \\
+                  -1            & 3             & 0
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      6 \\ 2 \\ 7
+                                  \end{bNiceMatrix} \\
+              \vec{a} \times \vec{c}             & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  2             & 1             & 0             \\
+                  1             & 4             & -2
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      -2 \\ 4 \\ 7
+                                  \end{bNiceMatrix} \\
+              \vec{b} \times \vec{c}             & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -3            & 2             & 0             \\
+                  1             & 4             & -2
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      -4 \\ -6 \\ -14
+                                  \end{bNiceMatrix}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              4\vec{b} \times 3\vec{c} & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -12           & 8             & 0             \\
+                  3             & 12            & -6
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      -48 \\ -72 \\ -168
+                                  \end{bNiceMatrix} \\
+              12\vec{c} \times \vec{b} & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  12            & 48            & -24           \\
+                  -3            & 2             & 0
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      48 \\ 72 \\ 168
+                                  \end{bNiceMatrix}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (\vec{a} + \vec{d}) \times (\vec{d} + \vec{a}) & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  7             & 0             & 3             \\
+                  7             & 0             & 3
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      0 \\ 0 \\ 0
+                                  \end{bNiceMatrix}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (\vec{b} \times \vec{c}) \dotp \vec{d} & =
+              \begin{vNiceMatrix}[r, margin]
+                  5  & -1 & 3  \\
+                  -3 & 2  & 0  \\
+                  1  & 4  & -2
+              \end{vNiceMatrix} = 5(-4) + (6) + 3(-14) = -56 \\
+              \vec{b} \dotp (\vec{c} \times \vec{d}) & =
+              \begin{vNiceMatrix}[r, margin]
+                  -3 & 2  & 0  \\
+                  1  & 4  & -2 \\
+                  5  & -1 & 3  \\
+              \end{vNiceMatrix} = -3(10) - 2(13) = -56
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (\vec{b} \times \vec{c}) \times \vec{d} & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -3            & 2             & 0             \\
+                  1             & 4             & -2            \\
+              \end{vNiceMatrix} \times \vec{d} =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -4            & -6            & -14           \\
+                  5             & -1            & 3             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      -32 \\ -58 \\ 34
+                                  \end{bNiceMatrix} \\
+              \vec{b} \times (\vec{c} \times \vec{d}) & = \vec{b} \times
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  1             & 4             & -2            \\
+                  5             & -1            & 3             \\
+              \end{vNiceMatrix} =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -3            & 2             & 0             \\
+                  10            & -13           & -21           \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      -42 \\ -63 \\ 19
+                                  \end{bNiceMatrix}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (\vec{a} \times \vec{b}) \times \vec{a} & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  2             & 1             & 0             \\
+                  -3            & 2             & 0             \\
+              \end{vNiceMatrix} \times \vec{a} =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  0             & 0             & 7             \\
+                  2             & 1             & 0             \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      -7 \\ 14 \\ 0
+                                  \end{bNiceMatrix} \\
+              \vec{a} \times (\vec{b} \times \vec{a}) & = \vec{a} \times
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -3            & 2             & 0             \\
+                  2             & 1             & 0             \\
+              \end{vNiceMatrix} =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  2             & 1             & 0             \\
+                  0             & 0             & -7            \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      -7 \\ 14 \\ 0
+                                  \end{bNiceMatrix}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (\vec{i} \times \vec{j}) \dotp \vec{k} & =
+              \begin{vNiceMatrix}[r, margin]
+                  1 & 0 & 0 \\
+                  0 & 1 & 0 \\
+                  0 & 0 & 1 \\
+              \end{vNiceMatrix} = 1              \\
+              (\vec{i} \times \vec{k}) \dotp \vec{j} & =
+              \begin{vNiceMatrix}[r, margin]
+                  1 & 0 & 0 \\
+                  0 & 0 & 1 \\
+                  0 & 1 & 0 \\
+              \end{vNiceMatrix} = -1              \\
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (\vec{a} \times \vec{b}) \times (\vec{c} \times \vec{d}) & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  2             & 1             & 0             \\
+                  -3            & 2             & 0             \\
+              \end{vNiceMatrix} \times
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  1             & 4             & -2            \\
+                  5             & -1            & 3             \\
+              \end{vNiceMatrix} \\
+                                                                       & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  0             & 0             & 7             \\
+                  10            & -13           & -21           \\
+              \end{vNiceMatrix} =
+              \begin{bNiceMatrix}[r, margin]
+                  91 \\ 70 \\ 0
+              \end{bNiceMatrix}
+              \\
+              (\vec{a}\ \vec{b}\ \vec{c}) \cdot \vec{c}                & =
+              \begin{vNiceMatrix}[r, margin]
+                  2  & 1 & 0  \\
+                  -3 & 2 & 0  \\
+                  1  & 4 & -2 \\
+              \end{vNiceMatrix} \cdot \begin{bNiceMatrix}[r, margin]
+                                          1 \\ 4 \\ -2
+                                      \end{bNiceMatrix} =
+              \begin{bNiceMatrix}[r, margin]
+                  -14 \\ -56 \\ 28
+              \end{bNiceMatrix}
+              \\
+              (\vec{a}\ \vec{b}\ \vec{c}) \cdot \vec{d}                & =
+              \begin{vNiceMatrix}[r, margin]
+                  2  & 1 & 0  \\
+                  -3 & 2 & 0  \\
+                  1  & 4 & -2 \\
+              \end{vNiceMatrix} \cdot \begin{bNiceMatrix}[r, margin]
+                                          5 \\ -1 \\ 3
+                                      \end{bNiceMatrix} =
+              \begin{bNiceMatrix}[r, margin]
+                  -70 \\ 14 \\ -42
+              \end{bNiceMatrix}
+              \\
+              (\vec{a}\ \vec{b}\ \vec{c}) \cdot \vec{c}
+              - (\vec{a}\ \vec{b}\ \vec{c}) \cdot \vec{d}              & =
+              \begin{bNiceMatrix}[r, margin]
+                  56 \\ -70 \\ 70
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              4\vec{b} \times 3\vec{c}        & =
+              \begin{vNiceMatrix}[r, margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -12           & 8             & 0             \\
+                  3             & 12            & -6            \\
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      -48 \\ -72 \\ -168
+                                  \end{bNiceMatrix}       \\
+              \vec{b} \times \vec{c}          & =
+              \cdot \begin{vNiceMatrix}[r, margin]
+                        \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                        -3            & 2             & 0             \\
+                        1             & 4             & -2            \\
+                    \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                            -4 \\ -6 \\ -14
+                                        \end{bNiceMatrix} \\
+              12 \abs{\vec{b} \times \vec{c}} & =
+              12 \sqrt{16 + 36 + 196} = 24 \sqrt{62}
+              \\
+              \vec{c} \times \vec{b}          & =
+              \cdot \begin{vNiceMatrix}[r, margin]
+                        \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                        1             & 4             & -2            \\
+                        -3            & 2             & 0             \\
+                    \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                            4 \\ 6 \\ 14
+                                        \end{bNiceMatrix} \\
+              12 \abs{\vec{c} \times \vec{b}} & =
+              12 \sqrt{16 + 36 + 196} = 24 \sqrt{62}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (\vec{a}\ \vec{c}\ \vec{d})                                         & =
+              \begin{vNiceMatrix}[r, margin]
+                  2 & 1  & 0  \\
+                  1 & 4  & -2 \\
+                  5 & -1 & 3  \\
+              \end{vNiceMatrix} = 2(10) - 1(13) = 7                                   \\
+              (\vec{a} - \vec{b} \quad \vec{c} - \vec{b} \quad \vec{d} - \vec{b}) & =
+              \begin{vNiceMatrix}[r, margin]
+                  5 & -1 & 0  \\
+                  4 & 2  & -2 \\
+                  8 & -3 & 3  \\
+              \end{vNiceMatrix} = 5(0) + 1(28) = 28
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              \vec{b} \times \vec{b}                         & = 0                    \\
+              (\vec{b} - \vec{c}) \times (\vec{c} - \vec{b}) & =
+              - (\vec{c} - \vec{b}) \times (\vec{c} - \vec{b}) = 0                    \\
+              \vec{b} \dotp \vec{b}                          & = \abs{\vec{b}}^2 = 13
+          \end{align}
+
+    \item Examples TBC.
+          \begin{enumerate}
+              \item Proving the relation for general vectors in $ \mathcal{R}^3 $,
+                    \begin{align}
+                        \vec{b} \times (\vec{c} \times \vec{d}) &
+                        = \begin{vNiceMatrix}[margin]
+                              \vec{\hat{i}}   & \vec{\hat{j}}   & \vec{\hat{k}}   \\
+                              b_1             & b_2             & b_3             \\
+                              c_2d_3 - c_3d_2 & c_3d_1 - c_1d_3 & c_1d_2 - c_2d_1
+                          \end{vNiceMatrix} \\
+                                                                & =
+                        c_1 (b_2d_2 + b_3d_3)\ \vec{\hat{i}}
+                        + c_2 (b_1d_1 + b_3d_3)\ \vec{\hat{j}}
+                        + c_3 (b_1d_1 + b_2d_2)\ \vec{\hat{k}}
+                        \\
+                                                                & -
+                        [d_1 (b_2c_2 + b_3c_3)\ \vec{\hat{i}}
+                        + d_2 (b_1c_1 + b_3c_3)\ \vec{\hat{j}}
+                        + d_3 (b_1c_1 + b_2c_2)\ \vec{\hat{k}}]
+                        \\
+                                                                & =
+                        (b_1d_1 + b_2d_2 + b_3d_3)
+                        (c_1\ \vec{\hat{i}} + c_2\ \vec{\hat{j}} + c_3\ \vec{\hat{k}})
+                        \\
+                                                                & -
+                        (b_1c_1 + b_2c_2 + b_3c_3)
+                        (d_1\ \vec{\hat{i}} + d_2\ \vec{\hat{j}} + d_3\ \vec{\hat{k}})
+                        \\
+                                                                & =
+                        (\vec{b} \dotp \vec{d})\ \vec{c} -
+                        (\vec{b} \dotp \vec{c})\ \vec{d}
+                    \end{align}
+
+              \item Replacing $ \vec{b} $ with $ \vec{a} \times \vec{b} $ in the
+                    result from part $ a $,
+                    \begin{align}
+                        (\vec{a} \times \vec{b}) \times (\vec{c} \times \vec{d}) & =
+                        (\vec{a} \times \vec{b} \dotp \vec{d})\ \vec{c} -
+                        (\vec{a} \times \vec{b} \dotp \vec{c})\ \vec{d}
+                    \end{align}
+
+              \item Let $ (\vec{c} \times \vec{d}) = \vec{e} $ for convenience. Taking
+                    the dot product of part $ a $ with $ \vec{a} $,
+                    \begin{align}
+                        \vec{b} \times \vec{e} \dotp \vec{a}            & =
+                        \vec{a} \times \vec{b} \dotp \vec{e}                \\
+                                                                        & =
+                        \color{y_h} (\vec{a} \times \vec{b}) \dotp
+                        (\vec{c} \times \vec{d})                            \\
+                        [(\vec{b} \dotp \vec{d})\ \vec{c} -
+                        (\vec{b} \dotp \vec{c})\ \vec{d}] \dotp \vec{a} & =
+                        \color{y_p} (\vec{b} \dotp \vec{d})(\vec{a} \dotp \vec{c}) -
+                        (\vec{b} \dotp \vec{c})(\vec{a} \dotp \vec{d})
+                    \end{align}
+
+              \item The relations follow from the properties of row swapping in
+                    determinants, where a factor of $ (-1)^n $ is multiplied for $ n $
+                    swaps.
+          \end{enumerate}
+
+    \item Language in question unclear. Force acts on the point $ A $ and the moment is
+          to be measured about the point $ Q $
+          \begin{align}
+              \vec{r}       & = \begin{bNiceMatrix}[r, margin]
+                                    -2 \\ 2 \\ 0
+                                \end{bNiceMatrix}
+                            &
+              \vec{p}       & = \begin{bNiceMatrix}[r, margin]
+                                    2 \\ 3 \\ 0
+                                \end{bNiceMatrix}
+              \\
+              \vec{m}       & = \vec{r} \times \vec{p}
+                            &
+                            & = \begin{vNiceMatrix}[margin]
+                                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                    -2            & 2             & 0             \\
+                                    2             & 3             & 0
+                                \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                                        0 \\ 0 \\ -10
+                                                    \end{bNiceMatrix} \\
+              \abs{\vec{m}} & = 10
+          \end{align}
+
+    \item Language in question unclear. Force acts on the point $ A $ and the moment is
+          to be measured about the point $ Q $
+          \begin{align}
+              \vec{r}       & = \begin{bNiceMatrix}[r, margin]
+                                    2 \\ 3 \\ 2
+                                \end{bNiceMatrix}
+                            &
+              \vec{p}       & = \begin{bNiceMatrix}[r, margin]
+                                    1 \\ 0 \\ 3
+                                \end{bNiceMatrix}
+              \\
+              \vec{m}       & = \vec{r} \times \vec{p}
+                            &
+                            & = \begin{vNiceMatrix}[margin]
+                                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                    2             & 3             & 2             \\
+                                    1             & 0             & 3
+                                \end{vNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                                        9 \\ -4 \\ -3
+                                                    \end{bNiceMatrix} \\
+              \abs{\vec{m}} & = \sqrt{81 + 16 + 9} = \sqrt{106}
+          \end{align}
+
+    \item Using cross product of adjacent sides as vectors,
+          \begin{align}
+              \vec{a}                          & = \bmatcol{6}{2}
+                                               &
+              \vec{b}                          & = \bmatcol{1}{2}
+              \\
+              \vec{a} \times \vec{b}           &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    6             & 2             & 0             \\
+                    1             & 2             & 0
+                \end{vNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    0 \\ 0 \\ 10
+                \end{bNiceMatrix} &
+              \text{Area}                      & = 10
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[scale = 1]
+                  \coordinate (O) at (4,2); \coordinate (a) at (10, 4);
+                  \coordinate (b) at (5, 4); \coordinate (c) at (11, 6);
+                  \draw[force, y_h] (O) -- (a) node[midway,below]
+                  {$\vec{a}$};
+                  \draw[force, y_p] (O) -- (b) node[midway,left]
+                  {$\vec{b}$};
+                  \draw[black, dashed] (a) -- (c); \draw[black, dashed] (b) -- (c);
+                  \node[below left] at (O) {$ O $};
+                  \node[above left] at (b) {$ B $};
+                  \node[right] at (a) {$ A $};
+                  \node[above right] at (c) {$ C $};
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Pairs of opposite sides are identical vectors, which makes it a parallellogram.
+          Using cross product of adjacent sides as vectors,
+          \begin{align}
+              \overline{PQ} = \overline{SR} = \vec{a} & = \bmatcol{3}{0.5}
+                                                      &
+              \overline{QR} = \overline{PS} = \vec{b} & = \bmatcol{-0.5}{2}
+              \\
+              \vec{a} \times \vec{b}                  &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    3             & 0.5           & 0             \\
+                    -0.5          & 2             & 0
+                \end{vNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    0 \\ 0 \\ 6.25
+                \end{bNiceMatrix}        &
+              \text{Area}                             & = 10
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[scale = 1.5]
+                  \coordinate (O) at (2,1); \coordinate (a) at (5, -1);
+                  \coordinate (b) at (4, 3); \coordinate (c) at (8, 2);
+                  \draw[black] (O) -- (a); \draw[black] (O) -- (b);
+                  \draw[black] (a) -- (c); \draw[black] (b) -- (c);
+                  \coordinate (p) at (7/2,0); \coordinate (q) at (13/2, 1/2);
+                  \coordinate (r) at (6, 5/2); \coordinate (s) at (3, 2);
+                  \draw[y_h, thick] (p) -- (q); \draw[y_h, thick] (r) -- (s);
+                  \draw[y_p, thick] (q) -- (r); \draw[y_p, thick] (s) -- (p);
+                  \node[left] at (O) {$ O $}; \node[above] at (b) {$ B $};
+                  \node[below] at (a) {$ A $}; \node[right] at (c) {$ C $};
+                  \node[below left] at (p) {$ P $}; \node[below right] at (q) {$ Q $};
+                  \node[above right] at (r) {$ R $}; \node[above left] at (s) {$ S $};
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Area of triangle is half the area of the parallellogram.
+          \begin{align}
+              \vec{a}                          & = \begin{bNiceMatrix}[r, margin]
+                                                       2 \\ 0 \\ 4
+                                                   \end{bNiceMatrix}
+                                               &
+              \vec{b}                          & = \begin{bNiceMatrix}[r, margin]
+                                                       2 \\ 3 \\ 3
+                                                   \end{bNiceMatrix}
+              \\
+              \vec{a} \times \vec{b}           &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    2             & 0             & 4             \\
+                    2             & 3             & 3
+                \end{vNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    -12 \\ 2 \\ 6
+                \end{bNiceMatrix} &
+              \text{Area}                      & =
+              \frac{1}{2} \abs{\vec{a} \times \vec{b}} = \sqrt{46}
+          \end{align}
+
+    \item Using the point $ A $ as the reference point.
+          \begin{align}
+              \vec{b}                          & = \begin{bNiceMatrix}[r, margin]
+                                                       3 \\ 0 \\ -2.25
+                                                   \end{bNiceMatrix}
+                                               &
+              \vec{c}                          & = \begin{bNiceMatrix}[r, margin]
+                                                       -1 \\ 6 \\ 3.75
+                                                   \end{bNiceMatrix}
+              \\
+              \vec{b} \times \vec{c}           &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    3             & 0             & -2.25         \\
+                    -1            & 6             & 3.75
+                \end{vNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    13.5 \\ -9 \\ 18
+                \end{bNiceMatrix} &
+              \vec{\hat{n}}                    & = \frac{1}{\sqrt{29}}
+              \begin{bNiceMatrix}[r, margin]
+                  3 \\ -2 \\ 4
+              \end{bNiceMatrix}                                      \\
+              3x - 2y + 4z                     & = 0
+          \end{align}
+
+    \item Using the point $ A $ as the reference point. \textcolor{y_p}{Answer in
+              appendix is wrong}.
+          \begin{align}
+              \vec{b}                          & = \begin{bNiceMatrix}[r, margin]
+                                                       0 \\ -5 \\ 2
+                                                   \end{bNiceMatrix}
+                                               &
+              \vec{c}                          & = \begin{bNiceMatrix}[r, margin]
+                                                       3 \\ -3 \\ 3
+                                                   \end{bNiceMatrix}
+              \\
+              \vec{b} \times \vec{c}           &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    0             & -5            & 2             \\
+                    3             & -3            & 3
+                \end{vNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    -9 \\ 6 \\ 15
+                \end{bNiceMatrix} &
+              \vec{\hat{n}}                    & = \frac{1}{\sqrt{38}}
+              \begin{bNiceMatrix}[r, margin]
+                  -3 \\ 2 \\ 5
+              \end{bNiceMatrix}                                      \\
+              -3x + 2y + 5z                    & = 23
+          \end{align}
+
+    \item Volume is equal to box product,
+          \begin{align}
+              \begin{vNiceMatrix}[r, margin]
+                  1  & 1 & 0  \\
+                  -2 & 0 & 2  \\
+                  -2 & 0 & -3 \\
+              \end{vNiceMatrix} = 6 + 22 = 28
+          \end{align}
+
+    \item Using the first vertex as the reference point,
+          \begin{align}
+              \begin{vNiceMatrix}[r, margin]
+                  4 & -8 & 2 \\
+                  6 & 3  & 7 \\
+                  9 & 6  & 3 \\
+              \end{vNiceMatrix} & = 4(9-42) - 6(-36) + 9(-62) = -474 \\
+              \text{Area}                    & = \frac{474}{6} = 79
+          \end{align}
+
+    \item Using the first vertex as the reference point,
+          \begin{align}
+              \begin{vNiceMatrix}[r, margin]
+                  2 & 4  & 6 \\
+                  7 & 5  & 3 \\
+                  1 & -1 & 2 \\
+              \end{vNiceMatrix} & = 2(13) - 7(14) + (-18) = -90    \\
+              \text{Area}                    & = \frac{90}{6} = 15
+          \end{align}
+
+    \item TBC. Refer notes.
+\end{enumerate}

@@ -1,0 +1,2462 @@
+\section{Curves, Arc Length, Curvature, Torsion}
+
+\begin{enumerate}
+    \item The parametric curve is a circle in the $ xy $ plane at $ z = 0 $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[Ani,
+                          width = 8cm, height = 8cm,
+                          view={0}{90},
+                          axis lines=center,
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal image,
+                          enlargelimits=0.1]
+                      \addplot3 [GraphSmooth, y_h, samples y=0,domain=-pi:pi,variable=\t]
+                      ({3 + 2*cos(\t)},{2*sin(\t)},{0});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \newpage
+    \item The parametric curve is a straight line in $ 3d $ space.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[Ani,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ z = -5x $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-2:2,variable=\t]
+                          ({\t},{3*\t},{-5*\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[Ani,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ y = 3x $},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-2:2,variable=\t]
+                          ({\t},{3*\t},{-5*\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[Ani,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ z = \frac{-5y}{3}$},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1]
+                          \addplot3 [GraphSmooth, brown6, samples y=0,
+                              domain=-2:2,variable=\t]
+                          ({\t},{3*\t},{-5*\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item The parametric curve is a polynomial in the $ yz $ space.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[Ani,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ x = 0 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-2:2,variable=\t]
+                          ({0},{\t},{\t^3});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[Ani,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ x = 0$},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-2:2,variable=\t]
+                          ({0},{\t},{\t^3});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[Ani,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ z = y^3$},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1]
+                          \addplot3 [GraphSmooth, brown6, samples y=0,
+                              domain=-2:2,variable=\t]
+                          ({0},{\t},{\t^3});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item The parametric curve is a circle in the $ yz $ space.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ x = -2 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-pi:pi,variable=\t]
+                          ({-2},{2 + 5 * cos(\t)},{-1 + 5 * sin(\t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ x = -2$},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-pi:pi,variable=\t]
+                          ({-2},{2 + 5 * cos(\t)},{-1 + 5 * sin(\t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ 5^2 = (y-2)^2 + (z+1)^2$},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 1,
+                              domain=-pi:pi,variable=\t]
+                          ({-2},{2 + 5 * cos(\t)},{-1 + 5 * sin(\t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item The parametric curve is an ellipse in the $ xy $ space.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ z = 0 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-pi:pi,variable=\t]
+                          ({2 + 4*cos(\t)},{1 + sin(\t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ \frac{(x-2)^2}{16}
+                                          + \frac{(y-1)^2}{1} = 1$},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-pi:pi,variable=\t]
+                          ({2 + 4*cos(\t)},{1 + sin(\t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ z = 0$},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain=-pi:pi,variable=\t]
+                          ({2 + 4*cos(\t)},{1 + sin(\t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item The parametric curve is an ellipse in the $ xy $ space.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ z = 0 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-pi:pi,variable=\t]
+                          ({3*cos(pi * \t)},{-2 * sin(pi * \t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ \frac{x^2}{9}
+                                          + \frac{y^2}{4} = 1$},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-pi:pi,variable=\t]
+                          ({3*cos(pi * \t)},{-2 * sin(pi * \t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ z = 0$},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain=-pi:pi,variable=\t]
+                          ({3*cos(pi * \t)},{-2 * sin(pi * \t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item The parametric curve is a circular spiral upwards in the $ z $ direction.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ z = 0 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-5:5,variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{3 * \t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ x^2 + y^2 = 16$},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-pi:pi,variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{3 * \t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ z = 0$},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain=-5:5,variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{3 * \t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain=-2*pi:2*pi,variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{3 * \t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item The parametric curve is the positive part of a hyperbola in the $ xy $ plane.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ z = 2 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-1:1,variable=\t]
+                          ({cosh(\t)},{sinh(\t)},{2});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ x^2 - y^2 = 1$},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-1:1,variable=\t]
+                          ({cosh(\t)},{sinh(\t)},{2});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ z = 2$},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain=-1:1,variable=\t]
+                          ({cosh(\t)},{sinh(\t)},{2});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain=-1:1,variable=\t]
+                          ({cosh(\t)},{sinh(\t)},{2});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item The parametric curve is a closed periodic curve in the $ xy $ plane.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ z = 0 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-2*pi:2*pi,variable=\t]
+                          ({cos(\t)},{sin(2*\t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ x^2 + y^2 = 1$},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-2*pi:2*pi,variable=\t]
+                          ({cos(\t)},{sin(2*\t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ z = 0$},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain=-2*pi:2*pi,variable=\t]
+                          ({cos(\t)},{sin(2*\t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain=-2*pi:2*pi,variable=\t]
+                          ({cos(\t)},{sin(2*\t)},{0});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item The parametric curve is a hyperbola in the $ xz $ space.
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ xz = 1 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-10:-0.1,variable=\t]
+                          ({\t},{2},{1/\t});
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=0.1:10,variable=\t]
+                          ({\t},{2},{1/\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ y = 2 $},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-10:-0.1,variable=\t]
+                          ({\t},{2},{1/\t});
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=0.1:10,variable=\t]
+                          ({\t},{2},{1/\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ y = 2 $},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain=-10:-0.1,variable=\t]
+                          ({\t},{2},{1/\t});
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain=0.1:10,variable=\t]
+                          ({\t},{2},{1/\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain=-10:-0.1,variable=\t]
+                          ({\t},{2},{1/\t});
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain=0.1:10,variable=\t]
+                          ({\t},{2},{1/\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+    \item Finding the parametric representation,
+          \begin{align}
+              z                     & = 1  &
+              (x - 3)^2 + (y - 2)^2 & = 13   \\
+              \vec{v}(t)            & =
+              \begin{bNiceMatrix}[r, margin]
+                  3 + \sqrt{13}\cos(t) \\ 2 + \sqrt{13} \sin(t)\\ 1
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the parametric representation,
+          \begin{align}
+              x               & = 0   &
+              (y - 4)^2 + z^2 & = 5^2   \\
+              \vec{v}(t)      & =
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ 4 + 5\cos(t) \\ 5\sin(t)
+              \end{bNiceMatrix}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ x = 0 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-pi:pi,variable=\t]
+                          ({0},{4 + 5 * cos(\t)},{5 * sin(\t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ x = 0 $},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-pi:pi,variable=\t]
+                          ({0},{4 + 5 * cos(\t)},{5 * sin(\t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ (y - 4)^2 + z^2 = 25 $},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain=-pi:pi,variable=\t]
+                          ({0},{4 + 5 * cos(\t)},{5 * sin(\t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain=-pi:pi,variable=\t]
+                          ({0},{4 + 5 * cos(\t)},{5 * sin(\t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+    \item Line through a point in a particular direction
+          \begin{align}
+              A             & : (2, 1, 3)          &
+              \vec{\hat{n}} & = \frac{1}{\sqrt{5}}
+              \begin{bNiceMatrix}[r, margin]
+                  1 \\ 2 \\ 0
+              \end{bNiceMatrix}          \\
+              \vec{v}(t)    & =
+              \begin{bNiceMatrix}[r, margin]
+                  2 + \frac{1}{\sqrt{5}}\ t \\ 1 + \frac{2}{\sqrt{5}}\ t \\ 3
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Line through a point in a particular direction
+          \begin{align}
+              A             & : (1, 1, 1)           &
+              \vec{\hat{n}} & = \frac{1}{\sqrt{20}}
+              \begin{bNiceMatrix}[r, margin]
+                  4 \\ 0 \\ 2
+              \end{bNiceMatrix}           \\
+              \vec{v}(t)    & =
+              \begin{bNiceMatrix}[r, margin]
+                  1 + \frac{4}{\sqrt{20}}\ t \\ 1 \\ 1 + \frac{2}{\sqrt{20}}\ t
+              \end{bNiceMatrix}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ 0.5x + 0.5 = z $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain=-1:1,variable=\t]
+                          ({1 + 4 * \t},{1},{1 + 2 * \t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ y = 1 $},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain=-1:1,variable=\t]
+                          ({1 + 4 * \t},{1},{1 + 2 * \t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ y = 1 $},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain=-1:1,variable=\t]
+                          ({1 + 4 * \t},{1},{1 + 2 * \t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain=-1:1,variable=\t]
+                          ({1 + 4 * \t},{1},{1 + 2 * \t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+    \item Eliminating $ x $ in favor of a unified parameter $ t $,
+          \begin{align}
+              \vec{v} & = \begin{bNiceMatrix}[r, margin]
+                              x \\ y \\ z
+                          \end{bNiceMatrix}  =
+              \begin{bNiceMatrix}[r, margin]
+                  t \\ 4t - 1 \\ 5t
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Points lie on the intersection of the two curves
+          \begin{align}
+              C_1     & : x^2 + y^2 = 1                  & C_2 & : z = y \\
+              \vec{v} & = \begin{bNiceMatrix}[r, margin]
+                              \cos(t) \\ \sin(t) \\ \sin(t)
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Points lie on the intersection of the two curves
+          \begin{align}
+              C_1     & : x^2 + 2y^2 = 2                      & C_2 & : z = y \\
+              \vec{v} & = \begin{bNiceMatrix}[r, margin]
+                              \sqrt{2}\cos(t) \\ \sin(t) \\ \sin(t)
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Points lie on the intersection of the two curves
+          \begin{align}
+              C_1     & : x^2 + 2y^2 = 25                &
+              C_2     & : z = 2\arctan(y/x)                \\
+              \vec{v} & = \begin{bNiceMatrix}[r, margin]
+                              5\cos(t) \\ 5\sin(t) \\ 2t
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Points lie on the intersection of the two curves
+          \begin{align}
+              C_1     & : 4x^2 - 3y^2 = 4                                            &
+              C_2     & : z = 2                                                        \\
+              \vec{v} & = \begin{bNiceMatrix}[r, margin]
+                              \cosh(t) \\ \frac{2}{\sqrt{3}}\ \sinh(t) \\ 2
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Points lie on the intersection of the two curves
+          \begin{align}
+              C_1     & : 2x - y + 3z = 2                &
+              C_2     & : x + 2y - z = 3                   \\
+              \vec{v} & = \begin{bNiceMatrix}[r, margin]
+                              t \\ -t + 2.2 \\ 1.4 - t
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Orientation reverses because $ t \rightarrow (-t) $ makes the change in
+          parameter $ \Delta t \rightarrow -\Delta t $. \par
+          This means that traversing over the curve happens in the opposite sense.
+
+    \item Graphing the curves using \texttt{pgfplots}
+          \begin{enumerate}
+              \item Steiner's hypocycloid
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    width = 8cm, height = 8cm,
+                                    grid = both,
+                                    title = {\color{y_h}$  $},
+                                    xlabel=$x$,ylabel=$y$,
+                                    axis equal,
+                                    enlargelimits=0.1,
+                                    Ani]
+                                \addplot [GraphSmooth, y_h,
+                                    domain=-pi:pi,variable=\t]
+                                ({2 * cos(\t) + cos(2 * \t)},
+                                {2 * sin(\t) - sin(2 * \t)});
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Plotting the family of curves
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    width = 8cm,
+                                    legend pos = outer north east,
+                                    grid = both,
+                                    axis equal,
+                                    Ani,
+                                    % restrict y to domain = -2:1,
+                                    domain = -pi:pi,
+                                ]
+                                \foreach [evaluate=\k as \n using (\k + 1)*100/(2)]
+                                \k in {-1,1}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot[
+                                                samples = 200,
+                                                color = blue!\n!red, thin,
+                                            ]
+                                            ({cos(x) + \k * cos(2 * x)},
+                                            {sin(x) - \k * sin(2 * x)});
+                                            \noexpand \addlegendentry{$ k = \k$};
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    width = 8cm,
+                                    legend pos = outer north east,
+                                    grid = both,
+                                    axis equal,
+                                    Ani,
+                                    % restrict y to domain = -2:1,
+                                    domain = -pi:pi,
+                                ]
+                                \foreach [evaluate=\k as \n using (\k + 0.5)*100/(1)]
+                                \k in {-0.5,0.5}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot[
+                                                samples = 200,
+                                                color = blue!\n!red, thin,
+                                            ]
+                                            ({cos(x) + \k * cos(2 * x)},
+                                            {sin(x) - \k * sin(2 * x)});
+                                            \noexpand \addlegendentry{$ k = \k$};
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    width = 8cm,
+                                    legend pos = outer north east,
+                                    grid = both,
+                                    axis equal,
+                                    Ani,
+                                    % restrict y to domain = -2:1,
+                                    domain = -pi:pi,
+                                ]
+                                \foreach [evaluate=\k as \n using (\k + 0)*100/(2)]
+                                \k in {0, 2}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot[
+                                                samples = 200,
+                                                color = blue!\n!red, thin,
+                                            ]
+                                            ({cos(x) + \k * cos(2 * x)},
+                                            {sin(x) - \k * sin(2 * x)});
+                                            \noexpand \addlegendentry{$ k = \k$};
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    width = 8cm,
+                                    legend pos = outer north east,
+                                    grid = both,
+                                    axis equal,
+                                    Ani,
+                                    % restrict y to domain = -2:1,
+                                    domain = -pi:pi,
+                                ]
+                                \foreach [evaluate=\k as \n using (\k - 5)*100/(5)]
+                                \k in {5, 10}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot[
+                                                samples = 200,
+                                                color = blue!\n!red, thin,
+                                            ]
+                                            ({cos(x) + \k * cos(2 * x)},
+                                            {sin(x) - \k * sin(2 * x)});
+                                            \noexpand \addlegendentry{$ k = \k$};
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Lissajous' curve, closed for rational $ k $
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    width = 8cm, height = 8cm,
+                                    grid = both,
+                                    title = {\color{y_h}$  $},
+                                    xlabel=$x$,ylabel=$y$,
+                                    axis equal,
+                                    enlargelimits=0.1,
+                                    Ani]
+                                \addplot [GraphSmooth, y_h,
+                                    domain=-pi:pi,variable=\t]
+                                ({cos(\t)},{sin(5 * \t)});
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Lissajous' curve, closed for rational $ k $
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    width = 8cm, height = 8cm,
+                                    grid = both,
+                                    title = {\color{y_h}$  $},
+                                    xlabel=$x$,ylabel=$y$,
+                                    axis equal,
+                                    enlargelimits=0.1,
+                                    Ani]
+                                \addplot [GraphSmooth, y_p,
+                                    domain=-10*pi:10*pi,variable=\t]
+                                ({cos(\t)},{sin(-0.8 * \t)});
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Cycloid using $ R = \omega = 1 $ for simplicity,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    width = 8cm, height = 8cm,
+                                    grid = both,
+                                    title = {\color{y_h}$  $},
+                                    xlabel=$x$,ylabel=$y$,
+                                    axis equal,
+                                    enlargelimits=0.1,
+                                    Ani]
+                                \addplot [GraphSmooth, y_h,
+                                    domain=-2*pi:2*pi,variable=\t]
+                                ({sin(\t) + \t},{cos(\t) + 1});
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+
+    \item Graphing the polar plots using \texttt{pgfplots}
+          \begin{enumerate}
+
+              \newpage
+              \item Spiral of Archimedes
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{polaraxis}[
+                                    width = 10cm, height = 10cm,
+                                    grid = both,
+                                    enlargelimits=0.1,
+                                    Ani]
+                                \addplot [GraphSmooth, y_h,
+                                    domain=0:3*360]
+                                {x/360};
+                            \end{polaraxis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Logarithmic spiral
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{polaraxis}[
+                                    width = 10cm, height = 10cm,
+                                    grid = both,
+                                    enlargelimits=0.1,
+                                    Ani]
+                                \addplot [GraphSmooth, y_h,
+                                    domain=0:3*360]
+                                {e^(x/360)};
+                            \end{polaraxis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+                    \newpage
+              \item Cissoid of Diocles
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{polaraxis}[
+                                    width = 10cm, height = 10cm,
+                                    ymin = 0, ymax = 10,
+                                    grid = both,
+                                    enlargelimits=0.1,
+                                    Ani, trig format plots = deg]
+                                \addplot [GraphSmooth, y_h, domain=-89:89]
+                                {2 * sin(x) * sin(x) / cos(x)};
+                            \end{polaraxis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Conchoid of Nichomedes
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{polaraxis}[
+                                    width = 10cm, height = 10cm,
+                                    ymin = 0, ymax = 25,
+                                    grid = both,
+                                    enlargelimits=0.1,
+                                    Ani, trig format plots = deg]
+                                \addplot [GraphSmooth, y_h, domain=-89:89]
+                                {(1 / cos(x)) + 10};
+                                \addplot [GraphSmooth, y_p, domain=91:269]
+                                {(1 / cos(x)) + 10};
+                            \end{polaraxis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+                    \newpage
+              \item Hyperbolic spiral
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{polaraxis}[
+                                    width = 10cm, height = 10cm,
+                                    ymax = 3,
+                                    grid = both,
+                                    enlargelimits=0.1,
+                                    Ani]
+                                \addplot [GraphSmooth, y_h,
+                                    domain=36: 12 * 360]
+                                {100/(x)};
+                            \end{polaraxis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Folium of Descartes
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{polaraxis}[
+                                    width = 10cm, height = 10cm,
+                                    grid = both,
+                                    restrict y to domain = 0:8,
+                                    enlargelimits=0.1,
+                                    Ani, trig format plots = deg]
+                                \addplot [GraphSmooth, y_h,
+                                    domain = 0:360]
+                                {3 * sin(2 * x) / ((cos(x))^3 + (sin(x))^3)};
+                            \end{polaraxis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+                    \newpage
+              \item Maclaurin's trisectrix
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{polaraxis}[
+                                    width = 10cm, height = 10cm,
+                                    grid = both,
+                                    restrict y to domain = 0:8,
+                                    enlargelimits=0.1,
+                                    Ani, trig format plots = deg]
+                                \addplot [GraphSmooth, y_h,
+                                    domain = 1:179]
+                                {2 * sin(3 * x) / sin(2 * x)};
+                                \addplot [GraphSmooth, y_p,
+                                    domain = 181:359]
+                                {2 * sin(3 * x) / sin(2 * x)};
+                            \end{polaraxis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Pascal's snail
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{polaraxis}[
+                                    width = 10cm, height = 10cm,
+                                    grid = both,
+                                    restrict y to domain = 0:8,
+                                    enlargelimits=0.1,
+                                    Ani, trig format plots = deg]
+                                \addplot [GraphSmooth, y_h,
+                                    domain = 0:360]
+                                {1 + cos(x)};
+                            \end{polaraxis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+
+    \item Finding the tangent vector,
+          \begin{align}
+              \vec{r}(t)  & = \begin{bNiceMatrix}[margin]
+                                  t \\ 0.5 t^2 \\ 1
+                              \end{bNiceMatrix}                   &
+              P           & = (2, 2, 1)                                    \\
+              \vec{r}'(t) & = \begin{bNiceMatrix}[margin]
+                                  1 \\ t \\ 0
+                              \end{bNiceMatrix}                   &
+              \vec{u}'    & = \frac{1}{\sqrt{5}}\begin{bNiceMatrix}[margin]
+                                                    1 \\ 2 \\ 0
+                                                \end{bNiceMatrix}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          title = {\color{y_h}$ y = \frac{1}{2}\ x^2$},
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani]
+                      \addplot3 [GraphSmooth, y_h, samples y=0,
+                          domain=-0:4,variable=\t]
+                      ({\t},{0.5 * \t^2},{1});
+                      \draw[force] (2, 2, 1) -- (3, 4, 1) node[midway, right]
+                      {$ \vec{r}' $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \newpage
+    \item Finding the tangent vector,
+          \begin{align}
+              \vec{r}(t)  & = \begin{bNiceMatrix}[margin]
+                                  10\cos(t) \\ 1 \\ 10\sin(t)
+                              \end{bNiceMatrix} &
+              P           & = (6, 1, 8)                   \\
+              \vec{r}'(t) & = \begin{bNiceMatrix}[margin]
+                                  -10\sin(t) \\ 0 \\ 10\cos(t)
+                              \end{bNiceMatrix} &
+              \vec{u}'    & = \begin{bNiceMatrix}[margin]
+                                  -0.8 \\ 0 \\ 0.6
+                              \end{bNiceMatrix}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          title = {\color{y_h}$ x^2 + z^2 = 100$},
+                          view={0}{0},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          xmin = -12, xmax = 12, zmin = -12, zmax = 12,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani]
+                      \addplot3 [GraphSmooth, y_h, samples y=0,
+                          domain=-pi:pi,variable=\t]
+                      ({10*cos(\t)},{1},{10 * sin(\t)});
+                      \draw[force] (6, 1, 8) -- (-2, 1, 14) node[midway, above right]
+                      {$ \vec{r}' $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \newpage
+    \item Finding the tangent vector,
+          \begin{align}
+              \vec{r}(t)  & = \begin{bNiceMatrix}[margin]
+                                  \cos(t) \\ \sin(t) \\ 9t
+                              \end{bNiceMatrix}                    &
+              P           & = (1, 0, 18\pi)                                 \\
+              \vec{r}'(t) & = \begin{bNiceMatrix}[margin]
+                                  -\sin(t) \\ \cos(t) \\ 9
+                              \end{bNiceMatrix}                    &
+              \vec{u}'    & = \frac{1}{\sqrt{82}}\begin{bNiceMatrix}[margin]
+                                                     0 \\ 1 \\ 9
+                                                 \end{bNiceMatrix}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ x = \cos(z/9) $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain= -pi : 3*pi, variable=\t]
+                          ({cos(\t)},{sin(\t)},{9 * \t});
+                          \draw[force, black] (1, 0, 18 * pi) -- (1, 1, 18 * pi + 9)
+                          node[midway, above right] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ x^2 + y^2 = 1 $},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain= -pi : 3*pi, variable=\t]
+                          ({cos(\t)},{sin(\t)},{9 * \t});
+                          \draw[force, black] (1, 0, 18 * pi) -- (1, 1, 18 * pi + 9)
+                          node[midway, above right] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ y = \sin(z/9) $},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain= -pi : 3*pi, variable=\t]
+                          ({cos(\t)},{sin(\t)},{9 * \t});
+                          \draw[force, black] (1, 0, 18 * pi) -- (1, 1, 18 * pi + 9)
+                          node[midway, below] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain= -pi : 3*pi, variable=\t]
+                          ({cos(\t)},{sin(\t)},{9 * \t});
+                          \draw[force, black] (1, 0, 18 * pi) -- (1, 1, 18 * pi + 9)
+                          node[midway, below] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item Finding the tangent vector,
+          \begin{align}
+              \vec{r}(t)  & = \begin{bNiceMatrix}[margin]
+                                  t \\ 1/t \\ 0
+                              \end{bNiceMatrix}                   &
+              P           & = (2, 1/2, 0)                                  \\
+              \vec{r}'(t) & = \begin{bNiceMatrix}[margin]
+                                  1 \\ -(t)^{-2} \\ 0
+                              \end{bNiceMatrix}                   &
+              \vec{u}'    & = \frac{2}{\sqrt{5}}\begin{bNiceMatrix}[margin]
+                                                    1 \\ -0.25 \\ 0
+                                                \end{bNiceMatrix}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ z = 0 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain= 0.1 : 4, variable=\t]
+                          ({\t},{1/\t},{0});
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain= -4 : -0.1, variable=\t]
+                          ({\t},{1/\t},{0});
+                          \draw[force, black] (2, 0.5, 0) -- (3, 0.25, 0)
+                          node[midway, above right] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ xy = 1 $},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain= 0.1 : 4, variable=\t]
+                          ({\t},{1/\t},{0});
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain= -4 : -0.1, variable=\t]
+                          ({\t},{1/\t},{0});
+                          \draw[force, black] (2, 0.5, 0) -- (3, 0.25, 0)
+                          node[midway, above right] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ z = 0 $},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain= 0.1 : 4, variable=\t]
+                          ({\t},{1/\t},{0});
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain= -4 : -0.1, variable=\t]
+                          ({\t},{1/\t},{0});
+                          \draw[force, black] (2, 0.5, 0) -- (3, 0.25, 0)
+                          node[midway, below] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain= 0.1 : 4, variable=\t]
+                          ({\t},{1/\t},{0});
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain= -4 : -0.1, variable=\t]
+                          ({\t},{1/\t},{0});
+                          \draw[force, black] (2, 0.5, 0) -- (3, 0.25, 0)
+                          node[midway, below] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item Finding the tangent vector,
+          \begin{align}
+              \vec{r}(t)  & = \begin{bNiceMatrix}[margin]
+                                  t \\ t^2 \\ t^3
+                              \end{bNiceMatrix}                    &
+              P           & = (1, 1, 1)                                     \\
+              \vec{r}'(t) & = \begin{bNiceMatrix}[margin]
+                                  1 \\ 2t \\ 3t^2
+                              \end{bNiceMatrix}                    &
+              \vec{u}'    & = \frac{1}{\sqrt{14}}\begin{bNiceMatrix}[margin]
+                                                     1 \\ 2 \\ 3
+                                                 \end{bNiceMatrix}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_h}$ z = x^3 $},
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain= -2 : 2, variable=\t]
+                          ({\t},{\t^2},{\t^3});
+                          \draw[force, black] (1, 1, 1) -- (2, 3, 4)
+                          node[midway, above right] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{y_p}$ y = x^2 $},
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain= -2 : 2, variable=\t]
+                          ({\t},{\t^2},{\t^3});
+                          \draw[force, black] (1, 1, 1) -- (2, 3, 4)
+                          node[midway, above right] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              title = {\color{brown6}$ z = y^{1.5} $},
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, brown6, samples y = 0,
+                              domain= -2 : 2, variable=\t]
+                          ({\t},{\t^2},{\t^3});
+                          \draw[force, black] (1, 1, 1) -- (2, 3, 4)
+                          node[midway, below] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, azure3, samples y = 0,
+                              domain= -2 : 2, variable=\t]
+                          ({\t},{\t^2},{\t^3});
+                          \draw[force, black] (1, 1, 1) -- (2, 3, 4)
+                          node[midway, below] {$ \vec{r}' $};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item Finding the arc length,
+          \begin{align}
+              \vec{r}(t) & = \bmatcol{t}{\cosh(t)}                             &
+              t          & \in [0, 1]                                            \\
+              s          & = \int_{0}^{1} \sqrt{\vec{r}' \dotp \vec{r}'} \dl t &
+              \vec{r}'   & = \bmatcol{1}{\sinh(t)}                               \\
+              s          & = \int_{0}^{1} \cosh(t) \dl t                       &
+                         & = \Big[\sinh(t)\Big]_0^1                              \\
+              s          & = \sinh(1)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani]
+                      \addplot3 [GraphSmooth, y_h, samples y=0,
+                          domain= -0.5:0, variable=\t] ({\t},{cosh(\t)},{0});
+                      \addplot3 [GraphSmooth, black, samples y=0,
+                          domain= 0:1, variable=\t] ({\t},{cosh(\t)},{0});
+                      \addplot3 [GraphSmooth, y_p, samples y=0,
+                          domain= 1:1.5, variable=\t] ({\t},{cosh(\t)},{0});
+                      \node[GraphNode, label={90:{\footnotesize $ t = 0 $}}]
+                      at (axis cs:0, 1, 0) {};
+                      \node[GraphNode, label={-45:{\footnotesize $ t = 1 $}}]
+                      at (axis cs:1, 1.54, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \newpage
+    \item Finding the arc length,
+          \begin{align}
+              \vec{r}(t) & = \begin{bNiceMatrix}[margin]
+                                 4\cos(t) \\ 4\sin(t) \\ 5t
+                             \end{bNiceMatrix}                          &
+              t          & \in [0, 2\pi]                                          &
+              \vec{r}'   & =  \begin{bNiceMatrix}[margin]
+                                  -4\sin(t) \\ 4\cos(t) \\ 5
+                              \end{bNiceMatrix}                            \\
+              s          & = \int_{0}^{2\pi} \sqrt{\vec{r}' \dotp \vec{r}'} \dl t &
+                         & = \int_{0}^{2\pi} \sqrt{41} \dl t                      &
+                         & = \Big[ \sqrt{41}t \Big]_0^{2\pi}                        \\
+                         & = 2\pi \sqrt{41}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain= -0.5 * pi:0, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});
+                          \addplot3 [GraphSmooth, black, samples y=0,
+                              domain= 0:2 * pi, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});;
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain= 2 * pi:2.5 * pi, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});;
+                          \node[GraphNode, label={180:{\footnotesize $ t = 0 $}}]
+                          at (axis cs:4, 0, 0) {};
+                          \node[GraphNode, label={180:{\footnotesize $ t = 2\pi $}}]
+                          at (axis cs:4, 0, 10 * pi) {};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain= -0.5 * pi:0, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});
+                          \addplot3 [GraphSmooth, black, samples y=0,
+                              domain= 0:2 * pi, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});;
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain= 2 * pi:2.5 * pi, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});;
+                          \node[GraphNode, label={135:{\footnotesize $ t = 0 $}}]
+                          at (axis cs:4, 0, 0) {};
+                          \node[GraphNode, label={-135:{\footnotesize $ t = 2\pi $}}]
+                          at (axis cs:4, 0, 10 * pi) {};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain= -0.5 * pi:0, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});
+                          \addplot3 [GraphSmooth, black, samples y=0,
+                              domain= 0:2 * pi, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});;
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain= 2 * pi:2.5 * pi, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});;
+                          \node[GraphNode, label={90:{\footnotesize $ t = 0 $}}]
+                          at (axis cs:4, 0, 0) {};
+                          \node[GraphNode, label={-45:{\footnotesize $ t = 2\pi $}}]
+                          at (axis cs:4, 0, 10 * pi) {};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1,
+                              Ani]
+                          \addplot3 [GraphSmooth, y_h, samples y=0,
+                              domain= -0.5 * pi:0, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});
+                          \addplot3 [GraphSmooth, black, samples y=0,
+                              domain= 0:2 * pi, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});;
+                          \addplot3 [GraphSmooth, y_p, samples y=0,
+                              domain= 2 * pi:2.5 * pi, variable=\t]
+                          ({4 * cos(\t)},{4 * sin(\t)},{5 * \t});;
+                          \node[GraphNode, label={135:{\footnotesize $ t = 0 $}}]
+                          at (axis cs:4, 0, 0) {};
+                          \node[GraphNode, label={135:{\footnotesize $ t = 2\pi $}}]
+                          at (axis cs:4, 0, 10 * pi) {};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item Finding the arc length,
+          \begin{align}
+              \vec{r}(t) & = \bmatcol{a\cos(t)}{a\sin(t)}                          &
+              t          & \in [0, \pi/2]                                          &
+              \vec{r}'   & = \bmatcol{-a\sin(t)}{a\cos(t)}                           \\
+              s          & = \int_{0}^{\pi/2} \sqrt{\vec{r}' \dotp \vec{r}'} \dl t &
+              s          & = \int_{0}^{\pi/2} a \dl t                              &
+                         & = \Big[ at \Big]_0^{\pi/2} = \frac{\pi a}{2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani]
+                      \addplot3 [GraphSmooth, y_h, samples y=0,
+                          domain= -pi/4:0, variable=\t] ({cos(\t)},{sin(\t)},{0});
+                      \addplot3 [GraphSmooth, black, samples y=0,
+                          domain= 0:pi/2, variable=\t] ({cos(\t)},{sin(\t)},{0});
+                      \addplot3 [GraphSmooth, y_p, samples y=0,
+                          domain= pi/2:pi * 3/4, variable=\t] ({cos(\t)},{sin(\t)},{0});
+                      \node[GraphNode, label={180:{\footnotesize $ t = 0 $}}]
+                      at (axis cs:1, 0, 0) {};
+                      \node[GraphNode, label={-90:{\footnotesize $ t = \pi/2 $}}]
+                      at (axis cs:0, 1, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the arc length,
+          \begin{align}
+              \vec{r}(t) & = \bmatcol{a\cos^3(t)}{a\sin^3(t)}                     &
+              t          & \in [0, 2\pi]                                          &
+              \vec{r}'   & = \bmatcol{-1.5a\cos(t)\sin(2t)}{1.5a\sin(t)\sin(2t)}    \\
+              s          & = \int_{0}^{2\pi} \sqrt{\vec{r}' \dotp \vec{r}'} \dl t &
+                         & = 6\abs{a}\int_{0}^{\pi/2} \sin(2t) \dl t              &
+                         & = \Big[ -3a\cos(2t) \Big]_0^{\pi/2}                      \\
+                         & = 6\abs{a}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani]
+                      \addplot3 [GraphSmooth, black, samples y=0,
+                          domain= 0:2*pi, variable=\t]
+                      ({(cos(\t))^3},{(sin(\t))^3},{0});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Starting with the arc length formula,
+          \begin{align}
+              l & = \int_{a}^{b} \sqrt{\vec{r}' \dotp \vec{r}'} \dl t &
+              C & : y = f(x), \quad z = 0                               \\
+              l & = \int_{a}^{b} \sqrt{1 + \diff yx ^2} \dl x
+          \end{align}
+          There is no parameter $ t $ involved here, since every point on the curve is of
+          the form $ (x, f(x)) $
+
+    \item Polar coordinates, with the vector function having parameter $ \theta $.
+          The radial distance $ \rho $ itself is also a function of $ \theta $.
+          \begin{align}
+              \rho       & = \sqrt{x^2 + y^2}                                     &
+              \theta     & = \arctan(y/x)                                           \\
+              \vec{r}    & = \bmatcol{\rho \cos(\theta)}{\rho \sin(\theta)}       &
+              \vec{r}'   & = \bmatcol{\rho' \cos(\theta) - \rho \sin(\theta)}
+              {\rho' \sin(\theta) + \rho \cos(\theta)}                              \\
+              l          & = \int_{\alpha}^{\beta} \sqrt{\vec{r}' \dotp \vec{r}'}
+              \dl \theta &
+                         & = \int_{\alpha}^{\beta} \sqrt{\rho^2 + \rho'^2}
+              \ \dl \theta
+          \end{align}
+          The cardioid is given by,
+          \begin{align}
+              C & :\rho = a(1 - \cos \theta)                                \\
+              l & = \int_{0}^{2\pi} a\sqrt{1 + \cos^2 \theta - 2\cos \theta
+              + \sin^2 \theta} \dl \theta                                   \\
+                & = \int_{0}^{2\pi} 2a \sin(\theta/2) \dl \theta
+              = -4a \Big[ \cos(\theta/2) \Big]_0^{2\pi} = 8a
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{polaraxis}[
+                          width = 10cm, height = 10cm,
+                          grid = both,
+                          restrict y to domain = 0:8,
+                          enlargelimits=0.1,
+                          Ani, trig format plots = deg]
+                      \addplot [GraphSmooth, y_h,
+                          domain = 0:360]
+                      {1 - cos(x)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the velocity and acceleration vectors,
+          \begin{align}
+              \vec{r}(t)            & = \bmatcol{t}{t^2}                              &
+              \vec{v}(t)            & = \bmatcol{1}{2t}                                 \\
+              \vec{a}(t)            & = \bmatcol{0}{2}                                &
+              \vec{a}_{\text{tan}}  & = \frac{\vec{a} \dotp \vec{v}}{\abs{\vec{v}}^2}
+              \ \vec{v}                                                                 \\
+              \vec{a}_{\text{tan}}  & = \frac{4t}{1 + 4t^2} \bmatcol{1}{2t}           &
+              \vec{a}_{\text{norm}} & = \frac{1}{1 + 4t^2}
+              \bmatcol{-4t}{2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani,
+                          colormap/viridis, colorbar]
+                      \addplot3 [GraphSmooth, mesh, samples y=0,
+                          domain= -2:2, variable=x, point meta = x]({x},{x^2},{0});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the velocity and acceleration vectors,
+          \begin{align}
+              \vec{r}(t)            & = \bmatcol{8t}{6t}                              &
+              \vec{v}(t)            & = \bmatcol{8}{6}                                  \\
+              \vec{a}(t)            & = \bmatcol{0}{0}                                &
+              \vec{a}_{\text{tan}}  & = \frac{\vec{a} \dotp \vec{v}}{\abs{\vec{v}}^2}
+              \ \vec{v}                                                                 \\
+              \vec{a}_{\text{tan}}  & = \bmatcol{0}{0}                                &
+              \vec{a}_{\text{norm}} & = \bmatcol{0}{0}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani,
+                          colormap/viridis, colorbar]
+                      \addplot3 [GraphSmooth, mesh, samples y=0,
+                          domain= -2:2, variable=\t, point meta = \t]
+                      ({8*\t},{6*\t},{0});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the velocity and acceleration vectors when the $ y = y_{\text{max}} $,
+          \begin{align}
+              \vec{r}(t)             & = \bmatcol{R\sin(\omega t) + Rt}
+              {R \cos(\omega t) + R} &
+              \vec{v}(t)             & = \bmatcol{R\omega \cos(\omega t) + R}
+              {-R\omega \sin(\omega t)}                                         \\
+              \vec{a}(t)             & = \bmatcol{-R \omega^2 \sin(\omega t)}
+              {-R \omega^2 \cos(\omega t)}                                      \\
+              \vec{v}(0)             & = \bmatcol{R(1 + \omega)}{0}           &
+              \vec{a}(0)             & = \bmatcol{0}{-R\omega^2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani,
+                          colormap/viridis, colorbar]
+                      \addplot3 [GraphSmooth, mesh, samples y=0,
+                          domain= 0:4 * pi, variable=\t, point meta = \t]
+                      ({sin(\t) + \t},{cos(\t) + 1},{0});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the velocity and acceleration vectors,
+          \begin{align}
+              \vec{r}(t)                  & = \bmatcol{\cos t}{2 \sin t}     &
+              \vec{v}(t)                  & = \bmatcol{-\sin t}{2 \cos t}      \\
+              \vec{a}(t)                  & = \bmatcol{-\cos t}{-2 \sin t}   &
+              \vec{a}_{\text{tan}}        & = \frac{\vec{a} \dotp \vec{v}}
+              {\abs{\vec{v}}^2}\ \vec{v}                                       \\
+              \vec{a}_{\text{tan}}        & = \frac{-3\sin t \cos t}
+              {4\cos^2 t + \sin^2 t}
+              \bmatcol{-\sin t}{2 \cos t} &
+              \vec{a}_{\text{norm}}       & = \frac{1}{4\cos^2 t + \sin^2 t}
+              \bmatcol{-4\cos t}{-2\sin t}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani,
+                          colormap/viridis, colorbar]
+                      \addplot3 [GraphSmooth, mesh, samples y=0,
+                          domain= 0:2 * pi, variable=\t, point meta = \t]
+                      ({cos(\t)},{2*sin(\t)},{0});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the velocity and acceleration vectors,
+          \begin{align}
+              \vec{r}(t)                  & = \bmatcol{\cos t + \cos(2t)}
+              {\sin t - \sin(2t)}         &
+              \vec{v}(t)                  & = \bmatcol{-\sin(t) - 2\sin(2t)}
+              {\cos(t) - 2\cos(2t)}                                          \\
+              \vec{a}(t)                  & = \bmatcol{-\cos(t) - 4\cos(2t)}
+              {-\sin(t) + 4\sin(2t)}      &
+              \vec{a}_{\text{tan}}        & = \frac{\vec{a} \dotp \vec{v}}
+              {\abs{\vec{v}}^2}\ \vec{v}                                     \\
+              \vec{a}_{\text{tan}}        & = \frac{6\sin(3t)}
+              {5 - 4\cos(3t)}\ \vec{v}(t) &
+              \vec{a}_{\text{norm}}       & = \vec{a} - \vec{a}_{\text{tan}}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani,
+                          colormap/viridis, colorbar]
+                      \addplot3 [GraphSmooth, mesh, samples y=0,
+                          domain= 0:2 * pi, variable=\t, point meta = \t]
+                      ({cos(\t) + cos(2 * \t)},{sin(\t) - sin(2*\t)},{0});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \newpage
+    \item Finding the velocity and acceleration vectors,
+          \begin{align}
+              \vec{r}(t)                 & = \bmatcol{2\cos t + \cos(2t)}
+              {2\sin t - \sin(2t)}       &
+              \vec{v}(t)                 & = \bmatcol{-2\sin(t) - 2\sin(2t)}
+              {2\cos(t) - 2\cos(2t)}                                         \\
+              \vec{a}(t)                 & = \bmatcol{-2\cos(t) - 4\cos(2t)}
+              {-2\sin(t) + 4\sin(2t)}    &
+              \vec{a}_{\text{tan}}       & = \frac{\vec{a} \dotp \vec{v}}
+              {\abs{\vec{v}}^2}\ \vec{v}                                     \\
+              \vec{a}_{\text{tan}}       & = \frac{1.5\sin(3t)}
+              {1 - \cos(3t)}\ \vec{v}(t) &
+              \vec{a}_{\text{norm}}      & = \vec{a} - \vec{a}_{\text{tan}}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          width = 8cm, height = 8cm,
+                          grid = both,
+                          view={0}{90},
+                          xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                          axis equal,
+                          enlargelimits=0.1,
+                          Ani,
+                          colormap/viridis, colorbar]
+                      \addplot3 [GraphSmooth, mesh, samples y=0,
+                          domain= 0:2 * pi, variable=\t, point meta = \t]
+                      ({2 * cos(\t) + cos(2 * \t)},{2 * sin(\t) - sin(2*\t)},{0});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \newpage
+    \item Finding the velocity and acceleration vectors,
+          \begin{align}
+              \vec{r}(t)                 & = \begin{bNiceMatrix}[margin]
+                                                 \cos t \\ \sin(2t) \\ \cos(2t)
+                                             \end{bNiceMatrix}      &
+              \vec{v}(t)                 & = \begin{bNiceMatrix}[margin]
+                                                 -\sin t \\ 2\cos(2t) \\ -2\sin(2t)
+                                             \end{bNiceMatrix}  \\
+              \vec{a}(t)                 & = \begin{bNiceMatrix}[margin]
+                                                 -\cos t \\ -4\sin(2t) \\ -4\cos(2t)
+                                             \end{bNiceMatrix} &
+              \vec{a}_{\text{tan}}       & = \frac{\vec{a} \dotp \vec{v}}
+              {\abs{\vec{v}}^2}\ \vec{v}                                        \\
+              \vec{a}_{\text{tan}}       & = \frac{\sin t \cos t}
+              {4 + \sin^2 t}\ \vec{v}(t) &
+              \vec{a}_{\text{norm}}      & = \vec{a} - \vec{a}_{\text{tan}}
+          \end{align}
+          \begin{figure}[H]
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              title = {$ z = 2x^2 - 1 $},
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani,
+                              colormap/viridis]
+                          \addplot3 [GraphSmooth, mesh, samples y=0,
+                              domain= 0:2 * pi, variable=\t, point meta = \t]
+                          ({cos(\t)},{sin(2 * \t)},{cos(2 * \t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              title = {$ y = 2x \sqrt{1 - x^2} $},
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani,
+                              colormap/viridis]
+                          \addplot3 [GraphSmooth, mesh, samples y=0,
+                              domain= 0:2 * pi, variable=\t, point meta = \t]
+                          ({cos(\t)},{sin(2 * \t)},{cos(2 * \t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              title = {$ y^2 + z^2 = 1 $},
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani,
+                              colormap/viridis]
+                          \addplot3 [GraphSmooth, mesh, samples y=0,
+                              domain= 0:2 * pi, variable=\t, point meta = \t]
+                          ({cos(\t)},{sin(2 * \t)},{cos(2 * \t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani,
+                              colormap/viridis]
+                          \addplot3 [GraphSmooth, mesh, samples y=0,
+                              domain= 0:2 * pi, variable=\t, point meta = \t]
+                          ({cos(\t)},{sin(2 * \t)},{cos(2 * \t)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item Finding the velocity and acceleration vectors,
+          \begin{align}
+              \vec{r}(t)            & = \begin{bNiceMatrix}[margin]
+                                            ct \cos t \\
+                                            ct \sin t \\
+                                            ct
+                                        \end{bNiceMatrix}    &
+              \vec{v}(t)            & = \begin{bNiceMatrix}[margin]
+                                            -ct \sin t + c\cos t \\
+                                            ct \cos t + c\sin t  \\
+                                            c
+                                        \end{bNiceMatrix}     \\
+              \vec{a}(t)            & = \begin{bNiceMatrix}[margin]
+                                            -ct \cos t - 2c\sin t \\
+                                            -ct\sin t + 2c \cos t \\
+                                            0
+                                        \end{bNiceMatrix}    &
+              \vec{a}_{\text{tan}}  & = \frac{\vec{a} \dotp \vec{v}}
+              {\abs{\vec{v}}^2}\ \vec{v}                               \\
+              \vec{a}_{\text{tan}}  & = \frac{t}
+              {1 + t^2}\ \vec{v}(t) &
+              \vec{a}_{\text{norm}} & = \vec{a} - \vec{a}_{\text{tan}}
+          \end{align}
+          \begin{figure}[H]
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={0}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              title = {$ x = z \cos(z) $},
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani,
+                              colormap/viridis]
+                          \addplot3 [GraphSmooth, mesh, samples y=0,
+                              domain= 0:4 * pi, variable=\t, point meta = \t]
+                          ({\t * cos(\t)},{\t * sin(\t)},{\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={0}{90},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              title = {$  $},
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani,
+                              colormap/viridis]
+                          \addplot3 [GraphSmooth, mesh, samples y=0,
+                              domain= 0:4 * pi, variable=\t, point meta = \t]
+                          ({\t * cos(\t)},{\t * sin(\t)},{\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={90}{0},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              title = {$ y = z \sin(z) $},
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani,
+                              colormap/viridis]
+                          \addplot3 [GraphSmooth, mesh, samples y=0,
+                              domain= 0:4 * pi, variable=\t, point meta = \t]
+                          ({\t * cos(\t)},{\t * sin(\t)},{\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}[b]{0.49\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              axis equal,
+                              enlargelimits=0.1,
+                              Ani,
+                              colormap/viridis]
+                          \addplot3 [GraphSmooth, mesh, samples y=0,
+                              domain= 0:4 * pi, variable=\t, point meta = \t]
+                          ({\t * cos(\t)},{\t * sin(\t)},{\t});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+
+          \newpage
+    \item Earth revolving around the sun,
+          \begin{align}
+              \vec{a}                     & = \bmatcol{-R\omega^2 \cos(\omega t)}
+              {-R\omega^2 \sin(\omega t)} &
+              \abs{\vec{v}}               & = \SI{30}{\km\per\s}                          \\
+              \omega                      & = \frac{2\pi}{365 \cdot 86400}              &
+              \vec{a}_{c}                 & = v\omega = \SI{5.98e-6}{\km\per\s\squared}
+          \end{align}
+
+    \item Moon revolving around the Earth,
+          \begin{align}
+              R     & = \SI{3.85e8}{\m}                &
+              T     & = \SI{2.36e6}{\s}                  \\
+              a_{c} & = \frac{R (4\pi^2)}{T^2}         &
+                    & = \SI{2.73e-3}{\m\per\s\squared}
+          \end{align}
+
+    \item Satellite revolving around the Earth,
+          \begin{align}
+              R  & = \SI{6501750}{\m}                  &
+              g  & = \SI{9.4488}{\m\per\s\squared}       \\
+              mg & = F_{\text{centr}} = \frac{mv^2}{R} &
+              v  & = \SI{7.84}{\km\per\s}
+          \end{align}
+
+    \item Satellite revolving around the Earth,
+          \begin{align}
+              R  & = \SI{7097.207}{\km}                                  &
+              T  & = \SI{6000}{\s}                                         \\
+              mg & = F_{\text{centr}} = mR\omega^2                       &
+              g  & = \frac{R 4\pi^2}{T^2} = \SI{7.783}{\m\per\s\squared}
+          \end{align}
+
+    \item Circle of radius $ a $
+          \begin{align}
+              \vec{r}(t)  & = \bmatcol{a\cos(t)}{a\sin(t)}                      &
+              \vec{r}'(t) & = \bmatcol{-a\sin(t)}{a\cos(t)}                       \\
+              s(t)        & = \int_{0}^{t} \sqrt{\vec{r}'(w) \dotp \vec{r}'(w)}
+              \ \dl w     &
+                          & = \Big[ aw \Big]_0^t = at
+          \end{align}
+          Rewriting the vector function using the arc length as parameter,
+          \begin{align}
+              \vec{r}(s)   & = \bmatcol{a\cos(s/a)}{a\sin(s/a)}            &
+              \vec{r}'(s)  & = \bmatcol{-\sin(s/a)}{\cos(s/a)}               \\
+              \vec{r}''(s) & = \frac{1}{a}\bmatcol{-\cos(s/a)}{-\sin(s/a)} &
+              \kappa       & = \abs{\vec{r}''(s)} = \frac{1}{a}
+          \end{align}
+
+    \item By the definition of curvature,
+          \begin{align}
+              s(t)                    & = \int_{0}^{t} \sqrt{\vec{r}'(w)
+              \dotp \vec{r}'(w)}\ \dl w                                            \\
+              \diff st                & = \abs{\vec{r}'(t)}                        \\
+              \diff{\vec{r}(s)}{s}    & = \diff{\vec{r}(t)}{t} \cdot \diff ts
+              = \diff{\vec{r}(t)}{t} \cdot \frac{1}{\abs{\vec{r}'(t)}}             \\
+              \diff[2]{\vec{r}(s)}{s} & = \diff{\vec{r}'(t)}{s}
+              \frac{1}{\abs{\vec{r}'(t)}} + \vec{r}'(t)\
+              \diff*{\frac{1}{\abs{\vec{r}'(t)}}}{s}                               \\
+                                      & = \frac{\vec{r}''(t)}{\abs{\vec{r}'(t)}^2}
+              + \vec{r}'(t)\ \diff ts\
+              \diff*{[\vec{r}'(t) \dotp \vec{r}'(t)]^{-1/2}}{t}                    \\
+                                      & = \frac{\vec{r}''(t)}{\abs{\vec{r}'(t)}^2}
+              - \vec{r}'(t)\
+              \frac{\vec{r}'(t) \dotp \vec{r}''(t)}{\abs{\vec{r}'(t)}^4}           \\
+                                      & = \frac{{\color{y_p}\vec{r}''(t)}
+              \big[ {\color{y_h}\vec{r}'(t)} \dotp
+                  {\color{azure3}\vec{r}'(t)} \big]
+              - {\color{azure3}\vec{r}'(t)}
+              \big[ {\color{y_h}\vec{r}'(t)} \dotp
+                  {\color{y_p}\vec{r}''(t)} \big]}
+              {\abs{\vec{r}'(t)}^4}                                                \\
+                                      & = \frac{{\color{y_h} \vec{r'}(t)} \times
+                  \big[ {\color{y_p} \vec{r}''(t)}  \times
+                      {\color{azure3} \vec{r}'(t)} \big]}
+              {\abs{\vec{r}'(t)}^4}
+          \end{align}
+
+          Using the formula of curvature parametrized by arc length,
+          \begin{align}
+              \kappa(s)                      & = \abs{\diff*[2]{\vec{r}(s)}{s}}  \\
+                                             & = \frac{\abs{\vec{r}'(t) \times
+                      \vec{r}''(t)}}
+              {\abs{\vec{r}'(t)}^3}                                              \\
+              \abs{\vec{a} \times \vec{b}}^2 & =
+              \abs{\vec{a}}^2\ \abs{\vec{b}}^2 - \abs{\vec{a} \dotp \vec{b}}^2   \\
+                                             & = \frac{\sqrt{\abs{\vec{r}'(t)}^2
+                      \ \abs{\vec{r}''(t)}^2
+                      - \big[ \vec{r}'(t) \dotp \vec{r}'' \big]^2}}
+              {\abs{\vec{r}'(t)}^3}                                              \\
+                                             & = \frac{\sqrt{\abs{\vec{r}'(t)}^2
+                      \ \abs{\vec{r}''(t)}^2
+                      - \big[ \vec{r}'(t) \dotp \vec{r}'' \big]^2}}
+              {\abs{\vec{r}'(t)}^3}
+          \end{align}
+
+    \item Using the result from Prob. $ 48 $,
+          \begin{align}
+              \vec{r}            & = \bmatcol{x}{y(x)}                  &
+              \vec{r}'           & = \bmatcol{1}{y'(x)}                   \\
+              \vec{r}''          & = \bmatcol{0}{y''(x)}                  \\
+              \kappa(x)          & = \frac{\sqrt{(1 + y'^2)(y''^2)
+                      - y'^2 \cdot y''^2}}
+              {(1 + y'^2)^{3/2}} &
+              \kappa (x)         & = \frac{\abs{y''}}{(1 + y'^2)^{3/2}}
+          \end{align}
+
+    \item Using the two given relations,
+          \begin{align}
+              \vec{b}                         & = \vec{u} \times \vec{p}        &
+              \tau(s)                         & = -\vec{p}(s) \dotp \vec{b}'(s)   \\
+              \tau(s)                         & = -\vec{p}(s) \dotp
+              \big[ \vec{u}' \times \vec{p}
+              + \vec{u} \times \vec{p}' \big] &
+              \tau(s)                         & = -\vec{p} \dotp \vec{u}
+              \times \vec{p}'                                                     \\
+              \tau(s)                         & = \vec{u} \dotp (\vec{p}
+              \times \vec{p}')                                                    \\
+              \vec{p}                         & = \frac{1}{\kappa}\ \vec{u}'    &
+              \vec{u}                         & = \vec{r}'                        \\
+              \tau(s)                         & = \frac{1}{\kappa^2}
+              \ \vec{r}' \dotp (\vec{r}'' \times \vec{r}''')
+          \end{align}
+
+    \item Changing the derivative from $ s $ to $ t $,
+          \begin{align}
+              \diff{\vec{r}}{s}    & = \diff{\vec{r}}{t}\ \diff ts
+              = \vec{r}'\ \diff ts                                           \\
+              \diff[2]{\vec{r}}{s} & = \diff{\vec{r}'}{s}\ \diff ts
+              + \vec{r}'\ \diff[2] ts                                        \\
+                                   & = \vec{r}''\ \left( \diff ts \right)^2
+              + \vec{r}'\ \diff[2] ts                                        \\
+              \diff[3]{\vec{r}}{s} & = \vec{r}'''\ \left( \diff ts \right)^3
+              + 3\vec{r}''\ \diff ts \ \diff[2] ts
+              + \vec{r}'\ \diff[3] ts
+          \end{align}
+          Substituting these into the result from Prob. $ 50 $, and using the results
+          from Prob. $ 48 $,
+          \begin{align}
+              \tau(t) & = \frac{1}{\kappa^2}\ \left[ \left( \diff ts \right)^3\
+              (\vec{r}' \times \vec{r}'') \dotp  \diff[3]{\vec{r}}{s} \right]   \\
+              \tau(t) & = \frac{1}{\kappa^2}\ \left[ \left( \diff ts \right)^6\
+              (\vec{r}' \times \vec{r}'') \dotp \vec{r}''' \right]              \\
+                      & = \frac{(\vec{r}' \dotp \vec{r}')^{-3}}{\kappa^2}\
+              \big[(\vec{r}' \times \vec{r}'') \dotp \vec{r}'''\big]            \\
+                      & = \frac{(\vec{r}' \times \vec{r}'') \dotp \vec{r}'''}
+              {(\vec{r'} \dotp \vec{r}')(\vec{r}'' \dotp \vec{r}'')
+                  - (\vec{r}' \dotp \vec{r}'')^2}
+          \end{align}
+
+    \item Parametrizing the helix by arc length,
+          \begin{align}
+              s          & = \int_{0}^{t} \sqrt{\vec{r}'(w) \dotp \vec{r}'(w)}
+              \ \dl w    &
+                         & = \int_{0}^{t} \sqrt{a^2 + c^2}\ \dl w                \\
+                         & = \int_{0}^{t} K\ \dl w                             &
+                         & = Kt                                                  \\
+              \vec{r}(s) & = \begin{bNiceMatrix}[margin]
+                                 a\cos(s/K) \\ a\sin(s/K) \\ c(s/K)
+                             \end{bNiceMatrix}
+          \end{align}
+          Finding curvature,
+          \begin{align}
+              \kappa(s)    & = \abs{\vec{r}''(s)}
+              \\
+              \vec{r''(s)} & = \begin{bNiceMatrix}[margin]
+                                   (-a/K^2)\cos(s/K) \\ (-a/K^2)\sin(s/K) \\ 0
+                               \end{bNiceMatrix}
+              \\
+              \kappa(s)    & = \frac{a}{K^2}
+              \\
+              \vec{b}      & = \frac{\vec{r}'(s) \times \vec{r}''(s)}{\kappa}
+              \\
+                           & = \frac{K^2}{a}
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}}     & \vec{\hat{j}}     & \vec{\hat{k}} \\
+                  -(a/K)\sin(s/K)   & (a/K)\cos(s/K)    & (c/K)         \\
+                  -(a/K^2)\cos(s/K) & -(a/K^2)\sin(s/K) & 0
+              \end{vNiceMatrix} \\
+                           & = \begin{bNiceMatrix}[margin]
+                                   (-c/K)\sin(s/K) \\
+                                   (c/K)\cos(s/K)  \\
+                                   a/K
+                               \end{bNiceMatrix}
+          \end{align}
+          Finding torsion,
+          \begin{align}
+              \vec{b}'(s)   & = \begin{bNiceMatrix}[margin]
+                                    (-c/K^2)\cos(s/K) \\ -(c/K^2)\sin(s/K)  \\ 0
+                                \end{bNiceMatrix} &
+              \vec{p}(s)    & = \begin{bNiceMatrix}[margin]
+                                    -\cos(s/K) \\ -\sin(s/K) \\ 0
+                                \end{bNiceMatrix}                 \\
+              \tau(s)       & = -\vec{p} \dotp \vec{b}                     &
+              \abs{\tau(s)} & = \frac{c}{K^2}
+          \end{align}
+
+    \item Using the result from Prob. 51,
+          \begin{align}
+              \vec{r}(t)                        & = \begin{bNiceMatrix}[margin]
+                                                        t \\ t^2 \\ t^3
+                                                    \end{bNiceMatrix} &
+              \vec{r}'(t)                       & = \begin{bNiceMatrix}[margin]
+                                                        1 \\ 2t \\ 3t^2
+                                                    \end{bNiceMatrix}    \\
+              \vec{r}''(t)                      & = \begin{bNiceMatrix}[margin]
+                                                        0 \\ 2 \\ 6t
+                                                    \end{bNiceMatrix} &
+              \vec{r}'''(t)                     & = \begin{bNiceMatrix}[margin]
+                                                        0 \\ 0 \\ 6
+                                                    \end{bNiceMatrix}    \\
+              (\vec{r}'\ \vec{r}''\ \vec{r}''') & = 12                          &
+              \tau(t)                           & = \frac{3}{1 + 9t^2 + 9t^4}
+          \end{align}
+
+    \item From the definition of torsion,
+          \begin{align}
+              \kappa(s)     & = \abs{\vec{u}'(s)}       &
+              \abs{\vec{p}} & = 1                         \\
+              \vec{p}       & = \frac{\vec{u}'}{\kappa} &
+              \vec{u}'      & = \kappa\ \vec{p}
+          \end{align}
+          Using the right-handed triple of $ \vec{u}, \vec{p}, \vec{b} $,
+          \begin{align}
+              \vec{p}' \dotp \vec{p}    & = 0                             &
+              \implies \vec{p}'         & = \lambda \vec{u} + \mu \vec{b}   \\
+              \vec{b}'                  & = \vec{u}' \times \vec{p}
+              + \vec{u} \times \vec{p}' &
+              \vec{b}'                  & = \vec{u} \times \vec{p}'         \\
+              \vec{b}'                  & = -\mu\ \vec{p}
+          \end{align}
+          From the definition of torsion,
+          \begin{align}
+              \abs{\tau}        & = \abs{\vec{b}'} &
+              \implies \vec{b}' & = -\tau\ \vec{p}
+          \end{align}
+          The third Frenet relation,
+          \begin{align}
+              \vec{p}'                          & = \lambda \vec{u} + \tau \vec{b}                    &
+              \vec{p}'                          & = \vec{b}' \times \vec{u} + \vec{b} \times \vec{u}'   \\
+                                                & = -\tau (\vec{p} \times \vec{u})
+              + \kappa (\vec{b} \times \vec{p}) &
+                                                & = \tau \ \vec{b} - \kappa \ \vec{u}
+          \end{align}
+          Most of the calculations are simply the relation between three mutually
+          orthogonal unit vectors and their cross products.
+
+    \item Refer to problem $52$. Already solved using the specified method.
+\end{enumerate}

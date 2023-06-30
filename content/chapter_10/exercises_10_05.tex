@@ -1,0 +1,727 @@
+\section{Surfaces for Surface Integrals}
+
+\begin{enumerate}
+    \item Finding the parameter curves in $ 2d $,
+          \begin{align}
+              \vec{r} & = \bmatcol{u}{v}   \\
+              u = c   & \implies x = c   &
+              v = c   & \implies y = c
+          \end{align}
+          The parameter curves are straight lines parallel to one of the axes. \par
+          The normal vector is,
+          \begin{align}
+              \vec{r}_u & = \bmatcol{1}{0}               &
+              \vec{r}_v & = \bmatcol{0}{1}                 \\
+              \vec{N}   & = \vec{r}_u \times \vec{r}_v =
+              \begin{bNiceMatrix}[margin]
+                  0 \\ 0 \\ 1
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the parameter curves in $ 2d $,
+          \begin{align}
+              \vec{r} & = \bmatcol{u \cos v}{u \sin v}   \\
+              u = c   & \implies x^2 + y^2 = c^2       &
+              v = c   & \implies \frac{y}{x} = \tan(c)
+          \end{align}
+          The parameter curves are circles centered on the origin and straight lines
+          passing through the origin. \par
+          The normal vector is,
+          \begin{align}
+              \vec{r}_u & = \bmatcol{\cos v}{\sin v}
+                        &
+              \vec{r}_v & = \bmatcol{- u\sin v}{u \cos v}
+              \\
+              \vec{N}   & = \vec{r}_u \times \vec{r}_v
+                        &
+                        & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                \cos v        & \sin v        & 0             \\
+                                -u \sin v     & u \cos v      & 0             \\
+                            \end{vNiceMatrix} \\
+                        & = \begin{bNiceMatrix}[margin]
+                                0 \\ 0 \\ u
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the parameter curves in $ 3d $,
+          \begin{align}
+              \vec{r} & = \begin{bNiceMatrix}[margin]
+                              u\cos v \\ u \sin v \\ \lambda u
+                          \end{bNiceMatrix}             \\
+              u = c   & \implies x^2 + y^2 = c^2 \qquad z = \lambda c \\
+              v = c   & \implies \frac{y}{x} = \tan(c)
+          \end{align}
+          The parameter curves for constant $ u $ are circles in the $ xy $ plane
+          centered at the origin at $ z = \lambda c $. \par
+          For constant $ v $, the parameter curves are straight lines through the
+          origin. \par
+          The normal vector is,
+          \begin{align}
+              \vec{r}_u & =   \begin{bNiceMatrix}[margin]
+                                  \cos v \\ \sin v \\ \lambda
+                              \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                -u\sin v \\ u \cos v \\ 0
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \vec{r}_u \times \vec{r}_v
+                        &
+                        & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                \cos v        & \sin v        & \lambda       \\
+                                -u \sin v     & u \cos v      & 0             \\
+                            \end{vNiceMatrix} \\
+                        & = \begin{bNiceMatrix}[margin]
+                                -\lambda u \cos(v) \\ -\lambda u \sin(v) \\ u
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the parameter curves in $ 3d $,
+          \begin{align}
+              \vec{r} & = \begin{bNiceMatrix}[margin]
+                              a\cos v \\ b\sin v \\ u
+                          \end{bNiceMatrix}                                 \\
+              u = c   & \implies \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1  \qquad z = c \\
+              v = c   & \implies x = a \cos c \qquad y = b\sin c \qquad z = u
+          \end{align}
+          The parameter curves for constant $ u $ are ellipses in the $ xy $ plane
+          centered at the origin at $ z = c $. \par
+          For constant $ v $, the parameter curves are straight lines parallel to the
+          $ z $ axis intersecting the $ xy $ plane at $ (a\cos c, b\sin c) $. \par
+          The normal vector is,
+          \begin{align}
+              \vec{r}_u & =   \begin{bNiceMatrix}[margin]
+                                  0 \\ 0 \\ 1
+                              \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                -a\sin v \\ b \cos v \\ 0
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \vec{r}_u \times \vec{r}_v
+                        &
+                        & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                0             & 0             & 1             \\
+                                -a \sin v     & b \cos v      & 0             \\
+                            \end{vNiceMatrix} \\
+                        & = \begin{bNiceMatrix}[margin]
+                                -b\cos v \\ -a\sin v \\ 0
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the parameter curves in $ 3d $,
+          \begin{align}
+              \vec{r} & = \begin{bNiceMatrix}[margin]
+                              u \cos v \\ u \sin v \\ u^2
+                          \end{bNiceMatrix}                  \\
+              u = c   & \implies x^2 + y^2 = c^2  \qquad z = c^2      \\
+              v = c   & \implies \frac{y}{x} = \tan(c) \qquad z = u^2
+          \end{align}
+          The parameter curves for constant $ u $ are circles in the $ xy $ plane
+          centered at the origin at $ z = c^2 $. \par
+          For constant $ v $, the parameter curves are parabolas parallel to the
+          $ z $ axis lying in the plane $ y = \tan(c)\ x $. \par
+          The normal vector is,
+          \begin{align}
+              \vec{r}_u & =   \begin{bNiceMatrix}[margin]
+                                  \cos v \\ \sin v \\ 2u
+                              \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                -u\sin v \\ u \cos v \\ 0
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \vec{r}_u \times \vec{r}_v
+                        &
+                        & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                \cos v        & \sin v        & 2u            \\
+                                -u \sin v     & u \cos v      & 0             \\
+                            \end{vNiceMatrix} \\
+                        & = \begin{bNiceMatrix}[margin]
+                                -2u^2\ \cos v \\ -2u^2\ \sin v \\ u
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the parameter curves in $ 3d $,
+          \begin{align}
+              \vec{r} & = \begin{bNiceMatrix}[margin]
+                              u \cos v \\ u \sin v \\ v
+                          \end{bNiceMatrix}                            \\
+              u = c   & \implies x = c\cos v \qquad  y = c \sin v  \qquad z = v \\
+              v = c   & \implies \frac{y}{x} = \tan(c) \qquad z = c
+          \end{align}
+          The parameter curves for constant $ u $ are helices in the $ xy $ plane
+          centered at the origin, axis being the $ z $ axis and radius $ c $. \par
+          For constant $ v $, the parameter curves are straight lines on the $ xy $
+          plane at $ z = c $. \par
+          The normal vector is,
+          \begin{align}
+              \vec{r}_u & =   \begin{bNiceMatrix}[margin]
+                                  \cos v \\ \sin v \\ 0
+                              \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                -u\sin v \\ u \cos v \\ 1
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \vec{r}_u \times \vec{r}_v
+                        &
+                        & = \begin{vNiceMatrix}[margin]
+                                \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                                \cos v        & \sin v        & 0             \\
+                                -u \sin v     & u \cos v      & 1             \\
+                            \end{vNiceMatrix} \\
+                        & = \begin{bNiceMatrix}[margin]
+                                \sin v \\ - \cos v \\ u
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the parameter curves in $ 3d $,
+          \begin{align}
+              \vec{r}     & = \begin{bNiceMatrix}[margin]
+                                  a \cos v \cos u \\ b \cos v \sin u \\ c \sin v
+                              \end{bNiceMatrix} \\
+              u = \lambda & \implies y = x\ \frac{b\ \tan \lambda}{a}
+              \qquad \frac{z^2}{c^2} + \frac{x^2}{a^2 \cos^2 \lambda} = 1   \\
+              v = c       & \implies \frac{y}{x} = \tan(c) \qquad z = c
+          \end{align}
+          The parameter curves for constant $ u $ are ellipses through the $ z $ axis
+          lying in the plane $ y = (\tan c)\ bx/a $. \par
+          For constant $ v $, the parameter curves are ellipses on the $ xy $
+          plane centered at the z axis at $ z = c \sin \lambda $. \par
+          The normal vector is,
+          \begin{align}
+              \vec{r}_u & =   \begin{bNiceMatrix}[margin]
+                                  -a \cos v \sin u \\ b \cos v \cos u \\ 0
+                              \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                -a\sin v \cos u \\ -b \sin v \sin u \\ c \cos v
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \vec{r}_u \times \vec{r}_v
+                        &
+                        &
+              = \cos v \begin{vNiceMatrix}[margin]
+                           \vec{\hat{i}}    & \vec{\hat{j}}    & \vec{\hat{k}} \\
+                           -a \sin u        & b \cos u         & 0             \\
+                           -a \sin v \cos u & -b \sin v \sin u & c \cos v      \\
+                       \end{vNiceMatrix} \\
+                        & = \begin{bNiceMatrix}[margin]
+                                bc \cos u \cos^2 v \\
+                                ac \sin u \cos^2 v \\
+                                ab \sin v \cos v
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the parameter curves in $ 3d $,
+          \begin{align}
+              \vec{r}     & = \begin{bNiceMatrix}[margin]
+                                  au \cosh v \\ bu \sinh v \\ u^2
+                              \end{bNiceMatrix}                       \\
+              u = \lambda & \implies \frac{x^2}{a^2} - \frac{y^2}{b^2} = \lambda^2
+              \qquad z = \lambda^2                                                 \\
+              v = c       & \implies y = x\ \frac{b\ \tanh \lambda}{a}
+              \qquad z = \Bigg( \frac{x}{a \cosh \lambda} \Bigg)^2
+          \end{align}
+          The parameter curves for constant $ u $ are hyperbolae on the $ xy $ plane
+          at $ z = \lambda^2 $. \par
+          For constant $ v $, the parameter curves are parabolas along the z axis
+          lying on the plane $ y = \tanh \lambda (bx/a)  $. \par
+          The normal vector is,
+          \begin{align}
+              \vec{r}_u & =   \begin{bNiceMatrix}[margin]
+                                  a \cosh v \\ b \sinh v \\ 2u
+                              \end{bNiceMatrix}
+                        &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                au \sinh v \\ bu \cosh v \\ 0
+                            \end{bNiceMatrix}
+              \\
+              \vec{N}   & = \vec{r}_u \times \vec{r}_v
+                        &
+                        &
+              = \begin{vNiceMatrix}[margin]
+                    \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                    a \cosh v     & b \sinh v     & 2u            \\
+                    au \sinh v    & bu \cosh v    & 0             \\
+                \end{vNiceMatrix} \\
+                        & = \begin{bNiceMatrix}[margin]
+                                -2bu^2 \cosh v \\
+                                2au^2 \sinh v  \\
+                                abu
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Plotting the various parametric surfaces,
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.49 \textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = Circular cone,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={30}{30},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1, colormap/viridis,
+                              Ani, axis equal]
+                          \addplot3 [mesh, shader = interp, y domain = 0:2*pi,
+                              domain = -1.5:1.5, samples = 50]
+                          ({x * cos(y)},{x * sin(y)},{x});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill\begin{subfigure}{0.49 \textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = Elliptic cylinder,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={30}{30},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1, colormap/jet,
+                              Ani, axis equal]
+                          \addplot3 [mesh, shader = interp, y domain = 0:2*pi,
+                              domain = -1.5:1.5, samples = 50]
+                          ({2 * cos(y)},{1 * sin(y)},{x});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.49 \textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = Praboloid of revolution,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={30}{30},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1, colormap/viridis,
+                              Ani, axis equal]
+                          \addplot3 [mesh, shader = interp, y domain = 0:2*pi,
+                              domain = 0:2, samples = 50]
+                          ({x * cos(y)},{x * sin(y)},{x^2});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill\begin{subfigure}{0.49 \textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = Helicoid,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={30}{30},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1, colormap/jet,
+                              Ani]
+                          \addplot3 [mesh, shader = interp, y domain = 0:2*pi,
+                              domain = 0:1, samples = 30]
+                          ({x * cos(y)},{x * sin(y)},{y});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.49 \textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = Ellipsoid,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={30}{30},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1, colormap/viridis,
+                              Ani, axis equal]
+                          \addplot3 [mesh, shader = interp, y domain = 0:2*pi,
+                              domain = -pi:pi, samples = 20]
+                          ({1 * cos(x) * cos(y)},{1 * cos(x) * sin(y)},{2 * sin(x)});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \hfill\begin{subfigure}{0.49 \textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = Hyperbolic Paraboloid,
+                              width = 8cm, height = 8cm,
+                              grid = both,
+                              ticks = none,
+                              view={45}{45},
+                              xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                              enlargelimits=0.1, colormap/viridis,
+                              Ani, axis equal]
+                          \addplot3 [mesh, shader = interp, y domain = -4:4,
+                              domain = -4:4, samples = 30]
+                          ({2 * x},{3 * y},{x^2 - y^2});
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+          The effects of varying the parameters $ a, b, c $ are not shown here.
+
+    \item Examples TBC. For the forward case, start with
+          \begin{align}
+              \vec{r}_u \dotp \vec{r}_v & = 0                                      \\
+              u = c_1                   & \implies \vec{r}_1'(t) = \vec{r}_v\ v' &
+              v = c_2                   & \implies \vec{r}_2'(t) = \vec{r}_u\ u'
+          \end{align}
+          If the vectors $ \vec{r}_u $ and $ \vec{r}_v $ are orthogonal, then the
+          tangent vectors to the two curves $ \vec{r}_1' $ and $ \vec{r}_2' $ are also
+          orthogonal. \par
+          This means that the curves with $ u = c_1 $ and $ v = c_2 $ are orthogonal at
+          $ P $ on surface $ S $. \par
+          The backward proof is exactly these steps in reverse.
+
+    \item The normal vector from Problem $ 5 $ is
+          \begin{align}
+              \vec{N} & = \begin{bNiceMatrix}[margin]
+                              -2u^2\ \cos v \\ -2u^2\ \sin v \\ u
+                          \end{bNiceMatrix} &
+              \vec{N}(u = 0, v = 0) = \vec{0}
+          \end{align}
+          To redefine the normal vector and avoid this,
+          \begin{align}
+              \vec{\tilde{r}}(u, v) & = \begin{bNiceMatrix}[margin]
+                                            u \\ v \\ u^2 + v^2
+                                        \end{bNiceMatrix}  &
+              \vec{\tilde{r}}_u     & = \begin{bNiceMatrix}[margin]
+                                            1 \\ 0 \\ 2u
+                                        \end{bNiceMatrix}     \\
+              \vec{\tilde{r}}_v     & = \begin{bNiceMatrix}[margin]
+                                            0 \\ 1 \\ 2v
+                                        \end{bNiceMatrix}  &
+              \vec{\tilde{N}}       & = \begin{bNiceMatrix}[margin]
+                                            -2u \\ -2v \\ 1
+                                        \end{bNiceMatrix}     \\
+              \vec{\tilde{N}}(0, 0) & = \begin{bNiceMatrix}[margin]
+                                            0 \\ 0 \\ 1
+                                        \end{bNiceMatrix} \neq \vec{0}
+          \end{align}
+
+    \item Finding the points at which the normal vector is zero,
+          \begin{enumerate}
+              \item No such points exist for the given surface.
+                    \begin{align}
+                        \vec{N}_1 & = \begin{bNiceMatrix}[margin]
+                                          0 \\ 0 \\ 1
+                                      \end{bNiceMatrix} &
+                        \vec{N}   & \neq \vec{0}
+                    \end{align}
+              \item This is caused by the \textcolor{y_p}{representation}.
+                    \begin{align}
+                        \vec{N}_2   & = \begin{bNiceMatrix}[margin]
+                                            0 \\ 0 \\ u
+                                        \end{bNiceMatrix} &
+                        \vec{N} = 0 & \implies (0, 0, 0)
+                    \end{align}
+              \item This is caused by the \textcolor{y_h}{surface itself}.
+                    \begin{align}
+                        \vec{N}_3                                     & =
+                        \begin{bNiceMatrix}[margin]
+                            -\lambda u \cos(v) \\ -\lambda u \sin(v) \\ u
+                        \end{bNiceMatrix} &
+                        \vec{N} = 0                                   &
+                        \implies (0, 0, 0)
+                    \end{align}
+              \item No such points exist for the given surface.
+                    \begin{align}
+                        \vec{N}_4                   & =
+                        \begin{bNiceMatrix}[margin]
+                            -b\cos v \\ -a\sin v \\ 0
+                        \end{bNiceMatrix} &
+                        \vec{N}                     & \neq 0
+                    \end{align}
+              \item This is caused by the \textcolor{y_p}{representation}.
+                    \begin{align}
+                        \vec{N}_5                           & =
+                        \begin{bNiceMatrix}[margin]
+                            -2u^2\ \cos v \\ -2u^2\ \sin v \\ u
+                        \end{bNiceMatrix} &
+                        \vec{N} = \vec{0}                   & \implies
+                        (0, \alpha, \beta)
+                    \end{align}
+              \item No such points exist for the given surface.
+                    \begin{align}
+                        \vec{N}_6                   & =
+                        \begin{bNiceMatrix}[margin]
+                            \sin v \\ - \cos v \\ u
+                        \end{bNiceMatrix} &
+                        \vec{N}                     & \neq \vec{0}
+                    \end{align}
+              \item This is caused by the \textcolor{y_p}{representation}.
+                    \begin{align}
+                        \vec{N}_7                   & =
+                        \begin{bNiceMatrix}[margin]
+                            bc \cos u \cos^2 v \\
+                            ac \sin u \cos^2 v \\
+                            ab \sin v \cos v
+                        \end{bNiceMatrix} &
+                        \vec{N} = 0                 &
+                        \implies v = n\pi + \frac{\pi}{2}
+                    \end{align}
+              \item This is caused by the \textcolor{y_p}{representation}.
+                    \begin{align}
+                        \vec{N}_8                   & =
+                        \begin{bNiceMatrix}[margin]
+                            -2b\ u^2 \cosh v \\
+                            2a\ u^2 \sinh v  \\
+                            ab\ u
+                        \end{bNiceMatrix} &
+                        \vec{N} = 0                 &
+                        \implies u = 0
+                    \end{align}
+          \end{enumerate}
+
+    \item Representing the surface as
+          \begin{align}
+              z        & = f(x, y)                     &
+              \vec{r}  & = \begin{bNiceMatrix}[margin]
+                               u \\ v \\ f(u, v)
+                           \end{bNiceMatrix}    \\
+              g        & \equiv z - f(u, v) = 0        &
+              \nabla g & = \begin{bNiceMatrix}[margin]
+                               -\difcp fu \\ -\difcp fv \\ 1
+                           \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the parametric representation,
+          \begin{align}
+              4x + 3y + 2z & = 12                          &
+              \vec{r}      & = \begin{bNiceMatrix}[margin]
+                                   u \\ v \\ 6 - 2u - 1.5v
+                               \end{bNiceMatrix}    \\
+              \vec{r}_u    & = \begin{bNiceMatrix}[margin]
+                                   1 \\ 0 \\ -2
+                               \end{bNiceMatrix} &
+              \vec{r}_v    & = \begin{bNiceMatrix}[margin]
+                                   0 \\ 1 \\ -1.5
+                               \end{bNiceMatrix}
+          \end{align}
+          The normal vector is,
+          \begin{align}
+              \vec{N} =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  1             & 0             & -2            \\
+                  0             & 1             & -1.5          \\
+              \end{vNiceMatrix} &
+              = \begin{bNiceMatrix}[margin]
+                    2 \\ 1.5 \\ 1
+                \end{bNiceMatrix}
+          \end{align}
+          The parameter curves are families of parallel straight lines lying on this
+          plane with either a fixed $ x $ or $ y $ coordinate.
+
+    \item Finding the parametric representation,
+          \begin{align}
+              (x-2)^2 + (y + 1)^2 & = 25                              &
+              \vec{r}             & = \begin{bNiceMatrix}[margin]
+                                          2 + 5\cos u \\ - 1 + 5\sin u \\ v
+                                      \end{bNiceMatrix}  \\
+              \vec{r}_u           & = \begin{bNiceMatrix}[margin]
+                                          -5\sin u \\ 5 \cos u \\ 0
+                                      \end{bNiceMatrix}     &
+              \vec{r}_v           & = \begin{bNiceMatrix}[margin]
+                                          0 \\ 0 \\ 1
+                                      \end{bNiceMatrix}
+          \end{align}
+          The normal vector is,
+          \begin{align}
+              \vec{N} =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -5\sin u      & 5 \cos u      & 0             \\
+                  0             & 0             & 1             \\
+              \end{vNiceMatrix} &
+              = \begin{bNiceMatrix}[margin]
+                    5\cos u \\ 5\sin u \\ 0
+                \end{bNiceMatrix}
+          \end{align}
+          One set of parameter curves are families straight lines parallel to the $ z $
+          axis lying on the perimeter of the cross-section. \par
+          The other parameter curves are circles parallel to the $ xy $ plane centered
+          on $ (2, -1, z) $ and with radius $ 5 $.
+
+    \item Finding the parametric representation,
+          \begin{align}
+              x^2 + y^2 + \frac{z^2}{9} & = 1                           &
+              \vec{r}                   & = \begin{bNiceMatrix}[margin]
+                                                \cos u \cos v \\
+                                                \sin u \cos v \\
+                                                3 \sin v
+                                            \end{bNiceMatrix}    \\
+              \vec{r}_u                 & = \begin{bNiceMatrix}[margin]
+                                                -5\sin u \\ 5 \cos u \\ 0
+                                            \end{bNiceMatrix} &
+              \vec{r}_v                 & = \begin{bNiceMatrix}[margin]
+                                                0 \\ 0 \\ 1
+                                            \end{bNiceMatrix}
+          \end{align}
+          The normal vector is,
+          \begin{align}
+              \vec{N} =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  -5\sin u      & 5 \cos u      & 0             \\
+                  0             & 0             & 1             \\
+              \end{vNiceMatrix} &
+              = \begin{bNiceMatrix}[margin]
+                    5\cos u \\ 5\sin u \\ 0
+                \end{bNiceMatrix}
+          \end{align}
+          One set of parameter curves are families straight lines parallel to the $ z $
+          axis lying on the perimeter of the cross-section. \par
+          The other parameter curves are circles parallel to the $ xy $ plane centered
+          on $ (2, -1, z) $ and with radius $ 5 $.
+
+    \item Finding the parametric representation,
+          \begin{align}
+              x^2 + (y + 2.8)^2 + (z - 3.2)^2 & = 1.5^2                       &
+              \vec{r}                         & = \begin{bNiceMatrix}[margin]
+                                                      1.5\cos u \cos v        \\
+                                                      -2.8 + 1.5\sin u \cos v \\
+                                                      3.2 +  1.5\sin v
+                                                  \end{bNiceMatrix}    \\
+              \vec{r}_u                       & = \begin{bNiceMatrix}[margin]
+                                                      -1.5\sin u \cos v \\
+                                                      1.5\cos u \cos v  \\
+                                                      0
+                                                  \end{bNiceMatrix} &
+              \vec{r}_v                       & = \begin{bNiceMatrix}[margin]
+                                                      -1.5\cos u \sin v  \\
+                                                      -1.5 \sin u \sin v \\
+                                                      1.5 \cos v
+                                                  \end{bNiceMatrix}
+          \end{align}
+          The normal vector is,
+          \begin{align}
+              \vec{N} = 2.25\
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}}  & \vec{\hat{j}}  & \vec{\hat{k}} \\
+                  -\sin u \cos v & \cos u \cos v  & 0             \\
+                  -\cos u \sin v & -\sin u \sin v & \cos v        \\
+              \end{vNiceMatrix} &
+              = 2.25\ \begin{bNiceMatrix}[margin]
+                          \cos u \cos^2 v \\ \sin u \cos^2 v \\ \cos v \sin v
+                      \end{bNiceMatrix}
+          \end{align}
+          One set of parameter curves are circles parallel to the $ xy $ plane
+          (latitudes) at elevation $ z = 3.2 + 1.5 \sin v $. \par
+          The other parameter curves are circles meridians similar to a globe.
+
+    \item Finding the parametric representation,
+          \begin{align}
+              \sqrt{x^2 + 4y^2} & = z^2                         &
+              \vec{r}           & = \begin{bNiceMatrix}[margin]
+                                        u\ \cos v    \\
+                                        0.5u\ \sin v \\
+                                        u
+                                    \end{bNiceMatrix}    \\
+              \vec{r}_u         & = \begin{bNiceMatrix}[margin]
+                                        \cos v     \\
+                                        0.5 \sin v \\
+                                        1
+                                    \end{bNiceMatrix} &
+              \vec{r}_v         & = \begin{bNiceMatrix}[margin]
+                                        -u \sin v   \\
+                                        0.5u \cos v \\
+                                        0
+                                    \end{bNiceMatrix}
+          \end{align}
+          The normal vector is,
+          \begin{align}
+              \vec{N} = 2.25\
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \cos v        & 0.5 \sin v    & 1             \\
+                  -u \sin v     & 0.5 u \cos v  & 0             \\
+              \end{vNiceMatrix} &
+              = \begin{bNiceMatrix}[margin]
+                    -0.5u\ \cos v \\ u\ \sin v \\ 0.5u
+                \end{bNiceMatrix}
+          \end{align}
+          One set of parameter curves are ellipses parallel to the $ xy $ plane at
+          elevation $ z = u $(latitudes). \par
+          The other parameter curves are straight lines passing through the origin
+          lying on the cone's surface.
+
+    \item Finding the parametric representation,
+          \begin{align}
+              x^2 - y^2 & = 1                           &
+              \vec{r}   & = \begin{bNiceMatrix}[margin]
+                                \cosh v \\ \sinh v \\ u
+                            \end{bNiceMatrix}    \\
+              \vec{r}_u & = \begin{bNiceMatrix}[margin]
+                                0 \\ 0 \\ 1
+                            \end{bNiceMatrix} &
+              \vec{r}_v & = \begin{bNiceMatrix}[margin]
+                                \sinh v \\ \cosh v \\ 0
+                            \end{bNiceMatrix}
+          \end{align}
+          The normal vector is,
+          \begin{align}
+              \vec{N} = \begin{vNiceMatrix}[margin]
+                            \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                            0             & 0             & 1             \\
+                            \sinh v       & \cosh v       & 0             \\
+                        \end{vNiceMatrix} &
+              = \begin{bNiceMatrix}[margin]
+                    -\cosh v \\ \sinh v \\ 0
+                \end{bNiceMatrix}
+          \end{align}
+          One set of parameter curves are hyperbolae parallel to the $ xy $ plane at
+          elevation $ z = u $. \par
+          The other parameter curves are straight lines parallel to the $ z $ axis
+          passing through $ (\cosh v, \sinh v , 0) $.
+
+    \item Tangent planes. Examples TBC.
+          \begin{enumerate}
+              \item Using the tangent vectors $ \vec{r}_u $ and $ \vec{r}_v $
+                    \begin{align}
+                        \vec{r}_u \times \vec{r}_v & = \vec{N}                     &
+                        \vec{r}^* \dotp \vec{N}    & = \vec{r}(P) \dotp \vec{N}(P)
+                    \end{align}
+                    The tangent plane is defined using the surface normal at $ P $ which
+                    also happnes to be normal to the plane.
+
+              \item Using the fact that the gradient of a scalar function at a point
+                    is the surface normal at that point and the result from part $ a $,
+                    \begin{align}
+                        g(x, y, z)                 & = 0                              &
+                        \vec{N}                    & = \nabla g                         \\
+                        \vec{r}^* \dotp (\nabla g) & = \vec{r}(P) \dotp (\nabla g)(P)
+                    \end{align}
+
+              \item Using the results from parts $ a $ and $ b $,
+                    \begin{align}
+                        S                       & : z = f(x, y)                 &
+                        \vec{r}                 & = \begin{bNiceMatrix}[margin]
+                                                        x \\ y \\ f(x, y)
+                                                    \end{bNiceMatrix}    \\
+                        \vec{r}_x               & =\begin{bNiceMatrix}[margin]
+                                                       1 \\ 0 \\ \difcp fx
+                                                   \end{bNiceMatrix}  &
+                        \vec{r}_y               & =\begin{bNiceMatrix}[margin]
+                                                       0 \\ 1 \\ \difcp fy
+                                                   \end{bNiceMatrix}     \\
+                        \vec{N}                 & = \vec{r}_x \times \vec{r}_y  &
+                        \vec{N}                 & =\begin{bNiceMatrix}[margin]
+                                                       -\difcp fx \\ -\difcp fy \\ 1
+                                                   \end{bNiceMatrix}   \\
+                        \vec{r}^* \dotp \vec{N} & = \vec{r}(P) \dotp \vec{N}(P) &
+                    \end{align}
+                    This can be rearranged into the required form.
+          \end{enumerate}
+\end{enumerate}

@@ -1,0 +1,239 @@
+\chapter{First Order ODEs}
+\section{Basic Concepts: Modeling}
+
+\begin{description}
+    \item[Modeling] Converting an engineering problem into a set of mathematical relations
+    \item[Ordinary Differential Equation] An equation that contains one or several derivatives of an unknown function (which only contains a single variable). Shorthand notation for higher order derivatives is:
+
+        \begin{align}
+            y'      & \coloneq \diff yx    &
+            y''     & \coloneq \diff[2] yx &
+            y^{(n)} & \coloneq \difoverride{n} \diff[n] yx
+        \end{align}
+
+    \item[Order] The highest derivative of the unknown function that is in a given equation
+    \item[Implicit form] ODE represented as $F(x, y, y') = 0$
+    \item[Explicit form] ODE represented as $y' = f(x, y)$
+    \item[Solution] A function $y = h(x)$ on some open interval that satisfies the ODE. This requires $h(x)$ to be defined and differentiable on that interval.
+    \item[Solution Curve] The graph of a solution to an ODE
+    \item[Open Interval] A segment of the real line not including the endpoints. Special cases include the entire real line $(-\infty,\infty)$, and half-infinite intervals of the form $[a, \infty)$ and $(-\infty, b]$
+    \item[Family of Solutions] A set of solutions of an ODE grouped together by the value of the arbitrary constant leftover from integration.
+    \item[General Solution] A solution to an ODE containing an arbitrary constant (denoted by $c$)
+    \item[Particular Solution] The outcome of fixing the arbitrary constant $c$ in a General solution. This no longer contains any arbitrary constants.
+    \item[Initial Condition] A constraint on $c$ creating a particular solution.
+    \item[Initial Value Problem] An ODE along with an initial condition
+    \item[Autonomous ODE] An ODE not showing the independent variable explicitly $f(x, y) \rightarrow f(y)$
+        \begin{align}
+            y'       & = f(x, y) &
+            y(x_{0}) & = y_{0}
+        \end{align}
+\end{description}
+
+
+
+The general outline of a mathematical modeling procedure is as follows:
+
+\begin{enumerate}
+    \item Transition from the physical system to its mathematical formulation
+    \item Using a mathematical method to solve this model
+    \item Physical interpretation of the results. (Including a sanity check based on the practical nature of the physical system)
+\end{enumerate}
+
+\section{Geometric Meaning of y' = f(x, y)}
+
+\begin{description}
+    \item[Slope] The slope of the line tangent to a curve at a given point on the curve. Mathematically, this is equal to the fist derivative of the equation of the curve evaluated at that point
+    \item[Direction field] A vector field of the first derivative showing used to reverse engineer the solution to a first order ODE
+
+        \begin{align}
+            y' & = f(x, y) & y'(x_{0}) & = f(x_{0}, y_{0})
+        \end{align}
+
+    \item[Level Curve] A curve of the function $f(x, y) = c$ for some constant $c$. Also called an Isocline.
+    \item[Euler's method] A numeric method for obtaining approximate values of a function at a set of equidistant $x$ values (with separation $h$).
+
+        \begin{align}
+            \mathbf{x} & = \left\{x_{0}, x_{1}, \dots, x_{n}\right\} & x_{i} & = x_{0} + ih \\
+            y_{1}      & = y_{0} + h f(x_{0}, y_{0})                                        \\
+            \vdots \nonumber                                                                \\
+            y_{n}      & = y_{n-1} + h f(x_{n-1}, y_{-1})
+        \end{align}
+\end{description}
+
+\section{Separable ODEs. Modeling}
+
+\begin{description}
+    \item[Separable ODE] An ODE which can be expressed in a form where the two variables $x$ and $y$ are on two sides of the equation.
+        \begin{align}
+            g(y) \  y'       & = f(x)                 \\
+            \int g(y)\ \dl y & = \int f(x)\ \dl x + c
+        \end{align}
+        Note the introduction of $c$ at the earliest possible step. Being sloppy with introducing the constant of introduction can greatly change the final answer.
+    \item[Method of separating variables] Rewriting an ODE using algebraic manipulation into a separable form.
+    \item[Reduction to Separable form] For equations that are not directly in separable form, consider the variable $y/x$
+        \begin{align}
+            y' & = f\left(\frac{y}{x}\right)                                             \\
+            u  & = \frac{y}{x}               & \frac{\dl u}{f(u) - u} & = \diff*{1/x}{x}
+        \end{align}
+        The above form is sometimes called a homogenous ODE.
+\end{description}
+
+\section{Exact ODEs. Integrating Factors}
+Consider a function $ u(x, y) $ with continuous partial derivatives.
+\begin{description}
+    \item[Exact Differential Equation] An ODE using functions $ M(x, y) $ and $ N(x, y) $
+        arranged into the form,
+        \begin{align}
+            M\ \dl x + N\ \dl y               & = 0      \\
+            \diffp{u}{x} dx + \diffp{u}{y} dy & = du = 0 \\
+            \diffp{M}{y} =                               \\diffp{u}{x, y} & = \diffp{u}{y, x} = \diffp{N}{x} & \iff u(x, y) & = c
+        \end{align}
+    \item[Implicit solution] A solution of the form $ u(x, y) = c$ as opposed to the earlier
+        solutions of the explicit form $ y = f(x) + c $. Interconversion may not always be possible.
+\end{description}
+
+The general approach to solving an exact ODE is,
+\begin{enumerate}
+    \item Integrate $ M $ w.r.t $ x $ keeping a leftover constant of integration $ k(y) $.
+    \item Differentiate this result w.r.t. $ y $ and equate it to $ N $ to find $ dk/dy $.
+    \item Integrate $ dk/dy $ w.r.t. $ y $ and substitute back to get the general solution.
+\end{enumerate}
+
+\begin{align}
+    u            & = \int\ M\ \dl x + k(y)                                \\
+    \diffp{u}{y} & = \diff{k}{y} + \diffp*{\left(\int M dx\right)}{y} = N
+\end{align}
+
+This procedure can also be analogously carried out starting with $ M $.
+
+\begin{description}
+    \item[Integrating Factor] For ODEs that are not exact, a pre-factor multiplied to the ODE
+        can reduce it to exact form.
+\end{description}
+
+Consider an integrating factor $ F(x) $ depending only on $ x $
+\begin{align}
+    P(x, y) \ \dl x + Q(x, y)\ \dl y & = 0                                      \\
+    \diffp{FP}{y} = F_{y}P + FP_{y}  & = F_{x} Q + F Q_{x} =  \diffp{FQ}{x}     \\
+    \frac{1}{F}\ \diff{F}{x}         & = R                                      \\
+    R(x)                             & = \frac{1}{Q} \left[P_{y} - Q_{x}\right]
+\end{align}
+
+If $ R $ depends only on $ x $, then an integrating factor exists of the form,
+\begin{align}
+    F(x) & = \exp \left[\int\ R(x)\ \dl x\right]
+\end{align}
+
+An analogous method to find an integrating factor exists for $ F $ and therefore $ R^{*} $
+depending only on $ y $
+
+\begin{align}
+    F^{*}(y) \quad \text{enables}\quad R^{*} & = \frac{1}{F^{*}}\ \diff{F^{*}{}}{y}     \\
+    R^{*}(y)                                 & = \frac{1}{P} \left[Q_{x} - P_{y}\right] \\
+    F^{*}(y)                                 & = \exp \left[\int\ R^{*}(y)\ dy\right]
+\end{align}
+
+\section{Linear ODEs, Bernoulli equation, Population Dynamics}
+
+\begin{description}
+    \item[Linear ODE] An ODE which can be brought to the form,
+        \begin{align}
+            y' + p(x)\ y & = r(x)
+        \end{align}
+        Here, $ r(x) $ is called the input and $ y $ is the response to that input and
+        any initial conditions if present. In the standard form, the coefficient of
+        $ y' $ is 1.
+    \item[Homogenous Linear ODE] A special case of the linear ODE with input $ r(x) $ being 0. This can
+        always be solved using separation of variables.
+        \begin{align}
+            y' + p(x)\ y & = 0                                        \\
+            y            & = c\ \exp\left( -\int\ p(x)\ \dl x \right)
+        \end{align}
+    \item[Nonhomogenous Linear ODE] An Linear ODE with nonzero input $ r(x) $. Its solution
+        is closely related to that of the corresponding homogenous linear ODE.
+        \begin{align}
+            h & = \int\ p(x)\ \dl x                                                                            \\
+            y & = e^{-h}\left[ \int\ e^{h} r(x)\ \dl x + c \right]                                             \\
+              & = e^{-h}\int\ e^{h} r(x)\ \dl x                    &  & + ce^{-h}                              \\
+              & = \text{response to input}\ r(x)                   &  & + \text{response to initial condition}
+        \end{align}
+    \item[Steady-state solution] The part of an ODE's solution which is independent of initial
+        condition, and persists after all transient-state solution is allowed to settle.
+    \item[Bernoulli's equation] A specific form of nonlinear ODE that can be reduced to a
+        linear ODE after change of variables.
+        \begin{align}
+            y' + p(x)\ y       & = g(x)\ y^{a} &  & a \neq \{ 0, 1\} \\
+            \text{set} \quad u & = y^{1-a}                           \\
+            u' + (1-a)p(x)\ u  & = (1-a)\ g(x)
+        \end{align}
+    \item[Logistic equation] An early population dynamics model which allowed for exponential
+        growth at small initial population levels, with a built-in braking term to prevent infinite
+        growth.
+        \begin{align}
+            y'                                         & = Ay - By^{2} \\
+            \text{stable critical point} \quad y^{*}   & = \frac{A}{B} \\
+            \text{unstable critical point} \quad y^{*} & = 0
+        \end{align}
+    \item[Autonomous ODE] An ODE which has no explicit dependence on the independent variable
+        \begin{align}
+            y' & = f(y)
+        \end{align}
+        An example is the logistic equation above.
+    \item[Critical points] In an autonomous ODE, zeros of the expression $ f(y) $. Also known
+    as equilibrium points (either stable or unstable).
+\end{description}
+
+\section{Orthogonal Trajectories}
+
+\begin{description}
+    \item[Orthogonal trajectory] A family of curves that intersect another family at right angles
+    \item[Angle of intersection] Angle between the tangents to both curves at the point of intersection
+    \item[One-parameter family of curves] A family of curves $ G(x, y, c) $ controlled by a single parameter $ c $
+\end{description}
+General strategy for finding an orthogonal family:
+\begin{enumerate}
+    \item Find an ODE for the starting family of curves which eliminates the parameter
+    \item Define another ODE $ \tilde{y} $, such that
+          \begin{align}
+              y'           & = f(x, y)                    &  & \text{starting family}   \\
+              \tilde{y}\,' & = \frac{-1}{f(x, \tilde{y})} &  & \text{orthogonal family}
+          \end{align}
+    \item Solve the new ODE to find a one parameter family of curves orthogonal to the starting family
+\end{enumerate}
+
+\section{Existence and Uniqueness of Solutions for Initial Value Problems}
+
+\begin{description}
+    \item[Existence of solution] Let $ f(x, y) $ be continuous at all points in some rectangle
+        $ \mathcal{R} $. Also let it be bounded in $ \mathcal{R} $
+        \begin{align}
+            y'          & = f(x, y)         & y(x_{0})           & = y_{0}         \\
+            \mathcal{R} & : |x - x_{0}| < a & |y - y_{0}|        & < b             \\
+            |f(x, y)|   & \leq K            & \forall     (x, y) & \in \mathcal{R}
+        \end{align}
+        Then, the IVP has at least one solution $ y(x) $.
+
+    \item[Uniqueness of solution] In addition to the above conditions, $ \difsp Fx $ needs
+        to be continuous and bounded in the rectangle $ \mathcal{R} $.
+        \begin{align}
+            |f(x, y)|                         & \leq K & \forall     (x, y) & \in \mathcal{R} \\
+            \left| \diffp{f(x, y)}{y} \right| & \leq M & \forall     (x, y) & \in \mathcal{R}
+        \end{align}
+
+        Then the IVP has at most one solution. In combination with the existence theorem,
+        The IVP has exactly one solution.
+    \item[Lipschitz condition] For a weaker condition, consider the mean value theorem
+        of differential calculus, which states that some $ \tilde{y} \in (y_{1}, y_{2})$
+        exists for which,
+        \begin{align}
+            f(x, y_{2}) - f(x, y_{1}) & = (y_{2} - y_{1})\ \diffp fy[y = \tilde{y}]
+        \end{align}
+        The points $ (x, y_{1}) $ and $ (x, y_{2}) $ are in the rectangle $ \mathcal{R} $ as
+        defined above. Now, the condition on $ \difs fy $ can be replaced by the weaker relation,
+        \begin{align}
+            \left| \diffp{f(x, y)}{y} \right|        & \leq M               & \forall     (x, y) & \in \mathcal{R} \\
+            \left| f(x, y_{2}) - f(x, y_{1}) \right| & \leq M |(y_{2} - y_{1})|
+        \end{align}
+
+        Continuity of $ f(x, y) $ is not enough to guarantee the uniqueness of a solution.
+\end{description}

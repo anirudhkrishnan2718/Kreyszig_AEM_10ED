@@ -1,0 +1,410 @@
+\section{Path Independence of Line Integrals}
+
+\begin{enumerate}
+    \item Refer notes. TBC.
+
+    \item The domain is still not simply connected, as the origin is still excluded from
+          it. The situation does not change.
+
+    \item The integrand is exact
+          \begin{align}
+              I            & = M \dl x + N \dl y                       &
+              I            & = \difcp fx\ \dl x + \difcp fy\ \dl y       \\
+              \int M \dl x & =\sin(0.5x) \cos(2y) + g(y)               &
+              \difcp fy    & = \diff gy - 2\sin(0.5x)\sin(2y)            \\
+              \difcp fy    & = N                                       &
+              \diff gy     & = 0                                         \\
+              f            & =\color{y_h} \sin(0.5x)\cos(2y)           &
+              A            & : (\pi/2, \pi) \quad B: (\pi, 0)            \\
+              I            & = f(B) - f(A) = \Bigg[ \sin(0.5x)\cos(2y)
+              \Bigg]_A^B   &
+              I            & = \color{y_p} 1 - \frac{1}{\sqrt{2}}
+          \end{align}
+
+    \item The integrand is exact
+          \begin{align}
+              I            & = M \dl x + N \dl y                   &
+              I            & = \difcp fx\ \dl x + \difcp fy\ \dl y   \\
+              \int M \dl x & = x^2 e^{4y} + g(y)                   &
+              \difcp fy    & = \diff gy + 4 x^2 e^{4y}               \\
+              \difcp fy    & = N                                   &
+              \diff gy     & = 0                                     \\
+              f            & =\color{y_h} x^2 e^{4y}               &
+              A            & : (4, 0) \quad B: (6, 1)                \\
+              I            & = f(B) - f(A) = \Bigg[ x^2 e^{4y}
+              \Bigg]_A^B   &
+              I            & = \color{y_p} 36e^4 - 16
+          \end{align}
+
+    \item The integrand is exact
+          \begin{align}
+              I                & = M \dl x + N \dl y + P \dl z =
+              \difcp fx\ \dl x + \difcp fy\ \dl y + \difcp fz\ \dl z             \\
+              \int M \dl x = f & = e^{xy}\sin(z) + g(y, z)                       \\
+              \difcp fy = N    & = \diffp gy + xe^{xy}\sin(z)
+              \quad \implies \quad  \diffp gy = 0                                \\
+              g                & = h(z)                                          \\
+              \difcp fz = P    & = \diff hz + e^{xy} \cos(z)
+              \quad \implies \quad \diff hz = 0                                  \\
+              f                & = {\color{y_h} e^{xy} \sin(z)}
+              \qquad A : (0, 0, \pi) \qquad B: (2, 1/2, \pi/2)                   \\
+              I                & = f(B) - f(A) = \Bigg[ e^{xy}\sin(z) \Bigg]_A^B
+              = \color{y_p} e
+          \end{align}
+
+    \item The integrand is exact
+          \begin{align}
+              I                & = M \dl x + N \dl y + P \dl z =
+              \difcp fx\ \dl x + \difcp fy\ \dl y
+              + \difcp fz\ \dl z                                                 \\
+              \int M \dl x = f & = 0.5 \cdot \exp(x^2 + y^2 + z^2) + g(y, z)     \\
+              \difcp fy = N    & = \diffp gy + y\exp(x^2 + y^2 + z^2)
+              \quad \implies \quad  \diffp gy = 0                                \\
+              g                & = h(z)                                          \\
+              \difcp fz = P    & = \diff hz + z \exp(x^2 + y^2 + z^2)
+              \quad \implies \quad \diff hz = 0                                  \\
+              f                & = {\color{y_h} 0.5 \cdot e^{x^2 + y^2 + z^2}}
+              \qquad A : (0, 0, 0) \qquad B: (1, 1, 0)                           \\
+              I                & = f(B) - f(A) = \Bigg[ e^{xy}\sin(z) \Bigg]_A^B
+              = \color{y_p} \frac{e^2 - 1}{2}
+          \end{align}
+
+    \item The integrand is exact
+          \begin{align}
+              I                & = M \dl x + N \dl y + P \dl z =
+              \difcp fx\ \dl x + \difcp fy\ \dl y
+              + \difcp fz\ \dl z                                              \\
+              \int M \dl x = f & = y\cosh(xz) + g(y, z)                       \\
+              \difcp fy = N    & = \diffp gy + \cosh(xz)
+              \quad \implies \quad  \diffp gy = 0                             \\
+              g                & = h(z)                                       \\
+              \difcp fz = P    & = \diff hz + xy \sinh(xz)
+              \quad \implies \quad \diff hz = 0                               \\
+              f                & = {\color{y_h} y\cosh(xz)}
+              \qquad A : (0, 2, 3) \qquad B: (1, 1, 1)                        \\
+              I                & = f(B) - f(A) = \Bigg[ y\cosh(xz) \Bigg]_A^B
+              = \color{y_p} \cosh(1) - 2
+          \end{align}
+
+    \item The integrand is exact
+          \begin{align}
+              I                & = M \dl x + N \dl y + P \dl z =
+              \difcp fx\ \dl x + \difcp fy\ \dl y
+              + \difcp fz\ \dl z                                              \\
+              \int M \dl x = f & = x \cos(yz) + g(y, z)                       \\
+              \difcp fy = N    & = \diffp gy - xz \sin(yz)
+              \quad \implies \quad  \diffp gy = 0                             \\
+              g                & = h(z)                                       \\
+              \difcp fz = P    & = \diff hz - xy \sin(yz)
+              \quad \implies \quad \diff hz = 0                               \\
+              f                & = {\color{y_h} x \cos(yz)}
+              \qquad A : (5, 3, \pi) \qquad B: (3, \pi, 3)                    \\
+              I                & = f(B) - f(A) = \Bigg[ x \cos(yz) \Bigg]_A^B
+              = \color{y_p} 2
+          \end{align}
+
+    \item The integrand is exact
+          \begin{align}
+              I                & = M \dl x + N \dl y + P \dl z =
+              \difcp fx\ \dl x + \difcp fy\ \dl y
+              + \difcp fz\ \dl z                                                    \\
+              \int M \dl x = f & = e^x \cosh(y) + g(y, z)                           \\
+              \difcp fy = N    & = \diffp gy + e^x \sinh(y)
+              \quad \implies \quad  \diffp gy = e^z \cosh(y)                        \\
+              g                & = e^z\sinh(y) + h(z)                               \\
+              \difcp fz = P    & = \diff hz + e^z \sinh(y)
+              \quad \implies \quad \diff hz = 0                                     \\
+              f                & = {\color{y_h} e^x \cosh(y) + e^z \sinh(y)}
+              \qquad A : (0, 1, 0) \qquad B: (1, 0, 1)                              \\
+              I                & = f(B) - f(A) = \Bigg[ e^x \cosh(y) + e^z \sinh(y)
+                  \Bigg]_A^B = \color{y_p} 0
+          \end{align}
+
+    \item Path Dependence
+          \begin{enumerate}
+              \item Checking path dependence,
+                    \begin{align}
+                        \vec{F} \dotp \dl{\vec{r}} & = x^2 y\ \dl x + 2xy^2\ \dl y &
+                        \vec{F}                    & =
+                        \begin{bNiceMatrix}[margin]
+                            x^2y \\ 2xy^2 \\ 0
+                        \end{bNiceMatrix}                                   \\
+                        \nabla \times \vec{F}      & = 2y^2 - x^2                  &
+                        \nabla \times \vec{F}      & \neq 0
+                    \end{align}
+                    Since the vector field has nonzero curl, the line integral is path
+                    dependent.
+
+              \item Integrating along the first path,
+                    \begin{align}
+                        \vec{F}             & = \bmatcol{x^2y}{2xy^2}              &
+                        \vec{r}             & = \bmatcol{t}{bt} \quad t \in [0, 1]   \\
+                        \vec{r}'            & = \bmatcol{1}{b}                     &
+                        \vec{F}(\vec{r}(t)) & = \bmatcol{bt^3}{2b^2t^3}              \\
+                        W                   & = \int_{0}^{1}(b + 2b^3)t^3\ \dl t   &
+                                            & = \Bigg[\frac{b + 2b^3}{4}\ t^4
+                        \Bigg]_0^1                                                   \\
+                                            & = \color{y_h} \frac{b + 2b^3}{4}
+                    \end{align}
+                    Integrating the second path
+                    \begin{align}
+                        \vec{F}             & = \bmatcol{x^2y}{2xy^2}             &
+                        \vec{r}             & = \bmatcol{1}{t} \quad t \in [b, 1]   \\
+                        \vec{r}'            & = \bmatcol{0}{1}                    &
+                        \vec{F}(\vec{r}(t)) & = \bmatcol{t}{2t^2}                   \\
+                        W                   & = \int_{b}^{1} 2t^2\ \dl t          &
+                                            & = \Bigg[ \frac{2t^3}{3}
+                        \Bigg]_b^1                                                  \\
+                                            & = \color{y_h} \frac{2(1 - b^3)}{3}
+                    \end{align}
+                    Optimizing the line integral w.r.t. $ b $,
+                    \begin{align}
+                        I        & = \frac{2}{3} + \frac{b}{4} - \frac{b^3}{6} &
+                        \diff Ib & = \frac{1}{4} - \frac{b^2}{2}                 \\
+                        b^*      & = \frac{1}{\sqrt{2}}                        &
+                        I^*      & = \frac{2}{3} + \frac{1}{6\sqrt{2}}
+                    \end{align}
+              \item Integrating along the third path,
+                    \begin{align}
+                        \vec{F}             & = \bmatcol{x^2y}{2xy^2}              &
+                        \vec{r}             & = \bmatcol{ct}{t} \quad t \in [0, 1]   \\
+                        \vec{r}'            & = \bmatcol{c}{1}                     &
+                        \vec{F}(\vec{r}(t)) & = \bmatcol{c^2t^3}{2ct^3}              \\
+                        W                   & = \int_{0}^{1}(c^3 + 2c)t^3\ \dl t   &
+                                            & = \Bigg[\frac{c^3 + 2c}{4}\ t^4
+                        \Bigg]_0^1                                                   \\
+                                            & = \color{y_p} \frac{c^3 + 2c}{4}
+                    \end{align}
+                    Integrating the fourth path
+                    \begin{align}
+                        \vec{F}             & = \bmatcol{x^2y}{2xy^2}             &
+                        \vec{r}             & = \bmatcol{t}{1} \quad t \in [c, 1]   \\
+                        \vec{r}'            & = \bmatcol{1}{0}                    &
+                        \vec{F}(\vec{r}(t)) & = \bmatcol{t^2}{2t}                   \\
+                        W                   & = \int_{c}^{1} t^2\ \dl t           &
+                                            & = \Bigg[ \frac{t^3}{3}
+                        \Bigg]_c^1                                                  \\
+                                            & = \color{y_p} \frac{(1 - c^3)}{3}
+                    \end{align}
+                    Optimizing the line integral w.r.t. $ c $,
+                    \begin{align}
+                        I        & = \frac{4 - c^3 + 6c}{12}                    &
+                        \diff Ic & = \frac{-3c^2 + 6}{12}                         \\
+                        c^*      & = \sqrt{2} \quad (\text{out of range [0,1]})
+                    \end{align}
+                    Since the optimal $ c $ is out of range, setting $ c = 1 $ gives
+                    $ I^* = 3/4 $. \par
+                    Comparing the values at $ b = 1 $ and $ c = 1 $
+                    \begin{align}
+                        b = 1 & \implies I_{12} = 3/4 \\
+                        c = 1 & \implies I_{34} = 3/4
+                    \end{align}
+          \end{enumerate}
+
+    \item Checking the differential form in Example $ 4 $,
+          \begin{align}
+              F_1             & = \frac{-y}{x^2 + y^2}            &
+              F_2             & = \frac{x}{x^2 + y^2}               \\
+              \diffp {F_2}{x} & = \frac{y^2 - x^2}{(x^2 + y^2)^2} &
+              \diffp {F_1}{y} & = \frac{y^2 - x^2}{(x^2 + y^2)^2}   \\
+              \diffp {F_2}{y} & = \diffp {F_1}{y}
+          \end{align}
+          The form is exact. Finding the underlying scalar function,
+          \begin{align}
+              \int F_1 \ \dl x & = -\arctan(x/y) + C + g(y)       &
+              \diffp fy        & = \diff gy + \frac{x}{x^2 + y^2}   \\
+              g(y)             & = 0                              &
+              f                & = \arctan(y/x)
+          \end{align}
+          For $ x = y = 0 $, the function $ \arctan(y/x) $ is not defined. So any
+          domain not including this point in $ \mathcal{R} $ is acceptable.
+
+    \item The centres of the circles lie on the perpendicular bisector of $ A $ and
+          \begin{align}
+              l_1 & : y = x                                      &
+              l_2 & : y = 1 - x                                    \\
+              C   & : (\alpha, \beta) = (\alpha, 1 - \alpha)     &
+              r^2 & = (\alpha - 0.5)^2 + (0.5 - \alpha)^2 + 0.25   \\
+                  &                                              &
+                  & = \alpha^2 - 2\alpha + 0.75
+          \end{align}
+          Integrating the vector function $ \vec{F} $ over the this circle,
+          \begin{align}
+              \vec{F}  & = \bmatcol{x^2y}{2xy^2}         &
+              \vec{r}  & = \bmatcol{\alpha + r\cos t}
+              {(1 - \alpha) + r \sin t} \quad
+              t \in [0, 2\pi]                              \\
+              \vec{r}' & = \bmatcol{-r \sin t}{r \cos t}
+          \end{align}
+          Calculating the line integral using a CAS,
+          \begin{align}
+              W                 & = \frac{\pi r^2}{4}\ (4\alpha^2 - 16\alpha + 8
+              + r^2)                                                             \\
+              W                 & = \frac{\pi}{4}\ (\alpha^2 - 2\alpha + 0.75)
+              (5\alpha^2 - 18\alpha + 8.75)
+          \end{align}
+          This is a fourth order polynomial in $ \alpha $. It has one local maximum and
+          no global maximum. 
+          \begin{align}
+            W^* &= 0.954 & (\alpha^*, \beta^*) &= (1.143, -0.143)
+          \end{align}
+
+    \item Checking path independence,
+          \begin{align}
+              \vec{F}               & =
+              \begin{bNiceMatrix}[margin]
+                  2xe^{x^2}\cos(2y)   \\
+                  -2e^{x^{2}}\sin(2y) \\
+                  0
+              \end{bNiceMatrix}
+              \\
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}}     & \vec{\hat{j}}     & \vec{\hat{k}} \\
+                  \difcp{}{x}       & \difcp{}{y}       & \difcp{}{z}   \\
+                  2xe^{x^2}\cos(2y) & -2e^{x^2}\sin(2y) & 0
+              \end{vNiceMatrix} \\ = \vec{0}
+          \end{align}
+          This line integral is path independent, and the value of the integral is
+          \begin{align}
+              I & = f(b) - f(a) = \Bigg[e^{x^2}\cos(2y)\Bigg]_A^B
+              = e^{a^2} \cos(2b) - 1
+          \end{align}
+
+    \item Checking path independence,
+          \begin{align}
+              \vec{F}               & =
+              \begin{bNiceMatrix}[margin]
+                  z\sinh(xy) \\
+                  0          \\
+                  -x\sinh(xy)
+              \end{bNiceMatrix}
+              \\
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  z\sinh(xy)    & 0             & -x\sinh(xy)
+              \end{vNiceMatrix} =
+              \begin{bNiceMatrix}[margin]
+                  -x^2 \cosh(xy)           \\
+                  2\sinh(xy) + xy\cosh(xy) \\
+                  xz\cosh(xy)
+              \end{bNiceMatrix}
+          \end{align}
+          This line integral is path dependent.
+
+    \item Checking path independence,
+          \begin{align}
+              \vec{F}               & =
+              \begin{bNiceMatrix}[margin]
+                  x^2y \\ -4xy^2 \\ 8z^2x
+              \end{bNiceMatrix}
+              \\
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  x^2y          & -4xy^2        & 8z^2x
+              \end{vNiceMatrix} =
+              \begin{bNiceMatrix}[margin]
+                  0 \\ -8z^2 \\ -4y^2 + x^2
+              \end{bNiceMatrix}
+          \end{align}
+          This line integral is path dependent.
+
+    \item Checking path independence,
+          \begin{align}
+              \vec{F}               & =
+              \begin{bNiceMatrix}[margin]
+                  e^y \\ xe^y - e^z \\ -ye^z
+              \end{bNiceMatrix}
+              \\
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  e^y           & xe^y - e^z    & -ye^z
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 0 \\ 0
+                                  \end{bNiceMatrix}
+          \end{align}
+          This line integral is path independent, and the value of the integral is
+          \begin{align}
+              I & = f(b) - f(a) = \Bigg[ xe^y - ye^z \Bigg]_A^B
+              = ae^b - be^c
+          \end{align}
+
+    \item Checking path independence,
+          \begin{align}
+              \vec{F}               & =
+              \begin{bNiceMatrix}[margin]
+                  4y \\ z \\ y - 2z
+              \end{bNiceMatrix}
+              \\
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  4y            & z             & y - 2z
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 0 \\ -4
+                                  \end{bNiceMatrix}
+          \end{align}
+          This line integral is path dependent.
+
+    \item Checking path independence,
+          \begin{align}
+              \vec{F}               & =
+              \begin{bNiceMatrix}[margin]
+                  yz \cos(xy) \\ xz \cos(xy) \\ -2\sin(xy)
+              \end{bNiceMatrix}
+              \\
+              \nabla \times \vec{F} & =
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  yz \cos(xy)   & xz \cos(xy)   & -2\sin(xy)
+              \end{vNiceMatrix} =
+              \begin{bNiceMatrix}[margin]
+                  -x\cos(xy) \\
+                  2y\cos(xy) \\
+                  0
+              \end{bNiceMatrix}
+          \end{align}
+          This line integral is path dependent.
+
+    \item Checking path independence, using $ w = x^2 + 2y^2 + z^2 $
+          \begin{align}
+              \vec{F}               & = \cos(w)
+              \begin{bNiceMatrix}[margin]
+                  2x \\ 4y \\ 2z
+              \end{bNiceMatrix}
+              \\
+              \nabla \times \vec{F} & = \cos(w)
+              \begin{vNiceMatrix}[margin]
+                  \vec{\hat{i}} & \vec{\hat{j}} & \vec{\hat{k}} \\
+                  \difcp{}{x}   & \difcp{}{y}   & \difcp{}{z}   \\
+                  2x            & 4y            & 2z
+              \end{vNiceMatrix} = \begin{bNiceMatrix}[margin]
+                                      0 \\ 0 \\ 0
+                                  \end{bNiceMatrix}
+          \end{align}
+          This line integral is path independent, and the value of the integral is
+          \begin{align}
+              I & = f(b) - f(a) = \Bigg[ \sin(x^2 + 2y^2 + z^2) \Bigg]_A^B
+              = \sin(a^2 + 2b^2 + c^2)
+          \end{align}
+
+    \item The three conditions are,
+          \begin{align}
+              \difcp{F_3}{y} & = \difcp{F_2}{z}              &
+              \difcp{F_1}{z} & = \difcp{F_3}{x}                \\
+              \difcp{F_2}{x} & = \difcp{F_1}{y}              &
+              \vec{F}        & = \begin{bNiceMatrix}[margin]
+                                     0 \\ x \\ 0
+                                 \end{bNiceMatrix}
+          \end{align}
+          Other simple examples have a different permutation of zero components.
+
+\end{enumerate}

@@ -121,6 +121,8 @@ acs-*.bib
 # gnuplot
 *.gnuplot
 *.table
+*.script
+*.dat
 
 # gnuplottex
 *-gnuplottex-*

@@ -1,0 +1,459 @@
+\chapter{Second-Order Linear ODEs}
+\section{Homogeneous Linear ODEs of Second Order}
+
+\begin{description}
+    \item[Linear ODE of second order] An ODE which can be written in the form
+        \begin{align}
+            y'' + p(x)y' + q(x)y & = r(x)
+        \end{align}
+        The form has to be linear in $ y $ and all of its derivatives $ y^{(n)} $. Standard form
+        requires the coefficient of $ y'' $ to be 1.
+    \item[Homogeneous Linear ODE of second order] In the above ODE, if $ r(x) \equiv 0$, else
+        the ODE is called non-homogeneous.
+        \begin{align}
+            y'' + p(x)y' + q(x)y & = 0
+        \end{align}
+    \item[Superposition principle] If $ y_{1}, y_{2} $ are any two solutions to a linear
+        homogeneous ODE, then for arbitrary constants $ c_{1}, c_{2} $,
+        \begin{align}
+            y & = c_{1}y_{1} + c_{2}y_{2}
+        \end{align}
+        is also a solution on the same open interval $ I $ in which $ y_{1}, y_{2} $ were
+        solutions. This is also called the linearity principle.
+    \item[Initial Value Problem of second order] Analogous to the IVP of a first order ODE,
+        a particular solution is found by using,
+        \begin{align}
+            y        & = c_{1}y_{1} + c_{2}y_{2} &           & \text{General solution} \\
+            y(x_{0}) & = K_{0}                   & y'(x_{0}) & = K_{1}
+        \end{align}
+        Note that both the Initial conditions are to be evaluated at the same $ x_{0} $.
+    \item[Linearly Independent solutions] Two solutions to an ODE $ y_{1}, y_{2} $ are
+        called linearly independent (L.I.), if for constants $ k_{1}, k_{2} $,
+        \begin{align}
+            k_{1}y_{1} + k_{2}y_{2} & = 0                                  & \text{everywhere on }I \\
+            \implies k_{1}          & = 0 \quad \text{and} \quad k_{2} = 0
+        \end{align}
+    \item[Linearly Dependent solutions] $ y_{2} $ is a scalar multiple of $ y_{1} $, and the
+        above relation also holds for some $ k_{1}, k_{2} $ not both zero.
+    \item[Basis] A system of solutions to an ODE that are L.I., and therefore fully describe
+        a general solution to that ODE. This holds for a linear homogeneous ODE of any higher
+        orders as well.
+
+        Since the general solution yields all possible particular solutions using IVPs, there is
+        no singular solution to an ODE of order 2 or higher.
+    \item[Reduction of order] Given one of the solutions to a second order linear homogeneous ODE
+        $ y_{1} $is known, find a basis of solutions by reducing the problem to a first order
+        ODE.
+        \begin{enumerate}
+            \item $ y_{1} $ solves the given ODE,
+                  \begin{align}
+                      y_{1}'' + py_{1}' + qy_{1} & = 0
+                  \end{align}
+            \item Define a new solution $ y_{2} = uy_{1} $, and substitute it into the ODE,
+                  \begin{align}
+                      u'' y_{1} + u'\ (2y_{1}' + py_{1}) & = 0
+                  \end{align}
+            \item Define $ V = u' $ and $ V' = u'' $, to get
+                  \begin{align}
+                      V     & = \frac{1}{y_{1}^{2}}\ \exp \left( -\int p(x)\ \dl x \right) \\
+                      y_{2} & = uy_{1} = y_{1}\int V\ \dl x
+                  \end{align}
+        \end{enumerate}
+        $ y_{2} $ is automatically L.I. with $ y_{1} $ unless $ V \equiv 0 $.
+\end{description}
+
+\section{Homogeneous Linear ODEs with Constant Coefficients}
+
+General form of these ODEs for some constants $ a, b $ is,
+\begin{align}
+    y'' + ay' + b & = 0
+\end{align}
+
+\begin{description}
+    \item[Characteristic equation] The equation derived by substituting $ y = e^{\lambda x} $ into
+        the above ODE,
+        \begin{align}
+            \lambda^{2} + a\lambda + b & = 0
+        \end{align}
+        For $ y = e^{\lambda x}$ to be a solution of the ODE, $\lambda$ has to solve this quadratic
+        equation. The three possible cases are now,
+        \begin{align}
+            a^{2} - 4b & > 0  & y                        & = c_{1}e^{\lambda_{1}}x + c_{2}e^{\lambda_{2}}x                                  \\
+                       &      & \lambda_{1}, \lambda_{2} & = \frac{-a \pm \sqrt{a^{2} - 4b}}{2}                                             \\
+            a^{2}      & = 4b & y                        & = [ c_{1} + c_{2}x ]\exp \left( \frac{-ax}{2} \right)                            \\
+            a^{2} - 4b & < 0  & y                        & = [ c_{1}\cos(\omega x) + c_{2}\sin(\omega x)] \exp \left( \frac{-ax}{2} \right) \\
+                       &      & \omega^{2}               & = b - \frac{a^{2}}{4}
+        \end{align}
+        Deriving the above result for imaginary roots $ \lambda_{1}, \lambda_{2} $ uses,
+        \begin{align}
+            e^{r + it}               & = e^{r}(\cos t + i\ \sin t)                  \\
+            r                        & = \frac{-ax}{2}             & t & = \omega x \\
+            \lambda_{1}, \lambda_{2} & = \frac{a}{2} \pm i\omega
+        \end{align}
+\end{description}
+
+\section{Differential Operators}
+
+\begin{description}
+    \item[Operator] A transformation that maps a function into another function.
+    \item[Differential operator] An operator $ D $ that maps a differentiable function $ y $ to
+        its derivative $ y' $,
+        \begin{align}
+            Dy     & \equiv y'                                         & D^{2}y & \equiv y'' \\
+            D^{n}y & \equiv y^{(n)} \equiv \difoverride{n} \diff[n] yx
+        \end{align}
+    \item[Identity operator] An operator $ I $ that maps a function to itself.
+        \begin{align}
+            Iy & \equiv y
+        \end{align}
+    \item[Second order differential operator] Using the operator notation to condense the
+        second order linear ODE, for $ P(D) $ being a polynomial in $ D $
+        \begin{align}
+            \mathcal{L} \equiv P(D)            & = D^{2} + aD + bI        \\
+            \mathcal{L}[y]\equiv P(D)y & = (D^{2} + aD + bI)y = 0 \\
+                                     & = y'' + ay' + by = 0
+        \end{align}
+        The operator $ L $ is a linear operator, which means superposition works,
+        \begin{align}
+            \mathcal{L}[my + nw] & = m\ \mathcal{L}[y]+ n\ \mathcal{L}[w]
+        \end{align}
+    \item[Operator polynomial] The characteristic equation $ P(\lambda) $ is a regular
+        polynomial, which makes $ P(D) $ an operator polynomial that can be manipulated
+        just like any other polynomial.
+\end{description}
+
+\section{Modeling of Free Oscillations of a Mass-Spring System}
+
+\begin{description}
+    \item[Hooke's law] Law governing the restoring force of a spring, which states that the
+        magnitude of the force is proportional to the displacement from its rest position.
+        \begin{align}
+            F_{1} & = -ky
+        \end{align}
+        Stiffer springs have larger spring constants $ k $.
+    \item[Newton's second law] The net force acting on a system is proportional to the
+        acceleration experienced by it, with the proportionality constant being mass $ m $.
+        \begin{align}
+            F_{\text{net}} = ma
+        \end{align}
+    \item[Undamped system] A system with no waste of energy by way of damping. Such a system
+        conserves total energy with time.
+        \begin{align}
+            my'' + ky  & = 0                                         \\
+            y(t)       & = A \cos \omega_{0} t + B \sin \omega_{0} t \\
+            \omega_{0} & = \sqrt{k/m}
+        \end{align}
+    \item[Frequency] The number of oscillations per unit time (measured in $\si{\hertz}$).
+        An undamped system has a natural frequency $ f_{0} $,
+        \begin{align}
+            f_{0} & = \frac{\omega_{0}}{2\pi} = \frac{1}{2\pi} \sqrt{\frac{k}{m}}
+        \end{align}
+    \item[Phase-Amplitude representation] A restatement of the $ y(t) $ harmonic
+        oscillation showing phase shift $ \delta $ and amplitude $ C $,
+        \begin{align}
+            y(t) & = C\ cos(\omega_{0}t - \delta)                       \\
+            C    & = \sqrt{A^{2} + B^{2}}         & \tan \delta & = B/A
+        \end{align}
+    \item[Damped system] A system with an additional damping force proportional to
+        the velocity, with $ c > 0 $.
+        \begin{align}
+            F_{2}           & = -cy' \\
+            my'' + cy' + ky & = 0
+        \end{align}
+    \item[Overdamped system] Real distinct roots of the characteristic equation, with
+        \begin{align}
+            c^{2} - 4mk & > 0                                                             \\
+            y(t)        & = c_{1}\exp[-(\alpha - \beta)t] + c_{2}\exp[-(\alpha + \beta)t]
+        \end{align}
+        The damping is so strong that the system never gets to oscillate, and settles to
+        rest after a long time.
+    \item[Critically damped system] Characteristic equation has repeated roots.
+        Damping is moderately strong and the system is able to pass through its mean
+        position at most once.
+        \begin{align}
+            c^{2} - 4mk & = 0                                \\
+            y(t)        & = (c_{1}  + c_{2}t)\exp(-\alpha t)
+        \end{align}
+    \item[Underdamped system] Characteristic equation has complex roots. Damping is weak and
+        the system oscillates with amplitude decaying exponentially.
+        \begin{align}
+            c^{2} - 4mk < 0                                                       \\
+            \omega^{*} & = -i\beta = \sqrt{\frac{k}{m} - \frac{c^{2}}{4m^{2}}}    \\
+            y(t)       & = e^{-\alpha t}[A \cos \omega^{*}t + B \sin \omega^{*}t] \\
+                       & =Ce^{-\alpha t}\ \cos(\omega^{*}t - \delta)
+        \end{align}
+    \item[Free motion] Systems with no external driving force, represented by a
+        homogeneous second order linear ODE.
+\end{description}
+
+\section{Euler-Cauchy Equations}
+
+\begin{description}
+    \item[Euler Cauchy equation] An ODE with the standard form for some constants $ a, b $
+        \begin{align}
+            x^{2}y'' + axy' + by & = 0     \\
+            y                    & = x^{m}
+        \end{align}
+    \item[Auxiliary equation] A quadratic equation in $ m $, and has three possible kinds of
+        solutions, yielding three types of solutions to the ODE.
+        \begin{align}
+            m^{2} + (a-1)m + b & = 0                                                                                               \\[2em]
+            (a-1)^{2} - 4b     & > 0 & m_{1}, m_{2} & = \frac{(1-a) \pm \sqrt{(1-a)^{2} - 4b}}{2}                                  \\
+                               &     & y            & = c_{1}x^{m_{1}} + c_{2}x^{m_{2}}                                            \\[2em]
+            (a-1)^{2} - 4b     & = 0 & m_{1}, m_{2} & = \frac{(1-a)}{2}                                                            \\
+                               &     & y            & = \left( c_{1} + c_{2}\ln x \right)  x^{m_{1}}                               \\[2em]
+            (a-1)^{2} - 4b     & < 0 & m_{1}, m_{2} & = \frac{(1-a) \pm i\sqrt{4b - (1-a)^{2}}}{2}                                 \\
+                               &     &              & =  \alpha \pm i\beta                                                         \\
+                               &     & y            & = e^{\alpha x}\left[c_{1}\cos (\beta \ln x) + c_{2}\sin (\beta \ln x)\right]
+        \end{align}
+\end{description}
+
+\section{Existence and Uniqueness of Solutions. Wronskian}
+
+\begin{description}
+    \item[Existence and Uniqueness theorem]  Consider the general second order linear
+        homogeneous ODE with variable coefficients $ p(x),\ r(x) $, with an IVP given by
+        \begin{align}
+            y'' + py' + qy                    & = 0     & p,q \quad & \text{are continuous} \quad \forall x\in \mathcal{I} \\
+            y(x_{0}) = K_{0}, \quad y'(x_{0}) & = K_{1} &           & \text{for some} \quad x_{0} \in \mathcal{I}          \\
+        \end{align}
+
+        If $ p(x), q(x) $ are continuous in $ \mathcal{I} $, then the IVP has a unique
+        solution on $ \mathcal{I} $.
+
+    \item[Wronskian] If $ y_{1}, y_{2} $ are two solutions to the above ODE, then
+        \begin{align}
+            W(y_{1}, y_{2}) & = y_{1}y_{2}' - y_{1}'y_{2}                & y_{1}, y_{2} & \ \text{defined on}\ \mathcal{I}  \\
+            \text{If}\ W    & \neq 0 \ \text{for some}\ x\in \mathcal{I} & y_{1}, y_{2} & \ \text{are linearly independent}
+        \end{align}
+
+    \item[Existence of general solution] The above ODE and associated IVP have a general solution
+        on $ \mathcal{I} $ of the form,
+        \begin{align}
+            y & = c_{1}y_{1}(x) + c_{2}y_{2}(x)
+        \end{align}
+        This covers all possible solutions and thus, no singular solution can be found.
+\end{description}
+
+
+\section{Nonhomogeneous ODEs}
+
+\begin{description}
+    \item[Second order linear nonhomegenous ODE] General form with $ r(x) \not\equiv 0 $,
+        \begin{align}
+            y'' + p(x)y' + q(x)y & = r(x)
+        \end{align}
+    \item[General Solution] For a nh-ODE of the form above, let $ y_{p} $ be any
+        solution of the nh-ODE containing no no arbitrary constants.
+        \begin{align}
+            y_{nh}(x) & = y_{h}(x) + y_{p}(x)     &  & \text{is a solution of the nh-ODE} \\
+            y_{h}     & = c_{1}y_{1} + c_{2}y_{2} &  & \text{is a solution of the h-ODE}
+        \end{align}
+        If $ w $ and $ z $ solve the nh-ODE, then $ (w-z) $ solves the h-ODE.
+    \item[Particular solution] Assigning particular values to $ c_{1}, c_{2} $ in the general
+        solution above.\par
+        A general solution to the nh-ODE includes all possible solutions. There is no
+        singular solution that is unobtainable from the general solution to the nh-ODE.
+    \item[Method of Undetermined Coefficients] An approach to solving nh-ODEs  with constant
+        coefficients that uses the functional form of $ r(x) $ to make a guess for $ y_{p} $
+        as given in the following table,
+        \begin{table}[ht]
+            \centering
+            \SetTblrInner{rowsep=0.5em}
+            \begin{tblr}{colspec={Q[l,$$]|Q[l,$$]}, colsep = 2em}
+                \text{RHS}\quad \mathbf{r(x)} & \text{Guess}\quad \mathbf{y_{p}(x)}                                           \\ \hline[dotted]
+                ke^{\lambda x}                & C e^{\lambda x}                                                               \\ \hline[dotted]
+                kx^{n} \quad n\in\mathcal{N}  & K_{0} + K_{1}x + \dots + K_{n}x^{n}                                           \\ \hline[dotted]
+                k\cos(\omega x)               & \SetCell[r=2]{h} K\cos(\omega x) + M\sin(\omega x)                            \\
+                k\sin(\omega x)               &                                                                               \\ \hline[dotted]
+                ke^{\alpha x}\cos(\omega x)   & \SetCell[r=2]{h} e^{\alpha x}\left[ K\cos(\omega x) + M\sin(\omega x) \right] \\
+                ke^{\alpha x}\sin(\omega x)   &                                                                               \\ \hline
+            \end{tblr}
+        \end{table}
+        \begin{align}
+            y'' + ay' + by & = r(x)                                     \\
+            m^{2} + am + b & = 0    &  & \text{characteristic equation}
+        \end{align}
+        \begin{enumerate}
+            \item \emph{Basic rule: } If $ r(x) $ is an individual entry of the table, then $ y_{p} $ is the
+                  corresponding entry from the table.
+            \item \emph{Superposition rule: } Linear superposition of table entries for $ r(x) $ implies the same
+                  superposition for $ y_{p} $
+            \item \emph{Modification rule: } If a term in $ y_{p} $ happens to correspond to a solution given by a
+                  single or double root of the characteristic equation, multiply it by
+                  $ x $ or $ x^{2} $ repectively.
+        \end{enumerate}
+    \item[Stability of solution] For solutions corresponding to complex roots of the
+        characteristic equation, the real part has to be negative so that the transient part
+        of the solution decays with time.
+        \begin{align}
+            a^{2}-4b & <0  &  & \text{complex roots} \\
+            -a/2     & < 0 &  & \text{stability}
+        \end{align}
+\end{description}
+
+
+\section{Modeling: Forced Oscillations, Resonance}
+
+\begin{description}
+    \item[Driving force] Into the earlier unforced spring-mass system, an external force is
+        introduced by way of the RHS $ r(x) $ of the ODE. Also called the input or the forcing
+        function.
+        \begin{align}
+            my'' + cy' + ky & = r(x)
+        \end{align}
+    \item[Response function] The solution $ y(x) $ to the nh-ODE where $ r(x) $ is the
+        input as defined above. Also called the output function.
+    \item[Sinusoidal forcing] A special practical case of $ r(x) $ being sinusoidal.
+        \begin{align}
+            my'' + cy' + ky & = F_{0}\cos(\omega t)
+                            & y_{p}
+                            & = a\cos(\omega t) + b\sin(\omega t)                                                                   \\
+            a               & = F_{0}\ \frac{m(\omega_{0}^{2} - \omega^{2})}{[m(\omega_{0}^{2} - \omega^{2})]^{2} + [\omega c]^{2}}
+                            & b
+                            & = F_{0}\ \frac{\omega c}{[m(\omega_{0}^{2} - \omega^{2})]^{2} + [\omega c]^{2}}
+        \end{align}
+    \item[Undamped forced oscillations] For the case where damping is negligible, with $ \omega_{0} $
+        being the natural frequency of the system (from free undamped motion) and $ \omega $ the
+        frequency of the driving force. \par
+        Assuming $ \omega \neq \omega_{0} $ and $ c  \approxeq 0 $,
+        \begin{align}
+            y_{p} & =\frac{F_{0}}{k[1 - (\omega / \omega_{0})^{2}]} \ \cos(\omega t)                              \\
+            y     & = C \cos(\omega_{0}t - \delta) + \frac{F_{0}}{m(\omega_{0}^{2} - \omega^{2})}\ \cos(\omega t)
+        \end{align}
+    \item[Resonance] The maximum amplitude of $ y_{p} $ after defining the resonance factor $ \rho $,
+        \begin{align}
+            a_{0} & = \frac{F_{0}}{k}\ \rho & \rho & = \frac{1}{1 - (\omega/\omega_{0})^{2}}
+        \end{align}
+        As $ \omega \rightarrow \omega_{0} $, this amplitude goes to infinity. This phenomenon is
+        called resonance. \par
+    \item[Amplification] $ c^{*}/F_{0} $ or equivalently $ \rho / k $ is the ratio of the output
+        to input amplitudes.
+    \item[Resonant oscillations] At resonance ($ \omega = \omega_{0} $), the system
+        is governed by the ODE,
+        \begin{align}
+            y'' + \omega_{0}^{2}y & = \frac{F_{0}}{m}\ \cos(\omega_{0} t)               \\
+            y_{p}                 & = \frac{F_{0}}{2m\omega_{0}}\ t\ \sin(\omega_{0} t)
+        \end{align}
+        The linear $ t $ term in the output makes the amplitude scale to very large values
+        and can destroy the physical system given enough time.
+    \item[Beats] When $ \omega $ and $ \omega_{0} $ are close but not equal, the output is a
+        fast sinusoid (summed frequencies) enveloped by a slow sinusoid (subtracted frequencies).
+        \begin{align}
+            y(t) & = \frac{F_{0}}{m(\omega_{0}^{2} - \omega^{2})} [\cos(\omega_{0}t) - \cos(\omega t)] \\
+                 & = \frac{2F_{0}}{m(\omega_{0}^{2} - \omega^{2})}
+            \sin\left( \frac{\omega_{0} + \omega}{2}\ t \right)
+            \sin\left( \frac{\omega_{0} - \omega}{2}\ t \right)
+        \end{align}
+    \item[Damped forced oscillations] After a long time, the output of a system driven by a
+        sinusoidal force is also a harmonic oscillation with the same frequency.
+        \begin{align}
+            y_{p}                              & = C^{*}\cos(\omega t - \eta)                                                                        \\
+            \text{amplitude}\qquad C^{*}       & = \sqrt{a^{2} + b^{2}} = \frac{F_{0}}{\sqrt{[m(\omega_{0}^{2} - \omega^{2})]^{2} + [\omega c]^{2}}} \\
+            \text{phase delay}\qquad \tan \eta & = \frac{b}{a} = \frac{\omega c}{m(\omega_{0}^{2} - \omega^{2})}
+        \end{align}
+        To find the maxima of the aplitude $ C^{*}(\omega) $, differentiation and setting to zero
+        yields,
+        \begin{align}
+            \omega_{\text{max}}^{2}    & = \omega_{0}^{2} - \frac{c^{2}}{2m}                              & \text{if} \quad c^{2} & < 2mk \\
+            C^{*}(\omega_{\text{max}}) & = \frac{2mF_{0}}{c}\ \frac{1}{\sqrt{(2m\omega_{o})^{2} - c^{2}}}
+                                       & \lim_{c \rightarrow 0} C^{*}(\omega_{\text{max}})                & \rightarrow \infty
+        \end{align}
+        If $ c^{2} > 2mk $, then $ C^{*}(\omega) $ is a monotonically decreasing function with no
+        peak. $ c \rightarrow 0 $ recovers the undamped forced oscillation result of resonance as
+        seen earlier.
+\end{description}
+
+\section{Modeling: Electric Circuits}
+
+\begin{table}[ht]
+    \centering
+    \SetTblrInner{rowsep=0.5em}
+    \begin{tblr}{colspec={Q[l]|Q[l]Q[l]Q[l]},colsep = 2em}
+        \textbf{Element} & \textbf{Resistor}             & \textbf{Capacitor}    & \textbf{Inductor}     \\ \hline[dotted]
+        Notation         & $ R $                         & $ C $                 & $ L $                 \\
+        Unit             & \unit{\ohm} (ohm)             & \unit{\farad} (Farad) & \unit{\henry} (Henry) \\
+        Voltage drop     & $ RI $                        & $ Q/C $               & $ L\ \diff It $       \\ \hline[dotted]
+        Symbol           & \begin{tikzpicture}[baseline]
+                               \draw (0,0) to[R] (1,0);
+                           \end{tikzpicture}
+                         & \begin{tikzpicture}[baseline]
+                               \draw (0,0) to[C] (1,0);
+                           \end{tikzpicture}
+                         & \begin{tikzpicture}[baseline]
+                               \draw (0,0) to[L] (1,0);
+                           \end{tikzpicture}                                                  \\ \hline
+    \end{tblr}
+\end{table}
+
+\begin{description}
+    \item[Basic elements of a circuit] An RLC circuit has three basic components, shown in the
+        table. The general ODE governing an RLC circuit is,
+        \begin{align}
+            Q                           & = \int I\ \dl t                \\
+            LI'' + RI' + \frac{1}{C}\ I & = E'(t)                        \\
+            LQ'' + RQ' + \frac{1}{C}\ Q & = E(t) \qquad \text{corollary}
+        \end{align}
+    \item[Sinusoidally driven RLC] FOr the specific case of a sinusoidal driving EMF,
+
+        \begin{align}
+            LI'' + RI' + \frac{1}{C}\ I & = E_{0}\omega \cos(\omega t)        \\
+            I_{p}                       & = a\cos(\omega t) + b\sin(\omega t)
+        \end{align}
+
+
+    \item[Reactance] A consolidation of capacitance and inductance derived from the complex
+        notation.
+        \begin{align}
+            I_{p} & = a\cos(\omega t) + b\sin(\omega t)                                          \nonumber \\
+            S     & = \omega L - \frac{1}{\omega C}                                                        \\
+            I_{p} & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big]
+        \end{align}
+
+    \item[Impedance] The complex number analog ($ Z $) of ohmic resistance, used to arrive at
+        the RLC analog of Ohm's law. It is also known as the apparent resistance \par
+        \begin{align}
+            |Z|   & = \sqrt{R^{2} + S^{2}}               & E_{0}        & = |Z| I_{0}    \\
+            I_{p} & = I_{0} \sin(\omega t - \theta)                                      \\
+            I_{0} & = \sqrt{a^{2} + b^{2}}               & \tan(\theta) & = -\frac{a}{b} \\
+                  & = \frac{E_{0}}{\sqrt{R^{2} + S^{2}}} &              & = \frac{S}{R}
+        \end{align}
+
+    \item[Transient current] Since a real circuit always has $ R > 0 $, the transient
+        current always decays exponentially to zero in finite time, with the steady state
+        current being the solution of the nh-ODE. \par
+\end{description}
+
+The equivalences between mechanical and electrical systems are apparent when looking at
+the extreme similarity between the ODEs used to model both systems.
+
+\section{Solution by Variation of Parameters}
+
+The method of undetermined coefficients is restricted to functions $ r(x) $ which are similar
+to their derivatives $ r(x)' $. A more general method is introduced here.
+
+\begin{description}
+    \item[Variation of Parameters] If $ y_{1}, y_{2} $ form a basis of solutions of the h-ODE,
+        and $ W $ is their Wronksian, then the standard form ODE,
+        \begin{align}
+            y'' + py' + qy & = r                                                                          \\
+            y_{h}          & = c_{1}y_{1} + c_{2}y_{2}                                                    \\
+            y_{p}          & = -y_{1}\ \int \frac{y_{2}r}{W}\ \dl x + y_{2}\ \int \frac{y_{1}r}{W}\ \dl x
+        \end{align}
+    \item[Derivation] Starting with a generalization of $ y_{p} $, requires $ p, q, r $ to be
+        continuous. \par
+
+        Also, since $ y_{1}, y_{2} $ form a basis of solutions to the h-ODE, their $ W $
+        is not zero  anywhere on the interval $ I $ on which they are defined.
+        \begin{align}
+            y_{p}               & = fy_{1} + gy_{2}                                                                                  \\
+            y_{p}'              & = [f'y_{1} + g'y_{2}] + fy_{1}' + gy_{2}'                                                          \\
+            f'y_{1} + g'y_{2}   & = 0                                                              &  & \text{artificial constraint} \\
+            y_{p}''             & = fy_{1}'' + gy_{2}'' + f'y_{1}' + g'y_{2}'                                                        \\
+            f'y_{1}' + g'y_{2}' & = r                                                              &  & \text{substituting into ODE} \\
+            f'                  & = \frac{-y_{2}r}{y_{1}y_{2}' - y_{1}'y_{2}} = \frac{-y_{2} r}{W} &  & \text{using}\ W \neq 0       \\
+            g'                  & = \frac{y_{1}r}{W}
+        \end{align}
+        Using the continuity of $ r(x) $, the derivatives $ f', g' $ can be integrated to obtain
+        $ f, g $ and complete the derivation.
+\end{description}

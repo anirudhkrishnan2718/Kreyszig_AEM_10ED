@@ -1,0 +1,321 @@
+\chapter{Series Solutions of ODEs. Special Functions}
+\section{Power Series Method}
+\begin{description}
+    \item[Power Series] A function approximated using a polynomial
+        with center $ x_0 $ given by,
+        \begin{align}
+            f(x) & = \sum_{m = 0}^{\infty} a_m\ (x - x_0)^{m}
+        \end{align}
+        Here, the set $ \{a_m\} $ are constant coefficients of the series. Also,
+        the set $ m $ only includes posittive integers.
+    \item[Partial sum] The $ n $-th partial sum and the $ n $-th remainder of
+        the above power series is,
+        \begin{align}
+            s_n(x)                 & = \sum_{m = 0}^{n} a_m\ (x - x_0)^{m}        \\
+            R_n(x) = f(x) - s_n(x) & = \sum_{m = n+1}^{\infty} a_m\ (x - x_0)^{m}
+        \end{align}
+    \item[Convergent series] If for some $ x_1 $, the sequence of partial sums
+        $ \{s_n(x_1)\} $ approaches some finite limit $ s(x_1) $, then the series is
+        considered convergent at $ x = x_1 $
+        \begin{align}
+            \lim_{n \rightarrow \infty}
+            s_n(x_1) & = s(x_1)                                  \\
+                     & = \sum_{m = 0}^{\infty}a_m\ (x - x_0)^{m}
+        \end{align}
+        Alternatively, for any positive $ \epsilon $ there is an $ N $, such that
+        $ s_n(x_1) $ for all $ n > N $ lies within $ \epsilon $ distance of the
+        asymptotic limit $ s(x_1) $.
+        \begin{align}
+            |R_n(x_1)|      & = |s(x_1) - s_n(x_1)| < \epsilon           &
+            \forall \quad n & > N                                          \\
+            s_n(x_1)        & \in (s(x_1) - \epsilon, s(x_1) + \epsilon) &
+            \forall \quad n & > N
+        \end{align}
+    \item[Convergence interval] The set of values of $ x $ for which the power
+        series converges. Sometimes this set may contain only the element $ x = x_0 $.
+    \item[Radius of convergence] The half-width of the interval of convergence. Denoted
+        $ R $ (from complex notation where the zone of convergence becomes a disk).
+        \begin{align}
+            s(x) \quad \text{converges} \quad & \forall \quad |x - x_0| < R   \\
+            \text{and diverges} \quad         & \forall \quad |x - x_0| > R   \\
+            \frac{1}{R}                       & = \lim_{m \rightarrow \infty}
+            \Big| \frac{a_{m+1}}{a_m}\Big|                                    \\
+            \frac{1}{R}                       & = \lim_{m \rightarrow \infty}
+            (|a_m|)^{1/m}
+        \end{align}
+        The above formulas require the limits to exist and be nonzero. If the limits
+        are $ \infty $, then the series only converges at the center $ x_0 $.
+    \item[Analytic function] A function that has a Taylor series representation at
+        $ x = x_0 $ is analytic at $ x_0 $. \par
+        If $ p, q, r $ are analytic at $ x_0 $, then
+        \begin{align}
+            y'' + p(x)y' + q(x)y = r(x) \nonumber
+        \end{align}
+        has every solution analytic at $ x_0 $ with some radius of convergence
+        $ R > 0 $.
+    \item[Operations on Power series] The following operations performed on convergent
+        power series result in another power series converging to the result of the same
+        operation on the function itself.
+        \begin{align}
+            y(x)                       & = \sum_{m = 0}^{\infty}a_m\ (x - x_0)^{m}       \\
+            \diff{y}{x}                & = \sum_{m = 1}^{\infty}m a_m\ (x - x_0)^{m-1} &
+            \forall \quad |x - x_0|    & < R                                             \\
+            f(x) + g(x)                & = \sum_{m = 0}^{\infty}
+            (a_m + b_m)\ (x - x_0)^{m} &
+            \forall \quad |x - x_0|    & < R_f \cap R_g                                  \\
+            f(x)g(x)                   & = \sum_{m = 0}^{\infty} \left[ \sum_{k=0}^{m}
+            a_kb_{m-k} \right]\ (x - x_0)^{m}                                            \\
+            f(x)                       & \equiv 0                                      &
+            \implies \{a_m\}           & \equiv 0
+        \end{align}
+        The last equation follows from polynomials being identically $ 0 $ if and
+        only if every single coefficient is identically $ 0 $.
+\end{description}
+
+\section{Legendre's Equation, Legendre Polynomials}
+\begin{description}
+    \item[Legendre ODE] In Physics, this ODE is very frequently encountered, which
+        yields a recurrence relation when solved using the power series method,
+        \begin{align}
+            0       & = (1 - x^2)y'' - 2xy' + n(n+1)y         \\
+            y       & = \sum_{m = 0}^{\infty} a_m\ x^m        \\
+            a_{s+2} & = -\frac{(n-s)(n+s+1)}{(s+2)(s+1)}\ a_s \\
+        \end{align}
+
+        The solution in terms of the two free constants $ a_0 $ and $ a_1 $,
+        \begin{align}
+            y(x) & = a_0y_1 + a_1 y_2                      \\
+            y_1  & = 1 - \frac{n(n+1)}{2!}\ x^2
+            + \frac{(n-2)n(n+1)(n+3)}{4!}\ x^4 - \dots     \\
+            y_2  & = x - \frac{(n-1)(n+2)}{3!}\ x^3
+            + \frac{(n-3)(n-1)(n+2)(n+4)}{5!}\ x^5 - \dots \\
+        \end{align}
+    \item[Convergence] The Legendre polynomials converge only for $ |x| < 1 $.
+        Since the standard form of the ODE,
+        \begin{align}
+            y'' - \frac{2x}{(1-x^2)}\ y' + \frac{n(n+1)}{(1 - x^2)}\ y & = 0
+        \end{align}
+        is not analytic at $ x = \pm 1 $, the convergence interval of the solution is
+        at best $ (-1, 1) $.
+    \item[Legendre's polynomial] For $ n $ being a non-negative integer, either $ y_1 $
+        or $ y_2 $ terminate after finitely many terms depending on $ n $ being even or odd.
+        \begin{align}
+            P_n(x) & = \sum_{m = 0}^{M} (-1^m)\ \frac{(2n - 2m)!}
+            {2^n\ m!\ (n-m)!\ (n-2m)!}\ x^{n-2m}
+        \end{align}
+        Here, $ M = n/2 $ or $ (n-1)/2 $ depending on n even or odd. \par
+        The specific choice of coefficients ensures that $ Pn(1) = 1 $ for all $ n $. \par
+        The recurrence relation is the other condition that enables the calculation of the
+        above general formula for the series.
+        \begin{align}
+            P_0(x) & = 1                                  &
+            P_1(x) & = x                                    \\
+            P_2(x) & = \frac{1}{2}\ (3x^2 - 1)            &
+            P_3(x) & = \frac{1}{2}\ (5x^3 - 3x)             \\
+            P_4(x) & = \frac{1}{8}\ (35x^4 - 30x^2 + 3)   &
+            P_5(x) & = \frac{1}{8}\ (63x^5 - 70x^3 + 15x)
+        \end{align}
+        These polynomials are orthogonal in the interval $ [-1, 1] $.\
+\end{description}
+
+\section{Extended Power Series Method: Frobenius Method}
+\begin{description}
+    \item[Frobenius ODE] Let $ b(x), c(x) $ be any functions analytic at $ x = 0 $. Then,
+        \begin{align}
+            y'' + \frac{b(x)}{x}\ y' + \frac{c(x)}{x^2}\ y & = 0
+        \end{align}
+        has at least one solution with $ r $ real or complex and $ a_0 \neq 0 $,
+        \begin{align}
+            y(x) & = x^r \sum_{m = 0}^{\infty}a_m\ x^m
+        \end{align}
+        The ODE also has a second L.I. solution that looks similar to the first.
+    \item[Regular point] A point $ x_0 $ at which the ODE,
+        \begin{align}
+            y'' + p(x)y' + q(x) & = 0                         \\
+            p(x),\ q(x)\        & \text{are analytic at}\ x_0
+        \end{align}
+    \item[Singular point] A point $ x_0 $ which is not a regular point as defined
+        above.
+    \item[Indicial equation] A quadratic equation in $ r $ which indicates the
+        form of the second L.I. solution to the Frobenius ODE.
+        \begin{align}
+            x^2 y'' + x\ b(x)y' + c(x)y & = 0                           \\
+            \text{Substitute}\qquad b(x) = \sum_{m=0}^{\infty} b_m x^m,
+            \qquad c(x)                 & = \sum_{m=0}^{\infty} c_m x^m \\
+            \text{Gathering terms with}\ x^r
+            \qquad r(r-1) + b_0 r + c_0 & = 0
+        \end{align}
+        The Euler-Cauchy ODE is the simplest case of the Frobenius ODE and illustrates
+        the three cases arising form the indicial equation described below.
+    \item[Distinct roots not differing by an integer] If $ r_1, r_2 $ are the two roots,
+        then a basis of solutions is,
+        \begin{align}
+            y_1(x) & = x^{r_1} \sum_{m=0}^{\infty}a_m x^m \\
+            y_2(x) & = x^{r_2} \sum_{m=0}^{\infty}A_m x^m
+        \end{align}
+        where the coefficients $ \{a_m\}, \{A_m\} $ are found by comparing powers of
+        $ x^r $ and higher terms in the ODE.
+    \item[Repeated root] Here, $ r_1 = r_2 = (1 - b_0)/2 $ and
+        \begin{align}
+            y_1(x) & = x^{r} \sum_{m=0}^{\infty}a_m x^m                         \\
+            y_2(x) & = y_1 \ln(x) + x^{r} \sum_{m=0}^{\infty}A_m x^m &  & (x>0)
+        \end{align}
+    \item[Roots differing by an integer] This case also includes complex roots,
+        and the stipulation that $ r_1 > r_2 $,
+        \begin{align}
+            y_1(x) & = x^{r_1} \sum_{m=0}^{\infty}a_m x^m                  \\
+            y_2(x) & = ky_1(x) \ln(x) + x^{r_2} \sum_{m=0}^{\infty}A_m x^m
+        \end{align}
+        It is possible that $ k=0 $ happens because of simplicity in the ODE.
+\end{description}
+
+\section{Bessel's Equation, Bessel Functions Jv(x)}
+\begin{description}
+    \item[Bessel's ODE] The standard form of the Bessel ODE with
+        $ \nu \in \mathcal{R^+} \cup 0 $ is,
+        \begin{align}
+            x^2y'' + xy' + (x^2 - \nu^2)y & = 0
+        \end{align}
+        This is often the result of the physical system having cylindrical symmetry.
+    \item[Power series solution] Applying the general power series method to find
+        indicial equation,
+        \begin{align}
+            y                & = \iser{0} a_m\ x^{m+r} \\
+            (r + \nu)(r-\nu) & = 0                     \\
+            r_1              & = \nu (\geq 0)
+            \qquad \qquad r_2 = -\nu                   \\
+            a_{2m}           & = \frac{(-1)^m\ a_0}
+            {2^{2m}\ m!\ (\nu+1)(\nu+2)\dots(\nu+m)}
+            \qquad \forall\ m=\{1,2,3,\dots\}
+        \end{align}
+    \item[Integer parameter] For the special case of $ \nu \in \mathcal{I^+} \cup 0 $,
+        assign $ \nu \rightarrow n $,
+        \begin{align}
+            a_0    & = \frac{1}{2^n\ n!}                          \\
+            a_{2m} & = \frac{(-1)^m}{2^{2m+n}\ m!\ (n+m)!} \qquad
+            \forall\ m= \{1,2,3,\dots\}
+        \end{align}
+    \item[Function of the first kind] By inserting the above recursion relation into the
+        power series solution and noting that odd powers have zero coefficient,
+        \begin{align}
+            J_n(x) & = x^n\ \iser{0} \frac{(-1)^m\ x^{2m}}{2^{2m+n}\ m!\ (n+m)!}
+        \end{align}
+        This series converges for all $ x $.
+    \item[Asymptotic behavior] All of the $ J_{\nu}(x) $ resemble cosine functions,
+        with gradually decaying amplitudes and zeros not being evenly spaced. This is
+        also evident from the similarity in their series expansions,
+        \begin{align}
+            J_0                               & = 1 - \frac{x^2}{2^2\ (1!)^2}
+            + \frac{x^4}{2^4\ (2!)^2} - \frac{x^6}{2^6\ (3!)^2} + \dots                 \\
+            J_1                               & = \frac{x}{2} - \frac{x^3}{2^3\ 1!\ 2!}
+            + \frac{x^5}{2^5\ 2!\ 3!} - \frac{x^7}{2^7\ 3!\ 4!} + \dots                 \\
+            \lim_{x \rightarrow \infty}J_n(x) & \approxeq \frac{2}{\pi x}
+            \cos \Bigg( x - \frac{n\pi}{2} - \frac{\pi}{4} \Bigg)
+        \end{align}
+    \item[Gamma function] The generalization of the factorial to non-integer indices.
+        \begin{align}
+            \Gamma(\nu+1) & = \int_{0}^{\infty}e^{-t}\ t^{\nu}\ \dl t &
+            (\nu          & > -1)                                       \\
+            \Gamma(\nu+1) & = \nu\ \Gamma(\nu)                          \\
+            \Gamma(n+1)   & = n!                                      &
+            (n            & \in 0 \cup \mathcal{I^+})
+        \end{align}
+    \item[Real positive parameter] Replacing the factorial with the Gamma function,
+        \begin{align}
+            a_0        & = \frac{1}{2^{\nu}\ \Gamma(\nu+1)}        \\
+            J_{\nu}(x) & = x^{\nu}\ \iser{0} \frac{(-1)^m\ x^{2m}}
+            {2^{2m + \nu}\ m!\ \Gamma(\nu+m+1)}
+        \end{align}
+        $ \nu $ is called the order of the Bessel function.
+    \item[Properties of Bessel functions] Starting from the power series definition,
+        some properties of $ J_{\nu}(x) $ are,
+        \begin{align}
+            \diff**{x}{[x^{\nu}\ J_{\nu}]}  & = x^{\nu}\ J_{\nu - 1}    \\
+            \diff**{x}{[x^{-\nu}\ J_{\nu}]} & = -x^{-\nu}\ J_{\nu + 1}  \\
+            J_{\nu-1} + J_{\nu+1}           & = \frac{2\nu}{x}\ J_{\nu} \\
+            J_{\nu-1} - J_{\nu+1}           & = 2\ \diff**{x}{J_{\nu}}
+        \end{align}
+        The second set of relations comes from adding and subtratcing the expansions of
+        the first set.
+    \item[Half-integer parameter] Some basic results,
+        \begin{align}
+            \Gamma(1/2)      & = \sqrt{\pi}                        \\
+            J_{\frac{1}{2}}  & = \sqrt{\frac{2}{\pi x}}\ \sin(x) &
+            J_{-\frac{1}{2}} & = \sqrt{\frac{2}{\pi x}}\ \cos(x)   \\
+        \end{align}
+    \item[General Solution] For the special case of $ \nu \not\in \mathcal{I} $, a
+        straightforward second solution that is L.I. is found by using $ -\nu $,
+        \begin{align}
+            y(x) & = c_1\ J_\nu + c_2\ J_{-\nu}
+        \end{align}
+        When $ \nu $ is an integer, this second function becomes L.D since,
+        \begin{align}
+            J_{-n} & = (-1)^n\ J_n
+        \end{align}
+        Result follows from the fact that $ \Gamma(n+1) $ is not defined for $ n < -1 $.
+        In this case, a more involved procedure is necessary to find the second L.I.
+        solution.
+\end{description}
+
+\section{Bessel Functions Yv(x), General Solution}
+\begin{description}
+    \item[Zero parameter] Special case where the ODE reduces to
+        \begin{align}
+            0      & = xy'' + y' + xy                                   &
+            r_1    & = r_2 = 0                                            \\
+            y_2    & = J_0 \ln(x) + \iser{1}A_m\ x^m                    &
+            h_m    & = \sum_{r=1}^{m} \frac{1}{r}                         \\
+            A_{2m} & = \frac{(-1)^{m-1}\ h_m}{2^{2m}\ (m!)^2}             \\
+            y_2(x) & = J_0(x) \ln(x) + \frac{x^2}{4} - \frac{3x^4}{128}
+            + \frac{11x^6}{13824} + \dots
+        \end{align}
+
+    \item[Neumann function of order 0] Bessel function of order zero, using the constants
+        \begin{align}
+            a      & = \frac{2}{\pi}                                              \\
+            b      & = \lim_{s \rightarrow \infty} \left[ 1 + \frac{1}{2} + \dots
+            + \frac{1}{s} - \ln(s) \right] = \gamma - \ln(2)                      \\
+            Y_0(x) & = a(y_2 + bJ_0)                                              \\
+                   & = \frac{2}{\pi} \left[ J_0 \{\ln(x/2) + \gamma\}
+                + \iser{1} \frac{(-1)^{m-1}\ h_m}{2^{2m}\ (m!)^2}\ x^{2m} \right]
+        \end{align}
+        This function behaves like $ \ln x $ for small $ x $
+
+    \item[Integer parameter] When the parameter is an integer $ n $, another special case
+        is given by
+        \begin{align}
+            Y_n   & = \lim_{\nu \rightarrow n}Y_\nu (x)                    \\
+            Y_\nu & = \frac{J_\nu \cos(\nu \pi) - J_{-\nu}}{\sin(\nu \pi)}
+        \end{align}
+        For non-integer $ \nu $, the two functions $ J_\nu $ and $ J_{-\nu} $ are
+        already L.I. and thus, $ Y_\nu $ is also L.I. of $ J_\nu $. \par
+
+        By taking the limit above, the expression for $ Y_n $ becomes,
+        \begin{align}
+            Y_n & = \frac{2}{\pi} J_n \{ \ln(x/2) + \gamma \}
+            + \frac{x^n}{\pi} \iser{0} \frac{(-1)^{m-1}\ (h_m + h_{m+n})}
+            {2^{2m+n}\ m!\ (m+n)!}\ x^{2m}                          \\
+                & - \frac{1}{nx^n} \sum_{m=0}^{n-1} \frac{(n-m-1)!}
+            {2^{2m-n}\ m!}\ x^{2m}       \qquad\qquad (x>0)
+        \end{align}
+        Some conventions used in the above formula, and a simple result that follows
+        is,
+        \begin{align}
+            h_0    & = 0 \qquad \text{(by convention)} \\
+            Y_{-n} & = (-1)^n Y_n
+        \end{align}
+
+    \item[General solution] Using the above special cases, a general solution can now be
+        defined using,
+        \begin{align}
+            y & = c_1 J_\nu(x) + c_2 Y_\nu (x)
+        \end{align}
+
+    \item[Hankel functions] Solutions of Bessel's ODE that are complex for real $ x $,
+        given by linear combinations of $ J_\nu $ and $ Y_\nu $,
+        \begin{align}
+            H_\nu^{(1)} & = J_\nu + i Y_\nu \\
+            H_\nu^{(2)} & = J_\nu - i Y_\nu
+        \end{align}
+        These functions are also called Bessel functions of the third kind.
+\end{description}

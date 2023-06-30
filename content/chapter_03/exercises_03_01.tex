@@ -1,0 +1,268 @@
+\section{Homogeneous Linear ODEs}
+\begin{enumerate}
+    \item The given functions are solutions, trivially. \par
+          Checking if the given solutions are L.I.
+          \begin{align}
+              y^{iv} & = 0                             \\
+              y      & = \{1, x, x^{2}, x^{3}\}        \\
+              W      & = \begin{vNiceMatrix}[r, margin]
+                             1 & x & x^{2} & x^{3}  \\
+                             0 & 1 & 2x    & 3x^{2} \\
+                             0 & 0 & 2     & 6x     \\
+                             0 & 0 & 0     & 6      \\
+                         \end{vNiceMatrix} = 12
+          \end{align}
+          Since $ W \neq 0 $, the solutions form a basis.
+
+    \item Checking if the given functions are solutions, true
+          \begin{align}
+              y''' - 2y'' - y' + 2y & = 0                                                   \\
+              y                     & = \{e^{x}, e^{-x}, e^{2x}\}                           \\
+              0                     & = 1 - 2 - 1 + 2             & \cdots\cdots & [e^{x}]  \\
+              0                     & = -1 - 2 + 1 + 2            & \cdots\cdots & [e^{-x}] \\
+              0                     & = 8 - 8 - 2 + 2             & \cdots\cdots & [e^{2x}]
+          \end{align}
+          Checking if the given solutions are L.I.
+          \begin{align}
+              y & = \{e^{x}, e^{-x}, e^{2x}\}     \\
+              W & = \begin{vNiceMatrix}[r, margin]
+                        e^{x} & e^{-x}  & e^{2x}  \\
+                        e^{x} & -e^{-x} & 2e^{2x} \\
+                        e^{x} & e^{-x}  & 4e^{2x} \\
+                    \end{vNiceMatrix} = - 6e^{2x}
+          \end{align}
+          Since $ W \neq 0 $, the solutions form a basis.
+
+    \item Checking if the given functions are solutions, true
+          \begin{align}
+              y^{iv} + 2y'' + y & = 0                                                                            \\
+              y                 & = \{\cos x, \sin x, x\cos x, x\sin x\}                                         \\
+              0                 & = x\cos x + 4\sin x - 2x\cos x - 4\sin x + x \cos x & \cdots\cdots & [x\cos x] \\
+              0                 & = x\sin x - 4\cos x -2x\sin x + 4\cos x + x\sin x   & \cdots\cdots & [x\sin x] \\
+              0                 & = 1 - 2 + 1                                         & \cdots\cdots & [\cos x]  \\
+              0                 & = 1 - 2 + 1                                         & \cdots\cdots & [\sin x]
+          \end{align}
+          Checking if the given solutions are L.I.
+          \begin{align}
+              y & = \{\cos x, \sin x, x\cos x, x\sin x\}                        \\
+              W & = \begin{vNiceMatrix}[r, margin]
+                        \cos x  & \sin x  & x\cos x            & x\sin x            \\
+                        -\sin x & \cos x  & -x\sin x + \cos x  & x\cos x + \sin x   \\
+                        -\cos x & -\sin x & -x\cos x - 2\sin x & -x\sin x + 2\cos x \\
+                        \sin x  & -\cos x & x\sin x - 3\cos x  & -x\cos x - 3\sin x
+                    \end{vNiceMatrix} = 4
+          \end{align}
+          Since $ W \neq 0 $, the solutions form a basis.
+
+    \item Checking if the given functions are solutions, true
+          \begin{align}
+              0 & = y''' + 12y'' + 48y' + 64y                                                                       \\
+              y & = \{e^{-4x}, xe^{-4x}, x^{2}e^{-4x}\}                                                             \\
+              0 & = -64 + 192 - 192 + 64                                                & \cdots\cdots & [e^{-4x}]  \\
+              0 & = e^{-4x}[-192x + 48 + 192x - 96 + 48 - 64x + 64x]                    & \cdots\cdots & [xe^{-4x}] \\
+              0 & = e^{-4x}[(-64 + 192 - 192 + 64)x^{2} + (96 - 192 + 96)x - (24 + 24)] & \cdots\cdots & [xe^{-4x}]
+          \end{align}
+          Checking if the given solutions are L.I.
+          \begin{align}
+              y & = \{e^{-4x}, xe^{-4x}, x^{2}e^{-4x}\}                        \\
+              W & = \begin{vNiceMatrix}[r, margin]
+                        e^{-4x}   & xe^{-4x}          & x^{2}e^{-4x}               \\
+                        -4e^{-4x} & e^{-4x}(1 - 4x)   & e^{-4x}(2x - 4x^{2})       \\
+                        16e^{-4x} & e^{-4x}(-8 + 16x) & e^{-4x}(2 - 16x + 16x^{2})
+                    \end{vNiceMatrix} = 2 e^{-12x}
+          \end{align}
+          Since $ W \neq 0 $, the solutions form a basis.
+
+    \item Checking if the given functions are solutions, true
+          \begin{align}
+              0 & = y''' + 2y'' + 5y'                                                                     \\
+              y & = \{1, e^{-x}\cos(2x), e^{-x}\sin(2x)\}                                                 \\
+              0 & = 0 + 0 + 0                                           & \cdots\cdots & [1]              \\
+              0 & = e^{-x}[\cos(2x)(11 - 6 - 5) + \sin(2x)(2 + 8 - 10)] & \cdots\cdots & [e^{-x}\cos(2x)] \\
+              0 & = e^{-x}[\cos(2x)(-2 -8 + 10) + \sin(2x)(11 -6 - 5)]  & \cdots\cdots & [e^{-x}\sin(2x)]
+          \end{align}
+          Checking if the given solutions are L.I.
+          \begin{align}
+              y & = \{1, e^{-x}\cos(2x), e^{-x}\sin(2x)\}                                                                                      \\
+              W & = \begin{vNiceMatrix}[r, margin]
+                        1 & e^{-x}\cos(2x)                & e^{-x}\sin(2x)                 \\
+                        0 & e^{-x}[-2\sin(2x) - \cos(2x)] & e^{-x}[-\sin(2x) + 2\cos(2x)]  \\
+                        0 & e^{-x}[4\sin(2x) - 3\cos(2x)] & e^{-x}[-3\sin(2x) - 4\cos(2x)]
+                    \end{vNiceMatrix}  = 10 e^{-2x}
+          \end{align}
+          Since $ W \neq 0 $, the solutions form a basis.
+
+    \item Checking if the given functions are solutions, true
+          \begin{align}
+              0 & = x^{3}y''' - 3x^{2}y'' + 3xy'                          \\
+              y & = \{1, x^{2}, x^{4}\}                                   \\
+              0 & = 0 + 0 + 0                    & \cdots\cdots & [1]     \\
+              0 & = 0 - 6x^{2} + 6x^{2}          & \cdots\cdots & [x^{2}] \\
+              0 & = 24x^{4} - 36x^{4} + 12x^{4}  & \cdots\cdots & [x^{4}]
+          \end{align}
+          Checking if the given solutions are L.I.
+          \begin{align}
+              y & = \{1, x^{2}, x^{4}\}           \\
+              W & = \begin{vNiceMatrix}[r, margin]
+                        1 & x^{2} & x^{4}   \\
+                        0 & 2x    & 4x^{3}  \\
+                        0 & 2     & 12x^{2}
+                    \end{vNiceMatrix} = 16 x^{3}
+          \end{align}
+          Since $ W \neq 0 $, the solutions form a basis.
+
+    \item General properties of solutions of $ n $-th order ODEs with constant
+          coefficients.
+          \begin{enumerate}
+              \item Relation between solutions of characteristic equation and coefficients,
+                    \begin{align}
+                        y^{(n)} + a_{n-1}y^{(n-1)} + \dots + a_{1}y' + a_{0}y             & = 0                        \\
+                        \text{Try} \quad y                                                & = e^{\lambda x}            \\
+                        \difoverride{k} \diff[k] yx                                       & = \lambda^{k}e^{\lambda x} \\
+                        \lambda^{n} + a_{n-1}\lambda^{n-1} + \dots + a_{1}\lambda + a_{0} & = 0 = P_{n}(\lambda)
+                    \end{align}
+                    The relation between the $ n $ roots of the polynomial $ P_{n}(\lambda) $,
+                    and the coefficients of the characteristic equation is a standard result.
+                    Let $ S_{k} $ be the sum of products of roots taken $ k $ at a time. Then,
+                    \begin{align}
+                        a_{k} & = (-1)^{k} S_{k}
+                    \end{align}
+
+              \item Reduction of order by substituting
+                    \begin{align}
+                        z       & = y^{(k)}   \\
+                        z^{(m)} & = y^{(k+m)}
+                    \end{align}
+                    extends to higher order ODEs since differentiation of higher order works the
+                    same as double differentiation.
+
+              \item Let $ \lambda $ be a root of the characteristic equation with multiplicity
+                    $ m $,
+                    \begin{align}
+                        \diff* {e^{\lambda x}u}{x}        & = \lambda e^{\lambda x}u + e^{\lambda x}\diff ux \\
+                        (D - \lambda) e^{\lambda x} u     & = e^{\lambda x} \diff ux                         \\
+                        (D - \lambda)^{m} e^{\lambda x} u & = e^{\lambda x}D^{m}u
+                    \end{align}
+                    The LHS is zero by virtue of $ \lambda $ being a repeated root. This means that
+                    the RHS is a polynomial of degree $ (m-1) $.
+                    In the interest of L.I. basis of solutions, each solution corresponding to the
+                    repeated root is multiplied by increasing powers of $ x $ until $ x^{m-1} $.
+
+              \item For twice repeated root, the derivation is the same as for an ODE of order
+                    2. For higher multiplicity, with $ \mu = \lambda + \delta $
+                    \begin{align}
+                        y_{2} & = \lim_{\lambda \rightarrow \mu} \frac{x^{m}e^{\mu x} - x^{m}e^{\lambda x}}{\mu - \lambda}           \\
+                        y_{2} & = \lim_{\delta \rightarrow 0} \frac{x^{m}e^{\lambda x}e^{\delta x} - x^{m}e^{\lambda x}}{\delta}     \\
+                              & = \lim_{\delta \rightarrow 0} \diff* {(x^{m}e^{\lambda x}e^{\delta x} - x^{m}e^{\lambda x})}{\delta} \\
+                              & = x^{m+1}e^{\lambda x}
+                    \end{align}
+                    This result also generalizes from second order to higher order linear h-ODEs with constant
+                    coefficients.
+          \end{enumerate}
+
+    \item The given functions are {\color{y_p} not L.I.} on the interval $ x \geq 0 $, since the zero function is
+          a member of the set and $ W \equiv 0 $.
+
+    \item The given functions are {\color{y_h} L.I.} on the interval $ x \geq 0 $,
+          \begin{align}
+              W & = \begin{vNiceMatrix}[r, margin]
+                        \tan x           & \cot x           & 1 \\
+                        \sec^{2}x        & -\csc^{2} x      & 0 \\
+                        2\sec^{2}x\tan x & 2\csc^{2}x\cot x & 0 \\
+                    \end{vNiceMatrix} = \frac{2}{\sin^{3}x \cos^{3}x}
+          \end{align}
+
+    \item The given functions are {\color{y_h} L.I.} on the interval $ x \geq 0 $,
+          \begin{align}
+              W & = \begin{vNiceMatrix}[r, margin]
+                        e^{2x}  & xe^{2x}        & x^{2}e^{2x}             \\
+                        2e^{2x} & [1 + 2x]e^{2x} & [2x + 2x^{2}]e^{2x}     \\
+                        4e^{2x} & [4 + 4x]e^{2x} & [2 + 6x + 4x^{2}]e^{2x}
+                    \end{vNiceMatrix} = 2(1 - x)e^{6 x}
+          \end{align}
+
+    \item The given functions are {\color{y_h} L.I.} on the interval $ x \geq 0 $,
+          \begin{align}
+              W & = \begin{vNiceMatrix}[r, margin]
+                        e^{x}\cos x            & e^{x}\sin x            & e^{x} \\
+                        e^{x}[\cos x - \sin x] & e^{x}[\cos x + \sin x] & e^{x} \\
+                        e^{x}[-2\sin x]        & e^{x}[2\cos x]         & e^{x}
+                    \end{vNiceMatrix} = e^{3x}
+          \end{align}
+
+    \item The given functions are {\color{y_p} not L.I.} on the interval $ x \geq 0 $, \par
+          either using the expansion, $ \cos(2x) = \cos^{2}x - \sin^{2}x $ or,
+          \begin{align}
+              W & = \begin{vNiceMatrix}[r, margin]
+                        \sin^{2} x & \cos^{2} x & \cos(2x)   \\
+                        \sin(2x)   & -\sin(2x)  & -2\sin(2x) \\
+                        2\cos(2x)  & -2\cos(2x) & -4\cos(2x)
+                    \end{vNiceMatrix} = 0
+          \end{align}
+
+    \item The given functions are {\color{y_h} L.I.} on the interval $ x \geq 0 $,
+          \begin{align}
+              W & = \begin{vNiceMatrix}[r, margin]
+                        \sin x  & \cos x  & \sin(2x)   \\
+                        \cos x  & -\sin x & 2\cos(2x)  \\
+                        -\sin x & -\cos x & -4\sin(2x)
+                    \end{vNiceMatrix} = 3 \sin{(2x)}
+          \end{align}
+
+    \item The given functions are {\color{y_p} not L.I.} on the interval $ x \geq 0 $, \par
+          either using the superposition, $ 2\pi\cos^{2}x + 2\pi\sin^{2}x = 2\pi $ or,
+          \begin{align}
+              W & = \begin{vNiceMatrix}[r, margin]
+                        \sin^{2} x & \cos^{2} x & 2\pi \\
+                        \sin(2x)   & -\sin(2x)  & 0    \\
+                        2\cos(2x)  & -2\cos(2x) & 0
+                    \end{vNiceMatrix} = 0
+          \end{align}
+
+    \item The given functions are {\color{y_p} not L.I.} on the interval $ x \geq 0 $, \par
+          either using the superposition, $ \cosh 2x + \sinh 2x = e^{2x} $ or,
+          \begin{align}
+              W & = \begin{vNiceMatrix}[r, margin]
+                        \cosh 2x  & \sinh 2x  & e^{2x}  \\
+                        2\sinh 2x & 2\cosh 2x & 2e^{2x} \\
+                        4\cosh 2x & 4\sinh 2x & 4e^{2x}
+                    \end{vNiceMatrix} = 0
+          \end{align}
+
+    \item \begin{enumerate}
+              \item Checking each condition,
+                    \begin{enumerate}[itemsep = 2em]
+                        \item If $ S $ contains the zero function, can $ S $ be linearly independent?
+                              \par {\color{y_p} No}, if $ 0 \in S $, then S cannot be an L.I. set
+                        \item If $ S $ is linearly independent on a subinterval $\mathcal{J}$ of $\mathcal{I}$, is it
+                              linearly independent on $ \mathcal{I} $?
+                              \par {\color{y_h} Yes}, since $ W \equiv 0 $ has already been violated when the set $ S $
+                              is L.I. on $ \mathcal{J} $
+                        \item If $S$ is linearly dependent on a subinterval $\mathcal{J}$ of $\mathcal{I}$, is it linearly
+                              dependent on $\mathcal{I}$?
+                              \par {\color{y_p} No}, since $ W \neq 0$ may be true for some
+                              $ x \in \mathcal{I} - \mathcal{J} $
+                        \item If $S$ is linearly independent on $\mathcal{I}$, is it linearly independent on a
+                              subinterval $\mathcal{J}$?
+                              \par {\color{y_p} No}, since the set $ S $ might have $ W \equiv 0 \ \forall\ \mathcal{J}$
+                              but $ W \neq 0 $ for some point in $ \mathcal{I} - \mathcal{J} $
+                        \item If $S$ is linearly dependent on $\mathcal{I}$, is it linearly independent on a
+                              subinterval $\mathcal{J}$?
+                              \par {\color{y_p} No}, since $ W \equiv 0\ \forall\ x \in \mathcal{I} $, this has to hold
+                              for all subintervals $ \mathcal{J} $ as well
+                        \item If $S$ is linearly dependent on $\mathcal{I}$, and if $T$ contains $S$, is $T$ linearly
+                              dependent on $\mathcal{I}$?
+                              \par {\color{y_p} No}, since one member of $ S $ can be expressed as a linear superposition
+                              of other members of $ S $. This means that the superset $ T $ is also L.D.
+                    \end{enumerate}
+              \item To use the Wronskian on a set of functions $ S $ to test their linear
+                    independence, they have to be $ n $ times differentiable on the interval
+                    $ \mathcal{I} $ of testing, but need not be continuous.
+                    \par Other methods might include simple ratios of member functions in $ S $
+                    to check for linear independence, or the use of pre-established relations
+                    between member functions to come up with linear superpositions which disprove
+                    L.I.
+          \end{enumerate}
+
+
+\end{enumerate}

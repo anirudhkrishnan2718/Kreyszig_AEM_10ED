@@ -1,0 +1,453 @@
+\section{Some Applications of Eigenvalue Problems}
+
+\begin{enumerate}
+    \item Finding eigenvalues,
+          \begin{align}
+              \vec{A}                        & = \bmattt{3}{1.5}{1.5}{3}      &
+              \det(\vec{A} - \lambda\vec{I}) & = 0                              \\
+              0                              & = (\lambda - 3)^2 - (1.5)^2    &
+              0                              & = \lambda^2 - 6 \lambda + 6.75   \\
+              \{\lambda_i\}                  & = \{ 1.5, 4.5 \}
+          \end{align}
+          Finding the eigenvectors,
+          \begin{align}
+              \lambda_1                             & = \color{y_h} 1.5 &
+              \bmattt{1.5}{1.5}{1.5}{1.5} \vec{x}   & = \vec{0}         &
+              \vec{u}_1                             & = \color{y_h}
+              \bmatcol{1}{-1},\ \SI{-45}{\degree}                         \\
+              \lambda_2                             & = \color{y_p} 4.5 &
+              \bmattt{-1.5}{1.5}{1.5}{-1.5} \vec{x} & = \vec{0}         &
+              \vec{u}_2                             & = \color{y_p}
+              \bmatcol{1}{1},\ \SI{45}{\degree}
+          \end{align}
+
+    \item Finding eigenvalues,
+          \begin{align}
+              \vec{A}                        & = \bmattt{2}{0.4}{0.4}{2}      &
+              \det(\vec{A} - \lambda\vec{I}) & = 0                              \\
+              0                              & = (\lambda - 2)^2 - (0.4)^2    &
+              0                              & = \lambda^2 - 4 \lambda + 3.84   \\
+              \{\lambda_i\}                  & = \{ 1.6, 2.4 \}
+          \end{align}
+          Finding the eigenvectors,
+          \begin{align}
+              \lambda_1                             & = \color{y_h} 1.6 &
+              \bmattt{0.4}{0.4}{0.4}{0.4} \vec{x}   & = \vec{0}         &
+              \vec{u}_1                             & = \color{y_h}
+              \bmatcol{1}{-1},\ \SI{-45}{\degree}                         \\
+              \lambda_2                             & = \color{y_p} 2.4 &
+              \bmattt{-0.4}{0.4}{0.4}{-0.4} \vec{x} & = \vec{0}         &
+              \vec{u}_2                             & = \color{y_p}
+              \bmatcol{1}{1},\ \SI{45}{\degree}
+          \end{align}
+
+    \item Finding eigenvalues,
+          \begin{align}
+              \vec{A}                        & = \bmattt{7}{\sqrt{6}}{\sqrt{6}}{2} &
+              \det(\vec{A} - \lambda\vec{I}) & = 0                                   \\
+              0                              & = (\lambda - 2)(\lambda - 7) - 6    &
+              0                              & = \lambda^2 - 9 \lambda + 8           \\
+              \{\lambda_i\}                  & = \{ 1, 8 \}
+          \end{align}
+          Finding the eigenvectors,
+          \begin{align}
+              \lambda_1                                   & = \color{y_h} 1 &
+              \bmattt{6}{\sqrt{6}}{\sqrt{6}}{1} \vec{x}   & = \vec{0}       &
+              \vec{u}_1                                   & = \color{y_h}
+              \bmatcol{1}{-\sqrt{6}},\ \SI{-67.8}{\degree}                    \\
+              \lambda_2                                   & = \color{y_p} 8 &
+              \bmattt{-1}{\sqrt{6}}{\sqrt{6}}{-6} \vec{x} & = \vec{0}       &
+              \vec{u}_2                                   & = \color{y_p}
+              \bmatcol{\sqrt{6}}{1},\ \SI{22.2}{\degree}
+          \end{align}
+
+    \item Finding eigenvalues,
+          \begin{align}
+              \vec{A}                        & = \bmattt{5}{2}{2}{13}            &
+              \det(\vec{A} - \lambda\vec{I}) & = 0                                 \\
+              0                              & = (\lambda - 5)(\lambda - 13) - 4 &
+              0                              & = \lambda^2 - 18 \lambda + 61       \\
+              \{\lambda_i\}                  & = \{ 9 \pm 2\sqrt{5} \}
+          \end{align}
+          Finding the eigenvectors,
+          \begin{align}
+              \lambda_1                     & = \color{y_h} 9 - 2\sqrt{5} &
+              \bmattt{-4 + 2\sqrt{5}}
+              {2}{2}{4 + 2\sqrt{5}} \vec{x} & = \vec{0}                   &
+              \vec{u}_1                     & = \color{y_h}
+              \bmatcol{1}{2 - \sqrt{5}},\ \SI{-76.72}{\degree}              \\
+              \lambda_2                     & = \color{y_p} 9 + 2\sqrt{5} &
+              \bmattt{-4 - 2\sqrt{5}}
+              {2}{2}{4 - 2\sqrt{5}} \vec{x} & = \vec{0}                   &
+              \vec{u}_2                     & = \color{y_p}
+              \bmatcol{1}{2 + \sqrt{5}},\ \SI{13.28}{\degree}
+          \end{align}
+
+    \item Finding eigenvalues,
+          \begin{align}
+              \vec{A}                        & = \bmattt{1}{0.5}{0.5}{1}      &
+              \det(\vec{A} - \lambda\vec{I}) & = 0                              \\
+              0                              & = (\lambda - 1)^2 - 0.25       &
+              0                              & = \lambda^2 - 2 \lambda + 0.75   \\
+              \{\lambda_i\}                  & = \{ 0.5, 1.5 \}
+          \end{align}
+          Finding the eigenvectors,
+          \begin{align}
+              \lambda_1                             & = \color{y_h} 0.5 &
+              \bmattt{0.5}{0.5}{0.5}{0.5} \vec{x}   & = \vec{0}         &
+              \vec{u}_1                             & = \color{y_h}
+              \bmatcol{1}{-1},\ \SI{-45}{\degree}                         \\
+              \lambda_2                             & = \color{y_p} 1.5 &
+              \bmattt{-0.5}{0.5}{0.5}{-0.5} \vec{x} & = \vec{0}         &
+              \vec{u}_2                             & = \color{y_p}
+              \bmatcol{1}{1},\ \SI{45}{\degree}
+          \end{align}
+
+    \item Finding eigenvalues,
+          \begin{align}
+              \vec{A}                        & = \bmattt{1.25}{0.75}{0.75}{1.25} &
+              \det(\vec{A} - \lambda\vec{I}) & = 0                                 \\
+              0                              & = (\lambda - 1.25)^2 - (0.75)^2   &
+              0                              & = \lambda^2 - 2.5 \lambda + 1       \\
+              \{\lambda_i\}                  & = \{ 0.5, 2 \}
+          \end{align}
+          Finding the eigenvectors,
+          \begin{align}
+              \lambda_1                                 & = \color{y_h} 0.5 &
+              \bmattt{0.75}{0.75}{0.75}{0.75} \vec{x}   & = \vec{0}         &
+              \vec{u}_1                                 & = \color{y_h}
+              \bmatcol{1}{-1},\ \SI{-45}{\degree}                             \\
+              \lambda_2                                 & = \color{y_p} 2   &
+              \bmattt{-0.75}{0.75}{0.75}{-0.75} \vec{x} & = \vec{0}         &
+              \vec{u}_2                                 & = \color{y_p}
+              \bmatcol{1}{1},\ \SI{45}{\degree}
+          \end{align}
+
+    \item Finding eigenvalues,
+          \begin{align}
+              \vec{A}                        & = \bmattt{0.2}{0.5}{0.8}{0.5}          &
+              \det(\vec{A} - \lambda\vec{I}) & = 0                                      \\
+              0                              & = (\lambda - 0.2)(\lambda - 0.5) - 0.4 &
+              0                              & = \lambda^2 - 0.7 \lambda - 0.3          \\
+              \{\lambda_i\}                  & = \{ -0.3, 1 \}
+          \end{align}
+          Finding the eigenvectors,
+          \begin{align}
+              \lambda_1                             & = \color{y_h} -0.3 &
+              \bmattt{0.5}{0.5}{0.8}{0.8} \vec{x}   & = \vec{0}          &
+              \vec{u}_1                             & = \color{y_h}
+              \bmatcol{1}{-1}                                              \\
+              \lambda_2                             & = \color{y_p} 1    &
+              \bmattt{-0.8}{0.5}{0.8}{-0.5} \vec{x} & = \vec{0}          &
+              \vec{u}_2                             & = \color{y_p}
+              \bmatcol{5}{8}
+          \end{align}
+          Since a Markov process has steady state when $ \lambda  = 1$, the steady state
+          is $\vec{u}_2$.
+
+    \item Finding the eigenvalues,
+          \begin{align}
+              \vec{A}                         & =
+              \begin{bNiceMatrix}[r, margin]
+                  0.4 & 0.3 & 0.3 \\
+                  0.3 & 0.6 & 0.1 \\
+                  0.3 & 0.1 & 0.6
+              \end{bNiceMatrix}  &
+              \det(\vec{A} - \lambda \vec{I}) & = 0                        \\
+              0                               & = \lambda^3 - 1.6\lambda^2
+              + 0.65 \lambda - 0.05           &
+              \{\lambda_i\}                   & = \{0.1, 0.5, 1\}
+          \end{align}
+          Finding the steady state using the unity eigenvalue,
+          \begin{align}
+              \lambda_1                      & = \color{y_h} 1 &
+              \begin{bNiceMatrix}[r, margin]
+                  -0.6 & 0.3  & 0.3  \\
+                  0.3  & -0.4 & 0.1  \\
+                  0.3  & 0.1  & -0.4
+              \end{bNiceMatrix} \vec{x} & = 0             &
+              \vec{u}_1                      & =
+              \color{y_h} \begin{bNiceMatrix}[r, margin]
+                              1 \\ 1 \\ 1
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the eigenvalues,
+          \begin{align}
+              \vec{A}                         & =
+              \begin{bNiceMatrix}[r, margin]
+                  0.6 & 0.1 & 0.2 \\
+                  0.4 & 0.1 & 0.4 \\
+                  0   & 0.8 & 0.4
+              \end{bNiceMatrix}  &
+              \det(\vec{A} - \lambda \vec{I}) & = 0                        \\
+              0                               & = \lambda^3 - 1.1\lambda^2
+              - 0.02 \lambda + 0.12           &
+              \{\lambda_i\}                   & = \{-0.3, 0.4, 1\}
+          \end{align}
+          Finding the steady state using the unity eigenvalue,
+          \begin{align}
+              \lambda_1                      & = \color{y_h} 1 &
+              \begin{bNiceMatrix}[r, margin]
+                  -0.4 & 0.1  & 0.2  \\
+                  0.4  & -0.9 & 0.4  \\
+                  0    & 0.8  & -0.6
+              \end{bNiceMatrix} \vec{x} & = 0             &
+              \vec{u}_1                      & =
+              \color{y_h} \begin{bNiceMatrix}[r, margin]
+                              11 \\ 12 \\ 16
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the eigenvalues,
+          \begin{align}
+              \vec{A}                         & =
+              \begin{bNiceMatrix}[r, margin]
+                  0   & 9   & 5 \\
+                  0.4 & 0   & 0 \\
+                  0   & 0.4 & 0
+              \end{bNiceMatrix}  &
+              \det(\vec{A} - \lambda \vec{I}) & = 0                               \\
+              0                               & = \lambda^3 - 3.6 \lambda - 0.8 &
+              \{\lambda_i\}                   & = \{2, -1 \pm 0.2\sqrt{15}\}
+          \end{align}
+          Finding the growth rate using the positive eigenvalue,
+          \begin{align}
+              \lambda_1                      & = \color{y_h} 2 &
+              \begin{bNiceMatrix}[r, margin]
+                  -2  & 9   & 5  \\
+                  0.4 & -2  & 0  \\
+                  0   & 0.4 & -2
+              \end{bNiceMatrix} \vec{x} & = 0             &
+              \vec{u}_1                      & =
+              \color{y_h} \frac{1}{31} \cdot \begin{bNiceMatrix}[r, margin]
+                                                 25 \\ 5 \\ 1
+                                             \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the eigenvalues,
+          \begin{align}
+              \vec{A}                         & =
+              \begin{bNiceMatrix}[r, margin]
+                  0   & 3.45 & 0.6 \\
+                  0.9 & 0    & 0   \\
+                  0   & 0.45 & 0
+              \end{bNiceMatrix}  &
+              \det(\vec{A} - \lambda \vec{I}) & = 0                                   \\
+              0                               & = \lambda^3 - 3.105 \lambda - 0.243 &
+              \{\lambda_i\}                   & = \{1.8, -0.9 \pm 0.15\sqrt{30}\}
+          \end{align}
+          Finding the growth rate using the positive eigenvalue,
+          \begin{align}
+              \lambda_1                      & = \color{y_h} 1.8 &
+              \begin{bNiceMatrix}[r, margin]
+                  0   & 3.45 & 0.6 \\
+                  0.9 & 0    & 0   \\
+                  0   & 0.45 & 0
+              \end{bNiceMatrix} \vec{x} & = 0               &
+              \vec{u}_1                      & =
+              \color{y_h} \begin{bNiceMatrix}[r, margin]
+                              25 \\ 5 \\ 1
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the eigenvalues,
+          \begin{align}
+              \vec{A}                         & =
+              \begin{bNiceMatrix}[r, margin]
+                  0   & 3   & 2   & 2 \\
+                  0.5 & 0   & 0   & 0 \\
+                  0   & 0.5 & 0   & 0 \\
+                  0   & 0   & 0.1 & 0
+              \end{bNiceMatrix}  &
+              \det(\vec{A} - \lambda \vec{I}) & = 0                               \\
+              0                               & = \lambda^3 - 1.5\lambda^2
+              -0.5\lambda - 0.05              &
+              \{\lambda_i\}                   & = \{1.8, -0.9 \pm 0.15\sqrt{30}\}
+          \end{align}
+          Finding the growth rate using the positive eigenvalue,
+          \begin{align}
+              \lambda_1                            & = \color{y_h} 1.375 &
+              \begin{bNiceMatrix}[r, margin]
+                  -1.375 & 3      & 2      & 2      \\
+                  0.5    & -1.375 & 0      & 0      \\
+                  0      & 0.5    & -1.375 & 0      \\
+                  0      & 0      & 0.1    & -1.375
+              \end{bNiceMatrix} \vec{x} & = 0                 &
+              \vec{u}_1                            & =
+              \color{y_h} \begin{bNiceMatrix}[r, margin]
+                              103.94 \\ 37.80 \\ 13.75 \\ 1
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item The total purchase by industry $ j $ is,
+          \begin{align}
+              \sum_{k=1}^{n} a_{jk}\ p_j \equiv \vec{A}_j \dotp \vec{p}
+          \end{align}
+          The total revenue of industry $ j $ is simply $ p_j $, which gives the equation
+          \begin{align}
+              \vec{Ap} & = \lambda\ \vec{p}
+          \end{align}
+          For revenue to be equal to expenditure, $ \lambda = 1 $. \par
+          Finding the eigenvalues,
+          \begin{align}
+              \vec{A}                         & =
+              \begin{bNiceMatrix}[r, margin]
+                  0.1 & 0.5 & 0   \\
+                  0.8 & 0   & 0.4 \\
+                  0.1 & 0.5 & 0.6
+              \end{bNiceMatrix}  &
+              \det(\vec{A} - \lambda \vec{I}) & = 0                         \\
+              0                               & = \lambda^3 - 0.7 \lambda^2
+              - 0.54 \lambda + 0.24           &
+              \{\lambda_i\}                   & = \{-0.66, 0.36, 1\}
+          \end{align}
+          Finding the equilibrium price using the unity eigenvalue,
+          \begin{align}
+              \lambda_1                      & = \color{y_h} 1 &
+              \begin{bNiceMatrix}[r, margin]
+                  -0.9 & 0.5 & 0    \\
+                  0.8  & -1  & 0.4  \\
+                  0.1  & 0.5 & -0.4
+              \end{bNiceMatrix} \vec{x} & = 0             &
+              \vec{u}_1                      & =
+              \color{y_h} \begin{bNiceMatrix}[r, margin]
+                              10 \\ 18 \\ 25
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Since a column is the set of all fractions of a certain quantity, it
+          must sum to 1 by definition. (Similar to a Markov process). \par
+          Consider adding to the first row of $ \vec{A} - \vec{I} $,
+          every other row. This leaves the determinant unchanged.
+          \begin{align}
+              \vec{A} - \vec{I}       &
+              = \begin{bNiceMatrix}[r, margin]
+                    v_1 - 1       & v_3           & v_5        \\
+                    v_2           & v_4 - 1       & v_6        \\
+                    1 - v_1 - v_2 & 1 - v_3 - v_4 & -v_5 - v_6
+                \end{bNiceMatrix} \\
+              \det(\vec{A} - \vec{I}) &
+              = \begin{bNiceMatrix}[r, margin]
+                    0             & 0             & 0          \\
+                    v_2           & v_4 - 1       & v_6        \\
+                    1 - v_1 - v_2 & 1 - v_3 - v_4 & -v_5 - v_6
+                \end{bNiceMatrix} = 0
+          \end{align}
+          This means that $ \det(\vec{A} - \lambda\vec{I}) = 0 $ will always have the
+          solution $ \lambda = 1 $. (Illustrated for $ n = 3 $, but this result holds
+          for general $ n $).
+
+    \item Given the equation,
+          \begin{align}
+              \vec{x} - \vec{Ax}                        & = y                   &
+              (\vec{I} - \vec{A})\vec{x}                & = \vec{y}               \\
+              \vec{Bx} = \begin{bNiceMatrix}[r, margin]
+                             0.9  & -0.4 & -0.2 \\
+                             -0.5 & 1    & -0.9 \\
+                             -0.1 & -0.4 & 0.6
+                         \end{bNiceMatrix} \vec{x} & = \vec{y}             &
+              \vec{x}                                   & = \vec{B}^{-1}\vec{y}   \\
+              \vec{y}                                   & =
+              \begin{bNiceMatrix}[r, margin]
+                  0.1 \\ 0.3 \\ 0.1
+              \end{bNiceMatrix}            &
+              \vec{x}                                   & =
+              \begin{bNiceMatrix}[r, margin]
+                  \frac{11}{15} \\ \frac{71}{90} \\ \frac{11}{9}
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Sum of the main diagonal entries is,
+          \begin{align}
+              \det(\vec{A} - \lambda \vec{I}) & = (-1)^n (\lambda - \lambda_1)
+              (\lambda - \lambda_2) \dots (\lambda - \lambda_n)                \\
+                                              & = (-1)^n \Big[\lambda^n -
+                  \tr(\vec{A})\ \lambda^{n-1} + \dots\Big]
+          \end{align}
+          Comparing coefficients of $ \lambda^{n-1} $ proves the relation
+          \begin{align}
+              \tr(\vec{A}) & = \sum \lambda_i
+          \end{align}
+
+    \item Starting with $ \vec{B} = \vec{A} - k \vec{I} $, which has eigenvalues
+          $ \{\mu_i\} $ and eigenvectors $ \{\vec{b}_i\} $
+          \begin{align}
+              \det(\vec{B} - \mu \vec{I})              & = 0 &
+              \det\Big[\vec{A} - (k + \mu)\vec{I}\Big] & = 0   \\
+          \end{align}
+          So, if the eigenvales of $ \vec{A} $ form the set $ \{\lambda_i\} $, then the
+          corresponding set of eigenvalues of $ \vec{B} $ is $ \{\lambda_i - k\} $.
+          \par Solving for the eigenvector $ \mu_1 $,
+          \begin{align}
+              \vec{Bx}            & = \mu_1 \vec{x}     &
+              \vec{Ax}            & = \lambda_1 \vec{x}   \\
+              \vec{Ax} - k\vec{x} & = \mu_1 \vec{x}
+          \end{align}
+          These are the same equation, which means they have the same solution. Thus,
+          spectral shifts do not change the eigenvector.
+
+    \item Scalar multiples of $ \vec{A} $,
+          \begin{align}
+              \det(\vec{A} - \lambda\vec{I})            & = 0          &
+              \det(k\vec{A} - \mu \vec{I})              & = 0            \\
+              \det\Big[k(\vec{A} - \lambda\vec{I})\Big] & = k^n\ 0 = 0 &
+              \mu                                       & = k\lambda
+          \end{align}
+          The eigenvectors are found using,
+          \begin{align}
+              (\vec{A} - \lambda_1 \vec{I})\ \vec{x}   & = 0 &
+              (k\vec{A} - k\lambda_1 \vec{I})\ \vec{x} & = 0
+          \end{align}
+          Since the second equation is the same as the first, the solutions are the same.
+          \par Looking at positive integer powers of $ \vec{A} $, by induction
+          \begin{align}
+              \text{If} \quad \vec{A}^m \vec{x}       & = \lambda^m \vec{x}           \\
+              \text{then} \quad \vec{A}^{m+1} \vec{x} & = \vec{A}\ (\vec{A}^m\vec{x})
+              = \vec{A}\ \lambda^m \vec{x}
+              = \lambda^{m+1}\vec{x}
+          \end{align}
+          Since the above relation is true for $ m = 1 $, induction makes it true for
+          all positive integers.
+          \par The eigenvectors are found using the equation,
+          \begin{align}
+              \vec{Ax}_1          & = \lambda_1\ \vec{x}_1            \\
+              \vec{A}^m \vec{x}_1 & = \lambda_1\ \vec{A}^m\ \vec{x}_1
+              = \lambda_1^m \vec{x}_1
+              \vec{}
+          \end{align}
+          Thus the eigenvectors remain unchanged.
+
+    \item Looking at the sum of matrices,
+          \begin{align}
+              \vec{Ax}             & = \lambda\ \vec{x}         &
+              \vec{Bx}             & = \mu\ \vec{x}               \\
+              (\vec{A + B})\vec{x} & = (\lambda + \mu)\ \vec{x}
+          \end{align}
+          In combination with the results of Prob. $ 17, 18 $, the result is proved
+          trivially.
+
+    \item Some terms of a Leslie matrix are zero by defintion, since an organism
+          can only go from the current age range to the next higher age range. \par
+          Now, with $ b,c,d,e > 0 $,
+          \begin{align}
+              \vec{L}                        & =
+              \begin{bNiceMatrix}[r, margin]
+                  a & b & c \\
+                  d & 0 & 0 \\
+                  0 & e & 0
+              \end{bNiceMatrix}                              \\
+              \det(\vec{A} - \lambda\vec{I}) & = (a-\lambda) (\lambda^2)
+              - d(-b\lambda - ce) = 0                                    \\
+              \lambda^3 - a\lambda^2
+              - bd\lambda - cde              & = 0                       \\
+              cde                            & > 0 \implies
+              \lambda_1 \lambda_2 \lambda_3  > 0
+          \end{align}
+          This means none of the roots are zero, and either no roots are negative or
+          two roots are negative. \par
+          Thus, at least one root is guaranteed positive. \par
+          For the case of the other two roots being complex, their product is always
+          positive.
+
+\end{enumerate}
