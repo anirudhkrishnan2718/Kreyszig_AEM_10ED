@@ -1,0 +1,715 @@
+\section{Conformal Mapping by Other Functions}
+
+\begin{enumerate}
+    \item Mapping under $ f(z) = e^z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -2, xmax = 2, ymin = -4, ymax = 4,
+                          PiStyleY, ytick distance = 0.5*pi,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 5]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (-1,-3.14) -- (-1, 3.14) -- (1, 3.14) -- (1, -3.14) -- cycle;
+                      \foreach \k in {-1,-0.5,0,0.5,1}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -pi:pi]
+                                  ({\k}, {x});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ e^z $},
+                          xmin = -5, xmax = 5, ymin = -5, ymax = 5,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 5]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08,
+                          even odd rule] (0,0) circle (0.368) (0,0) circle (2.718);
+                      \foreach \k in {-1,-0.5,0,0.5,1}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -pi:pi]
+                                  ({(e^(\k))*cos(x)},{(e^(\k))*sin(x)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Mapping under $ f(z) = e^z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -5, xmax = 5, ymin = -5, ymax = 5,
+                          axis equal, Ani, grid = both,
+                          PiStyleY, ytick distance = 0.5*pi,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 9]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (-3,-3.14) -- (-3, 3.14) -- (3, 3.14) -- (3, -3.14) -- cycle;
+                      \foreach \k in {-1,-0.75,...,1.0}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -3:3]
+                                  ({x}, {\k*pi});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ e^z $},
+                          xmin = -22, xmax = 22, ymin = -22, ymax = 22,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 8]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08,
+                          even odd rule] (0,0) circle (0.05) (0,0) circle (20.08);
+                      \foreach \k in {-1,-0.75,...,1.0}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -3:3]
+                                  ({e^(x)*cos(pi*\k)},{e^(x)*sin(pi*\k)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Mapping under $ f(z) = e^z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -3.5, xmax = 3.5, ymin = -3.5, ymax = 3.5,
+                          axis equal, Ani, grid = both,
+                          PiStyleY, ytick distance = 0.5*pi]
+                      \coordinate (A) at (axis cs:-0.5,-3.14);
+                      \coordinate (B) at (axis cs:-0.5,3.14);
+                      \coordinate (C) at (axis cs:0.5,3.14);
+                      \coordinate (D) at (axis cs:0.5,-3.14);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ e^z $},
+                          xmin = -1.8, xmax = 1.8, ymin = -1.8, ymax = 1.8,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 8]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08,
+                          even odd rule] (0,0) circle (0.606) (0,0) circle (1.65);
+                      \draw[very thick, y_p] (-0.606,0.018) -- (-1.65, 0.018);
+                      \draw[very thick, azure4] (-0.606,-0.018) -- (-1.65, -0.018);
+                      \draw[very thick, y_h] (-177:0.606) arc (-177:177:0.606);
+                      \draw[very thick, y_t] (-178:1.65) arc (-178:178:1.65);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Mapping under $ f(z) = e^z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -0.2, xmax =1.2, ymin = 0, ymax = 1.5,
+                          axis equal, Ani, grid = both,]
+                      \coordinate (A) at (axis cs:0,0.5);
+                      \coordinate (B) at (axis cs:0,1);
+                      \coordinate (C) at (axis cs:1,1);
+                      \coordinate (D) at (axis cs:1,0.5);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ e^z $},
+                          %   xmin = -1.8, xmax = 1.8, ymin = -1.8, ymax = 1.8,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 8]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (28.64:2.71)--(28.64:1) arc (28.64:57.3:1)
+                      -- (57.3:2.71) arc(57.3:28.64:2.71) -- cycle;
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0.5:1]
+                      ({cos(x)}, {sin(x)}) node[sloped, midway, below]{$r = 1$};
+                      \addplot[GraphSmooth, very thick, y_t, domain = 0.5:1]
+                      ({2.71*cos(x)}, {2.71*sin(x)})
+                      node[sloped, midway, above]{$r = e$};
+                      \addplot[GraphSmooth, very thick, y_p, domain = 1:e]
+                      ({x*cos(1)}, {x*sin(1)})
+                      node[sloped, midway, above]{$ \phi = \tan^{-1}1 $};
+                      \addplot[GraphSmooth, very thick, azure4, domain = 1:e]
+                      ({x*cos(0.5)}, {x*sin(0.5)})
+                      node[sloped, midway, below]{$ \phi = \tan^{-1}0.5 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item This maps onto the entire $ w $-plane except the origin.
+
+    \item Mapping under $ f(z) = e^z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          PiStyleY, ytick distance = 0.25*pi,
+                          xmin = -0.5, xmax =2, ymin = -0.5, ymax = 2,
+                          axis equal, Ani, grid = both,]
+                      \coordinate (A) at (axis cs:0,0);
+                      \coordinate (B) at (axis cs:0,1.57);
+                      \coordinate (C) at (axis cs:5,1.57);
+                      \coordinate (D) at (axis cs:5,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ e^z $},
+                          xmin = -0.8, xmax = 3.2, ymin = -0.8, ymax = 3.2,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 8]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0:5)--(0:1) arc (0:90:1)
+                      -- (90:5) arc(90:0:5) -- cycle;
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0:0.5*pi]
+                      ({cos(x)}, {sin(x)}) node[sloped, midway, below]{$r = 1$};
+                      \addplot[GraphSmooth, very thick, azure4, domain = 1:5]
+                      ({x*cos(0)}, {x*sin(0)})
+                      node[sloped, near start, below]{$ \phi = 0 $};
+                      \addplot[GraphSmooth, very thick, y_p, domain = 1:5]
+                      ({x*cos(pi/2)}, {x*sin(pi/2)})
+                      node[sloped, near start, above]{$ \phi = \pi/2 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Mapping under $ f(z) = e^z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          PiStyleY, ytick distance = 0.25*pi,
+                          xmin = -1.5, xmax =2.5, ymin = -0.5, ymax = 3.5,
+                          axis equal, Ani, grid = both,]
+                      \coordinate (A) at (axis cs:0,0);
+                      \coordinate (B) at (axis cs:0,3.14);
+                      \coordinate (C) at (axis cs:1,3.14);
+                      \coordinate (D) at (axis cs:1,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ e^z $},
+                          xmin = -3, xmax = 3, ymin = -1, ymax = 5,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 8]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0:2.71)--(0:1) arc (0:180:1)
+                      -- (180:2.71) arc(180:0:2.71) -- cycle;
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0:pi]
+                      ({cos(x)}, {sin(x)}) node[sloped, midway, below]{$r = 1$};
+                      \addplot[GraphSmooth, very thick, y_t, domain = 0:pi]
+                      ({2.71*cos(x)}, {2.71*sin(x)})
+                      node[sloped, midway, above]{$r = e$};
+                      \addplot[GraphSmooth, very thick, azure4, domain = 1:e]
+                      ({x*cos(0)}, {x*sin(0)})
+                      node[sloped, midway, below]{$ \phi = 0 $};
+                      \addplot[GraphSmooth, very thick, y_p, domain = 1:e]
+                      ({x*cos(pi)}, {x*sin(pi)})
+                      node[sloped, midway, below]{$ \phi = \pi $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since $ e^z $ is periodic in $ y $ with $ \exp(z + 2\pi\i)  = e^z$,
+          the full annulus is repeatedly mapped over when increasing $ y $ beyond
+          $ 2\pi $.
+
+    \item To find the points at which the function is not conformal,
+          \begin{align}
+              f(z) & = \sin z               & f'(z) & = \cos z \\
+              z^*  & = n\pi + \frac{\pi}{2}
+          \end{align}
+
+    \item Plotting the mapping using $ f(z) = \sin z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping $ x = k\pi $ under $ \sin z $},
+                          grid = both, Ani, legend pos = outer north east,
+                          width = 8cm, height = 8cm, enlargelimits = false,
+                          axis equal,
+                          colormap/jet,
+                          cycle list = {[samples of colormap = 7]}]
+                      \foreach \k in {-1/2,-1/3,-1/6,0,1/6,1/3,1/2}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -1.5:1.5]
+                                  ({sin(\k*pi)*cosh(x)},{cos(\k*pi)*sinh(x)});
+                                  \noexpand \addlegendentry{$k = \k$};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the mapping using $ f(z) = \sin z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -1.5, xmax =2.5, ymin = -0.5, ymax = 3.5,
+                          axis equal, Ani, grid = both,
+                          PiStyleX, xtick distance = 0.25*pi]
+                      \coordinate (A) at (axis cs:0,0);
+                      \coordinate (B) at (axis cs:0,2);
+                      \coordinate (C) at (axis cs:1.57,2);
+                      \coordinate (D) at (axis cs:1.57,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping under $ \sin z $},
+                          grid = both, Ani,
+                          xmin = -0.5, xmax = 4, ymin = -0.5, ymax = 4,
+                          width = 8cm, height = 8cm, enlargelimits = false,
+                          axis equal,]
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0:2]
+                      ({sin(0)*cosh(x)},{cos(0)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_t, domain = 0:2]
+                      ({sin(0.5*pi)*cosh(x)},{cos(0.5*pi)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_p, domain = 0:0.5*pi,
+                          name path = top]
+                      ({sin(x)*cosh(2)},{cos(x)*sinh(2)});
+                      \addplot[GraphSmooth, very thick, azure4, domain = 0:0.5*pi]
+                      ({sin(x)*cosh(0)},{cos(x)*sinh(0)});
+                      \path[name path = bottom] (axis cs:0, 0) -- (axis cs:3.76, 0);
+                      \addplot [ draw = black, fill=black, fill opacity=0.08]
+                      fill between[of=top and bottom];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the mapping using $ f(z) = \sin z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -1, xmax =1, ymin = -0.5, ymax = 1.5,
+                          axis equal, Ani, grid = both,
+                          PiStyleX, xtick distance = 0.1*pi]
+                      \coordinate (A) at (axis cs:-0.785,0);
+                      \coordinate (B) at (axis cs:-0.785,1);
+                      \coordinate (C) at (axis cs:0.785,1);
+                      \coordinate (D) at (axis cs:0.785,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping under $ \sin z $},
+                          grid = both, Ani,
+                          xmin = -1.3, xmax = 1.3, ymin = -0.4, ymax = 2.2,
+                          width = 8cm, height = 8cm, enlargelimits = false,
+                          axis equal,]
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0:1,
+                          name path = a]
+                      ({sin(-0.25*pi)*cosh(x)},{cos(-0.25*pi)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_t, domain = 0:1,
+                          name path = b]
+                      ({sin(0.25*pi)*cosh(x)},{cos(0.25*pi)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_p,
+                          domain = -0.25*pi:0.25*pi, name path = c]
+                      ({sin(x)*cosh(1)},{cos(x)*sinh(1)});
+                      \addplot[GraphSmooth, very thick, azure4,
+                          domain = -pi/4:pi/4, name path = d]
+                      ({sin(x)*cosh(0)},{cos(x)*sinh(0)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the mapping using $ f(z) = \sin z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -1, xmax =7, ymin = -2, ymax = 6,
+                          axis equal, Ani, grid = both,
+                          PiStyleX, xtick distance = 0.5*pi]
+                      \coordinate (A) at (axis cs:0,1);
+                      \coordinate (B) at (axis cs:0,3);
+                      \coordinate (C) at (axis cs:6.28,3);
+                      \coordinate (D) at (axis cs:6.28,1);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping under $ \sin z $},
+                          grid = both, Ani,
+                          xmin = -11, xmax = 11, ymin = -11, ymax = 11,
+                          width = 8cm, height = 8cm, enlargelimits = false,
+                          axis equal,]
+                      \addplot[GraphSmooth, very thick, y_h, domain = 1:3]
+                      ({sin(0)*cosh(x)- 0.1},{cos(0)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_t, domain = 1:3]
+                      ({sin(2*pi)*cosh(x)+ 0.1},{cos(2*pi)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_p, domain = 0:2*pi,
+                          name path = top]
+                      ({sin(x)*cosh(3)},{cos(x)*sinh(3)});
+                      \addplot[GraphSmooth, very thick, azure4, domain = 0:2*pi,
+                          name path = bottom]
+                      ({sin(x)*cosh(1)},{cos(x)*sinh(1)});
+                      \addplot [fill=black, fill opacity=0.08]
+                      fill between[of=top and bottom];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the mapping using $ f(z) = \sin z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping $ x \in (0, \pi/6) $ under $ \sin z $},
+                          grid = both, Ani, legend pos = outer north east,
+                          width = 8cm, height = 8cm,
+                          xmin = -5, xmax = 5, ymin = -5, ymax = 5,
+                          axis equal,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 11]}]
+                      \foreach \k in {0,0.1,...,1}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick, samples = 200,
+                                      domain = -3:3]
+                                  ({sin((\k/6)*pi)*cosh(x)},{cos((\k/6)*pi)*sinh(x)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The transformation is,
+          \begin{align}
+              \cosh(z) & = \cos(\i z) = \sin(\i z + \pi/2)
+          \end{align}
+          The initial point $ z $ is rotated ccl. by $ \pi/2 $ and then translated by
+          $ \pi/2 $ before the sine operation.
+
+    \item Finding the points at which the function is not conformal,
+          \begin{align}
+              f(z) & = \cosh(2\pi z) & f'(z) & = 2\pi \sinh(2\pi z) \\
+              z^*  & = 0
+          \end{align}
+
+    \item The starting point is a region bounded by,
+          \begin{align}
+              x             & > 0 \quad y > 0                                 &
+              xy            & < \pi                                             \\
+              z             & = x + \i\ y                                     &
+              0.5z^2        & = 0.5(x^2 - y^2) + \i\ (xy)                       \\
+              \Im{(0.5z^2)} & \in (0, \pi)                                    &
+              w             & = 0.5z^2                                          \\
+              e^w           & = \exp(\Re{w})\ [\cos \Im{w} + \i\ \sin \Im{w}]
+          \end{align}
+          The function $ \exp(0.5z^2) $ clearly has the entire upper half plane as its
+          image, as required.
+
+    \item Using the formula,
+          \begin{align}
+              \cos z & = \cos x \cosh y - \i\ \sin x \sinh y
+          \end{align}
+          Since all of the values of $ \cos z $ are surveyed for $ x \in [0, \pi] $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping $ y = k $ under $ \cos z $},
+                          grid = both, Ani,
+                          width = 8cm, height = 8cm,
+                          axis equal,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 11]}]
+                      \foreach \k in {0,0.2,...,2}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -pi:pi]
+                                  ({cos(x)*cosh(\k)},{-sin(x)*sinh(\k)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The ellipses approach circles, as $ \cosh(x) \approxeq \sinh(x) $ for
+          large $ x $. Also, since the cosine function is even, negative values of
+          $ k $ are not considered here.
+
+    \item Using the formula,
+          \begin{align}
+              \cos z & = \cos x \cosh y - \i\ \sin x \sinh y
+          \end{align}
+          Since all of the values of $ \cos z $ are surveyed for $ x \in [0, \pi] $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping $ x = k\pi $ under $ \cos z $},
+                          grid = both, Ani, legend pos = outer north east,
+                          width = 8cm, height = 8cm, enlargelimits = false,
+                          axis equal,
+                          colormap/jet,
+                          cycle list = {[samples of colormap = 9]}]
+                      \foreach \k in {0,0.125,...,1}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -1.5:1.5]
+                                  ({cos(\k*pi)*cosh(x)},{-sin(\k*pi)*sinh(x)});
+                                  \noexpand \addlegendentry{$k = \k$};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the mapping using $ f(z) = \cos z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -1, xmax =7, ymin = -3.5, ymax = 3.5,
+                          axis equal, Ani, grid = both,
+                          PiStyleX, xtick distance = 0.5*pi]
+                      \coordinate (A) at (axis cs:0,0.5);
+                      \coordinate (B) at (axis cs:0,1);
+                      \coordinate (C) at (axis cs:6.28,1);
+                      \coordinate (D) at (axis cs:6.28,0.5);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping under $ \cos z $},
+                          grid = both, Ani,
+                          %   xmin = -0.5, xmax = 4, ymin = -0.5, ymax = 4,
+                          width = 8cm, height = 8cm,
+                          axis equal,]
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0.5:1]
+                      ({cos(0)*cosh(x)},{-sin(0)*sinh(x) + 0.03});
+                      \addplot[GraphSmooth, very thick, y_t, domain = 0.5:1]
+                      ({cos(2*pi)*cosh(x)},{-sin(2*pi)*sinh(x) - 0.03});
+                      \addplot[GraphSmooth, very thick, y_p, domain = 0:2*pi,
+                          name path = top]
+                      ({cos(x)*cosh(1)},{-sin(x)*sinh(1)});
+                      \addplot[GraphSmooth, very thick, azure4, domain = 0:2*pi,
+                          name path = bottom]
+                      ({cos(x)*cosh(0.5)},{-sin(x)*sinh(0.5)});
+                      \addplot [fill=black, fill opacity=0.08]
+                      fill between[of=top and bottom];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the mapping using $ f(z) = \cos z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -1, xmax = 3, ymin = -1, ymax = 3,
+                          axis equal, Ani, grid = both,
+                          PiStyleX, xtick distance = 0.25*pi]
+                      \coordinate (A) at (axis cs:0,0);
+                      \coordinate (B) at (axis cs:0,2);
+                      \coordinate (C) at (axis cs:1.57,2);
+                      \coordinate (D) at (axis cs:1.57,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping under $ \cos z $},
+                          grid = both, Ani,
+                          %   xmin = -0.5, xmax = 4, ymin = -0.5, ymax = 4,
+                          width = 8cm, height = 8cm,
+                          axis equal,]
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0:2]
+                      ({cos(0)*cosh(x)},{-sin(0)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_t, domain = 0:2]
+                      ({cos(0.5*pi)*cosh(x)},{-sin(0.5*pi)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_p, domain = 0:0.5*pi,
+                          name path = top]
+                      ({cos(x)*cosh(2)},{-sin(x)*sinh(2)});
+                      \addplot[GraphSmooth, very thick, azure4, domain = 0:0.5*pi,
+                          name path = bottom]
+                      ({cos(x)*cosh(0)},{-sin(x)*sinh(0)});
+                      \addplot [fill=black, fill opacity=0.08]
+                      fill between[of=top and bottom];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          From Problem $ 11 $, the answer is simply $ \sin(z + \pi/2) $, which happens
+          to be the fourth quadrant of the ellipse instead of the first.
+
+    \item Plotting the mapping using $ f(z) = \cos z $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -2, xmax = 2, ymin = -2, ymax = 2,
+                          axis equal, Ani, grid = both,]
+                      \coordinate (A) at (axis cs:-1,0);
+                      \coordinate (B) at (axis cs:-1,1);
+                      \coordinate (C) at (axis cs:1,1);
+                      \coordinate (D) at (axis cs:1,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping under $ \cos z $},
+                          grid = both, Ani,
+                          %   xmin = -0.5, xmax = 4, ymin = -0.5, ymax = 4,
+                          width = 8cm, height = 8cm,
+                          axis equal,]
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0:1]
+                      ({cos(-1)*cosh(x)},{-sin(-1)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_t, domain = 0:1]
+                      ({cos(1)*cosh(x)},{-sin(1)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_p, domain = -1:1,
+                          name path = top]
+                      ({cos(x)*cosh(1)},{-sin(x)*sinh(1)});
+                      \addplot[GraphSmooth, very thick, azure4, domain = -1:1,
+                          name path = bottom]
+                      ({cos(x)*cosh(0)},{-sin(x)*sinh(0)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the lower half plane for $ x \in (\pi, 2\pi) $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping $ y = k $ under $ \cos z $},
+                          grid = both, Ani,
+                          width = 8cm, height = 8cm,
+                          axis equal,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 10]}]
+                      \foreach \k in {0.2,0.4,...,2}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = pi:2*pi]
+                                  ({cos(x)*cosh(-\k)},{-sin(x)*sinh(-\k)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          These are lower halves of ellipses in the $ uv $ plane
+
+    \item The function is,
+          \begin{align}
+              \Ln{z} & = \ln(r) + \i\ \theta
+          \end{align}
+          The image is simply a rectangle with $ u \in [\ln 2, \ln 3] $ and
+          $ v \in [\pi/4, \pi/2] $
+
+    \item Looking at the function,
+          \begin{align}
+              w & = \frac{z-1}{z+1}                              &
+              w & = \frac{(x^2 + y^2 - 1) + y\i }{(x+1)^2 + y^2}   \\
+              y & \geq 0 \quad \implies \quad \Im{w} \geq 0
+          \end{align}
+          Since $ w $ is restricted to the upper half plane, the complex logarithm
+          maps it to the upper half plane,
+          \begin{align}
+              \Ln{w}                 & = \ln\abs{w} + \i\ \Arg{w}   \\
+              \Im{w}                 & \geq 0                     &
+              \implies \quad \Arg{w} & \in [0, \pi]
+          \end{align}
+\end{enumerate}

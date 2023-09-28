@@ -1,0 +1,455 @@
+\section{Taylor and Maclaurin Series}
+
+\begin{enumerate}
+    \item Refer notes. TBC. \par
+          The changes come from the fact that the complex plane is a 2d plane as opposed
+          to the 1D real line, for real calculus.
+
+    \item Finding the Maclaurin series for Example $ 5 $,
+          \begin{align}
+              f(z)                   & = \frac{1}{1 + z^2}           &
+                                     & = \frac{1}{1 - (-z^2)}          \\
+                                     & = \iser[n]{0} (-z^2)^n        &
+                                     & = 1 - z^2 + z^4 - z^6 + \dots   \\
+              \abs{-z^2}             & < 1                           &
+              \implies \quad \abs{z} & < 1
+          \end{align}
+          Finding the Maclaurin series for Example $ 6 $,
+          \begin{align}
+              f(z)             & = \arctan(z)                                &
+              f'(z) = g(z)     & = \frac{1}{1 + z^2}                           \\
+              g(z)             & = \iser[n]{0} (-1)^n\ z^{2n}                &
+              \int g(z)\ \dl z & = \iser[n]{0} (-1)^n \frac{z^{2n+1}}{2n+1}    \\
+              f(z)             & = z - \frac{z^3}{3} + \frac{z^5}{5} - \dots
+          \end{align}
+          The resulting branch of $ \arctan $ is the principal branch such that its
+          real part satisfies $ \abs{u} < \pi/2 $.
+
+    \item Finding the Maclaurin series,
+          \begin{align}
+              f(z)       & = \sin(2z^2)                                       &
+                         & = \iser[n]{0} (-1)^n\
+              \frac{(2z^2)^{2n+1}}{2n+1}                                        \\
+              \sin(2z^2) & = 2z^2 - \frac{(2z^2)^3}{3!} + \frac{(2z^2)^5}{5!}
+              - \dots    &
+                         & = \color{y_h} 2z^2 - \frac{4z^6}{3}
+              + \frac{4z^{10}}{15} - \dots                                      \\
+              R          & = \color{y_p} \infty
+          \end{align}
+          Since $ \sin(z) $ itself is entire.
+
+    \item Finding the Maclaurin series,
+          \begin{align}
+              f(z)          & = \frac{z+2}{1 - z^2}               &
+                            & = \frac{0.5}{1+z} + \frac{1.5}{1-z}   \\
+              \frac{1}{1-z} & = \iser[n]{0} z^n                   &
+                            & = 1 + z + z^2 + z^3 + \dots           \\
+              \frac{1}{1+z} & = \iser[n]{0} (-z)^n                &
+                            & = 1 - z + z^2 - z^3 + \dots           \\
+              f(z)          & = 2 + z + 2z^2 + z^3 + \dots        &
+              R             & = \color{y_p} 1
+          \end{align}
+          Since the geometric series converges for $ \abs{z} < 1$
+
+    \item Finding the Maclaurin series
+          \begin{align}
+              f(z)      & = \frac{1}{2 + z^4}                             &
+                        & = \frac{0.5}{1 + 0.5z^4}                          \\
+              w         & = \frac{z^2}{\sqrt{2}}                          &
+              f(w)      & = \frac{0.5}{1 + w^2}                             \\
+              f(w)      & = 0.5\ \Big[ 1 - w^2 + w^4 - w^6 + \dots \Big]  &
+              \forall\  & = \abs{w} < 1                                     \\
+              f(z)      & = \frac{1}{2} - \frac{z^4}{4} + \frac{z^8}{8} -
+              \frac{z^{12}}{16} +
+              \dots     &
+              \forall\  & = \color{y_p} \abs{z} < 2^{1/4}
+          \end{align}
+
+    \item Finding the Maclaurin series
+          \begin{align}
+              f(z)      & = \frac{1}{1 + 3\i z}                 \\
+              w         & = 3\i z                             &
+              f(w)      & = \frac{1}{1 + w}                     \\
+              f(w)      & = 1 - w + w^2 - w^3 + \dots         &
+              \forall\  & = \abs{w} < 1                         \\
+              f(z)      & = 1 - 3\i\ z - 9z^2 + 27\i\ z^3 +
+              \dots     &
+              \forall\  & = \color{y_p} \abs{z} < \frac{1}{3}
+          \end{align}
+
+    \item Finding the Maclaurin series
+          \begin{align}
+              f(z)   & = \cos^2(z/2)                                           &
+              f(z)   & = \frac{1 + \cos(z)}{2}                                   \\
+              f(z)   & = 0.5 + 0.5\ \Bigg[ 1 - \frac{z^2}{2!}
+                  + \frac{z^4}{4!} - \dots
+              \Bigg] &
+                     & = 1 - \frac{z^2}{4} + \frac{z^4}{48} - \frac{z^6}{1440}
+              + \dots                                                            \\
+              R      & = \color{y_p} \infty
+          \end{align}
+          Since the cosine function itself is entire.
+
+    \item Finding the Maclaurin series
+          \begin{align}
+              f(z)   & = \sin^2 z                                &
+              f(z)   & = \frac{1 - \cos(2z)}{2}                    \\
+              f(z)   & = 0.5 - 0.5\ \Bigg[ 1 - \frac{(2z)^2}{2!}
+                  + \frac{(2z)^4}{4!} - \dots
+              \Bigg] &
+              R      & = \color{y_p} \infty                        \\
+                     & = z^2 - \frac{z^4}{3} + \frac{2z^6}{45}
+          \end{align}
+          Since the cosine function itself is entire.
+
+    \item Integrating term-wise,
+          \begin{align}
+              f(t)                     & = \exp(-t^2/2)                       &
+                                       & = \iser[n]{0} \frac{(-1)^n}{2^n\ n!}
+              \ t^{2n}                                                          \\
+              \int_0^z f\ \dl t        & = \Bigg[ \Big( \frac{-1}{2} \Big)^n
+                  \ \frac{t^{2n+1}}{(2n+1)\ n!}
+              \Bigg]_0^z               &
+                                       & = \Big( \frac{-1}{2} \Big)^n
+              \frac{z^{2n+1}}{(2n+1)\ n!}                                       \\
+              g(z) = \int_0^z f\ \dl t & = \frac{z}{1 \cdot 1 \cdot 1}
+              - \frac{z^3}{2 \cdot 3 \cdot 1} + \frac{z^5}{4 \cdot 5 \cdot 2}
+              + \dots                  &
+              g(z)                     & = \color{y_h} z - \frac{z^3}{6}
+              + \frac{z^5}{40} - \dots                                          \\
+              R                        & = \color{y_p} \infty
+          \end{align}
+          Since the exponential function itself is entire.
+
+    \item Using the result from Problem $ 10 $,
+          \begin{align}
+              g(z) = \int_0^z \exp(-t^2)\ \dl t & = \iser[n]{0}
+              \frac{(-1)^n\ z^{2n+1}}{(2n+1)\ n!}                              \\
+              f(z) = \exp(z^2)                  & = \iser{0} \frac{z^{2m}}{m!} \\
+              h(z) = f(z) \cdot g(z)            & = \iser[r]{0} a_r\ x^r
+          \end{align}
+          Matching powers of $ x $ on both sides,
+          \begin{align}
+              r    & = 2m+2n+1                                                  &
+              M(n) & = \frac{r - 1}{2} - m                                        \\
+              a_r  & = \color{y_h} \sum_{n=0}^{M} \frac{(-1)^n}{(2n+1)\ n!\ m!}
+          \end{align}
+          Since the exponential function itself is entire.
+
+    \item Integrating term-wise,
+          \begin{align}
+              f(t)                     & = \sin(t^2)                           &
+                                       & = \iser[n]{0} \frac{(-1)^n\ t^{4n+2}}
+              {(2n+1)!}                                                          \\
+              g(z) = \int_0^z f\ \dl t & = \iser[n]{0} \frac{(-1)^n\ z^{4n+3}}
+              {(2n+1)!\ (4n+3)}        &
+                                       & = \color{y_h} \frac{z^3}{1!\ 3}
+              - \frac{z^7}{3!\ 7} + \frac{z^{11}}{5!\ 11} - \dots                \\
+              R                        & = \color{y_p} \infty
+          \end{align}
+
+    \item Integrating term-wise,
+          \begin{align}
+              f(t)                     & = \cos(t^2)                           &
+                                       & = \iser[n]{0} \frac{(-1)^n\ t^{4n}}
+              {(2n)!}                                                            \\
+              g(z) = \int_0^z f\ \dl t & = \iser[n]{0} \frac{(-1)^n\ z^{4n+1}}
+              {(2n)!\ (4n+1)}          &
+                                       & = \color{y_h} \frac{z}{0!\ 1}
+              - \frac{z^5}{2!\ 5} + \frac{z^9}{4!\ 9} - \dots                    \\
+              R                        & = \color{y_p} \infty
+          \end{align}
+
+    \item Integrating term-wise,
+          \begin{align}
+              f(t)                     & = \exp(-t^2)                               &
+                                       & = \iser[n]{0} \frac{(-1)^n\ t^{2n}}
+              {n!}                                                                    \\
+              g(z) = \int_0^z f\ \dl t & = \iser[n]{0} \frac{(-1)^n\ z^{2n+1}}
+              {n!\ (2n+1)}             &
+              \erf{z}                  & = \frac{2}{\sqrt{\pi}} \int_{0}^{z}
+              e^{-t^2}\ \dl t                                                         \\
+                                       & = \color{y_h} \frac{2}{\sqrt{\pi}}\ \Bigg[
+                  \frac{z}{0!\ 1} - \frac{z^3}{1!\ 3} + \frac{z^5}{2!\ 5} - \dots
+              \Bigg]                   &
+              R                        & = \color{y_p} \infty
+          \end{align}
+
+    \item Integrating term-wise,
+          \begin{align}
+              f(t)                     & = \frac{\sin(t)}{t}                   &
+                                       & = \iser[n]{0} \frac{(-1)^n\ t^{2n}}
+              {(2n+1)!}                                                          \\
+              g(z) = \int_0^z f\ \dl t & = \iser[n]{0} \frac{(-1)^n\ z^{2n+1}}
+              {(2n+1)!\ (2n+1)}        &
+                                       & = \color{y_h} \frac{z}{1!\ 1}
+              - \frac{z^3}{3!\ 3} + \frac{z^5}{5!\ 5} - \dots                    \\
+              R                        & = \color{y_p} \infty
+          \end{align}
+
+    \item Finding the Maclaurin series,
+          \begin{enumerate}
+              \item Using the coefficient formula, and \texttt{sympy} to calculate
+                    the derivatives,
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{colspec = {Q[l, $$]|[dotted]Q[r, $$]
+                                |Q[l, $$]|[dotted]Q[r, $$]
+                            }, colsep = 1em}
+                            n  & E_n    & n  & E_n             \\
+                            \hline[dotted]
+                            0  & 1      & 12 & 2702765         \\
+                            2  & -1     & 14 & -199360981      \\
+                            4  & 5      & 16 & 19391512145     \\
+                            6  & -61    & 18 & -2404879675441  \\
+                            8  & 1385   & 20 & 370371188237525 \\
+                            10 & -50521 &                      \\
+                            \hline
+                        \end{tblr}
+                    \end{table}
+
+              \item Using the Cauchy product of the two series,
+                    \begin{align}
+                        f(z) = e^z - 1  & = z + \frac{z^2}{2!} + \frac{z^3}{3!}
+                        + \dots                                                      \\
+                        g(z)            & = 1 + B_1 z + \frac{B_2}{2!} z^2
+                        + \frac{B_3}{3!}z^3 + \dots                                  \\
+                        f(z) \cdot g(z) & = z + \Bigg[ \frac{1}{2!} + B_1 \Bigg] z^2
+                        + \Bigg[ \frac{1}{3!} + \frac{B_1}{2!} + \frac{B_2}{2!}
+                        \Bigg] z^3 + \dots                                           \\
+                        B_1             & = \frac{-1}{2} \qquad B_2 = \frac{1}{6}    \\
+                        0               & = \frac{B_3}{3!\ 1!} + \frac{B_2}{2!\ 2!}
+                        + \frac{B_1}{1!\ 3!} + \frac{1}{4!\ 0!} \qquad \qquad
+                        B_3 = 0                                                      \\
+                        0               & = \frac{B_4}{4!\ 1!} + \frac{B_3}{3!\ 2!}
+                        + \frac{B_2}{2!\ 3!} + \frac{B_1}{1!\ 4!} +
+                        \frac{1}{5!\ 0!} \qquad \qquad
+                        B_4 = -\frac{1}{30}                                          \\
+                        0               & = \frac{B_5}{5!\ 1!} + \frac{B_4}{4!\ 2!}
+                        + \frac{B_3}{3!\ 3!} + \frac{B_2}{2!\ 4!} + \frac{B_1}{1!\ 5!}
+                        + \frac{1}{0!\ 6!} \qquad \qquad
+                        B_5 = 0                                                      \\
+                        0               & = \frac{B_6}{6!\ 1!}
+                        + \frac{B_4}{4!\ 3!} + \frac{B_2}{2!\ 5!}
+                        + \frac{B_1}{1!\ 6!} + \frac{1}{0!\ 6!} \qquad \qquad
+                        B_6 = \frac{1}{42}
+                    \end{align}
+                    The rest of the Bernoulli numbers can be found by recursively solving
+                    forwards starting with the lower powers in $ z $.
+
+              \item Using the definition of complex sine and cosine,
+                    \begin{align}
+                        \tan z       & = \frac{\sin z}{\cos z} = \frac{1}{\i}
+                        \ \frac{e^{\i z}
+                            - e^{-\i z}} {e^{\i z}
+                        + e^{-\i z}} &
+                                     & = \frac{1}{\i}\ \frac{(e^{\i z}
+                        - e^{-\i z})^2}{e^{2\i z} - e^{-2\i z}}                 \\
+                        w            & = e^{2\i z}                            &
+                        \tan(z)      & = -\i\ \frac{w + (1/w) - 2}{w - (1/w)}   \\
+                                     & = -\i\ \frac{w^2 - 2w + 1}{w^2 - 1}      \\
+                        w^2 - 2w + 1 & = a + b(w + 1) + c(w^2 - 1)            &
+                        c            & = 1 \quad b= -2 \quad a = 4
+                    \end{align}
+                    Splitting the numerator using these partial fractions,
+                    \begin{align}
+                        \tan z & = -\i\ \Bigg[1 - \frac{2}{w - 1} + \frac{4}
+                        {w^2 - 1}\Bigg]                                          \\
+                               & = \frac{2\i}{e^{2\i z} - 1} - \frac{4\i}
+                        {e^{4\i z} - 1} - \i                                     \\
+                               & = \frac{1}{z} \Bigg[ \iser[n]{0} \frac{B_n}{n!}
+                            \ (2\i z)^n  - \iser[n]{0} \frac{B_n}{n!}\ (4\i z)^n
+                            - \i z \Bigg]
+                    \end{align}
+                    Using $ B_0 = 1, B_1 = -0.5 $, the coefficients of $ z^0, z^1 $
+                    cancel. This leaves $ z^2 $ terms onwards. \par
+                    Since $ \tan z $ is an odd function, the Bernoulli numbers,
+                    (which are the only nonzero part of the coefficients) have to vanish.
+                    \par Setting $ n = 2m $
+                    \begin{align}
+                        \tan z & = \iser{1} \frac{B_{2m}}{(2m)!}\ (-1)^m\ [2^{2m}
+                        - 4^{2m}]\ z^{2m-1}
+                    \end{align}
+          \end{enumerate}
+
+    \item Starting with,
+          \begin{align}
+              f(z)          & = (1 - z^2)^{-1/2}                                     \\
+                            & = 1 - \frac{z^2}{2} + \frac{1 \cdot 3}{2^2\ 2!}\ z^4 -
+              \frac{1 \cdot 3 \cdot 5}{2^3\ 3!}\ z^6 + \dots                         \\
+                            & = 1 - \frac{z^2}{2} + \frac{1 \cdot 3}{2 \cdot 4}\ z^4
+              - \frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6}\ z^6 + \dots             \\
+              \int f\ \dl z & = z - \Bigl(\frac{1}{2}\Bigr)\ \frac{z^3}{3} +
+              \Bigl(\frac{1 \cdot 3}{2 \cdot 4}\Bigr)\ \frac{z^5}{5}
+              - \Bigl(\frac{1 \cdot 3 \cdot 5}{2 \cdot 4 \cdot 6}\Bigr)
+              \ \frac{z^7}{7} + \dots
+          \end{align}
+          Since the left hand side integrates to $ \tan z $, this is the Taylor series
+          required. The series converges only for $ \abs{z} < 1 $ since this is the
+          radius of convergence of the binomial theorem.
+
+    \item Using Maclaurin series,
+          \begin{enumerate}
+              \item Proving the derivative formulas using term-wise differentiation of the
+                    Maclaurin series.
+                    \begin{align}
+                        f(z) = {\color{y_h}
+                        e^z}  & = \iser[n]{0} \frac{z^n}{n!}                   &
+                        f'(z) & = \iser[n]{1} \frac{n\ z^{n-1}}{n!}              \\
+                              & = \iser[n]{1} \frac{z^{n-1}}{(n-1)!}           &
+                              & = \iser[n]{0} \frac{z^n}{n!} = \color{y_p} e^z
+                    \end{align}
+                    \begin{align}
+                        f(z) = {\color{y_h}
+                        \cos z} & = \iser[n]{0} (-1)^n\ \frac{z^{2n}}{(2n)!}       &
+                        f'(z)   & = \iser[n]{1} (-1)^n\ \frac{2n\ z^{2n-1}}{(2n)!}   \\
+                                & = \iser[n]{1} (-1)^n\ \frac{z^{2n-1}}{(2n-1)!}   &
+                                & = \color{y_p} \sin z                               \\
+                        f(z) = {\color{y_h}
+                        \sin z} & = \iser[n]{0} (-1)^n\ \frac{z^{2n+1}}{(2n+1)!}   &
+                        f'(z)   & = \iser[n]{0} (-1)^n\ \frac{(2n+1)\ z^{2n}}
+                        {(2n+1)!}                                                    \\
+                                & = \iser[n]{0} (-1)^n\ \frac{z^{2n}}{(2n)!}       &
+                                & = \color{y_p} \cos z
+                    \end{align}
+                    \begin{align}
+                        f(z) = {\color{y_h}
+                        \cosh z} & = \iser[n]{0} \frac{z^{2n}}{(2n)!}       &
+                        f'(z)    & = \iser[n]{1} \frac{2n\ z^{2n-1}}{(2n)!}   \\
+                                 & = \iser[n]{1} \frac{z^{2n-1}}{(2n-1)!}   &
+                                 & = \color{y_p} \sinh z                      \\
+                        f(z) = {\color{y_h}
+                        \sinh z} & = \iser[n]{0} \frac{z^{2n+1}}{(2n+1)!}   &
+                        f'(z)    & = \iser[n]{0} \frac{(2n+1)\ z^{2n}}
+                        {(2n+1)!}                                             \\
+                                 & = \iser[n]{0} \frac{z^{2n}}{(2n)!}       &
+                                 & = \color{y_p} \cosh z
+                    \end{align}
+                    \begin{align}
+                        f(z) = {\color{y_h}
+                        \Ln(1 + z)} & = \iser[n]{1} (-1)^{n+1}\ \frac{z^n}{n} &
+                        f'(z)       & = \iser[n]{1} (-1)^{n+1}\ z^{n-1}         \\
+                                    & = \iser[n]{0} (-1)^n\ z^n               &
+                                    & = \color{y_p} \frac{1}{1 + z}
+                    \end{align}
+
+              \item Starting from the LHS, and noting that odd powers of $ z $ cancel,
+                    \begin{align}
+                        e^{\i z}  & = \iser[n]{0} \frac{(\i z)^n}{n!}          &
+                        e^{-\i z} & = \iser[n]{0} \frac{(-\i z)^n}{n!}           \\
+                        \color{y_h} \frac{e^{\i z} + e^{-\i z}}
+                        {2}       & = \iser[m]{0} \frac{(\i z)^{2m}}{(2m)!}    &
+                                  & = \iser[m]{0} (-1)^m\ \frac{z^{2m}}{(2m)!}   \\
+                                  & = \color{y_p} \cos z
+                    \end{align}
+
+              \item Using the Taylor series of the sine function,
+                    \begin{align}
+                        \sin z & = \iser[n]{0} \frac{z^{2n+1}}{(2n+1)!}             &
+                        z      & = \i y \neq 0                                        \\
+                        \sin z & = \iser[n]{0} \i\ (-1)^n\ \frac{y^{2n+1}}{(2n+1)!}
+                    \end{align}
+                    Given $ y \neq 0 $, all terms in the expansion have the same sign and
+                    are nonzero. This means that $ \sin z \neq 0 $
+          \end{enumerate}
+
+    \item Expanding as a Taylor series around $ z_0 $,
+          \begin{align}
+              f(z)          & = \frac{1}{z}                                     &
+              z_0           & = \i                                                \\
+              f(z)          & = \frac{1}{z_0 + z - z_0}                         &
+                            & = \frac{1/z_0}{1 + \frac{z - z_0}{z_0}}             \\
+              f(z)          & = \frac{1}{z_0}\ \iser[n]{0} \Big( \frac{-1}{z_0}
+              \Big)^n
+              \ (z - z_0)^n &
+              f(z)          & = \color{y_h} -\iser[n]{0} \i^{n+1}\ (z - \i)^n     \\
+              \abs{z - \i}  & < \abs{\i}                                        &
+              R             & = \color{y_p} 1
+          \end{align}
+
+    \item Expanding as a Taylor series around $ z_0 $,
+          \begin{align}
+              f(z)         & = \frac{1}{1 - z}                                   &
+              z_0          & = \i                                                  \\
+              f(z)         & = \frac{1}{1 - z_0 - (z - z_0)}                     &
+                           & = \frac{1}{1-z_0} \cdot \frac{1}{1 - \frac{z - z_0}
+              {1 - z_0}}                                                           \\
+              f(z)         & = \frac{1}{1 - z_0}\ \iser[n]{0} \Big(
+              \frac{z - z_0}{1 - z_0}
+              \Big)^n      &
+              f(z)         & = \frac{1}{1 - \i}\ \iser[n]{0} \Big(
+              \frac{z - \i}{1 - \i} \Big)^n                                        \\
+                           & = \color{y_h} \iser[n]{0} \Bigg[\frac{1+i}{2}
+                  \Bigg]^{n+1}
+              \ (z - \i)^n &
+              R            & = \color{y_p} \abs{z - \i} < \sqrt{2}
+          \end{align}
+
+    \item Expanding as a Taylor series around $ z_0 $,
+          \begin{align}
+              f(z) & = \cos^2 z                                           &
+              z_0  & = \pi/2                                                \\
+              f(z) & = \frac{1 + \cos(2z)}{2}                             &
+                   & = \frac{1 + \cos[2(z - \pi/2) + \pi]}{2}               \\
+              f(z) & = \frac{1 - \cos[2(z - \pi/2)]}{2}                   &
+              f(z) & = \color{y_h} \iser[n]{1} (-1)^{n+1}\ \frac{2^{2n-1}
+              (z - \pi/2)^{2n}}{(2n)!}                                      \\
+              R    & = \color{y_p} \infty
+          \end{align}
+
+    \item Expanding as a Taylor series around $ z_0 $,
+          \begin{align}
+              f(z)    & = \sin z                                                    &
+              z_0     & = \pi/2                                                       \\
+              f(z)    & = \sin(z - \pi/2 + \pi/2)                                   &
+                      & = \cos(z - \pi/2)                                             \\
+              f(z)    & = \color{y_h} \iser[n]{1} (-1)^{n}\ \frac{(z - \pi/2)^{2n}}
+              {(2n)!} &
+              R       & = \color{y_p} \infty
+          \end{align}
+
+    \item The Maclaurin series of $ \cosh z $ is directly the answer
+          \begin{align}
+              f(z) & = \color{y_h}  \iser[n]{0} \frac{(z - \pi \i)^{2n}}{(2n)!} &
+              R    & = \color{y_p} \infty
+          \end{align}
+
+    \item Expanding as a Taylor series around $ z_0 $,
+          \begin{align}
+              f(z) & = (z + \i)^{-2}                                         &
+              z_0  & = \i                                                      \\
+              f(z) & = (2\i + z - \i)^{-2}                                   &
+                   & = -\frac{1}{4}\ \Big( 1 + \frac{z - \i}{2\i} \Big)^{-2}
+          \end{align}
+          Using the binomial theorem, given $\color{y_p} \abs{z - \i} < 2 $,
+          \begin{align}
+              f(z) & = -\frac{1}{4}\ \Bigg[ 1 - 2\Big( \frac{z - \i}{2\i} \Big)
+                  + \frac{2 \cdot 3 }{2!}\ \Big( \frac{z - \i}{2\i} \Big)^2
+              - \dots \Bigg]                                                      \\
+                   & = \color{y_h} \iser[n]{0} \binom{-2}{n}\ \Bigg[\frac{1}{2\i}
+                  \Bigg]^{n+2}\ (z - \i)^n
+          \end{align}
+
+    \item Expanding as a Taylor series around $ z_0 $,
+          \begin{align}
+              f(z) & = \exp[z(z-2)]                                               &
+              z_0  & = 1                                                            \\
+              f(z) & = \exp[(z-1 + 1)(z-1 - 1)]                                   &
+                   & = \exp[(z-1)^2 - 1] = \frac{\exp[(z-1)^2]}{e}                  \\
+              f(z) & = \color{y_h} \frac{1}{e}\ \iser[n]{0} \frac{(z-1)^{2n}}{n!} &
+              R    & = \color{y_p} \infty
+          \end{align}
+
+    \item Expanding as a Taylor series around $ z_0 $,
+          \begin{align}
+              f(z) & = \sinh(2z - \pi)                                  &
+              z_0  & = \i/2                                               \\
+              f(z) & = \sinh[2(z - \i/2)]                               &
+              f(z) & = \color{y_h} \iser[n]{0} \frac{2^{2n+1}}{(2n+1)!}
+              \ (z - \i/2)^{2n+1}                                         \\
+              R    & = \color{y_p} \infty
+          \end{align}
+
+
+\end{enumerate}

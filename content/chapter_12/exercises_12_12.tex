@@ -1,0 +1,263 @@
+\section{Solution of PDEs by Laplace Transforms}
+
+\begin{enumerate}
+    \item Verifying the solution,
+          \begin{align}
+              w(x, t) & = \sin\Big(t - \frac{x}{c}\Big) \cdot u\Big(t
+              - \frac{x}{c}\Big)                                      \\
+              w(0, t) & = \begin{cases}
+                              \sin(t) & \quad t \in [0, 2\pi]  \\
+                              0       & \quad \text{otherwise}
+                          \end{cases}
+          \end{align}
+          The boundary condition on the $ x = 0 $ is satisfied.
+          \begin{align}
+              \lim_{x \to \infty} w(x, t) & = f(t - x/c) \cdot 0 = 0
+          \end{align}
+          Since the step function is never turned on at infinite distance, the
+          boundary condition on large $ x $ is also true.
+          \begin{align}
+              w(x, 0) & = \sin(-x/c) \cdot u(-x/c) = 0 \quad \forall \quad x>0,\ c>0
+          \end{align}
+          The initial deflection is satisfied.
+          \begin{align}
+              w(x, t)   & =
+              \begin{dcases}
+                  \sin \Big( t - \frac{x}{c} \Big) & \quad t \in \Bigg[ \frac{x}{c},
+                  \frac{x}{c} + 2\pi \Bigg]                                          \\
+                  0                                & \quad \text{otherwise}
+              \end{dcases}  \\
+              w_t(x, t) & =
+              \begin{dcases}
+                  \cos \Big( t - \frac{x}{c} \Big) & \quad t \in \Bigg[ \frac{x}{c},
+                  \frac{x}{c} + 2\pi \Bigg]                                          \\
+                  0                                & \quad \text{otherwise}
+              \end{dcases} \\
+              w_t(x, 0) & =
+              \begin{dcases}
+                  \cos \Big(\frac{x}{c} \Big) & \quad x \in [-2\pi c, 0] \\
+                  0                           & \quad \text{otherwise}
+              \end{dcases}
+          \end{align}
+          Clearly $ w_t(x, 0) $ is zero everywhere on the positive x axis, which
+          satisfies the initial condition on the velocity.
+
+          Substituting the new function into $ w(x, t) $,
+          \begin{align}
+              f(t)    & = \begin{cases}
+                              \sin(t) & \quad t > 2\pi         \\
+                              0       & \quad \text{otherwise} \\
+                          \end{cases}   \\
+              u(x, t) & = \begin{dcases}
+                              \sin \Big( t - \frac{x}{c} \Big) &
+                              \quad t > \frac{x}{c} + 2\pi       \\
+                              0                                &
+                              \quad \text{otherwise}
+                          \end{dcases}
+          \end{align}
+
+    \item A triangular wave whose defined by,
+          \begin{align}
+              f(x) & = \begin{cases}
+                           x   & \quad x \in [0, 1/2)   \\
+                           1-x & \quad x \in [1/2, 1]   \\
+                           0   & \quad \text{otherwise} \\
+                       \end{cases}
+          \end{align}
+          Plotting this function moving to the right at speed $ c $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {tri(\x)
+                              = ifthenelse(and(\x>0, \x<1),
+                              -abs(\x - 0.5) + 0.5,
+                              0);}]
+                  \begin{axis}[
+                          legend pos = north east, axis equal,
+                          grid = both, Ani,
+                          domain = 0:6, height = 10 cm,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},
+                      ]
+                      \addplot+[thick, samples = 200]{tri(x)};
+                      \addplot+[thick, samples = 200]{1 + tri(x - 1)};
+                      \addplot+[thick, samples = 200]{2 + tri(x - 2)};
+                      \addplot+[thick, samples = 200]{3 + tri(x - 3)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The speed is related to $ c $ using,
+          \begin{align}
+              v & = c = \sqrt{\frac{T}{\rho}}
+          \end{align}
+          where the tension in the string is $ T $ and its mass per unit length is
+          $ \rho $.
+
+    \item Solving the PDE using Laplace transforms w.r.t. $ t $,
+          \begin{align}
+              \diffp wx + x\ \diffp wt        & = x                             &
+              w(x, 0)                         & = 1 \qquad w(0, t) = 1            \\
+              \diffp Wx + x\ \Big[sW - 1\Big] & = \frac{x}{s}                   &
+              \diffp Wx                       & = x\ (1/s + 1 - sW)               \\
+              \ln(1/s + 1 -sW)                & = \frac{-sx^2}{2} + \alpha^*(s) &
+              \frac{1}{s} + 1 - sW            & = \alpha^*(s) \cdot e^{-sx^2/2}   \\
+              W                               & =
+              \frac{1}{s} + \frac{1}{s^2} - \alpha(s)\ e^{-sx^2/2}
+          \end{align}
+          Recovering the solution using the inverse Laplace transform,
+          \begin{align}
+              W(0, s)       & = \Lap\{w(0, t)\} = \Lap\{(1)\}
+              = \frac{1}{s} &
+              \alpha(s)     & = \frac{1}{s^2}                           \\
+              W(x, s)       & = \color{y_p} \frac{1}{s} + \frac{1}{s^2}
+              - \frac{e^{-sx^2/2}}{s^2}                                 \\
+              w(x, t)       & = (1 + t) - \Big( t - \frac{x^2}{2} \Big)
+              \cdot u \Bigg[ t - \frac{x^2}{2} \Bigg]
+          \end{align}
+          Expressing the solution in piecewise form,
+          \begin{align}
+              u(x, t) & = \color{y_h} \begin{dcases}
+                                          1 + t     & \quad t < x^2/2 \\
+                                          1 + x^2/2 & \quad t > x^2/2 \\
+                                      \end{dcases}
+          \end{align}
+
+    \item Solving the PDE using Laplace transforms w.r.t. $ t $,
+          \begin{align}
+              x\ \diffp wx + \diffp wt        & = xt                            \\
+              x\ \diffp Wx + \Big[sW\Big]     & = \frac{x}{s^2}               &
+              \diffp Wx + \frac{s}{x} \cdot W & = \frac{1}{s^2}                 \\
+              \text{I.F.}                     & = \exp\Big( \int (s/x)
+              \ \dl x \Big)                   &
+              \text{I.F.}                     & = x^s                           \\
+              x^s\ W                          & = \int \frac{x^s}{s^2}\ \dl x &
+              W                               & = \frac{x}{s^2(s+1)}
+              + \frac{\alpha(s)}{x^s}
+          \end{align}
+          Applying the B.C. and I.C. to $ W(x, s) $,
+          \begin{align}
+              W(0, s)                & = \Lap\{w(0, t)\} = 0                  &
+              \alpha(s)              & = 0                                      \\
+              W(x, s)                & = \color{y_p} x\ \Bigg[\frac{-1}{s}
+                  + \frac{1}{s^2}
+              + \frac{1}{s+1} \Bigg] &
+              w(x, t)                & = \color{y_h} x\ \Big[ -1 + t + e^{-t}
+                  \Big]
+          \end{align}
+
+    \item Solving the PDE using Laplace transforms w.r.t. $ t $,
+          \begin{align}
+              \diffp wx + 2x\ \diffp wt        & = 2x                          &
+              w(x, 0)                          & = 1 \qquad w(0, t) = 1          \\
+              \diffp Wx + 2x\ \Big[sW - 1\Big] & = \frac{2x}{s}                &
+              \diffp Wx                        & = 2x\ (1/s + 1 - sW)            \\
+              \ln(1/s + 1 -sW)                 & = -sx^2 + \alpha^*(s)         &
+              \frac{1}{s} + 1 - sW             & = \alpha^*(s) \cdot e^{-sx^2}   \\
+              W                                & =
+              \frac{1}{s} + \frac{1}{s^2} - \alpha(s)\ e^{-sx^2}
+          \end{align}
+          Recovering the solution using the inverse Laplace transform,
+          \begin{align}
+              W(0, s)       & = \Lap\{w(0, t)\} = \Lap\{(1)\}
+              = \frac{1}{s} &
+              \alpha(s)     & = \frac{1}{s^2}                           \\
+              W(x, s)       & = \color{y_p} \frac{1}{s} + \frac{1}{s^2}
+              - \frac{e^{-sx^2}}{s^2}                                   \\
+              w(x, t)       & = (1 + t) - \Big( t - x^2 \Big)
+              \cdot u \Big[ t - x^2 \Big]
+          \end{align}
+          Expressing the solution in piecewise form,
+          \begin{align}
+              u(x, t) & = \color{y_h} \begin{dcases}
+                                          1 + t   & \quad t < x^2 \\
+                                          1 + x^2 & \quad t > x^2 \\
+                                      \end{dcases}
+          \end{align}
+
+    \item TBC
+
+    \item Solving the PDE using Laplace transforms w.r.t. $ t $,
+          \begin{align}
+              \diffp[2] wx & = 100\ \diffp[2] wt + 100\ \diffp wt
+              + 25w                                               \\
+              w(x, 0)      & = 0 \qquad w(0, t) = \sin(t)
+              \qquad w_t(x, 0) = 0                                \\
+              \diff[2] Wx  & = (10s + 5)^2\ W                     \\
+              W            & = A(s) \exp[(10s + 5)x] + B(s)
+              \exp[-(10s + 5)x] + C(s)
+          \end{align}
+          Applying the initial conditions,
+          \begin{align}
+              \lim_{x \to \infty} w(x, t) & = 0                        &
+              \lim_{x \to \infty} W(x, s) & = 0                          \\
+              A(s) = C(s)                 & = 0                          \\
+              W(0, s)                     & = \Lap\{w(0, t)\}
+              = \Lap\{\sin(t)\}
+              = \frac{1}{s}               &
+              B(s)                        & = \frac{1}{1 + s^2}          \\
+              W(x, s)                     & = \color{y_p}
+              \frac{e^{-(10s+5)x}}{1+s^2}                                \\
+              w(x, t)                     & = e^{-5x}\ \sin(t - 10x)\
+              u \Big[ t - 10x \Big]
+          \end{align}
+          Expressing the solution in piecewise form,
+          \begin{align}
+              u(x, t) & = \color{y_h} \begin{dcases}
+                                          0                      & \quad t < 10x \\
+                                          e^{-5x}\ \sin(t - 10x) & \quad t > 10x \\
+                                      \end{dcases}
+          \end{align}
+
+    \item Starting with the heat equation and taking the Laplace transform,
+          \begin{align}
+              w_t                   & = c^2\ w_{xx}           &
+              w(x, 0)               & = 0                       \\
+              sW                    & = c^2\ \diffp[2] Wx     &
+              W                     & = A(s)\ e^{\sqrt{s}x/c}
+              + B(s)\ e^{-\sqrt{s}x/c}                          \\
+              \lim_{x \to \infty} w & = 0                     &
+              \implies A(s)         & = 0                       \\
+              W(0, s)               & = \Lap\{w(0, t)\}       &
+              \Lap\{f(t)\}          & = F(s)
+          \end{align}
+          Using the initial conditions, and referring to the table of Laplace
+          transforms,
+          \begin{align}
+              W(0, s) & = F(s) = B(s)                                                &
+              W(x, s) & = \color{y_h} F(s)\ e^{-\sqrt{s}x/c}                           \\
+              G(s)    & = e^{-\sqrt{s}x/c}                                           &
+              g(t)    & = \frac{x}{2c\sqrt{\pi t^3}}\ \exp \Bigg[ -\frac{x^2}{4c^2t}
+                  \Bigg]
+          \end{align}
+
+    \item Substituting the functional form of $ g(t) $ into the convolution integral,
+          \begin{align}
+              w(x, t) & = \frac{x}{2c\sqrt{\pi}} \int_0^t \frac{\exp[-x^2/(4c^2\tau)]}
+              {\tau^{3/2}}\ f(t - \tau)\ \dl \tau
+          \end{align}
+
+    \item Since the limits of integration mean that $ t \geq \tau $, the step
+          function $ u(t - \tau) $ is always on.
+          \begin{align}
+              w_0(x, t) & = \frac{x}{2c\sqrt{\pi}} \int_0^t
+              \frac{\exp[-x^2/(4c^2\tau)]}{\tau^{3/2}}\ \dl \tau                  \\
+              y         & = \frac{x}{2c\sqrt{\tau}} \qquad\qquad
+              \dl y = \frac{-x}{4c\ \tau^{3/2}}\ \dl \tau                         \\
+              w_0(x, t) & = \frac{-2}{\sqrt{\pi}}\ \int_{\infty}^{x/(2c\sqrt{t})}
+              e^{-y^2}\ \dl y                                                     \\
+                        & = \erf(\infty) - \erf\Big( \frac{x}{2c\sqrt{t}} \Big)   \\
+                        & = 1 - \erf\Big( \frac{x}{2c\sqrt{t}} \Big)
+          \end{align}
+
+    \item Using the form of $ w_0(x, t) $ from Problem $ 11 $,
+          \begin{align}
+              W_0(x, s)       & = F(s) \cdot e^{-x\sqrt{s}/c}
+              = \frac{e^{-x\sqrt{s}/c}}{s}                                          \\
+              \Lap\{u[t-a]\}  & = \frac{e^{-as}}{s}                                 \\
+              \diffp {w_0}{t} & = \frac{x}{2c\sqrt{\pi}}\
+              \exp \Bigg[ - \frac{x^2}{4c^2\ t} \Bigg]\ t^{-3/2}                    \\
+              w(x, t)         & = \int_{0}^{t} \diffp*{\ \Big[w_0(\tau)\Big]}{\tau}
+              \ f(t - \tau)\ \dl \tau
+          \end{align}
+          The last step directly uses the result of Problem $ 10 $.
+\end{enumerate}

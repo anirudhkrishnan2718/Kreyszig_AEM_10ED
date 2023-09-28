@@ -1,0 +1,436 @@
+\section{Use of Conformal Mapping}
+
+\begin{enumerate}
+    \item Verifying the derivation,
+          \begin{align}
+              f(z)           & = \frac{z  - z_0}{\overline{z_0} z - 1} &
+              z_0            & = b + 0\i                                 \\
+              f(0)           & = r_0                                   &
+              f(0.8)         & = -r_0                                    \\
+              r_0            & = \frac{0 - b}{0 - 1} = b               &
+              -r_0           & = \frac{0.8 - b}{0.8b - 1}                \\
+              b^2 - 2.5b + 1 & = 0                                     &
+              b^*            & = \{2, 0.5\}
+          \end{align}
+          Since the disk mapping formula requires $ \abs{z_0} < 1 $, $ b^* \neq 2 $.
+          \begin{align}
+              b & = 0.5 & f(z) & = \frac{2z - 1}{z - 2}
+          \end{align}
+
+    \item The proof in the appendix which does not use the harmonic conjugate of
+          $ \Phi $ is,
+          \begin{align}
+              \Phi                  & = \Phi^*\Big[ u(x, y),\ v(x, y) \Big]         \\
+              \Phi_x                & = \Phi^*_u\ u_x + \Phi^*_v\ v_x               \\
+              \Phi_{xx}             & = \Phi^*_u\ u_{xx} +  u_x\ (\Phi^*_{uu}\ u_x
+              + \Phi^*_{uv}\ v_x)
+              + \Phi^*_v\ v_{xx} +  v_x\ (\Phi^*_{uv}\ u_x + \Phi^*_{vv}\ v_x)      \\
+              \Phi_{xx} + \Phi_{yy} & = \Phi^*_u\ \nabla^2 u + \Phi^*_v\ \nabla^2 v
+              + 2\Phi^*_{uv}\ (u_xv_x + u_yv_y)                                     \\
+                                    & + \Phi^*_{uu}\ (u_x^2 + u_y^2) + \Phi^*_{vv}
+              \ (v_x^2 + v_y^2)
+          \end{align}
+          Since $ w = u + \i\ v $ is analytic, $ u, v $ satisfy the Cauchy-Riemann
+          relations. Additionally, $ u, v $ are themselves harmonic.
+          \begin{align}
+              \Phi_{xx} + \Phi_{yy} & = \Phi^*_{uu}\ (u_x^2 + u_y^2) + \Phi^*_{vv}
+              \ (v_x^2 + v_y^2)                                                    \\
+                                    & = (\Phi^*_{uu} + \Phi^*_{vv})(v_y^2 + v_x^2) \\
+              \nabla^2 \Phi         & = \nabla^2 \Phi^* = 0
+          \end{align}
+
+    \item Trying out a conformal map,
+          \begin{align}
+              f(z)             & = -\i z^2                                     &
+              f(z)             & = 2xy + \i\ (y^2 - x^2)                         \\
+              xy               & \in [0, 1]                                    &
+              \implies \quad u & \in [0, 2]                                      \\
+              \Phi^*           & = u + \i\ v                                   &
+              \Phi^*(0, v)     & = K_1, \quad \Phi^*(2, v) = K_2                 \\
+              \Phi^*(u, v)     & = \color{y_p} K_1 + \Bigg(\frac{K_2 - K_1}{2}
+              \Bigg)\ u
+          \end{align}
+          Back-converting $ \Phi^*(u, v) $ into $ \Phi(x, y) $,
+          \begin{align}
+              \Phi(x, y) & = \color{y_h} K_1 + (K_2 - K_1)\ xy
+          \end{align}
+
+    \item For the given function,,
+          \begin{align}
+              \Phi^*(u, v) & = 4uv                         &
+              w            & = e^z = u + \i\ v               \\
+              w            & = e^x \cos y + \i\ e^x \sin y &
+              \Phi(x, y)   & = 2e^{2x}\ \sin(2y)             \\
+              \Phi(x, 0)   & = 0, \quad \Phi(x, \pi) = 0   &
+              \Phi(0, y)   & = 2\sin(2y)
+          \end{align}
+
+    \item Plotting the equipotential lines and the lines of force,
+          \begin{align}
+              F(z) & = a \Ln{\frac{2z - 1}{z - 2}}                              &
+              \Phi & = a\ln\Bigg[\frac{(2x-1)^2 + (2y)^2}{(x-2)^2 + y^2} \Bigg]   \\
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, enlargelimits = true,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = -1.1:1.1, restrict y to domain = -1.1:1.1,
+                          colormap/viridis, colorbar horizontal
+                      ]
+                      \addplot3 [thick, contour gnuplot={
+                                  levels = {0,30,70,110},
+                                  labels = false
+                              },
+                          samples=100,
+                      ] {(-55/ln(2))*ln(((2*x-1)^2 + 4*y^2)/((x-2)^2 + y^2))};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$\Phi(x, y) = x^2 - y^2$},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = -1.1:1.1, restrict y to domain = -1.1:1.1,
+                          colormap/viridis, colorbar horizontal
+                      ]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 15,
+                                  labels = false
+                              },
+                          samples=100,
+                      ] {x^2 - y^2};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$\Phi(x, y) = -2xy$},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = -2:2, restrict y to domain = -2:2,
+                          colormap/viridis, colorbar horizontal
+                      ]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 15,
+                                  labels = false
+                              },
+                          samples=100,
+                      ] {-2*x*y};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$\Phi(x, y) = e^x \cos y$},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = -5:5, restrict y to domain = -5:5,
+                          colormap/viridis, colorbar horizontal
+                      ]
+                      \addplot3 [thick, contour gnuplot={
+                                  levels = {-3,-2,-1,0,1,2,3},
+                                  labels = false
+                              },
+                          samples=100,
+                      ] {(e^(x))*cos(y)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$\Phi(x, y) = \ln{\sqrt{x^2 + y^2}}$},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = -1:1, restrict y to domain = -1:1,
+                          colormap/viridis, colorbar horizontal
+                      ]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 5,
+                                  labels = false
+                              },
+                          samples=100,
+                      ] {0.5*ln(x^2 + y^2)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          These cylinders are visualized as circular cross-sections in the $ z = 0 $
+          plane.
+
+    \item Using theorem $ 1 $,
+          \begin{align}
+              \Phi^*(u, v)          & = u^2 - v^2                                  &
+              w                     & = f(z) = e^z                                   \\
+              \Phi(x, y)            & = e^{2x}\ \cos^2 y - e^{2x}\ \sin^2 y        &
+              \Phi(x, y)            & = e^{2x}\ \cos(2y)                             \\
+              \Phi_{xx} + \Phi_{yy} & = -4e^{2x}\ \cos(2y) + 4e^{2x}\ \cos(2y) = 0
+          \end{align}
+
+    \item Using theorem $ 1 $,
+          \begin{align}
+              \Phi^*(u, v)               & = u^2 - v^2                               &
+              w                          & = f(z) = \sin z                             \\
+              \Phi(x, y)                 & = \sin^2 x \cosh^2 y - \cos^2 x \sinh^2 y   \\
+              \color{y_h} \Phi(0, y)     & = -\sinh^2 y                              &
+              \color{y_t} \Phi(\pi/2, y) & = \cosh^2 y                                 \\
+              \color{azure4} \Phi(x, 0)  & = \sin^2 x                                &
+              \color{y_p} \Phi(x, 1)     & = \sin^2 x \cosh^2 1 - \cos^2 x \sinh^2 1
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -1.5, xmax =2.5, ymin = -2, ymax = 2,
+                          axis equal, Ani, grid = both,
+                          PiStyleX, xtick distance = 0.25*pi]
+                      \coordinate (A) at (axis cs:0,0);
+                      \coordinate (B) at (axis cs:0,1);
+                      \coordinate (C) at (axis cs:1.57,1);
+                      \coordinate (D) at (axis cs:1.57,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping under $ \sin z $},
+                          grid = both, Ani,
+                          %   xmin = -0.5, xmax = 4, ymin = -0.5, ymax = 4,
+                          width = 8cm, height = 8cm,
+                          axis equal,]
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0:1]
+                      ({sin(0)*cosh(x)},{cos(0)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_t, domain = 0:1]
+                      ({sin(0.5*pi)*cosh(x)},{cos(0.5*pi)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_p, domain = 0:0.5*pi,
+                          name path = top]
+                      ({sin(x)*cosh(1)},{cos(x)*sinh(1)});
+                      \addplot[GraphSmooth, very thick, azure4, domain = 0:0.5*pi]
+                      ({sin(x)*cosh(0)},{cos(x)*sinh(0)});
+                      \path[name path = bottom] (axis cs:0, 0) -- (axis cs:1.543, 0);
+                      \addplot [fill=black, fill opacity=0.08]
+                      fill between[of=top and bottom];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The equipotential lines and electromagnetic lines of force are interchanged
+          \begin{align}
+              \Phi^*(u, v) & = 2uv                          & w & = \sin z \\
+              \Phi(x, y)   & = \frac{\sin(2x) \sinh(2y)}{2}
+          \end{align}
+
+
+    \item The potential and the mapped region change,
+          \begin{align}
+              \Phi^*(u, v)               & = u^2 - v^2                               &
+              w                          & = f(z) = \cos z                             \\
+              \Phi(x, y)                 & = \cos^2 x \cosh^2 y - \sin^2 x \sinh^2 y   \\
+              \color{y_h} \Phi(0, y)     & = \cosh^2 y                               &
+              \color{y_t} \Phi(\pi/2, y) & = -\sinh^2 y                                \\
+              \color{azure4} \Phi(x, 0)  & = \cos^2 x                                &
+              \color{y_p} \Phi(x, 1)     & = \cos^2 x \cosh^2 1 - \sin^2 x \sinh^2 1
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -1.5, xmax =2.5, ymin = -2, ymax = 2,
+                          axis equal, Ani, grid = both,
+                          PiStyleX, xtick distance = 0.25*pi]
+                      \coordinate (A) at (axis cs:0,0);
+                      \coordinate (B) at (axis cs:0,1);
+                      \coordinate (C) at (axis cs:1.57,1);
+                      \coordinate (D) at (axis cs:1.57,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (D) -- cycle;
+                      \draw[very thick, y_h] (A) -- (B);
+                      \draw[very thick, y_p] (B) -- (C);
+                      \draw[very thick, y_t] (C) -- (D);
+                      \draw[very thick, azure4] (D) -- (A);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {mapping under $ \cos z $},
+                          grid = both, Ani,
+                          %   xmin = -0.5, xmax = 4, ymin = -0.5, ymax = 4,
+                          width = 8cm, height = 8cm,
+                          axis equal,]
+                      \addplot[GraphSmooth, very thick, y_h, domain = 0:1]
+                      ({cos(0)*cosh(x)},{sin(0)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_t, domain = 0:1]
+                      ({cos(0.5*pi)*cosh(x)},{sin(0.5*pi)*sinh(x)});
+                      \addplot[GraphSmooth, very thick, y_p, domain = 0:0.5*pi,
+                          name path = top]
+                      ({cos(x)*cosh(1)},{sin(x)*sinh(1)});
+                      \addplot[GraphSmooth, very thick, azure4, domain = 0:0.5*pi]
+                      ({cos(x)*cosh(0)},{sin(x)*sinh(0)});
+                      \path[name path = bottom] (axis cs:0, 0) -- (axis cs:1.543, 0);
+                      \addplot [fill=black, fill opacity=0.08]
+                      fill between[of=top and bottom];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the procedure in Example $ 1 $,
+          \begin{align}
+              w     & = \frac{z - b}{bz - 1}                &
+              w(0)  & = b = r_0                               \\
+              w(2c) & = -r_0 = \frac{2c - r_0}{r_0(2c) - 1}
+          \end{align}
+          This is a quadratic equation in $ r_0 $ whose only solution with
+          $ \abs{r_0} < 1/2 $ is\
+          \begin{align}
+              r_0          & = \frac{1 - \sqrt{1 - 4c^2}}{2c}          &
+              c = 0.25     & \implies r_0 = 2 - \sqrt{3}                 \\
+              \Phi^*(u, v) & = \Re{F^*(w)} = a\ln\abs{w} + k           &
+              a            & = \frac{220}{\ln(2 - \sqrt{3})} = -167.05   \\
+              b            & = 0
+          \end{align}
+          Back-transforming the potential into the $ z $ plane,
+          \begin{align}
+              \Phi(x, y) & = a \ln \abs{\frac{z - r_0}{r_0 z - 1}}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, enlargelimits = true,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = -1.1:1.1, restrict y to domain = -1.1:1.1,
+                          colormap/viridis, colorbar
+                      ]
+                      \addplot3 [thick,contour gnuplot={
+                                  %   number = 15,
+                                  levels = {0,55,110,165,220},
+                                  label distance = 1000pt
+                              },
+                          samples=100,
+                      ] {(0.5*-167.05)*ln(((x-0.2679)^2 + y^2)/((0.2679*x - 1)^2
+                          + (0.2679*y)^2))};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          On increasing $ c $, the equipotential lines bunch up to the right and get
+          sparse to the left.
+
+    \item The mapping is,
+          \begin{align}
+              f(z)    & = \frac{1 + z}{1 - z}                              &
+              f(z)    & = \frac{(1 - x^2 - y^2) + \i\ (2y)}{(1-x)^2 + y^2}   \\
+              \abs{z} & = 1 \implies u = 0                                 &
+              y > 0   & \implies v > 0 \qquad \text{and vice versa}
+          \end{align}
+          The upper and lower half unit circle are mapped onto the first and second
+          quadrants in the $ w $ plane. Let the potential of the top and bottom
+          semicircles be $ \pm k $.
+          \begin{align}
+              \Phi^*(u, v) & = \frac{2k}{\pi}\ \arctan(v/u)              &
+              F^*(w)       & = \frac{-2k\i}{\pi} \Ln{w}                    \\
+              F(z)         & = \frac{-2k\i}{\pi} \Ln \frac{1 + z}{1 - z} &
+              \Phi(x, y)   & = \frac{2k}{\pi}\ \Arg{\frac{1+z}{1-z}}
+          \end{align}
+
+    \item Mapping the $ y $ axis onto the $ w $ plane,
+          \begin{align}
+              x = 0      & \implies f(z) = \frac{1-y^2 + \i\ 2y}{1 + y^2} &
+              \abs{f(z)} & = \abs{\frac{1 + y^4 + 2y^2}{(1 + y^2)^2}} = 1
+          \end{align}
+          This means that the map is the unit circle.
+
+    \item The mapping is conformal and the rays shown in the $ w $ plane make equally
+          spaced (angular). Since angles are preserved under the reverse mapping, the
+          equipotential lines shown in the $ z $ plane also have to be equally (angular)
+          spaced at $ z = -1 $.
+
+    \item Using the fact that the rate of change of potential is proportional to
+          \begin{align}
+              x                   & = 0                                           &
+              \implies \Phi(0, y) & \propto \arctan\Bigg(\frac{2y}{1 - y^2}\Bigg)   \\
+              \diffp{\Phi}{y}     & \propto \frac{2}{1 + y^2}
+          \end{align}
+          Clearly the rate of change of potential along the $ y $ axis is larger, the
+          closer the point is to the origin.
+
+    \item Using the fact that squaring doubles the argument, with $ k = 3000 $
+          \begin{align}
+              w      & = z^2                       &
+              F^*(w) & = \frac{-2k\i}{\pi}\ \Ln{w}   \\
+              F(w)   & = \frac{-4k\i}{\pi} \Ln{z}  &
+              \Phi   & = \frac{4k}{\pi}\ \Arg(z)
+          \end{align}
+
+    \item Using Problem $ 15 $, with $ k = 3000 $
+          \begin{align}
+              w      & = z^4                       &
+              F^*(w) & = \frac{-2k\i}{\pi}\ \Ln{w}   \\
+              F(w)   & = \frac{-8k\i}{\pi} \Ln{z}  &
+              \Phi   & = \frac{8k}{\pi}\ \Arg(z)
+          \end{align}
+
+    \item Using the three mapped points, $ (\i/2 \to 0) $, $ (0.6 + 0.8\i \to -1) $
+          and $ (-0.6 + 0.8\i \to 1) $,
+          \begin{align}
+              \frac{w - 0}{w - 1}\ \Bigg[ \frac{-2}{-1} \Bigg] & =
+              \frac{z - 0.5\i}{z + 0.6 - 0.8\i}\ \Bigg[ \frac{1.2}{0.6 + 0.3\i}
+              \Bigg]                                                           \\
+              \frac{2w}{w-1}                                   & =
+              \frac{1.2z - 0.6\i}{(0.6 + 0.3\i)z + (0.6 - 0.3\i)}              \\
+              w                                                & = \color{y_p}
+              \frac{-2z + \i}{\i z + 2}
+          \end{align}
+
+    \item By explicit calculation,
+          \begin{align}
+              w      & = \frac{-2x - (2y + 1)\ \i}{(-y+2) + \i\ x} &
+              \Re{w} & = \frac{-3x}{(y-2)^2 + x^2}
+          \end{align}
+          Equipotential lines require $ \Re{w} = 1/c $, reduce to circles
+          \begin{align}
+              (y-2)^2 + x^2 + 3cx    & = 0       &
+              (y-2)^2 + (x + 1.5c)^2 & = 2.25c^2
+          \end{align}
+
+    \item Using the result from Example $ 3 $, and the transformation,
+          \begin{align}
+              w             & = (z-2)                       &
+              \Arg{w} = 0   & \implies \Phi^* = 0             \\
+              \Arg{w} = \pi & \implies \Phi^* = 5           &
+              \Phi          & = \frac{5}{\pi} \Arg{z-2}       \\
+              F(z)          & = \frac{-5 \i}{\pi}\ \Ln(z-2)
+          \end{align}
+
+    \item Using the three mapped points, $ (-a \to 0) $, $ (0 \to 1) $
+          and $ (a \to \infty) $,
+          \begin{align}
+              \frac{w}{w - \infty}\ \Bigg[ \frac{1 - \infty}{1} \Bigg] & =
+              \frac{z + a}{z - a}\ \Bigg[ \frac{-a}{a}
+              \Bigg]                                                   &
+              w                                                        & = \color{y_p}
+              \frac{z + a}{a - z}
+          \end{align}
+          In the $ w $ plane, the positive real axis is at $ \Phi^* = V_0 $ and the
+          negative real axis is at $ \Phi^* = 0 $.
+          \begin{align}
+              F^*(w) & = \frac{\i V_0}{\pi}\ \Ln{w}                         &
+              \Phi   & = \frac{-V_0}{\pi} \Arg{\Bigg[\frac{z+a}{a-z}\Bigg]}
+          \end{align}
+
+\end{enumerate}

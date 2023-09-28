@@ -1,0 +1,272 @@
+\section{Exponential Function}
+
+\begin{enumerate}
+    \item To prove that $ e^z $ is entire,
+          \begin{align}
+              f(z) = e^z & = e^x\ (\cos y + \i\ \sin y) &
+              f(z)       & = u(x, y) + \i\ v(x, y)        \\
+              u_x        & = e^x \cos y                 &
+              u_y        & = -e^x \sin y                  \\
+              v_x        & = e^x \sin y                 &
+              v_y        & = e^x \cos y                   \\
+              u_x        & = v_y                        &
+              u_y        & = -v_x
+          \end{align}
+          Since $ e^a, \sin(a), \cos(a) $ are themselves defined for all real $ a $,
+          the Euler-Cauchy relations are satisfied everywhere in the complex plane. \par
+          This makes the function entire.
+
+    \item Finding the functional form and modulus,
+          \begin{align}
+              z         & = 3 + 4\i   & e^z & = e^3\ (\cos 4 + \sin 4\ \i) \\
+              \abs{e^z} & = e^x = e^3
+          \end{align}
+
+    \item Finding the functional form and modulus,
+          \begin{align}
+              z         & = 2\pi \i (1 + \i)                         &
+              e^z       & = e^{-2\pi}\ [\cos(2\pi) + \sin(2\pi)\ \i]   \\
+              e^z       & = e^{-2\pi}                                &
+              \abs{e^z} & = e^x = e^{-2\pi}
+          \end{align}
+
+    \item Finding the functional form and modulus,
+          \begin{align}
+              z         & = 0.6 - 1.8\i                          &
+              e^z       & = e^{0.6}\ [\cos(1.8) - \sin(1.8)\ \i]   \\
+              \abs{e^z} & = e^x = e^{0.6}
+          \end{align}
+
+    \item Finding the functional form and modulus,
+          \begin{align}
+              z         & = 2 + 3\pi \i                          &
+              e^z       & = e^{2}\ [\cos(3\pi) + \sin(3\pi)\ \i]   \\
+              e^z       & = -e^2                                 &
+              \abs{e^z} & = e^x = e^{2}
+          \end{align}
+
+    \item Finding the functional form and modulus,
+          \begin{align}
+              z         & = \frac{11\pi}{2}\ \i                      &
+              e^z       & = e^{0}\ [\cos(5.5\pi) + \sin(5.5\pi)\ \i]   \\
+              e^z       & = -\i                                      &
+              \abs{e^z} & = e^x = e^{0} = 1
+          \end{align}
+
+    \item Finding the functional form and modulus,
+          \begin{align}
+              z         & = \sqrt{2} + \frac{\pi}{2}\ \i                  &
+              e^z       & = e^{\sqrt{2}}\ [\cos(\pi/2) + \sin(\pi/2)\ \i]   \\
+              e^z       & = e^{\sqrt{2}}\ \i                              &
+              \abs{e^z} & = e^x = e^{\sqrt{2}}
+          \end{align}
+
+    \item Finding the polar form,
+          \begin{align}
+              z       & = e \exp(\i \theta)                           &
+              z^{1/n} & = r^{1/n} \exp\Big( \frac{\i \theta}{n} \Big)
+          \end{align}
+
+    \item Finding the polar form,
+          \begin{align}
+              z      & = 4 + 3\i              &
+              r      & = \sqrt{3^2 + 4^2} = 5   \\
+              \theta & = \arctan(3/4)         &
+              z      & = 5 \exp(\i\ \theta)
+          \end{align}
+
+    \item Finding the polar form,
+          \begin{align}
+              z_1      & = \sqrt{i}                                          &
+              r_1      & = \sqrt{1} = 1                                        \\
+              \theta_1 & = \frac{1}{2} \cdot \frac{\pi}{2} = \frac{\pi}{4}   &
+              z_1      & = 1 \cdot \exp\Big( \i\ \frac{\pi}{4} \Big)           \\
+              z_2      & = \sqrt{-i}                                         &
+              r_2      & = \sqrt{1} = 1                                        \\
+              \theta_2 & = \frac{1}{2} \cdot \frac{-\pi}{2} = \frac{-\pi}{4} &
+              z_2      & = 1 \cdot \exp\Big( -\i\ \frac{\pi}{4} \Big)
+          \end{align}
+
+    \item Finding the polar form,
+          \begin{align}
+              z & = -6.3 + 0\ \i      &
+              z & = 6.3 \exp(\i\ \pi)
+          \end{align}
+
+    \item Finding the polar form,
+          \begin{align}
+              z                  & = re^{\i\ \theta}                                 &
+              w                  & = \frac{1}{1-z} = \frac{1-\bar{z}}{\abs{1 - z}^2}   \\
+              w                  & = \frac{1 - r\cos\theta + r\sin\theta\ \i}
+              {(1 - r\cos\theta)^2
+              + (r\sin\theta)^2} &
+              w                  & = \frac{(1 - r\cos\theta) + \i\ (r\sin\theta)}
+              {1 + r^2
+              - 2r\cos\theta}                                                          \\
+              \abs{w}            & = \frac{1}{1 + r^2 - 2r\cos\theta}                &
+              \Arg{(w)}          & = \frac{r\sin\theta}{1 - r\cos\theta}
+          \end{align}
+
+    \item Finding the polar form,
+          \begin{align}
+              z & = 1 + \i                   &
+              z & = \sqrt{2} \exp(\i\ \pi/4)
+          \end{align}
+
+    \item Finding the real and imaginary parts of the function,
+          \begin{align}
+              f(z)  & = e^{-\pi z}                          &
+              \Re f & = \color{y_h} e^{-\pi x} \cos(\pi y)    \\
+              \Im f & = \color{y_p} -e^{-\pi x} \sin(\pi y)
+          \end{align}
+
+    \item Finding the real and imaginary parts of the function,
+          \begin{align}
+              f(z)  & = e^{z^2}                             &
+              f(z)  & = \exp(x^2 - y^2 + 2xy\ \i)             \\
+              \Re f & = \color{y_h} e^{x^2 - y^2} \cos(2xy) &
+              \Im f & = \color{y_p} e^{x^2 - y^2} \sin(2xy)
+          \end{align}
+
+    \item Finding the real and imaginary parts of the function,
+          \begin{align}
+              f(z)                                & = e^{1/z}                        &
+              f(z)                                & = \exp\Bigg( \frac{x - \i\ y}
+              {x^2 + y^2} \Bigg)                                                       \\
+              \Re f                               & = \color{y_h} e^{x/(x^2 + y^2)}
+              \cos\Big( \frac{y}{x^2 + y^2} \Big) &
+              \Im f                               & = \color{y_p} -e^{x/(x^2 + y^2)}
+              \sin\Big( \frac{y}{x^2 + y^2} \Big) &
+          \end{align}
+
+    \item Finding the real and imaginary parts of the function,
+          \begin{align}
+              f(z)  & = e^{z^3}                                       &
+              f(z)  & = \exp(x^3 - 3xy^2 - y^3 \i + 3x^2y \i)           \\
+              \Re f & = \color{y_h} e^{x^3 - 3xy^2} \cos(3x^2y - y^3) &
+              \Im f & = \color{y_p} e^{x^3 - 3xy^2} \sin(3x^2y - y^3)
+          \end{align}
+
+    \item Properties of the exponential function
+          \begin{enumerate}
+              \item  Since this power is not defined at $ z = 0 + 0\ \i $,
+                    the function $ e^{1/z} $ is \textcolor{y_p}{not entire}. \par
+
+                    Checking $ e^{\bar{z}} $,
+                    \begin{align}
+                        e^{\bar{z}} & = e^x\ (\cos y - \i\ \sin y)   \\
+                        u_x         & = e^x \cos(y)                &
+                        v_y         & = -e^x \cos(y)                 \\
+                        u_y         & = -e^x \sin(y)               &
+                        v_x         & = -e^x \sin(y)                 \\
+                    \end{align}
+                    This function does not satisfy Cauchy-Riemann relations and is
+                    \textcolor{y_p}{not entire}. \par
+
+                    Checking the third function,
+                    \begin{align}
+                        f(z) & = e^x\ [\cos(ky) + \i\ \sin(ky)]   \\
+                        u_x  & = e^x \cos(ky)                   &
+                        v_y  & = ke^x \cos(ky)                    \\
+                        u_y  & = -ke^x \sin(ky)                 &
+                        v_x  & = e^x \sin(ky)
+                    \end{align}
+                    This function is \textcolor{y_h}{entire if $ k  = 1$}.
+
+              \item Condition for $ e^z $ to be real,
+                    \begin{align}
+                        \Im{(e^z)}       & = e^x\ \sin(y) = 0 &
+                        \implies \quad y & = n\pi
+                    \end{align}
+                    Condition for $ \abs{e^{-z}} < 1 $,
+                    \begin{align}
+                        e^{-z}               & = e^{-x}\ [\cos(y) - \i\ \sin(y)] &
+                        \abs{e^{-z}}         & = e^{-x}                            \\
+                        \abs{e^{-z}}         & < 1                               &
+                        \implies \quad e^{x} & > 1                                 \\
+                        x                    & > 0
+                    \end{align}
+                    Condition for $ e^{\bar{z}} = \overline{e^z} $,
+                    \begin{align}
+                        e^{\bar{z}}    & = e^{x}\ [\cos(y) - \i\ \sin(y)] &
+                        \overline{e^z} & = e^{x}\ [\cos(y) - \i\ \sin(y)]
+                    \end{align}
+                    This relation is identically true for all $ z $.
+
+              \item The given function is \textcolor{y_h}{harmonic}, using
+                    \begin{align}
+                        \frac{x^2 - y^2}{2} & = \lambda                          \\
+                        u                   & = e^{xy}\ \cos \lambda             \\
+                        u_x                 & = ye^{xy} \cos \lambda
+                        - xe^{xy} \sin\lambda                                    \\
+                        u_{xx}              & = e^{xy} \cos \lambda
+                        \ [y^2 - x^2] -  e^{xy}\ \sin\lambda
+                        \ [1 + 2xy]                                              \\
+                        u_y                 & = xe^{xy} \cos \lambda
+                        + ye^{xy} \sin\lambda                                    \\
+                        u_{yy}              & = e^{xy} \cos \lambda\ [x^2 - y^2]
+                        +  e^{xy}\ \sin\lambda\ [1 + 2xy]                        \\
+                        u_{xx} + u_{yy}     & = 0
+                    \end{align}
+                    Attempting to find a complex function whose real or imaginary part
+                    is $ u(x, y) $,
+                    \begin{align}
+                        f(z)   & = \exp(-\i\ z^2/2) = \exp\Bigg[xy
+                        + \frac{y^2 - x^2}{2}\ \i\Bigg]                         \\
+                        \Re{f} & = e^{xy} \cos\Bigg( \frac{y^2 - x^2}{2} \Bigg) \\
+                        \Im{f} & = e^{xy} \sin\Bigg( \frac{y^2 - x^2}{2} \Bigg)
+                    \end{align}
+                    Since $ f(z) $ is entire, its imaginary part is the harmonic
+                    conjugate of $ u $.
+
+              \item Using the two constraints,
+                    \begin{align}
+                        f'(z)           & = f(z)                     &
+                        f(z)            & = u(x, y) + \i\ v(x, y)      \\
+                        u_x + \i\ v_x   & = u + \i\ v                &
+                        -\i\ u_y + v_y  & = u + \i\ v                  \\
+                        u               & = A(x) \cdot B(y)          &
+                        u               & = c_1 e^x \cdot B(y)         \\
+                        u_{xx} + u_{yy} & = 0                        &
+                        B(y)            & = c_2 \cos(y) + c_3\sin(y)
+                    \end{align}
+                    Applying the ``boundary condition'',
+                    \begin{align}
+                        f(x + 0\ \i)           & = e^x                         &
+                        \implies \quad u(x, y) & = e^x\ [\cos y + c_3 \sin(y)]   \\
+                        v(x , y)               & = e^x[c_5\sin y]              &
+                        u_x                    & = v_y                           \\
+                        \implies \quad c_5     & = 1                           &
+                        c_3                    & = 0                             \\
+                        f(z)                   & = e^x \cos y + \i\ e^x \sin y
+                    \end{align}
+                    The parallel computation leading to $ v(x, y) $ is omitted.
+          \end{enumerate}
+
+    \item Finding the solutions,
+          \begin{align}
+              e^z & = 1                   \\
+              x   & = \color{y_h} 0     &
+              y   & = \color{y_p} 2n\pi
+          \end{align}
+
+    \item Finding the solutions,
+          \begin{align}
+              e^z & = 4 + 3\ \i                          \\
+              e^x & = \sqrt{4^2 + 3^2} = 5             &
+              x   & = \color{y_h}  \ln 5                 \\
+              y   & = \color{y_p} \arctan{3/4} + 2n\pi
+          \end{align}
+
+    \item No solution exists, since the modulus of $ e^z $ is $ e^x $ which is always
+          a positive real number.
+
+    \item Finding the solutions,
+          \begin{align}
+              e^z    & = -2 + 0\ \i                \\
+              e^x    & = \sqrt{-2^2 + 0^2} = 2   &
+              x      & = \color{y_h}  \ln 2        \\
+              \cos y & = -1 \qquad \sin y = 0    &
+              y      & = \color{y_p} \pi + 2n\pi
+          \end{align}
+\end{enumerate}

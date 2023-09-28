@@ -1,0 +1,438 @@
+\section{Electrostatic Fields}
+
+\begin{enumerate}
+    \item Using the standard result,
+          \begin{align}
+              \Phi      & = a \ln r + b              &
+              \Phi(2.5) & = 0, \qquad \Phi(40) = 220   \\
+              \Phi      & = 79.35*\ln r - 72.7
+          \end{align}
+
+    \item Using the standard result,
+          \begin{align}
+              \Phi    & = a \ln r + b             &
+              \Phi(1) & = 400, \qquad \Phi(2) = 0   \\
+              \Phi    & = -577.08*\ln r + 400
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {a = 79.35; b = -72.7;}]
+                  \begin{axis}[
+                          title = Problem 1,xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, enlargelimits = true,
+                          axis equal, grid = both, view = {0}{90},
+                          domain = -42:42, restrict y to domain = -42:42,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 5,
+                                  labels = false,
+                                  levels={0,40,80,120,160, 200, 220},
+                              },
+                          samples=100, thick,
+                      ] {0.5*a*ln(x^2 + y^2) + b};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}[declare function = {a = -577.08; b = 400;}]
+                  \begin{axis}[
+                          title = Problem 2,xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, enlargelimits = true,
+                          axis equal, grid = both, view = {0}{90},
+                          domain = -2:2, restrict y to domain = -2:2,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 5,
+                                  labels = false,
+                                  levels={0, 100, 200, 300, 400},
+                              },
+                          samples=100, thick,
+                      ] {0.5*a*ln(x^2 + y^2) + b};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the standard result,
+          \begin{align}
+              \Phi     & = a \ln r + b                &
+              \Phi(10) & = 10, \qquad \Phi(100) = -10   \\
+              \Phi     & = 79.35*\ln r - 72.7
+          \end{align}
+
+    \item Using the standard result,
+          \begin{align}
+              \Phi    & = a \ln r + b               &
+              \Phi(2) & = 300, \qquad \Phi(6) = 100   \\
+              \Phi    & = -577.08*\ln r + 400       &
+              \Phi(4) & = 173.8 < 200
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {a = -8.6859; b = 30;}]
+                  \begin{axis}[
+                          title = Problem 3,xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, enlargelimits = true,
+                          axis equal, grid = both, view = {0}{90},
+                          domain = -105:105, restrict y to domain = -105:105,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 5,
+                                  labels = false,
+                                  levels={-10,-6,-2,0,2,6,10},
+                              },
+                          samples=100, thick,
+                      ] {0.5*a*ln(x^2 + y^2) + b};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}[declare function = {a = -182.05; b = 426.19;}]
+                  \begin{axis}[
+                          title = Problem 4,xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, enlargelimits = true,
+                          axis equal, grid = both, view = {0}{90},
+                          domain = -6.5:6.5, restrict y to domain = -6.5:6.5,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 5,
+                                  labels = false,
+                                  levels={100,140,180,220,260,300},
+                              },
+                          samples=100, thick,
+                      ] {0.5*a*ln(x^2 + y^2) + b};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Since the logarithm falls faster at the beginning and slower later on,
+          the potential is less than the midway value at the midway radius.
+
+    \item Using the standard result,
+          \begin{align}
+              \Phi     & = ax + b                    &
+              \Phi(-5) & = 250, \qquad \Phi(5) = 500   \\
+              \Phi     & = 25x + 375                 &
+              \Psi     & = 25y
+          \end{align}
+
+    \item Using the standard result,
+          \begin{align}
+              \Phi      & = ax + b                      &
+              \Phi(y=x) & = 0, \qquad \Phi(y=x+k) = 220   \\
+              \Phi      & = a(y-x) + b                  &
+              \Phi      & = \frac{220}{k}\ (y-x)          \\
+              \Psi      & = \frac{-200}{k}\ (x + y)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {a = 25; b = 375;}]
+                  \begin{axis}[
+                          title = Problem 5,xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, enlargelimits = true,
+                          axis equal, view = {0}{90},
+                          domain = -6:6, restrict y to domain = -6:6,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 5,
+                                  labels = false,
+                                  levels={250,300,350,400,450,500},
+                              },
+                          samples=100, thick,
+                      ] {a*x + b};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}[declare function = {a = 220; b = 0;}]
+                  \begin{axis}[
+                          title = {Problem 6 with $ k = 1 $},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, enlargelimits = true,
+                          axis equal, view = {0}{90},
+                          domain = -0.5:2, restrict y to domain = -0.5:2,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 5,
+                                  labels = false,
+                                  levels={0,55,110,165,220},
+                              },
+                          samples=100, thick,
+                      ] {a*(y-x) + b};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the standard result,
+          \begin{align}
+              \Phi     & = ax + b                  &
+              \Phi(12) & = 20, \qquad \Phi(24) = 8   \\
+              \Phi     & = -x + 32                 &
+              \Psi     & = -y
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {a = -1; b = 32;}]
+                  \begin{axis}[
+                          title = Problem 7,xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, enlargelimits = true,
+                          axis equal, view = {0}{90},
+                          domain = 11:25,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  %   number = 5,
+                                  labels = false,
+                                  levels={20,18, 16,14,12,10,8},
+                              },
+                          samples=100, thick,
+                      ] {a*x + b};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the equipotential lines and the lines of force within the same
+          plot,
+          \begin{enumerate}
+              \item Expanding the function,
+                    \begin{align}
+                        F(z) & = z^2                     &
+                        F(z) & = (x^2 - y^2) + (2xy)\ \i
+                    \end{align}
+
+              \item Expanding the function,
+                    \begin{align}
+                        F(z) & = \i z^2                 &
+                        F(z) & = -2xy + \i\ (x^2 - y^2)
+                    \end{align}
+
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {\textcolor{y_h}{$\Phi(x, y)$} and
+                                            \textcolor{y_p}{$\Psi(x, y)$}},
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,Ani, enlargelimits = true,
+                                    axis equal, view = {0}{90},
+                                    domain = -10:10,
+                                ]
+                                \addplot3 [ contour/draw color={y_h},
+                                    contour gnuplot={
+                                            number = 9,
+                                            labels = false,
+                                        },
+                                    samples=100,
+                                ] {x^2 - y^2};
+                                \addplot3 [ contour/draw color={y_p},
+                                    contour gnuplot={
+                                            number = 9,
+                                            labels = false,
+                                        },
+                                    samples=100,
+                                ] {2*x*y};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {\textcolor{y_h}{$\Phi(x, y)$} and
+                                            \textcolor{y_p}{$\Psi(x, y)$}},
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,Ani, enlargelimits = true,
+                                    axis equal, view = {0}{90},
+                                    domain = -10:10,
+                                ]
+                                \addplot3 [ contour/draw color={y_h},
+                                    contour gnuplot={
+                                            number = 9,
+                                            labels = false,
+                                        },
+                                    samples=100,
+                                ] {-2*x*y};
+                                \addplot3 [ contour/draw color={y_p},
+                                    contour gnuplot={
+                                            number = 9,
+                                            labels = false,
+                                        },
+                                    samples=100,
+                                ] {x^2 - y^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Expanding the function,
+                    \begin{align}
+                        F(z) & = \frac{1}{z}                 &
+                        F(z) & = \frac{x - \i\ y}{x^2 + y^2}
+                    \end{align}
+
+              \item Expanding the function,
+                    \begin{align}
+                        F(z) & = \frac{\i}{z}               &
+                        F(z) & = \frac{y + \i x}{x^2 + y^2}
+                    \end{align}
+
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {\textcolor{y_h}{$\Phi(x, y)$} and
+                                            \textcolor{y_p}{$\Psi(x, y)$}},
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,Ani, enlargelimits = true,
+                                    axis equal, view = {0}{90},
+                                    domain = -1:1, restrict y to domain = -1:1,
+                                    xmin=-1,xmax =1,ymin=-1,ymax=1
+                                ]
+                                \addplot3 [ contour/draw color={y_h},
+                                    contour gnuplot={
+                                            levels = {-3,-2,-1,0,1,2,3},
+                                            labels = false,
+                                        },
+                                    samples=100,
+                                ] {x/(x^2 + y^2)};
+                                \addplot3 [ contour/draw color={y_p},
+                                    contour gnuplot={
+                                            levels= {-3,-2,-1,0,1,2,3},
+                                            labels = false,
+                                        },
+                                    samples=100,
+                                ] {-y/(x^2 + y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {\textcolor{y_h}{$\Phi(x, y)$} and
+                                            \textcolor{y_p}{$\Psi(x, y)$}},
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,Ani, enlargelimits = true,
+                                    axis equal, view = {0}{90},
+                                    domain = -1:1, restrict y to domain = -1:1,
+                                    xmin=-1,xmax =1,ymin=-1,ymax=1
+                                ]
+                                \addplot3 [ contour/draw color={y_h},
+                                    contour gnuplot={
+                                            levels= {-3,-2,-1,0,1,2,3},
+                                            labels = false,
+                                        },
+                                    samples=100,
+                                ] {y/(x^2 + y^2)};
+                                \addplot3 [ contour/draw color={y_p},
+                                    contour gnuplot={
+                                            levels = {-3,-2,-1,0,1,2,3},
+                                            labels = false,
+                                        },
+                                    samples=100,
+                                ] {x/(x^2 + y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+
+    \item Checking that the given function is harmonic,
+          \begin{align}
+              \Phi(r, \theta)                       & = \frac{\theta}{\pi} &
+              r^2 u_{rr} + r u_r + u_{\theta\theta} & = 0
+          \end{align}
+          The function satisfies Laplace's equation in polar coordinates and is thus
+          harmonic. On the positive and negative real axis, the potential is equal to,
+          \begin{align}
+              \Phi(x>0, y=0) & = \frac{0}{\pi} = 0   &
+              \Phi(x<0, y=0) & = \frac{\pi}{\pi} = 1
+          \end{align}
+          Using the Euler-Cauchy equations in Cartesian coordinates,
+          \begin{align}
+              \Phi_x  & = \frac{1}{\pi} \cdot \frac{-y}{x^2 + y^2} = \Psi_y &
+              -\Phi_y & = \frac{1}{\pi} \cdot \frac{-x}{x^2 + y^2} = \Psi_x   \\
+              \Psi    & = \frac{-1}{2\pi} \cdot \ln(x^2 + y^2) + f(x)       &
+              \Psi    & = \frac{-1}{2\pi} \cdot \ln(x^2 + y^2) + g(y)         \\
+              F(z)    & = \frac{\theta}{\pi} - \i\ \frac{\ln r}{\pi}        &
+                      & = \frac{-\i}{\pi}\ \Big[ \ln r + \i\ \theta \Big]     \\
+              F(z)    & = \frac{-\i\ \Ln{z}}{\pi}
+          \end{align}
+
+    \item The points to be mapped are $ (0 \to 1), (\infty \to \i), (-1 \to -\i) $
+          \begin{align}
+              \frac{w - 1}{w + \i} \cdot \Bigg[\frac{2\i}{\i - 1}\Bigg]
+                                   & = \frac{z}{z + 1} \cdot
+              \Bigg[ \frac{\infty + 1}{\infty}
+              \Bigg]               &
+              \frac{w - 1}{w + \i} & = \frac{(1+\i)z}{2z + 2}                         \\
+              w(z + 2 - z\i)       & = \i z + z + 2                                 &
+              w                    & = \color{y_p} \frac{\i z + 1 + \i}{z + 1 + \i}
+          \end{align}
+          Using the potential in Problem $ 9 $,
+          \begin{align}
+              \Phi(z)       & = \frac{\theta}{\pi}                         &
+              \abs{w} = 1   & \implies \abs{z + 1 + \i} = \abs{z + 1 - \i}   \\
+              \Re{z} > 0    & \implies \Phi(z) = 0                         &
+              \Re{z} < 0    & \implies \Phi(z) = 1                           \\
+              \Phi(0)       & = 0                                          &
+              \Phi(\infty)  & = 0, \qquad \Phi(-1) = \frac{-\pi}{-\pi} = 1   \\
+              0             & = \frac{\i z^* = \i + 1}{z + 1 + \i}         &
+              z^*           & = -1 + \i                                      \\
+              \Phi(-1 + \i) & = \frac{\Arg(\i + 1)}{\pi} = \frac{1}{4}
+          \end{align}
+
+    \item Using brute force,
+          \begin{align}
+              \abs{z - c}^2           & = k^2 \abs{z + c}^2             &
+              (x-c)^2 + y^2           & = k^2 \Big[(x + c)^2 + y^2\Big]   \\
+              x^2 + y^2 + c^2         & = \frac{1 + k^2}{1 - k^2}\ 2cx  &
+              \lambda                 & = \frac{1+k^2}{1 - k^2}           \\
+              (x - \lambda c)^2 + y^2 & = (\lambda^2 - 1)c^2
+          \end{align}
+          This is the equation of a circle.
+
+    \item Finding the potential,
+          \begin{align}
+              \Phi(x, y) & = -100\ xy + 500
+          \end{align}
+
+    \item Finding the potential,
+          \begin{align}
+              \arccos(z) & = w                                   &
+              z          & = \cos w                                \\
+              z          & = x + \i y                            &
+              w          & = u + \i v                              \\
+              z          & = \cos u \cosh v - \i\ \sin u \sinh v &
+              w          & = \Phi + \i\ \Psi
+          \end{align}
+          The equipotential lines are, $ \Phi = c $,
+          \begin{align}
+              \frac{x^2}{\cos^2 u} - \frac{y^2}{\sin^2 u} & = 1               &
+                                                          & \text{Hyperbolae}
+          \end{align}
+          The foci of these hyperbolae are $ c^2 = \cos^2 u + \sin^2 u = 1 $, giving
+          $ c = \pm 1 $.
+
+    \item Since the line $ x = 0 $ is one of the equipotential lines in the potential
+          plot of Problem $ 13 $, This vertical line can be replaced by another
+          equipotential surface without changing the nature of the rest of the lines in
+          the right-half plane.
+
+    \item The pair of straight lines is
+          \begin{align}
+              y & = \pm \frac{x}{\sqrt{3}} & x^3 - 3xy^2 & = 0
+          \end{align}
+          This means that the potential itself is of the form,
+          \begin{align}
+              \Phi(x, y) & = a(x^3 - 3xy^2) + b                &
+              \Phi(C_1)  & = 0, \qquad \Phi(C_2) = 220           \\
+              \Phi       & = 220x(3y^2 - x^2)                  &
+              z          & = x + \i y                            \\
+              z^3        & = x(x^2 - 3y^2) + \i\ y(3x^2 - y^2) &
+              \Phi       & = \Re{z^3} \implies \Psi = \Im{z^3}   \\
+              F(z)       & = 220\ z^3
+          \end{align}
+
+\end{enumerate}

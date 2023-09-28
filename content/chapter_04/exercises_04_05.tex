@@ -44,60 +44,62 @@
           \begin{figure}[H]
               \centering
               \pgfplotstableread[col sep=comma]{./tables/van_der_pol_many.csv}\anitable
-              \begin{subfigure}[b]{0.48\textwidth}
-                  \begin{tikzpicture}
-                      \begin{axis}[
-                              % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
-                              % restrict y to domain = -1:1,
-                              xlabel = $ y_1 $,
-                              ylabel = $ y_2 $,
-                              axis equal,
-                              width = 8cm,
-                              legend pos = north west,
-                              legend style={nodes={scale=0.75}},
-                              grid = both,
-                              Ani]
-                          \addplot[GraphSmooth, color = red5] table[x index=0,y index=1,
-                                  col sep=comma, ]{\anitable};
-                          \addlegendentry{$\mu = 0.2$}
-                          \addplot[GraphSmooth, color = yellow8] table[x index=2,y index=3,
-                                  col sep=comma, ]{\anitable};
-                          \addlegendentry{$\mu = 0.4$}
-                          \addplot[GraphSmooth, color = green8] table[x index=4,y index=5,
-                                  col sep=comma, ]{\anitable};
-                          \addlegendentry{$\mu = 0.6$}
-                          \addplot[GraphSmooth, color = blue3] table[x index=6,y index=7,
-                                  col sep=comma, ]{\anitable};
-                          \addlegendentry{$\mu = 0.8$}
-                      \end{axis}
-                  \end{tikzpicture}
-              \end{subfigure}
-              \hfill
-              \begin{subfigure}[b]{0.48\textwidth}
-                  \begin{tikzpicture}
-                      \begin{axis}[
-                              % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
-                              % restrict y to domain = -1:1,
-                              xlabel = $ y_1 $,
-                              ylabel = $ y_2 $,
-                              axis equal,
-                              width = 8cm,
-                              legend pos = north west,
-                              legend style={nodes={scale=0.75}},
-                              grid = both,
-                              Ani]
-                          \addplot[GraphSmooth, color = red5] table[x index=8,y index=9,
-                                  col sep=comma, ]{\anitable};
-                          \addlegendentry{$\mu = 1.0$}
-                          \addplot[GraphSmooth, color = green8] table[x index=10,y index=11,
-                                  col sep=comma, ]{\anitable};
-                          \addlegendentry{$\mu = 1.5$}
-                          \addplot[GraphSmooth, color = blue3] table[x index=12,y index=13,
-                                  col sep=comma, ]{\anitable};
-                          \addlegendentry{$\mu = 2.0$}
-                      \end{axis}
-                  \end{tikzpicture}
-              \end{subfigure}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                          % restrict y to domain = -1:1,
+                          xlabel = $ y_1 $,
+                          ylabel = $ y_2 $,
+                          axis equal,
+                          width = 8cm,
+                          legend pos = north west,
+                          legend style={nodes={scale=0.75}},
+                          grid = both,
+                          colormap/hot,
+                          cycle list = {[samples of colormap = 4]},
+                          Ani]
+                      \addplot+[thick] table[x index=0,y index=1,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$\mu = 0.2$}
+                      \addplot+[thick]
+                      table[x index=2,y index=3,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$\mu = 0.4$}
+                      \addplot+[thick] table[x index=4,y index=5,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$\mu = 0.6$}
+                      \addplot+[thick] table[x index=6,y index=7,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$\mu = 0.8$}
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                          % restrict y to domain = -1:1,
+                          xlabel = $ y_1 $,
+                          ylabel = $ y_2 $,
+                          axis equal,
+                          width = 8cm,
+                          legend pos = north west,
+                          legend style={nodes={scale=0.75}},
+                          grid = both,
+                          colormap/hot,
+                          cycle list = {[samples of colormap = 3]},
+                          Ani]
+                      \addplot+[thick] table[x index=8,y index=9,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$\mu = 1.0$}
+                      \addplot+[thick]
+                      table[x index=10,y index=11,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$\mu = 1.5$}
+                      \addplot+[thick]
+                      table[x index=12,y index=13,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$\mu = 2.0$}
+                  \end{axis}
+              \end{tikzpicture}
           \end{figure}
           All the simulations have initial condition $ (1, 0) $. The spiraling of the
           individual trajectories into the limit cycle is not plotted here, for the sake
@@ -214,13 +216,13 @@
 
     \item Finding critical points,
           \begin{align}
-              y_1'         & = y_2(1 - y_2)          &
-              y_2'         & = y_1(1 - y_1)            \\
-              y_2(1 - y_2) & = 0                     &
-              y_1(1 - y_1) & = 0                       \\
-              P_1          & = \color{y_h}(0, 0)     &
-              P_2          & = \color{y_p} (0, 1)      \\
-              P_3          & = \color{brown6} (1, 0) &
+              y_1'         & = y_2(1 - y_2)         &
+              y_2'         & = y_1(1 - y_1)           \\
+              y_2(1 - y_2) & = 0                    &
+              y_1(1 - y_1) & = 0                      \\
+              P_1          & = \color{y_h}(0, 0)    &
+              P_2          & = \color{y_p} (0, 1)     \\
+              P_3          & = \color{y_t} (1, 0)   &
               P_4          & = \color{blue2} (1, 1)
           \end{align}
           Linearizing the system for $ P_1 $
@@ -250,7 +252,7 @@
               \vec{y'}       & = \bmattt{0}{1}{-1}{0} \vec{y} &
               0              & = \lambda^{2} + 1                \\
               p = 0 \qquad q & > 0 \qquad \Delta < 0          &
-                             & \color{brown6} \text{Center}
+                             & \color{y_t} \text{Center}
           \end{align}
           Linearizing the system for $ P_4 $
           \begin{align}
@@ -266,14 +268,14 @@
 
     \item Finding critical points,
           \begin{align}
-              y'' - 9y + y^{3}       & = 0                       \\
-              y_1'                   & = y_2                   &
-              y_2'                   & = y_1(9 - y_1^{2})        \\
-              y_2                    & = 0                     &
-              y_1 (y_1 - 3)(y_1 + 3) & = 0                       \\
-              P_1                    & = \color{y_h}(0, 0)     &
-              P_2                    & = \color{y_p} (-3, 0)     \\
-              P_3                    & = \color{brown6} (3, 0)
+              y'' - 9y + y^{3}       & = 0                     \\
+              y_1'                   & = y_2                 &
+              y_2'                   & = y_1(9 - y_1^{2})      \\
+              y_2                    & = 0                   &
+              y_1 (y_1 - 3)(y_1 + 3) & = 0                     \\
+              P_1                    & = \color{y_h}(0, 0)   &
+              P_2                    & = \color{y_p} (-3, 0)   \\
+              P_3                    & = \color{y_t} (3, 0)
           \end{align}
           Linearizing the system for $ P_1 $
           \begin{align}
@@ -302,19 +304,19 @@
               \vec{y'}       & = \bmattt{0}{1}{-18}{0} \vec{y} &
               0              & = \lambda^{2} + 18                \\
               p = 0 \qquad q & > 0 \qquad \Delta < 0           &
-                             & \color{brown6} \text{Center}
+                             & \color{y_t} \text{Center}
           \end{align}
 
     \item Finding critical points,
           \begin{align}
-              y'' + y - y^{3}        & = 0                       \\
-              y_1'                   & = y_2                   &
-              y_2'                   & = y_1(y_1^{2} - 1)        \\
-              y_2                    & = 0                     &
-              y_1 (y_1 + 1)(y_1 - 1) & = 0                       \\
-              P_1                    & = \color{y_h}(0, 0)     &
-              P_2                    & = \color{y_p} (-1, 0)     \\
-              P_3                    & = \color{brown6} (1, 0)
+              y'' + y - y^{3}        & = 0                     \\
+              y_1'                   & = y_2                 &
+              y_2'                   & = y_1(y_1^{2} - 1)      \\
+              y_2                    & = 0                   &
+              y_1 (y_1 + 1)(y_1 - 1) & = 0                     \\
+              P_1                    & = \color{y_h}(0, 0)   &
+              P_2                    & = \color{y_p} (-1, 0)   \\
+              P_3                    & = \color{y_t} (1, 0)
           \end{align}
           Linearizing the system for $ P_1 $
           \begin{align}
@@ -336,14 +338,14 @@
           \end{align}
           Linearizing the system for $ P_3 $
           \begin{align}
-              z_1            & = y_1 - 1                          &
-              z_2            & = y_2                                \\
-              z_1'           & = z_2                              &
-              z_2'           & = (z_1 + 1)(z_1)(2 + z_1)            \\
-              \vec{y'}       & = \bmattt{0}{1}{2}{0} \vec{y}      &
-              0              & = \lambda^{2} - 2                    \\
-              p = 0 \qquad q & < 0 \qquad \Delta > 0              &
-                             & \color{brown6} \text{Saddle point}
+              z_1            & = y_1 - 1                       &
+              z_2            & = y_2                             \\
+              z_1'           & = z_2                           &
+              z_2'           & = (z_1 + 1)(z_1)(2 + z_1)         \\
+              \vec{y'}       & = \bmattt{0}{1}{2}{0} \vec{y}   &
+              0              & = \lambda^{2} - 2                 \\
+              p = 0 \qquad q & < 0 \qquad \Delta > 0           &
+                             & \color{y_t} \text{Saddle point}
           \end{align}
 
     \item Finding critical points,
@@ -453,7 +455,7 @@
                              & \color{y_p} \text{Saddle point}
           \end{align}
 
-    \item
+    \item Ploting the graphs,
           \begin{enumerate}
               \item Van der Pol equation,
                     \begin{align}
@@ -474,22 +476,23 @@
                         z''' - ( 1 - z'^2)\mu z''
                         + z'                                                 & = 0 \\
                     \end{align}
-                    Using the substitution $ z' \rightarrow y $, the above equation
+                    Using the substitution $ z' \to y $, the above equation
                     reduces to the Van der Pol ODE.
               \item Duffing equation,
                     \begin{align}
-                        y'' + \omega_0^{2}y + \beta y^{3}  & = 0                                \\
-                        y_1'                               & = y_2                            &
+                        y'' + \omega_0^{2}y + \beta y^{3}  & = 0                   \\
+                        y_1'                               & = y_2               &
                         y_2'                               & = -y_1(\omega_0^{2}
-                        + \beta y_1^{2})                                                        \\
-                        y_2                                & = 0                              &
-                        -y_1(\omega_0^{2} + \beta y_1^{2}) & = 0                                \\
-                        P_1                                & = \color{y_h}(0, 0)              &
+                        + \beta y_1^{2})                                           \\
+                        y_2                                & = 0                 &
+                        -y_1(\omega_0^{2} + \beta y_1^{2}) & = 0                   \\
+                        P_1                                & = \color{y_h}(0, 0) &
                         P_2                                & = \color{y_p}
-                        (-\alpha, 0)                                                            \\
-                        P_2                                & = \color{brown6}
+                        (-\alpha, 0)                                               \\
+                        P_2                                & = \color{y_t}
                         (\alpha, 0)                        &
-                        \alpha                             & = \frac{\omega_0}{\sqrt{-\beta}}
+                        \alpha                             &
+                        = \frac{\omega_0}{\sqrt{-\beta}}
                     \end{align}
                     $ P_2 $ and $ P_3 $ require $ \beta < 0 $ in order to exist. \par
                     Linearizing the system for $ P_1 $
@@ -519,7 +522,7 @@
                         \vec{y'}       & = \bmattt{0}{1}{\omega_0^{2}}{0} \vec{y}    &
                         0              & = \lambda^{2} - \omega_0^{2}                  \\
                         p = 0 \qquad q & < 0 \qquad \Delta > 0                       &
-                                       & \color{brown6} \text{Saddle point}
+                                       & \color{y_t} \text{Saddle point}
                     \end{align}
           \end{enumerate}
 
@@ -537,19 +540,18 @@
                   \begin{axis}[
                           set layers,
                           enlargelimits = true,
-                          colorbar,
                           colormap/jet,
-                          width = 12cm,
                           height = 12cm,
                           Ani, grid = both,
                           axis equal,
+                          colormap/viridis,
                           view     = {0}{90}, % for a view 'from above'
                       ]
                       \addplot3 [
                           domain = -10:10,
                           thick,
                           contour gnuplot={
-                                  levels={-3,-1,...,11},
+                                  levels={1,10,20,40},
                                   labels=false,
                               },
                           samples=200

@@ -1,0 +1,557 @@
+\section{Residue Integration Method}
+
+\begin{enumerate}
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{9z + \i}{z(z + \i)(z - \i)}   \\
+              z_1                 & = \color{y_h} \i                    &
+              \Res_{z = z_1} f(z) & = \color{y_p} -5\i                    \\
+              z_2                 & = \color{y_h} -\i                   &
+              \Res_{z = z_2} f(z) & = \color{y_p} 4\i                     \\
+              z_3                 & = \color{y_h} 0                     &
+              \Res_{z = z_3} f(z) & = \color{y_p} \i
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{50z}{z^3 + 2z^2 - 7z + 4}        &
+              f(z)                & = \frac{50z}{(z-1)^2(z + 4)}               \\
+              z_1                 & = \color{y_h} -4                         &
+              \Res_{z = z_1} f(z) & = \color{y_p} -8                           \\
+              z_2                 & = \color{y_h} 1                          &
+              \Res_{z = z_2} f(z) & = \lim_{z \to z_2} \diff* {\ \Bigg[
+              \frac{50z}{z+4}\Bigg]}{z}                                        \\
+              \Res_{z = z_2} f(z) & = \lim_{z \to z_2} \frac{200}{(z + 4)^2} &
+              \Res_{z = z_2} f(z) & = \color{y_p} 8
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{\sin(2z)}{z^6}                       \\
+              z_1                 & = \color{y_h} 0                            &
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{1}{5!}\ \diff*[5]
+              {\ \Big[ \sin(2z) \Big]}{z}                                        \\
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{2^5\cos(2z)}{5!}  &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{4}{15}
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{\cos(z)}{z^4}                        \\
+              z_1                 & = \color{y_h} 0                            &
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{1}{3!}\ \diff*[3]
+              {\ \Big[ \cos(z) \Big]}{z}                                         \\
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{\sin z}{3!}       &
+              \Res_{z = z_1} f(z) & = \color{y_p} 0
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{8}{1 + z^2}          &
+              f(z)                & = \frac{8}{(z + \i)(z - \i)}   \\
+              z_1                 & = \color{y_h} \i             &
+              \Res_{z = z_1} f(z) & = \color{y_p} -4\i             \\
+              z_2                 & = \color{y_h} -\i            &
+              \Res_{z = z_2} f(z) & = \color{y_p} 4\i
+          \end{align}
+
+    \item Finding the residues, using the Laurent series,
+          \begin{align}
+              f(z)                & = \tan z                                    &
+              f(z)                & = \frac{p(z)}{q(z)} = \frac{\sin z}{\cos z}   \\
+              z_n                 & = \color{y_h} n\pi + \frac{\pi}{2}          &
+              \Res_{z = z_n} f(z) & = \lim_{z \to z_n} \frac{p(z_n)}{q'(z_n)}     \\
+              \Res_{z = z_n} f(z) & = \color{y_p} -1
+          \end{align}
+
+    \item Finding the residues, using the Laurent series,
+          \begin{align}
+              f(z)                & = \cot(\pi z)                             &
+              f(z)                & = \frac{p(z)}{q(z)} = \frac{\cos(\pi z)}
+              {\sin(\pi z)}                                                     \\
+              z_n                 & = \color{y_h} n \quad \in \mathcal{I}     &
+              \Res_{z = z_n} f(z) & = \lim_{z \to z_n} \frac{p(z_n)}{q'(z_n)}   \\
+              \Res_{z = z_n} f(z) & = \color{y_p} \frac{1}{\pi}
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{\pi}{(z^2 - 1)^2}                  &
+              f(z)                & = \frac{\pi}{(z-1)^2(z + 1)^2}               \\
+              z_1                 & = \color{y_h} 1                            &
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \diff* {\ \Bigg[
+              \frac{\pi}{(z+1)^2}\Bigg]}{z}                                      \\
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{-2\pi}{(z + 1)^3} &
+              \Res_{z = z_1} f(z) & = \color{y_p} -\frac{\pi}{4}                 \\
+              z_2                 & = \color{y_h} -1                           &
+              \Res_{z = z_2} f(z) & = \lim_{z \to z_2} \diff* {\ \Bigg[
+              \frac{\pi}{(z-1)^2}\Bigg]}{z}                                      \\
+              \Res_{z = z_2} f(z) & = \lim_{z \to z_2} \frac{-2\pi}{(z - 1)^3} &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{\pi}{4}
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{1}{1 - e^z}                         \\
+              z_n                 & = \color{y_h} 2n\pi\ \i                   &
+              \Res_{z = z_n} f(z) & = \lim_{z \to z_n} \frac{p(z_n)}{q'(z_n)}   \\
+              \Res_{z = z_n} f(z) & = \color{y_p} -1
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{z^4}{z^2 - \i z + 2}    &
+              f(z)                & = \frac{z^4}{(z - 2\i)(z + \i)}   \\
+              z_1                 & = \color{y_h} 2\i               &
+              \Res_{z = z_1} f(z) & = \color{y_p} -\frac{16\i}{3}     \\
+              z_2                 & = \color{y_h} -\i               &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{\i}{3}
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{e^z}{(z - \pi\i)^3}                  \\
+              z_1                 & = \color{y_h} \pi\i                        &
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{1}{2!}\ \diff*[2]
+              {\ \Big[ e^z \Big]}{z}                                             \\
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{e^z}{2!}          &
+              \Res_{z = z_1} f(z) & = \color{y_p} -\frac{1}{2}
+          \end{align}
+
+    \item Finding the residues, using the Laurent expansion,
+          \begin{align}
+              f(z)                & = e^{1/(1-z)}                        &
+              z_n                 & = \color{y_h} 1                        \\
+              w                   & = z-1                                &
+              f(w)                & = e^{-1/w}                             \\
+              f(z)                & = \iser[n]{0} \frac{(-1)^n}{w^n\ n!} &
+              b_1                 & = -1                                   \\
+              \Res_{z = z_n} f(z) & = b_1                                &
+              \Res_{z = z_n} f(z) & = \color{y_p} -1
+          \end{align}
+
+    \item Program written in \texttt{sympy} anc results verified. Program only
+          works for poles of finite order.
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{z - 23}{z^2 - 4z - 5}   &
+              f(z)                & = \frac{z - 23}{(z - 5)(z + 1)}   \\
+              z_1                 & = \color{y_h} 5                 &
+              \Res_{z = z_1} f(z) & = \color{y_p} -3                  \\
+              z_2                 & = \color{y_h} -1                &
+              \Res_{z = z_2} f(z) & = \color{y_p} 4
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z - 2 - \i} = 3.2   &
+              I & = 2\pi\i\ (4 - 3) = 2\pi\i
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \tan(2\pi z)                          &
+              f(z)                & = \frac{\sin(2\pi z)}{\cos(2\pi z)}       \\
+              z_n                 & = \color{y_h} \frac{n}{2} + \frac{1}{4} &
+              \Res_{z = z_n} f(z) & = \frac{p(z_n)}{q'(z_n)}                  \\
+                                  & = \color{y_p} -\frac{1}{2\pi}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z - 0.2} = 0.2 &
+              I & = 2\pi\i\ (-1) = -\i
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$\abs{z - 2 - \i} = 3.2$},
+                          xmin = -2, xmax = 6,
+                          ymin = -4, ymax = 6,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h,
+                          fill opacity = 0.05,even odd rule]
+                      (axis cs:2,1) circle (3.2);
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ z_2 $}] at (axis cs:-1, 0){};
+                      \node[GraphNode, fill = y_p,label =
+                              {left:\color{y_p} $ z_1 $}] at (axis cs:5, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z - 0.2} = 0.2 $},
+                          xmin = -1, xmax = 1,
+                          ymin = -0.5, ymax = 0.5,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h, fill opacity = 0.05]
+                      (axis cs:0.2,0) circle (0.2);
+                      \node[GraphNode, fill = y_p] at (axis cs:0.25, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0.75, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-0.25, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-0.75, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z) & = \exp(1/z)                     &
+              f(z) & = \iser[n]{0} \frac{1}{z^n\ n!}   \\
+              b_1  & = 1                             &
+              C    & : \abs{z} = 1                     \\
+              I    & = 2\pi\i\ b_1 = 2\pi \i
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{e^z}{\cos z}                    &
+              f(z)                & = \frac{p(z)}{q(z)}                       \\
+              z_n                 & = \color{y_h} n\pi + \frac{\pi}{2}      &
+              \Res_{z = z_n} f(z) & = \frac{p(z_n)}{q'(z_n)}                  \\
+              \Res_{z = z_n} f(z) & = \color{y_p} \frac{\exp(n\pi + \pi/2)}
+              {(-1)^{n+1}}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z - 0.2} = 0.2              &
+              I & = 2\pi\i\ (e^{-\pi/2} - e^{\pi/2})   \\
+              I & = -4\pi\i\ \sinh(\pi/2)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$\abs{z} = 1$},
+                          xmin = -1.1, xmax = 1.1,
+                          ymin = -1.1, ymax = 1.1,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h,
+                          fill opacity = 0.05,even odd rule]
+                      (axis cs:0,0) circle (1);
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ e_1 $}] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z - \i \pi/2} = 4.5 $},
+                          xmin = -6, xmax = 6,
+                          ymin = -4, ymax = 8,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h, fill opacity = 0.05]
+                      (axis cs:0,1.571) circle (4.5);
+                      \node[GraphNode, fill = y_p] at (axis cs:1.571, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:4.712, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-1.571, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-4.712, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{z + 1}{z^4 - 2z^3}         &
+              f(z)                & = \frac{z+1}{z^3(z - 2)}             \\
+              z_1                 & = \color{y_h} 0                    &
+              \Res_{z = z_1} f(z) & = \frac{1}{2!}\ \diff*[2]{\ \Bigg[
+              \frac{z+1}{z-2} \Bigg]}{z}                                 \\
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{1}{2}
+              \ \frac{6}{(z-2)^3} &
+              \Res_{z = z_1} f(z) & = \color{y_p} -\frac{3}{8}           \\
+              z_2                 & = \color{y_h} 2                    &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{3}{8}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z - 1} = 2      &
+              I & = 2\pi\i\ (-3/8 + 3/8)   \\
+              I & = 0
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{\sinh z}{2z - \i}               \\
+              z_1                 & = \color{y_h} 0.5\i                   &
+              \Res_{z = z_1} f(z) & = \color{y_p} \sin(0.5)\ \frac{\i}{2}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z - 2\i} = 2                             &
+              I & = 2\pi\i\ \Bigg[ \frac{\i\ \sin(0.5)}{2} \Bigg]   \\
+              I & = -\pi\sin(0.5)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$\abs{z - 1} = 2$},
+                          xmin = -1.5, xmax = 3.5,
+                          ymin = -2.5, ymax = 2.5,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h,
+                          fill opacity = 0.05,even odd rule]
+                      (axis cs:1,0) circle (2);
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ z_2 $}] at (axis cs:2, 0){};
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ z_1 $}] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z - 2\i} = 2 $},
+                          xmin = -2.5, xmax = 2.5,
+                          ymin = -0.5, ymax = 4.5,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h, fill opacity = 0.05]
+                      (axis cs:0,2) circle (2);
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ z_1 $}] at (axis cs:0, 0.5){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                    & = \frac{1}{(z^2 + 1)^3}            &
+              f(z)                    & = \frac{1}{(z + \i)^3(z - \i)^3}     \\
+              z_1                     & = \color{y_h} \i                   &
+              \Res_{z = z_1} f(z)     & = \frac{1}{2!}\ \diff*[2]{\ \Bigg[
+              \frac{1}{(z + \i)^3} \Bigg]}{z}                                \\
+              \Res_{z = z_1} f(z)     & = \lim_{z \to z_1} \frac{1}{2}
+              \ \frac{12}{(z + \i)^5} &
+              \Res_{z = z_1} f(z)     & = \color{y_p} -\frac{3\i}{16}        \\
+              z_2                     & = \color{y_h} -\i                  &
+              \Res_{z = z_2} f(z)     & = \frac{1}{2!}\ \diff*[2]{\ \Bigg[
+              \frac{1}{(z - \i)^3} \Bigg]}{z}                                \\
+              \Res_{z = z_2} f(z)     & = \lim_{z \to z_2} \frac{1}{2}
+              \ \frac{12}{(z - \i)^5} &
+              \Res_{z = z_2} f(z)     & = \color{y_p} \frac{3\i}{16}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z - \i} = 3          &
+              I & = 2\pi\i\ (3\i/16 - 3\i/16)   \\
+              I & = 0
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{\cos(\pi z)}{z^5}                \\
+              z_1                 & = \color{y_h} 0                        &
+              \Res_{z = z_1} f(z) & = \frac{1}{4!}\ \diff*[4]{\ \Big[
+              \cos(\pi z) \Big]}{z}                                          \\
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{1}{4!}\ \pi^4
+              \ \cos(\pi z)       &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{\pi^4}{24}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z} = 0.5                          &
+              I & = 2\pi\i\ \Bigg[ \frac{\pi^4}{24} \Bigg]   \\
+              I & = \frac{\pi^5}{12}\ \i
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$\abs{z - \i} = 3$},
+                          xmin = -4, xmax = 4,
+                          ymin = -3, ymax = 5,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h,
+                          fill opacity = 0.05,even odd rule]
+                      (axis cs:0,1) circle (3);
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ z_1 $}] at (axis cs:0, 1){};
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ z_2 $}] at (axis cs:0, -1){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z} = 0.5 $},
+                          xmin = -0.7, xmax = 0.7,
+                          ymin = -0.7, ymax = 0.7,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h, fill opacity = 0.05]
+                      (axis cs:0,0) circle (0.5);
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ z_1 $}] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{z^2 \sin z}{4z^2 - 1}                 &
+              f(z)                & = \frac{0.25\ z^2 \sin z}{(z + 0.5)(z - 0.5)}   \\
+              z_1                 & = \color{y_h} 0.5                             &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{\sin(0.5)}{16}              \\
+              z_2                 & = \color{y_h} -0.5                            &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{\sin(0.5)}{16}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z} = 1                &
+              I & = 2\pi\i\ (R_1 + R_2)          \\
+              I & = \frac{\pi\sin(0.5)}{4}\ \i
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{30z^2 - 23z + 5}{(2z-1)^2(3z-1)} &
+              f(z)                & = \frac{1}{12} \cdot
+              \frac{30z^2 - 23z + 5}{(z - 1/2)^2(z - 1/3)}                     \\
+              z_1                 & = \color{y_h} 0.5                        &
+              \Res_{z = z_1} f(z) & = \frac{1}{12}\ \diff*{\ \Bigg[
+              \frac{30z^2 - 23z + 5}{(z - 1/3)} \Bigg]}{z}                     \\
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \frac{1}{2}
+              \ \frac{45z^2 - 30z + 4}
+              {(3z - 1)^2}        &
+              \Res_{z = z_1} f(z) & = \color{y_p} 0.5                          \\
+              z_2                 & = \color{y_h} 1/3                        &
+              \Res_{z = z_2} f(z) & = \color{y_p} 2
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z} =  1      &
+              I & = 2\pi\i\ (0.5 + 2)   \\
+              I & = 5\pi\i
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$\abs{z} = 1$},
+                          xmin = -1.2, xmax = 1.2,
+                          ymin = -1.2, ymax = 1.2,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h,
+                          fill opacity = 0.05,even odd rule]
+                      (axis cs:0,0) circle (1);
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ z_1 $}] at (axis cs:0.5, 0){};
+                      \node[GraphNode, fill = y_p,label =
+                              {left:\color{y_p} $ z_2 $}] at (axis cs:-0.5, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z} = 1 $},
+                          xmin = -1.2, xmax = 1.2,
+                          ymin = -1.2, ymax = 1.2,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h, fill opacity = 0.05]
+                      (axis cs:0,0) circle (1);
+                      \node[GraphNode, fill = y_p,label =
+                              {right:\color{y_p} $ z_1 $}] at (axis cs:0.5, 0){};
+                      \node[GraphNode, fill = y_p,label =
+                              {left:\color{y_p} $ z_2 $}] at (axis cs:0.33, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{e^{-z^2}}{\sin(4z)}                     \\
+              z_n                 & = \color{y_h} \frac{n\pi}{4}                  &
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_n} \frac{e^{-z^2}}{4\cos(4z)}   \\
+              \Res_{z = z_1} f(z) & = \color{y_p} \exp\Big[- \Big( \frac{n\pi}{4}
+                  \Big)^2 \Big] \cdot \frac{(-1)^n}{4}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z} = 1.5                                              &
+              I & = 2\pi\i\ (R_{-1} + R_0 + R_1)                                 \\
+              I & = 2\pi\i\ \Bigg[ \frac{1}{4} - \frac{e^{-\pi^2/16}}{2}\Bigg]
+          \end{align}
+
+    \item Finding the residues,
+          \begin{align}
+              f(z)                & = \frac{z \cosh(\pi z)}{z^4 + 13z^2 + 36}   &
+              f(z)                & = \frac{z \cosh(\pi z)}{(z^2 + 9)(z^2 + 4)}   \\
+              z_1                 & = \color{y_h} 3\i                           &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{1}{10}                    \\
+              z_2                 & = \color{y_h} -3\i                          &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{1}{10}                    \\
+              z_3                 & = \color{y_h} 2\i                           &
+              \Res_{z = z_3} f(z) & = \color{y_p} \frac{1}{10}                    \\
+              z_4                 & = \color{y_h} -2\i                          &
+              \Res_{z = z_4} f(z) & = \color{y_p} \frac{1}{10}
+          \end{align}
+          Finding the integral,
+          \begin{align}
+              C & : \abs{z} =  \pi             &
+              I & = 2\pi\i\ \cdot \frac{4}{10}   \\
+              I & = 0.8\pi\ \i
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$\abs{z} = 1.5$},
+                          xmin = -1.8, xmax = 1.8,
+                          ymin = -1.8, ymax = 1.8,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h,
+                          fill opacity = 0.05,even odd rule]
+                      (axis cs:0,0) circle (1.5);
+                      \node[GraphNode, fill = y_p,] at (axis cs:0.78, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:1.571, 0){};
+                      \node[GraphNode, fill = y_p,] at (axis cs:-0.78, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-1.571, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z} = \pi $},
+                          xmin = -3.2, xmax = 3.2,
+                          ymin = -3.2, ymax = 3.2,
+                          grid = both,Ani,
+                      ]
+                      \draw[draw=y_h,fill=y_h, fill opacity = 0.05]
+                      (axis cs:0,0) circle (3.14);
+                      \node[GraphNode, fill = y_p,label =
+                              {below:\color{y_p} $ z_1 $}] at (axis cs:0, 3){};
+                      \node[GraphNode, fill = y_p,label =
+                              {above:\color{y_p} $ z_2 $}] at (axis cs:0, -3){};
+                      \node[GraphNode, fill = y_p,label =
+                              {below:\color{y_p} $ z_3 $}] at (axis cs:0, 2){};
+                      \node[GraphNode, fill = y_p,label =
+                              {above:\color{y_p} $ z_4 $}] at (axis cs:0, -2){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+\end{enumerate}

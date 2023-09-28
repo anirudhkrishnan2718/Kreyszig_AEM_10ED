@@ -22,9 +22,9 @@
     \item The effect of $ c $ is to prevent the output being a pure cosine series by
           introducing sine terms proportional to the damping.
           \begin{align}
-              B_n             & \propto c                  &
-              c \rightarrow 0 & \implies B_n \rightarrow 0   \\
-              C_n             & \rightarrow A_n
+              B_n     & \propto c          &
+              c \to 0 & \implies B_n \to 0   \\
+              C_n     & \to A_n
           \end{align}
           In the limit of very large $ c $, $ B_n \gg  A_n $ and the output is completely
           out of phase with the input.
@@ -206,7 +206,7 @@
               b_n & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \ \sin(nx)\ \dl x
               = \frac{2}{\pi} \int_{0}^{\pi} (1) \sin(nx)\ \dl x               \\
                   & = -\frac{2}{\pi}\Bigg[ \frac{\cos(nx)}{n} \Bigg]_{0}^{\pi}
-              = \color{brown6} \frac{2}{n\pi}\ [1 - \cos(n\pi)]
+              = \color{y_t} \frac{2}{n\pi}\ [1 - \cos(n\pi)]
           \end{align}
           Using a guess for the solution, and solving the nh-ODE,
           \begin{align}
@@ -324,7 +324,7 @@
                   + \frac{6}{n^4} \right) +
                   \cos(nx) \left( \frac{x(x^2 - \pi^2)}{n} - \frac{6x}{n^3} \right)
               \Bigg]_{0}^{\pi}                                                        \\
-                   & = \color{brown6} -\frac{12}{n^3}\ \cos(n\pi)                     \\
+                   & = \color{y_t} -\frac{12}{n^3}\ \cos(n\pi)                        \\
               r(t) & = \iser[n]{1} \frac{-12\cos(n\pi)}{n^3}\ \sin(nt)
           \end{align}
           Using the standard result for a sinusoidal input to a damped oscillator,
@@ -369,7 +369,7 @@
                   - \frac{x\cos(nx)}{n} \Bigg]_{0}^{\pi/2} +
               \frac{2}{\pi} \Bigg[ \frac{(x-\pi)\cos(nx)}{n} - \frac{\sin(nx)}{n^2}
               \Bigg]_{\pi/2}^{\pi}                                         \\
-                   & = \color{brown6} \frac{4}{\pi n^2}\ \sin(n\pi/2)      \\
+                   & = \color{y_t} \frac{4}{\pi n^2}\ \sin(n\pi/2)         \\
               r(t) & = \iser[n]{1} \frac{4\sin(n\pi/2)}{\pi n^2}\ \sin(nt)
           \end{align}
           Using the standard result for a sinusoidal input to a damped oscillator,
@@ -414,7 +414,7 @@
           \end{align}
           Finding the Fourier series representation of the input, (even function),
           \begin{align}
-              b_n & = \color{brown6} 0                                                 \\
+              b_n & = \color{y_t} 0                                                    \\
               a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
               = \frac{1}{\pi} \int_{0}^{\pi} (100x) \dl x                              \\
                   & = \Bigg[ \frac{50x^2}{\pi} \Bigg]_{0}^{\pi}
@@ -481,7 +481,7 @@
           \end{align}
           Finding the Fourier series representation of the input, (even function),
           \begin{align}
-              b_n & = \color{brown6} 0                                      \\
+              b_n & = \color{y_t} 0                                         \\
               a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
               = \frac{1}{\pi} \int_{0}^{\pi} (100)(1 + 2x) \dl x            \\
                   & = \frac{100}{\pi}\Bigg[ x + x^2 \Bigg]_{0}^{\pi}
@@ -545,7 +545,7 @@
           \end{align}
           Finding the Fourier series representation of the input, (even function),
           \begin{align}
-              b_n & = \color{brown6} 0                                          \\
+              b_n & = \color{y_t} 0                                             \\
               a_0 & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x)\ \dl x
               = \frac{1}{\pi} \int_{0}^{\pi} (200)(\pi^2 - 3x^2) \dl x          \\
                   & = \frac{200}{\pi}\Bigg[ \pi^2 x - x^3 \Bigg]_{0}^{\pi}
@@ -586,10 +586,10 @@
                           title = {Cubic polynomial wave},
                           PiStyleX, xtick distance = 0.5*pi, domain = -pi:pi,
                           legend pos = north west]
-                          \addplot[GraphSmooth, y_h]{P_0 + fou(1, x)};
-                          \addplot[GraphSmooth, y_p]{P_0 + fou(1, x)
+                      \addplot[GraphSmooth, y_h]{P_0 + fou(1, x)};
+                      \addplot[GraphSmooth, y_p]{P_0 + fou(1, x)
                           + fou(2, x)};
-                          \addplot[GraphSmooth, brown6]{P_0 + fou(1, x)
+                      \addplot[GraphSmooth, brown6]{P_0 + fou(1, x)
                           + fou(2, x) + fou(3, x)};
                       \addplot[GraphSmooth, azure3]{P_0 + fou(1, x)
                           + fou(2, x) + fou(3, x) + fou(4, x)};
@@ -630,7 +630,7 @@
                       \addlegendentry{$ k = 9 $}
                       \addlegendentry{$ k = 16 $}
                       \addlegendentry{$ k = 25 $}
-                    \end{axis}
+                  \end{axis}
               \end{tikzpicture}
           \end{figure}
 \end{enumerate}

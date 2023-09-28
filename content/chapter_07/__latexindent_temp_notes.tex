@@ -542,18 +542,18 @@
                   \begin{align}
                       \begin{bNiceArray}{c|c}[margin]
                           \vec{A} & \vec{I}
-                      \end{bNiceArray} \rightarrow \begin{bNiceArray}{c|c}[margin]
-                                                       \vec{U} & \vec{H}
-                                                   \end{bNiceArray}
+                      \end{bNiceArray} \to \begin{bNiceArray}{c|c}[margin]
+                                               \vec{U} & \vec{H}
+                                           \end{bNiceArray}
                   \end{align}
             \item Apply further row operations to convert $ \vec{U} $ into a diagonal
                   matrix with all diagonal entries $ 1 $.
                   \begin{align}
                       \begin{bNiceArray}{c|c}[margin]
                           \vec{U} & \vec{H}
-                      \end{bNiceArray} \rightarrow \begin{bNiceArray}{c|c}[margin]
-                                                       \vec{I} & \vec{K}
-                                                   \end{bNiceArray}
+                      \end{bNiceArray} \to \begin{bNiceArray}{c|c}[margin]
+                                               \vec{I} & \vec{K}
+                                           \end{bNiceArray}
                   \end{align}
             \item The inverse is now directly read from the right half of
                   $ \vec{\tilde{A}} $.
@@ -692,7 +692,7 @@
 
     \item[Vector inequalities] Using the above definition of the norm,
         \begin{align}
-            \abs{ (\vec{a}, \vec{b}) \rvert                                &
+            \abs{ (\vec{a}, \vec{b}) \rvert                                 &
             \leq \lVert \vec{a} \rVert\ \lVert \vec{b} \rVert               &
                                                                             &   &
             \text{Cauchy-Shwarz inequality}                                       \\
@@ -723,7 +723,7 @@
         under $ F $
 
     \item[Matrices as linear transforms] All linear transforms of the form
-        $ \mathcal{R}^n \rightarrow \mathcal{R}^m $ can be represented by an
+        $ \mathcal{R}^n \to \mathcal{R}^m $ can be represented by an
         $ m \times n $ matrix.
         \begin{align}
             \vec{y} & = \vec{Ax}
@@ -734,14 +734,14 @@
         one after the other. \par
         For some vector spaces $ W, X, Y $,
         \begin{align}
-            F & : X \rightarrow Y              & G & : W \rightarrow X \\
-            H & \equiv (F \circ G) = FG = F(G) & H & : W \rightarrow Y
+            F & : X \to Y                      & G & : W \to X \\
+            H & \equiv (F \circ G) = FG = F(G) & H & : W \to Y
         \end{align}
         Compositions of linera transforms are also linear. In terms of matrices, this
         is analogous to multiplication of matrices.
         \begin{align}
-            \vec{y} &= \vec{Ax} & \vec{x} &= \vec{Bw} \\
-            \vec{y} &= \vec{Cw} & \vec{C} &= \vec{AB}
+            \vec{y} & = \vec{Ax} & \vec{x} & = \vec{Bw} \\
+            \vec{y} & = \vec{Cw} & \vec{C} & = \vec{AB}
         \end{align}
 
 \end{description}

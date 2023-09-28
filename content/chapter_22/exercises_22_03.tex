@@ -1,0 +1,935 @@
+\section{Simplex Method}
+
+\begin{enumerate}
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z           & = 40x_1 + 88x_2                            \\
+              2x_1 + 8x_2 & \leq 60         & 2x_1 + 8x_2 + x_3 & = 60 \\
+              5x_1 + 2x_2 & \leq 60         & 5x_1 + 2x_2 + x_4 & = 60
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1           & x_2 & x_3 & x_4 & b  \\ \hline
+                  1 & -40           & -88 & 0   & 0   & 0  \\ \hline[dotted]
+                  0 & 2             & 8   & 1   & 0   & 60 \\
+                  0 & \color{y_p} 5 & 2   & 0   & 1   & 60 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -40 $, the smallest quotient is $ 12 $
+          which makes $ R2,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2             & x_3 & x_4  & b   \\ \hline
+                  1 & 0   & -72             & 0   & 8    & 480 \\ \hline[dotted]
+                  0 & 0   & \color{y_p} 7.2 & 1   & -0.4 & 36  \\
+                  0 & 5   & 2               & 0   & 1    & 60  \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -72 $, the smallest quotient is $ 5 $
+          which makes $ R1,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2 & x_3           & x_4          & b   \\ \hline
+                  1 & 0   & 0   & 10            & 4            & 840 \\ \hline[dotted]
+                  0 & 0   & 7.2 & 1             & -0.4         & 36  \\
+                  0 & 5   & 0   & -\frac{5}{18} & \frac{10}{9} & 50  \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z\Bigg(\frac{50}{5}, \frac{36}{7.2} \Bigg) = z(10,5) = \color{y_h} 840
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z           & = 40x_1 + 88x_2                            \\
+              8x_1 + 2x_2 & \leq 60         & 8x_1 + 2x_2 + x_3 & = 60 \\
+              2x_1 + 5x_2 & \leq 60         & 2x_1 + 5x_2 + x_4 & = 60
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1           & x_2 & x_3 & x_4 & b  \\ \hline
+                  1 & -40           & -88 & 0   & 0   & 0  \\ \hline[dotted]
+                  0 & \color{y_p} 8 & 2   & 1   & 0   & 60 \\
+                  0 & 2             & 5   & 0   & 1   & 60 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -40 $, the smallest quotient is $ 7.5 $
+          which makes $ R1,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2             & x_3   & x_4 & b   \\ \hline
+                  1 & 0   & -78             & 5     & 0   & 300 \\ \hline[dotted]
+                  0 & 8   & 2               & 1     & 0   & 60  \\
+                  0 & 0   & \color{y_p} 4.5 & -0.25 & 1   & 45  \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -78 $, the smallest quotient is $ 10 $
+          which makes $ R2,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2             & x_3          & x_4          & b    \\
+                  \hline
+                  1 & 0   & 0               & \frac{2}{3}  & \frac{52}{3} & 1080 \\
+                  \hline[dotted]
+                  0 & 8   & 0               & \frac{10}{9} & -\frac{4}{9} & 40   \\
+                  0 & 0   & \color{y_p} 4.5 & -0.25        & 1            & 45   \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z\Bigg(\frac{40}{8}, \frac{45}{4.5} \Bigg) = z(5,10) = \color{y_h} 1080
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z            & = 3x_1 + 2x_2                              \\
+              3x_1 + 4x_2  & \leq 60       & 3x_1 + 4x_2 + x_3  & = 60  \\
+              4x_1 + 3x_2  & \leq 60       & 4x_1 + 3x_2 + x_4  & = 60  \\
+              10x_1 + 2x_2 & \leq 120      & 10x_1 + 2x_2 + x_5 & = 120
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                  Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  $z$ & x_1            & x_2 & x_3 & x_4 & x_5 & b   \\ \hline
+                  1   & -3             & -2  & 0   & 0   & 0   & 0   \\ \hline[dotted]
+                  0   & 3              & 4   & 1   & 0   & 0   & 60  \\
+                  0   & 4              & 3   & 0   & 1   & 0   & 60  \\
+                  0   & \color{y_p} 10 & 2   & 0   & 0   & 1   & 120 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -3 $, the smallest quotient is $ 12 $
+          which makes $ R1,C3 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                  Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  $z$ & x_1 & x_2            & x_3 & x_4 & x_5  & b   \\
+                  \hline
+                  1   & 0   & -1.4           & 0   & 0   & 0.3  & 36  \\
+                  \hline[dotted]
+                  0   & 0   & 3.4            & 1   & 0   & -0.3 & 24  \\
+                  0   & 0   & \color{y_p}2.2 & 0   & 1   & -0.4 & 12  \\
+                  0   & 10  & 2              & 0   & 0   & 1    & 120 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -1.4 $, the smallest quotient is
+          $ \frac{60}{11} $ which makes $ R2,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                  Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  $z$ & x_1           & x_2             & x_3 & x_4
+                      & x_5           & b                                       \\
+                  \hline
+                  1   & 0             & 0               & 0   & \frac{7}{11}
+                      & \frac{1}{22}  & \frac{480}{11}                          \\
+                  \hline[dotted]
+                  0   & 0             & 0               & 1   & - \frac{17}{11}
+                      & \frac{7}{22}  & \frac{60}{11}                           \\
+                  0   & 0             & \color{y_p}2.2  & 0   & 1
+                      & -0.4          & 12                                      \\
+                  0   & 10            & 0               & 0   & - \frac{10}{11}
+                      & \frac{15}{11} & \frac{1200}{11}                         \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z\Bigg(\frac{120}{11}, \frac{60}{11} \Bigg) = \color{y_h} \frac{480}{11}
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z           & = x_1 + x_2                             \\
+              3x_1 + 4x_2 & \leq 550    & 3x_1 + 4x_2 + x_3 & = 550 \\
+              5x_1 + 4x_2 & \leq 650    & 5x_1 + 4x_2 + x_4 & = 650
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1           & x_2 & x_3 & x_4 & b   \\ \hline
+                  1 & -1            & -1  & 0   & 0   & 0   \\ \hline[dotted]
+                  0 & 3             & 4   & 1   & 0   & 550 \\
+                  0 & \color{y_p} 5 & 4   & 0   & 1   & 650 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -1 $, the smallest quotient is $ 130 $
+          which makes $ R2,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1           & x_2  & x_3 & x_4  & b   \\ \hline
+                  1 & 0             & -0.2 & 0   & 0.2  & 130 \\ \hline[dotted]
+                  0 & 0             & 1.6  & 1   & -0.6 & 160 \\
+                  0 & \color{y_p} 5 & 4    & 0   & 1    & 650 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -0.2 $, the smallest quotient is
+          $ 100 $ which makes $ R1,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2             & x_3         & x_4         & b   \\ \hline
+                  1 & 0   & 0               & \frac{1}{8} & \frac{1}{8} & 150 \\
+                  \hline[dotted]
+                  0 & 0   & \color{y_p} 1.6 & 1           & -0.6        & 160 \\
+                  0 & 5   & 0               & -2.5        & 2.5         & 250 \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z(50,100) = \color{y_h} 150
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z             & = 5x_1 - 20x_2                              \\
+              -2x_1 + 10x_2 & \leq 5         & -2x_1 + 10x_2 + x_3 & = 5  \\
+              2x_1 + 5x_2   & \leq 10        & 2x_1 + 5x_2 + x_4   & = 10
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2            & x_3 & x_4 & b  \\ \hline
+                  1 & -5  & 20             & 0   & 0   & 0  \\ \hline[dotted]
+                  0 & -2  & \color{y_p} 10 & 1   & 0   & 5  \\
+                  0 & 2   & 5              & 0   & 1   & 10 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ 20 $, the smallest quotient is $ 0.5 $
+          which makes $ R1,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2            & x_3  & x_4 & b   \\ \hline
+                  1 & -1  & 0              & -2   & 0   & -10 \\ \hline[dotted]
+                  0 & -2  & \color{y_p} 10 & 1    & 0   & 5   \\
+                  0 & 3   & 0              & -0.5 & 1   & 7.5 \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              x_2 & = 0.5 & x_4      & = 7.5             \\
+              x_1 & = 0   & z(0,1/2) & = \color{y_h} -10
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z           & = x_1 + x_2                              \\
+              2x_1 + 3x_2 & \leq 1200   & 2x_1 + 3x_2 + x_3 & = 1200 \\
+              4x_1 + 2x_2 & \leq 1600   & 4x_1 + 2x_2 + x_4 & = 1600
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1           & x_2 & x_3 & x_4 & b    \\ \hline
+                  1 & -1            & -1  & 0   & 0   & 0    \\ \hline[dotted]
+                  0 & 2             & 3   & 1   & 0   & 1200 \\
+                  0 & \color{y_p} 4 & 2   & 0   & 1   & 1600 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -1 $, the smallest quotient is $ 400 $
+          which makes $ R2,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1           & x_2  & x_3 & x_4  & b    \\ \hline
+                  1 & 0             & -0.5 & 0   & 0.5  & 800  \\ \hline[dotted]
+                  0 & 0             & 2    & 1   & -0.5 & 400  \\
+                  0 & \color{y_p} 4 & 2    & 0   & 1    & 1600 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -0.5 $, the smallest quotient is
+          $ 200 $ which makes $ R1,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2           & x_3  & x_4          & b    \\ \hline
+                  1 & 0   & 0             & 0.25 & \frac{7}{16} & 900  \\ \hline[dotted]
+                  0 & 0   & \color{y_p} 2 & 1    & -0.5         & 400  \\
+                  0 & 4   & 0             & -1   & 1.5          & 1200 \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z(300,200) = \color{y_h} 500
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              0.1x_1 + 0.1x_2 + 0.2x_3 + 0.2x_4 & = z   \\
+              12x_1 + 8x_2 + 6x_3 + 4x_4 + x_5  & = 120 \\
+              3x_1 + 6x_2 + 12x_3 + 24x_4 + x_6 & = 180
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1            & x_2  & x_3  & x_4  & x_5 & x_6 & b   \\ \hline
+                  1 & -0.1           & -0.1 & -0.2 & -0.2 & 0   & 0   & 0   \\
+                  \hline[dotted]
+                  0 & \color{y_p} 12 & 8    & 6    & 4    & 1   & 0   & 120 \\
+                  0 & 3              & 6    & 12   & 24   & 0   & 1   & 180 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -0.1 $, the smallest quotient is
+          $ 10 $ which makes $ R1,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z             & x_1            & x_2            & x_3   &
+                  x_4           & x_5            & x_6            & b       \\
+                  \hline
+                  1             & 0              & - \frac{1}{30} & -0.15 &
+                  - \frac{1}{6} & \frac{1}{120}  & 0              & 1       \\
+                  \hline[dotted]
+                  0             & \color{y_p} 12 & 8              & 6     &
+                  4             & 1              & 0              & 120     \\
+                  0             & 0              & 4              & 10.5  &
+                  23            & -0.25          & 1              & 150     \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -1/30 $, the smallest quotient is
+          $ 15 $ which makes $ R1,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z              & x_1          & x_2           & x_3           &
+                  x_4            & x_5          & x_6           & b               \\
+                  \hline
+                  1              & \frac{1}{20} & 0             & - \frac{1}{8} &
+                  - \frac{3}{20} & \frac{1}{80} & 0             & 1.5             \\
+                  \hline[dotted]
+                  0              & 12           & \color{y_p} 8 & 6             &
+                  4              & 1            & 0             & 120             \\
+                  0              & -6           & 0             & 7.5           &
+                  21             & -0.75        & 1             & 90              \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -1/8 $, the smallest quotient is
+          $ 12 $ which makes $ R2,C3 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z              & x_1            & x_2          & x_3             &
+                  x_4            & x_5            & x_6          & b                 \\
+                  \hline
+                  1              & - \frac{1}{20} & 0            & 0               &
+                  \frac{1}{5}    & 0              & \frac{1}{60} & 3                 \\
+                  \hline[dotted]
+                  0              & \frac{84}{5}   & 8            & 0               &
+                  - \frac{64}{5} & \frac{8}{5}    & -0.8         & 48                \\
+                  0              & -6             & 0            & \color{y_p} 7.5 &
+                  21             & -0.75          & 1            & 90                \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -1/20 $, the smallest quotient is
+          $ \frac{20}{7} $ which makes $ R1,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z              & x_1                     & x_2          & x_3 &
+                  x_4            & x_5                     & x_6          & b     \\
+                  \hline
+                  1              & 0                       & \frac{1}{42} & 0   &
+                  \frac{17}{105} & \frac{1}{210}           & \frac{1}{70} &
+                  \frac{22}{7}                                                    \\
+                  \hline[dotted]
+                  0              & \color{y_p}\frac{84}{5} & 8            & 0   &
+                  - \frac{64}{5} & \frac{8}{5}             & -0.8         & 48    \\
+                  0              & 0                       & \frac{20}{7} & 7.5 &
+                  \frac{115}{7}  & - \frac{5}{28}          & \frac{5}{7}  &
+                  \frac{750}{7}                                                   \\
+              \end{tblr}
+          \end{table}
+
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z\Bigg( \frac{20}{7}, 0, \frac{100}{7}, 0 \Bigg) = \color{y_h} \frac{22}{7}
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z          & = 90x_1 + 50x_2                           \\
+              x_1 + 3x_2 & \leq 18         & x_1 + 3x_2 + x_3 & = 18 \\
+              x_1 + x_2  & \leq 10         & x_1 + x_2 + x_4  & = 10 \\
+              3x_1 + x_2 & \leq 24         & 3x_1 + x_2 + x_5 & = 24
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                  Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  $z$ & x_1           & x_2 & x_3 & x_4 & x_5 & b  \\ \hline
+                  1   & -90           & -50 & 0   & 0   & 0   & 0  \\ \hline[dotted]
+                  0   & 1             & 3   & 1   & 0   & 0   & 18 \\
+                  0   & 1             & 1   & 0   & 1   & 0   & 10 \\
+                  0   & \color{y_p} 3 & 1   & 0   & 0   & 1   & 24 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -90 $, the smallest quotient is $ 8 $
+          which makes $ R3,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                  Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  $z$ & x_1           & x_2         & x_3 & x_4 & x_5          & b   \\
+                  \hline
+                  1   & 0             & -20         & 0   & 0   & 30           & 720 \\
+                  \hline[dotted]
+                  0   & 0             & \frac{8}{3} & 1   & 0   & -\frac{1}{3} & 10  \\
+                  0   & 0             & \frac{2}{3} & 0   & 1   & -\frac{1}{3} & 2   \\
+                  0   & \color{y_p} 3 & 1           & 0   & 0   & 1            & 24  \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -20 $, the smallest quotient is
+          $ 3 $ which makes $ R2,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                  Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  $z$ & x_1 & x_2                    & x_3 & x_4  & x_5          & b   \\
+                  \hline
+                  1   & 0   & 0                      & 0   & 30   & 20           & 780 \\
+                  \hline[dotted]
+                  0   & 0   & 0                      & 1   & -4   & 1            & 2   \\
+                  0   & 0   & \color{y_p}\frac{2}{3} & 0   & 1    & -\frac{1}{3} & 2   \\
+                  0   & 3   & 0                      & 0   & -1.5 & 0.5          & 21  \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z(7,3) = \color{y_h} 780
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z                  & = 2x_1 + x_2 + 3x_3 &
+              4x_1 + 3x_2 + 6x_3 & = 12
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]
+                      |[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  $z$ & x_1           & x_2 & x_3 & b  \\ \hline
+                  1   & -2            & -1  & -3  & 0  \\ \hline[dotted]
+                  0   & \color{y_p} 4 & 3   & 6   & 12 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -2 $, the smallest quotient is $ 3 $
+          which makes $ R1,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]
+                      |[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  $z$ & x_1           & x_2 & x_3 & b  \\ \hline
+                  1   & 0             & 0.5 & 0   & 6  \\ \hline[dotted]
+                  0   & \color{y_p} 4 & 3   & 6   & 12 \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is on the line segment
+          from $ (3,0,0) $ to $ (0,0,2) $.
+          \begin{align}
+              x_2 & = 0 & 2x_1+3x_3 & = \color{y_h}6
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z                        & = 4x_1 - 10x_2 - 20x_3   \\
+              3x_1 + 4x_2 + 5x_3       & \leq 60                &
+              3x_1 + 4x_2 + 5x_3 + x_4 & = 60                     \\
+              2x_1 + x_2               & \leq 20                &
+              2x_1 + x_2  + x_5        & = 20                     \\
+              2x_1 + 3x_3              & \leq 30                &
+              2x_1 + 3x_3 + x_6        & = 30
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2           & x_3 & x_4 & x_5 & x_6 & b  \\ \hline
+                  1 & -4  & 10            & 20  & 0   & 0   & 0   & 0  \\ \hline[dotted]
+                  0 & 3   & \color{y_p} 4 & 5   & 1   & 0   & 0   & 60 \\
+                  0 & 2   & 1             & 0   & 0   & 1   & 0   & 20 \\
+                  0 & 2   & 0             & 3   & 0   & 0   & 1   & 30 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ 10 $, the smallest quotient is $ 15 $
+          which makes $ R1,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1   & x_2           & x_3   & x_4   & x_5 & x_6 & b    \\
+                  \hline
+                  1 & -11.5 & 0             & 7.5   & -2.5  & 0   & 0   & -150 \\
+                  \hline[dotted]
+                  0 & 3     & \color{y_p} 4 & 5     & 1     & 0   & 0   & 60   \\
+                  0 & 1.25  & 0             & -1.25 & -0.25 & 1   & 0   & 5    \\
+                  0 & 2     & 0             & 3     & 0     & 0   & 1   & 30   \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ 7.5 $, the smallest quotient is $ 10 $
+          which makes $ R3,C3 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z     & x_1           & x_2           & x_3          &
+                  x_4   & x_5           & x_6           & b              \\ \hline
+                  1     & -16.5         & 0             & 0            &
+                  -2.5  & 0             & -2.5          & -225           \\
+                  \hline[dotted]
+                  0     & - \frac{1}{3} & 4             & 0            &
+                  1     & 0             & - \frac{5}{3} & 10             \\
+                  0     & 1.25          & 0             & -1.25        &
+                  -0.25 & 1             & 0             & 5              \\
+                  0     & 2             & 0             & \color{y_p}3 &
+                  0     & 0             & 1             & 30             \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              x_1 & = 0 & z(0,2.5,10) & = \color{y_h} -225
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z               & = 1.8x_1 + 2.1x_2                                  \\
+              600x_1 + 500x_2 & \geq 3900         & 600x_1 + 500x_2 & = 3900 + x_3 \\
+              15x_1 + 30x_2   & \geq 150          & 15x_1 + 30x_2   & = 150 + x_4
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1            & x_2  & x_3 & x_4 & b    \\ \hline
+                  1 & -1.8           & -2.1 & 0   & 0   & 0    \\ \hline[dotted]
+                  0 & 600            & 500  & -1  & 0   & 3900 \\
+                  0 & \color{y_p} 15 & 30   & 0   & -1  & 150  \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -1.8 $, the smallest quotient is
+          $ 6.5 $ which makes $ R1,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z   & x_1             & x_2           & x_3          &
+                  x_4 & b                                                \\ \hline
+                  1   & 0               & - \frac{3}{5} & -0.003       &
+                  0   & \frac{117}{10}                                   \\
+                  \hline[dotted]
+                  0   & \color{y_p} 600 & 500           & -1           &
+                  0   & 3900                                             \\
+                  0   & 0               & \frac{35}{2}  & \frac{1}{40} &
+                  -1  & \frac{105}{2}                                    \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -3/5 $, the smallest quotient is
+          $ 3 $ which makes $ R2,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z                & x_1             & x_2                      &
+                  x_3              & x_4             & b                          \\
+                  \hline
+                  1                & 0               & 0                        &
+                  - \frac{3}{1400} & - \frac{6}{175} & \frac{27}{2}               \\
+                  \hline[dotted]
+                  0                & 600             & 0                        &
+                  - \frac{12}{7}   & \frac{200}{7}   & 2400                       \\
+                  0                & 0               & \color{y_p} \frac{35}{2} &
+                  \frac{1}{40}     & -1              & \frac{105}{2}              \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z(4,3) = \color{y_h} 13.5
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z                     & = 2x_1 + 3x_2 + x_3   \\
+              x_1 + x_2 + x_3       & \leq 4.8            &
+              x_1 + x_2 + x_3 + x_4 & = 4.8                 \\
+              10x_1 + x_3           & \leq 9.9            &
+              10x_1 + x_3  + x_5    & = 9.9                 \\
+              x_2 - x_3             & \leq 0.2            &
+              x_2 - x_3 + x_6       & = 0.2
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1           & x_2 & x_3 & x_4 & x_5 & x_6 & b   \\ \hline
+                  1 & -2            & -3  & -1  & 0   & 0   & 0   & 0   \\ \hline[dotted]
+                  0 & 1             & 1   & 1   & 1   & 0   & 0   & 4.8 \\
+                  0 & \color{y_p}10 & 0   & 1   & 0   & 1   & 0   & 9.9 \\
+                  0 & 0             & 1   & -1  & 0   & 0   & 1   & 0.2 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -2 $, the smallest quotient is $ 0.99 $
+          which makes $ R2,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1           & x_2 & x_3  & x_4 & x_5  & x_6 & b    \\
+                  \hline
+                  1 & 0             & -3  & -0.8 & 0   & 0.2  & 0   & 1.98 \\
+                  \hline[dotted]
+                  0 & 0             & 1   & 0.9  & 1   & -0.1 & 0   & 3.81 \\
+                  0 & \color{y_p}10 & 0   & 1    & 0   & 1    & 0   & 9.9  \\
+                  0 & 0             & 1   & -1   & 0   & 0    & 1   & 0.2  \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -3 $, the smallest quotient is $ 0.2 $
+          which makes $ R3,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1 & x_2          & x_3  & x_4 & x_5  & x_6 & b    \\
+                  \hline
+                  1 & 0   & 0            & -3.8 & 0   & 0.2  & 3   & 2.58 \\
+                  \hline[dotted]
+                  0 & 0   & 0            & 1.9  & 1   & -0.1 & -1  & 3.61 \\
+                  0 & 10  & 0            & 1    & 0   & 1    & 0   & 9.9  \\
+                  0 & 0   & \color{y_p}1 & -1   & 0   & 0    & 1   & 0.2  \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -3.8 $, the smallest quotient is
+          $ 1.9 $ which makes $ R1,C3 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z               & x_1            & x_2           & x_3            &
+                  x_4             & x_5            & x_6           & b                \\
+                  \hline
+                  1               & 0              & 0             & 0              &
+                  2               & 0              & 1             & 9.8              \\
+                  \hline[dotted]
+                  0               & 0              & 0             & \color{y_p}1.9 &
+                  1               & -0.1           & -1            & 3.61             \\
+                  0               & 10             & 0             & 0              &
+                  - \frac{10}{19} & \frac{20}{19}  & \frac{10}{19} & 8                \\
+                  0               & 0              & 1             & 0              &
+                  \frac{10}{19}   & - \frac{1}{19} & \frac{9}{19}  & 2.1              \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              x_1 & = 0 & z(0.8,2.1,1.9) & = \color{y_h} 9.8
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z                         & = 34x_1 + 29x_2 + 32x_3   \\
+              8x_1 + 2x_2 + x_3         & \leq 54                 &
+              8x_1 + 2x_2 + x_3 + x_4   & = 54                      \\
+              3x_1 + 8x_2 + 2x_3        & \leq 59                 &
+              3x_1 + 8x_2 + 2x_3  + x_5 & = 59                      \\
+              x_1 + x_2 + 5x_3          & \leq 39                 &
+              x_1 + x_2 + 5x_3 + x_6    & = 39
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1          & x_2 & x_3 & x_4 & x_5 & x_6 & b  \\ \hline
+                  1 & -34          & -29 & -32 & 0   & 0   & 0   & 0  \\ \hline[dotted]
+                  0 & \color{y_p}8 & 2   & 1   & 1   & 0   & 0   & 54 \\
+                  0 & 3            & 8   & 2   & 0   & 1   & 0   & 59 \\
+                  0 & 1            & 1   & 5   & 0   & 0   & 1   & 39 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -34 $, the smallest quotient is
+          $ 6.75 $ which makes $ R1,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z             & x_1          & x_2             & x_3             &
+                  x_4           & x_5          & x_6             & b                 \\
+                  \hline
+                  1             & 0            & - \frac{193}{9} & - \frac{254}{9} &
+                  \frac{34}{9}  & 0            & 0               & 204               \\
+                  \hline[dotted]
+                  0             & \color{y_p}8 & 2               & 1               &
+                  1             & 0            & 0               & 54                \\
+                  0             & 0            & \frac{29}{4}    & \frac{13}{8}    &
+                  - \frac{3}{8} & 1            & 0               & \frac{155}{4}     \\
+                  0             & 0            & 0.75            & \frac{39}{8}    &
+                  - \frac{1}{8} & 0            & 1               & \frac{129}{4}     \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -193/9 $, the smallest quotient is
+          $ 155/29 $ which makes $ R2,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z                   & x_1               & x_2                     &
+                  x_3                 & x_4               & x_5                     &
+                  x_6                 & b                                             \\
+                  \hline
+                  1                   & 0                 & 0                       &
+                  - \frac{12223}{522} & \frac{1393}{522}  & \frac{772}{261}         &
+                  0                   & \frac{83159}{261}                             \\
+                  \hline[dotted]
+                  0                   & 8                 & 0                       &
+                  \frac{16}{29}       & \frac{32}{29}     & - \frac{8}{29}          &
+                  0                   & \frac{1256}{29}                               \\
+                  0                   & 0                 & \color{y_p}\frac{29}{4} &
+                  \frac{13}{8}        & - \frac{3}{8}     & 1                       &
+                  0                   & \frac{155}{4}                                 \\
+                  0                   & 0                 & 0                       &
+                  \frac{273}{58}      & - \frac{5}{58}    & - \frac{3}{29}          &
+                  1                   & \frac{819}{29}                                \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -12223/522 $, the smallest quotient is
+          $ 6 $ which makes $ R3,C3 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z                         & x_1                & x_2            &
+                  x_3                       & x_4                &
+                  x_5                       & x_6                & b                \\
+                  \hline
+                  1                         & 0                  & 0              &
+                  0                         & \frac{5503}{2457}  &
+                  \frac{667}{273}           & \frac{12223}{2457} & \frac{4132}{9}   \\
+                  \hline[dotted]
+                  0                         & 8                  & 0              &
+                  0                         & \frac{304}{273}    &
+                  - \frac{24}{91}           & - \frac{32}{273}   & 40               \\
+                  0                         & 0                  & \frac{29}{4}   &
+                  0                         & - \frac{29}{84}    &
+                  \frac{29}{28}             & - \frac{29}{84}    & 29               \\
+                  0                         & 0                  & 0              &
+                  \color{y_p}\frac{273}{58} & - \frac{5}{58}     &
+                  - \frac{3}{29}            & 1                  & \frac{819}{29}   \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z(5,4,6) & = \color{y_h} 478
+          \end{align}
+
+    \item Using the simplex method, for nonnegative $ x_i $
+          \begin{align}
+              z           & = 2x_1 + 3x_2                             \\
+              5x_1 + 3x_2 & \geq 105      & 5x_1 + 3x_2 + x_3 & = 105 \\
+              3x_1 + 6x_2 & \geq 126      & 3x_1 + 6x_2 + x_4 & = 126
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1          & x_2 & x_3 & x_4 & b   \\ \hline
+                  1 & -2           & -3  & 0   & 0   & 0   \\ \hline[dotted]
+                  0 & \color{y_p}5 & 3   & 1   & 0   & 105 \\
+                  0 & 3            & 6   & 0   & 1   & 126 \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -2 $, the smallest quotient is
+          $ 21 $ which makes $ R1,C1 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z & x_1          & x_2           & x_3           & x_4 & b   \\
+                  \hline
+                  1 & 0            & - \frac{9}{5} & 0.4           & 0   & 42  \\
+                  \hline[dotted]
+                  0 & \color{y_p}5 & 3             & 1             & 0   & 105 \\
+                  0 & 0            & \frac{21}{5}  & - \frac{3}{5} & 1   & 63  \\
+              \end{tblr}
+          \end{table}
+          The pivot element in the first row is $ -1.8 $, the smallest quotient is
+          $ 15 $ which makes $ R2,C2 $ the pivot.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.75em,
+                  colspec =
+                  {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                      Q[c,$$]|[dotted]Q[c,$$]},
+                  colsep = 1.2em}
+                  z             & x_1           & x_2                     &
+                  x_3           & x_4           & b                         \\
+                  \hline
+                  1             & 0             & 0                       &
+                  \frac{1}{7}   & \frac{3}{7}   & 69                        \\
+                  \hline[dotted]
+                  0             & 5             & 0                       &
+                  \frac{10}{7}  & - \frac{5}{7} & 60                        \\
+                  0             & 0             & \color{y_p}\frac{21}{5} &
+                  - \frac{3}{5} & 1             & 63                        \\
+              \end{tblr}
+          \end{table}
+          Stopping criterion is reached, and the optimal solution is
+          \begin{align}
+              z(12,15) = \color{y_h} 69
+          \end{align}
+
+    \item Programs written in \texttt{numpy}. They were used to produce the tables above
+          when for all the problems in this set.
+\end{enumerate}

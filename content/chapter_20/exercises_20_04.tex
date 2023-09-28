@@ -1,0 +1,407 @@
+\section{Linear Systems: Ill-Conditioning, Norms}
+
+\begin{enumerate}
+    \item Finding the three types of norm
+          \begin{align}
+              \vec{x}                      & = \begin{bNiceMatrix}[margin]
+                                                   1 & -3 & 8 & 0 & -6 & 0
+                                               \end{bNiceMatrix}         &
+              \lVert \vec{x} \rVert_1      & = 18                                    \\
+              \lVert \vec{x} \rVert_2      & = \sqrt{1 + 9 + 64 + 36} = \sqrt{110} &
+              \lVert \vec{x} \rVert_\infty & = 8                                     \\
+              \vec{u}                      & = \frac{1}{8}
+              \ \begin{bNiceMatrix}[margin]
+                    1 & -3 & 8 & 0 & -6 & 0
+                \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the three types of norm
+          \begin{align}
+              \vec{x}                      & = \begin{bNiceMatrix}[margin]
+                                                   4 & -1 & 8
+                                               \end{bNiceMatrix}   &
+              \lVert \vec{x} \rVert_1      & = 13                              \\
+              \lVert \vec{x} \rVert_2      & = \sqrt{4 + 1 + 64} = \sqrt{69} &
+              \lVert \vec{x} \rVert_\infty & = 8                               \\
+              \vec{u}                      & = \frac{1}{8}
+              \ \begin{bNiceMatrix}[margin]
+                    4 & -1 & 8
+                \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the three types of norm
+          \begin{align}
+              \vec{x}                      & = \begin{bNiceMatrix}[margin]
+                                                   0.2 & 0.6 & -2.1 & 3.0
+                                               \end{bNiceMatrix}   &
+              \lVert \vec{x} \rVert_1      & = 5.9                           \\
+              \lVert \vec{x} \rVert_2      & = \sqrt{0.04 + 0.36 + 4.41 + 9}
+              = \sqrt{13.81}               &
+              \lVert \vec{x} \rVert_\infty & = 3                             \\
+              \vec{u}                      & = \frac{1}{3}
+              \ \begin{bNiceMatrix}[margin]
+                    0.2 & 0.6 & -2.1 & 3.0
+                \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the three types of norm, given $ k > 4 $
+          \begin{align}
+              \vec{x}                      & = \begin{bNiceMatrix}[margin]
+                                                   k^2 & 4k & k^3
+                                               \end{bNiceMatrix}    &
+              \lVert \vec{x} \rVert_1      & = k^3 + k^2 + 4k                   \\
+              \lVert \vec{x} \rVert_2      & = \sqrt{k^3 + k^2 + 4k}          &
+              \lVert \vec{x} \rVert_\infty & = k^3                              \\
+              \vec{u}                      & = \begin{bNiceMatrix}[margin]
+                                                   \frac{1}{k} & \frac{4}{k^2} & 1
+                                               \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the three types of norm, given $ k > 4 $
+          \begin{align}
+              \vec{x}                      & = \begin{bNiceMatrix}[margin]
+                                                   1 & 1 & 1 & 1 & 1
+                                               \end{bNiceMatrix}         &
+              \lVert \vec{x} \rVert_1      & = 5                                     \\
+              \lVert \vec{x} \rVert_2      & = \sqrt{1 + 1 + 1 + 1 + 1} = \sqrt{5} &
+              \lVert \vec{x} \rVert_\infty & = 1                                     \\
+              \vec{u}                      & = \begin{bNiceMatrix}[margin]
+                                                   1 & 1 & 1 & 1 & 1
+                                               \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the three types of norm, given $ k > 4 $
+          \begin{align}
+              \vec{x}                      & = \begin{bNiceMatrix}[margin]
+                                                   0 & 0 & 0 & 1 & 0
+                                               \end{bNiceMatrix}  &
+              \lVert \vec{x} \rVert_1      & = 1                              \\
+              \lVert \vec{x} \rVert_2      & = \sqrt{0 + 0 + 0 + 1 + 0} = 1 &
+              \lVert \vec{x} \rVert_\infty & = 1                              \\
+              \vec{u}                      & = \begin{bNiceMatrix}[margin]
+                                                   0 & 0 & 0 & 1 & 0
+                                               \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the three types of norm, given $ k > 4 $
+          \begin{align}
+              \vec{x}                 & = \begin{bNiceMatrix}[margin]
+                                              a & b & c
+                                          \end{bNiceMatrix}     &
+              \lVert \vec{x} \rVert_1 & = \abs{a} + \abs{b} + \abs{c}       \\
+              \lVert \vec{x} \rVert_2 & = \sqrt{a^2 + b^2 + c^2}          &
+              \lVert \vec{x} \rVert_1 & = \lVert \vec{x} \rVert_2           \\
+              a^2 + b^2 + c^2         & = (\abs{a} + \abs{b} + \abs{c})^2 &
+              ab + bc + ca            & = 0
+          \end{align}
+          Two out of three elements must be zero.
+
+    \item Let the term with the greatest absolute value be $ x_j $
+          \begin{align}
+              \lVert \vec{x} \rVert_\infty  & = x_j                             &
+              \lVert \vec{x} \rVert_2       & = \sqrt{\sum_{i=1}^{n}x_i^2}        \\
+              x_1^2 + x_2^2 + \dots + x_n^2 & \geq x_j^2                        &
+              \lVert \vec{x} \rVert_2       & \geq \lVert \vec{x} \rVert_\infty
+          \end{align}
+          Now comparing the $ l_1 $ and Euclidean norms, the triangle inequality yields,
+          \begin{align}
+              (\abs{x_1} + \abs{x_2} + \dots + \abs{x_n})^2
+                                      & \geq x_1^2 + x_2^2 + \dots x_n^2        \\
+              \abs{x_1} + \abs{x_2} + \dots + \abs{x_n}
+                                      & \geq \sqrt{x_1^2 + x_2^2 + \dots x_n^2} \\
+              \lVert \vec{x} \rVert_1 & \geq \lVert \vec{x} \rVert_2
+          \end{align}
+
+    \item Finding the inverse and then the condition number,
+          \begin{align}
+              \vec{A}                      & = \bmattt{2}{1}{0}{4}        &
+              \vec{A}^{-1}                 & = \bmattt{1/2}{-1/8}{0}{1/4}   \\
+              \lVert \vec{A} \rVert_1      & = 5                          &
+              \lVert \vec{A}^{-1} \rVert_1 & = 1/2                          \\
+              \kappa(\vec{A})              & = 2.5
+          \end{align}
+
+    \item Finding the inverse and then the condition number,
+          \begin{align}
+              \vec{A}                      & = \bmattt{2.1}{4.5}{0.5}{1.8} &
+              \vec{A}^{-1}                 & = \bmattt{20/17}{-50/17}
+              {-50/153}{70/51}                                               \\
+              \lVert \vec{A} \rVert_1      & = 6.3                         &
+              \lVert \vec{A}^{-1} \rVert_1 & = \frac{220}{51}                \\
+              \kappa(\vec{A})              & = \frac{462}{17}
+          \end{align}
+
+    \item Finding the inverse and then the condition number,
+          \begin{align}
+              \vec{A}                      & = \bmattt{\sqrt{5}}{5}{0}{-\sqrt{5}} &
+              \vec{A}^{-1}                 & = \frac{1}{5}
+              \ \bmattt{\sqrt{5}}{5}{0}{-\sqrt{5}}                                  \\
+              \lVert \vec{A} \rVert_1      & = 5 + \sqrt{5}                       &
+              \lVert \vec{A}^{-1} \rVert_1 & = \frac{5 + \sqrt{5}}{5}               \\
+              \kappa(\vec{A})              & = 6 + 2\sqrt{5}
+          \end{align}
+
+    \item Finding the inverse and then the condition number,
+          \begin{align}
+              \vec{A}                      & = \bmattt{7}{6}{6}{5}     &
+              \vec{A}^{-1}                 & = \bmattt{-5}{-6}{-6}{-7}   \\
+              \lVert \vec{A} \rVert_1      & = 13                      &
+              \lVert \vec{A}^{-1} \rVert_1 & = 13                        \\
+              \kappa(\vec{A})              & = 169
+          \end{align}
+
+    \item Finding the inverse and then the condition number,
+          \begin{align}
+              \vec{A}                      & = \begin{bNiceMatrix}[margin]
+                                                   -2 & 4   & -1 \\
+                                                   -2 & 3   & 0  \\
+                                                   7  & -12 & 2
+                                               \end{bNiceMatrix} &
+              \vec{A}^{-1}                 & = \begin{bNiceMatrix}[margin]
+                                                   6 & 4 & 3 \\
+                                                   4 & 3 & 2 \\
+                                                   3 & 4 & 2
+                                               \end{bNiceMatrix}    \\
+              \lVert \vec{A} \rVert_1      & = 19                          &
+              \lVert \vec{A}^{-1} \rVert_1 & = 13                            \\
+              \kappa(\vec{A})              & = 247
+          \end{align}
+
+    \item Finding the inverse and then the condition number,
+          \begin{align}
+              \vec{A}                      & = \begin{bNiceMatrix}[margin]
+                                                   1     & 1/100 & 0     \\
+                                                   1/100 & 1     & 1/100 \\
+                                                   0     & 1/100 & 1
+                                               \end{bNiceMatrix}        \\
+              \vec{A}^{-1}                 & = \begin{bNiceMatrix}[margin]
+                                                   9999/9998 & -50/4999  & 1/9998    \\
+                                                   -50/4999  & 5000/4999 & -50/4999  \\
+                                                   1/9998    & -50/4999  & 9999/9998
+                                               \end{bNiceMatrix} \\
+              \lVert \vec{A} \rVert_1      & = 1.01                              \\
+              \lVert \vec{A}^{-1} \rVert_1 & = \frac{10200}{9998}                \\
+              \kappa(\vec{A})              & = \frac{5151}{4999} = 1.03
+          \end{align}
+
+    \item Finding the inverse and then the condition number,
+          \begin{align}
+              \vec{A}                      & = \begin{bNiceMatrix}[margin]
+                                                   -20 & 0    & 0  \\
+                                                   0   & 1/20 & 0  \\
+                                                   0   & 0    & 20
+                                               \end{bNiceMatrix} &
+              \vec{A}^{-1}                 & = \begin{bNiceMatrix}[margin]
+                                                   -1/20 & 0  & 0    \\
+                                                   0     & 20 & 0    \\
+                                                   0     & 0  & 1/20
+                                               \end{bNiceMatrix}    \\
+              \lVert \vec{A} \rVert_1      & = 20                          &
+              \lVert \vec{A}^{-1} \rVert_1 & = 20                            \\
+              \kappa(\vec{A})              & = 400
+          \end{align}
+
+    \item Finding the inverse and then the condition number,
+          \begin{align}
+              \vec{A}                      & = \begin{bNiceMatrix}[margin]
+                                                   21   & 10.5 & 7    & 5.25 \\
+                                                   10.5 & 7    & 5.25 & 4.2  \\
+                                                   7    & 5.25 & 4.2  & 3.5  \\
+                                                   5.25 & 4.2  & 3.5  & 3
+                                               \end{bNiceMatrix}      &
+              \vec{A}^{-1}                 & = \begin{bNiceMatrix}[margin]
+                                                   16/21 & -40/7  & 80/7   & -20/3 \\
+                                                   -40/7 & 400/7  & -900/7 & 80    \\
+                                                   80/7  & -900/7 & 2160/7 & -200  \\
+                                                   -20/3 & 80     & -200   & 400/3
+                                               \end{bNiceMatrix}    \\
+              \lVert \vec{A} \rVert_1      & = 43.75                            &
+              \lVert \vec{A}^{-1} \rVert_1 & = \frac{4540}{7}                     \\
+              \kappa(\vec{A})              & = 28375
+          \end{align}
+
+    \item Verifying the relation,
+          \begin{align}
+              \vec{A}                       & = \begin{bNiceMatrix}[margin]
+                                                    -2 & 4   & -1 \\
+                                                    -2 & 3   & 0  \\
+                                                    7  & -12 & 2
+                                                \end{bNiceMatrix} &
+              \vec{x}                       & = \begin{bNiceMatrix}[margin]
+                                                    3 \\ 15 \\ -4
+                                                \end{bNiceMatrix}    \\
+              \lVert \vec{A} \rVert_\infty  & = 21                          &
+              \lVert \vec{x} \rVert_\infty  & = 15                            \\
+              \vec{Ax}                      & = \begin{bNiceMatrix}[margin]
+                                                    58 \\ 39 \\ -167
+                                                \end{bNiceMatrix} &
+              \lVert \vec{Ax} \rVert_\infty & = 167 < 315
+          \end{align}
+
+    \item Verifying the relation,
+          \begin{align}
+              \vec{A}                       & = \bmattt{2}{1}{0}{4}         &
+              \vec{B}                       & = \bmattt{2.1}{4.5}{0.5}{1.8}   \\
+              \vec{AB}                      & =\bmattt{4.7}{10.8}{2}{7.2}   &
+              \lVert \vec{AB} \rVert_\infty & = 15.5 \leq 26.4
+          \end{align}
+
+    \item Solving the two systems, which differ in $ \vec{b} $
+          \begin{align}
+              x_1             & = \bmatcol{-2}{4} & x_2 & = \bmatcol{-144}{184} \\
+              \kappa(\vec{A}) & = 21318
+          \end{align}
+          The system is unstable, and the condition number is high.
+
+    \item Solving the two systems, which differ in $ \vec{b} $
+          \begin{align}
+              x_1             & = \bmatcol{1}{1} & x_2 & = \bmatcol{0.8454}{1.2727} \\
+              \kappa(\vec{A}) & = 143.45
+          \end{align}
+          The system is less unstable, and the condition number is lower.
+
+    \item The residual which might ahve been large, like the deviation in $ x $, turns
+          out to be
+          \begin{align}
+              \vec{r} & = \vec{A}\ (\vec{x} - \vec{\tilde{x}})              &
+                      & = \bmattt{4.5}{3.55}{3.55}{2.8}\ \bmatcol{8}{-10.1}   \\
+                      & = \bmatcol{0.145}{0.12}
+          \end{align}
+          which is very small. This is a symptom of the ill-conditioned matrix
+          $ \vec{A} $
+
+    \item Looking at the condition number using $ l_1 $ and $ l_\infty $,
+          \begin{align}
+              \lVert \vec{A} \vec{A}^{-1} \rVert & \leq \lVert \vec{A} \rVert
+              \ \lVert \vec{A}^{-1} \rVert       &
+              \lVert \vec{I} \rVert              & \leq \lVert \vec{A} \rVert
+              \ \lVert \vec{A}^{-1} \rVert                                    \\
+              1                                  & \leq \kappa(\vec{A})
+          \end{align}
+          Now looking at the Frobenius form,
+          \begin{align}
+              \lVert \vec{A} \vec{A}^{-1} \rVert & \leq \lVert \vec{A} \rVert
+              \ \lVert \vec{A}^{-1} \rVert       &
+              \lVert \vec{I} \rVert              & \leq \lVert \vec{A} \rVert
+              \ \lVert \vec{A}^{-1} \rVert                                      \\
+              \sqrt{1^2 + 1^2 + \dots + 1^2}     & \leq \kappa(\vec{A})       &
+              \sqrt{n}                           & \leq \kappa(\vec{A})
+          \end{align}
+
+    \item Computing the condition numbers using the $ l_1 $ norm,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[l, $$]|[dotted]Q[l, $$]},
+                  colsep = 1em}
+                  n & \kappa(\vec{H}) \\ \hline
+                  3 & 748             \\
+                  4 & 943655          \\
+                  5 & 29070279        \\
+                  6 & 985194889       \\ \hline
+              \end{tblr}
+          \end{table}
+          A linear fit of $ n $ vs $ \ln \kappa $ gives,
+          \begin{align}
+              \ln \kappa & = 3.5 n - 3.76     &
+              \kappa     & = 0.0233\ e^{3.5n}
+          \end{align}
+
+    \item Norms
+          \begin{enumerate}
+              \item Proving the first relation, assuming $ x_j $ is the largest element
+                    in absolute value
+                    \begin{align}
+                        \abs{x_j}                     & \leq
+                        \abs{x_1} + \dots + \abs{x_n} &
+                        \lVert \vec{x} \rVert_\infty  & \leq
+                        \lVert \vec{x} \rVert_1              \\
+                        \abs{x_1} + \dots + \abs{x_n} & \leq
+                        \abs{x_j} + \dots + \abs{x_j} &
+                        \lVert \vec{x} \rVert_1       & \leq
+                        n\lVert \vec{x} \rVert_\infty
+                    \end{align}
+                    Proving the second relation, assuming $ x_j $ is the largest element
+                    in absolute value
+                    \begin{align}
+                        \lVert \vec{x} \rVert_1              & \leq
+                        n\lVert \vec{x} \rVert_\infty        &
+                        \frac{1}{n}\ \lVert \vec{x} \rVert_1 & \leq
+                        \lVert \vec{x} \rVert_\infty
+                    \end{align}
+
+              \item Proving the first relation, with $ \abs{x_j} $ being the
+                    infinity norm
+                    \begin{align}
+                        \abs{x_1}^2 + \dots + \abs{x_n}^2
+                         & \leq (\abs{x_1} + \dots + \abs{x_n})^2 &
+                        \lVert \vec{x} \rVert_2
+                         & \leq \lVert \vec{x} \rVert_1             \\
+                        \vec{y}
+                         & = \begin{bNiceMatrix}
+                                 1 & 1 & \dots & 1
+                             \end{bNiceMatrix}                  &
+                        \Big(\vec{x}^T \vec{y}\Big)^2
+                         & = (x_1 + \dots + x_n)^2                  \\
+                        \lVert \vec{x} \rVert_1^2
+                         & = n\ \lVert \vec{x} \rVert_2^2         &
+                        \lVert \vec{x} \rVert_1
+                         & = \sqrt{n}\ \lVert \vec{x} \rVert_2
+                    \end{align}
+                    The second inequalities follow from the first.
+
+              \item The inequality starts from
+                    \begin{align}
+                        \frac{\lVert \vec{Ax} \rVert}{\lVert \vec{x} \rVert}
+                                                              & \leq c &
+                        \vec{x}                               & \neq 0   \\
+                        \lVert \vec{x} \rVert                 & = 1    &
+                        \implies \quad \lVert \vec{Ax} \rVert & \leq c   \\
+                        \kappa(\vec{A})                       &
+                        = \max_{\lVert \vec{x} \rVert = 1} \lVert \vec{Ax} \rVert
+                    \end{align}
+                    The same $ c $ that is valid for the original definition of
+                    $ \kappa $, is also valid for this new relation. \par
+                    This means that the two formulas are equivalent.
+
+              \item Examples TBC. Only considering the column sum norm,
+                    \begin{align}
+                        \lVert \vec{A} \rVert & = \max_{k} \sum_{j=1}^{n}
+                        \abs{a_{jk}}          &
+                        \abs{a_{jk}}          & \geq 0                    \\
+                        \implies \quad \lVert \vec{A} \rVert
+                                              & \geq 0
+                    \end{align}
+                    The aboslute value is zero only if the number itself is zero.
+                    \begin{align}
+                        \lVert \vec{A} \rVert  = 0 \qquad
+                        \iff \qquad \vec{A}     = 0
+                    \end{align}
+                    Multiplying a matrix by a scalar multiplies every element by that
+                    scalar.
+                    \begin{align}
+                        \lVert k\ \vec{A} \rVert & = \abs{k} \lVert \vec{A} \rVert
+                    \end{align}
+                    The absolute value operation satisfies the triangle inequality.
+                    \begin{align}
+                        \abs{a_{jk} + b_{jk}}               & \leq \abs{a_{jk}}
+                        + \abs{b_{jk}}                                          \\
+                        \sum_{j=1}^{n}\abs{a_{jk} + b_{jk}} & \leq
+                        \sum_{j=1}^{n}\abs{a_{jk}}
+                        + \sum_{j=1}^{n}\abs{b_{jk}}                            \\
+                        \max_k{\sum_{j=1}^{n}
+                        \abs{a_{jk} + b_{jk}}}              & \leq
+                        \max_k{\sum_{j=1}^{n} \abs{a_{jk}}}
+                        + \max_k{\sum_{j=1}^{n} \abs{b_{jk}}}                   \\
+                        \lVert \vec{A} + \vec{B} \rVert
+                                                            & \leq
+                        \lVert \vec{A} \rVert +
+                        \lVert \vec{B} \rVert
+                    \end{align}
+          \end{enumerate}
+
+    \item Refer notes. TBC
+
+
+\end{enumerate}

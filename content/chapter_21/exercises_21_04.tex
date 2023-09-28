@@ -1,0 +1,227 @@
+\section{Methods for Elliptic PDEs}
+
+\begin{enumerate}
+    \item Deriving the relations, by using the first 2 terms of the Taylor series,
+          \begin{align}
+              u(x, y+k) & = u + k\ u_y + \frac{k^2}{2!}\ u_{yy} = \dots \\
+              u(x, y-k) & = u - k\ u_y+ \frac{k^2}{2!}\ u_{yy} = \dots  \\
+              u_y       & \approxeq \frac{u(x, y+k) - u(x, y-k)}{2k}
+          \end{align}
+          Next, adding these two Taylor series,
+          \begin{align}
+              u(x, y+k) + u(x, y-k) & = 2u + k^2\ u_{yy}                               \\
+              u_{yy}                & \approxeq \frac{u(x, y+k) - 2u + u(x, y-k)}{k^2}
+          \end{align}
+          To get the mixed derivative,
+          \begin{align}
+              \diffp{u_y}{x} & = \frac{u_x(x, y+k) - u_x(x, y-k)}{2k}    \\
+                             & = \frac{u(x+h, y+k) - u(x-h, y+k)}{4hk}
+              - \frac{u(x+h, y-k) - u(x-h, y-k)}{4hk}                    \\
+              u_{xy}         & \approxeq \frac{u(x+h, y+k) - u(x-h, y+k)
+                  - u(x+h, y-k) + u(x-h, y-k)}{4hk}
+          \end{align}
+
+    \item Gauss-Seidel method written in \texttt{numpy}. It takes 7 iterations for
+          $ 3S $ values to be achieved.
+
+    \item Since the boundary conditions are symmetric horizontally, mirrorring
+          the columns should not change the results.
+          \begin{align}
+              u_{11}            & = u_{21} & u_{12}           & = u_{22} \\
+              -3u_{11} + u_{12} & = -200   & u_{11} - 3u_{12} & = -100   \\
+              u_{12}            & = 62.5   & u_{11}           & = 87.5
+          \end{align}
+
+    \item Replacing $ h = 4 $, with the smaller $ h = 3 $ gives $ M = N = 4 $ and
+          a set of 9 mesh points.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 8cm,
+                          legend pos = outer north east,
+                          title = {Mesh with $ h = 3 $},
+                          axis equal,Ani, samples at = {1,2,3}]
+                      \addplot[only marks, y_h] ({0}, {x});
+                      \addplot[only marks, y_p] {4};
+                      \addplot[only marks, y_h] ({4}, {x});
+                      \addplot[only marks, y_h] {0};
+                      \node[GraphNode, inner sep = 1pt,
+                      label={-90:{\footnotesize $ 121 $}}] at (axis cs:1, 1) {};
+                      \node[GraphNode, inner sep = 1pt,
+                      label={-90:{\footnotesize $ 127 $}}] at (axis cs:2, 1) {};
+                      \node[GraphNode, inner sep = 1pt,
+                      label={-90:{\footnotesize $ 158 $}}] at (axis cs:3, 1) {};
+                      \node[GraphNode, inner sep = 1pt,
+                      label={-90:{\footnotesize $ 157 $}}] at (axis cs:1, 2) {};
+                      \node[GraphNode, inner sep = 1pt,
+                      label={-90:{\footnotesize $ 129 $}}] at (axis cs:2, 2) {};
+                      \node[GraphNode, inner sep = 1pt,
+                      label={-90:{\footnotesize $ 148 $}}] at (axis cs:3, 2) {};
+                      \node[GraphNode, inner sep = 1pt,
+                      label={-90:{\footnotesize $ 122 $}}] at (axis cs:1, 3) {};
+                      \node[GraphNode, inner sep = 1pt,
+                      label={-90:{\footnotesize $ 83 $}}] at (axis cs:2, 3) {};
+                      \node[GraphNode, inner sep = 1pt,
+                      label={-90:{\footnotesize $ 82 $}}] at (axis cs:3, 3) {};
+                      \addlegendentry{$ u = 100 $}
+                      \addlegendentry{$ u = 0 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The exact solution using Cramer's rule is computed using \texttt{numpy}
+
+    \item Using the given boundary conditions, and 5 Gauss-Siedel iterations,
+          \begin{align}
+              \vec{P}      & = \bmattt{105}{115}{105}{155}             &
+              \vec{\wt{P}} & = \bmattt{104.98}{114.97}{104.94}{154.96}
+          \end{align}
+
+    \item Using the given boundary conditions, and 5 Gauss-Siedel iterations,
+          \begin{align}
+              \vec{P}      & = \bmattt{-2}{2}{-11}{-16}             &
+              \vec{\wt{P}} & = \bmattt{-1.67}{2.16}{-10.83}{-15.91}
+          \end{align}
+
+    \item Using the given boundary conditions, and 5 Gauss-Siedel iterations,
+          \begin{align}
+              \vec{P}      & = \bmattt{0}{0}{0}{0}                 &
+              \vec{\wt{P}} & = \bmattt{0.293}{0.146}{0.146}{0.073}
+          \end{align}
+
+    \item Using the given boundary conditions, and 5 Gauss-Siedel iterations,
+          \begin{align}
+              \vec{P}      & = \bmattt{165}{165}{165}{165}           &
+              \vec{\wt{P}} & = \bmattt{164.81}{164.9}{164.9}{164.95}
+          \end{align}
+
+    \item Using the given boundary conditions, and 10 Gauss-Siedel iterations,
+          \begin{align}
+              \vec{P}      & = \bmattt{0.108}{0.108}{0.325}{0.325} &
+              \vec{\wt{P}} & = \bmattt{0.108}{0.108}{0.325}{0.325}
+          \end{align}
+
+    \item Using the given boundary conditions, and 5 Gauss-Siedel iterations,
+          \begin{align}
+              \vec{P}      & = \bmattt{2}{-5}{-5}{-62}              &
+              \vec{\wt{P}} & = \bmattt{-1.58}{-4.79}{-4.79}{-61.89}
+          \end{align}
+
+    \item Using the coarse grid, and 10 Gauss-Siedel iterations,
+          \begin{align}
+              \vec{P}      & = \bmatcol{-66}{66}             &
+              \vec{\wt{P}} & = \bmatcol{-65.99987}{66.00003}
+          \end{align}
+          Using the finer grid, and 10 Gauss-Siedel iterations,
+          \begin{align}
+              \vec{P}      & = \begin{bNiceMatrix}[margin]
+                                   92.9  & 87.4  & 92.9  \\
+                                   64.2  & 54.0  & 64.2  \\
+                                   0     & 0     & 0     \\
+                                   -64.2 & -54.0 & -64.2 \\
+                                   -92.9 & -87.4 & -92.9
+                               \end{bNiceMatrix} &
+              \vec{\wt{P}} & = \begin{bNiceMatrix}[margin]
+                                   92.18  & 86.63  & 92.18  \\
+                                   63.22  & 52.86  & 63.22  \\
+                                   0.90   & 1.005  & 0.56   \\
+                                   -63.22 & -52.86 & -63.22 \\
+                                   -92.18 & -86.63 & -92.18
+                               \end{bNiceMatrix}
+          \end{align}
+
+    \item Using the given boundary conditions, and 10 Gauss-Siedel iterations,
+          to compare the two different initial guesses.
+          \begin{align}
+              \vec{\wt{P}}_{100}       & = \bmattt{0.10853845}{0.10839581}
+              {0.32490216}{0.32483085} &
+              \vec{\wt{P}}_{0}         & = \bmattt{0.10825235}{0.10825276}
+              {0.32475911}{0.32475932}
+          \end{align}
+          The newer guess provides a better result.
+
+    \item Using the finer grid, and 10 Gauss-Siedel iterations, setting all mesh points
+          to initial guess $ \SI{25}{\celsius} $
+          \begin{align}
+              \vec{P}      & = \begin{bNiceMatrix}[margin]
+                                   25    & 18.75 & 25    \\
+                                   31.25 & 25    & 31.25 \\
+                                   25    & 18.75 & 25
+                               \end{bNiceMatrix}         \\
+              \vec{\wt{P}} & = \begin{bNiceMatrix}[margin]
+                                   25          & 18.74999 & 24.999999 \\
+                                   31.25000002 & 25       & 31.25     \\
+                                   25.0000001  & 18.75    & 25
+                               \end{bNiceMatrix}
+          \end{align}
+
+    \item Plotting rough isotherms using the results from Problem $ 13 $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {a = 0.75;}]
+                  \begin{axis}[xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, colormap/jet,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = 0:4, restrict y to domain = 0:4,
+                          xmin = 0, xmax = 4, ymin = 0, ymax = 4]
+                      \addplot3 [thick,contour gnuplot={
+                                  number = 11,
+                                  labels = false}, samples = 100]
+                      {(y-2)^2 - (x-2)^2};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the finer grid, and 10 Gauss-Siedel iterations, setting all mesh points
+          to initial guess $ \SI{25}{\celsius} $
+          \begin{align}
+              \vec{P}      & = \begin{bNiceMatrix}[margin]
+                                   0     & 0.25 & 0     \\
+                                   -0.25 & 0    & -0.25 \\
+                                   0     & 0.25 & 0
+                               \end{bNiceMatrix}              \\
+              \vec{\wt{P}} & = \begin{bNiceMatrix}[margin]
+                                   0               & 0.25 & \num{4.65d-10} \\
+                                   -0.25           & 0    & -0.25          \\
+                                   -\num{4.65d-10} & 0.25 & 0
+                               \end{bNiceMatrix}
+          \end{align}
+
+    \item Using 5 steps of the ADI method,
+          \begin{align}
+              \vec{P}_{\text{ADI}}  & = \bmattt{\num{1.092d-1}}{\num{1.092d-1}}
+              {\num{3.2476d-1}}{\num{3.2476d-1}}                                \\
+              \vec{P}_{\text{Lieb}} & = \bmattt{0.108}{0.108}{0.325}{0.325}
+          \end{align}
+
+    \item Using the improved ADI method, the optimal value of $ p $ is
+          \begin{align}
+              p^*       & = 2 \sin(\pi/3) = \sqrt{3}              &
+              \vec{P}^* & = \bmattt{0.077}{0.0987}{0.308}{0.318}    \\
+              p         & = 2                                     &
+              \vec{P}   & = \bmattt{0.0849}{0.109}{0.3170}{0.323}
+          \end{align}
+          After one iteration, the improved ADI method is closer to the exact values.
+
+    \item Laplace equation
+          \begin{enumerate}
+              \item Code written in \texttt{numpy}
+              \item The exact solution using Gaussian elimination is,
+                    \begin{align}
+                        \vec{P}_{\text{G}}   & =
+                        \begin{bNiceMatrix}[margin]
+                            159.545454 & 170.151515 & 156.515151 & 110.454545 \\
+                            138.030303 & 144.545454 & 125.454545 & 75.303030  \\
+                            138.030303 & 144.545454 & 125.454545 & 75.303030  \\
+                            159.545454 & 170.151515 & 156.515151 & 110.454545 \\
+                        \end{bNiceMatrix} \\
+                        \vec{P}_{\text{num}} & =
+                        \begin{bNiceMatrix}[margin]
+                            159.51469  & 170.11124  & 156.482572 & 110.438255 \\
+                            138.990032 & 144.492739 & 125.411898 & 75.281707  \\
+                            138.997723 & 144.502807 & 125.420043 & 75.285779  \\
+                            159.52916  & 170.13019  & 156.497900 & 110.445919 \\
+                        \end{bNiceMatrix} \\
+                        \epsilon             & = \num{5.27d-2}
+                    \end{align}
+          \end{enumerate}
+\end{enumerate}

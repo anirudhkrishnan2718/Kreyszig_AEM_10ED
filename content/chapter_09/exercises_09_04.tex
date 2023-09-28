@@ -5,26 +5,24 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[
-                          set layers,
                           colorbar,
                           colormap/jet,
                           Ani,
                           grid = both,
                           axis equal,
                           title = {$ c = x^2 - y^2 $},
-                          % enlargelimits = true,
-                          view     = {0}{90}, % for a view 'from above'
+                          view     = {0}{90},
                       ]
                       \addplot3 [
                           domain = -4:4,
                           thick,
                           contour gnuplot={
-                                  % number = 10,
-                                  levels={-4, -2, -1, 1, 2, 4},
+                                  number = 9,
+                                  %   levels={0, 10, -10},
                                   labels=false,
                               },
                           samples=100
-                      ] {(x^2 - y^2)};
+                      ] {x^2 - y^2};
                   \end{axis}
               \end{tikzpicture}
           \end{figure}
@@ -869,35 +867,35 @@
 
     \item Using the definition of the derivative as a limit,
           \begin{align}
-              (\vec{v} \dotp \vec{u})' & = \lim_{\Delta t \rightarrow 0}
+              (\vec{v} \dotp \vec{u})' & = \lim_{\Delta t \to 0}
               \frac{\vec{v}(t + \Delta t) \dotp \vec{u}(t + \Delta t) -
-              \vec{v}(t) \dotp \vec{u}(t)}{\Delta t}                     \\
-                                       & = \lim_{\Delta t \rightarrow 0}
+              \vec{v}(t) \dotp \vec{u}(t)}{\Delta t}             \\
+                                       & = \lim_{\Delta t \to 0}
               \frac{\vec{v}(t + \Delta t) \dotp \vec{u}(t + \Delta t) -
-              \vec{v}(t + \Delta t) \dotp \vec{u}(t)}{\Delta t}          \\
-                                       & + \lim_{\Delta t \rightarrow 0}
+              \vec{v}(t + \Delta t) \dotp \vec{u}(t)}{\Delta t}  \\
+                                       & + \lim_{\Delta t \to 0}
               \frac{\vec{v}(t + \Delta t) \dotp \vec{u}(t) -
-              \vec{v}(t) \dotp \vec{u}(t)}{\Delta t}                     \\
-                                       & = \lim_{\Delta t \rightarrow 0}
+              \vec{v}(t) \dotp \vec{u}(t)}{\Delta t}             \\
+                                       & = \lim_{\Delta t \to 0}
               \vec{v}(t + \Delta t) \dotp \vec{u}'(t) +
-              \lim_{\Delta t \rightarrow 0} \vec{v}'(t) \dotp \vec{u}(t) \\
+              \lim_{\Delta t \to 0} \vec{v}'(t) \dotp \vec{u}(t) \\
                                        & =
               \vec{v}(t) \dotp \vec{u}'(t) + \vec{v}'(t) \dotp \vec{u}(t)
           \end{align}
           Using the definition of the derivative as a limit,
           \begin{align}
-              (\vec{v} \times \vec{u})' & = \lim_{\Delta t \rightarrow 0}
+              (\vec{v} \times \vec{u})' & = \lim_{\Delta t \to 0}
               \frac{\vec{v}(t + \Delta t) \times \vec{u}(t + \Delta t) -
-              \vec{v}(t) \times \vec{u}(t)}{\Delta t}                     \\
-                                        & = \lim_{\Delta t \rightarrow 0}
+              \vec{v}(t) \times \vec{u}(t)}{\Delta t}             \\
+                                        & = \lim_{\Delta t \to 0}
               \frac{\vec{v}(t + \Delta t) \times \vec{u}(t + \Delta t) -
-              \vec{v}(t + \Delta t) \times \vec{u}(t)}{\Delta t}          \\
-                                        & + \lim_{\Delta t \rightarrow 0}
+              \vec{v}(t + \Delta t) \times \vec{u}(t)}{\Delta t}  \\
+                                        & + \lim_{\Delta t \to 0}
               \frac{\vec{v}(t + \Delta t) \times \vec{u}(t) -
-              \vec{v}(t) \times \vec{u}(t)}{\Delta t}                     \\
-                                        & = \lim_{\Delta t \rightarrow 0}
+              \vec{v}(t) \times \vec{u}(t)}{\Delta t}             \\
+                                        & = \lim_{\Delta t \to 0}
               \vec{v}(t + \Delta t) \times \vec{u}'(t) +
-              \lim_{\Delta t \rightarrow 0} \vec{v}'(t) \times \vec{u}(t) \\
+              \lim_{\Delta t \to 0} \vec{v}'(t) \times \vec{u}(t) \\
                                         & =
               \vec{v}(t) \times \vec{u}'(t) + \vec{v}'(t) \times \vec{u}(t)
           \end{align}

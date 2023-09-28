@@ -1,0 +1,758 @@
+\section{Line Integral in the Complex Plane}
+
+\begin{enumerate}
+    \item Plotting the path
+    \item Plotting the path
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ t + 0.5t\ \i $},
+                          height = 8cm, width = 8cm,
+                          ymin = 0.5, ymax = 3,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = x, domain = 2:5]
+                      ({x}, {0.5*x});
+                      \node[GraphNode, label =
+                              {[fill = white]below:\scriptsize $ t = 2 $}]
+                      at (axis cs:2, 1){};
+                      \node[GraphNode, label =
+                              {[fill = white]above:\scriptsize $ t = 5 $}]
+                      at (axis cs:5, 2.5){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ 3 + t + \i\ (1 - t) $},
+                          height = 8cm, width = 8cm,
+                          ymin = -2.5, ymax = 1.5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = x, domain = 0:3]
+                      ({3 + x}, {1 - x});
+                      \node[GraphNode, label =
+                              {[fill = white]above:\scriptsize $ t = 0 $}]
+                      at (axis cs:3, 1){};
+                      \node[GraphNode, label =
+                              {[fill = white]below:\scriptsize $ t = 3 $}]
+                      at (axis cs:6, -2){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the path
+    \item Plotting the path
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ t + 2t^2\ \i $},
+                          height = 8cm, width = 8cm,
+                          ymin = 1, ymax = 9,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = x, domain = 1:2]
+                      ({x}, {2*x^2});
+                      \node[GraphNode, label =
+                              {[fill = white]below:\scriptsize $ t = 1 $}]
+                      at (axis cs:1, 2){};
+                      \node[GraphNode, label =
+                              {[fill = white]above:\scriptsize $ t = 2 $}]
+                      at (axis cs:2, 8){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ t + \i\ (1 - t^2) $},
+                          height = 8cm, width = 8cm,
+                          ymin = -1, ymax = 5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = x, domain = -1:1]
+                      ({x}, {(1-x)^2});
+                      \node[GraphNode, label =
+                              {[fill = white]above right:\scriptsize $ t = -1 $}]
+                      at (axis cs:-1, 4){};
+                      \node[GraphNode, label =
+                              {[fill = white]below:\scriptsize $ t = 1 $}]
+                      at (axis cs:1, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the path
+          \begin{align}
+              z(t) & = 3 - \i + \sqrt{10} e^{-\i t}                   &
+                   & = 3 + \sqrt{10}\cos t - \i (1 + \sqrt{10}\sin t)
+          \end{align}
+    \item Plotting the path
+          \begin{align}
+              z(t) & = 1 + \i + e^{-\i \pi t}                  &
+                   & = 1 + \cos(\pi t) + \i\ [1 - \sin(\pi t)]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                      title = {$ 3 - \i + \sqrt{10}e^{-\i t} $},
+                      height = 8cm, width = 8cm,
+                      %   ymin = 1, ymax = 9,
+                      grid = both,Ani,
+                      colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({3 + sqrt(10)*cos(\t)}, {-1-sqrt(10)*sin(\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]above left:\scriptsize $ t = 0 $}]
+                      at (axis cs:6.16, -1){};
+                      \node[GraphNode, label =
+                              {[fill = white]below left:\scriptsize $ t = 2\pi $}]
+                      at (axis cs:6.16, -1){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ 1 + \i + e^{-\i \pi t} $},
+                          height = 8cm, width = 8cm,
+                          %   ymin = 1, ymax = 9,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2,
+                          variable = \t]
+                      ({1 + cos(pi * \t)}, {1 - sin(pi * \t)});
+                      \node[GraphNode, label =
+                              {[fill = white]above left:\scriptsize $ t = 0 $}]
+                      at (axis cs:2, 1){};
+                      \node[GraphNode, label =
+                              {[fill = white]below left:\scriptsize $ t = 2 $}]
+                      at (axis cs:2, 1){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the path
+          \begin{align}
+              z(t) & = 2 + 4 e^{\i \pi t/2}                      &
+                   & = 2 + 4\cos(\pi t/2) + \i\ [4\sin(\pi t/2)]
+          \end{align}
+    \item Plotting the path
+          \begin{align}
+              z(t) & = 5e^{-\i t}            &
+                   & = 5\cos t - \i\ 5\sin t
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                      title = {$ 3 - \i + \sqrt{10}e^{-\i t} $},
+                      height = 8cm, width = 8cm, axis equal,
+                      %   ymin = 1, ymax = 9,
+                      grid = both,Ani,
+                      colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2,
+                          variable = \t]
+                      ({2 + 4*cos(0.5 * pi * \t)}, {4 * sin(0.5*pi*\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]left:\scriptsize $ t = 0 $}]
+                      at (axis cs:6, 0){};
+                      \node[GraphNode, label =
+                              {[fill = white]right:\scriptsize $ t = 2 $}]
+                      at (axis cs:-2, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ 5e^{-\i t} $},
+                          height = 8cm, width = 8cm,
+                          xmin = -1, xmax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:pi/2,
+                          variable = \t]
+                      ({5*cos(\t)}, {-5*sin(\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]left:\scriptsize $ t = 0 $}]
+                      at (axis cs:5, 0){};
+                      \node[GraphNode, label =
+                              {[fill = white]above:\scriptsize $ t = \pi/2 $}]
+                      at (axis cs:0, -5){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the path
+
+    \item Plotting the path
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ t + \i\ t^3 $},
+                          height = 8cm, width = 8cm,
+                          %   ymin = 1, ymax = 9,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = -2:2,
+                          variable = \t]
+                      ({\t}, {\t^3});
+                      \node[GraphNode, label =
+                              {[fill = white]right:\scriptsize $ t = -2 $}]
+                      at (axis cs:-2, -8){};
+                      \node[GraphNode, label =
+                              {[fill = white]left:\scriptsize $ t = 2 $}]
+                      at (axis cs:2, 8){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ 2\cos t + \i\ \sin t $},
+                          height = 8cm, width = 8cm, axis equal,
+                          %   xmin = -1, xmax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({2*cos(\t)}, {sin(\t)});
+                      \node[GraphNode, label =
+                              {below left:\scriptsize $ t = 0 $}]
+                      at (axis cs:2, 0){};
+                      \node[GraphNode, label =
+                              {above left:\scriptsize $ t = 2\pi $}]
+                      at (axis cs:2, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Parametrizing the path
+          \begin{align}
+              z(t) & = -1 + t + \i\ [1 + t] &
+              t    & \in [0,2]
+          \end{align}
+
+    \item Plotting the path
+          \begin{align}
+              z_1(t) & = t + \i\ 0 &
+              t      & \in [0,2]     \\
+              z_2(t) & = 2 + \i\ t &
+              t      & \in [0,1]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ t-1 + \i\ (1+t) $},
+                          height = 8cm, width = 8cm,
+                          ymin = 0.5, ymax = 3.5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2,
+                          variable = \t]
+                      ({\t - 1}, {1 + \t});
+                      \node[GraphNode, label =
+                              {[fill = white]below:\scriptsize $ t = 0 $}]
+                      at (axis cs:-1, 1){};
+                      \node[GraphNode, label =
+                              {[fill = white]above:\scriptsize $ t = 2 $}]
+                      at (axis cs:1, 3){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {Piecewise linear},
+                          height = 8cm, width = 8cm, axis equal,
+                          %   xmin = -1, xmax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2,
+                          variable = \t]
+                      ({\t}, {0});
+                      \addplot[GraphSmooth, mesh, point meta = \r, domain = 0:1,
+                          variable = \r]
+                      ({2}, {\r});
+                      \node[GraphNode] at (axis cs:0, 0){};
+                      \node[GraphNode] at (axis cs:2, 1){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Parametrizing the path
+          \begin{align}
+              z(t) & : \abs{z - 2 + \i} = 2                     &
+              z(t) & : 2 + 2\cos t + \i\ \Big[-1 + 2\sin t\Big]   \\
+              t    & \in [0, \pi]
+          \end{align}
+
+    \item Plotting the path
+          \begin{align}
+              z(t) & = e^{-\i t}  &
+              t    & \in [0,2\pi]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ 2 - \i + 2e^{\i t} $},
+                          height = 8cm, width = 8cm, axis equal,
+                          %   ymin = 0.5, ymax = 3.5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:pi,
+                          variable = \t]
+                      ({2 + 2*cos(\t)}, {-1 + 2*sin(\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]below:\scriptsize $ t = 0 $}]
+                      at (axis cs:4, -1){};
+                      \node[GraphNode, label =
+                              {[fill = white]below:\scriptsize $ t = \pi $}]
+                      at (axis cs:0, -1){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ e^{-\i t} $},
+                          height = 8cm, width = 8cm, axis equal,
+                          %   xmin = -1, xmax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({cos(\t)}, {-sin(\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]below left:\scriptsize $ t = 0 $}]
+                      at (axis cs:1, 0){};
+                      \node[GraphNode, label =
+                              {[fill = white]above left:\scriptsize $ t = 2\pi $}]
+                      at (axis cs:1, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Parametrizing the branch through $ 2 + 0\ \i $
+          \begin{align}
+              z(t) & : x^2 - 4y^2 = 4         &
+              z(t) & : 2\cosh t + \i\ \sinh t   \\
+              t    & \in [0, \pi]
+          \end{align}
+
+    \item Parametrizing the path
+          \begin{align}
+              z(t) & : 4x^2 + 9y^2 = 36      &
+              z(t) & : 3\cos t - 2\sin t\ \i   \\
+              t    & \in [0, 2\pi]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ 2\cosh t + \i\ \sinh t $},
+                          height = 8cm, width = 8cm, axis equal,
+                          xmin = 1, xmax = 9,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = -2:2,
+                          variable = \t]
+                      ({2*cosh(\t)}, {sinh(\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]right:\scriptsize $ t = -2 $}]
+                      at (axis cs:7.52, -3.62){};
+                      \node[GraphNode, label =
+                              {[fill = white]right:\scriptsize $ t = 2 $}]
+                      at (axis cs:7.52, 3.62){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ 3\cos t - 2\sin t\ \i $},
+                          height = 8cm, width = 8cm, axis equal,
+                          %   xmin = -1, xmax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({3*cos(\t)}, {-2*sin(\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]below left:\scriptsize $ t = 0 $}]
+                      at (axis cs:3, 0){};
+                      \node[GraphNode, label =
+                              {[fill = white]above left:\scriptsize $ t = 2\pi $}]
+                      at (axis cs:3, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the path
+          \begin{align}
+              z(t) & = -a -\i\ b + re^{-\i t} &
+              t    & \in [0,2\pi]
+          \end{align}
+    \item Plotting the path
+          \begin{align}
+              z(t) & = t + \frac{1}{t}\ \i &
+              t    & \in [1,5]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ -a -\i\ b + re^{-\i t} $},
+                          height = 8cm, width = 8cm, axis equal,
+                          xtick={-1,0,1}, xticklabels={$ -a-r $, $ -a $, $ -a+r $},
+                          ytick={-1,0,1}, yticklabels={$ -b-r $, $ -b $, $ -b+r $},
+                          %   xmin = -1, xmax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({cos(\t)}, {-sin(\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]below left:\scriptsize $ t = 0 $}]
+                      at (axis cs:1, 0){};
+                      \node[GraphNode, label =
+                              {[fill = white]above left:\scriptsize $ t = 2\pi $}]
+                      at (axis cs:1, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ t + (1/t)\ \i $},
+                          height = 8cm, width = 8cm,
+                          %   xmin = -1, xmax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 1:5,
+                          variable = \t]
+                      ({\t}, {1/\t});
+                      \node[GraphNode, label =
+                              {[fill = white]right:\scriptsize $ t = 1 $}]
+                      at (axis cs:1, 1){};
+                      \node[GraphNode, label =
+                              {[fill = white]above:\scriptsize $ t = 5 $}]
+                      at (axis cs:5, 0.2){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the path
+          \begin{align}
+              z(t) & = t + (1 - t^2/4)\ \i &
+              t    & \in [-2,2]
+          \end{align}
+    \item Plotting the path
+          \begin{align}
+              C    & : 4(x-2)^2 + 5(y+1)^2 = 20                          &
+              z(t) & = 2 + \sqrt{5}\cos t + \i\ \Big[ -1 + 2\sin t \Big]   \\
+              t    & \in [0, 2\pi]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ t + (1 - t^2/4)\ \i $},
+                          height = 8cm, width = 8cm, axis equal,
+                          %   xmin = -1, xmax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = -2:2,
+                          variable = \t]
+                      ({\t}, {1 - 0.25*\t^2});
+                      \node[GraphNode, label =
+                              {[fill = white]below:\scriptsize $ t = -2 $}]
+                      at (axis cs:-2, 0){};
+                      \node[GraphNode, label =
+                              {[fill = white]below:\scriptsize $ t = 2 $}]
+                      at (axis cs:2, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                      title = {$ 2 + \sqrt{5}\cos t + \i\ [-1 + 2\sin t] $},
+                      height = 8cm, width = 8cm, axis equal,
+                      %   xmin = -1, xmax = 6,
+                      grid = both,Ani,
+                      colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({2 + sqrt(5)*cos(\t)}, {-1 + 2*sin(\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]above left:\scriptsize $ t = 0 $}]
+                      at (axis cs:4.23, -1){};
+                      \node[GraphNode, label =
+                              {[fill = white]below left:\scriptsize $ t = 2\pi $}]
+                      at (axis cs:4.23, -1){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The function is \textcolor{y_p}{not analytic}, so the first method cannot be
+          used.
+          \begin{align}
+              z(t)       & = t + \i\ t                                      &
+              t          & \in [1,3]                                          \\
+              f(z)       & = \Re{(z)} = t                                   &
+              \dot{z}(t) & = 1 + \i                                           \\
+              I          & = \int_{1}^{3} (t) \cdot (1 + \i)\ \dl t         &
+                         & = (1 + \i) \cdot \Bigg[ \frac{t^2}{2} \Bigg]_1^3   \\
+              I          & = 4 + 4\ \i
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not analytic}, so the first method cannot be
+          used.
+          \begin{align}
+              z(t)       & = t + \i\ \Bigg[1 + \frac{(t - 1)^2}{2}\Bigg]             &
+              t          & \in [1,3]                                                   \\
+              f(z)       & = \Re{(z)} = t                                            &
+              \dot{z}(t) & = 1 + \i\ (t-1)                                             \\
+              I          & = \int_{1}^{3} (t) \cdot \Big[1 + \i\ (t - 1)\Big]\ \dl t &
+                         & = \Bigg[ \frac{t^2}{2} \Bigg]_1^3
+              + \i\ \Bigg[ \frac{t^3}{3} - \frac{t^2}{2} \Bigg]_1^3                    \\
+              I          & = 4 + \frac{14}{3}\ \i
+          \end{align}
+
+    \item The function is \textcolor{y_h}{analytic}, so the first method can be used.
+          \begin{align}
+              I & = \int_{z_a}^{z_b} e^z \ \dl z  &
+                & = \Bigg[ e^z \Bigg]_{z_a}^{z_b}   \\
+              I & = 1 - (-1) = 2
+          \end{align}
+
+    \item The function is \textcolor{y_h}{analytic}, so the first method can be used.
+          \begin{align}
+              I & = \int_{z_a}^{z_b} \cos(2z) \ \dl z                      &
+                & = \Bigg[ \frac{\sin(2z)}{2} \Bigg]_{z_a}^{z_b}             \\
+              I & = \frac{\sin(2\pi\i) - \sin(-2\pi\i)}{2} = \sin(2\pi \i) &
+                & = \i\ \sinh(2\pi)
+          \end{align}
+
+    \item The function is \textcolor{y_h}{analytic}, so the first method can be used.
+          \begin{align}
+              I & = \int_{z_a}^{z_b} z\ e^{z^2} \ \dl z         &
+                & = \Bigg[ \frac{e^{z^2}}{2} \Bigg]_{z_a}^{z_b}   \\
+              I & = \frac{e^{-1} - e}{2} = -\sinh(1)
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not analytic} at the origin,
+          so the first method cannot be used.
+          \begin{align}
+              z(t)       & = \cos t + \i\ \sin t                               &
+              t          & \in [0,2\pi]                                          \\
+              f(z)       & = z + \frac{1}{z}                                   &
+              f[z(t)]    & = 2\cos t                                             \\
+              \dot{z}(t) & = -\sin t + \i\ \cos t                                \\
+              I          & = \int_{0}^{2\pi} (2\cos t) \cdot
+              \Big[-\sin t + \i\ \cos t\Big]
+              \ \dl t    &
+                         & = \i\ \Bigg[ t + \frac{\sin(2t)}{2} \Bigg]_0^{2\pi}   \\
+              I          & = 2\pi\ \i
+          \end{align}
+
+    \item The function is \textcolor{y_h}{analytic}, so the first method can be used.
+          \begin{align}
+              I & = \int_{z_a}^{z_b} \sec^2 z \ \dl z &
+                & = \Bigg[ \tan z \Bigg]_{z_a}^{z_b}    \\
+              I & = \tan(\i\pi/4) - 1                 &
+                & =  -1 + \i\ \tanh(\pi/4)
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not analytic} in the domain,
+          so the first method cannot be used. \par
+          Using the result from the text on $ (z - z_0)^m $,
+          \begin{align}
+              I & = 10\pi\ \i
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not analytic}, so the first method cannot be
+          used.
+          \begin{align}
+              I_1         & = 0                                               \\
+              z_2(t)      & = (1-t) + t\ \i \qquad\qquad t \in [0, 1]         \\
+              I_2         & = \int_{0}^{1} (-1 + \i) \cdot (2t - 2t^2)\ \dl t
+              = \frac{1}{3}
+              \ (-1 + \i) &
+              (1, 0)      & \to (0, 1)                                        \\
+              I_3         & = 0                                               \\
+              I           & = \frac{1}{3}\ (-1 + \i)
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not analytic}, so the first method cannot be
+          used.
+          \begin{align}
+              I_1    & = \int_{0}^{1} (\i) \cdot (-t^2)\ \dl t = \frac{-1}{3}\ \i    &
+              (0, 0) & \to (0, 1)                                                      \\
+              I_2    & = \int_{0}^{1} (1) \cdot (t^2 - 1)\ \dl t = \frac{-2}{3}      &
+              (0, 1) & \to (1, 1)                                                      \\
+              I_3    & = \int_{1}^{0} (\i) \cdot (1 - t^2)\ \dl t = \frac{-2}{3}\ \i &
+              (1, 1) & \to (1, 0)                                                      \\
+              I_4    & = \int_{1}^{0} (1) \cdot (t^2)\ \dl t = \frac{-1}{3}          &
+              (1, 0) & \to (0, 0)                                                      \\
+              I      & = -1 - \i
+          \end{align}
+
+    \item Program written in \texttt{sympy}
+
+    \item Performing both integrations,
+          \begin{align}
+              \int_{a}^{b} z^2\ \dl z & = \Bigg[ \frac{z^3}{3} \Bigg]_a^b &
+                                      & = \frac{(1+\i)^3 - (-1-\i)^3}{3}    \\
+                                      & =\frac{2}{3}\ (4 + 2\i)             \\
+              \int_{b}^{a} z^2\ \dl z & = \Bigg[ \frac{z^3}{3} \Bigg]_b^a &
+                                      & = \frac{(-1-\i)^3 - (1+\i)^3}{3}    \\
+                                      & =\frac{-2}{3}\ (4 + 2\i)
+          \end{align}
+
+    \item Performing both integrations,
+          \begin{align}
+              f[z(t)] & = \frac{\bar{z}}{\abs{z}^2} = \cos t - \i\ \sin t              \\
+              C_1     & : \cos t + \i\ \sin t \qquad\qquad
+              \theta \in [0, \pi]                                                      \\
+              I_1     & = \int_{0}^{\pi} (\cos t - \i\ \sin t)(-\sin t + \i\ \cos t)
+              \ \dl t = \pi\ \i                                                        \\
+              C_2     & : \cos t + \i\ \sin t \qquad\qquad
+              \theta \in [\pi, 2\pi]                                                   \\
+              I_2     & = \int_{\pi}^{\pi} (\cos t - \i\ \sin t)(-\sin t + \i\ \cos t)
+              \ \dl t = \pi\ \i
+          \end{align}
+          Thus, the standard result $ I_1 + I_2 = 2\pi\ \i $ matches the integration by
+          partition of paths.
+
+    \item Integration methods,
+          \begin{enumerate}
+              \item Refer notes. TBC.
+
+              \item From the first method,
+                    \begin{align}
+                        I_1 & = \int_{a}^{b} z^4\ \dl z                  &
+                            & = \Bigg[ \frac{z^5}{5} \Bigg]_{-2\i}^{2\i}
+                        = \color{y_h} \frac{64}{5}\ \i
+                    \end{align}
+                    From the second method,
+                    \begin{align}
+                        z(t)       & : 2\cos t + \i\ 2\sin t         &
+                        t          & \in [-\pi/2, \pi/2]               \\
+                        f[z(t)]    & = 16 \cos(4t) + \i\ 16\sin(4t)  &
+                        \dot{z}(t) & = -2\sin t + \i\ 2\cos t          \\
+                        f[z(t)] \cdot
+                        \dot{z}(t) & = -32\ [\sin(5t) - \i \cos(5t)] &
+                        I_2        & = \int_{-\pi/2}^{\pi/2} f[z(t)]
+                        \ \dot{z}(t)\ \dl t                            \\
+                                   & = \frac{32}{5}\ \Big[ \cos(5t)
+                            + \i\ \sin(5t)\Big]_{-\pi/2}
+                        ^{\pi/2}   &
+                                   & = \color{y_p} \frac{64}{5}\ \i
+                    \end{align}
+                    Both methods match, but the first method is much easier.
+                    \begin{align}
+                        I_1 & = \int_{a}^{b} e^{2z}\ \dl z                   &
+                            & = \Bigg[ \frac{e^{2z}}{2} \Bigg]_{0}^{1 + 2\i}
+                        = \color{y_h} \frac{e^{2 + 4\i} - e^{0}}{2}
+                    \end{align}
+                    From the second method,
+                    \begin{align}
+                        z(t)                & : t + \i\ (2t)                         &
+                        t                   & \in [0, 1]                               \\
+                        f[z(t)]             & = e^{(2 + 4\i)t}                       &
+                        \dot{z}(t)          & = 1 + 2\ \i                              \\
+                        I_2                 & = \int_{0}^{1} f[z(t)]
+                        \ \dot{z}(t)\ \dl t &
+                                            & = \color{y_p} \frac{e^{2 + 4\i} - e^0}
+                        {2}
+                    \end{align}
+                    Both methods match, but the first method is much easier.
+
+              \item To show the path dependence of a non-analytic function,
+                    \begin{align}
+                        z(t)                   & : t + \i\ (a\sin t)                &
+                        t                      & \in [0, \pi]                         \\
+                        f[z(t)]                & = \Re{(z)} = t                     &
+                        \dot{z}(t)             & = 1 + \i\ (a\cos t)                  \\
+                        I_2                    & = \int_{0}^{\pi} f[z(t)]
+                        \ \dot{z}(t)\ \dl t    &
+                                               & = \int_{0}^{\pi} \Big[t
+                        + \i\ (at \cos t)\Big]\ \dl t                                 \\
+                                               & = \Bigg[ \frac{t^2}{2} + at\sin t
+                        + a\cos t \Bigg]_0^\pi &
+                                               & = \color{y_p} \frac{\pi^2}{2} - 2a
+                    \end{align}
+                    Using another non-analytic function,
+                    \begin{align}
+                        z(t)       & : t + \i\ (a\sin t)                 &
+                        t          & \in [0, \pi]                          \\
+                        f[z(t)]    & = \Re{(z^2)}                        &
+                                   & = t^2 - \frac{a^2[1 - \cos(2t)]}{2}   \\
+                        \dot{z}(t) & = 1 + \i\ (a\cos t)                   \\
+                        I_2        & = \int_{0}^{\pi} f[z(t)]
+                    \end{align}
+                    Performing the integrations on the real and imaginary part,
+                    \begin{align}
+                        I_{2r} & = \int_{0}^{\pi} \Bigg[t^2 -\frac{a^2}{2}
+                            + \frac{a^2\cos(2t)}{2}\Bigg]\ \dl t
+                        = \color{y_t} \frac{\pi^3}{3} - \frac{a^2\pi}{2}             \\
+                        I_{2m} & = \int_{0}^{\pi} \Bigg[at^2\cos t - \frac{a^3}{2}
+                        \ \cos t + \frac{a^3 [\cos(3t) + \cos t]}{4}\Bigg]\ \dl t    \\
+                               & = a\ \Bigg[ (t^2 - 2)\sin t + 2t\cos t \Bigg]_0^\pi
+                        + 0 + 0
+                        = \color{y_t} -2at
+                    \end{align}
+                    Using $ f(z) = z$ which is analytic,
+                    \begin{align}
+                        z(t)    & : t + \i\ (a\sin t) \qquad\qquad
+                        t \in [0, \pi]                                           \\
+                        f[z(t)] & = t + \i\ (a\sin t) \qquad\qquad
+                        \dot{z}(t) = 1 + \i\ (a\cos t)                           \\
+                        I_2     & = \int_{0}^{\pi} f[z(t)]
+                        \ \dot{z}(t)\ \dl t                                      \\
+                                & = \int_{0}^{\pi} \Big[t
+                            - \frac{a^2\sin(2t)}{2}
+                        + a\i\ (t \cos t + \sin t)\Big]\ \dl t                   \\
+                                & = \Bigg[ \frac{t^2}{2} + \frac{a^2\cos(2t)}{4}
+                            + a\i\ (t \sin t) \Bigg]_0^\pi
+                        = \color{y_h} \frac{\pi^2}{4}
+                    \end{align}
+                    The integrals dependent on the path cancel, which makes the result
+                    path independent.
+
+              \item Performing the integration on $ f(z) = \Re{z} $,
+                    \begin{align}
+                        z(t)       & : a\cos t + \i\ \sin t               &
+                        t          & \in [-\pi/2, \pi/2]                    \\
+                        f[z(t)]    & = \Re{(z)} = a\cos t                 &
+                        \dot{z}(t) & = -a\sin t + \i\ \cos t                \\
+                        I_2        & = \int_{-\pi/2}^{\pi/2} f[z(t)]
+                        \ \dot{z}(t)\ \dl t                                 \\
+                                   & = \int_{-\pi/2}^{\pi/2} \Big[
+                            -\frac{a^2 \sin(2t)}{2} + \i\ a\cos^2 t\Big]
+                        \ \dl t                                             \\
+                                   & = \Bigg[ \frac{a^2\cos(2t)}{4} + a\i
+                            \ \frac{2t + \sin(2t)}{4} \Bigg]_{-\pi/2}
+                        ^{\pi/2}   &
+                                   & = \color{y_p} \frac{a\pi}{2}\ \i
+                    \end{align}
+          \end{enumerate}
+
+          To find the bound,
+          \begin{align}
+              M & = 3 & L & = 2\sqrt{2}
+          \end{align}
+          From the fact that $ \Re{z} \leq 3$ and the length of the path $ L $. This
+          happens to be a very liberal upper bound.
+\end{enumerate}

@@ -1,616 +1,644 @@
 \section{Matrix Multiplication}
 \begin{enumerate}
-\item Matrix multiplication requires the two matrices to have the same inner
-dimension because the linear transform requires every output variable to be
-defined as a linear function of every input variable.
-\begin{align}
-    y_j        & = f(x_1, x_2,\dots,x_n) \\
-    \forall\ j & \in \{1,\dots,m\}
-\end{align}
+    \item Matrix multiplication requires the two matrices to have the same inner
+          dimension because the linear transform requires every output variable to be
+          defined as a linear function of every input variable.
+          \begin{align}
+              y_j        & = f(x_1, x_2,\dots,x_n) \\
+              \forall\ j & \in \{1,\dots,m\}
+          \end{align}
 
-\item A matrix is skew-symmetric and symmetric. This means that
-\begin{align}
-    \vec{A}          & = \vec{A}^T & \vec{A} & = -\vec{A}^T \\
-    \implies \vec{A} & = \vec{0}
-\end{align}
+    \item A matrix is skew-symmetric and symmetric. This means that
+          \begin{align}
+              \vec{A}          & = \vec{A}^T & \vec{A} & = -\vec{A}^T \\
+              \implies \vec{A} & = \vec{0}
+          \end{align}
 
-\item Outer product of a column and row vector, is
-\begin{align}
-    \begin{bmatrix*}[r]
-        a_1 \\ a_2 \\ a_3
-    \end{bmatrix*} \begin{bmatrix*}[r]
-                       b_1 & b_2 & b_3
-                   \end{bmatrix*} = \begin{bmatrix*}[r]
-                                        a_1b_1 & a_1b_2 & a_1b_3 \\
-                                        a_2b_1 & a_2b_2 & a_2b_3 \\
-                                        a_3b_1 & a_3b_2 & a_3b_3
-                                    \end{bmatrix*}
-\end{align}
-The ratio of any two columns is fixed as is the ratio of any two rows. This
-means that not every square matrix can be represented using the above form.
+    \item Outer product of a column and row vector, is
+          \begin{align}
+              \begin{bmatrix*}[r]
+                  a_1 \\ a_2 \\ a_3
+              \end{bmatrix*} \begin{bmatrix*}[r]
+                                 b_1 & b_2 & b_3
+                             \end{bmatrix*} = \begin{bmatrix*}[r]
+                                                  a_1b_1 & a_1b_2 & a_1b_3 \\
+                                                  a_2b_1 & a_2b_2 & a_2b_3 \\
+                                                  a_3b_1 & a_3b_2 & a_3b_3
+                                              \end{bmatrix*}
+          \end{align}
+          The ratio of any two columns is fixed as is the ratio of any two rows. This
+          means that not every square matrix can be represented using the above form.
 
-\item A skew symmetric matrix of order $ n $ has to have all diagonal entries
-be zero. All lower traingular entries can be distinct. So the number of
-different entries is 6 (for order 4) and $ 0.5(n^2 - n) $ for order $ n $.
+    \item A skew symmetric matrix of order $ n $ has to have all diagonal entries
+          be zero. All lower traingular entries can be distinct. So the number of
+          different entries is 6 (for order 4) and $ 0.5(n^2 - n) $ for order $ n $.
 
-\item For symmetric matrices, the diagonal elements are unconstrained. The
-lower triangular and upper triangular entries match. So the number of distinct
-entries is $ 0.5(n^2 + n) $. For order 4, this is 10 entries.
+    \item For symmetric matrices, the diagonal elements are unconstrained. The
+          lower triangular and upper triangular entries match. So the number of distinct
+          entries is $ 0.5(n^2 + n) $. For order 4, this is 10 entries.
 
-\item Verifying algebra of triangular matrices,
-\begin{align}
-    \vec{U}_1 + \vec{U}_2 & \qquad  \text{is upper triangular} \\
-    \vec{U}_1\vec{U}_2    & \qquad  \text{is upper triangular} \\
-    \vec{U}_1^2           & \qquad  \text{is upper triangular} \\
-    \vec{U}_1 + \vec{L}_1 & \qquad  \text{is not triangular}   \\
-    \vec{U}_1 \vec{L}_1   & \qquad  \text{is not triangular}   \\
-    \vec{L}_1 \vec{L}_2   & \qquad  \text{is lower triangular}
-\end{align}
+    \item Verifying algebra of triangular matrices,
+          \begin{align}
+              \vec{U}_1 + \vec{U}_2 & \qquad  \text{is upper triangular} \\
+              \vec{U}_1\vec{U}_2    & \qquad  \text{is upper triangular} \\
+              \vec{U}_1^2           & \qquad  \text{is upper triangular} \\
+              \vec{U}_1 + \vec{L}_1 & \qquad  \text{is not triangular}   \\
+              \vec{U}_1 \vec{L}_1   & \qquad  \text{is not triangular}   \\
+              \vec{L}_1 \vec{L}_2   & \qquad  \text{is lower triangular}
+          \end{align}
 
-\item Idempotent matrix means,
-\begin{align}
-    \vec{A}^2 = \vec{A}
-\end{align}
-Consider the general $ 2 \times 2 $ case,
-\begin{align}
-    \begin{bmatrix*}[r]
-        a^2 + bc & ab + bd \\
-        ac + dc & bc + d^2
-    \end{bmatrix*} & = \bmattt{a}{b}{c}{d}                                  \\
-    b                     & = 0                   & \text{or}\  & (a+d) = 1 \\
-    c                     & = 0                   & \text{or}\  & (a+d) = 1 \\
-    a(1 - a)              & = bc                                            \\
-    d(1 - d)              & = bc                                            \\
-\end{align}
-If only one among $ b $ or $ c $ is zero, then $ (a + d) = 1 $. \par
-If both $ b $ and $ c $ are zero, then the matrix is diagonal with $ a $ and
-$ d $ limited to the set $ \{0, 1\} $.
+    \item Idempotent matrix means,
+          \begin{align}
+              \vec{A}^2 = \vec{A}
+          \end{align}
+          Consider the general $ 2 \times 2 $ case,
+          \begin{align}
+              \begin{bmatrix*}[r]
+                  a^2 + bc & ab + bd \\
+                  ac + dc & bc + d^2
+              \end{bmatrix*} & = \bmattt{a}{b}{c}{d}                                  \\
+              b                     & = 0                   & \text{or}\  & (a+d) = 1 \\
+              c                     & = 0                   & \text{or}\  & (a+d) = 1 \\
+              a(1 - a)              & = bc                                            \\
+              d(1 - d)              & = bc                                            \\
+          \end{align}
+          If only one among $ b $ or $ c $ is zero, then $ (a + d) = 1 $. \par
+          If both $ b $ and $ c $ are zero, then the matrix is diagonal with $ a $ and
+          $ d $ limited to the set $ \{0, 1\} $.
 
-\item Nilpotent matrix defined for some positive integer $ m $,
-\begin{align}
-    \vec{B}^m = \vec{0} \\
-\end{align}
-Examples are any traingular matrix with zero along the diagonal.
-\begin{align}
-    \bmattt{0}{a}{0}{0} \qquad \bmattt{0}{0}{b}{0} \qquad
-    \bmattt{c}{c}{-c}{-c}
-\end{align}
+    \item Nilpotent matrix defined for some positive integer $ m $,
+          \begin{align}
+              \vec{B}^m = \vec{0} \\
+          \end{align}
+          Examples are any traingular matrix with zero along the diagonal.
+          \begin{align}
+              \bmattt{0}{a}{0}{0} \qquad \bmattt{0}{0}{b}{0} \qquad
+              \bmattt{c}{c}{-c}{-c}
+          \end{align}
 
-\item Transpose is an involution,
-\begin{align}
-    \vec{B}  & = \vec{A}^T                         &
-    \vec{C}  & = \vec{B}^T                           \\
-    [b_{jk}] & = [a_{kj}]                          &
-    [c_{jk}] & = [b_{kj}] = [a_{jk}]                 \\
-    \vec{C}  & = \Big( \vec{A}^T \Big)^T = \vec{A}
-\end{align}
-Transpose is associative under addtion,
-\begin{align}
-    \vec{C}   & = \vec{A} + \vec{B}     &
-    [c_{jk}]  & = [a_{jk} + b_{jk}]       \\
-    \vec{D}   & = \vec{A}^T + \vec{B}^T &
-    [d_{jk}]  & = [a_{kj} + b_{kj}]       \\
-    \vec{C}^T & = \vec{D}
-\end{align}
-Transpose is associative under scalar multiplication,
-\begin{align}
-    (c\vec{A})^T & = [c\ a_{kj}] = c\ [a_{kj}] = c\ \vec{A}^T
-\end{align}
+    \item Transpose is an involution,
+          \begin{align}
+              \vec{B}  & = \vec{A}^T                         &
+              \vec{C}  & = \vec{B}^T                           \\
+              [b_{jk}] & = [a_{kj}]                          &
+              [c_{jk}] & = [b_{kj}] = [a_{jk}]                 \\
+              \vec{C}  & = \Big( \vec{A}^T \Big)^T = \vec{A}
+          \end{align}
+          Transpose is associative under addtion,
+          \begin{align}
+              \vec{C}   & = \vec{A} + \vec{B}     &
+              [c_{jk}]  & = [a_{jk} + b_{jk}]       \\
+              \vec{D}   & = \vec{A}^T + \vec{B}^T &
+              [d_{jk}]  & = [a_{kj} + b_{kj}]       \\
+              \vec{C}^T & = \vec{D}
+          \end{align}
+          Transpose is associative under scalar multiplication,
+          \begin{align}
+              (c\vec{A})^T & = [c\ a_{kj}] = c\ [a_{kj}] = c\ \vec{A}^T
+          \end{align}
 
-\item To show the transpose of the product of two matrices,
-\begin{align}
-    \vec{C}              & = \vec{AB}                      &
-    [c_{jk}]
-                         & = \sum_{l=1}^{n} a_{jl}\ b_{lk}   \\
-    \vec{C}^T            & = \vec{D}                       &
-    [d_{jk}] = [c_{kj}]
-                         & = \sum_{l=1}^{n} a_{kl}\ b_{lj}   \\
-    \vec{B}^T\ \vec{A}^T & = \vec{E}                       &
-    [e_{jk}]             & = \sum_{m=1}^{n} b_{mj}\ a_{km}   \\
-    \vec{D}              & = \vec{E}                       &
-\end{align}
-This proves the relation since the two expressions are identical but for the
-choice of dummy variable $ l,m $ inside the summation.
+    \item To show the transpose of the product of two matrices,
+          \begin{align}
+              \vec{C}              & = \vec{AB}                      &
+              [c_{jk}]
+                                   & = \sum_{l=1}^{n} a_{jl}\ b_{lk}   \\
+              \vec{C}^T            & = \vec{D}                       &
+              [d_{jk}] = [c_{kj}]
+                                   & = \sum_{l=1}^{n} a_{kl}\ b_{lj}   \\
+              \vec{B}^T\ \vec{A}^T & = \vec{E}                       &
+              [e_{jk}]             & = \sum_{m=1}^{n} b_{mj}\ a_{km}   \\
+              \vec{D}              & = \vec{E}                       &
+          \end{align}
+          This proves the relation since the two expressions are identical but for the
+          choice of dummy variable $ l,m $ inside the summation.
 
-\item Performing the given matrix multiplications,
-\begin{align}
-\vec{AB} & = \begin{bNiceMatrix}[r, margin]
-4  & -2 & 3 \\
--2 & 1  & 6 \\
-1  & 2  & 2
-\end{bNiceMatrix} \begin{bNiceMatrix}[r, margin]
-1  & -3 & 0  \\
--3 & 1  & 0  \\
-0  & 0  & -2
-\end{bNiceMatrix} = \begin{bNiceMatrix}[r, margin]
-10 & -14 & -6  \\
--5 & 7   & -12 \\
--5 & -1  & -4
-\end{bNiceMatrix} \\
-\end{align}
-Not showing the intermediate steps since they are all mental arithmetic.
-\begin{align}
-\vec{A}\vec{B}^T   & = \vec{AB}                                   &
-\vec{BA}           & = \begin{bNiceMatrix}[r, margin]
-10 & -5 & -15 \\ -14 & 7 & -3 \\-2 & -4 & -4
-\end{bNiceMatrix}  \\
-\vec{B}^T\ \vec{A} & = \vec{BA}
-\end{align}
+    \item Performing the given matrix multiplications,
+          \begin{align}
+              \vec{AB} & = \begin{bNiceMatrix}[r, margin]
+                               4  & -2 & 3 \\
+                               -2 & 1  & 6 \\
+                               1  & 2  & 2
+                           \end{bNiceMatrix} \begin{bNiceMatrix}[r, margin]
+                                                 1  & -3 & 0  \\
+                                                 -3 & 1  & 0  \\
+                                                 0  & 0  & -2
+                                             \end{bNiceMatrix} =
+              \begin{bNiceMatrix}[r, margin]
+                  10 & -14 & -6  \\
+                  -5 & 7   & -12 \\
+                  -5 & -1  & -4
+              \end{bNiceMatrix}                                \\
+          \end{align}
+          Not showing the intermediate steps since they are all mental arithmetic.
+          \begin{align}
+              \vec{A}\vec{B}^T   & = \vec{AB}                                   &
+              \vec{BA}           & = \begin{bNiceMatrix}[r, margin]
+                                         10 & -5 & -15 \\ -14 & 7 & -3 \\-2 & -4 & -4
+                                     \end{bNiceMatrix}  \\
+              \vec{B}^T\ \vec{A} & = \vec{BA}
+          \end{align}
 
-\item Performing the given matrix multiplication,
-\begin{align}
-\vec{AA}^T & = \begin{bNiceMatrix}[r, margin]
-29 & 8  & 6  \\
-8  & 41 & 12 \\
-6  & 12 & 9
-\end{bNiceMatrix} &
-\vec{A}^2  & = \begin{bNiceMatrix}[r, margin]
-23 & -4 & 6  \\
--4 & 17 & 12 \\
-2  & 4  & 19
-\end{bNiceMatrix}  \\
-\vec{BB}^T & = \begin{bNiceMatrix}[r, margin]
-10 & -6 & 0 \\
--6 & 10 & 0 \\
-0  & 0  & 4
-\end{bNiceMatrix} &
-\vec{B}^2  & = \vec{BB}^T
-\end{align}
+    \item Performing the given matrix multiplication,
+          \begin{align}
+              \vec{AA}^T & = \begin{bNiceMatrix}[r, margin]
+                                 29 & 8  & 6  \\
+                                 8  & 41 & 12 \\
+                                 6  & 12 & 9
+                             \end{bNiceMatrix} &
+              \vec{A}^2  & = \begin{bNiceMatrix}[r, margin]
+                                 23 & -4 & 6  \\
+                                 -4 & 17 & 12 \\
+                                 2  & 4  & 19
+                             \end{bNiceMatrix} \\
+              \vec{BB}^T & = \begin{bNiceMatrix}[r, margin]
+                                 10 & -6 & 0 \\
+                                 -6 & 10 & 0 \\
+                                 0  & 0  & 4
+                             \end{bNiceMatrix} &
+              \vec{B}^2  & = \vec{BB}^T
+          \end{align}
 
-\item Performing the given matrix multiplication,
-\begin{align}
-\vec{CC}^T         & = \begin{bNiceMatrix}[r, margin]
-1 & 2  & 0  \\
-2 & 13 & -6 \\
-0 & -6 & 4
-\end{bNiceMatrix}    &
-\vec{BC}           & = \begin{bNiceMatrix}[r, margin]
--9 & -5 \\
-3  & -1 \\
-4  & 0
-\end{bNiceMatrix}       \\
-\vec{CB}           & = \text{not defined} &
-\vec{C}^T\ \vec{B} & = \begin{bNiceMatrix}[r, margin]
--9 & 3  & 4 \\
--5 & -1 & 0
-\end{bNiceMatrix}
-\end{align}
+    \item Performing the given matrix multiplication,
+          \begin{align}
+              \vec{CC}^T         & = \begin{bNiceMatrix}[r, margin]
+                                         1 & 2  & 0  \\
+                                         2 & 13 & -6 \\
+                                         0 & -6 & 4
+                                     \end{bNiceMatrix} &
+              \vec{BC}           & = \begin{bNiceMatrix}[r, margin]
+                                         -9 & -5 \\
+                                         3  & -1 \\
+                                         4  & 0
+                                     \end{bNiceMatrix}    \\
+              \vec{CB}           & = \text{not defined}             &
+              \vec{C}^T\ \vec{B} & = \begin{bNiceMatrix}[r, margin]
+                                         -9 & 3  & 4 \\
+                                         -5 & -1 & 0
+                                     \end{bNiceMatrix}
+          \end{align}
 
-\item Performing the given matrix multiplication,
-\begin{align}
-3\vec{A} - 2\vec{B}                & = \begin{bNiceMatrix}[r, margin]
-10 & 0 & 9  \\
-0  & 1 & 18 \\
-3  & 6 & 10
-\end{bNiceMatrix}                  \\
-(3\vec{A} - 2\vec{B})^T            & = \begin{bNiceMatrix}[r, margin]
-10 & 0  & 3  \\
-0  & 1  & 6  \\
-9  & 18 & 10
-\end{bNiceMatrix}                  \\
-3\vec{A}^T - 2\vec{B}^T            & = \begin{bNiceMatrix}[r, margin]
-12 & -6 & 3 \\
--6 & 3  & 6 \\
-9  & 18 & 6
-\end{bNiceMatrix}  - \begin{bNiceMatrix}[r, margin]
-2  & -6 & 0  \\
--6 & 2  & 0  \\
-0  & 0  & -4
-\end{bNiceMatrix} \\
-(3\vec{A} - 2\vec{B})^T\ \vec{a}^T & = \begin{bNiceMatrix}[r, margin]
-10 & 0  & 3  \\
-0  & 1  & 6  \\
-9  & 18 & 10
-\end{bNiceMatrix}
-\begin{bNiceMatrix}[r, margin]
-1 \\ -2 \\ 0
-\end{bNiceMatrix} = \begin{bNiceMatrix}[r, margin]
-10 \\ -2 \\ -27
-\end{bNiceMatrix}
-\end{align}
+    \item Performing the given matrix multiplication,
+          \begin{align}
+              3\vec{A} - 2\vec{B}                & = \begin{bNiceMatrix}[r, margin]
+                                                         10 & 0 & 9  \\
+                                                         0  & 1 & 18 \\
+                                                         3  & 6 & 10
+                                                     \end{bNiceMatrix} \\
+              (3\vec{A} - 2\vec{B})^T            & = \begin{bNiceMatrix}[r, margin]
+                                                         10 & 0  & 3  \\
+                                                         0  & 1  & 6  \\
+                                                         9  & 18 & 10
+                                                     \end{bNiceMatrix} \\
+              3\vec{A}^T - 2\vec{B}^T            & = \begin{bNiceMatrix}[r, margin]
+                                                         12 & -6 & 3 \\
+                                                         -6 & 3  & 6 \\
+                                                         9  & 18 & 6
+                                                     \end{bNiceMatrix}
+              - \begin{bNiceMatrix}[r, margin]
+                    2  & -6 & 0  \\
+                    -6 & 2  & 0  \\
+                    0  & 0  & -4
+                \end{bNiceMatrix}                                      \\
+              (3\vec{A} - 2\vec{B})^T\ \vec{a}^T & = \begin{bNiceMatrix}[r, margin]
+                                                         10 & 0  & 3  \\
+                                                         0  & 1  & 6  \\
+                                                         9  & 18 & 10
+                                                     \end{bNiceMatrix}
+              \begin{bNiceMatrix}[r, margin]
+                  1 \\ -2 \\ 0
+              \end{bNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                      10 \\ -2 \\ -27
+                                  \end{bNiceMatrix}
+          \end{align}
 
-\item Performing the given matrix multiplication,
-\begin{align}
-\vec{Aa}             & = \text{not defined} &
-\vec{A}\ \vec{a}^T   & = \begin{bNiceMatrix}[r, margin]
-10 \\ -2 \\ -3
-\end{bNiceMatrix}       \\
-(\vec{Ab})^T         & = \begin{bNiceMatrix}[r, margin]
-7 & -11 & 3
-\end{bNiceMatrix}    &
-\vec{b}^T\ \vec{A}^T & = \vec{Ab}^T
-\end{align}
+    \item Performing the given matrix multiplication,
+          \begin{align}
+              \vec{Aa}             & = \text{not defined}             &
+              \vec{A}\ \vec{a}^T   & = \begin{bNiceMatrix}[r, margin]
+                                           10 \\ -2 \\ -3
+                                       \end{bNiceMatrix}    \\
+              (\vec{Ab})^T         & = \begin{bNiceMatrix}[r, margin]
+                                           7 & -11 & 3
+                                       \end{bNiceMatrix} &
+              \vec{b}^T\ \vec{A}^T & = \vec{Ab}^T
+          \end{align}
 
-\item Performing the given matrix multiplication,
-\begin{align}
-\vec{BC}           & = \begin{bNiceMatrix}[r, margin]
--9 & -5 \\ 3 & -1 \\ 4 & 0
-\end{bNiceMatrix} &
-\vec{B}\ \vec{C}^T & = \text{not defined}        \\
-(\vec{Bb})         & = \begin{bNiceMatrix}[r, margin]
-0 & -8 & 2
-\end{bNiceMatrix}          &
-\vec{b}^T\ \vec{B} & = \begin{bNiceMatrix}[r, margin]
-0 \\ -8 \\ 2
-\end{bNiceMatrix}
-\end{align}
+    \item Performing the given matrix multiplication,
+          \begin{align}
+              \vec{BC}           & = \begin{bNiceMatrix}[r, margin]
+                                         -9 & -5 \\ 3 & -1 \\ 4 & 0
+                                     \end{bNiceMatrix} &
+              \vec{B}\ \vec{C}^T & = \text{not defined}            \\
+              (\vec{Bb})         & = \begin{bNiceMatrix}[r, margin]
+                                         0 & -8 & 2
+                                     \end{bNiceMatrix} &
+              \vec{b}^T\ \vec{B} & = \begin{bNiceMatrix}[r, margin]
+                                         0 \\ -8 \\ 2
+                                     \end{bNiceMatrix}
+          \end{align}
 
-\item Performing the given matrix multiplication,
-\begin{align}
-\vec{ABC}                       & = \vec{A} \cdot
-\begin{bNiceMatrix}[r, margin]
--9 & -5 \\ 3 & -1 \\ 4 & 0
-\end{bNiceMatrix}
-= \begin{bNiceMatrix}[r, margin]
--30 & -18 \\45 & 9 \\ 5 & -7
-\end{bNiceMatrix}    &
-\vec{ABa}                       & = \text{not defined} \\
-\vec{ABb}                       & = \vec{A} \cdot
-\begin{bNiceMatrix}[r, margin]
-0 \\ -8 \\ 2
-\end{bNiceMatrix} = \begin{bNiceMatrix}[r, margin]
-22 \\ 4 \\ -12
-\end{bNiceMatrix} &
-\vec{C}\ \vec{a}^T              & = \text{not defined}
-\end{align}
+    \item Performing the given matrix multiplication,
+          \begin{align}
+              \vec{ABC}                        & = \vec{A} \cdot
+              \begin{bNiceMatrix}[r, margin]
+                  -9 & -5 \\ 3 & -1 \\ 4 & 0
+              \end{bNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    -30 & -18 \\45 & 9 \\ 5 & -7
+                \end{bNiceMatrix} &
+              \vec{ABa}                        & = \text{not defined} \\
+              \vec{ABb}                        & = \vec{A} \cdot
+              \begin{bNiceMatrix}[r, margin]
+                  0 \\ -8 \\ 2
+              \end{bNiceMatrix} =
+              \begin{bNiceMatrix}[r, margin]
+                  22 \\ 4 \\ -12
+              \end{bNiceMatrix}   &
+              \vec{C}\ \vec{a}^T               & = \text{not defined}
+          \end{align}
 
-\item Performing the given matrix multiplication,
-\begin{align}
-\vec{ab} & =\begin{bNiceMatrix}[r, margin]
-1
-\end{bNiceMatrix}
-&
-\vec{ba} & = \begin{bNiceMatrix}[r, margin]
-3  & -6 & 0 \\
-1  & -2 & 0 \\
--1 & 2  & 0
-\end{bNiceMatrix}  \\
-\vec{aA} & = \begin{bNiceMatrix}[r, margin]
-8 & -4 & -9
-\end{bNiceMatrix} &
-\vec{Bb} & = \begin{bNiceMatrix}[r, margin]
-0 \\ -8 \\ 2
-\end{bNiceMatrix}
-\end{align}
+    \item Performing the given matrix multiplication,
+          \begin{align}
+              \vec{ab} & =\begin{bNiceMatrix}[r, margin]
+                              1
+                          \end{bNiceMatrix}
+                       &
+              \vec{ba} & = \begin{bNiceMatrix}[r, margin]
+                               3  & -6 & 0 \\
+                               1  & -2 & 0 \\
+                               -1 & 2  & 0
+                           \end{bNiceMatrix} \\
+              \vec{aA} & = \begin{bNiceMatrix}[r, margin]
+                               8 & -4 & -9
+                           \end{bNiceMatrix} &
+              \vec{Bb} & = \begin{bNiceMatrix}[r, margin]
+                               0 \\ -8 \\ 2
+                           \end{bNiceMatrix}
+          \end{align}
 
-\item Performing the given matrix multiplication,
-\begin{align}
-1.5\vec{a} + 3\vec{b}      & =\text{not defined}          &
-1.5\vec{a}^T + 3\vec{b}    & = \begin{bNiceMatrix}[r, margin]
-1.5 \\ 0 \\ -3
-\end{bNiceMatrix}               \\
-(\vec{A} - \vec{B})\vec{b} & = \begin{bNiceMatrix}[r, margin]
-3 & 1 & 3 \\
-1 & 0 & 6 \\
-1 & 2 & 4
-\end{bNiceMatrix} \cdot \vec{b}
-= \begin{bNiceMatrix}[r, margin]
-7 \\ -3 \\ 1
-\end{bNiceMatrix}          &
-\vec{Ab} - \vec{Bb}        & = (\vec{A} - \vec{B})\vec{b}
-\end{align}
+    \item Performing the given matrix multiplication,
+          \begin{align}
+              1.5\vec{a} + 3\vec{b}            & =\text{not defined}              &
+              1.5\vec{a}^T + 3\vec{b}          & = \begin{bNiceMatrix}[r, margin]
+                                                       1.5 \\ 0 \\ -3
+                                                   \end{bNiceMatrix}    \\
+              (\vec{A} - \vec{B})\vec{b}       & = \begin{bNiceMatrix}[r, margin]
+                                                       3 & 1 & 3 \\
+                                                       1 & 0 & 6 \\
+                                                       1 & 2 & 4
+                                                   \end{bNiceMatrix} \cdot \vec{b}
+              = \begin{bNiceMatrix}[r, margin]
+                    7 \\ -3 \\ 1
+                \end{bNiceMatrix} &
+              \vec{Ab} - \vec{Bb}              & = (\vec{A} - \vec{B})\vec{b}
+          \end{align}
 
-\item Performing the given matrix multiplication,
-\begin{align}
-\vec{b}^T\ \vec{Ab} & =\vec{b}^T \cdot \begin{bNiceMatrix}[r, margin]
-7 \\ -11 \\ 3
-\end{bNiceMatrix}
-= \begin{bNiceMatrix}[r, margin]
-7
-\end{bNiceMatrix}                                      \\
-\vec{aB}\ \vec{a}^T & = \begin{bNiceMatrix}[r, margin]
-7 & -5 & 0
-\end{bNiceMatrix} \cdot \vec{a}^T
-= \begin{bNiceMatrix}[r, margin]
-17
-\end{bNiceMatrix}                                      \\
-\vec{aC}\ \vec{C}^T & = \vec{a} \cdot \begin{bNiceMatrix}[r, margin]
-1 & 2  & 0  \\
-2 & 13 & -6 \\
-0 & -6 & 4
-\end{bNiceMatrix}
-= \begin{bNiceMatrix}[r, margin]
-3 & -4 & 12
-\end{bNiceMatrix}                                      \\
-\vec{C}^T\ \vec{ba} & = \begin{bNiceMatrix}[r, margin]
-5 \\ 5
-\end{bNiceMatrix} \cdot \vec{a}
-= \begin{bNiceMatrix}[r, margin]
-5 & -10 & 0 \\ 5 & -10 & 0
-\end{bNiceMatrix}
-\end{align}
+    \item Performing the given matrix multiplication,
+          \begin{align}
+              \vec{b}^T\ \vec{Ab} & =\vec{b}^T \cdot \begin{bNiceMatrix}[r, margin]
+                                                         7 \\ -11 \\ 3
+                                                     \end{bNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    7
+                \end{bNiceMatrix}                                      \\
+              \vec{aB}\ \vec{a}^T & = \begin{bNiceMatrix}[r, margin]
+                                          7 & -5 & 0
+                                      \end{bNiceMatrix} \cdot \vec{a}^T
+              = \begin{bNiceMatrix}[r, margin]
+                    17
+                \end{bNiceMatrix}                                      \\
+              \vec{aC}\ \vec{C}^T & = \vec{a} \cdot \begin{bNiceMatrix}[r, margin]
+                                                        1 & 2  & 0  \\
+                                                        2 & 13 & -6 \\
+                                                        0 & -6 & 4
+                                                    \end{bNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    3 & -4 & 12
+                \end{bNiceMatrix}                                      \\
+              \vec{C}^T\ \vec{ba} & = \begin{bNiceMatrix}[r, margin]
+                                          5 \\ 5
+                                      \end{bNiceMatrix} \cdot \vec{a}
+              = \begin{bNiceMatrix}[r, margin]
+                    5 & -10 & 0 \\ 5 & -10 & 0
+                \end{bNiceMatrix}
+          \end{align}
 
-\item Proving the relations for $ 2 \times 2 $ matrices,
-\begin{align}
-    (k\vec{A})\ \vec{B} & = \bmattt{ka_{11}}{ka_{12}}{ka_{21}}{ka_{22}}
-    \cdot \bmattt{b_{11}}{b_{12}}{b_{21}}{b_{22}} =
-    \bmattt{ka_{11}b_{11} + ka_{12}b_{21}}
-    {ka_{11}b_{12} + ka_{12}b_{22}}
-    {ka_{21}b_{11} + ka_{22}b_{21}}
-    {ka_{21}b_{12} + ka_{22}b_{22}}                                      \\
-                        & = k \cdot \bmattt{a_{11}b_{11} + a_{12}b_{21}}
-    {a_{11}b_{12} + a_{12}b_{22}}
-    {a_{21}b_{11} + a_{22}b_{21}}
-    {a_{21}b_{12} + a_{22}b_{22}} = k\ (\vec{AB})
-\end{align}
+    \item Proving the relations for $ 2 \times 2 $ matrices,
+          \begin{align}
+              (k\vec{A})\ \vec{B} & = \bmattt{ka_{11}}{ka_{12}}{ka_{21}}{ka_{22}}
+              \cdot \bmattt{b_{11}}{b_{12}}{b_{21}}{b_{22}} =
+              \bmattt{ka_{11}b_{11} + ka_{12}b_{21}}
+              {ka_{11}b_{12} + ka_{12}b_{22}}
+              {ka_{21}b_{11} + ka_{22}b_{21}}
+              {ka_{21}b_{12} + ka_{22}b_{22}}                                      \\
+                                  & = k \cdot \bmattt{a_{11}b_{11} + a_{12}b_{21}}
+              {a_{11}b_{12} + a_{12}b_{22}}
+              {a_{21}b_{11} + a_{22}b_{21}}
+              {a_{21}b_{12} + a_{22}b_{22}} = k\ (\vec{AB})
+          \end{align}
 
-Proving $ 2b $,
-\begin{align}
-    (\vec{AB})\ \vec{C} & = \bmattt{a_{11}b_{11} + a_{12}b_{21}}
-    {a_{11}b_{12} + a_{12}b_{22}}
-    {a_{21}b_{11} + a_{22}b_{21}}
-    {a_{21}b_{12} + a_{22}b_{22}} \cdot
-    \bmattt{c_{11}}{c_{12}}{c_{21}}{c_{22}}                         \\
-    \vec{A}\ (\vec{BC}) & = \bmattt{a_{11}}{a_{12}}{a_{21}}{a_{22}}
-    \cdot \bmattt{b_{11}c_{11} + b_{12}c_{21}}
-    {b_{11}c_{12} + b_{12}c_{22}}
-    {b_{21}c_{11} + b_{22}c_{21}}
-    {b_{21}c_{12} + b_{22}c_{22}}
-\end{align}
-The elementwise comparison of the two lines yields the equality.
+          Proving $ 2b $,
+          \begin{align}
+              (\vec{AB})\ \vec{C} & = \bmattt{a_{11}b_{11} + a_{12}b_{21}}
+              {a_{11}b_{12} + a_{12}b_{22}}
+              {a_{21}b_{11} + a_{22}b_{21}}
+              {a_{21}b_{12} + a_{22}b_{22}} \cdot
+              \bmattt{c_{11}}{c_{12}}{c_{21}}{c_{22}}                         \\
+              \vec{A}\ (\vec{BC}) & = \bmattt{a_{11}}{a_{12}}{a_{21}}{a_{22}}
+              \cdot \bmattt{b_{11}c_{11} + b_{12}c_{21}}
+              {b_{11}c_{12} + b_{12}c_{22}}
+              {b_{21}c_{11} + b_{22}c_{21}}
+              {b_{21}c_{12} + b_{22}c_{22}}
+          \end{align}
+          The elementwise comparison of the two lines yields the equality.
 
-Proving $ 2c $, using only the first element,
-\begin{align}
-    \Big[ (\vec{A} + \vec{B})\ \vec{C} \Big]_{11} &
-    = (a_{11} + b_{11})c_{11} + (a_{12} + b_{12})c_{21} \\
-    \Big[ (\vec{AC} + \vec{BC}) \Big]_{11}        &
-    = (a_{11}c_{11} + b_{11}c_{11}) + (a_{12}c_{21} + b_{12}c_{21})
-\end{align}
-The equality follows from the distributive law of scalar multiplication.
+          Proving $ 2c $, using only the first element,
+          \begin{align}
+              \Big[ (\vec{A} + \vec{B})\ \vec{C} \Big]_{11} &
+              = (a_{11} + b_{11})c_{11} + (a_{12} + b_{12})c_{21} \\
+              \Big[ (\vec{AC} + \vec{BC}) \Big]_{11}        &
+              = (a_{11}c_{11} + b_{11}c_{11}) + (a_{12}c_{21} + b_{12}c_{21})
+          \end{align}
+          The equality follows from the distributive law of scalar multiplication.
 
-Proving $ 2d $, using the first element,
-\begin{align}
-    \Big[\vec{C}\ (\vec{A} + \vec{B}) \Big]_{11} &
-    = c_{11}(a_{11} + b_{11}) + c_{21}(a_{12} + b_{12}) \\
-    \Big[ (\vec{CA} + \vec{CB}) \Big]_{11}       &
-    = (c_{11}a_{11} + c_{11}b_{11}) + (c_{12}a_{12} + c_{12}b_{12})
-\end{align}
-The equality follows from the distributive law of scalar multiplication.
+          Proving $ 2d $, using the first element,
+          \begin{align}
+              \Big[\vec{C}\ (\vec{A} + \vec{B}) \Big]_{11} &
+              = c_{11}(a_{11} + b_{11}) + c_{21}(a_{12} + b_{12}) \\
+              \Big[ (\vec{CA} + \vec{CB}) \Big]_{11}       &
+              = (c_{11}a_{11} + c_{11}b_{11}) + (c_{12}a_{12} + c_{12}b_{12})
+          \end{align}
+          The equality follows from the distributive law of scalar multiplication.
 
-\item Expressing matrix multiplication in terms of row and column vectors, using
-superscipt and subscript to indicate a row and column of the matrix.
-\begin{align}
-\vec{AB} & = \begin{bNiceMatrix}[r, margin]
-\vec{A}\vec{b}_1 & \vec{A}\vec{b}_2 & \vec{A}\vec{b}_3
-\end{bNiceMatrix}
-= \begin{bNiceMatrix}[r, margin]
-\vec{a}^1 \vec{b}_1 & \vec{a}^2 \vec{b}_1 & \vec{a}^3 \vec{b}_1 \\
-\vec{a}^1 \vec{b}_2 & \vec{a}^2 \vec{b}_2 & \vec{a}^3 \vec{b}_2 \\
-\vec{a}^1 \vec{b}_3 & \vec{a}^2 \vec{b}_3 & \vec{a}^3 \vec{b}_3
-\end{bNiceMatrix}
-\end{align}
-This convention is used for this problem and not present in the text.
+    \item Expressing matrix multiplication in terms of row and column vectors, using
+          superscipt and subscript to indicate a row and column of the matrix.
+          \begin{align}
+              \vec{AB} & = \begin{bNiceMatrix}[r, margin]
+                               \vec{A}\vec{b}_1 & \vec{A}\vec{b}_2 & \vec{A}\vec{b}_3
+                           \end{bNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    \vec{a}^1 \vec{b}_1 & \vec{a}^2 \vec{b}_1 & \vec{a}^3 \vec{b}_1 \\
+                    \vec{a}^1 \vec{b}_2 & \vec{a}^2 \vec{b}_2 & \vec{a}^3 \vec{b}_2 \\
+                    \vec{a}^1 \vec{b}_3 & \vec{a}^2 \vec{b}_3 & \vec{a}^3 \vec{b}_3
+                \end{bNiceMatrix}
+          \end{align}
+          This convention is used for this problem and not present in the text.
 
-\item Calculating the product columnwise,
-\begin{align}
-\vec{AB} & = \begin{bNiceMatrix}[r, margin]
-\vec{A}\vec{b}_1 & \vec{A}\vec{b}_2 & \vec{A}\vec{b}_3
-\end{bNiceMatrix}
-= \begin{bNiceMatrix}[r, margin]
-10 & -14 & -6 \\ -5 & 7 & -12 \\ -5 & -1 & -4
-\end{bNiceMatrix}
-\end{align}
+    \item Calculating the product columnwise,
+          \begin{align}
+              \vec{AB} & = \begin{bNiceMatrix}[r, margin]
+                               \vec{A}\vec{b}_1 & \vec{A}\vec{b}_2 & \vec{A}\vec{b}_3
+                           \end{bNiceMatrix}
+              = \begin{bNiceMatrix}[r, margin]
+                    10 & -14 & -6 \\ -5 & 7 & -12 \\ -5 & -1 & -4
+                \end{bNiceMatrix}
+          \end{align}
 
-\item Given the constraint on $ \vec{B} $,
-\begin{align}
-b_{jk}                                  & = j + k             &
-\vec{AB}                                & = \vec{BA}            \\
-\begin{bNiceMatrix}[r, margin]
-a_{11} & a_{12} \\ a_{21} & a_{22}
-\end{bNiceMatrix} \cdot \bmattt{2}{3}{3}{4} & =
-\bmattt{2}{3}{3}{4} \cdot \begin{bNiceMatrix}[r, margin]
-a_{11} & a_{12} \\ a_{21} & a_{22}
-\end{bNiceMatrix}     \\
-2a_{11} + 3a_{12}                       & = 2a_{11} + 3a_{21} &
-3a_{11} + 4a_{12}                       & = 2a_{12} + 3a_{22}   \\
-2a_{21} + 3a_{22}                       & = 3a_{11} + 4a_{21} &
-3a_{21} + 4a_{22}                       & = 3a_{12} + 4a_{22}
-\end{align}
-This is a system of 4 equations 4 variables. Solving,
-\begin{align}
-    a_{12}            & = a_{21}                               &
-    3a_{11} + 2a_{12} & = 3a_{11} + 2a_{21}                      \\
-    a_{22}            & = a_{11} + \frac{2}{3}\ a_{12}         &
-    a_{11}            & = \text{free}                            \\
-    \vec{A}           & = \bmattt{x}{y}{y}{(x + \frac{2y}{3})}
-\end{align}
+    \item Given the constraint on $ \vec{B} $,
+          \begin{align}
+              b_{jk}                                      & = j + k             &
+              \vec{AB}                                    & = \vec{BA}            \\
+              \begin{bNiceMatrix}[r, margin]
+                  a_{11} & a_{12} \\ a_{21} & a_{22}
+              \end{bNiceMatrix} \cdot \bmattt{2}{3}{3}{4} & =
+              \bmattt{2}{3}{3}{4} \cdot \begin{bNiceMatrix}[r, margin]
+                                            a_{11} & a_{12} \\ a_{21} & a_{22}
+                                        \end{bNiceMatrix}         \\
+              2a_{11} + 3a_{12}                           & = 2a_{11} + 3a_{21} &
+              3a_{11} + 4a_{12}                           & = 2a_{12} + 3a_{22}   \\
+              2a_{21} + 3a_{22}                           & = 3a_{11} + 4a_{21} &
+              3a_{21} + 4a_{22}                           & = 3a_{12} + 4a_{22}
+          \end{align}
+          This is a system of 4 equations 4 variables. Solving,
+          \begin{align}
+              a_{12}            & = a_{21}                               &
+              3a_{11} + 2a_{12} & = 3a_{11} + 2a_{21}                      \\
+              a_{22}            & = a_{11} + \frac{2}{3}\ a_{12}         &
+              a_{11}            & = \text{free}                            \\
+              \vec{A}           & = \bmattt{x}{y}{y}{(x + \frac{2y}{3})}
+          \end{align}
 
-\item Symmetric matrices
-\begin{enumerate}
-\item Verifying,
-\begin{align}
-    \vec{A} & = \vec{A}^T  & \implies a_{jk} & = a_{kj}  \\
-    \vec{A} & = -\vec{A}^T & \implies a_{jk} & = -a_{kj}
-\end{align}
-Examples TBC.
-\item Writing the matrix $ C $ in the given form,
-\begin{align}
-    (\vec{C} + \vec{C}^T) & = \vec{D}                           &
-    \vec{D}^T             & = \vec{C}^T + \Big(\vec{C}^T\Big)^T   \\
-    \vec{D}^T             & = \vec{D}                             \\
-    (\vec{C} - \vec{C}^T) & = \vec{E}                           &
-    \vec{E}^T             & = \vec{C}^T - \Big(\vec{C}^T\Big)^T   \\
-    \vec{E}^T             & = -\vec{E}
-\end{align}
-Using the previous result as a starting point,
-\begin{align}
-    \vec{A} & = \frac{(\vec{A} + \vec{A}^T)
-    + (\vec{A} - \vec{A}^T)}{2}               \\
-    \vec{S} & = 0.5(\vec{A} + \vec{A}^T)
-            & \vec{T}                       &
-    = 0.5(\vec{A} - \vec{A}^T)
-\end{align}
-Representing $ A $ and $ B $ in this form,
-\begin{align}
-\vec{A} & = \begin{bNiceMatrix}[r, margin]
-4 & -2 & 2 \\ -2 & 1 & 4 \\ 2 & 4 & 2
-\end{bNiceMatrix} +
-\begin{bNiceMatrix}[r, margin]
-0 & 0 & 1 \\ 0 & 0 & 2 \\ -1 & -2 & 0
-\end{bNiceMatrix}              \\
-\vec{B} & = \begin{bNiceMatrix}[r, margin]
-1 & -3 & 0 \\ -3 & 1 & 0 \\ 0 & 0 & -2
-\end{bNiceMatrix} +
-\begin{bNiceMatrix}[r, margin]
-0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
-\end{bNiceMatrix}
-\end{align}
-\item Let the matrices be $ \{\vec{A}^i\} $ and the scalar coefficients
-$ \{\lambda_i\} $,
-\begin{align}
-    \vec{S} & = \sum_{i=1}^{n} \lambda_i \vec{A}^i               &
-    S_{jk}  & = \sum_{i=1}^{n} \lambda_i \vec{A}^i_{jk}            \\
-    S_{jk}  & = \sum_{i=1}^{n} \lambda_i \vec{A}^i_{kj} = S_{kj} &
-    \vec{S} & = \vec{S}^T
-\end{align}
-Repeating the procedure for skew symmetric matrices $ \{\vec{B}^i\} $,
-\begin{align}
-    \vec{P}   & = \sum_{i=1}^{n} \lambda_i \vec{B}^i       &
-    P_{jk}    & = \sum_{i=1}^{n} \lambda_i \vec{B}^i_{jk}    \\
-    P_{jk}    & = -\sum_{i=1}^{n} \lambda_i \vec{B}^i_{kj}
-    = -P_{kj} &
-    \vec{P}   & = -\vec{P}^T
-\end{align}
+    \item Symmetric matrices
+          \begin{enumerate}
+              \item Verifying,
+                    \begin{align}
+                        \vec{A} & = \vec{A}^T  & \implies a_{jk} & = a_{kj}  \\
+                        \vec{A} & = -\vec{A}^T & \implies a_{jk} & = -a_{kj}
+                    \end{align}
+                    Examples TBC.
+              \item Writing the matrix $ C $ in the given form,
+                    \begin{align}
+                        (\vec{C} + \vec{C}^T) & = \vec{D}                           &
+                        \vec{D}^T             & = \vec{C}^T + \Big(\vec{C}^T\Big)^T   \\
+                        \vec{D}^T             & = \vec{D}                             \\
+                        (\vec{C} - \vec{C}^T) & = \vec{E}                           &
+                        \vec{E}^T             & = \vec{C}^T - \Big(\vec{C}^T\Big)^T   \\
+                        \vec{E}^T             & = -\vec{E}
+                    \end{align}
+                    Using the previous result as a starting point,
+                    \begin{align}
+                        \vec{A} & = \frac{(\vec{A} + \vec{A}^T)
+                        + (\vec{A} - \vec{A}^T)}{2}               \\
+                        \vec{S} & = 0.5(\vec{A} + \vec{A}^T)
+                                & \vec{T}                       &
+                        = 0.5(\vec{A} - \vec{A}^T)
+                    \end{align}
+                    Representing $ A $ and $ B $ in this form,
+                    \begin{align}
+                        \vec{A} & = \begin{bNiceMatrix}[r, margin]
+                                        4 & -2 & 2 \\ -2 & 1 & 4 \\ 2 & 4 & 2
+                                    \end{bNiceMatrix} +
+                        \begin{bNiceMatrix}[r, margin]
+                            0 & 0 & 1 \\ 0 & 0 & 2 \\ -1 & -2 & 0
+                        \end{bNiceMatrix}              \\
+                        \vec{B} & = \begin{bNiceMatrix}[r, margin]
+                                        1 & -3 & 0 \\ -3 & 1 & 0 \\ 0 & 0 & -2
+                                    \end{bNiceMatrix} +
+                        \begin{bNiceMatrix}[r, margin]
+                            0 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 0
+                        \end{bNiceMatrix}
+                    \end{align}
+              \item Let the matrices be $ \{\vec{A}^i\} $ and the scalar coefficients
+                    $ \{\lambda_i\} $,
+                    \begin{align}
+                        \vec{S} & = \sum_{i=1}^{n} \lambda_i \vec{A}^i               &
+                        S_{jk}  & = \sum_{i=1}^{n} \lambda_i \vec{A}^i_{jk}            \\
+                        S_{jk}  & = \sum_{i=1}^{n} \lambda_i \vec{A}^i_{kj} = S_{kj} &
+                        \vec{S} & = \vec{S}^T
+                    \end{align}
+                    Repeating the procedure for skew symmetric matrices
+                    $ \{\vec{B}^i\} $,
+                    \begin{align}
+                        \vec{P}   & = \sum_{i=1}^{n} \lambda_i \vec{B}^i       &
+                        P_{jk}    & = \sum_{i=1}^{n} \lambda_i \vec{B}^i_{jk}    \\
+                        P_{jk}    & = -\sum_{i=1}^{n} \lambda_i \vec{B}^i_{kj}
+                        = -P_{kj} &
+                        \vec{P}   & = -\vec{P}^T
+                    \end{align}
 
-\item Given $ \vec{A} $ and $ \vec{B} $ are symmetric,
-\begin{align}
-    (\vec{AB})^T      & = \vec{B}^T\ \vec{A}^T = \vec{BA}   \\
-    (\vec{AB})^T      & = \vec{AB}                        &
-    \implies \vec{BA} & = \vec{AB}
-\end{align}
-\item Given $ \vec{A} $ and $ \vec{B} $ are skew-symmetric,
-\begin{align}
-    (\vec{AB})^T      & = \vec{B}^T\ \vec{A}^T
-    = \vec{-B} \cdot \vec{-A}                    \\
-    (\vec{AB})^T      & = -\vec{AB}            &
-    \implies \vec{BA} & = -\vec{AB}
-\end{align}
-\end{enumerate}
+              \item Given $ \vec{A} $ and $ \vec{B} $ are symmetric,
+                    \begin{align}
+                        (\vec{AB})^T      & = \vec{B}^T\ \vec{A}^T = \vec{BA}   \\
+                        (\vec{AB})^T      & = \vec{AB}                        &
+                        \implies \vec{BA} & = \vec{AB}
+                    \end{align}
+              \item Given $ \vec{A} $ and $ \vec{B} $ are skew-symmetric,
+                    \begin{align}
+                        (\vec{AB})^T      & = \vec{B}^T\ \vec{A}^T
+                        = \vec{-B} \cdot \vec{-A}                    \\
+                        (\vec{AB})^T      & = -\vec{AB}            &
+                        \implies \vec{BA} & = -\vec{AB}
+                    \end{align}
+          \end{enumerate}
 
-\item Building the transition matrix, where the column and row indices are the
-start and end states respectively.
-\begin{align}
-    \vec{T}   & = \bmattt{0.8}{0.5}{0.2}{0.5}         &
-    \vec{A}_0 & = \bmatcol{1}{0}                        \\
-    \vec{A}_1 & = \vec{TA}_0 = \bmatcol{0.8}{0.2}     &
-    \vec{A}_2 & = \vec{TA}_1 = \bmatcol{0.74}{0.26}     \\
-    \vec{A}_3 & = \vec{TA}_2 = \bmatcol{0.722}{0.278} &
-\end{align}
+    \item Building the transition matrix, where the column and row indices are the
+          start and end states respectively.
+          \begin{align}
+              \vec{T}   & = \bmattt{0.8}{0.5}{0.2}{0.5}         &
+              \vec{A}_0 & = \bmatcol{1}{0}                        \\
+              \vec{A}_1 & = \vec{TA}_0 = \bmatcol{0.8}{0.2}     &
+              \vec{A}_2 & = \vec{TA}_1 = \bmatcol{0.74}{0.26}     \\
+              \vec{A}_3 & = \vec{TA}_2 = \bmatcol{0.722}{0.278} &
+          \end{align}
 
-\item Calculating the first few steps of the Markov matrix in Example 13,
-\begin{align}
-\vec{T}   & = \begin{bNiceMatrix}[r, margin]
-0.7 & 0.1 & 0 \\ 0.2 & 0.9 & 0.2 \\ 0.1 & 0 & 0.8
-\end{bNiceMatrix} \\
-\vec{S}^i & = \begin{bNiceMatrix}[r, margin]25\\20\\55\end{bNiceMatrix},
-\begin{bNiceMatrix}[r, margin]19.5\\34.0\\46.5\end{bNiceMatrix},
-\begin{bNiceMatrix}[r, margin]17.05\\43.8\\39.15\end{bNiceMatrix},
-\begin{bNiceMatrix}[r, margin]16.31\\50.66\\33.02\end{bNiceMatrix},
-\begin{bNiceMatrix}[r, margin]16.48\\55.46\\28.05\end{bNiceMatrix},
-\begin{bNiceMatrix}[r, margin]17.08\\58.82\\24.08\end{bNiceMatrix}                \\
-&
-\begin{bNiceMatrix}[r, margin]17.84\\61.17\\20.98\end{bNiceMatrix},
-\begin{bNiceMatrix}[r, margin]18.60\\62.82\\18.56\end{bNiceMatrix},
-\begin{bNiceMatrix}[r, margin]19.30\\63.97\\16.71\end{bNiceMatrix},
-\begin{bNiceMatrix}[r, margin]19.91\\64.78\\15.30\end{bNiceMatrix},
-\begin{bNiceMatrix}[r, margin]20.41\\65.34\\14.23\end{bNiceMatrix},
-\end{align}
+    \item Calculating the first few steps of the Markov matrix in Example 13,
+          \begin{align}
+              \vec{T}   & = \begin{bNiceMatrix}[r, margin]
+                                0.7 & 0.1 & 0 \\ 0.2 & 0.9 & 0.2 \\ 0.1 & 0 & 0.8
+                            \end{bNiceMatrix}           \\
+              \vec{S}^i & = \begin{bNiceMatrix}[r, margin]25\\20\\55\end{bNiceMatrix},
+              \begin{bNiceMatrix}[r, margin]19.5 \\
+                  34.0            \\
+                  46.5\end{bNiceMatrix},
+              \begin{bNiceMatrix}[r, margin]17.05 \\
+                  43.8             \\3
+                  9.15\end{bNiceMatrix},
+              \begin{bNiceMatrix}[r, margin]16.31 \\
+                  50.66            \\
+                  33.02\end{bNiceMatrix},
+              \begin{bNiceMatrix}[r, margin]16.48 \\
+                  55.46            \\
+                  28.05\end{bNiceMatrix},
+              \begin{bNiceMatrix}[r, margin]17.08 \\
+                  58.82            \\
+                  24.08\end{bNiceMatrix}                                      \\
+                        &
+              \begin{bNiceMatrix}[r, margin]17.84 \\
+                  61.17            \\
+                  20.98\end{bNiceMatrix},
+              \begin{bNiceMatrix}[r, margin]18.60 \\
+                  62.82            \\
+                  18.56\end{bNiceMatrix},
+              \begin{bNiceMatrix}[r, margin]19.30 \\
+                  63.97            \\
+                  16.71\end{bNiceMatrix},
+              \begin{bNiceMatrix}[r, margin]19.91 \\
+                  64.78            \\
+                  15.30\end{bNiceMatrix},
+              \begin{bNiceMatrix}[r, margin]20.41 \\
+                  65.34            \\
+                  14.23\end{bNiceMatrix},
+          \end{align}
 
-Since other transition matrices and other initial conditions involve the
-same procedure, they are omitted. TBC
+          Since other transition matrices and other initial conditions involve the
+          same procedure, they are omitted. TBC
 
-\item The transition matrix and I.C. are,
-\begin{align}
-\vec{T}   & = \begin{bNiceMatrix}[r, margin]
-0.9 & 0.002 \\ 0.1 & 0.998
-\end{bNiceMatrix}                   &
-\vec{S}^0 & = \begin{bNiceMatrix}[r, margin]
-1200 \\ 98800
-\end{bNiceMatrix}                               \\
-\vec{S}^1 & = \begin{bNiceMatrix}[r, margin]1278\\98722\end{bNiceMatrix}    &
-\vec{S}^2 & = \begin{bNiceMatrix}[r, margin]1347\\98653\end{bNiceMatrix}      \\
-\vec{S}^3 & = \begin{bNiceMatrix}[r, margin]1409.\\98591.\end{bNiceMatrix},
-\end{align}
+    \item The transition matrix and I.C. are,
+          \begin{align}
+              \vec{T}   & = \begin{bNiceMatrix}[r, margin]
+                                0.9 & 0.002 \\ 0.1 & 0.998
+                            \end{bNiceMatrix}         &
+              \vec{S}^0 & = \begin{bNiceMatrix}[r, margin]
+                                1200 \\ 98800
+                            \end{bNiceMatrix}       \\
+              \vec{S}^1 & = \begin{bNiceMatrix}[r, margin]1278 \\
+                                98722\end{bNiceMatrix}  &
+              \vec{S}^2 & = \begin{bNiceMatrix}[r, margin]1347 \\
+                                98653\end{bNiceMatrix}  \\
+              \vec{S}^3 & = \begin{bNiceMatrix}[r, margin]1409. \\
+                                98591.\end{bNiceMatrix},
+          \end{align}
 
-\item Defining the profit matrix, (solutions are wrong because they have a typo
-in the first entry of $ \vec{p} $)
-\begin{align}
-\vec{A} & = \begin{bNiceMatrix}[r, margin]
-400 & 60 & 240 \\ 100 & 120 & 500
-\end{bNiceMatrix} &
-\vec{p} & = \begin{bNiceMatrix}[r, margin]
-35 \\ 62 \\ 30
-\end{bNiceMatrix}                 &
-\vec{v} & = \vec{Ap} = \begin{bNiceMatrix}[r, margin]
-24920 \\ 25940
-\end{bNiceMatrix}
-\end{align}
+    \item Defining the profit matrix, (solutions are wrong because they have a typo
+          in the first entry of $ \vec{p} $)
+          \begin{align}
+              \vec{A} & = \begin{bNiceMatrix}[r, margin]
+                              400 & 60 & 240 \\ 100 & 120 & 500
+                          \end{bNiceMatrix}           &
+              \vec{p} & = \begin{bNiceMatrix}[r, margin]
+                              35 \\ 62 \\ 30
+                          \end{bNiceMatrix}            &
+              \vec{v} & = \vec{Ap} = \begin{bNiceMatrix}[r, margin]
+                                         24920 \\ 25940
+                                     \end{bNiceMatrix}
+          \end{align}
 
-\item Rotation matrices,
-\begin{enumerate}
-\item Single rotation counterclockwise by $ \theta $. Let $ R = 1 $ for
-convenience,
-\begin{align}
-    (x_1, x_2)         & = \{\cos(\alpha), \sin(\alpha)\}       \\
-    (y_1, y_2)         & = \{\cos(\alpha + \theta),
-    \sin(\alpha+ \theta)\}                                      \\
-    y_1                & = x_1 \cos(\theta) - x_2 \sin(\theta)  \\
-    y_2                & = x_2 \cos(\theta) + x_1 \sin(\theta)  \\
-    \bmatcol{y_1}{y_2} & = \bmattt{\cos(\theta)}{-\sin(\theta)}
-    {\sin(\theta)}{\cos(\theta)} \cdot \bmatcol{x_2}{x_2}
-\end{align}
+    \item Rotation matrices,
+          \begin{enumerate}
+              \item Single rotation counterclockwise by $ \theta $. Let $ R = 1 $ for
+                    convenience,
+                    \begin{align}
+                        (x_1, x_2)         & = \{\cos(\alpha), \sin(\alpha)\}       \\
+                        (y_1, y_2)         & = \{\cos(\alpha + \theta),
+                        \sin(\alpha+ \theta)\}                                      \\
+                        y_1                & = x_1 \cos(\theta) - x_2 \sin(\theta)  \\
+                        y_2                & = x_2 \cos(\theta) + x_1 \sin(\theta)  \\
+                        \bmatcol{y_1}{y_2} & = \bmattt{\cos(\theta)}{-\sin(\theta)}
+                        {\sin(\theta)}{\cos(\theta)} \cdot \bmatcol{x_2}{x_2}
+                    \end{align}
 
-\item Repeated rotation by angle $ \theta $,
-\begin{align}
-    \vec{A}(n\theta)\ \vec{A}(\theta) & = \bmattt
-    {\cos(n\theta)}{-\sin(n\theta)}
-    {\sin(n\theta)}{\cos(n\theta)} \cdot
-    \bmattt{\cos(\theta)}{-\sin(\theta)}
-    {\sin(\theta)}{\cos(\theta)}                  \\
-                                      & = \bmattt
-    {\cos(n\theta +\theta)}{-\sin(n\theta +\theta)}
-    {\sin(n\theta +\theta)}{\cos(n\theta +\theta)}
-    = \vec{A}\{(n+1)\theta\}
-\end{align}
-By induction, this holds for all $ n $ since it can be proved by
-brute force that it holds for $ n = 1 $. \par
-\begin{align}
-    \vec{A}(n\theta) & = [\vec{A}(\theta)]^n
-\end{align}
+              \item Repeated rotation by angle $ \theta $,
+                    \begin{align}
+                        \vec{A}(n\theta)\ \vec{A}(\theta) & = \bmattt
+                        {\cos(n\theta)}{-\sin(n\theta)}
+                        {\sin(n\theta)}{\cos(n\theta)} \cdot
+                        \bmattt{\cos(\theta)}{-\sin(\theta)}
+                        {\sin(\theta)}{\cos(\theta)}                  \\
+                                                          & = \bmattt
+                        {\cos(n\theta +\theta)}{-\sin(n\theta +\theta)}
+                        {\sin(n\theta +\theta)}{\cos(n\theta +\theta)}
+                        = \vec{A}\{(n+1)\theta\}
+                    \end{align}
+                    By induction, this holds for all $ n $ since it can be proved by
+                    brute force that it holds for $ n = 1 $. \par
+                    \begin{align}
+                        \vec{A}(n\theta) & = [\vec{A}(\theta)]^n
+                    \end{align}
 
-\item Using the repeated rotation by $ \alpha $ and $ \beta $, and
-matri multiplication representation,
-\begin{align}
-    \cos(\alpha + \beta) & = \cos \alpha \cos \beta
-    - \sin \alpha \sin \beta                        \\
-    \cos(\alpha - \beta) & = \cos \alpha \cos \beta
-    + \sin \alpha \sin \beta                        \\
-    \sin(\alpha + \beta) & = \sin \alpha \cos \beta
-    + \cos \alpha \sin \beta                        \\
-    \sin(\alpha - \beta) & = \sin \alpha \cos \beta
-    - \cos \alpha \sin \beta
-\end{align}
-The subtraction formulas depend on the fact that $ \sin(-x) =
-    -\sin(x) $ whereas $ \cos(-x) = \cos(x) $
+              \item Using the repeated rotation by $ \alpha $ and $ \beta $, and
+                    matri multiplication representation,
+                    \begin{align}
+                        \cos(\alpha + \beta) & = \cos \alpha \cos \beta
+                        - \sin \alpha \sin \beta                        \\
+                        \cos(\alpha - \beta) & = \cos \alpha \cos \beta
+                        + \sin \alpha \sin \beta                        \\
+                        \sin(\alpha + \beta) & = \sin \alpha \cos \beta
+                        + \cos \alpha \sin \beta                        \\
+                        \sin(\alpha - \beta) & = \sin \alpha \cos \beta
+                        - \cos \alpha \sin \beta
+                    \end{align}
+                    The subtraction formulas depend on the fact that $ \sin(-x) =
+                        -\sin(x) $ whereas $ \cos(-x) = \cos(x) $
 
-\item A scalar matrix would scale all 3 coordinates equally by the scalar
-$ k $.
-\begin{align}
-\begin{bNiceMatrix}[r, margin]
-3 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1/2
-\end{bNiceMatrix} \cdot \begin{bNiceMatrix}[r, margin]
-x_1 \\ x_2 \\ x_3
-\end{bNiceMatrix} & =
-\begin{bNiceMatrix}[r, margin]
-3x_1 \\ x_2 \\ 0.5x_3
-\end{bNiceMatrix}                              \\
-\vec{Dx}                              & = \vec{y}
-\end{align}
+              \item A scalar matrix would scale all 3 coordinates equally by the scalar
+                    $ k $.
+                    \begin{align}
+                        \begin{bNiceMatrix}[r, margin]
+                            3 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1/2
+                        \end{bNiceMatrix} \cdot \begin{bNiceMatrix}[r, margin]
+                                                    x_1 \\ x_2 \\ x_3
+                                                \end{bNiceMatrix} & =
+                        \begin{bNiceMatrix}[r, margin]
+                            3x_1 \\ x_2 \\ 0.5x_3
+                        \end{bNiceMatrix}                            \\
+                        \vec{Dx}                                               &
+                        = \vec{y}
+                    \end{align}
 
-\item The row index contatining the ones and zeros represents the
-coordinate that will be unchanged. The other two coordinates undergo
-rotation by $ \phi $ in the counterclockwise direction. \par
-The three matrices represent rotations in $ yz, xz $ and $ xy $ planes
-respectively.
-\end{enumerate}
+              \item The row index contatining the ones and zeros represents the
+                    coordinate that will be unchanged. The other two coordinates undergo
+                    rotation by $ \phi $ in the counterclockwise direction. \par
+                    The three matrices represent rotations in $ yz, xz $ and $ xy $ planes
+                    respectively.
+          \end{enumerate}
 \end{enumerate}

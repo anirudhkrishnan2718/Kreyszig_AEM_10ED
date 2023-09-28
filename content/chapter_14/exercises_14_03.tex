@@ -1,0 +1,436 @@
+\section{Cauchy's Integral Formula}
+
+\begin{enumerate}
+    \item Plotting the contour and the poles of the function,
+          \begin{align}
+              I    & = \oint_{C} \frac{z^2}{z^2 - 1}\ \dl z                   &
+              C    & : \abs{z+1} = 1                                            \\
+              g(z) & = \frac{z^2}{z-1} \cdot \frac{1}{z+1}                    &
+              I    & = 2\pi \i\ \Bigg[\frac{z^2}{z-1}\Bigg]_{(-1)} = -\pi\ \i
+          \end{align}
+
+    \item Plotting the contour and the poles of the function,
+          \begin{align}
+              I    & = \oint_{C} \frac{z^2}{z^2 - 1}\ \dl z                 &
+              C    & : \abs{z - 1 - \i} = \pi/2                               \\
+              g(z) & = \frac{z^2}{z+1} \cdot \frac{1}{z-1}                  &
+              I    & = 2\pi \i\ \Bigg[\frac{z^2}{z+1}\Bigg]_{(1)} = \pi\ \i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z + 1} = 1  $},
+                          xmin = -2, xmax = 2,
+                          ymin = -2, ymax = 2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \node[GraphNode, fill = y_p] at (axis cs:1, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-1, 0){};
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (-1, 0) circle (1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z - 1 - \i} = \pi/2  $},
+                          xmin = -2, xmax = 2,
+                          ymin = -2, ymax = 2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \node[GraphNode, fill = y_p] at (axis cs:1, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-1, 0){};
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (1, 1) circle (1.57);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The contour does not contain either pole of the function since
+          $ 1.4 < \sqrt{2} $.
+          \begin{align}
+              I & = \oint_{C} \frac{z^2}{z^2 - 1}\ \dl z &
+              C & : \abs{z+\i} = 1.4                       \\
+              I & = 0
+          \end{align}
+
+    \item Plotting the contour and the poles of the function,
+          \begin{align}
+              I    & = \oint_{C} \frac{z^2}{z^2 - 1}\ \dl z                   &
+              C    & : \abs{z + 5 - 5\i} = 7                                    \\
+              g(z) & = \frac{z^2}{z-1} \cdot \frac{1}{z+1}                    &
+              I    & = 2\pi \i\ \Bigg[\frac{z^2}{z-1}\Bigg]_{(-1)} = -\pi\ \i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm,
+                          title = {$ \abs{z+\i} = 1.4  $},
+                          xmin = -1.1, xmax = -0.9,
+                          ymin = -0.1, ymax = 0.1,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \node[GraphNode, fill = y_p] at (axis cs:1, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-1, 0){};
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (0, -1) circle (1.4);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z + 5 - 5\i} = 7  $},
+                          xmin = -2, xmax = 2,
+                          ymin = -2, ymax = 2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \node[GraphNode, fill = y_p] at (axis cs:1, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-1, 0){};
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (-5, 5) circle (7);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating around the unit circle anticlockwise,
+          \begin{align}
+              f(z) & = \frac{\cos(3z)}{6} \cdot \frac{1}{z}          &
+              I    & = 2\pi \i\ \Bigg[ \frac{\cos(3z)}{6} \Bigg]_{0}   \\
+              I    & = \frac{\pi}{3}\ \i
+          \end{align}
+
+    \item Integrating around the unit circle anticlockwise,
+          \begin{align}
+              f(z) & = \frac{\cos(e^{2z})}{\pi z - \i}                   &
+                   & = \frac{e^{2z}}{\pi} \cdot \frac{1}{z - (1/\pi) \i}   \\
+              I    & = 2\pi \i\ \Bigg[ \frac{e^{2z}}{\pi} \Bigg]_{z_0}   &
+              I    & = 2\i\ \Big[\cos(2/\pi) + \i\ \sin(2/\pi)\Big]        \\
+              I    & = -2 \sin(2/\pi) + 2\i\ \cos(2/\pi)
+          \end{align}
+
+    \item Integrating around the unit circle anticlockwise,
+          \begin{align}
+              f(z) & = \frac{z^3}{2 z - \i}                       &
+                   & = \frac{z^3}{2} \cdot \frac{1}{z - 0.5\i}      \\
+              I    & = 2\pi \i\ \Bigg[ \frac{z^3}{2} \Bigg]_{z_0} &
+              I    & = \frac{\pi}{8}
+          \end{align}
+
+    \item Integrating around the unit circle anticlockwise,
+          \begin{align}
+              f(z) & = \frac{z^2 \sin z}{4z - 1}                         &
+                   & = \frac{z^2 \sin z}{4} \cdot \frac{1}{z - 0.25}       \\
+              I    & = 2\pi \i\ \Bigg[ \frac{z^2 \sin z}{4} \Bigg]_{z_0} &
+              I    & = \frac{\pi \sin(1/4)}{32}\ \i
+          \end{align}
+
+    \item Program written in \texttt{sympy} to detect whether the contour includes
+          poles and adjust the integration method accordingly.
+
+    \item Using the contour method,
+          \begin{enumerate}
+              \item For the given function, the path encloses $ z_0 = 0.5\i $
+                    \begin{align}
+                        I & = \oint_C \frac{z^3 - 6}{(z - 0.5\i)}\ \dl z               \\
+                          & = \oint_C \frac{(-\i/8 - 6)
+                        + (z^3 - 6 + \i/8 + 6)}{z - 0.5\i}\ \dl z                      \\
+                          & = -(\i/8 + 6)\ 2\pi\ \i
+                        + \oint_C \frac{z^3 - (0.5\i)^3}{z - 0.5\i}\ \dl z             \\
+                          & = -(\i/8 + 6)\ 2\pi\ \i
+                        + \oint_C \Bigg[z^2 - \frac{1}{4} + \frac{z\i}{2}\Bigg]\ \dl z \\
+                          & = -(\i/8 + 6)\ 2\pi\ \i
+                        + 0 = \color{y_h} \frac{\pi}{4} - 12\pi\ \i
+                    \end{align}
+                    The second term consists of entire functions in the integrand which
+                    have to integrate to zero over any closed simple path.
+
+              \item For the given function, the path encloses $ z_0 = 0.5\pi $
+                    \begin{align}
+                        I & = \oint_C \frac{\sin z}{(z - 0.5\pi)}\ \dl z \\
+                          & = \oint_C \frac{(1)
+                        + (\sin z - 1)}{z - 0.5\pi}\ \dl z               \\
+                          & = 2\pi\ \i
+                        + \oint_C \frac{\sin z - 1}{z - 0.5\pi}\ \dl z   \\
+                          & = 2\pi\ \i
+                        + \oint_{C^*} \frac{\cos w - 1}{w}\ \dl w        \\
+                          & = 2\pi\ \i
+                        + \oint_{C^*} \Bigg[ -\frac{z}{2!} + \frac{z^4}{4!}
+                        - \dots \Bigg]\ \dl w                            \\
+                          & = 2\pi\ \i
+                        + 0 = \color{y_p} 2\pi\ \i
+                    \end{align}
+                    The substitution $ w = z - 0.5\pi $ makes the contour a circle
+                    centered around $ w = 0 $. \par
+                    The second term consists of entire functions in the integrand which
+                    have to integrate to zero over any closed simple path.
+
+              \item TBC.
+          \end{enumerate}
+
+    \item Integrating around the unit circle anticlockwise,
+          \begin{align}
+              f(z) & = \frac{1}{z^2 + 4}                                   &
+                   & = \frac{1}{(z + 2\i)(z - 2\i)}                          \\
+              z(t) & = \cos t + \i\ (2\sin t + 2)                          &
+              t    & \in [0, 2\pi]                                           \\
+              I    & = 2\pi \i \cdot \Bigg[ \frac{1}{z + 2\i} \Bigg]_{z_0} &
+              I    & = \frac{\pi}{2}
+          \end{align}
+
+    \item Integrating around the unit circle anticlockwise, using residue theorem for
+          poles lying on top of the contour.
+          \begin{align}
+              f(z) & = \frac{z}{z^2 + 4z + 3}                           &
+                   & = \frac{z}{(z + 1)(z+3)}                             \\
+              C    & : \abs{z + 1} = 2                                  &
+              I    & = 2\pi \i \cdot \Bigg[ \frac{z}{z + 3} \Bigg]_{-1}
+              + \pi \i \Bigg[ \frac{z}{z+1} \Bigg]_{-3}                   \\
+              I    & = \frac{\pi}{2}\ \i
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ 4x^2 + (y-2)^2 = 4  $},
+                          %   xmin = -1.1, xmax = -0.9,
+                          ymin = -4.5, ymax = 4.5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \node[GraphNode, fill = black] at (axis cs:0, 2){};
+                      \node[GraphNode, fill = black] at (axis cs:0, -2){};
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({cos(\t)}, {2 + 2*sin(\t)});
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z + 1} = 2  $},
+                          xmin = -3.1, xmax = -0.9,
+                          ymin = -1.1, ymax = 1.1,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (-1, 0) circle (2);
+                      \node[GraphNode, fill = y_p] at (axis cs:-3, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-1, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating around the unit circle anticlockwise,
+          \begin{align}
+              f(z) & = \frac{z+1}{z - 2}                   &
+              C    & : \abs{z-1} = 2                         \\
+              I    & = 2\pi \i \cdot \Big[ (z+2) \Big]_{2} &
+              I    & = 8\pi\ \i
+          \end{align}
+
+    \item Integrating around the unit circle anticlockwise.
+          \begin{align}
+              f(z) & = \frac{e^z}{z(e^z - 2\i)}                              &
+              z_1  & = \ln(2\i) = \ln(2) + \frac{\pi}{2}\ \i                   \\
+              C    & : \abs{z + 1} = 2                                       &
+              I    & = 2\pi \i \cdot \Bigg[ \frac{e^z}{e^z - 2\i} \Bigg]_{0}   \\
+              I    & = \frac{2\pi}{5}\ (-2 + \i)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z - 1} = 2  $},
+                          xmin = -2, xmax = 4,
+                          ymin = -3, ymax = 3,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (1, 0) circle (2);
+                      \node[GraphNode, fill = y_p] at (axis cs:2, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z} = 0.6  $},
+                          xmin = -2, xmax = 2,
+                          ymin = -2, ymax = 2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (0, 0) circle (0.6);
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0.693, 1.571){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating around the unit circle anticlockwise,
+          \begin{align}
+              f(z) & = \frac{\cosh(z^2 - \pi \i)}{z - \pi \i}                 &
+              C    & : \text{square with vertices}\ \{\pm 2, \pm 2+4\i\}        \\
+              I    & = 2\pi \i \cdot \Big[ \cosh(z^2 - \pi \i) \Big]_{\pi \i} &
+              I    & = 2\pi \i\ \cosh(\pi^2 + \pi \i)                           \\
+              I    & = -2\pi\i\ \cos(\pi^2\i)                                 &
+                   & = -2\pi\i\ \cosh(\pi^2)
+          \end{align}
+
+    \item Integrating around the unit circle anticlockwise.
+          \begin{align}
+              f(z) & = \frac{\tan z}{(z - \i)}                           &
+              z_1  & = \frac{(2n+1)\pi}{2} + 0\ \i                         \\
+              C    & : \text{triangle with vertices}\ \{0, \pm 1 + 2\i\} &
+              I    & = 2\pi \i \cdot \Big[ \tan z \Big]_{(\i)}             \\
+              I    & = -2\pi\ \tanh(1)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Square},
+                          xmin = -3, xmax = 3,
+                          ymin = -1, ymax = 5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (2, 0) -- (-2, 0) -- (-2, 4) -- (2, 4) -- cycle;
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 3.14){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Triangle},
+                          xmin = -2, xmax = 2,
+                          ymin = -1, ymax = 3,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (0, 0) -- (1, 2) -- (-1, 2) -- cycle;
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 1){};
+                      \node[GraphNode, fill = y_p] at (axis cs:1.57, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-1.57, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating around the unit circle anticlockwise,
+          \begin{align}
+              f(z) & = \frac{\Ln(z + 1)}{z^2 + 1}                               &
+              C    & : \abs{z - \i} = 1.4                                         \\
+              I    & = 2\pi \i \cdot \Bigg[ \frac{\Ln(z+1)}{z+\i} \Bigg]_{(\i)} &
+              I    & = \frac{\pi}{2}\  \ln(2) + \frac{\pi^2}{4}\ \i               \\
+              I    & = -2\pi\i\ \cos(\pi^2\i)                                   &
+                   & = -2\pi\i\ \cosh(\pi^2)
+          \end{align}
+
+    \item Integrating around the unit circle anticlockwise.
+          \begin{align}
+              f(z)      & = \frac{\sin z}{4z(z - 2\i)}                              \\
+              C_1       & = \text{outer square ccl}                               &
+              C_2       & = \text{inner square cl}                                  \\
+              I_1 + I_2 & = 2\pi \i \cdot \Bigg[ \frac{\sin z}{4z} \Bigg]_{(2\i)}   \\
+              I         & = \frac{\pi}{4}\ \sin(2\i)                              &
+              I         & = \frac{\pi \sinh(2)}{4}\ \i
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z - \i} = 1.4 $},
+                          xmin = -2, xmax = 2,
+                          ymin = -1.5, ymax = 2.5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw = y_h, fill=y_h, fill opacity = 0.08]
+                      (0, 1) circle (1.4);
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 1){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0, -1){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Concentric squares},
+                          xmin = -3, xmax = 3,
+                          ymin = -3, ymax = 3,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h,
+                          fill opacity = 0.08,even odd rule]
+                      (-1,0) -- (0,1) -- (1,0) -- (0,-1) -- cycle
+                      (-3,0) -- (0,3) -- (3,0) -- (0,-3) -- cycle;
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 2){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Integrating around the unit circle anticlockwise,
+          \begin{align}
+              f(z)              & = \frac{\exp(z^2)}{z^2\ (z - 1 - \i)}          \\
+              C_1               & = \text{outer circle ccl}                    &
+              C_2               & = \text{inner circle cl}                       \\
+              I_1 + I_2         & = 2\pi \i \cdot \Bigg[ \frac{\exp(z^2)}{z^2}
+              \Bigg]_{(1 + \i)} &
+              I                 & = \pi\ \exp(2\i)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Concentric circles},
+                          xmin = -3, xmax = 3,
+                          ymin = -3, ymax = 3,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h,
+                          fill opacity = 0.08,even odd rule]
+                      (axis cs:0,0) circle (2) (axis cs:0,0) circle (1);
+                      \node[GraphNode, fill = y_p] at (axis cs:1, 1){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating around the unit circle anticlockwise.
+          \begin{align}
+              f(z)      & = \frac{1}{(z-z_1)(z-z_2)}                     &
+              f(z)      & = \frac{1}{(z_1 - z_2)}\Bigg[
+                  \textcolor{y_h}{\frac{1}{z-z_1}}
+              - \textcolor{y_p}{\frac{1}{z-z_2}}\Bigg]                     \\
+              I_1       & = \frac{1}{z_1 - z_2}\oint_C
+              \textcolor{y_h}{\frac{1}{z-z_1}}
+              \ \dl z   &
+                        & = \frac{\textcolor{y_h}{2\pi\ \i}}{z_1 - z_2}    \\
+              I_2       & = \frac{-1}{z_1 - z_2}\oint_C
+              \textcolor{y_p}{\frac{1}{z-z_2}}
+              \ \dl z   &
+                        & = \frac{\textcolor{y_p}{-2\pi\ \i}}{z_1 - z_2}   \\
+              I_1 + I_2 & = 0
+          \end{align}
+\end{enumerate}

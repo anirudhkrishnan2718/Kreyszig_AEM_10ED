@@ -1,0 +1,138 @@
+\section{Method for Hyperbolic PDEs}
+
+\begin{enumerate}
+    \item Showing only the result for the last timestep,
+          \begin{align}
+              h       & = 0.2, \qquad k = 0.2, \qquad
+              r = \frac{k^2}{h^2} = 1                         \\
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              0 & -0.05 & -0.1 & -0.15 & -0.2 & 0
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Showing only the result for the last timestep,
+          \begin{align}
+              h       & = 0.2, \qquad k = 0.2, \qquad
+              r = \frac{k^2}{h^2} = 1                            \\
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              0 & 0.032 & 0.096 & 0.144 & -0.128 & 0
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Showing only the result for the last timestep,
+          \begin{align}
+              h       & = 0.2, \qquad k = 0.2, \qquad
+              r = \frac{k^2}{h^2} = 1                          \\
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              0 & 0.032 & 0.048 & 0.48 & 0.032 & 0
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Using D'Alembert's solution to the wave equation, with the initial position and
+          displacement given by $ f(x) $ and $ g(x) $ respectively.
+          \begin{align}
+              u(x, t)   & = \frac{f(x-ct) + f(x+ct)}{2} + \frac{1}{2c}
+              \ \int_{x-ct}^{x+ct} g(s)\ \dl s                         \\
+              c         & = 1, \qquad \Delta t = k                     \\
+              u(x_i, 1) & = \frac{u_{i-1,0} + u_{i+1,0}}{2}
+              + \frac{1}{2}\ \int_{x-k}^{x+k} g(s)\ \dl s
+          \end{align}
+          If $ g(s) $ is a constant function, then the integral is $ 2k\ g(x_i) $, and
+          this equation simplifies to the one in this section in the text.
+
+    \item Showing only the result for the last timestep, using the symmetry of the
+          problem to tabulate only the left half of the bar.
+          \begin{align}
+              h & = 0.1, \qquad k = 0.1, \qquad
+              r = \frac{k^2}{h^2} = 1                           \\
+              \bmatcol{u(t=0.1)}{u(t=0.2)}
+                & = \begin{bNiceMatrix}[margin]
+                        0        & 0.354492 & 0.766    & 1.271    &
+                        1.678508 & 1.834017 & \dots                 \\
+                        0        & 0.575017 & 0.934508 & 1.135492 &
+                        1.296    & 1.357017 & \dots
+                    \end{bNiceMatrix}
+          \end{align}
+
+    \item Applying the B.C. at the left edge,
+          \begin{align}
+              u_{01}        & = \frac{u_{-1,0} + u_{1,0}}{2}   &
+              2h \cdot 0.2j & = u_{-1,j} - u_{1,j}               \\
+              u_{0,j+1}     & = u_{-1,j} + u_{1,j} - u_{0,j-1} &
+                            & = 0.4jh + 2u_{1,j} - u_{0,j-1}
+          \end{align}
+          At the end of 5 time steps,
+          \begin{align}
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              0.852 & 1.728 & 2.168 & 2.762 & 3.24 & 4
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Using the given values, at $ t = 0.4 $
+          \begin{align}
+              h       & = 0.2, \qquad k = 0.2, \qquad
+              r = \frac{k^2}{h^2} = 1                                       \\
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              0 & 0.190211 & 0.307768 & 0.307768 & 0.190211 & 0
+                          \end{bNiceMatrix}
+          \end{align}
+          Using D'Alembert's solution to the wave equation,
+          \begin{align}
+              u(x,t)  & = \frac{f(x+ct) - f(x-ct)}{2} + \frac{1}{2} \int_{x-ct}^{x+ct}
+              g(s) \ \dl s                                                             \\
+              u(x, t) & = 0 + 0 + \frac{1}{2} \int{x-t}{x+t} \sin(\pi s)\ \dl s        \\
+              u(x, t) & = \frac{1}{2\pi} \Bigg[ \cos(\pi s) \Bigg]_{x+t}^{x-t}         \\
+              u(x, t) & = \frac{\sin(\pi x)\ \sin(\pi t)}{\pi}                         \\
+              \vec{u}_{\text{Ex}}
+                      & = \begin{bNiceMatrix}[margin]
+                              0 & 0.1779 & 0.2879 & 0.2879 & 0.1779 & 0
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Comparing the accuracy upon using a finer grid, for the matching
+          positions as in Problem $ 7 $,
+          \begin{align}
+              \vec{u}_{0.2} & = \begin{bNiceMatrix}[margin]
+                                    0 & 0.190211 & 0.307768 & 0.307768 & 0.190211 & 0
+                                \end{bNiceMatrix} \\
+              \vec{u}_{0.1} & = \begin{bNiceMatrix}[margin]
+                                    0 & 0.180902 & 0.292705 & 0.292705 & 0.180902 & 0
+                                \end{bNiceMatrix} \\
+              \vec{u}_{\text{Ex}}
+                            & = \begin{bNiceMatrix}[margin]
+                                    0 & 0.1779 & 0.2879 & 0.2879 & 0.1779 & 0
+                                \end{bNiceMatrix}
+          \end{align}
+          The smaller value of $ h $ gives a more accurate result.
+
+    \item Using the formula $ 8 $ in the text, the wave is
+          \begin{align}
+              \begin{bNiceMatrix}[margin]
+                  0 & 0.354492 & 0.766 & 1.271 & 1.678508 & 1.834017 & \dots
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item From D'Alembert's solution, with initial velocity being zero,
+          \begin{align}
+              u(x, t) & = \frac{f(x-t) + f(x+t)}{2}   &
+              r^*     & = 1, \qquad k = h               \\
+              u_{i1}  & = \frac{f(ih-h) + f(ih+h)}{2} &
+              u_{i1}  & = f(ih,h) = u(ih,k)
+          \end{align}
+          Thus, $ u_{i1} $ are the exact values $ u(ih,k) $. Next, for $ j=2 $,
+          \begin{align}
+              u_{i2} & = u_{i-1,1} + u_{i+1,1} - u_{i,0} &
+                     & = u(ih-h,k) + u(ih+h,k) - f(ih)     \\
+                     & = \frac{f(ih-2h) + f(ih+2h)}{2}   &
+                     & = u(ih, 2h) = u(ih,2k)
+          \end{align}
+          Thus, $ u_{i2} $ are the exact values. Now, assuming the relation holds for
+          $ u_{ij} $ and $ u_{i,j-1} $,
+          \begin{align}
+              u_{i,j+1} & = u_{i-1,j} + u_{i+1,j} - u_{i,j-1}              \\
+                        & = \frac{f(ih-h-jh) + f(ih+h+jh)}{2} = u(ih,jh+h)
+          \end{align}
+          Thus, $ u_{i,j+1} $ are also the exact values. Since $ j=1 $ and $ j=2 $ are
+          already shown to be exact, induction proves the relation for all higher
+          values of $ j $.
+\end{enumerate}

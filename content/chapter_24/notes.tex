@@ -1,0 +1,867 @@
+\chapter{Data Analysis. Probability Theory}
+
+\section{Data Representation, Average, Spread}
+
+\begin{description}
+    \item[Graphic representation of data] Properties of data can be better studied by
+          using some standard plots that help illustrate features.
+
+    \item[Stem and leaf plots] The data is represented using
+          \begin{itemize}
+              \item Stems that are the bins into which the data points are grouped
+              \item Leaves that are the leftover parts of the data points within each bin
+          \end{itemize}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{rowsep=0.5em,
+                  colspec = {l|[dotted]r|l},
+                  colsep = 1.2em}
+                  {Cumulative (Class)             \\ Absolute Frequency}
+                           & Stem & Leaf          \\ \hline
+                  3 \ (3)  & 7    & 789           \\
+                  10\ (7)  & 8    & 1123344       \\
+                  23\ (13) & 8    & 6677788899999 \\
+                  29\ (6)  & 9    & 001123        \\
+                  30\ (1)  & 9    & 9             \\
+              \end{tblr}
+          \end{table}
+
+    \item[Histogram] For larger data sets, a generalized version of the above plot
+          only using the number of elements in each bin.
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title =
+                              {Histogram for above data},
+                          xlabel = $ x $, ylabel = Frequency, Ani,
+                          xtick = {75,80,...,100}, enlargelimits = 0.2,
+                          view = {0}{90}, grid = both,]
+                      \addplot[ybar, bar width = 4.8, color = y_h!0,
+                          fill = y_h, fill opacity = 0.25] coordinates
+                          {(77.5,3) (82.5,7) (87.5,13) (92.5,6) (97.5,1)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \begin{itemize}
+              \item Bins are the intervals that the data is sorted into
+              \item Bin edges are usually inclusive at the left side and exclusive at the
+                    right side (barring the last bin).
+              \item A relative frequency histogram is when the weight of all the bins add
+                    up to one.
+          \end{itemize}
+
+    \item[Boxplot] A means of illustrating the data divided into the four quartiles,
+          shown as the lower whisker, the lower end of the box, the median line,
+          the upper end of the box and finally the upper whisker.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 12cm, height = 4cm, hide y axis,Ani,
+                          xtick = {0,2.5,5,7.5,10},
+                          xticklabels = {$ l $, $ q_L $, $ q_M $, $ q_U $, $ u $},
+                          enlargelimits = 0.2,
+                          grid = both,]
+                      \addplot[
+                          boxplot prepared={
+                                  lower whisker=0,
+                                  lower quartile=2.5,
+                                  median=5,
+                                  upper quartile=7.5,
+                                  upper whisker=10,
+                                  box extend=2,  % height of box
+                                  whisker extend=2.2, % height of whiskers
+                                  every box/.style={y_t, thick, fill=gray,
+                                          fill opacity = 0.25},
+                                  every whisker/.style={y_p, thick},
+                                  every median/.style={y_h, thick},
+                              },] coordinates {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item[Median] The middle value in the dataset, counting repetition. This is also the
+          $ 50^{\text{th}} $ percentile of the dataset.
+
+    \item[Interquartile range] The difference between the upper and lower quartile, as
+          shown by the length of the box above ($ q_U - q_L $). \par
+          The full range is the difference between the largest and smallest values,
+          $ (l-u) $.
+
+    \item[Outlier] For a box plot, any points that are more than 1.5 times the IQR
+          from either end of the box is sufficiently far from the median to be declared
+          an outlier.
+
+    \item[Mean] The average of all the values (counted uniquely),
+          each weighted by their frequency.
+          \begin{align}
+              \bar{x} & = \frac{1}{n}\ \sum_{i=1}^{n} x_i
+          \end{align}
+
+    \item[Variance] The sum of squares of the distance of every data point from the
+          mean of the dataset.
+          \begin{align}
+              s^2 & \equiv \frac{1}{n-1}\ \sum_{i=1}^{n} (x_i - \bar{x})^2
+          \end{align}
+          The square root of the variance is called the standard deviation. This has the
+          same physical dimensions as the original data.
+
+    \item[Normal percentiles rule] For any bell-shaped curve symmetric about its center,
+          the number of data points contained in the intervals are roughly,
+          \begin{align}
+              \SI{68}{\percent} \quad   & \text{in} \quad [\bar{x} - s, \bar{x} + s]   \\
+              \SI{95}{\percent} \quad   & \text{in} \quad [\bar{x} - 2s, \bar{x} + 2s] \\
+              \SI{99.7}{\percent} \quad & \text{in} \quad [\bar{x} - 3s, \bar{x} + 3s]
+          \end{align}
+
+    \item[z-Score] The distance of a data point within a data set from its mean,
+          measured in units of variance.
+          \begin{align}
+              z(s) & = \frac{x - \bar{x}}{s}
+          \end{align}
+          From the above heuristic, $ z-$scores outside of $ \pm 3 $ can be considered
+          outliers.
+\end{description}
+
+\section{Experiments, Outcomes, Events}
+
+\begin{description}
+    \item[Experiment] A process of measurement or observation. In probability theory,
+          the processes being observed have some random element.
+
+    \item[Trial] A single performance of an experiment, whose result is called an
+          outcome.
+
+    \item[Sample] A set of outcomes of performing an experiment $ n $ times. This number
+          $ n $ is called the sample size.
+
+    \item[Sample space] The set of all possible outcomes $ (S) $ of an experiment.
+
+    \item[Event] A subset of the sample space of some random process. This could also
+          be a subset with one element, which would be an outcome. \par
+          The event is said to have occurred if the outcome of the experiment is a subset
+          (or member) of the event set.
+
+    \item[Set union] The set of all element that belong to one of the sets $ A $
+          or $ B $
+          \begin{align}
+              C & \equiv A \cup B
+          \end{align}
+
+    \item[Set intersection] The set of all element that belong to both the sets $ A $ and
+          $ B $
+          \begin{align}
+              C & \equiv A \cap B
+          \end{align}
+
+    \item[Set exclusion] The set of all element that belong to one set $ A $ but not
+          the other set $ B $.
+          \begin{align}
+              C & \equiv A - B
+          \end{align}
+
+    \item[Null set] A set with non elements. Also called an empty set. The
+          conventional symbol is $ \phi $
+
+    \item[Disjoint sets] Two sets that do not have any elements in common. Their
+          intersection is the null set. The events that correspond to such a pair of sets
+          are mutually exclusive.
+          \begin{align}
+              A \cap B & = \phi
+          \end{align}
+
+    \item[Complement] The set of all elements in the sample space $ S $ that do not
+          belong to $ A $.
+          \begin{align}
+              A^\complement & \equiv S - A & A \cap A^\complement & = \phi
+          \end{align}
+
+    \item[Venn diagrams] Representations of sets in $ 2D $ space used to illustrate
+          set operations.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[axis equal, height = 4cm,
+                          title = {Union},axis lines = none, Ani,
+                          xmin = -1.6,xmax = 1.6, ymin = -1.6, ymax = 1.6]
+                      \filldraw[gray!15](-0.5,0) circle(1);
+                      \filldraw[gray!15](0.5,0) circle(1);
+                      \draw[y_h, thick] (-0.5,0) circle (1);
+                      \draw[y_p, thick] (0.5,0) circle (1);
+                      \draw[black, thick] (-2.5,-1.6) rectangle (2.5,1.6);
+                  \end{axis}
+              \end{tikzpicture}
+              \hspace{3em}
+              \begin{tikzpicture}
+                  \begin{axis}[axis equal, height = 4cm,
+                          title = {Intersection},axis lines = none, Ani,
+                          xmin = -1.6,xmax = 1.6, ymin = -1.6, ymax = 1.6]
+                      \begin{scope}
+                          \clip (-0.5,0) circle(1);
+                          \clip (0.5,0) circle(1);
+                          \fill[gray!15](-0.5,0) circle(1);
+                      \end{scope}
+                      \draw[y_h, thick] (-0.5,0) circle (1);
+                      \draw[y_p, thick] (0.5,0) circle (1);
+                      \draw[black, thick] (-2.5,-1.6) rectangle (2.5,1.6);
+                  \end{axis}
+              \end{tikzpicture}
+              \hspace{3em}
+              \begin{tikzpicture}
+                  \begin{axis}[axis equal, height = 4cm,
+                          title = {Exclusion},axis lines = none, Ani,
+                          xmin = -1.6,xmax = 1.6, ymin = -1.6, ymax = 1.6]
+                      \fill[gray!15](-0.5,0) circle(1);
+                      \fill[white](0.5,0) circle(1);
+                      \draw[y_h, thick] (-0.5,0) circle (1);
+                      \draw[y_p, thick] (0.5,0) circle (1);
+                      \draw[black, thick] (-2.5,-1.6) rectangle (2.5,1.6);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[axis equal, height = 4cm,
+                          title = {Complement},axis lines = none, Ani,
+                          xmin = -1.6,xmax = 1.6, ymin = -1.6, ymax = 1.6]
+                      \filldraw[gray!15] (-2.5,-1.6) rectangle (2.5,1.6);
+                      \fill[white](0,0) circle(1);
+                      \draw[y_h, thick] (0,0) circle (1);
+                      \draw[black, thick] (-2.5,-1.6) rectangle (2.5,1.6);
+                  \end{axis}
+              \end{tikzpicture}
+              \hspace{3em}
+              \begin{tikzpicture}
+                  \begin{axis}[axis equal, height = 4cm,
+                          title = {Universal set},axis lines = none, Ani,
+                          xmin = -1.6,xmax = 1.6, ymin = -1.6, ymax = 1.6]
+                      \filldraw[gray!15] (-2.5,-1.6) rectangle (2.5,1.6);
+                      \draw[black, thick] (-2.5,-1.6) rectangle (2.5,1.6);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item[Multiple sets] The intersection and union operations also extend to more
+          than two sets using the notation,
+          \begin{align}
+              \bigcap_{j=1}^n A_j & = A_1 \cap A_2 \dots \cap A_n &
+              \bigcup_{j=1}^n A_j & = A_1 \cup A_2 \dots \cup A_n
+          \end{align}
+
+    \item[De-Morgan's law] The relation between union and intersection of two sets
+          utilizing their complements, is expressed as
+          \begin{align}
+              (A \cup B)^\complement & = A^\complement \cap B^\complement &
+              (A \cap B)^\complement & = A^\complement \cup B^\complement
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[axis equal, height = 4cm,
+                          title = {$ (A \cup B)^\complement $},axis lines = none, Ani,
+                          xmin = -1.6,xmax = 1.6, ymin = -1.6, ymax = 1.6]
+                      \filldraw[gray!15] (-2.5,-1.6) rectangle (2.5,1.6);
+                      \fill[white](-0.5,0) circle(1);
+                      \fill[white](0.5,0) circle(1);
+                      \draw[y_h, thick] (-0.5,0) circle (1);
+                      \draw[y_p, thick] (0.5,0) circle (1);
+                      \draw[black, thick] (-2.5,-1.6) rectangle (2.5,1.6);
+                  \end{axis}
+              \end{tikzpicture}
+              \hspace{3em}
+              \begin{tikzpicture}
+                  \begin{axis}[axis equal, height = 4cm,
+                          title = {$ (A \cap B)^\complement $},axis lines = none, Ani,
+                          xmin = -1.6,xmax = 1.6, ymin = -1.6, ymax = 1.6]
+                      \filldraw[gray!15] (-2.5,-1.6) rectangle (2.5,1.6);
+                      \begin{scope}
+                          \clip (-0.5,0) circle(1);
+                          \clip (0.5,0) circle(1);
+                          \fill[white!15](-0.5,0) circle(1);
+                      \end{scope}
+                      \draw[y_h, thick] (-0.5,0) circle (1);
+                      \draw[y_p, thick] (0.5,0) circle (1);
+                      \draw[black, thick] (-2.5,-1.6) rectangle (2.5,1.6);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+\end{description}
+
+\section{Probability}
+
+\begin{description}
+    \item[Finite sample space] For an experiment with a finite sample space $ S $ with
+          equally likely outcomes, the probability of event $ A $ is defined as
+          \begin{align}
+              P(A) & = \frac{N_A}{N_S} & P(S) & = 1
+          \end{align}
+          where $ N $ is the number of outcomes. The probability of the entire sample
+          space is unity, by convention.
+
+    \item[Empirical probability] Given an experiment where a large number of trials
+          have already been conducted and data gathered on the outcomes,
+          \begin{align}
+              P(A)        & \in [0,1]     & \forall \quad A & \in S  \\
+              P(S)        & = 1                                      \\
+              P(A \cup B) & = P(A) + P(B) & A \cap B        & = \phi
+          \end{align}
+          The last relation is for two or more mutually exclusive events.
+
+    \item[Complement] The sum of the probabilities of an event and its complement
+          is unity.
+          \begin{align}
+              P(A^\complement) & = 1 - P(A)
+          \end{align}
+
+    \item[Multiple mutually exclusive events] The probability of their union is
+          simply the sum of the individual probabilities.
+          \begin{align}
+              P(A_1 \cup A_2 \cup \dots A_m) & = P(A_1) + P(A_2) + \dots + P(A_m)
+          \end{align}
+
+    \item[Set union] For events that are not mutually exclusive, using set addition,
+          \begin{align}
+              P(A \cup B) & = P(A) + P(B) - P(A \cup B) &
+              P(\phi)     & = 0
+          \end{align}
+
+    \item[Conditional probability] The probability that event $ A $ occurs given
+          $ B $ has already occurred, is
+          \begin{align}
+              P(A|B) & = \frac{P(A \cup B)}{P(B)}
+          \end{align}
+          Geometrically, the new sample space is $ B $ and the new numerator is that
+          part of $ A $ which overlaps $ B $
+
+    \item[Multiplication rule] Given two events $ A,B $ in a sample space $ S $,
+          with $ P(A) \neq 0 $ and $ P(B) \neq 0 $,
+          \begin{align}
+              P(A \cup B) & = P(B) \cdot P(A|B) = P(A) \cdot P(B|A)
+          \end{align}
+
+    \item[Independent events] If two events $ A,B $ are independent, then no
+          information about the occurrence of one is conveyed from the occurrence of the
+          other.
+          \begin{align}
+              P(A|B)      & = P(A)            & P(B|A) & = P(B) \\
+              P(A \cup B) & = P(A) \cdot P(B)
+          \end{align}
+          A set of more than two events is independet if and only if all subsets of
+          two or more events taken at a time are also independent.
+
+    \item[Sampling] The act of randomly drawing an object from a population. This can be
+          done with or without replacement. \par
+          When sampling with replacement, it is implicit that the population is shuffled
+          after each replacement so that it is in as random a state as it was before the
+          first sample was drawn.
+
+\end{description}
+
+\section{Permutations and Combinations}
+
+\begin{description}
+    \item[Permutation] An arrangement of a given set of objects in a specific order.
+          The number of permutations of $ n $ different things taken all at a time is,
+          \begin{align}
+              n! & \equiv n(n-1)(n-2)\dots(2)(1)
+          \end{align}
+          If a total of $ n $ objects contain $ c $ types of objects, each with numbers
+          $ n_i $, then the number of permutations is,
+          \begin{align}
+                & \frac{n!}{n_1!\ n_2!\ \dots\ n_c!} &
+              n & = n_1 + n_2 + \dots + n_c
+          \end{align}
+          This assumes that the objects within one class are identical. The first
+          formula is a special case of $ n $ classes each containing only one object.
+
+    \item[Permutations of a subset] The number of permutations of $ n $ things
+          taken $ k $ at a time for some $ k<n $, is
+          \begin{align}
+              \permu{n}{k} & = \frac{n!}{(n-k)!}       &
+                           & \text{without repetition}   \\
+                           & n^k                       &
+                           & \text{with repetition}
+          \end{align}
+
+    \item[Combination] A selection of one or more things without regard to order.
+          \begin{align}
+              \binom{n}{k} & = \frac{n!}{(n-k)!\ k!}   &
+                           & \text{without repetition}   \\
+                           & \binom{n+k-1}{k}          &
+                           & \text{with repetition}
+          \end{align}
+
+    \item[Factorial function] A function of non-negative integers defined as,
+          \begin{align}
+              n! & \equiv n \cdot (n-1)!    & 0! = 1 \\
+              n! & = n(n-1)(n-2)\dots(2)(1)
+          \end{align}
+
+    \item[Stirling approximation] An approximation for large $ n $, which is
+          asymptotically equal to $ n! $, is
+          \begin{align}
+              n! & \approxeq \sqrt{2\pi n}\ \Bigg( \frac{n}{e} \Bigg)^n
+          \end{align}
+
+    \item[Binomial coefficients] For some integer $ k $, and some nonnegative real $ a $,
+          \begin{align}
+              \binom{a}{k} & = \frac{a(a-1)\dots(a-k+1)}{k!} = \frac{a!}{(a-k)!\ k!}
+          \end{align}
+          By convention,
+          \begin{align}
+              \binom{a}{0} & = 1 & \binom{0}{0} & = 1
+          \end{align}
+          For the special case of integer $ a $, let $ a = n $,
+          \begin{align}
+              \binom{n}{k} & = \binom{n}{n-k} & n & \geq 0 \qquad k \in [0,n]
+          \end{align}
+
+    \item[Relations for binomial coefficients] A recursive relation that helps in
+          calculating binomial coefficients is,
+          \begin{align}
+              \binom{a}{k} + \binom{a}{k+1} & = \binom{a+1}{k+1}
+          \end{align}
+
+    \item[Negative binomial coefficient] For some positive real $ m $ and non-negative
+          integer $ k $,
+          \begin{align}
+              \binom{-m}{k} & = (-1)^m\ \binom{m+k-1}{k}
+          \end{align}
+
+    \item[Series sums of binomial coefficients] Two important relations are,
+          \begin{align}
+              \sum_{s=0}^{n-1}\binom{k+s}{k}             & = \binom{n+k}{k+1} \\
+              \sum_{k=0}^{r}\binom{p}{k}\ \binom{q}{r-k} & = \binom{p+q}{r}
+          \end{align}
+\end{description}
+
+\section{Random Variables. Probability Distributions}
+
+\begin{description}
+    \item[Random variable] The quantity observed in an experiment. This is assumed
+          stochastic and the value it will assume in the next trial has an element of
+          randomness. \par
+          The random variable can take any value (or set of values) within the sample
+          space $ S $ of an experiment.
+
+    \item[Cumulative distribution function] The probability that a random variable
+          $ X $ will not be larger than some number $ x $,
+          \begin{align}
+              F(x) & \equiv P(X \leq x)
+          \end{align}
+
+    \item[Probability distribution function] The probability that a random variable
+          $ X $ will be equal to some value $ x $,
+          \begin{align}
+              f(x) & \equiv P(X = x)
+          \end{align}
+
+    \item[Probability of interval] Using the CDF, the probability of a random variable
+          lying in an interval $ (a,b] $ is,
+          \begin{align}
+              P(a < X \leq b) & = F(b) - F(a)
+          \end{align}
+
+    \item[Discrete RVs] A random variable that can only assume either a finite or
+          countably infinite number of values. Its PDF is given by
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           p_j & \quad\ \text{if}\quad  x = x_j \\
+                           0   & \quad\ \text{otherwise}
+                       \end{dcases}
+          \end{align}
+          where $ \{x_j\} $ is the set of values that the RV can assume, and $ p_j $
+          are all positive numbers. \par
+          The CDF is given by
+          \begin{align}
+              F(x) & = \sum_{x_j \leq x} p_j
+          \end{align}
+          This is a step function which jumps at each $ x_j $ and is flat otherwise. \par
+          The probability of the RV lying in an interval is,
+          \begin{align}
+              P(a < X \leq b) & = \sum_{a < x_j \leq b}^{max} p_j
+          \end{align}
+
+    \item[Normalization] As a general rule, the probability of the sample space as a
+          whole is equal to unity.
+          \begin{align}
+              \sum_{j} p_j & = 1
+          \end{align}
+
+    \item[Continuous RVs] For the case of random variables that can vary continuously
+          over the real line, the CDF is defined using the integral,
+          \begin{align}
+              F(x) & = \int_{-\infty}^{x} f(v)\ \dl v
+          \end{align}
+          The PDF now becomes the derivative of the CDF, and is also called the
+          probability density function.
+          \begin{align}
+              f(x) & = F'(x)
+          \end{align}
+          The PDF is always nonnegative and is continuous except for possibly at
+          finitely many jump points. \par
+          The probability of the RV lying in an interval is,
+          \begin{align}
+              P(a < X \leq b) & = \int_{a}^{b} f(v)\ \dl v
+          \end{align}
+          The normalization analog is now,
+          \begin{align}
+              \int_{-\infty}^{\infty} f(v)\ \dl v & = 1
+          \end{align}
+\end{description}
+
+\section{Mean and Variance of a Distribution}
+
+\begin{description}
+    \item[Mean] The mean of a distribution is the analog of the average of a
+          frequency distribution,
+          \begin{align}
+              \mu & = \sum_j x_j \cdot f(x_j)    &  & \text{discrete}   \\
+              \mu & = \intRL x \cdot f(x)\ \dl x &  & \text{continuous}
+          \end{align}
+          This is also called the expected value of $ X $, with notation $ E[X] $.
+          This is the value of the RV to be expected when manyw trials
+          of the experiment are performed. \par
+          If a distribution is symmetric w.r.t. $ x = c $, then,
+          \begin{align}
+              f(c+x) & = f(c-x) & \implies \quad \mu & = c
+          \end{align}
+
+    \item[Variance] A measure of the spread of a distribution about its mean,
+          \begin{align}
+              \sigma^2 & = \sum_j (x_j - \bar{x})^2\ f(x_j) &  & \text{discrete}   \\
+              \sigma^2 & = \intRL (x-\mu)^2\ f(x)\ \dl x    &  & \text{continuous}
+          \end{align}
+          Its positive square root is called the standard deviation. \par
+          Barring the case of a discrete distribution with only one value in its sample
+          space, $ \sigma^2 > 0 $.
+
+    \item[Linear transformation of RV] When a RV is transformed into another by a
+          linear relation,
+          \begin{align}
+              Y     & = aX + b       & (a         & > 0)              \\
+              \mu_Y & = a\ \mu_X + b & \sigma^2_Y & = a^2\ \sigma^2_X
+          \end{align}
+
+    \item[Standardized RV] A linear transformation that makes the mean 0 and
+          variance 1.
+          \begin{align}
+              Z & \equiv \frac{X - \mu}{\sigma}
+          \end{align}
+
+    \item[Expectation] For a non-constant and continuous function $ g(x) $, a random
+          variable can be constructed as $ g(X) $. \par
+          Its expected value is,
+          \begin{align}
+              \ex[g(X)] & = \sum_j g(x_j) \cdot f(x_j)    &  & \text{discrete}   \\
+              \ex[g(X)] & = \intRL g(x) \cdot f(x)\ \dl x &  & \text{continuous}
+          \end{align}
+          A restatement of the normalization condition is,
+          \begin{align}
+              \ex(1) & = \intRL 1 \cdot f(x)\ \dl x = 1
+          \end{align}
+
+    \item[$k^{\text{th}}$ moment of X] For a random variable $ X $, special cases of
+          expectation values, are powers of $ x $, called moments,
+          \begin{align}
+              \ex[X^k] & = \sum_j x_j^k \cdot f(x_j)    &  & \text{discrete}   \\
+              \ex[X^k] & = \intRL x^k \cdot f(x)\ \dl x &  & \text{continuous}
+          \end{align}
+          The first moment happens to be the mean.
+
+    \item[Central moment] Similar to the moments, the central moments are special
+          expectation values for powers of $ (X - \mu) $
+          \begin{align}
+              \ex[(X - \mu)^k] & = \sum_j (x_j - \mu)^k \cdot f(x_j)    &
+                               & \text{discrete}                          \\
+              \ex[(X - \mu)^k] & = \intRL (x - \mu)^k \cdot f(x)\ \dl x &
+                               & \text{continuous}
+          \end{align}
+          The second central moment happens to be the variance.
+\end{description}
+
+\section{Binomial, Poisson, and Hypergeometric Distributions}
+
+\begin{description}
+    \item[Binomial distribution] If an event $ A $ has the probability of occurrence
+          $ p $, in one trial, and there are $ n $ independent trials, then the number
+          of times $ A $ occurs is
+          \begin{align}
+              P(X=x) = p^x\ (1-p)^{n-x}
+          \end{align}
+          Now, since there are many sequences of $ n $ events which give the same
+          probability, accounting for them gives the PDF
+          \begin{align}
+              f(x) & = \binom{n}{x}\ p^x q^{n-x} & q & \equiv 1-p
+          \end{align}
+          The sample space is $ x \in \{0,1,\dots,n\} $. This PDF is also called the
+          Bernoullu distribution.
+          \begin{align}
+              \mu & = np & \sigma^2 & = np(1-p)
+          \end{align}
+
+    \item[Poisson distribution] The extension of the binomial distribution to a large
+          number of trials $ n $ and with chance of success $ p \to 0 $, such that $ np $
+          remains finite.
+          \begin{align}
+              f(x) & = \frac{\lambda^x}{x!}\ e^{-\lambda}
+          \end{align}
+          This PDF has the special property of having variance and mean both equal to
+          its parameter $ \lambda $.
+          \begin{align}
+              \mu & = \lambda = np & \sigma^2 & = \lambda = npq \approxeq np
+          \end{align}
+          Since $ q \to 1 $, the variance approaches the mean.
+
+    \item[Hypergeometric distribution] The binomial distribution assumes sampling
+          with replacement, since this is necessary for the trials to be independent.
+          \par
+          Consider sampling $ x $ objects from a total of $ N $ objects. Assume $ M $
+          of those objects are desirable. \par
+          The number of desirable objects drawn in $ n $ trials when sampling without
+          replacement is now
+          \begin{align}
+              f(x) & = \frac{\binom{M}{x}\ \binom{N-M}{n-x}}{\binom{N}{n}}
+          \end{align}
+          The mean and variance are,
+          \begin{align}
+              \mu      & = \frac{M}{N} \cdot n                          &
+              \sigma^2 & = \frac{nM}{N} \cdot \frac{(N-M)(N-n)}{N(N-1)}
+          \end{align}
+          Note that in the limit of $ N,M \gg n $, whether or not replacement happens
+          is irrelevant, and the hypergeometric distribution reduces to the binomial
+          distribution with $ p = M/N $.
+\end{description}
+
+\section{Normal Distribution}
+
+\begin{description}
+    \item[Importance] Most useful continuous RVs can be transformed into normal RVs using
+          simple transformations. Also, many processes in real life happen to have a
+          normal PDF.
+
+    \item[General form] A normal distribution with mean $ \mu $ and standard deviation
+          $ \sigma $, is
+          \begin{align}
+              f(x) & = \frac{1}{\sigma\ \sqrt{2\pi}}\ \exp\Bigg[ -\frac{1}{2}
+                  \ \left( \frac{x-\mu}{\sigma} \right)^2 \Bigg]
+          \end{align}
+          The pre-factor is the normalization constant. The PDF is symmetric about
+          $ \mu $.
+
+    \item[Normal CDF] The CDF of the normal distribution cannot be found analytically.
+          Tabulated values of the standard normal distribution (with $ \mu = 0$ and
+          $ \sigma = 1 $) are used in calculations.
+          \begin{align}
+              \Phi(z) & = F(z;0,1) = \frac{1}{\sqrt{2\pi}}\ \int_{-\infty}^{z}
+              e^{-u^2/2}\ \dl u                                                \\
+              F(x)    & = \Phi\Bigg( \frac{x-\mu}{\sigma} \Bigg)
+          \end{align}
+          This transformation enables computation of any other normal distribution in
+          terms of the standard normal $ \Phi(x) $. For the probability of an interval,
+          \begin{align}
+              P(\textcolor{y_h}{a} < X \leq \textcolor{y_p}{b}) & =
+              F(\textcolor{y_p}{b}) - F(\textcolor{y_h}{a}) =
+              \Phi\Bigg( \frac{\textcolor{y_p}{b}-\mu}{\sigma} \Bigg)
+              - \Phi\Bigg( \frac{\textcolor{y_h}{a}-\mu}{\sigma} \Bigg)
+          \end{align}
+
+    \item[Percentiles] Heuristics for the fraction of all data points lying at some
+          distance from the mean, are as follows,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[title = {Standard normal}, Ani,
+                          grid = both, xmin=-4, xmax=4, xlabel = {$ z $},
+                          ylabel = {$ \Phi(z) $}]
+                      \addplot[name path = topb, black!0, domain = -1:1]
+                      {normPDF(x,0,1)};
+                      \addplot[name path = topa, black!0, domain = -4:-1]
+                      {normPDF(x,0,1)};
+                      \addplot[name path = topc, black!0, domain = 1:4]
+                      {normPDF(x,0,1)};
+                      \addplot[name path = bottomb, black!0, domain = -1:1] {0};
+                      \addplot[name path = bottoma, black!0, domain = -4:-1] {0};
+                      \addplot[name path = bottomc, black!0, domain = 1:4] {0};
+                      \addplot [fill=y_p, fill opacity=0.08]
+                      fill between[of=topb and bottomb];
+                      \addplot [fill=black, fill opacity=0.08]
+                      fill between[of=topa and bottoma];
+                      \addplot [fill=black, fill opacity=0.08]
+                      fill between[of=topc and bottomc];
+                      \addplot[GraphSmooth, y_h, domain = -4:4]
+                      {normPDF(x,0,1)};
+                      \node[y_p] at (axis cs:0, 0.2){$ 68 \% $};
+                      \node[black] at (axis cs:1.5, 0.05){$ 16 \% $};
+                      \node[black] at (axis cs:-1.5, 0.05){$ 16 \% $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {l|r|[dotted]c|[dotted]l},
+                  colsep = 1.2em}
+                  Interval           & Left   & Inside & Right  \\ \hline
+                  $ (x\pm\sigma) $   & 16\%   & 64\%   & 16\%   \\
+                  $ (x\pm 2\sigma) $ & 2.25\% & 95.5\% & 2.25\% \\
+                  $ (x\pm 3\sigma) $ & 0.15\% & 99.7\% & 0.15\% \\
+              \end{tblr}
+          \end{table}
+          Almost all of the data points are contained in the interval $ \mu \pm 3\sigma $,
+          and these intervals are commonly used in statistical tests.
+
+    \item[Normal approximation of Binomial PDF] For a binomial PDF with large $ n $ and
+          small $ p $ such that the mean $ np $ remains finite, an asymptotic
+          approximation is the normal distribution with mean $ np $ and variance
+          $ np(1-p) $
+          \begin{align}
+              f^*(x) & = \frac{1}{\sqrt{2\pi\ np(1-p)}}\ e^{-z^2/2} &
+              z      & = \frac{x - np}{\sqrt{np(1-p)}}
+          \end{align}
+          This also means that the probabilities such a binomial RV lying in the interval
+          $ [a,b] $ can be approximated using,
+          \begin{align}
+              P(a \leq X \leq b) & \approxeq \Phi(\beta) - \Phi(\alpha)   \\
+              \alpha             & = \frac{a-np-0.5}{\sqrt{np(1-p)}}    &
+              \alpha             & = \frac{b-np+0.5}{\sqrt{np(1-p)}}
+          \end{align} $ \Phi(\beta) - \Phi(\alpha) $, assuming
+          $ a, b $ are non-negative integers. The extra $ 0.5 $ in the numerator is
+          a correction term in going from a discrete to a continuous PDF.
+\end{description}
+
+\section{Distributions of Several Random Variables}
+
+\begin{description}
+    \item[Two dimensional CDF] A CDF of two random variables that are independent is
+          defined as,
+          \begin{align}
+              F(x, y) & = P(X \leq x, Y \leq y)
+          \end{align}
+          both inequalities have to in this definition. For the probability of a 2d
+          region,
+          \begin{align}
+              P(a_1 \leq X \leq b_1,\ a_2 \leq Y \leq b_2)
+               & = F(b_1, b_2) + F(a_1,b_2)  \\
+               & - [F(b_1,a_2) - F(a_1,a_2)]
+          \end{align}
+
+    \item[Discrete 2d RV] Using the shorthand
+          \begin{align}
+              P(X = x_i, Y = y_j) & = f(x_i, y_j) = p_{ij}
+          \end{align}
+          and accommodating the fact that these probabilities may be zero at some of
+          these points,
+          The CDF is simply the double sum over these two independent indices $ i,j $,
+          \begin{align}
+              F(x, y) & = \sum_{x_i \leq x} \sum_{y_j \leq y} f(x_i, y_j)
+          \end{align}
+          with the normalization condition still being that the probabilities over all
+          points sum to unity.
+
+    \item[Continuous 2d RV] The double sum is replaced by a double integral over $ x $
+          and $ y $, giving the CDF,
+          \begin{align}
+              F(x, y) & = \int_{-\infty}^{y} \int_{-\infty}^{x}
+              f(u, v)\ \dl u\ \dl v
+          \end{align}
+          Here, the PDF is called the density $ f(x, y) $. It is nonnegative and
+          defined everywhere except possibly at finitely many curves in the domain.
+          \par
+          The probability of a rectangular region in the 2d domain of definition is,
+          \begin{align}
+              P(a_1 \leq X \leq b_1, a_2 \leq Y \leq b_2)
+               & = \int_{a_2}^{b_2} \int_{a_1}^{b_1} f(x, y)\ \dl x\ \dl y
+          \end{align}
+
+    \item[Marginal distributions of a discrete RV] The PDF over one of the many variables
+          is obtained by simply summing over all possible values of the other variables,
+          \begin{align}
+              f_1(x) & = P(X = x, Y\ \text{arbitrary}) = \sum_{y} f(x, y)
+          \end{align}
+          The CDF of the marginal distribution of $ X $ becomes,
+          \begin{align}
+              F_1(x) & = \sum_{x^* \leq x} f_1(x^*)
+          \end{align}
+
+    \item[Marginal table] For the special case of a discrete $ 2d $ RV, the sum of
+          the probabilities of each row and column is directly the marginal distribution
+          of the column and row indices respectively.
+
+    \item[Marginal distributions of a continuous RV] Replacing the summation with
+          integration, the marginal PDF is,
+          \begin{align}
+              f_1(x) & =  \intRL f(x, y)\ \dl y           &
+              F_1(x) & = \int_{-\infty}^{x} f_1(u)\ \dl u
+          \end{align}
+
+    \item[Independence of RVs] Two RVs are independent if and only if their joint
+          CDF is the product of their marginal CDFs.
+          \begin{align}
+              F(x, y) & = F_1(x) \cdot F_2(y) & f(x, y) & = f_1(x) \cdot f_2(y)
+          \end{align}
+          for all values of $ x,y $. This uses the fact that the joint probability of
+          two independent events is the product of their individual probabilities. \par
+          This definition extends to more than 2 RVs with no changes to the definitions.
+
+    \item[Functions of RVs] If a new RV is defined as a non-constant function of two
+          other RVs,
+          \begin{align}
+              Z & = g(X, Y)
+          \end{align}
+          Similar to functions of a single RV,
+          \begin{align}
+              f(z) & = P(Z = z) = \mathop{\sum \sum}_{g(x,y) = z} f(x, y)       \\
+              F(z) & = P(Z \leq z) = \mathop{\sum \sum}_{g(x,y) \leq z} f(x, y)
+          \end{align}
+
+          For a continuous RV, the CDF becomes
+          \begin{align}
+              F(z) & = P(Z \leq z) = \iint\limits_{g(x, y) \leq z} f(x, y)\ \dl x\ \dl y
+          \end{align}
+          The boundary curve of this region of integration is the level curve
+          $ g(x,y) = z $
+
+    \item[Addition of means] Since the expectation value of a function of two RVs is
+          defined as
+          \begin{align}
+              \ex[g(X,Y)] & = \sum_x \sum_y g(x,y)\ f(x,y) &  & \text{discrete}   \\
+              \ex[g(X,Y)] & = \intRL \intRL g(x,y)\ f(x,y) &  & \text{continuous}
+          \end{align}
+          This assumes that the double summation converges and that the double integral
+          exists (is finite). \par
+          A special case is,
+          \begin{align}
+              \ex[X+Y]                     & = \ex[X] + \ex[Y]             \\
+              \ex[X_1 + X_2 + \dots + X_n] & = \ex[X_1] + \dots + \ex[X_n]
+          \end{align}
+
+    \item[Multiplication of means] The expected value of the product of independent
+          RVs is the product of their individual means.
+          \begin{align}
+              \ex[X_1 \cdot X_2 \cdots X_n] & = \ex[X_1] \cdot \ex[X_2] \cdots \ex[X_n]
+          \end{align}
+
+    \item[Covariance] For two real RVs, the expected value of the product of their
+          deviation from their respective mean values is called the covariance.
+          \begin{align}
+              \Cov[X,Y] & \equiv \ex[(X - \mu_X)(Y - \mu_Y)] \\
+                        & = \ex[XY] - \ex[X] \cdot \ex[Y]
+          \end{align}
+          This is positive if greater values of $ X $ occur more frequently when
+          accompanied by greater values of $ Y $ and vice versa. The covariance of
+          two RVs being zero is a sign of their independence.
+
+    \item[Addition of Variances] For a sum of two RVs,
+          \begin{align}
+              Z        & = X + Y                                &
+              \Var[Z]  & = \ex[Z^2] - (\ex[Z])^2                  \\
+              \sigma^2 & = \sigma_1^2 + \sigma_2^2 + 2\Cov[X,Y]
+          \end{align}
+          For the special case of $ n $ independent RVs,
+          \begin{align}
+              \Var[X_1 + X_2 + \dots + X_n] & = \Var[X_1] + \dots + \Var[X_n]
+          \end{align}
+          since the covariance of any two or more terms $ \{X_i\} $ is zero.
+\end{description}

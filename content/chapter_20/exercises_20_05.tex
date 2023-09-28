@@ -1,0 +1,406 @@
+\section{Least Squares Method}
+
+\begin{enumerate}
+    \item Plotting the best fit line,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_01.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitableone};
+                      \addlegendentry{$(x_j,y_j)$}
+                      \addlegendentry{$\pgfmathprintnumber
+                              {\pgfplotstableregressiona}x
+                              \pgfmathprintnumber[print sign]
+                              {\pgfplotstableregressionb}$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Adding a point far above, will decrease the slope and increase the intercept.
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_02.csv}
+              \anitabletwo
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitabletwo};
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitabletwo};
+                      \addlegendentry{$(x_j,y_j)$}
+                      \addlegendentry{$\pgfmathprintnumber
+                              {\pgfplotstableregressiona}x
+                              \pgfmathprintnumber[print sign]
+                              {\pgfplotstableregressionb}$}
+                      \node[GraphNode, inner sep = 1.75pt, fill = black]
+                      at (axis cs:1, 3) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the best fit line, which is a bad fit
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_03.csv}
+              \anitablethree
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitablethree};
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitablethree};
+                      \addlegendentry{$(x_j,y_j)$}
+                      \addlegendentry{$\pgfmathprintnumber
+                              {\pgfplotstableregressiona}x
+                              \pgfmathprintnumber[print sign]
+                              {\pgfplotstableregressionb}$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the best fit line, for the equation $ F = ks $, gives
+          $ (1/k) = 0.31 $ and thus \par
+          $ k = 3.226\ \text{lb}\ \text{cm}^{-1} $
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_04.csv}
+              \anitablefour
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitablefour};
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitablefour};
+                      \addlegendentry{$(x_j,y_j)$}
+                      \addlegendentry{$\pgfmathprintnumber
+                              {\pgfplotstableregressiona}x
+                              \pgfmathprintnumber[print sign]
+                              {\pgfplotstableregressionb}$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the best fit line, for the equation $ x = vt $, gives
+          $ k = \SI{90}{\km\per\hour} $
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_05.csv}
+              \anitablefive
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitablefive};
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitablefive};
+                      \addlegendentry{$(x_j,y_j)$}
+                      \addlegendentry{$\pgfmathprintnumber
+                              {\pgfplotstableregressiona}x
+                              \pgfmathprintnumber[print sign]
+                              {\pgfplotstableregressionb}$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the best fit line, for the equation $ U = Ri $, gives
+          $ R = 53.4 $
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_06.csv}
+              \anitablesix
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitablesix};
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitablesix};
+                      \addlegendentry{$(x_j,y_j)$}
+                      \addlegendentry{$\pgfmathprintnumber
+                              {\pgfplotstableregressiona}x
+                              \pgfmathprintnumber[print sign]
+                              {\pgfplotstableregressionb}$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The normal equations for a quadratic polynomial fit
+          \begin{align}
+              p(x)            & = b_0 + b_1x + b_2x^2                              &
+              q               & = \sum_{j=1}^{n} \Big[ y_j - b_0 - b_1x_j
+              - b_2x_j^2 \Big]^2                                                     \\
+              \diffp {q}{b_0} & = 0                                                &
+              \sum y_j        & = b_0 \sum 1 + b_1 \sum x_j + b_2 \sum x_j^2         \\
+              \diffp {q}{b_1} & = 0                                                &
+              \sum x_j y_j    & = b_0 \sum x_j + b_1 \sum x_j^2 + b_2 \sum x_j^3     \\
+              \diffp {q}{b_2} & = 0                                                &
+              \sum x_j^2 y_j  & = b_0 \sum x_j^2 + b_1 \sum x_j^3 + b_2 \sum x_j^4
+          \end{align}
+
+    \item Plotting the best fit parabola,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_08.csv}
+              \anitableeight
+              \begin{tikzpicture}
+                  \begin{axis}[title = {$ 0.932 - 1.16x + 2.95x^2 $},
+                          legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [GraphSmooth, y_h, domain = -1.1:3.1]
+                      {2.95 - 1.16*x + 0.932*x^2};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableeight};
+                      \addlegendentry{$p_2(x)$}
+                      \addlegendentry{$(x_j,y_j)$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the best fit parabola,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_09.csv}
+              \anitablenine
+              \begin{tikzpicture}
+                  \begin{axis}[title = {$ -11.36 - 5.45x -0.589x^2 $},
+                          legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [GraphSmooth, y_h, domain = 1.9:7.1]
+                      {-11.36 + 5.45*x - 0.589*x^2};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitablenine};
+                      \addlegendentry{$p_2(x)$}
+                      \addlegendentry{$(x_j,y_j)$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the best fit parabola,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_10.csv}
+              \anitableten
+              \begin{tikzpicture}
+                  \begin{axis}[title = {$ 2.29 - 0.433x + 0.105x^2 $},
+                          legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [GraphSmooth, y_h, domain = 0.9:5.1]
+                      {2.29 - 0.433*x + 0.105*x^2};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableten};
+                      \addlegendentry{$p_2(x)$}
+                      \addlegendentry{$(x_j,y_j)$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the best fit line, which is a bad fit, and the parabola, which is a
+          better fit
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_03.csv}
+              \anitablethree
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitablethree};
+                      \addplot [GraphSmooth, y_t, domain = -0.1:4.1]
+                      {1.89 - 0.738*x + 0.207*x^2};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitablethree};
+                      \addlegendentry{$p_1(x)$}
+                      \addlegendentry{$p_2(x)$}
+                      \addlegendentry{$(x_j,y_j)$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the derivation of the quadratic polynomial fit, the cubic fit
+          is given in matrix form by
+          \begin{align}
+              \begin{bNiceMatrix}[margin]
+                  \sum 1     & \sum x_j   & \sum x_j^2 & \sum x_j^3 \\
+                  \sum x_j   & \sum x_j^2 & \sum x_j^3 & \sum x_j^4 \\
+                  \sum x_j^2 & \sum x_j^3 & \sum x_j^4 & \sum x_j^5 \\
+                  \sum x_j^3 & \sum x_j^4 & \sum x_j^5 & \sum x_j^6 \\
+              \end{bNiceMatrix}
+              \ \begin{bNiceMatrix}[margin]
+                    b_0 \\ b_1 \\ b_2 \\ b_3
+                \end{bNiceMatrix} & = \begin{bNiceMatrix}[margin]
+                                          \sum y_j      \\ \sum x_jy_j \\
+                                          \sum x_j^2y_j \\ \sum x_j^3y_j
+                                      \end{bNiceMatrix}
+          \end{align}
+
+    \item The highest degree polynomial fit is the best, simply due to the larger
+          number of fitting parameters.
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_13.csv}
+              \anitableonethree
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both]
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitableonethree};
+                      \addplot [GraphSmooth, y_s, domain = -2.1:3.1]
+                      {-4.11 + 13.27*x + 2.5*x^2};
+                      \addplot [GraphSmooth, y_t, domain = -2.1:3.1]
+                      {2.73 + 1.46*x - 1.78*x^2 + 2.858*x^3};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableonethree};
+                      \addlegendentry{$p_1(x)$}
+                      \addlegendentry{$p_2(x)$}
+                      \addlegendentry{$p_3(x)$}
+                      \addlegendentry{$(x_j,y_j)$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Least squares approximation of a function
+          \begin{enumerate}
+              \item From the definition of the $ l_2 $ norm,
+                    \begin{align}
+                        \lVert f - F_m \rVert^2 &
+                        = \int_{a}^{b} \Big[f - F_m(x)\Big]^2\ \dl x
+                    \end{align}
+                    Using differentiation under the integral sign,
+                    \begin{align}
+                        \diffp*{\ \lVert f(x) - F_m(x) \rVert^2}{a_j}        & = 0 \\
+                        2\int_{a}^{b} y_j(x)\ \Big[f(x) - F_m(x)\Big]\ \dl x & = 0 \\
+                        \int_{a}^{b} f(x)\ y_j(x)\ \dl x                     &
+                        = \int_{a}^{b}\ y_j(x)\ \sum_{k=0}^{m} a_k\ y_k(x)\ \dl x  \\
+                        b_j                                                  &
+                        = \sum_{k=0}^{m}a_k\ \int_{a}^{b}y_j(x)\ y_k(x)\ \dl x     \\
+                        b_j                                                  &
+                        = \sum_{k=0}^{m} a_k\ h_{jk}
+                    \end{align}
+
+              \item If the individual functions are powers of $ x $, then
+                    \begin{align}
+                        h_{jk} & = \int_{a}^{b} x^{j+k}\ \dl x   &
+                        b_j    & = \int_{a}^{b} f(x)\ x^j\ \dl x
+                    \end{align}
+                    Now, for the special case where $ [a,b] = [0,1] $,
+                    \begin{align}
+                        h_{jk}  & = \frac{1}{j+k+1}                       \\
+                        j,k     & \in \{0,1,2,\dots,m\}                   \\
+                        \vec{H} & = \begin{bNiceMatrix}[margin]
+                                        1       & 1/2     & \dots  & 1/(m+1)  \\
+                                        1/2     & 1/3     & \vdots & 1/(m+2)  \\
+                                        \vdots  & \vdots  & \ddots & \vdots   \\
+                                        1/(m+1) & 1/(m+2) & \dots  & 1/(2m+1)
+                                    \end{bNiceMatrix}
+                    \end{align}
+                    This is a Hilbert matrix.
+
+              \item The coefficient matrix reduces to a diagonal matrix, if the
+                    functions $ \{y_k\} $ are orthogonal.
+                    \begin{align}
+                        0\ a_0 + \dots + h_{jj}\ a_j + \dots + 0\ a_m & = b_j \\
+                        a_j                                           & =
+                        \frac{b_j}{h_{jj}}
+                    \end{align}
+          \end{enumerate}
+
+    \item Plotting the linear and quadratic least squares best fit, along with the
+          fourth degree interpolating polynomial,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_15_a.csv}
+              \anitablefifteena
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, title = \textcolor{y_s}{Interpolant} and
+                          \textcolor{y_t}{Least Sq.},
+                          ,grid = both]
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitablefifteena};
+                      \addplot [GraphSmooth, y_s, domain = -2.1:2.1]
+                      {1 - 1.25*x^2 + 0.25*x^4};
+                      \addplot [GraphSmooth, y_t, domain = -2.1:2.1]
+                      {0.486 - 0.143*x^2};
+                      \addplot [only marks, color = magenta3, mark size = 1.5pt]
+                      table {\anitablefifteena};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_15_b.csv}
+              \anitablefifteenb
+              \begin{tikzpicture}
+                  \begin{axis}[Ani, title = \textcolor{y_s}{Interpolant} and
+                          \textcolor{y_t}{Least Sq.},
+                          ,grid = both]
+                      \addplot [GraphSmooth, y_h]
+                      table[y={create col/linear regression={y=1}}]{\anitablefifteenb};
+                      \addplot [GraphSmooth, y_s, domain = -4.1:4.1]
+                      {1 - 1.424*x^2 + 0.474*x^4 - 0.0521*x^6 + 0.0017*x^8};
+                      \addplot [GraphSmooth, y_t, domain = -4.1:4.1]
+                      {0.255 - 0.022*x^2};
+                      \addplot [only marks, color = magenta3, mark size = 1.5pt]
+                      table {\anitablefifteenb};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_20_05_15_c.csv}
+              \anitablefifteenc
+              \begin{tikzpicture}
+                  \begin{axis}[Ani,grid = both, domain = -0.1:4.1, width = 8cm,
+                          legend pos = north west, title = {$ p_1(x) $}]
+                      \addplot [GraphSmooth, black, dashed]{x};
+                      \addplot [GraphSmooth, y_h]{(1/7)*x^2 + 0.23*x + 0.886};
+                      \addplot [only marks, color = black, mark size = 1.5pt]
+                      table {\anitablefifteenc};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[Ani,grid = both, domain = -0.1:4.1, width = 8cm,
+                          legend pos = north west, title = {$ p_2(x) $}]
+                      \addplot [GraphSmooth, black, dashed]{x};
+                      \addplot [GraphSmooth, y_p]{-0.0714*x^2 + 1.186*x + 0.257};
+                      \addplot [only marks, color = black, mark size = 1.5pt]
+                      table {\anitablefifteenc};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[Ani,grid = both, domain = -0.1:4.1, width = 8cm,
+                          legend pos = north west, title = {$ p_3(x) $}]
+                      \addplot [GraphSmooth, black, dashed]{x};
+                      \addplot [GraphSmooth, y_s]{(-1/7)*x^2 + 1.57*x - 0.086};
+                      \addplot [only marks, color = black, mark size = 1.5pt]
+                      table {\anitablefifteenc};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[Ani,grid = both, domain = -0.1:4.1, width = 8cm,
+                          legend pos = north west, title = {$ p_4(x) $}]
+                      \addplot [GraphSmooth, black, dashed]{x};
+                      \addplot [GraphSmooth, y_t]{-0.0714*x^2 + 1.386*x - (1/7)};
+                      \addplot [only marks, color = black, mark size = 1.5pt]
+                      table {\anitablefifteenc};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[Ani,grid = both, domain = -0.1:4.1, width = 8cm,
+                          legend pos = north west, title = {$ p_5(x) $}]
+                      \addplot [GraphSmooth, black, dashed]{x};
+                      \addplot [GraphSmooth, magenta4]{(1/7)*x^2 + 0.63*x + 0.086};
+                      \addplot [only marks, color = black, mark size = 1.5pt]
+                      table {\anitablefifteenc};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+\end{enumerate}

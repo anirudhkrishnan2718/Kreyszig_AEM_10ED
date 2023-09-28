@@ -1,0 +1,1118 @@
+\section{Geometry of Analytic Functions: Conformal Mapping}
+
+\begin{enumerate}
+    \item The angle doubles which means that the mapping takes
+          \begin{align}
+              Z_1                 & : \theta \in [0, \pi/6]     &
+              \implies \quad  W_1 & : \phi \in [0, \pi/3]         \\
+              Z_2                 & : \theta \in [\pi/6, \pi/3] &
+              \implies \quad  W_2 & : \phi \in [\pi/3, 2\pi/3]    \\
+              Z_3                 & : \theta \in [\pi/3, \pi/2] &
+              \implies \quad  W_3 & : \phi \in [2\pi/3, \pi]
+          \end{align}
+          The radius is squared which means that the map takes
+          \begin{align}
+              Z_1                & = r \in [0,1]        &
+              \implies \quad W_1 & : R \in [0, 1]         \\
+              Z_2                & = r \in [1,\sqrt{2}] &
+              \implies \quad W_2 & : R \in [1, 2]         \\
+              Z_3                & = r \in [\sqrt{2},2] &
+              \implies \quad W_3 & : R \in [2, 4]
+          \end{align}
+
+    \item Looking at vertical and horizontal lines under the mapping
+          $ f(z) = z^2 $,
+          \begin{align}
+              f(z)             & = (x^2 - y^2) + \i\ (2xy)          &
+              x                & = a                                  \\
+              u                & = a^2 - y^2                        &
+              v                & = 2ay                                \\
+              \frac{v^2}{4a^2} & = a^2 - u                          &
+              u                & = a^2 - \Big( \frac{v}{2a} \Big)^2
+          \end{align}
+          This is a parabola that opens in $ -x $ and whose axis is the $ x $ axis.
+          \begin{align}
+              y                & = b                                  \\
+              u                & = x^2 - b^2                        &
+              v                & = 2xb                                \\
+              \frac{v^2}{4b^2} & = u + b^2                          &
+              u                & = \Big( \frac{v}{2b} \Big)^2 - b^2
+          \end{align}
+          This is a parabola that opens in $ +x $ and whose axis is the $ x $ axis.
+
+    \item Plotting $ f(z) = z^3 $ using the figure in the text,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -0.25, xmax = 2.25, ymin = -0.25, ymax = 2.25,
+                          grid = both, xtick={01,2},ytick={0,1,2},
+                          xlabel = \normalsize $ \Re{z} $,
+                          ylabel = \normalsize $ \Im{z} $,
+                          axis equal,
+                          Ani]
+                      \draw [draw = black!0, fill = y_h, fill opacity = 0.08]
+                      (0:2)--(0:1) arc (0:30:1) -- (30:2) arc(30:0:2)
+                      -- cycle;
+                      \draw [draw = black!0, fill = y_p, fill opacity = 0.08]
+                      (30:2)--(30:1) arc (30:60:1) -- (60:2) arc(60:30:2)
+                      -- cycle;
+                      \draw [draw = black!0, fill = y_t, fill opacity = 0.08]
+                      (60:2)--(60:1) arc (60:90:1) -- (90:2) arc(90:60:2)
+                      -- cycle;
+                      \draw [draw = black, thin] (0:1) arc (0:90:1);
+                      \draw [draw = black, thin] (0:2) arc (0:90:2);
+                      \addplot[GraphSmooth, thin, black, domain= 0:3,
+                          variable=\t]
+                      ({\t*cos(pi/6)}, {\t*sin(pi/6)});
+                      \addplot[GraphSmooth, thin, black, domain= 0:3,
+                          variable=\t]
+                      ({\t * cos(pi/3)}, {\t * sin(pi/3)});
+                      \addplot[GraphSmooth, thin, black, domain= 0:3,
+                          variable=\t]
+                      ({\t * cos(pi/2)}, {\t * sin(pi/2)});
+                      \addplot[GraphSmooth, thin, black, domain= 0:3,
+                          variable=\t]
+                      ({\t * cos(0)}, {\t * sin(0)});
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Image under $ z^3 $},
+                          xmin = -9, xmax = 9, ymin = -9, ymax = 9,
+                          grid = both, xtick={1,8,-1,-8},ytick={-1,-8,1,8},
+                          xlabel = \normalsize $ \Re{w} $,
+                          ylabel = \normalsize $ \Im{w} $,
+                          axis equal,
+                          Ani]
+                      \draw [draw = black!0, fill = y_h, fill opacity = 0.08]
+                      (0:8)--(0:1) arc (0:90:1) -- (90:8) arc(90:0:8)
+                      -- cycle;
+                      \draw [draw = black!0, fill = y_p, fill opacity = 0.08]
+                      (90:8)--(90:1) arc (90:180:1) -- (180:8) arc(180:90:8)
+                      -- cycle;
+                      \draw [draw = black!0, fill = y_t, fill opacity = 0.08]
+                      (180:8)--(180:1) arc (180:270:1) -- (270:8) arc(270:180:8)
+                      -- cycle;
+                      \draw [draw = black, thin] (0:1) arc (0:270:1);
+                      \draw [draw = black, thin] (0:8) arc (0:270:8);
+                      \addplot[GraphSmooth, thin, black, domain= 0:10,
+                          variable=\t]
+                      ({\t*cos(pi/2)}, {\t*sin(pi/2)});
+                      \addplot[GraphSmooth, thin, black, domain= 0:10,
+                          variable=\t]
+                      ({\t * cos(pi)}, {\t * sin(pi)});
+                      \addplot[GraphSmooth, thin, black, domain= 0:10,
+                          variable=\t]
+                      ({\t * cos(3*pi/2)}, {\t * sin(3*pi/2)});
+                      \addplot[GraphSmooth, thin, black, domain= 0:10,
+                          variable=\t]
+                      ({\t * cos(0)}, {\t * sin(0)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since a conformal mapping preserves the magnitude and sense of angles of
+          intersection, except at critical points of $ f(z) $, families of orthogonal
+          curves have to remain orthogonal under the mapping.
+
+    \item Consider $ f(z) = \bar{z} $. Checking it this function is analytic,
+          \begin{align}
+              f(z) & = u + \i\ v &
+                   & = x -\i\ y    \\
+              u_x  & \neq v_y
+          \end{align}
+          This function is not analytic, which means the map is not conformal. Although
+          it preserves the magnitude of angles it reverses their sense.
+
+    \item The function is,
+          \begin{align}
+              f(z) & = z^2 & f(z) & = (x^2 - y^2) + \i\ (2xy)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east, title = {map of
+                                  horizontal lines},
+                          grid = both, Ani,
+                          width = 8cm, height = 8cm,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},
+                      ]
+                      \foreach \k in {1,2,3,4}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick, samples = 200,
+                                      domain = -20:20]
+                                  ({ (x/(2*\k))^2 -\k^2}, {x});
+                                  \noexpand \addlegendentry{$ y = \k $}
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east, title = {map of
+                                  vertical lines},
+                          grid = both, Ani,
+                          width = 8cm, height = 8cm,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},
+                      ]
+                      \foreach \k in {1,2,3,4}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick, samples = 200,
+                                      domain = -20:20]
+                                  ({ -(x/(2*\k))^2 + \k^2}, {x});
+                                  \noexpand \addlegendentry{$ x = \k $}
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The function is,
+          \begin{align}
+              f(z) & = \i z       &
+              f(z) & = -y + \i\ x   \\
+              z    & = a + \i\ y  &
+              v    & = a            \\
+              z    & = x + \i\ b  &
+              u    & = -b
+          \end{align}
+          The image is a family of lines rotated by $ \SI{90}{\degree} $.
+
+    \item The function is,
+          \begin{align}
+              f(z) & = \frac{\bar{z}}{\abs{z}^2} = \frac{1}{z} &
+              f(z) & = \frac{1}{r}\ \exp(-\i \theta)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm,
+                          title = {reflection on unit circle},
+                          xmin = -4, xmax = 4,
+                          ymin = -4, ymax = 4,
+                          xlabel = \normalsize $ \Re{z} $,
+                          ylabel = \normalsize $ \Im{z} $,
+                          axis equal, grid = both,
+                          Ani]
+                      \draw [draw = black, thin](axis cs:0, 0) circle (1);
+                      \draw [draw = y_h, thick, dashed](axis cs:0, 0) circle (2);
+                      \draw [draw = y_h, thick](axis cs:0, 0) circle (1/2);
+                      \draw [draw = y_p, thick, dashed](axis cs:0, 0) circle (3);
+                      \draw [draw = y_p, thick](axis cs:0, 0) circle (1/3);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east, title = {map of
+                                  horizontal lines},
+                          grid = both, Ani,
+                          width = 8cm, height = 8cm,
+                          colormap/viridis,
+                          xmin = -1.5, xmax = 1.5, ymin = -1.5, ymax = 1.5,
+                          xlabel = \normalsize $ \Re{z} $,
+                          ylabel = \normalsize $ \Im{z} $,
+                          cycle list = {[samples of colormap = 7]},
+                      ]
+                      \foreach \k in {-0.75*pi, -0.5*pi, -0.25*pi, 0,
+                              0.25*pi, 0.5*pi, 0.75*pi}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick, samples = 100,
+                                      domain = 0:4]
+                                  ({x * cos(\k)}, {x * sin(\k)});
+                              }\temp
+                          }
+                      \draw [draw = black, thick, dotted](axis cs:0, 0) circle (1);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The function is a translation,
+          \begin{align}
+              f(z) & = z + (2 + \i) & z & = x + \i y \\
+              u    & = (x + 2)      & v & = (y + 1)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east, title = {map of
+                                  horizontal lines},
+                          grid = both, Ani,
+                          width = 8cm, height = 8cm,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},
+                      ]
+                      \foreach \k in {1,2,3,4}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick, samples = 200,
+                                      domain = -2:2]
+                                  ({x}, {\k + 1});
+                                  \noexpand \addlegendentry{$ y = \k $}
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east, title = {map of
+                                  vertical lines},
+                          grid = both, Ani,
+                          width = 8cm, height = 8cm,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},
+                      ]
+                      \foreach \k in {1,2,3,4}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick, samples = 200,
+                                      domain = -2:2]
+                                  ({\k + 2}, {x});
+                                  \noexpand \addlegendentry{$ x = \k $}
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing the families of orthogonal curves,
+          \begin{enumerate}
+              \item The explicit equation for the level curves is,
+                    \begin{align}
+                        f(z) & = z^4                 &
+                        z    & = x + \i\ y             \\
+                        u    & = x^4 - 6x^2y^2 + y^4 &
+                        v    & = 4xy(x^2 - y^2)
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ x^4 - 6x^2y^2 + y^4 $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -5:5,
+                                    restrict y to domain = -5:5,
+                                    colormap/jet, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-9,-4,0,4,9},
+                                            labels=false,
+                                        },
+                                    samples=100, thick,
+                                ] {x^4 + y^4 - 6*x^2*y^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ 4xy(x^2 - y^2) $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -5:5,
+                                    restrict y to domain = -5:5,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-9, -3, 0, 3, 9},
+                                            labels=false,
+                                        },
+                                    samples=100, thick,
+                                ] {4*x*y*(x^2 - y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The explicit equation for the level curves is,
+                    \begin{align}
+                        f(z) & = \frac{1}{z}          &
+                        z    & = x + \i\ y              \\
+                        u    & = \frac{x}{x^2 + y^2}  &
+                        v    & = -\frac{y}{x^2 + y^2}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false,
+                                    title = $ \frac{x}{x^2 + y^2} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -1:1,
+                                    restrict y to domain = -1:1,
+                                    colormap/jet, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-4,-2, -1, 0, 1, 2, 4},
+                                            labels=false,
+                                        },
+                                    samples=100, thick,
+                                ] {x/(x^2 + y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false,
+                                    title = $ \frac{-y}{x^2 + y^2} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -1:1,
+                                    restrict y to domain = -1:1,
+                                    colormap/jet, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-4,-2, -1, 0, 1, 2, 4},
+                                            labels=false,
+                                        },
+                                    samples=100, thick,
+                                ] {(-y)/(x^2 + y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The explicit equation for the level curves is,
+                    \begin{align}
+                        f(z) & = \frac{1}{z^2}                   &
+                        z    & = x + \i\ y                         \\
+                        u    & = \frac{x^2 - y^2}{(x^2 + y^2)^2} &
+                        v    & = -\frac{2xy}{(x^2 + y^2)^2}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false,
+                                    title = $ \frac{x^2 - y^2}{(x^2 + y^2)^2} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -1:1,
+                                    restrict y to domain = -1:1,
+                                    colormap/jet, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-4,-2, -1, 0, 1, 2, 4},
+                                            labels=false,
+                                        },
+                                    samples=100, thick,
+                                ] {(x^2 - y^2)/(x^2 + y^2)^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false,
+                                    title = $ \frac{-2xy}{(x^2 + y^2)^2} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -1:1,
+                                    restrict y to domain = -1:1,
+                                    colormap/jet, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-4,-2, -1, 0, 1, 2, 4},
+                                            labels=false,
+                                        },
+                                    samples=100, thick,
+                                ] {(-2*x*y)/(x^2 + y^2)^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The explicit equation for the level curves is,
+                    \begin{align}
+                        f(z) & = \frac{z + \i}{1 + \i z}               &
+                        z    & = x + \i\ y                               \\
+                        u    & = \frac{2x}{x^2 + (y-1)^2}              &
+                        v    & = \frac{(x^2 + y^2 - 1)}{x^2 + (y-1)^2}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false,
+                                    title = $ \frac{2x}{x^2 + (y-1)^2} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -3:3,
+                                    restrict y to domain = -3:3,
+                                    colormap/jet, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-4,-2, -1, 0, 1, 2, 4},
+                                            labels=false,
+                                        },
+                                    samples=100, thick,
+                                ] {(2*x)/(x^2 + (y-1)^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false,
+                                    title = $ \frac{(x^2 + y^2 - 1)}{x^2 + (y-1)^2} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -3:3,
+                                    restrict y to domain = -3:3,
+                                    colormap/jet, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-4,-2, -1, 0, 1, 2, 4},
+                                            labels=false,
+                                        },
+                                    samples=100, thick,
+                                ] {(x^2 + y^2 - 1)/(x^2 + (y-1)^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+          These curves intersect at right angles because the function $ f(z) $ is a
+          conformal mapping,
+          \begin{align}
+              z  & = x + \i\ y        & f(z)              & = u + \i\ v            \\
+              (x & = a) \perp (y = b) & \implies \quad (u & = c_1) \perp (v = c_2)
+          \end{align}
+          The real and imaginary parts of $ z $ are mutually orthogonal families of
+          curves (horizontal and vertical lines).
+
+    \item Plotting the result of the mapping,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = 0, xmax = 0.7, ymin = -0.35, ymax = 0.35, grid = both,
+                          axis equal, Ani]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (-22.5:0.5)--(-22.5:0) arc (-22.5:22.5:0)
+                      -- (22.5:0.5) arc(22.5:-22.5:0.5) -- cycle;
+                      \draw [draw = black, dotted, thick]
+                      (0,0) circle (0.5);
+                      \addplot[GraphSmooth, dotted, thick, black, domain= 0:1,
+                          variable=\t]
+                      ({\t*cos(pi/8)}, {-\t*sin(pi/8)});
+                      \addplot[GraphSmooth, dotted, thick, black, domain= 0:1,
+                          variable=\t]
+                      ({\t * cos(pi/8)}, {\t * sin(pi/8)});
+                      \addplot[GraphSmooth, very thick, y_h, domain= -pi/8:pi/8
+                          , variable=\t] ({0.5*cos(\t)}, {0.5*sin(\t)});
+                      \addplot[GraphSmooth, very thick, y_t, domain= 0:0.5,
+                          variable=\t] ({\t*cos(pi/8)}, {-\t*sin(pi/8)})
+                      node[midway, below, sloped]{$ \theta = -\pi/8 $};
+                      \addplot[GraphSmooth, very thick, azure4, domain= 0:0.5,
+                          variable=\t]({\t * cos(pi/8)}, {\t * sin(pi/8)})
+                      node[midway, above, sloped]{$ \theta = \pi/8 $};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Image under $ z^2 $},
+                          xmin = 0, xmax = 0.5, ymin = -0.25, ymax = 0.25,
+                          grid = both,axis equal, Ani]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (-45:0.25)--(-45:0) arc (-45:45:0)
+                      -- (45:0.25) arc(45:-45:0.25) -- cycle;
+                      \draw [draw = black, dotted, thick]
+                      (0,0) circle (0.25);
+                      \addplot[GraphSmooth, dotted, thick, black, domain= 0:1,
+                          variable=\t]
+                      ({\t*cos(pi/4)}, {-\t*sin(pi/4)});
+                      \addplot[GraphSmooth, dotted, thick, black, domain= 0:1,
+                          variable=\t]
+                      ({\t * cos(pi/4)}, {\t * sin(pi/4)});
+                      \addplot[GraphSmooth, very thick, y_h, domain= -pi/4:pi/4
+                          , variable=\t] ({0.25*cos(\t)}, {0.25*sin(\t)});
+                      \addplot[GraphSmooth, very thick, y_t, domain= 0:0.25,
+                          variable=\t] ({\t*cos(pi/4)}, {-\t*sin(pi/4)})
+                      node[midway, below, sloped]{$ \phi = -\pi/4 $};
+                      \addplot[GraphSmooth, very thick, azure4, domain= 0:0.25,
+                          variable=\t]({\t * cos(pi/4)}, {\t * sin(pi/4)})
+                      node[midway, above, sloped]{$ \phi = \pi/4 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the result of the mapping,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -1, xmax = 4, ymin = -1, ymax = 4,
+                          axis equal, Ani, grid = both]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0:3)--(0:1) arc (0:90:1) -- (90:3) arc(90:0:3)
+                      -- cycle;
+                      \draw [draw = black, dotted, thick] (0,0) circle (1);
+                      \draw [draw = black, dotted, thick] (0,0) circle (3);
+                      \addplot[GraphSmooth, black,thick, dotted, domain= 0:5
+                          , variable=\t] ({\t*cos(0)}, {\t*sin(0)});
+                      \addplot[GraphSmooth, black,thick, dotted, domain= 0:5
+                          , variable=\t] ({\t * cos(pi/2)}, {\t * sin(pi/2)});
+                      \addplot[GraphSmooth, y_h,very thick, domain= 1:3, variable=\t]
+                      ({\t*cos(0)}, {\t*sin(0)})
+                      node[midway, below, sloped]{$ \theta = 0 $};
+                      \addplot[GraphSmooth, y_p,very thick, domain= 1:3, variable=\t]
+                      ({\t * cos(pi/2)}, {\t * sin(pi/2)})
+                      node[midway, above, sloped]{$ \theta = \pi/2 $};
+                      \addplot[GraphSmooth, very thick, y_t, domain= 0:pi/2
+                          , variable=\t] ({cos(\t)}, {sin(\t)});
+                      \addplot[GraphSmooth, very thick, azure4, domain= 0:pi/2
+                          , variable=\t] ({3*cos(\t)}, {3*sin(\t)});
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ z^3 $},
+                          xmin = -30, xmax = 30, ymin = -30, ymax = 30,
+                          axis equal, Ani, grid = both]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0:27)--(0:1) arc (0:270:1) -- (270:27) arc(270:0:27)
+                      -- cycle;
+                      \draw [draw = black, dotted, thick] (0,0) circle (1);
+                      \draw [draw = black, dotted, thick] (0,0) circle (27);
+                      \addplot[GraphSmooth, black,thick, dotted, domain= 0:30
+                          , variable=\t] ({\t*cos(0)}, {\t*sin(0)});
+                      \addplot[GraphSmooth, black,thick, dotted, domain= 0:30
+                          , variable=\t] ({\t * cos(3*pi/2)}, {\t * sin(3*pi/2)});
+                      \addplot[GraphSmooth, y_h,very thick, domain= 1:27, variable=\t]
+                      ({\t*cos(0)}, {\t*sin(0)})
+                      node[midway, below, sloped]{$ \phi = 0 $};
+                      \addplot[GraphSmooth, y_p,very thick, domain= 1:27, variable=\t]
+                      ({\t * cos(3*pi/2)}, {\t * sin(3*pi/2)})
+                      node[midway, above, sloped]{$ \phi = 3\pi/2 $};
+                      \addplot[GraphSmooth, very thick, y_t, domain= 0:3*pi/2
+                          , variable=\t] ({cos(\t)}, {sin(\t)});
+                      \addplot[GraphSmooth, very thick, azure4, domain= 0:3*pi/2
+                          , variable=\t] ({27*cos(\t)}, {27*sin(\t)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the result of the mapping,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -4, xmax = 4, ymin = 0, ymax = 8,
+                          axis equal, Ani, grid = both]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (-5,2) -- (-5,5) -- (5, 5) -- (5, 2) -- cycle;
+                      \draw [draw = y_h, very thick] (-3,2) -- (-3,5);
+                      \draw [draw = y_p, very thick] (-3,5) -- (3,5);
+                      \draw [draw = y_t, very thick] (3,5) -- (3,2);
+                      \draw [draw = azure4, very thick] (3,2) -- (-3,2);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ \i z $},
+                          xmin = -7, xmax = 0, ymin = -4, ymax = 4,
+                          axis equal, Ani, grid = both]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (-2,-5) -- (-5,-5) -- (-5,5) -- (-2,5) -- cycle;
+                      \draw [draw = y_h, very thick] (-2,-3) -- (-5,-3);
+                      \draw [draw = y_p, very thick] (-5,-3) -- (-5,3);
+                      \draw [draw = y_t, very thick] (-5,3) -- (-2,3);
+                      \draw [draw = azure4, very thick] (-2,3) -- (-2,-3);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the result of the mapping,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -1, xmax = 5, ymin = -3, ymax = 3,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},]
+                      \draw [draw = black, fill = black, fill opacity = 0.08]
+                      (1,-3) -- (1,3) -- (5, 3) -- (5, -3) -- cycle;
+                      \foreach \k in {1,2,3,4}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 10,
+                                      domain = -5:5]
+                                  ({\k}, {x});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ 1/z $},
+                          xmin = -0.1, xmax = 1.1, ymin = -0.6, ymax = 0.6,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0.5,0) circle (0.5);
+                      \foreach \k in {1,2,3,4}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 400,
+                                      domain = -10:10]
+                                  ({ (\k/(\k^2 + x^2))}, {-x/(\k^2 + x^2)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the result of the mapping, (inverse of Problem $ 14 $)
+          \begin{align}
+              z    & = 0.5 + r\cos\theta + \i\ r\sin\theta                          &
+              f(z) & = \frac{1}{z} = \frac{(0.5 + r\cos\theta) - \i\ (r\sin\theta)}
+              {1/4 + r^2 + r\cos\theta}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -0.1, xmax = 1.1, ymin = -0.6, ymax = 0.6,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0.5,0) circle (0.5);
+                      \foreach \k in {1/16, 1/8, 1/4, 1/2}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -pi:pi]
+                                  ({0.5 + \k*cos(x)}, {\k*sin(x)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ 1/z $},
+                          xmin = 0, xmax = 6, ymin = -3, ymax = 3,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},]
+                      \draw [draw = black, fill = black, fill opacity = 0.08]
+                      (1,-4) -- (1,4) -- (7, 4) -- (7, -4) -- cycle;
+                      \foreach \k in {1/16, 1/8, 1/4, 1/2}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -pi:pi]
+                                  ({(0.5 + \k*cos(x))/(0.25 + \k^2 + \k*cos(x))},
+                                  {(-\k*sin(x))/(0.25 + \k^2 + \k*cos(x))});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the result of the mapping,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -0.6, xmax = 0.6, ymin = -0.2, ymax = 1,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0.5,0) arc (0:180:0.5);
+                      \foreach \k in {1/5, 1/4, 1/3, 1/2}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = 0:pi]
+                                  ({\k*cos(x)}, {\k*sin(x)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ 1/z $},
+                          xmin = -6, xmax = 6, ymin = 1, ymax = -9,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0:12)--(0:2) arc (0:-180:2) -- (-180:12) arc(-180:0:12)
+                      -- cycle;
+                      \foreach \k in {5,4,3,2}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = 0:pi]
+                                  ({\k*cos(x)},{-\k*sin(x)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the result of the mapping,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -2, xmax = 2, ymin = -2, ymax = 2,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 5]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (-0.693,-3) -- (-0.693, 3) -- (1.386, 3) -- (1.386, -3) -- cycle;
+                      \foreach \k in {ln(1/2), ln(1), ln(2), ln(3), ln(4)}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = -10:10]
+                                  ({\k}, {x});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ e^z $},
+                          xmin = -5, xmax = 5, ymin = -5, ymax = 5,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 5]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08,
+                          even odd rule] (0,0) circle (0.5) (0,0) circle (4);
+                      \foreach \k in {0.5,1,2,3,4}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 200,
+                                      domain = -pi:pi]
+                                  ({\k*cos(x)},{\k*sin(x)});
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the result of the mapping, noting that the negative real line is
+          not part of the image.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -2, xmax = 3, ymin = -4, ymax = 4,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 5]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (-1,-3.14) -- (-1, 3.14) -- (2, 3.14) -- (2, -3.14) -- cycle;
+                      \draw[very thick, y_h] (-1,-3.14) -- (-1,3.14);
+                      \draw[very thick, y_p] (-1,3.14) -- (2,3.14);
+                      \draw[very thick, y_t] (2,3.14) -- (2,-3.14);
+                      \draw[very thick, azure4] (2,-3.14) -- (-1,-3.14);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ e^z $},
+                          xmin = -8, xmax = 8, ymin = -8, ymax = 8,
+                          axis equal, Ani, grid = both,
+                          xtick = {-7.389, -0.367, 0.367, 7.389},
+                          xticklabels = {$ -e^2 $, $ \frac{-1}{e} $, $ \frac{1}{e} $,
+                                  $ e^2 $},
+                          ytick = {-7.389, -0.367, 0.367, 7.389},
+                          yticklabels = {$ -e^2 $, $ -1/e $, $ 1/e $, $ e^2 $},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08,
+                          even odd rule] (0,0) circle (0.367) (0,0) circle (7.389);
+                      \addplot[GraphSmooth, y_h, domain = -0.95*pi:0.95*pi]
+                      ({0.367*cos(x)}, {0.367*sin(x)});
+                      \addplot[GraphSmooth, y_t, domain = -0.99*pi:0.99*pi]
+                      ({7.389*cos(x)}, {7.389*sin(x)});
+                      \addplot[GraphSmooth, y_p, domain = -1:2]
+                      ({(e^x)*cos(-pi)}, {-0.08+(e^x)*sin(-pi)});
+                      \addplot[GraphSmooth, azure4, domain = -1:2]
+                      ({(e^x)*cos(pi)}, {0.08+(e^x)*sin(pi)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the result of the mapping,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -3, xmax = 3, ymin = 0, ymax = 6,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 5]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (45:4)--(45:1) arc (45:135:1) -- (135:4) arc(135:45:4)
+                      -- cycle;
+                      \draw[very thick, y_h] (45:4) -- (45:1)
+                      node[sloped, midway, below]{$ \theta = \pi/4 $};
+                      \draw[very thick, y_p] (45:1) arc (45:135:1)
+                      node[below] at (90:1) {$ r = 1 $};
+                      \draw[very thick, y_t] (135:1) -- (135:4)
+                      node[sloped, midway, below]{$ \theta = 3\pi/4 $};
+                      \draw[very thick, azure4] (135:4) arc (135:45:4)
+                      node[above] at (90:4) {$ r = 4 $};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ \Ln{z} $},
+                          xmin = -1, xmax = 2, ymin = 0, ymax = 3,
+                          axis equal, Ani, grid = both,
+                          xtick = {0, 1.386},
+                          xticklabels = {$ \ln 1 $, $ \ln 4 $},
+                          ytick = {0.785, 2.356},
+                          yticklabels = {$ \pi/4 $, $ 3\pi/4 $},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (1.386,0.785) -- (0,0.785) -- (0, 2.356) -- (1.386, 2.356)
+                      -- cycle;
+                      \draw[very thick, y_h] (1.386, 0.785) -- (0, 0.785);
+                      \draw[very thick, y_p] (0, 0.785) -- (0, 2.356);
+                      \draw[very thick, y_t] (0, 2.356) -- (1.386, 2.356);
+                      \draw[very thick, azure4] (1.386, 2.356) -- (1.386, 0.785);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the result of the mapping,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Domain},
+                          xmin = -0.2, xmax = 1.2, ymin = -0.2, ymax = 1.2,
+                          axis equal, Ani, grid = both,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 5]},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0:1)--(0:0.5) arc (0:90:0.5) -- (90:1) arc(90:0:1)
+                      -- cycle;
+                      \draw[very thick, y_h] (0:1) -- (0:0.5)
+                      node[sloped, midway, below]{$ \theta = 0 $};
+                      \draw[very thick, y_p] (0:0.5) arc (0:90:0.5)
+                      node[below=5, rotate = -45] at (45:0.5) {$ r = 0.5 $};
+                      \draw[very thick, y_t] (90:0.5) -- (90:1)
+                      node[sloped, midway, above]{$ \theta = \pi/2 $};
+                      \draw[very thick, azure4] (90:1) arc (90:0:1)
+                      node[above=5, rotate = -45] at (45:1) {$ r = 1 $};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm, height = 8cm, title = {Mapping under $ \Ln{z} $},
+                          xmin = -2, xmax = 0.5, ymin = -0.5, ymax = 2,
+                          axis equal, Ani, grid = both,
+                          xtick = {-0.693, 0},
+                          xticklabels = {$ \ln (0.5) $, $ \ln 1 $},
+                          ytick = {0, 1.57},
+                          yticklabels = {$ 0 $, $ \pi/2 $},]
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (0, 0) -- (-0.693, 0) -- (-0.693, 1.57) -- (0, 1.57)
+                      -- cycle;
+                      \draw[very thick, y_h] (0, 0) -- (-0.693, 0);
+                      \draw[very thick, y_p] (-0.693, 0) -- (-0.693, 1.57);
+                      \draw[very thick, y_t] (-0.693, 1.57) -- (0, 1.57);
+                      \draw[very thick, azure4] (0, 1.57) -- (0, 0);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The critical points are,
+          \begin{align}
+              f(z)  & = az^3 + bz^2 + cz + d               &
+              f'(z) & = 3az^2 + 2bz + c                      \\
+              z^*   & = \frac{-b \pm \sqrt{b^2 - 3ac}}{3a}
+          \end{align}
+
+    \item The critical points are,
+          \begin{align}
+              f(z)  & = z^2 + z^{-2}  &
+              f'(z) & = 2z - 2z^{-3}    \\
+              z^*   & = \pm 1, \pm \i
+          \end{align}
+
+    \item The critical points are,
+          \begin{align}
+              f(z)  & = \frac{z+ 0.5}{4z^2 + 2}                       &
+              f'(z) & = \frac{4z^2 + 2 - (z + 0.5)(8z)}{(4z^2 + 2)^2}   \\
+              f'(z) & = \frac{-4z^2 - 4z + 2}{(4z^2 + 2)^2}           &
+              f'(z) & = 0                                               \\
+              \implies \quad z^2 + z - 0.5
+                    & = 0                                             &
+              z^*   & = \frac{-1 \pm \sqrt{3}}{2}
+          \end{align}
+
+    \item The critical points are,
+          \begin{align}
+              f(z)  & = \exp(z^5 - 80z)            &
+              f'(z) & = 5(z^4 - 16)\exp(z^5 - 80z)   \\
+              z^*   & = \pm 2, \pm 2\i
+          \end{align}
+
+    \item The critical points are,
+          \begin{align}
+              f(z)  & = \cosh z      &
+              f'(z) & = \sinh z        \\
+              z^*   & = 0 + \i\ n\pi
+          \end{align}
+
+    \item The critical points are,
+          \begin{align}
+              f(z)  & = \sin(\pi z)     &
+              f'(z) & = \pi \cos(\pi z)   \\
+              z^*   & = n + 0.5
+          \end{align}
+
+    \item Let the first $ (k-1) $ derivatives of $ f(z) $ be zero at $ z = z_0 $ but not
+          the next higher derivative. Also, $ f(z) $ is analytic at $ z_0 $
+          \begin{align}
+              f(z)          & = f(z_0) + (z - z_0)^{k}\ g(z) &
+              g(z_0)        & \neq 0                           \\
+              f(z) - f(z_0) & = (z - z_0)^k\ g(z)            &
+          \end{align}
+          Let the angle $ \theta $ between two curves $ C_1, C_2 $ become the angle
+          $ \phi $ between the curves $ K_1, K_2 $ under the mapping. Let $ z_1, z_2 $
+          respectively approach $ z_0 $ along the curves $ K_1, K_2 $
+          \begin{align}
+              \Arg{[f(z) - f(z_0)]} & = k \Arg{(z - z_0)} + \Arg{g(z)}        \\
+              \phi                  & = \lim_{z_1 \to z_0} \lim_{z_2 \to z_0}
+              \Arg{\Bigg[\frac{f(z_1) - f(z_0)}{f(z_2) - f(z_0)}\Bigg]}       \\
+                                    & = \lim_{z_1 \to z_0} \lim_{z_2 \to z_0}
+              k \Arg{\Bigg[\frac{(z_1 - z_0)}{(z_2 - z_0)}
+              \Bigg]} + \Arg{\Bigg[ \frac{g(z_1)}{g(z_2)} \Bigg]}             \\
+                                    & = k\theta + 0
+          \end{align}
+          Thus, the angle gets magnified $ k $ times.
+          Examples are $ f(z) = z^2, z^3, z^4 $ as seen in the problem set.
+
+    \item Refer to Problem $ 27 $
+
+    \item Finding the magnification ratio,
+          \begin{align}
+              f(z)              & = z^2/2                 &
+              f'(z)             & = z                       \\
+              M = \abs{f'(z)}   & = \color{y_h} \abs{z}   &
+              J = \abs{f'(z)}^2 & = \color{y_p} \abs{z}^2
+          \end{align}
+          $ M=1 $ at the unit circle
+
+    \item Finding the magnification ratio,
+          \begin{align}
+              f(z)                   & = z^3                    &
+              f'(z)                  & = 3z^2                     \\
+              M = \abs{f'(z)}        & = \color{y_h} 3\abs{z}^2 &
+              J = \abs{f'(z)}^2      & = \color{y_p} 9\abs{z}^4   \\
+              M                      & = 1                      &
+              \implies \quad \abs{z} & = \frac{1}{\sqrt{3}}
+          \end{align}
+
+    \item Finding the magnification ratio,
+          \begin{align}
+              f(z)                   & = z^{-1}                   &
+              f'(z)                  & = -z^{-2}                    \\
+              M = \abs{f'(z)}        & = \color{y_h} \abs{z}^{-2} &
+              J = \abs{f'(z)}^2      & = \color{y_p} \abs{z}^{-4}   \\
+              M                      & = 1                        &
+              \implies \quad \abs{z} & = 1
+          \end{align}
+
+    \item Finding the magnification ratio,
+          \begin{align}
+              f(z)                   & = z^{-2}                    &
+              f'(z)                  & = -2z^{-3}                    \\
+              M = \abs{f'(z)}        & = \color{y_h} 2\abs{z}^{-3} &
+              J = \abs{f'(z)}^2      & = \color{y_p} 4\abs{z}^{-6}   \\
+              M                      & = 1                         &
+              \implies \quad \abs{z} & = 2^{1/3}
+          \end{align}
+
+    \item Finding the magnification ratio,
+          \begin{align}
+              f(z)              & = e^z                &
+              f'(z)             & = e^z                  \\
+              M = \abs{f'(z)}   & = \color{y_h} e^x    &
+              J = \abs{f'(z)}^2 & = \color{y_p} e^{2x}   \\
+              M                 & = 1                  &
+              \implies \quad x  & = 0
+          \end{align}
+
+    \item Finding the magnification ratio,
+          \begin{align}
+              f(z)                     & = \frac{z+1}{2z - 2}                &
+              f'(z)                    & = \frac{-1}{(z - 1)^2}                \\
+              M = \abs{f'(z)}          & = \color{y_h} \frac{1}{\abs{z-1}^2} &
+              J = \abs{f'(z)}^2        & = \color{y_p} \frac{1}{\abs{z-1}^4}   \\
+              M                        & = 1                                 &
+              \implies \quad \abs{z-1} & = 1
+          \end{align}
+
+    \item Finding the magnification ratio,
+          \begin{align}
+              f(z)                   & = \Ln z                           &
+              f'(z)                  & = \frac{1}{z}                       \\
+              M = \abs{f'(z)}        & = \color{y_h} \frac{1}{\abs{z}}   &
+              J = \abs{f'(z)}^2      & = \color{y_p} \frac{1}{\abs{z}^2}   \\
+              M                      & = 1                               &
+              \implies \quad \abs{z} & = 1
+          \end{align}
+\end{enumerate}

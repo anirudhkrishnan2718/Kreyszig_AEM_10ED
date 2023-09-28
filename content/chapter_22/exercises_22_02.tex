@@ -1,0 +1,551 @@
+\section{Linear Programming}
+
+\begin{enumerate}
+    \item Plotting the linear inequalities,
+    \item Plotting the linear inequalities,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 7, ymin = -1, ymax = 7,
+                          axis equal, Ani, grid = both,
+                          domain = -1:7, restrict y to domain = -1:7]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:0,2);
+                      \coordinate (B) at (axis cs:3,3);
+                      \coordinate (C) at (axis cs:6,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (O) -- cycle;
+                      \draw [draw = black, dashed] (O) -- (A);
+                      \draw [draw = black, dashed] (O) -- (C);
+                      \addplot[GraphSmooth, y_h] {(x+6)/3}
+                      node[sloped, near end, below]{$ x-3y \geq -6 $};
+                      \addplot[GraphSmooth, y_p] {6-x}
+                      node[sloped, near start, below]{$ x + y \leq 6 $};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 11, ymin = -1, ymax = 11,
+                          axis equal, Ani, grid = both,
+                          domain = -1:11, restrict y to domain = -1:11]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:3,0);
+                      \coordinate (B) at (axis cs:5,4);
+                      \coordinate (C) at (axis cs:10,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (A) -- (B) -- (C) -- (A) -- cycle;
+                      \draw [draw = black, dashed] (A) -- (C);
+                      \addplot[GraphSmooth, y_h] {2*x - 6}
+                      node[sloped, near end, below]{$ 2x-y \geq 6 $};
+                      \addplot[GraphSmooth, y_p] {8 - 0.8*x}
+                      node[sloped, near start, below]{$ 8x + 10y \leq 80 $};
+                      \addplot[GraphSmooth, y_t] {(x + 3)/2}
+                      node[sloped, near end, below]{$ x-2y \geq -3 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Plotting the linear inequalities,
+    \item Plotting the linear inequalities,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 7, ymin = -1, ymax = 7,
+                          axis equal, Ani, grid = both,
+                          domain = -1:7, restrict y to domain = -1:7]
+                      \coordinate (O) at (axis cs:0,2);
+                      \coordinate (A) at (axis cs:7,5.5);
+                      \coordinate (B) at (axis cs:7,2.4);
+                      \coordinate (C) at (axis cs:0.833,1.167);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (O) -- cycle;
+                      \addplot[GraphSmooth, y_h] {2 + 0.5*x}
+                      node[sloped, near end, below]{$ -0.5x + y \leq 2 $};
+                      \addplot[GraphSmooth, y_p] {2-x}
+                      node[sloped, near end, above]{$ x + y \geq 2 $};
+                      \addplot[GraphSmooth, y_t] {1 + 0.2*x}
+                      node[sloped, near end, above]{$ -x + 5y \geq 5 $};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 13, ymin = -1, ymax = 13,
+                          axis equal, Ani, grid = both,
+                          domain = -1:13, restrict y to domain = -1:13]
+                      \coordinate (O) at (axis cs:1.67,6.67);
+                      \coordinate (A) at (axis cs:3,8);
+                      \coordinate (B) at (axis cs:9,4);
+                      \coordinate (C) at (axis cs:3,4);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (O) -- cycle;
+                      \addplot[GraphSmooth, y_h] {5 + x}
+                      node[sloped, near end, below]{$ -x+y \leq 5 $};
+                      \addplot[GraphSmooth, y_p] {10 - 2*x}
+                      node[sloped, very near end, above]{$ 2x + y \geq 10 $};
+                      \addplot[GraphSmooth, y_s] {4}
+                      node[sloped, midway, below]{$ y \geq 4 $};
+                      \addplot[GraphSmooth, y_t] {10 - (2/3)*x}
+                      node[sloped, midway, above]{$ 10x + 15y \leq 150 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Plotting the linear inequalities,
+    \item Plotting the linear inequalities,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 6, ymin = -1, ymax = 6,
+                          axis equal, Ani, grid = both,
+                          domain = -1:6, restrict y to domain = -1:6]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:0,5);
+                      \coordinate (B) at (axis cs:2.5,2.5);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (O) -- cycle;
+                      \draw [draw = black, dashed] (O) -- (A);
+                      \addplot[GraphSmooth, y_h] {x}
+                      node[sloped, near end, below]{$ -x + y \geq 0 $};
+                      \addplot[GraphSmooth, y_p] {5-x}
+                      node[sloped, near end, above]{$ x + y \leq 5 $};
+                      \addplot[GraphSmooth, y_t] {16 + 2*x}
+                      node[sloped, near end, above]{$ -2x + y \leq 16 $};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 8, ymin = -1, ymax = 8,
+                          axis equal, Ani, grid = both,
+                          domain = -1:8, restrict y to domain = -1:8]
+                      \coordinate (O) at (axis cs:0.385,2.769);
+                      \coordinate (A) at (axis cs:2,6);
+                      \coordinate (B) at (axis cs:6,8);
+                      \coordinate (C) at (axis cs:8,8);
+                      \coordinate (D) at (axis cs:8,0);
+                      \coordinate (E) at (axis cs:5,0);
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (D) -- (E) -- (O) -- cycle;
+                      \draw [draw = black, dashed] (E) -- (D);
+                      \addplot[GraphSmooth, y_h] {2 - x}
+                      node[sloped, midway, above]{$ -x+y \leq 5 $};
+                      \addplot[GraphSmooth, y_p] {3 - 0.6*x}
+                      node[sloped, midway, above]{$ 2x + y \geq 10 $};
+                      \addplot[GraphSmooth, y_s] {2*x+2}
+                      node[sloped, midway, below]{$ y \geq 4 $};
+                      \addplot[GraphSmooth, y_t] {5 + 0.5*x}
+                      node[sloped, near end, below]{$ 10x + 15y \leq 150 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function $ a_1x_1 + a_2x_2 $ has straight line contours that
+          vary monotonically, the optimal value must lie along an edge or at a vertex of
+          the quadrangle.
+
+    \item Every inequality (constraint) needs a slack variable. By convention, it is
+          useful to have them all be the same sign, and nonnegative is merely convention.
+
+    \item The two slack variables are the two linear inequalities in Problem $ 1 $, which
+          refer to the time taken to produce the units on machines $ M_1 $ and $ M_2 $
+          respectively.
+
+    \item No, if one of the edges of the quadrangle is parallel to the objective
+          function.
+
+    \item Maximizing the objective function,
+          \begin{align}
+              f(\vec{x}) & = 30x_1 + 10x_2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 6, ymin = -1, ymax = 6,
+                          axis equal, Ani, grid = both,
+                          domain = -1:6, restrict y to domain = -1:6,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:0,5);
+                      \coordinate (B) at (axis cs:2.5,2.5);
+                      \addplot[GraphSmooth, y_p] {0.1*100-3*x};
+                      \addplot[GraphSmooth, y_h] {0.1*0-3*x};
+                      \addlegendentry{$ f = 100 $};
+                      \addlegendentry{$ f = 0 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (O) -- cycle;
+                      \draw [draw = black, dashed] (O) -- (A);
+                      \addplot[GraphSmooth, black] {x}
+                      node[sloped, near end, below]{$ -x + y \geq 0 $};
+                      \addplot[GraphSmooth, black] {5-x}
+                      node[sloped, near end, above]{$ x + y \leq 5 $};
+                      \addplot[GraphSmooth, black] {16 + 2*x}
+                      node[sloped, near end, above]{$ -2x + y \leq 16 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Minimizing the objective function,
+          \begin{align}
+              f(\vec{x}) & = 45x_1 + 22.5x_2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 13, ymin = -1, ymax = 13,
+                          axis equal, Ani, grid = both,
+                          domain = -1:13, restrict y to domain = -1:13,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:1.67,6.67);
+                      \coordinate (A) at (axis cs:3,8);
+                      \coordinate (B) at (axis cs:9,4);
+                      \coordinate (C) at (axis cs:3,4);
+                      \addplot[GraphSmooth, y_h] {10 - 2*x};
+                      \addplot[GraphSmooth, y_p] {22 - 2*x};
+                      \addlegendentry{$ f = 225 $};
+                      \addlegendentry{$ f = 495 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (O) -- cycle;
+                      \addplot[GraphSmooth, black] {5 + x};
+                      \addplot[GraphSmooth, black] {4};
+                      \addplot[GraphSmooth, black] {10 - (2/3)*x};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Maximizing the objective function,
+          \begin{align}
+              f(\vec{x}) & = 5x_1 + 25x_2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 6, ymin = -1, ymax = 6,
+                          axis equal, Ani, grid = both,
+                          domain = -1:6, restrict y to domain = -1:6,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:0,5);
+                      \coordinate (B) at (axis cs:2.5,2.5);
+                      \addplot[GraphSmooth, y_p] {(125-5*x)/25};
+                      \addplot[GraphSmooth, y_h] {(0-5*x)/25};
+                      \addlegendentry{$ f = 125 $};
+                      \addlegendentry{$ f = 0 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (O) -- cycle;
+                      \draw [draw = black, dashed] (O) -- (A);
+                      \addplot[GraphSmooth, black] {x}
+                      node[sloped, pos = 0.3, below]{$ -x + y \geq 0 $};
+                      \addplot[GraphSmooth, black] {5-x}
+                      node[sloped, near end, above]{$ x + y \leq 5 $};
+                      \addplot[GraphSmooth, black] {16 + 2*x}
+                      node[sloped, near end, above]{$ -2x + y \leq 16 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Minimizing the objective function,
+          \begin{align}
+              f(\vec{x}) & = 5x_1 + 25x_2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 7, ymin = -1, ymax = 7,
+                          axis equal, Ani, grid = both,
+                          domain = -1:7, restrict y to domain = -1:7,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,2);
+                      \coordinate (A) at (axis cs:7,5.5);
+                      \coordinate (B) at (axis cs:7,2.4);
+                      \coordinate (C) at (axis cs:0.833,1.167);
+                      \addplot[GraphSmooth, y_h] {(33.33-5*x)/25};
+                      \addlegendentry{$ f = 100/3 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (O) -- cycle;
+                      \addplot[GraphSmooth, black] {2 + 0.5*x};
+                      \addplot[GraphSmooth, black] {2-x};
+                      \addplot[GraphSmooth, black] {1 + 0.2*x};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Maximizing the objective function,
+          \begin{align}
+              f(\vec{x}) & = 20x_1 + 30x_2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 10, ymin = -1, ymax = 10,
+                          axis equal, Ani, grid = both,
+                          domain = -1:10, restrict y to domain = -1:10,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0.43,3.43);
+                      \coordinate (A) at (axis cs:3,6);
+                      \coordinate (B) at (axis cs:9,6);
+                      \coordinate (C) at (axis cs:2,1.33);
+                      \addplot[GraphSmooth, y_h] {(80-20*x)/30};
+                      \addlegendentry{$ f = 80 $};
+                      \addplot[GraphSmooth, y_p] {(360-20*x)/30};
+                      \addlegendentry{$ f = 360 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (O) -- cycle;
+                      \addplot[GraphSmooth, black] {4 - (4/3) * x};
+                      \addplot[GraphSmooth, black] {x + 3};
+                      \addplot[GraphSmooth, black] {6};
+                      \addplot[GraphSmooth, black] {(2/3)*x};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Maximizing the objective function,
+          \begin{align}
+              f(\vec{x}) & = -10x_1 + 2x_2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 6, ymin = -1, ymax = 6,
+                          axis equal, Ani, grid = both,
+                          domain = -1:6, restrict y to domain = -1:6,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:0,5);
+                      \coordinate (B) at (axis cs:1,5);
+                      \coordinate (C) at (axis cs:3.5,2.5);
+                      \coordinate (D) at (axis cs:1,0);
+                      \addplot[GraphSmooth, y_h] {(-30+10*x)/2};
+                      \addlegendentry{$ f = -30 $};
+                      \addplot[GraphSmooth, y_p] {(10+10*x)/2};
+                      \addlegendentry{$ f = 10 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (D) -- (O) -- cycle;
+                      \draw[black, dashed] (O) -- (A);
+                      \draw[black, dashed] (O) -- (D);
+                      \addplot[GraphSmooth, black] {-1 + x};
+                      \addplot[GraphSmooth, black] {6 - x};
+                      \addplot[GraphSmooth, black] {5};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The problem is,
+          \begin{align}
+              f(\vec{x})       & = 120x_1 + 100x_2 &
+              0.5x_1 + 0.75x_2 & \leq 45             \\
+              0.5x_1 + 0.25x_2 & \leq 30           &
+              x_1,x_2          & \geq 0
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -10, xmax = 70, ymin = -10, ymax = 70,
+                          axis equal, Ani, grid = both,
+                          domain = -10:70, restrict y to domain = -10:70,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:0,60);
+                      \coordinate (B) at (axis cs:45,30);
+                      \coordinate (C) at (axis cs:60,0);
+                      \addplot[GraphSmooth, y_h] {(0-120*x)/100};
+                      \addlegendentry{$ f = 0 $};
+                      \addplot[GraphSmooth, y_p] {(8400-120*x)/100};
+                      \addlegendentry{$ f = 8400 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (O) -- cycle;
+                      \draw[black, dashed] (O) -- (A);
+                      \draw[black, dashed] (O) -- (C);
+                      \addplot[GraphSmooth, black] {(45-0.5*x)/(0.75)};
+                      \addplot[GraphSmooth, black] {(30-0.5*x)/(0.25)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The problem is, with nonnegative $ x_i $
+          \begin{align}
+              f(\vec{x}) & = 11x_1 + 15x_2 &
+              2x_1 + x_2 & \leq 1400         \\
+              x_1 + x_2  & \leq 800        &
+              x_1 + 3x_2 & \leq 1800
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -100, xmax = 800, ymin = -100, ymax = 800,
+                          axis equal, Ani, grid = both,
+                          domain = -100:800, restrict y to domain = -100:800,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:0,600);
+                      \coordinate (B) at (axis cs:300,500);
+                      \coordinate (C) at (axis cs:600,200);
+                      \coordinate (D) at (axis cs:700,0);
+                      \addplot[GraphSmooth, y_h] {(0-11*x)/15};
+                      \addlegendentry{$ f = 0 $};
+                      \addplot[GraphSmooth, y_p] {(10800-11*x)/15};
+                      \addlegendentry{$ f = 10800 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (D) -- (O) -- cycle;
+                      \draw[black, dashed] (O) -- (A);
+                      \draw[black, dashed] (O) -- (D);
+                      \addplot[GraphSmooth, black] {1400-2*x};
+                      \addplot[GraphSmooth, black] {800-x};
+                      \addplot[GraphSmooth, black] {600 - (x/3)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The problem is, with nonnegative $ x_i $
+          \begin{align}
+              f(\vec{x})  & = x_1 + x_2 &
+              2x_1 + 3x_2 & \leq 1200     \\
+              4x_1 + 2x_2 & \leq 1600   &
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -50, xmax = 500, ymin = -50, ymax = 500,
+                          axis equal, Ani, grid = both,
+                          domain = -50:500, restrict y to domain = -50:500,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:0,400);
+                      \coordinate (B) at (axis cs:300,200);
+                      \coordinate (C) at (axis cs:400,0);
+                      \addplot[GraphSmooth, y_h] {-x};
+                      \addlegendentry{$ f = 0 $};
+                      \addplot[GraphSmooth, y_p] {500-x};
+                      \addlegendentry{$ f = 500 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (O) -- cycle;
+                      \draw[black, dashed] (O) -- (A);
+                      \draw[black, dashed] (O) -- (C);
+                      \addplot[GraphSmooth, black] {400-(2/3)*x};
+                      \addplot[GraphSmooth, black] {800-2*x};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The problem is, with nonnegative $ x_i $
+          \begin{align}
+              f(\vec{x})        & = 400x_1 + 600x_2 &
+              3000x_1 + 2000x_2 & \geq 18000          \\
+              2000x_1 + 5000x_2 & \geq 34000        &
+              300x_1 + 1500x_2  & \geq 9000
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 10, ymin = -1, ymax = 10,
+                          axis equal, Ani, grid = both,
+                          domain = -1:10, restrict y to domain = -1:10,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,9);
+                      \coordinate (A) at (axis cs:2,6);
+                      \coordinate (B) at (axis cs:4,5.2);
+                      \coordinate (C) at (axis cs:10,4);
+                      \coordinate (D) at (axis cs:10,10);
+                      \coordinate (E) at (axis cs:0,10);
+                      \addplot[GraphSmooth, y_h] {(4400 - 400*x)/600};
+                      \addlegendentry{$ f = 4400 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (D) -- (E) -- (O) -- cycle;
+                      %   \draw[black, dashed] (O) -- (A);
+                      %   \draw[black, dashed] (O) -- (C);
+                      \addplot[GraphSmooth, black] {9-(3/2)*x};
+                      \addplot[GraphSmooth, black] {(34-2*x)/5};
+                      \addplot[GraphSmooth, black] {(90-3*x)/15};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The problem is, with nonnegative $ x_i $
+          \begin{align}
+              f(\vec{x})                    & = 150x_1 + 100x_2   \\
+              \frac{x_1}{3} + \frac{x_2}{2} & \leq 100          &
+              \frac{x_1}{3} + \frac{x_2}{6} & \leq 80
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -25, xmax = 350, ymin = -25, ymax = 350,
+                          axis equal, Ani, grid = both,
+                          domain = -25:350, restrict y to domain = -25:350,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (A) at (axis cs:0,200);
+                      \coordinate (B) at (axis cs:210,60);
+                      \coordinate (C) at (axis cs:240,0);
+                      \addplot[GraphSmooth, y_p] {(37500 - 150*x)/100};
+                      \addlegendentry{$ f = 37500 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (O) -- cycle;
+                      \draw[black, dashed] (O) -- (A);
+                      \draw[black, dashed] (O) -- (C);
+                      \addplot[GraphSmooth, black] {200-(2/3)*x};
+                      \addplot[GraphSmooth, black] {480-2*x};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The problem is, with nonnegative $ x_i $
+          \begin{align}
+              f(\vec{x})      & = 1.8x_1 + 2.1x_2   \\
+              600x_1 + 500x_2 & \geq 3900         &
+              15x_1 + 30x_2   & \geq 150
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers,
+                          width = 8cm,
+                          xmin = -1, xmax = 12, ymin = -1, ymax = 12,
+                          axis equal, Ani, grid = both,
+                          domain = -1:12, restrict y to domain = -1:12,
+                          legend pos = outer north east]
+                      \coordinate (O) at (axis cs:0,7.8);
+                      \coordinate (A) at (axis cs:4,3);
+                      \coordinate (B) at (axis cs:10,0);
+                      \coordinate (C) at (axis cs:12,0);
+                      \coordinate (D) at (axis cs:12,12);
+                      \coordinate (E) at (axis cs:0,12);
+                      \addplot[GraphSmooth, y_p] {(13.5 - 1.8*x)/2.1};
+                      \addlegendentry{$ f = 13.5 $};
+                      \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                      (O) -- (A) -- (B) -- (C) -- (D) -- (E) -- (O) -- cycle;
+                      \draw[black, dashed] (B) -- (C);
+                      \draw[black, dashed] (O) -- (E);
+                      \addplot[GraphSmooth, black] {(39-6*x)/5};
+                      \addplot[GraphSmooth, black] {(10-x)/2};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+\end{enumerate}

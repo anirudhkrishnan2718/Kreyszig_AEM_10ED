@@ -1,0 +1,408 @@
+\section{Derivatives of Analytic Functions}
+
+\begin{enumerate}
+    \item Integrating,
+          \begin{align}
+              I            & = \oint_C \frac{\sin z }{z^4}\ \dl z &
+              f^{(3)}(z_0) & = \Big[-\cos z\Big]_{(0)} = -1         \\
+              I            & = (-1)\ \frac{2\pi\i}{3!}            &
+                           & = \frac{-\pi}{3}\ \i
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              I            & = \oint_C \frac{z^6}{(2z - 1)^6}\ \dl z                 &
+                           & = \oint_C \frac{(z/2)^6}{(z-1/2)^6}\ \dl z                \\
+              f^{(5)}(z_0) & = \Bigg[ \frac{6!\ z}{64} \Bigg]_{(0.5)} = \frac{45}{8}   \\
+              I            & = \frac{45}{8}\ \frac{2\pi\i}{5!}                       &
+                           & = \frac{3\pi}{32}\ \i
+          \end{align}
+
+    \item Integrating, with non-negative integer $ n $,
+          \begin{align}
+              I              & = \oint_C \frac{e^z}{z^n}\ \dl z &
+              f^{(n-1)}(z_0) & = \Big[ e^z \Big]_{(0)} = 1        \\
+              I              & = \frac{2\pi\i}{(n-1)!}
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              I            & = \oint_C \frac{e^z \cos z}{(z - 0.25\pi)^3}\ \dl z   \\
+              f^{(2)}(z_0) & = \Big[ -2e^z \sin z \Big]_{(0.25\pi)}              &
+                           & = -\sqrt{2} e^{\pi/4}                                 \\
+              I            & = -\sqrt{2}e^{\pi/4}\ \frac{2\pi\i}{2!}             &
+                           & = -\sqrt{2}\pi e^{\pi/4}\ \i
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              I            & = \oint_C \frac{\cos 2z}{(z - 0.5)^4}\ \dl z   \\
+              f^{(3)}(z_0) & = \Big[ 8\sinh 2z \Big]_{(0.5)}              &
+                           & = 8\sinh(1)                                    \\
+              I            & = 8\sinh(1)\ \frac{2\pi\i}{3!}               &
+                           & = \frac{8\pi}{3} \sinh(1)\ \i
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              I       & = \oint_C \frac{1}{(z - 0.5\i)^2(z - 2\i)^2}\ \dl z &
+              f(z)    & = \frac{1}{(z-2\i)^2}                                 \\
+              f'(z_0) & = \Bigg[ \frac{-2}{(z - 2\i)^3} \Bigg]_{(0.5\i)}    &
+                      & = \frac{16}{27}\ \i                                   \\
+              I       & = \frac{16\ \i}{27}\ \frac{2\pi\i}{1!}              &
+                      & = \frac{-32\pi}{27}
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              I             & = \oint_C \frac{cos z}{z^{2n+1}}\ \dl z &
+              f(z)          & = \cos z                                  \\
+              f^{(2n)}(z_0) & = \Bigg[ (-1)^n \cos z \Bigg]_{(0)}     &
+                            & = (-1)^n                                  \\
+              I             & = (-1)^n\ \frac{2\pi\i}{(2n)!}
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              I        & = \oint_C \frac{z^3 + \sin z}{(z - \i)^3}\ \dl z &
+              f(z)     & = z^3 + \sin z                                     \\
+              f''(z_0) & = \Bigg[ 6z - \sin z \Bigg]_{(\i)}               &
+                       & = [6 - \sinh(1)]\ \i                               \\
+              I        & = \pi(\sinh 1 - 6)
+          \end{align}
+
+    \item Integrating, with a minus sign to accommodate the clockwise orientation,
+          \begin{align}
+              I       & = -\oint_C \frac{\tan(\pi z)}{z^2}\ \dl z &
+              f(z)    & = \tan(\pi z)                               \\
+              f'(z_0) & = \Bigg[ \pi\sec^2(z) \Bigg]_{(0)}        &
+                      & = \pi                                       \\
+              I       & = -2\pi^2 \i
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Square},
+                          xmin = -3, xmax = 3,
+                          ymin = -3, ymax = 3,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h,
+                          fill opacity = 0.08]
+                      (-2,0) -- (0,2) -- (2,0) -- (0,-2) -- cycle;
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 1){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Ellipse},
+                          xmin = -5, xmax = 5,
+                          ymin = -5, ymax = 5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h,
+                          fill opacity = 0.08]
+                      (0,0) circle [x radius=1, y radius=4];
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating, with the outer circle being ccw, and the inner circle being cw,
+          \begin{align}
+              I       & = \oint_C \frac{4z^3 - 6}{ z(z - 1 - \i)^2}\ \dl z &
+              f(z)    & = 4z^2 - \frac{6}{z}                                 \\
+              f'(z_0) & = \Bigg[ 8z + \frac{6}{z^2} \Bigg]_{(1 + \i)}      &
+                      & = 8 + 5\i                                            \\
+              I       & = (8 + 5\i)\ \frac{2\pi\i}{1!}                     &
+                      & = 2\pi\ (-5 + 8\i)
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              I       & = -\oint_C \frac{(1+z)\sin z}{(2z - 1)^2}\ \dl z        &
+              f(z)    & = \frac{(1+z)\sin z}{4}                                   \\
+              f'(z_0) & = \Bigg[ \frac{(1+z)\cos z + \sin z}{4} \Bigg]_{(0.5)}  &
+                      & = \frac{1.5 \cos(1/2) + \sin(1/2)}{4}                     \\
+              I       & = \Big[1.5\cos(1/2) + \sin(1/2)\Big]\ \frac{\pi}{2}\ \i
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Concentric circles},
+                          xmin = -3, xmax = 3,
+                          ymin = -3, ymax = 3,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h,
+                          fill opacity = 0.08,even odd rule]
+                      (axis cs:0,0) circle (2) (axis cs:0,0) circle (1);
+                      \node[GraphNode, fill = y_p] at (axis cs:1, 1){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z - \i} = 2 $},
+                          xmin = -3, xmax = 3,
+                          ymin = -2, ymax = 4,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h, fill opacity = 0.08]
+                      (axis cs:0,1) circle (2);
+                      \node[GraphNode, fill = y_p] at (axis cs:0.5, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating, with a minus sign to accommodate the clockwise orientation,
+          \begin{align}
+              I       & = -\oint_C \frac{e^{z^2}}{z(z - 2\i)^2}\ \dl z           &
+              f(z)    & = \frac{\exp(z^2)}{z}                                      \\
+              f'(z_0) & = \Bigg[ \frac{(2z^2 - 1) \exp(z^2)}{z^2} \Bigg]_{(2\i)} &
+                      & = \frac{9e^{-4}}{4}                                        \\
+              I       & = -\frac{9e^{-4}}{4}\ \frac{2\pi\i}{1!}                  &
+                      & = -\frac{9e^{-4}}{2}\ \pi\ \i
+          \end{align}
+
+    \item Integrating,
+          \begin{align}
+              I       & = -\oint_C \frac{\Ln z}{(z - 2)^2}\ \dl z &
+              f(z)    & = \Ln z                                     \\
+              f'(z_0) & = \Bigg[ \frac{1}{z} \Bigg]_{(2)}         &
+                      & = 0.5                                       \\
+              I       & = \pi\i
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z - 3\i} = 2 $},
+                          xmin = -3, xmax = 3,
+                          ymin = -1, ymax = 5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h, fill opacity = 0.08]
+                      (axis cs:0,3) circle (2);
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 2){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {$ \abs{z - 3} = 2 $},
+                          xmin = 1, xmax = 5,
+                          ymin = -2, ymax = 2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h, fill opacity = 0.08]
+                      (axis cs:3,0) circle (2);
+                      \node[GraphNode, fill = y_p] at (axis cs:2, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating, with a minus sign to accommodate the clockwise orientation,
+          \begin{align}
+              I                   & = \oint_C \frac{\Ln{(z+3)}}{(z-2) (z + 1)^2}
+              \ \dl z             &
+              f(z)                & = \frac{\Ln{(z+3)}}{(z-2)}                   \\
+              f'(z_0)             & = \Bigg[ \frac{1}{(z-2)(z+3)} -
+                  \frac{\Ln{(z+3)}}{(z-2)^2}
+              \Bigg]_{(-1)}       &
+                                  & = -\frac{1}{6} - \frac{\ln(2)}{9}            \\
+              I                   & = \Bigg[\frac{-3 - \ln(4)}{18}\Bigg]
+              \ \frac{2\pi\i}{1!} &
+                                  & = \frac{-3-\ln 4}{9}\ \pi\i
+          \end{align}
+
+    \item Integrating results in zero, since the integrand is analytic in the entire
+          region between the curves (shaded). Path deformation and the fact that the
+          orientation of the curves are opposite means that the integrals are equal and
+          opposite.
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          xmin = -2.2, xmax = 2.2,
+                          ymin = -2.2, ymax = 2.2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h,
+                          fill opacity = 0.08]
+                      (-1.5,0) -- (0,1.5) -- (1.5,0) -- (0,-1.5) -- cycle;
+                      \node[GraphNode, fill = y_p] at (axis cs:-1, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:2, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          xmin = -6.2, xmax = 6.2,
+                          ymin = -6.2, ymax = 6.2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h,
+                          fill opacity = 0.08,even odd rule]
+                      (axis cs:0,0) circle (6) (axis cs:3,0) circle (2);
+                      \node[GraphNode, fill = y_p] at (axis cs:4, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating, with a minus sign to accommodate the clockwise orientation,
+          \begin{align}
+              I       & = -\oint_C \frac{e^{4z}}{z(z - 2\i)^2}\ \dl z        &
+              f(z)    & = \frac{\exp(4z)}{z}                                   \\
+              f'(z_0) & = \Bigg[ \frac{(4z - 1)\exp(4z)}{z^2} \Bigg]_{(2\i)} &
+                      & = \frac{(1 - 8\i)e^{8\i}}{4}                           \\
+              I       & = \frac{(1 - 8\i)e^{8\i}}{4}\ \frac{2\pi\i}{1!}      &
+                      & = \frac{(\i + 8)\pi}{2}\ e^{8\i}
+          \end{align}
+
+    \item Integrating results in zero, since the integrand is analytic in the entire
+          region between the curves (shaded). Path deformation and the fact that the
+          orientation of the curves are opposite means that the integrals are equal and
+          opposite.
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Enclosed circles},
+                          xmin = -4, xmax = 4,
+                          ymin = -3, ymax = 5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h,
+                          fill opacity = 0.08,even odd rule]
+                      (axis cs:0,1) circle (3) (axis cs:0,0) circle (1);
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 2){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Enclosed circles},
+                          xmin = -6, xmax = 6,
+                          ymin = -6, ymax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h,
+                          fill opacity = 0.08,even odd rule]
+                      (axis cs:0,0) circle (5) (axis cs:3,0) circle (1.5);
+                      \node[GraphNode, fill = y_p] at (axis cs:4, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Integrating, with integer $ n > 0 $,
+          \begin{align}
+              I              & = -\oint_C \frac{\sinh z}{z^n}\ \dl z &
+              f(z)           & = \sinh z                               \\
+              f^{(n-1)}(z_0) & = \begin{cases}
+                                     1 & n\ \text{is even} \\
+                                     0 & n\ \text{is odd}  \\
+                                 \end{cases}                 \\
+              I              & = \frac{2\pi\i}{(n-1)!}\ f^{(n-1)}(0)
+          \end{align}
+          For the case where, $ n \leq 0 $, the answer is zero, since the integrand
+          becomes analytic everywhere.
+
+    \item Integrating,
+          \begin{align}
+              I       & = -\oint_C \frac{e^{3z}}{(4z - \pi\i)^3}\ \dl z      &
+              f(z)    & = \frac{e^{3z}}{64}                                    \\
+              f'(z_0) & = \Bigg[ \frac{9e^{3z}}{64} \Bigg]_{(\pi/4\ \i)}     &
+                      & = \frac{9}{64\sqrt{2}}\ (-1 + \i)                      \\
+              I       & = \frac{9}{64\sqrt{2}}\ (-1 + \i)\ \frac{2\pi\i}{2!} &
+              I       & = \frac{9\pi}{64\sqrt{2}}\ (-1-\i)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Unit circle},
+                          xmin = -1.2, xmax = 1.2,
+                          ymin = -1.2, ymax = 1.2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h, fill opacity = 0.08]
+                      (axis cs:0,0) circle (1);
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          title = {Unit circle},
+                          xmin = -1.2, xmax = 1.2,
+                          ymin = -1.2, ymax = 1.2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \filldraw[draw=y_h,fill=y_h, fill opacity = 0.08]
+                      (axis cs:0,0) circle (1);
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 0.7854){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Growth
+          \begin{enumerate}
+              \item Suppose $ f(z) $ is bounded,
+                    \begin{align}
+                        \abs{f(z)}        & \leq M          &
+                        \forall \qquad  z & \in \mathcal{C}   \\
+                    \end{align}
+                    By Lioville's theorem, this function is constant. This contradicts
+                    the assumption that the function is not constant. R.A.A.
+
+              \item $ f(z) $ is a polynomial of positive degree. It is a non
+                    constant entire function. From part $ a $, it is unbounded.
+
+              \item $ f(z) = e^x $. This is a real function of a real variable. It
+                    is a non-constant entire function and thus obeys the relation in part
+                    $ a $. \par
+                    Fix an $ M_0 $ such that $ R_0 = \ln(M_0) $. Now,
+                    \begin{align}
+                        \abs{f(z)}             & > M_0 &
+                        \forall \quad \Re{(z)} & > R_0
+                    \end{align}
+                    A complex number can have a modulus larger than $ R_0 $ while still
+                    having a real part less than $R_0$. So, the relation in part $ b $ is
+                    violated.
+
+              \item If $ f(z) $ is never zero, then it has either a lower or upper bound
+                    equal to zero, by definition. This violates result $ a $, and makes
+                    the function constant, which is a contradiction.
+          \end{enumerate}
+\end{enumerate}

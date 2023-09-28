@@ -1,438 +1,438 @@
 \section{Laplace Transform, Linearity, First Shifting Theorem (s-Shifting)}
 
 \begin{enumerate}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} 3t + 12             \\
-                  \Lap\{f(t)\} & = 3 \Lap \{t\} + 12 \Lap \{1\}    \\
-                               & = \color{y_p} \frac{3 + 12s}{s^2}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} (a-bt)^2                             \\
-                  \Lap\{f(t)\} & = b^2 Lap\{t^2\} - 2ab \Lap \{t\} + a^2 \Lap \{1\} \\
-                               & = \color{y_p} \frac{(a^2)s^2 - (2ab)s + 2b^2}{s^3}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} \cos(\pi t)           \\
-                  \Lap\{f(t)\} & = \color{y_p} \frac{s}{s^2 + \pi^2}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} \cos^2(\omega t)                            \\
-                  \Lap\{f(t)\} & = \Lap\left\{ \frac{1 + \cos(2\omega t)}{2} \right\}      \\
-                               & = \frac{1}{2s} + \frac{s}{2(s^2 + 4\omega^2)}             \\
-                               & = \color{y_p}  \frac{s^2 + 2\omega^2}{s(s^2 + 4\omega^2)}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} e^{2t}\sinh(t)                    \\
-                  \Lap\{f(t)\} & = \Lap\left\{ \frac{e^{3t} - e^{t}}{2} \right\} \\
-                               & = \color{y_p}  \frac{1}{(s-1)(s-3)}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} e^{-t}\sinh(4t)         \\
-                  \Lap\{f(t)\} & = \color{y_p}  \frac{4}{(s+1)^2 - 16}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} \sin(\omega t + \theta)   \\
-                  \Lap\{f(t)\} & =  \cos\theta\ \Lap \{\sin(\omega t)\}
-                  + \sin\theta\ \Lap \{\cos(\omega t)\}                  \\
-                               & = \color{y_p}  \frac{\omega \cos \theta
-                        + s \sin \theta}{s^2 + \omega^2}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} 1.5\sin(3 t - \pi/2)   \\
-                  \Lap\{f(t)\} & =  \cos(\pi/2)\ \Lap \{\sin(3 t)\}
-                  + \sin(\pi/2)\ \Lap \{\cos(3 t)\}                   \\
-                               & = \color{y_p}  -\frac{1.5s}{s^2 + 9}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)             & = \color{y_h} 1-t                            &
-                  \forall \quad  t & \in [0,1]                                      \\
-                  \Lap\{f(t)\}     & =  \int_{0}^{1} e^{-st}(1-t)\ \dl t          &
-                                   & = \left[ -\frac{e^{-st}}{s} +
-                  \frac{te^{-st}}{s} + \frac{e^{-st}}{s^2} \right]_0^1              \\
-                                   & = \frac{(st - s + 1)e^{-st}}{s^2} \Bigg|_0^1 &
-                                   & = \color{y_p}\frac{e^{-s} + s - 1}{s^2}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)             & = \color{y_h} k                          &
-                  \forall \quad  t & \in [0,c]                                  \\
-                  \Lap\{f(t)\}     & =  \int_{0}^{c} ke^{-st}\ \dl t          &
-                                   & = \left[ -\frac{ke^{-st}}{s} \right]_0^c   \\
-                                   & = \frac{k}{s} - \frac{ke^{-sc}}{s}       &
-                                   & = \color{y_p}\frac{k(1 - e^{-sc})}{s}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)             & = \color{y_h} t                            &
-                  \forall \quad  t & \in [0,b]                                    \\
-                  \Lap\{f(t)\}     & =  \int_{0}^{b} e^{-st}(t)\ \dl t          &
-                                   & = \left[ -\frac{te^{-st}}{s} -
-                  \frac{e^{-st}}{s^2} \right]_0^b                                 \\
-                                   & = \frac{-(st+1)e^{-st}}{s^2}\Bigg|_0^b     &
-                                   & = \color{y_p}\frac{1 - (1+bs)e^{-bs}}{s^2}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h}
-                  \begin{dcases}
-                        t & t \in [0,1)  \\
-                        1 & t \in [1, 2) \\
-                  \end{dcases}                                             \\
-                  \Lap\{f(t)\} & =  \int_{0}^{1} e^{-st}(t)\ \dl t
-                  +  \int_{1}^{2} e^{-st}\ \dl t                               \\
-                               & = \left[ \frac{te^{-st}}{-s}
-                        - \frac{e^{-st}}{s^2}  \right]_0^1
-                  + \left[ \frac{e^{-st}}{-s} \right]_1^2                      \\
-                               & = \frac{-se^{-s} - e^{-s} + 1}{s^2}
-                  + \frac{e^{-s} - e^{-2s}}{s}                                 \\
-                               & = \color{y_p}\frac{1 - se^{-2s}- e^{-s}}{s^2}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h}
-                  \begin{dcases}
-                        1  & t \in [0,1)  \\
-                        -1 & t \in [1, 2) \\
-                  \end{dcases}                                            \\
-                  \Lap\{f(t)\} & =  \int_{0}^{1} e^{-st}\ \dl t
-                  -  \int_{1}^{2} e^{-st}\ \dl t                               \\
-                               & = \left[ \frac{e^{-st}}{-s} \right]_0^1
-                  + \left[ \frac{e^{-st}}{s} \right]_1^2                       \\
-                               & = \frac{(1 - e^{-s}) + (e^{-2s} - e^{-s})}{s} \\
-                               & = \color{y_p}\frac{1 + e^{-2s} - 2e^{-s}}{s}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h}
-                  \begin{dcases}
-                        k & t \in [a,b) \\
-                  \end{dcases}                                              \\
-                  \Lap\{f(t)\} & =  \int_{a}^{b} ke^{-st}\ \dl t             &
-                               & = \left[ \frac{ke^{-st}}{-s} \right]_a^b      \\
-                               & = \color{y_p}\frac{k(e^{-as} - e^{-bs})}{s}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)             & = \color{y_h} 1 - 0.5t                         &
-                  \forall \quad  t & \in [0,1]                                        \\
-                  \Lap\{f(t)\}     & =  \int_{0}^{1} e^{-st}(1-0.5t)\ \dl t         &
-                                   & = \left[ -\frac{e^{-st}}{s} +
-                  \frac{te^{-st}}{2s} + \frac{e^{-st}}{2s^2} \right]_0^1              \\
-                                   & = \frac{(st - 2s + 1)e^{-st}}{2s^2} \Bigg|_0^1 &
-                                   & = \color{y_p}\frac{(1-s)e^{-s} + (2s-1)}{s^2}
-            \end{align}
-      \item Finding Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h}
-                  \begin{dcases}
-                        1   & t \in [0,1)  \\
-                        2-t & t \in [1, 2) \\
-                  \end{dcases}                                                   \\
-                  \Lap\{f(t)\} & =  \int_{0}^{1} e^{-st}\ \dl t
-                  +  \int_{1}^{2}(2-t) e^{-st}\ \dl t                                  \\
-                               & = \left[ \frac{e^{-st}}{-s} \right]_0^1
-                  + \left[ \frac{2e^{-st}}{-s} + \frac{e^{-st}(1+st)}{s^2} \right]_1^2 \\
-                               & = \frac{(s - se^{-s}) + (2se^{-s} - 2se^{-2s})
-                  + (1+2s)e^{-2s} - (1+s)e^{-s}}{s^2}                                  \\
-                               & = \color{y_p}\frac{-e^{-s} + e^{-2s} + s}{s^2}
-            \end{align}
-      \item Converting the table in the text into a table for inverse transforms,
-            \begin{table}[H]
-                  \centering
-                  \begin{tblr}{
-                        colspec={
-                        Q[r, $$, purple9!20]|[white,1pt]Q[l, $$, azure9!20]|[white,1pt]
-                              Q[r, $$, purple9!20]|[white,1pt]Q[l, $$, azure9!20]},
-                        colsep = 1em, rowsep = 1em}
-                        \SetCell{purple9!50
-                        }\mathbf{F(s)}                    &
-                        \SetCell{azure9!50}
-                        \mathbf{\Lap^{-1}\{F(s)\}}        &
-                        \SetCell{purple9!50}
-                        \mathbf{F(s)}                     &
-                        \SetCell{azure9!50}
-                        \mathbf{\Lap^{-1}\{F(s)\}}                                      \\
-                        \hline
-                        \frac{1}{s}                       & 1                         &
-                        \frac{1}{s^2}                     & t                           \\
-                        \hline[white, 1pt]
-                        \frac{1}{s^3}                     & \frac{t^2}{2!}            &
-                        \frac{1}{s^n}                     & \frac{t^{n-1}}{(n-1)!}      \\
-                        \hline[white, 1pt]
-                        \frac{1}{s^a}\ (a>0)              & \frac{t^{a-1}}{\Gamma(a)} &
-                        \frac{1}{s-a}                     & e^{at}                      \\
-                        \hline[white, 1pt]
-                        \frac{s}{s^2 + \omega^2}          & \cos(\omega t)            &
-                        \frac{\omega}{s^2 + \omega^2}     & \sin(\omega t)              \\
-                        \hline[white, 1pt]
-                        \frac{s}{s^2 - a^2}               & \cosh(at)                 &
-                        \frac{a}{s^2 - a^2}               & \sinh(at)                   \\
-                        \hline[white, 1pt]
-                        \frac{s-a}{(s-a)^2 + \omega^2}    & e^{at}\cos(\omega t)      &
-                        \frac{\omega}{(s-a)^2 + \omega^2} & e^{at}\sin(\omega t)        \\
-                        \hline
-                  \end{tblr}
-            \end{table}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} 3t + 12             \\
+              \Lap\{f(t)\} & = 3 \Lap \{t\} + 12 \Lap \{1\}    \\
+                           & = \color{y_p} \frac{3 + 12s}{s^2}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} (a-bt)^2                             \\
+              \Lap\{f(t)\} & = b^2 Lap\{t^2\} - 2ab \Lap \{t\} + a^2 \Lap \{1\} \\
+                           & = \color{y_p} \frac{(a^2)s^2 - (2ab)s + 2b^2}{s^3}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} \cos(\pi t)           \\
+              \Lap\{f(t)\} & = \color{y_p} \frac{s}{s^2 + \pi^2}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} \cos^2(\omega t)                            \\
+              \Lap\{f(t)\} & = \Lap\left\{ \frac{1 + \cos(2\omega t)}{2} \right\}      \\
+                           & = \frac{1}{2s} + \frac{s}{2(s^2 + 4\omega^2)}             \\
+                           & = \color{y_p}  \frac{s^2 + 2\omega^2}{s(s^2 + 4\omega^2)}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} e^{2t}\sinh(t)                    \\
+              \Lap\{f(t)\} & = \Lap\left\{ \frac{e^{3t} - e^{t}}{2} \right\} \\
+                           & = \color{y_p}  \frac{1}{(s-1)(s-3)}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} e^{-t}\sinh(4t)         \\
+              \Lap\{f(t)\} & = \color{y_p}  \frac{4}{(s+1)^2 - 16}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} \sin(\omega t + \theta)   \\
+              \Lap\{f(t)\} & =  \cos\theta\ \Lap \{\sin(\omega t)\}
+              + \sin\theta\ \Lap \{\cos(\omega t)\}                  \\
+                           & = \color{y_p}  \frac{\omega \cos \theta
+                  + s \sin \theta}{s^2 + \omega^2}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} 1.5\sin(3 t - \pi/2)   \\
+              \Lap\{f(t)\} & =  \cos(\pi/2)\ \Lap \{\sin(3 t)\}
+              + \sin(\pi/2)\ \Lap \{\cos(3 t)\}                   \\
+                           & = \color{y_p}  -\frac{1.5s}{s^2 + 9}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)             & = \color{y_h} 1-t                            &
+              \forall \quad  t & \in [0,1]                                      \\
+              \Lap\{f(t)\}     & =  \int_{0}^{1} e^{-st}(1-t)\ \dl t          &
+                               & = \left[ -\frac{e^{-st}}{s} +
+              \frac{te^{-st}}{s} + \frac{e^{-st}}{s^2} \right]_0^1              \\
+                               & = \frac{(st - s + 1)e^{-st}}{s^2} \Bigg|_0^1 &
+                               & = \color{y_p}\frac{e^{-s} + s - 1}{s^2}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)             & = \color{y_h} k                          &
+              \forall \quad  t & \in [0,c]                                  \\
+              \Lap\{f(t)\}     & =  \int_{0}^{c} ke^{-st}\ \dl t          &
+                               & = \left[ -\frac{ke^{-st}}{s} \right]_0^c   \\
+                               & = \frac{k}{s} - \frac{ke^{-sc}}{s}       &
+                               & = \color{y_p}\frac{k(1 - e^{-sc})}{s}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)             & = \color{y_h} t                            &
+              \forall \quad  t & \in [0,b]                                    \\
+              \Lap\{f(t)\}     & =  \int_{0}^{b} e^{-st}(t)\ \dl t          &
+                               & = \left[ -\frac{te^{-st}}{s} -
+              \frac{e^{-st}}{s^2} \right]_0^b                                 \\
+                               & = \frac{-(st+1)e^{-st}}{s^2}\Bigg|_0^b     &
+                               & = \color{y_p}\frac{1 - (1+bs)e^{-bs}}{s^2}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h}
+              \begin{dcases}
+                  t & t \in [0,1)  \\
+                  1 & t \in [1, 2) \\
+              \end{dcases}                                             \\
+              \Lap\{f(t)\} & =  \int_{0}^{1} e^{-st}(t)\ \dl t
+              +  \int_{1}^{2} e^{-st}\ \dl t                               \\
+                           & = \left[ \frac{te^{-st}}{-s}
+                  - \frac{e^{-st}}{s^2}  \right]_0^1
+              + \left[ \frac{e^{-st}}{-s} \right]_1^2                      \\
+                           & = \frac{-se^{-s} - e^{-s} + 1}{s^2}
+              + \frac{e^{-s} - e^{-2s}}{s}                                 \\
+                           & = \color{y_p}\frac{1 - se^{-2s}- e^{-s}}{s^2}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h}
+              \begin{dcases}
+                  1  & t \in [0,1)  \\
+                  -1 & t \in [1, 2) \\
+              \end{dcases}                                            \\
+              \Lap\{f(t)\} & =  \int_{0}^{1} e^{-st}\ \dl t
+              -  \int_{1}^{2} e^{-st}\ \dl t                               \\
+                           & = \left[ \frac{e^{-st}}{-s} \right]_0^1
+              + \left[ \frac{e^{-st}}{s} \right]_1^2                       \\
+                           & = \frac{(1 - e^{-s}) + (e^{-2s} - e^{-s})}{s} \\
+                           & = \color{y_p}\frac{1 + e^{-2s} - 2e^{-s}}{s}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h}
+              \begin{dcases}
+                  k & t \in [a,b) \\
+              \end{dcases}                                              \\
+              \Lap\{f(t)\} & =  \int_{a}^{b} ke^{-st}\ \dl t             &
+                           & = \left[ \frac{ke^{-st}}{-s} \right]_a^b      \\
+                           & = \color{y_p}\frac{k(e^{-as} - e^{-bs})}{s}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)             & = \color{y_h} 1 - 0.5t                         &
+              \forall \quad  t & \in [0,1]                                        \\
+              \Lap\{f(t)\}     & =  \int_{0}^{1} e^{-st}(1-0.5t)\ \dl t         &
+                               & = \left[ -\frac{e^{-st}}{s} +
+              \frac{te^{-st}}{2s} + \frac{e^{-st}}{2s^2} \right]_0^1              \\
+                               & = \frac{(st - 2s + 1)e^{-st}}{2s^2} \Bigg|_0^1 &
+                               & = \color{y_p}\frac{(1-s)e^{-s} + (2s-1)}{s^2}
+          \end{align}
+    \item Finding Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h}
+              \begin{dcases}
+                  1   & t \in [0,1)  \\
+                  2-t & t \in [1, 2) \\
+              \end{dcases}                                                   \\
+              \Lap\{f(t)\} & =  \int_{0}^{1} e^{-st}\ \dl t
+              +  \int_{1}^{2}(2-t) e^{-st}\ \dl t                                  \\
+                           & = \left[ \frac{e^{-st}}{-s} \right]_0^1
+              + \left[ \frac{2e^{-st}}{-s} + \frac{e^{-st}(1+st)}{s^2} \right]_1^2 \\
+                           & = \frac{(s - se^{-s}) + (2se^{-s} - 2se^{-2s})
+              + (1+2s)e^{-2s} - (1+s)e^{-s}}{s^2}                                  \\
+                           & = \color{y_p}\frac{-e^{-s} + e^{-2s} + s}{s^2}
+          \end{align}
+    \item Converting the table in the text into a table for inverse transforms,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{
+                  colspec={
+                  Q[r, $$, purple9!20]|[white,1pt]Q[l, $$, azure9!20]|[white,1pt]
+                      Q[r, $$, purple9!20]|[white,1pt]Q[l, $$, azure9!20]},
+                  colsep = 1em, rowsep = 1em}
+                  \SetCell{purple9!50
+                  }\mathbf{F(s)}                    &
+                  \SetCell{azure9!50}
+                  \mathbf{\Lap^{-1}\{F(s)\}}        &
+                  \SetCell{purple9!50}
+                  \mathbf{F(s)}                     &
+                  \SetCell{azure9!50}
+                  \mathbf{\Lap^{-1}\{F(s)\}}                                      \\
+                  \hline
+                  \frac{1}{s}                       & 1                         &
+                  \frac{1}{s^2}                     & t                           \\
+                  \hline[white, 1pt]
+                  \frac{1}{s^3}                     & \frac{t^2}{2!}            &
+                  \frac{1}{s^n}                     & \frac{t^{n-1}}{(n-1)!}      \\
+                  \hline[white, 1pt]
+                  \frac{1}{s^a}\ (a>0)              & \frac{t^{a-1}}{\Gamma(a)} &
+                  \frac{1}{s-a}                     & e^{at}                      \\
+                  \hline[white, 1pt]
+                  \frac{s}{s^2 + \omega^2}          & \cos(\omega t)            &
+                  \frac{\omega}{s^2 + \omega^2}     & \sin(\omega t)              \\
+                  \hline[white, 1pt]
+                  \frac{s}{s^2 - a^2}               & \cosh(at)                 &
+                  \frac{a}{s^2 - a^2}               & \sinh(at)                   \\
+                  \hline[white, 1pt]
+                  \frac{s-a}{(s-a)^2 + \omega^2}    & e^{at}\cos(\omega t)      &
+                  \frac{\omega}{(s-a)^2 + \omega^2} & e^{at}\sin(\omega t)        \\
+                  \hline
+              \end{tblr}
+          \end{table}
 
-      \item From Problem 10,
-            \begin{align}
-                  \Lap \{f\}                        & = \frac{k}{s}\ (1 - e^{-cs}) \\
-                  f(t)                              & = \color{y_h}
-                  \begin{dcases}
-                        0 & t \leq 2 \\
-                        1 & t > 2    \\
-                  \end{dcases}                                                    \\
-                  \int_{c}^{\infty} ke^{-st}\ \dl t & = \infint ke^{-st}\ \dl t
-                  - \int_{0}^{c} ke^{-st}\ \dl t                                   \\
-                  \Lap\{k\} - \Lap\{f\}             & = \frac{ke^{-cs}}{s}         \\
-                  k                                 & = 1 \qquad \qquad c = 2      \\
-                  \Lap\{f_1\}                       & = \frac{e^{-2s}}{s}
-            \end{align}
-      \item Starting from the hyperbolic functions,
-            \begin{align}
-                  e^{at}         & = \color{y_h}\frac{\cosh(at) + \sinh(at)}{2}      \\
-                  \Lap\{e^{at}\} & = \frac{\Lap\{\cosh(at)\} + \Lap\{\sinh(at)\}}{2} \\
-                                 & = \frac{s+a}{s^2 - a^2}                           \\
-                                 & = \color{y_p} \frac{1}{s-a}
-            \end{align}
+    \item From Problem 10,
+          \begin{align}
+              \Lap \{f\}                        & = \frac{k}{s}\ (1 - e^{-cs}) \\
+              f(t)                              & = \color{y_h}
+              \begin{dcases}
+                  0 & t \leq 2 \\
+                  1 & t > 2    \\
+              \end{dcases}                                                    \\
+              \int_{c}^{\infty} ke^{-st}\ \dl t & = \infint ke^{-st}\ \dl t
+              - \int_{0}^{c} ke^{-st}\ \dl t                                   \\
+              \Lap\{k\} - \Lap\{f\}             & = \frac{ke^{-cs}}{s}         \\
+              k                                 & = 1 \qquad \qquad c = 2      \\
+              \Lap\{f_1\}                       & = \frac{e^{-2s}}{s}
+          \end{align}
+    \item Starting from the hyperbolic functions,
+          \begin{align}
+              e^{at}         & = \color{y_h}\frac{\cosh(at) + \sinh(at)}{2}      \\
+              \Lap\{e^{at}\} & = \frac{\Lap\{\cosh(at)\} + \Lap\{\sinh(at)\}}{2} \\
+                             & = \frac{s+a}{s^2 - a^2}                           \\
+                             & = \color{y_p} \frac{1}{s-a}
+          \end{align}
 
-      \item For the function $ \exp(t^2) $,
-            \begin{align}
-                  f(t)   & = \exp(t^2)   \\
-                  |f(t)| & = |\exp(t^2)| \\
-                  \text{Suppose} \quad |\exp(t^2)| \leq M\exp(kt)
-            \end{align}
-            for all $ t \geq 0 $ given $ k, M $ are some constants. This requires
-            $ t^2 \leq kt $ for all $ k \geq 0 $. No such $ k $ exists by the definition
-            of power law functions. So, this assumption is incorrect.
+    \item For the function $ \exp(t^2) $,
+          \begin{align}
+              f(t)   & = \exp(t^2)   \\
+              |f(t)| & = |\exp(t^2)| \\
+              \text{Suppose} \quad |\exp(t^2)| \leq M\exp(kt)
+          \end{align}
+          for all $ t \geq 0 $ given $ k, M $ are some constants. This requires
+          $ t^2 \leq kt $ for all $ k \geq 0 $. No such $ k $ exists by the definition
+          of power law functions. So, this assumption is incorrect.
 
-      \item Functions which go to $ \pm \infty $ such as $ 1/x,\ \tan(x)$ do not have
-            Laplace transforms as the integral diverges.
+    \item Functions which go to $ \pm \infty $ such as $ 1/x,\ \tan(x)$ do not have
+          Laplace transforms as the integral diverges.
 
-      \item For $ a = -1/2 $,
-            \begin{align}
-                  f(t)         & = \color{y_h} t^{-1/2}                    \\
-                  \Lap\{f(t)\} & = \frac{\Gamma(1/2)}{s^{1/2}}             \\
-                               & = \color{y_p} \frac{\sqrt{\pi}}{\sqrt{s}}
-            \end{align}
-            This function is not defined for $ t=0 $ and therefore, does not meet the
-            requirements of the existence theorem in the text. This means that the
-            theorem provides sufficient but not necessary conditions.
+    \item For $ a = -1/2 $,
+          \begin{align}
+              f(t)         & = \color{y_h} t^{-1/2}                    \\
+              \Lap\{f(t)\} & = \frac{\Gamma(1/2)}{s^{1/2}}             \\
+                           & = \color{y_p} \frac{\sqrt{\pi}}{\sqrt{s}}
+          \end{align}
+          This function is not defined for $ t=0 $ and therefore, does not meet the
+          requirements of the existence theorem in the text. This means that the
+          theorem provides sufficient but not necessary conditions.
 
-      \item For some positive scalar consant $ c $, let $ u = ct $
-            \begin{align}
-                  \Lap\{f(ct)\}          & = \infint e^{-st}f(ct)\ \dl t               \\
-                                         & = \frac{1}{c}\infint \exp
-                  \left( \frac{-su}{c} \right) f(u)\ \dl u                             \\
-                                         & = \color{y_p}\frac{1}{c}\ F(s/c)            \\
-                  \Lap\{\cos(\omega t)\} & = \frac{1}{\omega} \left[ \frac{(s/\omega)}
-                  {(s/\omega)^2 + 1} \right]                                           \\
-                                         & = \color{y_p} \frac{s}{s^2 + \omega^2}
-            \end{align}
+    \item For some positive scalar consant $ c $, let $ u = ct $
+          \begin{align}
+              \Lap\{f(ct)\}          & = \infint e^{-st}f(ct)\ \dl t               \\
+                                     & = \frac{1}{c}\infint \exp
+              \left( \frac{-su}{c} \right) f(u)\ \dl u                             \\
+                                     & = \color{y_p}\frac{1}{c}\ F(s/c)            \\
+              \Lap\{\cos(\omega t)\} & = \frac{1}{\omega} \left[ \frac{(s/\omega)}
+              {(s/\omega)^2 + 1} \right]                                           \\
+                                     & = \color{y_p} \frac{s}{s^2 + \omega^2}
+          \end{align}
 
-      \item To prove the inverse Laplace transform is linear,
-            \begin{align}
-                  \Lap^{-1}\{\Lap\{af(t) + bg(t)\}\} & = \Lap^{-1}\{a \Lap\{f(t)\}
-                  + b \Lap\{g(t)\}\}                                                   \\
-                                                     & =\Lap^{-1}\{a\ F(s) + b\ G(s)\} \\
-                  a\ f(t) + b\ g(t)                  & = a \Lap^{-1}\{F(s)\} +
-                  b \Lap^{-1}\{G(s)\}
-            \end{align}
-            Since the two RHS are equal, $ \Lap^{-1} $ is linear.
+    \item To prove the inverse Laplace transform is linear,
+          \begin{align}
+              \Lap^{-1}\{\Lap\{af(t) + bg(t)\}\} & = \Lap^{-1}\{a \Lap\{f(t)\}
+              + b \Lap\{g(t)\}\}                                                   \\
+                                                 & =\Lap^{-1}\{a\ F(s) + b\ G(s)\} \\
+              a\ f(t) + b\ g(t)                  & = a \Lap^{-1}\{F(s)\} +
+              b \Lap^{-1}\{G(s)\}
+          \end{align}
+          Since the two RHS are equal, $ \Lap^{-1} $ is linear.
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{0.2s + 1.8}{s^2 + 3.24} \\
-                                    & = \frac{(0.2)s + (1)1.8}{s^2 + 1.8^2}       \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} 0.2\cos(1.8 t) + \sin(1.8 t)
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{0.2s + 1.8}{s^2 + 3.24} \\
+                                & = \frac{(0.2)s + (1)1.8}{s^2 + 1.8^2}       \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} 0.2\cos(1.8 t) + \sin(1.8 t)
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{5s + 1}{s^2 - 25}   \\
-                                    & = \frac{(5)s + (0.2)5}{s^2 - 5^2}       \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} 5\cosh(5t) + 0.2\sinh(5t)
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{5s + 1}{s^2 - 25}   \\
+                                & = \frac{(5)s + (0.2)5}{s^2 - 5^2}       \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} 5\cosh(5t) + 0.2\sinh(5t)
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{s}{(Ls)^2 + (n\pi)^2} \\
-                                    & = \frac{s(L^{-2})}{s^2 + (n\pi/L)^2}      \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} \frac{1}{L^2}\ \cos\left(
-                  \frac{n\pi}{L}\ t \right)
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{s}{(Ls)^2 + (n\pi)^2} \\
+                                & = \frac{s(L^{-2})}{s^2 + (n\pi/L)^2}      \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} \frac{1}{L^2}\ \cos\left(
+              \frac{n\pi}{L}\ t \right)
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{1}{(s+\sqrt{2})(s-\sqrt{3})} \\
-                                    & = \frac{p_1}{(s+\sqrt{2})}
-                  + \frac{p_2}{(s-\sqrt{3})}                                           \\
-                  p_1 + p_2         & = 0 \qquad\qquad -\sqrt{3}p_1 + \sqrt{2}p_2 = 1  \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} \frac{-e^{-\sqrt{2}t}
-                  + e^{\sqrt{3}t}}{\sqrt{2}+\sqrt{3}}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{1}{(s+\sqrt{2})(s-\sqrt{3})} \\
+                                & = \frac{p_1}{(s+\sqrt{2})}
+              + \frac{p_2}{(s-\sqrt{3})}                                           \\
+              p_1 + p_2         & = 0 \qquad\qquad -\sqrt{3}p_1 + \sqrt{2}p_2 = 1  \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} \frac{-e^{-\sqrt{2}t}
+              + e^{\sqrt{3}t}}{\sqrt{2}+\sqrt{3}}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{12}{s^4} - \frac{228}{s^6} \\
-                                    & = \frac{(2)3!}{s^4}
-                  - \frac{5!}{s^6}\ \frac{228}{120}                                  \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} 2t^2 - 1.9t^5
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{12}{s^4} - \frac{228}{s^6} \\
+                                & = \frac{(2)3!}{s^4}
+              - \frac{5!}{s^6}\ \frac{228}{120}                                  \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} 2t^2 - 1.9t^5
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{4s + 32}{s^2 - 16} \\
-                                    & = \frac{(4)s + (8)4}{s^2 - 4^2}        \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} 4\cosh(4t) + 8\sinh(4t)
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{4s + 32}{s^2 - 16} \\
+                                & = \frac{(4)s + (8)4}{s^2 - 4^2}        \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} 4\cosh(4t) + 8\sinh(4t)
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{s + 10}{s^2 - s - 2} \\
-                                    & = \frac{s+10}{(s-2)(s+1)}                \\
-                                    & = \frac{p_1}{(s-2)} + \frac{p_2}{(s+1)}  \\
-                  p_1 + p_2         & = 1 \qquad\qquad p_1 - 2p_2 = 10         \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} 4e^{2t} - 3e^{-t}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{s + 10}{s^2 - s - 2} \\
+                                & = \frac{s+10}{(s-2)(s+1)}                \\
+                                & = \frac{p_1}{(s-2)} + \frac{p_2}{(s+1)}  \\
+              p_1 + p_2         & = 1 \qquad\qquad p_1 - 2p_2 = 10         \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} 4e^{2t} - 3e^{-t}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{1}{(s+a)(s+b)}            \\
-                                    & = \frac{p_1}{(s+a)} + \frac{p_2}{(s+b)}       \\
-                  p_1 + p_2         & = 0 \qquad\qquad bp_1 + ap_2 = 1              \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} \frac{e^{-at} - e^{-bt}}{(b-a)}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{1}{(s+a)(s+b)}            \\
+                                & = \frac{p_1}{(s+a)} + \frac{p_2}{(s+b)}       \\
+              p_1 + p_2         & = 0 \qquad\qquad bp_1 + ap_2 = 1              \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} \frac{e^{-at} - e^{-bt}}{(b-a)}
+          \end{align}
 
-      \item To find the Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} t^2e^{-3t}           \\
-                  \Lap\{f(t)\} & = \Lap\{t^2\} \qquad
-                  \text{with}\quad s \rightarrow s+3                \\
-                               & = \color{y_p} \frac{2!}{(s+3)^{3}}
-            \end{align}
+    \item To find the Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} t^2e^{-3t}           \\
+              \Lap\{f(t)\} & = \Lap\{t^2\} \qquad
+              \text{with}\quad s \to s+3                        \\
+                           & = \color{y_p} \frac{2!}{(s+3)^{3}}
+          \end{align}
 
-      \item To find the Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} ke^{-at}\cos(\omega t)            \\
-                  \Lap\{f(t)\} & = \Lap\{k\cos(\omega t)\} \qquad
-                  \text{with}\quad s \rightarrow s+a                             \\
-                               & = \color{y_p} \frac{k(s+a)}{(s+a)^2 + \omega^2}
-            \end{align}
+    \item To find the Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} ke^{-at}\cos(\omega t)            \\
+              \Lap\{f(t)\} & = \Lap\{k\cos(\omega t)\} \qquad
+              \text{with}\quad s \to s+a                                     \\
+                           & = \color{y_p} \frac{k(s+a)}{(s+a)^2 + \omega^2}
+          \end{align}
 
-      \item To find the Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} 0.5e^{-4.5t}\sin(2\pi t) \\
-                  \Lap\{f(t)\} & = \Lap\{0.5\sin(2\pi t)\} \qquad
-                  \text{with}\quad s \rightarrow s+4.5                  \\
-                               & = \color{y_p} \frac{0.5 \cdot 2\pi}
-                  {(s+4.5)^2 + 4\pi^2}
-            \end{align}
+    \item To find the Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} 0.5e^{-4.5t}\sin(2\pi t) \\
+              \Lap\{f(t)\} & = \Lap\{0.5\sin(2\pi t)\} \qquad
+              \text{with}\quad s \to s+4.5                          \\
+                           & = \color{y_p} \frac{0.5 \cdot 2\pi}
+              {(s+4.5)^2 + 4\pi^2}
+          \end{align}
 
-      \item To find the Laplace transform,
-            \begin{align}
-                  f(t)         & = \color{y_h} \sinh t \cos t                         \\
-                  \Lap\{f(t)\} & = \Lap\{0.5e^{t}\cos(t)\} - \Lap\{0.5e^{-t}\cos(t)\} \\
-                               & = \frac{0.5(s-1)}{(s-1)^2 + 1}
-                  - \frac{0.5(s+1)}{(s+1)^2 + 1}                                      \\
-                               & = 0.5\left[ \frac{(s-1)(s^2+2s+2)
-                  - (s+1)(s^2 - 2s + 2)} {(s^2 - 2s + 2)(s^2 + 2s + 2)} \right]       \\
-                               & = \color{y_p}\frac{s^2 - 2}{s^4 + 4}
-            \end{align}
+    \item To find the Laplace transform,
+          \begin{align}
+              f(t)         & = \color{y_h} \sinh t \cos t                         \\
+              \Lap\{f(t)\} & = \Lap\{0.5e^{t}\cos(t)\} - \Lap\{0.5e^{-t}\cos(t)\} \\
+                           & = \frac{0.5(s-1)}{(s-1)^2 + 1}
+              - \frac{0.5(s+1)}{(s+1)^2 + 1}                                      \\
+                           & = 0.5\left[ \frac{(s-1)(s^2+2s+2)
+              - (s+1)(s^2 - 2s + 2)} {(s^2 - 2s + 2)(s^2 + 2s + 2)} \right]       \\
+                           & = \color{y_p}\frac{s^2 - 2}{s^4 + 4}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{\pi}{(s+\pi)^2} \\
-                                    & = \pi\ \frac{1}{s^2}
-                  \qquad \text{with} \qquad s \rightarrow s+\pi           \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} \pi t\ e^{-\pi t}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{\pi}{(s+\pi)^2} \\
+                                & = \pi\ \frac{1}{s^2}
+              \qquad \text{with} \qquad s \to s+\pi                   \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} \pi t\ e^{-\pi t}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{6}{(s+1)^3} \\
-                                    & = 3\ \frac{2!}{s^3}
-                  \qquad \text{with} \qquad s \rightarrow s+1         \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} 3t^2\ e^{-t}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{6}{(s+1)^3} \\
+                                & = 3\ \frac{2!}{s^3}
+              \qquad \text{with} \qquad s \to s+1                 \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} 3t^2\ e^{-t}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{21}{(s+\sqrt{2})^4}      \\
-                                    & = \frac{21}{6}\ \frac{3!}{s^4}
-                  \qquad \text{with} \qquad s \rightarrow s+\sqrt{2}               \\
-                  \Lap^{-1}\{F(s)\} & = \color{y_h} \frac{7t^3}{2}\ e^{-\sqrt{2}t}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{21}{(s+\sqrt{2})^4}      \\
+                                & = \frac{21}{6}\ \frac{3!}{s^4}
+              \qquad \text{with} \qquad s \to s+\sqrt{2}                       \\
+              \Lap^{-1}\{F(s)\} & = \color{y_h} \frac{7t^3}{2}\ e^{-\sqrt{2}t}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{4}{s^2 - 2s - 3} \\
-                                    & = \frac{4}{(s-1)^2 - 2^2}            \\
-                                    & = \frac{(2)2}{s^2 - 2^2}
-                  \qquad \text{with} \qquad s \rightarrow s-1              \\
-                  \Lap^{-1}\{F(s)\} & = 2\sinh(2t)\ e^{t}                  \\
-                                    & = \color{y_h} e^{3t} - e^{-t}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{4}{s^2 - 2s - 3} \\
+                                & = \frac{4}{(s-1)^2 - 2^2}            \\
+                                & = \frac{(2)2}{s^2 - 2^2}
+              \qquad \text{with} \qquad s \to s-1                      \\
+              \Lap^{-1}\{F(s)\} & = 2\sinh(2t)\ e^{t}                  \\
+                                & = \color{y_h} e^{3t} - e^{-t}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{\pi}
-                  {s^2 + 10\pi s + 24\pi^2}                                    \\
-                                    & = \frac{\pi}{(s+5\pi)^2 - \pi^2}         \\
-                                    & = \frac{\pi}{s^2 - \pi^2}
-                  \qquad \text{with} \qquad s \rightarrow s+5\pi               \\
-                  \Lap^{-1}\{F(s)\} & =  \color{y_h} \sinh(\pi t)\ e^{-5\pi t}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{\pi}
+              {s^2 + 10\pi s + 24\pi^2}                                    \\
+                                & = \frac{\pi}{(s+5\pi)^2 - \pi^2}         \\
+                                & = \frac{\pi}{s^2 - \pi^2}
+              \qquad \text{with} \qquad s \to s+5\pi                       \\
+              \Lap^{-1}\{F(s)\} & =  \color{y_h} \sinh(\pi t)\ e^{-5\pi t}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{a_0}{(s+1)}
-                  + \frac{a_1}{(s+1)^2} + \frac{a_2}{(s+1)^3}                   \\
-                                    & = \frac{a_0}{s} + \frac{a_1}{s^2}
-                  + \frac{a_2}{s^3} \qquad \text{with} \qquad s \rightarrow s+1 \\
-                  \Lap^{-1}\{F(s)\} & =  \color{y_h} \left[
-                        a_0 + a_1t + \frac{a_2t^2}{2!}  \right]e^{-t}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{a_0}{(s+1)}
+              + \frac{a_1}{(s+1)^2} + \frac{a_2}{(s+1)^3}           \\
+                                & = \frac{a_0}{s} + \frac{a_1}{s^2}
+              + \frac{a_2}{s^3} \qquad \text{with} \qquad s \to s+1 \\
+              \Lap^{-1}\{F(s)\} & =  \color{y_h} \left[
+                  a_0 + a_1t + \frac{a_2t^2}{2!}  \right]e^{-t}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{2s-1}
-                  {s^2 - 6s + 18}                                    \\
-                                    & = \frac{2(s-3)}{(s-3)^2 + 3^2}
-                  + \frac{5}{3}\ \frac{3}{(s-3)^2 + 3^2}             \\
-                                    & = \frac{2s}{s^2 + 3^2}
-                  + \frac{5}{3}\ \frac{3}{s^2 + 3^2}
-                  \qquad \text{with} \qquad s \rightarrow s-3        \\
-                  \Lap^{-1}\{F(s)\} & =  \color{y_h} \left[2\cos(3t)
-                        + \frac{5}{3}\sin(3t)\right]\ e^{3t}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{2s-1}
+              {s^2 - 6s + 18}                                    \\
+                                & = \frac{2(s-3)}{(s-3)^2 + 3^2}
+              + \frac{5}{3}\ \frac{3}{(s-3)^2 + 3^2}             \\
+                                & = \frac{2s}{s^2 + 3^2}
+              + \frac{5}{3}\ \frac{3}{s^2 + 3^2}
+              \qquad \text{with} \qquad s \to s-3                \\
+              \Lap^{-1}\{F(s)\} & =  \color{y_h} \left[2\cos(3t)
+                  + \frac{5}{3}\sin(3t)\right]\ e^{3t}
+          \end{align}
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{a(s+k) + b\pi}
-                  {(s+k)^2 + \pi^2}                                      \\
-                                    & = \frac{as + b\pi}{s^2 + \pi^2}
-                  \qquad \text{with} \qquad s \rightarrow s+k            \\
-                  \Lap^{-1}\{F(s)\} & =  \color{y_h} \left[a\cos(\pi t)
-                        + b\sin(\pi t)\right]\ e^{-kt}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{a(s+k) + b\pi}
+              {(s+k)^2 + \pi^2}                                      \\
+                                & = \frac{as + b\pi}{s^2 + \pi^2}
+              \qquad \text{with} \qquad s \to s+k                    \\
+              \Lap^{-1}\{F(s)\} & =  \color{y_h} \left[a\cos(\pi t)
+                  + b\sin(\pi t)\right]\ e^{-kt}
+          \end{align}
 
 
-      \item To find the inverse Laplace transform,
-            \begin{align}
-                  F(s)              & = \color{y_p} \frac{k_0(s+a) + k_1}
-                  {(s+a)^2}                                               \\
-                                    & = \frac{k_0}{s} + \frac{k_1}{s^2}
-                  \qquad \text{with} \qquad s \rightarrow s+a             \\
-                  \Lap^{-1}\{F(s)\} & =  \color{y_h} [k_0 + k_1 t]\ e^{-at}
-            \end{align}
+    \item To find the inverse Laplace transform,
+          \begin{align}
+              F(s)              & = \color{y_p} \frac{k_0(s+a) + k_1}
+              {(s+a)^2}                                                 \\
+                                & = \frac{k_0}{s} + \frac{k_1}{s^2}
+              \qquad \text{with} \qquad s \to s+a                       \\
+              \Lap^{-1}\{F(s)\} & =  \color{y_h} [k_0 + k_1 t]\ e^{-at}
+          \end{align}
 \end{enumerate}

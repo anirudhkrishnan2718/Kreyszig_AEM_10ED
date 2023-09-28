@@ -1,0 +1,520 @@
+\section{D'Alembert's Solution of the Wave Equation}
+
+\begin{enumerate}
+    \item Speed is defined as the distance traveled per unit time.
+          Consider the change in argument in going from $ t = t_1 $ to $ t = t_2 $,
+          \begin{align}
+              (x + ct_2) - (x + ct_1) & = c(t_2 - t_1)                   &
+              s                       & = \frac{\delta x}{\delta t} = c    \\
+              (x - ct_2) - (x - ct_1) & = c(t_1 - t_2)                   &
+              s                       & = \frac{\delta x}{\delta t} = -c
+          \end{align}
+          Thus, the waveforms $ \phi, \psi $ are moving in opposite directions with the
+          same speed $ c $.
+
+    \item The boundary conditions are,
+          \begin{align}
+              u(0, t) & = 0 \quad \forall \quad t\geq 0 &
+              u(L, t) & = 0 \quad \forall \quad t\geq 0 &
+          \end{align}
+          The effect on the solution is now,
+          \begin{align}
+              u(x, t) & = \frac{f(x + ct) + f(x - ct)}{2}   \\
+              u(0, t) & = 0 = \frac{f(ct) + f(-ct)}{2}    &
+              f(-ct)  & = -f(ct)
+          \end{align}
+          This makes $ f(z) $ an odd function.
+
+    \item From the text,
+          \begin{align}
+              c^2 & = \frac{T}{\rho} = \frac{T \cdot Lg}{W} &
+                  & = \frac{300 \cdot 2 \cdot 9.8}{0.9}       \\
+              c   & = \SI{80.83}{\m\per\s}
+          \end{align}
+
+    \item From the text,
+          \begin{align}
+              \lambda_n & = \frac{c_n\pi}{L} = \frac{80.83 \cdot \pi}{L}\ n &
+              \lambda_n & = 127n
+          \end{align}
+
+    \item Using the direct result for $ u(x, t) $ given zero initial velocity,
+          \begin{align}
+              u(x, t)        & = \frac{f(x + ct) + f(x - ct)}{2}                    &
+              f(x)           & = k \sin(\pi x)                                        \\
+              u(x, t)        & = \frac{k}{2} \Big[\sin(\pi x + \pi ct) + \sin(\pi x
+              - \pi ct)\Big] &
+              u(x, t)        & = k \sin(\pi x) \cos(\pi ct)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(pi * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          title = {$u(x, t)$ for first half period}, Ani,
+                          grid = both, domain = 0:1,
+                          colormap/jet, colorbar,
+                          cycle list = {[samples of colormap = 7]},
+                          samples = 200]
+                      \foreach \k in {0, 1,...,6}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick] {mode(1,\k/6, x)};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the direct result for $ u(x, t) $ given zero initial velocity,
+          \begin{align}
+              u(x, t) & = \frac{f(x + ct) + f(x - ct)}{2}            &
+              f(x)    & = k [1 - \cos(\pi x)]                          \\
+              u(x, t) & = \frac{k}{2} \Big[ 1 - \cos(\pi x + \pi ct)
+              + 1 - \cos(\pi x - \pi ct) \Big]                         \\
+              u(x, t) & = k [1 - \cos(\pi x) \cos(\pi ct)]
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = 1 - cos(pi * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          title = {$u(x, t)$ for first half period}, Ani,
+                          grid = both, domain = 0:1,
+                          colormap/jet, colorbar,
+                          cycle list = {[samples of colormap = 7]},
+                          samples = 200]
+                      \foreach \k in {0, 1,...,6}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick] {mode(1,\k/6, x)};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the direct result for $ u(x, t) $ given zero initial velocity,
+          \begin{align}
+              u(x, t) & = \frac{f(x + ct) + f(x - ct)}{2}         &
+              f(x)    & = k [\sin(2\pi x)]                          \\
+              u(x, t) & = \frac{k}{2} \Big[\sin(2\pi x + 2\pi ct)
+              + \sin(2\pi x - 2\pi ct) \Big]                        \\
+              u(x, t) & = k [\sin(2\pi x) \cos(2\pi ct)]
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(2 * pi * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          title = {$u(x, t)$ for first half period}, Ani,
+                          grid = both, domain = 0:1,
+                          colormap/jet, colorbar,
+                          cycle list = {[samples of colormap = 7]},
+                          samples = 200]
+                      \foreach \k in {0, 1,...,6}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick] {mode(1,\k/6, x)};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the direct result for $ u(x, t) $ given zero initial velocity,
+          \begin{align}
+              u(x, t) & = \frac{f(x + ct) + f(x - ct)}{2} \\
+              f(x)    & = kx(1-x)                         \\
+              f^*(x)  & = \begin{dcases}
+                              kx(1+x) & \quad x \in [-1, 0] \\
+                              kx(1-x) & \quad x \in [0, 1]
+                          \end{dcases}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[ declare function={
+                              func(\x)= and(\x>= -1, \x<0) * (\x * (1 + \x)) +
+                              and(\x>=0,  \x<=1) * (\x * (1 - \x));
+                              u(\x,\t) = 0.5 * (func(mod(\x - \t, 2) - 1) +
+                              func(mod(\x + \t, 2) - 1));
+                          }]
+                  \begin{axis}[
+                          title = {$u(x, t)$ for first half period}, Ani,
+                          grid = both, domain = 3:4,
+                          xtick = {3,3.2,3.4,3.6,3.8,4},
+                          xticklabels = {0,0.2,0.4,0.6,0.8,1},
+                          colormap/jet, colorbar,
+                          cycle list = {[samples of colormap = 7]},
+                          samples = 200]
+                      \foreach \k in {0, 1,...,6}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick] {u(x,\k/6)};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          In the above plot, the odd periodic extension of $ f $ is found using
+          \begin{align}
+              f(-x)   & = -f(x)                                          \\
+              F(x) \  & \text{defined in}\ [-L, L]                       \\
+              u(x, t) & = \frac{F\Big(\text{modulo}(x + ct, 2L) - L\Big)
+                  + F\Big(\text{modulo}(x  - ct, 2L) - L\Big)}{2}
+          \end{align}
+          This becomes an infitely repeating periodic odd function with period $ 2L $.
+
+    \item Transforming to normal form,
+          \begin{align}
+              u_{xx} + 4u_{yy} & = 0                   &
+              A                & = 1,\ B = 0,\ C = 4     \\
+              AC - B^2         & > 0                   &
+                               & \text{Elliptic}         \\
+              y'^2 + 4         & = 0                   &
+              y'               & = \{-2i, 2i\}           \\
+              \psi(x, y) = v   & = \color{y_h} y + 2ix &
+              \phi(x, y) = w   & = \color{y_p} y - 2ix
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $,
+          \begin{align}
+              u_{x}  & = u_v\ v_x + u_w\ w_x                                   &
+                     & = 2i u_v - 2i u_w                                         \\
+              u_{xx} & = 2i[u_{vv} - u_{wv}] (2i) - 2i [u_{vw} - u_{ww}] (-2i) &
+                     & = -4 [u_{vv} + u_{ww}]                                    \\
+              u_{y}  & = u_v\ v_y + u_w\ w_y                                   &
+                     & = u_v + u_w                                               \\
+              u_{yy} & = u_{vv} + 2u_{vw} + u_{ww}
+          \end{align}
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g $ is,
+          \begin{align}
+              u_{xx} + 4u_{yy}       & = 0                       &
+              \implies \qquad u_{vw} & = 0                         \\
+              u(v, w)                & = f(v) + g(w)             &
+              u(x, y)                & = f(y + 2ix) + g(y - 2ix)
+          \end{align}
+
+    \item Transforming to normal form,
+          \begin{align}
+              u_{xx} - 16u_{yy} & = 0                   &
+              A                 & = 1,\ B = 0,\ C = -16   \\
+              AC - B^2          & < 0                   &
+                                & \text{Hyperbolic}       \\
+              y'^2 -16          & = 0                   &
+              y'                & = \{-4, 4\}             \\
+              \psi(x, y) = v    & = \color{y_h} y + 4x  &
+              \phi(x, y) = w    & = \color{y_p} y - 4x
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $,
+          \begin{align}
+              u_{x}  & = u_v\ v_x + u_w\ w_x                               &
+                     & = 4 u_v - 4 u_w                                       \\
+              u_{xx} & = 4[u_{vv} - u_{wv}] (4) + 4 [u_{vw} - u_{ww}] (-4) &
+                     & = 16 [u_{vv} + u_{ww} - 2u_{vw}]                      \\
+              u_{y}  & = u_v\ v_y + u_w\ w_y                               &
+                     & = u_v + u_w                                           \\
+              u_{yy} & = u_{vv} + 2u_{vw} + u_{ww}
+          \end{align}
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g $ is,
+          \begin{align}
+              u_{xx} - 16u_{yy}      & = 0                     &
+              \implies \qquad u_{vw} & = 0                       \\
+              u(v, w)                & = f(v) + g(w)           &
+              u(x, y)                & = f(y + 4x) + g(y - 4x)
+          \end{align}
+
+    \item Transforming to normal form,
+          \begin{align}
+              u_{xx} + 2u_{xy} + u_{yy} & = 0                 &
+              A                         & = 1,\ B = 1,\ C = 1   \\
+              AC - B^2                  & = 0                 &
+                                        & \text{Parabolic}      \\
+              y'^2 - 2y' + 1            & = 0                 &
+              y'                        & = \{1, 1\}            \\
+              \psi(x, y) = v            & = \color{y_h} x     &
+              \phi(x, y) = w            & = \color{y_p} y - x
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $,
+          \begin{align}
+              u_{x}  & = u_v\ v_x + u_w\ w_x                             &
+                     & = u_v - u_w                                         \\
+              u_{xx} & = [u_{vv} - u_{wv}] (1) +  [u_{vw} - u_{ww}] (-1) &
+                     & = u_{vv} + u_{ww} - 2u_{vw}                         \\
+              u_{y}  & = u_v\ v_y + u_w\ w_y                             &
+                     & = u_w                                               \\
+              u_{yy} & = u_{ww}                                            \\
+              u_{xy} & = u_{ww}(-1) + u_{wv}(1)                          &
+                     & = - u_{ww} + u_{vw}
+          \end{align}
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g $ is,
+          \begin{align}
+              u_{xx} + 2u_{xy} + u_{yy} & = 0                           &
+              u_{vv}                    & = 0                             \\
+              u(v, w)                   & = v \cdot f(w) + g(w)         &
+              u(x, y)                   & = x \cdot f(y - x) + g(y - x)
+          \end{align}
+
+    \item Transforming to normal form,
+          \begin{align}
+              u_{xx} - 2u_{xy} + u_{yy} & = 0                  &
+              A                         & = 1,\ B = -1,\ C = 1   \\
+              AC - B^2                  & = 0                  &
+                                        & \text{Parabolic}       \\
+              y'^2 + 2y' + 1            & = 0                  &
+              y'                        & = \{-1, -1\}           \\
+              \psi(x, y) = v            & = \color{y_h} x      &
+              \phi(x, y) = w            & = \color{y_p} y + x
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $,
+          \begin{align}
+              u_{x}  & = u_v\ v_x + u_w\ w_x                            &
+                     & = u_v + u_w                                        \\
+              u_{xx} & = [u_{vv} + u_{wv}] (1) +  [u_{vw} + u_{ww}] (1) &
+                     & = u_{vv} + u_{ww} + 2u_{vw}                        \\
+              u_{y}  & = u_v\ v_y + u_w\ w_y                            &
+                     & = u_w                                              \\
+              u_{yy} & = u_{ww}                                           \\
+              u_{xy} & = u_{wv}(1) + u_{ww}(1)                          &
+                     & = u_{ww} + u_{vw}
+          \end{align}
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g $ is,
+          \begin{align}
+              u_{xx} - 2u_{xy} + u_{yy} & = 0                           &
+              u_{vv}                    & = 0                             \\
+              u(v, w)                   & = v \cdot f(w) + g(w)         &
+              u(x, y)                   & = x \cdot f(y + x) + g(y + x)
+          \end{align}
+
+    \item Transforming to normal form,
+          \begin{align}
+              u_{xx} + 5u_{xy} + 4u_{yy} & = 0                   &
+              A                          & = 1,\ B = 2.5,\ C = 4   \\
+              AC - B^2                   & < 0                   &
+                                         & \text{Hyperbolic}       \\
+              y'^2 - 5y' + 4             & = 0                   &
+              y'                         & = \{4, 1\}              \\
+              \psi(x, y) = v             & = \color{y_h} y - 4x  &
+              \phi(x, y) = w             & = \color{y_p} y - x
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $,
+          \begin{align}
+              u_{x}  & = u_v\ v_x + u_w\ w_x                           &
+                     & = -4u_v - u_w                                     \\
+              u_{xx} & = 4\ [4u_{vv} + u_{wv}] + [4u_{vw} + u_{ww}]    &
+                     & = 16u_{vv} + u_{ww} + 8u_{vw}                     \\
+              u_{y}  & = u_v\ v_y + u_w\ w_y                           &
+                     & = u_v + u_w                                       \\
+              u_{yy} & = u_{vv} + 2u_{wv} + u_{ww}                       \\
+              u_{xy} & = (-4)(u_{vv} + u_{wv}) + (-1)(u_{vw} + u_{ww}) &
+                     & = -4 u_{vv} - u_{ww} - 5u_{vw}
+          \end{align}
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g $ is,
+          \begin{align}
+              u_{xx} + 5u_{xy} + 4u_{yy} & = 0                    &
+              u_{vw}                     & = 0                      \\
+              u(v, w)                    & = f(v) + g(w)          &
+              u(x, y)                    & = f(y - x) + g(y - 4x)
+          \end{align}
+
+    \item Transforming to normal form,
+          \begin{align}
+              x\ u_{xy} - y\ u_{yy} & = 0                    &
+              A                     & = 0,\ B = x/2,\ C = -y   \\
+              AC - B^2              & = -\frac{x^2}{4} < 0   &
+                                    & \text{Hyperbolic}        \\
+              -x\ y' - y            & = 0                    &
+              y                     & = \frac{c}{x}            \\
+              \psi(x, y) = v        & = \color{y_h} x        &
+              \phi(x, y) = w        & = \color{y_p} yx
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $,
+          \begin{align}
+              u_{x}  & = u_v\ v_x + u_w\ w_x           &
+                     & = u_v + y\ u_w                    \\
+              u_{xy} & = (u_{vw} + y\ u_{ww})(x) + u_w &
+                     & = x\ u_{vw} + xy\ u_{ww} + u_w    \\
+              u_{y}  & = u_v\ v_y + u_w\ w_y           &
+                     & = x\ u_w                          \\
+              u_{yy} & = x^2\ u_{ww}
+          \end{align}
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g, h $ is,
+          \begin{align}
+              x\ u_{xy} - y\ u_{yy} & = 0                      &
+              x^2\ u_{vw} + x\ u_w  & = 0                        \\
+              u_w                   & \equiv z                 &
+              z + v\ z_v            & = 0                        \\
+              \ln(z)                & = \ln(-v) + f(w)         &
+              z = u_w               & = \frac{f(w)}{v}           \\
+              u(v, w)               & = \frac{g(w)}{v} + h(v)  &
+              u(x, y)               & = \frac{g(xy)}{x} + h(x)
+          \end{align}
+
+    \item Transforming to normal form,
+          \begin{align}
+              x\ u_{xx} - y\ u_{xy}   & = 0                    &
+              A                       & = x,\ B = -y/2,\ C = 0   \\
+              AC - B^2                & = \frac{y^2}{4} > 0    &
+                                      & \text{Elliptic}          \\
+              x\ y'^2 + y\ y'         & = 0                    &
+              y'\ \Big[ xy' + y \Big] & = 0                      \\
+              \psi(x, y) = v          & = \color{y_h} y        &
+              \phi(x, y) = w          & = \color{y_p} xy
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $,
+          \begin{align}
+              u_{x}  & = u_v\ v_x + u_w\ w_x           &
+                     & = y\ u_w                          \\
+              u_{xy} & = (u_{wv} + x\ u_{ww})(y) + u_w &
+                     & = y\ u_{vw} + xy\ u_{ww} + u_w    \\
+              u_{xx} & = y^2\ u_{ww}
+          \end{align}
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g, h $ is,
+          \begin{align}
+              x\ u_{xx} - y\ u_{xy}  & = 0                      &
+              - y^2\ u_{vw} - y\ u_w & = 0                        \\
+              u_w                    & \equiv z                 &
+              z + v\ z_v             & = 0                        \\
+              \ln(z)                 & = \ln(-v) + f(w)         &
+              z                      & = u_w = \frac{f(w)}{v}     \\
+              u(v, w)                & = \frac{g(w)}{v} + h(v)  &
+              u(x, y)                & = \frac{g(xy)}{y} + h(y)
+          \end{align}
+
+    \item Transforming to normal form,
+          \begin{align}
+              u_{xx} + 2u_{xy} + 10u_{yy} & = 0                         &
+              A                           & = 1,\ B = 1,\ C = 10          \\
+              AC - B^2                    & > 0                         &
+                                          & \text{Elliptic}               \\
+              y'^2 - 2y' + 10             & = 0                         &
+              y'                          & = \{1 \pm 3i\}                \\
+              \psi(x, y) = v              & = \color{y_h} y - (1 + 3i)x &
+              \phi(x, y) = w              & = \color{y_p} y - (1 - 3i)x
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $, with $ z_1, z_2 $ for the complex
+          numbers.
+          \begin{align}
+              u_{x}  & = u_v\ v_x + u_w\ w_x                                 \\
+                     & = -\lambda_1 u_v - \lambda_2 u_w                      \\
+              u_{xx} & = (-\lambda_1)\ [-\lambda_1 u_{vv} - \lambda_2u_{wv}]
+              + (-\lambda_2)\ [-\lambda_1 u_{vw} - \lambda_2 u_{ww}]         \\
+                     & = \lambda_1^2\ u_{vv} + \lambda_2^2\ u_{ww} +
+              2\lambda_1 \lambda_2\ u_{vw}                                   \\
+              u_{y}  & = u_v\ v_y + u_w\ w_y                                 \\
+                     & = u_v + u_w                                           \\
+              u_{yy} & = u_{vv} + 2u_{wv} + u_{ww}                           \\
+              u_{xy} & = -\lambda_1 u_{vv} - (\lambda_2 + \lambda_1) u_{wv}
+              -\lambda_2 u_{ww}
+          \end{align}
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g $ is,
+          \begin{align}
+              u_{vw}  & = 0            \\
+              u(v, w) & = f(v) + g(w)  \\
+              u(x, y) & = f(y) + g(3x)
+          \end{align}
+
+    \item Transforming to normal form,
+          \begin{align}
+              u_{xx} - 4u_{xy} + 5u_{yy} & = 0                         &
+              A                          & = 1,\ B = -2,\ C = 5          \\
+              AC - B^2                   & > 0                         &
+                                         & \text{Elliptic}               \\
+              y'^2 + 4y' + 5             & = 0                         &
+              y'                         & = \{-2 \pm i\}                \\
+              \psi(x, y) = v             & = \color{y_h} y - (2 + i) x &
+              \phi(x, y) = w             & = \color{y_p} y - (2 - i) x
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $, follows the exact procedure as
+          in Problem $ 16 $. \par
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g $ is,
+          \begin{align}
+              u_{vw}  & = 0                                 \\
+              u(v, w) & = f(v) + g(w)                       \\
+              u(x, y) & = f[y - (2 + i)x] + g[y - (2 - i)x]
+          \end{align}
+
+    \item Transforming to normal form,
+          \begin{align}
+              u_{xx} - 6u_{xy} + 9u_{yy} & = 0                  &
+              A                          & = 1,\ B = -3,\ C = 9   \\
+              AC - B^2                   & = 0                  &
+                                         & \text{Parabolic}       \\
+              y'^2 + 6y' + 9             & = 0                  &
+              y'                         & = \{-3, -3\}           \\
+              \psi(x, y) = v             & = \color{y_h} x      &
+              \phi(x, y) = w             & = \color{y_p} y + 3x
+          \end{align}
+          Expressing the PDE in terms of $ (v, w) $, follows the exact procedure as
+          in Problem $ 12 $. \par
+          The PDE in standard form for some sufficiently differentiable functions
+          $ f, g $ is,
+          \begin{align}
+              u_{vv}  & = 0                             \\
+              u(v, w) & = v f(w) + g(w)                 \\
+              u(x, y) & = x \cdot f(y + 3x) + g(y + 3x)
+          \end{align}
+
+    \item The PDE is the same as the transverse vibrations in a string, whose general
+          solution is,
+          \begin{align}
+              \difcp[2] ut & = c^2\ \difcp[2] ux                 \\
+              u(x, t)      & = F(x) \cdot G(t)                   \\
+              F_n(x)       & = a_n \cos(p_n x) + b_n \sin(p_n x) \\
+              G_n(t)       & = A_n\ \cos(p_n\ ct) +
+              A_n^*\ \sin(p_n\ ct) \qquad\qquad \lambda_n = \frac{cn \pi}{L}
+          \end{align}
+          Using the initial conditions provided,
+          \begin{align}
+              F(0)                  & = 0                                  &
+              \implies a_n          & = 0                                    \\
+              F_x(L)                & = 0                                  &
+              \implies \cos(p_n\ L) & = 0                                    \\
+              p_n                   & = \color{y_h}\frac{(2n + 1)\pi}{2L}    \\
+              u_t(x, 0)             & = 0                                  &
+              \implies A_n^*        & = 0                                    \\
+              u(x, 0)               & = f(x)                               &
+              \implies f(x)         & = \iser[n]{0} A_n\ b_n\ \sin(p_n\ x)
+          \end{align}
+          Since this is simply a Fourier sine series for $ f(x) $, the Fourier sine
+          coefficients are equal to $ A_n b_n = C_n $,
+          \begin{align}
+              C_n     & = \color{y_p}
+              \frac{2}{L}\ \int_{0}^{L} f(x)\ \sin(p_n\ x)\ \dl x                    \\
+              u(x, t) & = \color{y_t} \iser[n]{0} (C_n)\ \sin(p_n\ x)\ \cos(p_n\ ct)
+          \end{align}
+
+    \item Tricomi equation,
+          \begin{align}
+              y\ u_{xx} + u_{yy} & = 0                 &
+              A                  & = y,\ B = 0,\ C = 1   \\
+              AC - B^2           & = y
+          \end{align}
+          Mixed type simply means that $ AC - B^2 $ is of varying sign depending on the
+          point in $ xy $ space, which is evident above. Using separation of variables,
+          \begin{align}
+              u(x,y)                            & = F(x) \cdot G(y) \\
+              G \cdot y\ F'' + F \cdot \ddot{G} & = 0
+          \end{align}
+          Here, the primes and dots are differentiation w.r.t $ x $ and $ y $
+          respectively. Equating both to the same constant,
+          \begin{align}
+              -\frac{F''}{F}        & = \frac{\ddot{G}}{yG} = \alpha \\
+              \ddot{G} - \alpha\ yG & = 0
+          \end{align}
+          For simplicity, setting $ \alpha = 1 $ gives the Airy equation.
+\end{enumerate}

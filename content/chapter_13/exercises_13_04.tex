@@ -1,0 +1,625 @@
+\section{Cauchy-Riemann Equations, Laplace's Equation}
+
+\begin{enumerate}
+    \item Deriving the Cauchy-Riemann equations in polar form,
+          \begin{align}
+              f(z)   & = u(r, \theta) + \i\ v(r, \theta) &
+              (x, y) & = (r\cos\theta, r\sin\theta)        \\
+              u_x    & = v_y                             &
+              u_y    & = -v_x
+          \end{align}
+          Using partial differentiation,
+          \begin{align}
+              u_r      & = u_x\ x_r + u_y\ y_r                  &
+              u_\theta & = u_x\ x_\theta + u_y\ y_\theta          \\
+              u_r      & = u_x\ \cos\theta + u_y\ \sin\theta    &
+              u_\theta & = -u_x\ r\sin\theta + u_y\ r\cos\theta   \\
+              v_r      & = v_x\ \cos\theta + v_y\ \sin\theta    &
+              v_\theta & = -v_x\ r\sin\theta + v_y\ r\cos\theta   \\
+          \end{align}
+          Equating after dividing by $ r $,
+          \begin{align}
+              \textcolor{y_h}{u_r} & = u_x \cos\theta + u_y\sin\theta
+              = \frac{v_y\ r\cos\theta - v_x\ r\sin\theta}{r} =
+              \textcolor{y_p}{\frac{v_\theta}{r}}                     \\
+              \textcolor{y_h}{v_r} & = v_x \cos\theta + v_y\sin\theta
+              = \frac{-u_y\ r\cos\theta + u_x\ r\sin\theta}{r} =
+              \textcolor{y_p}{-\frac{u_\theta}{r}}
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not analytic}.
+          \begin{align}
+              f(z) & = \i\ z\bar{z} = 0 + \i\ (x^2 + y^2)   \\
+              u_x  & = 0                                  &
+              u_y  & = 0                                    \\
+              v_x  & = 2x                                 &
+              v_y  & = 2y
+          \end{align}
+
+    \item The function is \textcolor{y_h}{analytic}.
+          \begin{align}
+              f(z) & = e^{-2x}\ [\cos(2y) - \i\ \sin(2y)]   \\
+              u_x  & = -2e^{-2x} \cos(2y)                 &
+              u_y  & = -2e^{-2x} \sin(2y)                   \\
+              v_x  & = 2e^{-2x} \sin(2y)                  &
+              v_y  & = -2e^{-2x} \cos(2y)
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not analytic}.
+          \begin{align}
+              f(z) & = e^{x}\ [\cos(y) - \i\ \sin(y)]   \\
+              u_x  & = e^{x} \cos(y)                  &
+              u_y  & = -e^{x} \sin(y)                   \\
+              v_x  & = -e^{x} \sin(y)                 &
+              v_y  & = -e^{x} \cos(y)
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not analytic}.
+          \begin{align}
+              f(z) & = \Re{(z^2)} - \i\ \Im{(z^2)} &
+              f(z) & = x^2 - y^2 - (2xy)\ \i         \\
+              u_x  & = 2x                          &
+              u_y  & = -2y                           \\
+              v_x  & = -2y                         &
+              v_y  & = -2x
+          \end{align}
+
+    \item The function is \textcolor{y_h}{analytic}.
+          \begin{align}
+              f(z) & = \frac{1}{z - z^5} = \frac{1}{z(z+1)(z-1)(z+\i)(z-\i)}        \\
+                   & = -\frac{1}{z} + \frac{0.25}{z+1} + \frac{0.25}{z-1}
+              + \frac{0.25}{z + \i} + \frac{0.25}{z - \i}                           \\
+                   & = -\frac{x - \i\ y}{x^2 + y^2} + \frac{1}{4}\ \Bigg[
+              \frac{x+1 - \i\ y}{(x+1)^2 + y^2} + \frac{x-1 - \i\ y}{(x-1)^2 + y^2} \\
+                   & + \frac{x - \i\ (y+1)}{x^2 + (y+1)^2}
+                  + \frac{x - \i\ (y-1)}{x^2 + (y-1)^2}\Bigg]
+          \end{align}
+          Finding the first partial derivatives,
+          \begin{align}
+              u_x & = \frac{x^2 - y^2}{[x^2 + y^2]^2} + \frac{1}{4}\ \Bigg[
+                  \frac{y^2 - (x+1)^2}{[(x+1)^2 + y^2]^2}
+              + \frac{y^2 - (x-1)^2}{[(x-1)^2 + y^2]^2}                     \\
+                  & + \frac{(y+1)^2 - x^2}{[x^2 + (y+1)^2]^2}
+              + \frac{(y-1)^2 - x^2}{[x^2 + (y-1)^2]^2}\Bigg]               \\
+              v_x & = \frac{-2xy}{[x^2 + y^2]^2} + \frac{1}{4}\ \Bigg[
+                  \frac{2y(x+1)}{[(x+1)^2 + y^2]^2}
+              + \frac{2y(x-1)}{[(x-1)^2 + y^2]^2}                           \\
+                  & + \frac{2x(y+1)}{[x^2 + (y+1)^2]^2}
+                  + \frac{2x(y-1)}{[x^2 + (y-1)^2]^2}\Bigg]
+          \end{align}
+          Finding the first partial derivatives,
+          \begin{align}
+              u_y & = \frac{2xy}{[x^2 + y^2]^2} - \frac{1}{4}\ \Bigg[
+                  \frac{2y(x+1)}{[(x+1)^2 + y^2]^2}
+              + \frac{2y(x-1)}{[(x-1)^2 + y^2]^2}                           \\
+                  & + \frac{2x(y+1)}{[x^2 + (y+1)^2]^2}
+              + \frac{2x(y-1)}{[x^2 + (y-1)^2]^2}\Bigg]                     \\
+              v_y & = \frac{x^2 - y^2}{[x^2 + y^2]^2} + \frac{1}{4}\ \Bigg[
+                  \frac{y^2 - (x+1)^2}{[(x+1)^2 + y^2]^2}
+              + \frac{y^2 - (x-1)^2}{[(x-1)^2 + y^2]^2}                     \\
+                  & + \frac{(y+1)^2 - x^2}{[x^2 + (y+1)^2]^2}
+                  + \frac{(y-1)^2 - x^2}{[x^2 + (y-1)^2]^2}\Bigg]
+          \end{align}
+
+    \item The function is \textcolor{y_h}{analytic}.
+          \begin{align}
+              f(z)     & = \frac{\i}{z^8}                               &
+              f(z)     & = e^{\i\ \pi/2} \cdot r^{-8}\ e^{-\i\ 8\theta}   \\
+              u        & = r^{-8} \sin(8\theta)                         &
+              v        & = r^{-8} \cos(8\theta)                           \\
+              u_r      & = -8r^{-9} \sin(8\theta)                       &
+              u_\theta & = 8r^{-8} \cos(8\theta)                          \\
+              v_r      & = -8r^{-9} \cos(8\theta)                       &
+              v_\theta & = -8r^{-8} \sin(8\theta)                         \\
+              u_r      & = \frac{1}{r}\ v_\theta                        &
+              v_r      & = \frac{-1}{r}\ u_\theta
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not analytic}.
+          \begin{align}
+              f(z)     & = \Arg{(2\pi z)}                                  &
+              f(z)     & = \Arg{\Big(2\pi r\ e^{\i\ \theta}\Big)} = \theta   \\
+              u_r      & = 0                                               &
+              u_\theta & = 1                                                 \\
+              v_r      & = 0                                               &
+              v_\theta & = 0                                                 \\
+              u_r      & = \frac{1}{r}\ v_\theta                           &
+              v_r      & = \frac{-1}{r}\ u_\theta
+          \end{align}
+
+    \item The function is \textcolor{y_h}{analytic}, barring the points where the
+          denominator is zero.
+          \begin{align}
+              f(z)                 & = \frac{3\pi^2}{z^3 + 4\pi^2 z}
+              = \frac{3\pi^2}{r^3\ e^{\i\ 3\theta} + 4\pi^2 r\ e^{\i\ \theta}}   \\
+              \overline{f(z)}      &
+              = \frac{3\pi^2}{r^3\ e^{-\i\ 3\theta} + 4\pi^2 r\ e^{-\i\ \theta}} \\
+              f_r                  & = -3\pi^2
+              \ \Bigg[ \frac{3r^2 e^{\i\ 3\theta} + 4\pi^2 e^{\i\ \theta}}
+              {(r^3\ e^{\i\ 3\theta} + 4\pi^2 r\ e^{\i\ \theta})^2} \Bigg]       \\
+              \overline{f}_r       & = -3\pi^2
+              \ \Bigg[\frac{3r^2 e^{-\i\ 3\theta} + 4\pi^2 e^{-\i\ \theta}}
+              {(r^3\ e^{-\i\ 3\theta} + 4\pi^2 r\ e^{-\i\ \theta})^2} \Bigg]     \\
+              f_\theta             & = -3\pi^2\ \i
+              \ \Bigg[ \frac{3r^3 e^{\i\ 3\theta} + 4\pi^2r e^{\i\ \theta}}
+              {(r^3\ e^{\i\ 3\theta} + 4\pi^2 r\ e^{\i\ \theta})^2} \Bigg]       \\
+              \overline{f}_\theta  & = 3\pi^2\ \i
+              \ \Bigg[\frac{3r^3 e^{-\i\ 3\theta} + 4\pi^2r e^{-\i\ \theta}}
+              {(r^3\ e^{-\i\ 3\theta} + 4\pi^2 r\ e^{-\i\ \theta})^2} \Bigg]     \\
+              \textcolor{y_h}{u_r} & = \frac{f_r + \bar{f}_r}{2}
+              = \frac{1}{2}\ \Bigg[\frac{f_\theta - \bar{f}_\theta}{r \i}\Bigg]
+              = \color{y_h} \frac{v_\theta}{r}                                   \\
+              \textcolor{y_p}{v_r} & = \frac{f_r - \bar{f}_r}{2\i}
+              = \frac{1}{2\i}\ \Bigg[\frac{f_\theta + \bar{f}_\theta}{r\i}\Bigg]
+              = \color{y_p} -\frac{u_\theta}{r}
+          \end{align}
+          This is a more elegant method of solving Problem $ 6 $.
+
+    \item The function is \textcolor{y_h}{analytic}.
+          \begin{align}
+              f(z)     & = \ln{\abs{z}} + \i\ \Arg{(z)} &
+              f(z)     & = \ln(r) + \i\ \theta            \\
+              u_r      & = \frac{1}{r}                  &
+              u_\theta & = 0                              \\
+              v_r      & = 0                            &
+              v_\theta & = 1                              \\
+              u_x      & = v_y                          &
+              u_y      & = -v_x
+          \end{align}
+
+    \item The function is \textcolor{y_h}{analytic}.
+          \begin{align}
+              f(z) & = \cos x \cosh y - \i\ \sin x \sinh y   \\
+              u_x  & = -\sin x \cosh y                     &
+              u_y  & = \cos x \sinh y                        \\
+              v_x  & = -\cos x \sinh y                     &
+              v_y  & = - \sin x \cosh y                      \\
+              u_x  & = v_y                                 &
+              u_y  & = -v_x
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not harmonic},
+          \begin{align}
+              u(x, y)         & = x^2 + y^2   \\
+              u_{xx}          & = 2         &
+              u_{yy}          & = 2           \\
+              u_{xx} + u_{yy} & \neq 0
+          \end{align}
+
+    \item The function is \textcolor{y_h}{harmonic},
+          \begin{align}
+              u(x, y)         & = xy   \\
+              u_{xx}          & = 0  &
+              u_{yy}          & = 0    \\
+              u_{xx} + u_{yy} & = 0
+          \end{align}
+          Using the Cauchy Riemann equations,
+          \begin{align}
+              v_y     & = u_x = y                     &
+              v_x     & = -u_y = -x                     \\
+              v       & = \frac{y^2}{2} + f(x) + c_1  &
+              v       & = -\frac{x^2}{2} + g(y) + c_2   \\
+              v(x, y) & = \frac{y^2 - x^2}{2}
+          \end{align}
+          The analytic function is, (with $ c $ real)
+          \begin{align}
+              f(z) & = \frac{1}{2}\ [2xy + \i\ (y^2 - x^2) + c] \\
+                   & = \frac{-\i\ (z^2 + c)}{2}
+          \end{align}
+
+    \item The function is \textcolor{y_h}{harmonic},
+          \begin{align}
+              v(x, y)         & = xy   \\
+              v_{xx}          & = 0  &
+              v_{yy}          & = 0    \\
+              v_{xx} + v_{yy} & = 0
+          \end{align}
+          Using the Cauchy Riemann equations,
+          \begin{align}
+              u_y     & = v_x = y                     &
+              u_x     & = -v_y = -x                     \\
+              u       & = \frac{y^2}{2} + f(x) + c_1  &
+              u       & = -\frac{x^2}{2} + g(y) + c_2   \\
+              u(x, y) & = \frac{y^2 - x^2}{2}
+          \end{align}
+          The analytic function is, (with $ c $ real)
+          \begin{align}
+              f(z) & = \frac{1}{2}\ [y^2 - x^2 + \i\ (2xy) + c] \\
+                   & = \frac{(z^2 + c)}{2}
+          \end{align}
+
+    \item The function is \textcolor{y_h}{harmonic},
+          \begin{align}
+              u(x, y)                           & = \frac{\cos\theta}{r}      \\
+              u_{r}                             & = -\frac{\cos\theta}{r^2} &
+              u_{\theta}                        & = -\frac{\sin\theta}{r}     \\
+              u_{rr}                            & = \frac{2\cos\theta}{r^3} &
+              u_{\theta\theta}                  & = -\frac{\cos\theta}{r}     \\
+              u_{rr} + \frac{1}{r}\ u_{r}
+              + \frac{1}{r^2}\ u_{\theta\theta} & = \frac{\cos\theta}{r^3}
+              \ (2 - 1 - 1)                     &
+                                                & = 0
+          \end{align}
+          Using the Cauchy Riemann equations,
+          \begin{align}
+              v_r      & = \frac{-1}{r}\ u_\theta = \frac{\sin\theta}{r^2} &
+              v_\theta & = r\ u_r = -\frac{\cos\theta}{r}                    \\
+              v        & = -\frac{\sin\theta}{r} + f(\theta)               &
+              v        & = -\frac{\sin\theta}{r} + g(r)                      \\
+              v(x, y)  & = -\frac{\sin\theta}{r}
+          \end{align}
+          The analytic function is, (with $ c $ real)
+          \begin{align}
+              f(z) & = \frac{\bar{z}}{\abs{z}^2} + c = \frac{1}{z} + c
+          \end{align}
+
+    \item The function is \textcolor{y_h}{harmonic},
+          \begin{align}
+              u(x, y)         & = \sin x \cosh y    \\
+              u_{xx}          & = -\sin x \cosh y &
+              u_{yy}          & = \sin x \cosh y    \\
+              u_{xx} + u_{yy} & = 0
+          \end{align}
+          Using the Cauchy Riemann equations,
+          \begin{align}
+              v_x     & = -u_y = -\sin x \sinh y      &
+              v_y     & = u_x = \cos x \cosh y          \\
+              v       & = \cos x \sinh y + f(x) + c_1 &
+              v       & = \cos x \sinh y + g(y) + c_2   \\
+              v(x, y) & = \cos x \sinh y
+          \end{align}
+          The analytic function is, (with $ c $ real)
+          \begin{align}
+              f(z) & = (\sin x \cosh y) + \i\ (\cos x \sinh y + c) \\
+              \sin(z) + \i\ c
+          \end{align}
+          This uses the Euler's formula to define the sine function on the complex
+          plane.
+
+    \item The function is \textcolor{y_h}{harmonic},
+          \begin{align}
+              v(x, y)         & = (2x + 1)y   \\
+              v_{xx}          & = 0         &
+              v_{yy}          & = 0           \\
+              v_{xx} + v_{yy} & = 0
+          \end{align}
+          Using the Cauchy Riemann equations,
+          \begin{align}
+              u_x     & = v_y = (2x + 1)       &
+              u_y     & = -v_x = -2y             \\
+              u       & = x^2 + x + g(y) + c_1 &
+              u       & = -y^2 + f(x) + c_2      \\
+              u(x, y) & = x^2 + x - y^2 + c
+          \end{align}
+          The analytic function is, (with $ c $ real)
+          \begin{align}
+              f(z) & = (x^2 + x - y^2) + \i\ (2xy + y) + c \\
+                   & = z^2 + z + c
+          \end{align}
+
+    \item The function is \textcolor{y_h}{harmonic},
+          \begin{align}
+              u(x, y)         & = x^3 - 3xy^2   \\
+              u_{xx}          & = 6x          &
+              u_{yy}          & = -6x           \\
+              u_{xx} + u_{yy} & = 0
+          \end{align}
+          Using the Cauchy Riemann equations,
+          \begin{align}
+              v_x     & = -u_y = 6xy                &
+              v_y     & = u_x = 3(x^2 - y^2)          \\
+              v       & = 3x^2 y + g(y) + c_1       &
+              v       & = 3x^2 y - y^3 + f(x) + c_2   \\
+              v(x, y) & = 3x^2 y - y^3 + c
+          \end{align}
+          The analytic function is, (with $ c $ real)
+          \begin{align}
+              f(z) & = (x^3 - 3xy^2) + \i\ (3x^2y - y^3) + c \\
+                   & = z^3 + c
+          \end{align}
+
+    \item The function is \textcolor{y_p}{not harmonic},
+          \begin{align}
+              v(x, y)         & = e^x \sin(2y)     \\
+              v_{xx}          & = e^x \sin(2y)   &
+              v_{yy}          & = -4e^x \sin(2y)   \\
+              v_{xx} + v_{yy} & \neq 0
+          \end{align}
+
+    \item Starting with the Cauchy Euler equations,
+          \begin{align}
+              u_x                       & = v_y              & u_y    & = -v_x    \\
+              u_{xy}                    & = v_{yy}           & u_{yx} & = -v_{xx} \\
+              v_{xx} + v_{yy}           & = -u_{yx} + u_{xy} &
+                                        & = 0                                     \\
+              \implies \quad \nabla^2 v & = 0
+          \end{align}
+
+    \item For the given function to be harmonic,
+          \begin{align}
+              u(x, y)          & = e^{\pi x} \cos(ay)       &
+              u_{xx} + u_{yy}  & = 0                          \\
+              u_{xx}           & = \pi^2 e^{\pi x} \cos(ay) &
+              u_{yy}           & = -a^2 e^{\pi x} \cos(ay)    \\
+              \nabla^2 u       & = 0                        &
+              \implies \quad a & = \color{y_h} \pi
+          \end{align}
+          To find the harmonic conjugate,
+          \begin{align}
+              v_y     & = u_x = \pi e^{\pi x}\cos(\pi y)     &
+              v_x     & = -u_y = \pi e^{\pi x}\sin(\pi y)      \\
+              v       & = e^{\pi x} \sin(\pi y) + f(x) + c_1 &
+              v       & = e^{\pi x} \sin(\pi y) + g(y) + c_2   \\
+              v(x, y) & = \color{y_p} e^{\pi x} \sin(\pi y)
+          \end{align}
+
+    \item For the given function to be harmonic,
+          \begin{align}
+              u(x, y)          & = \cos(ax) \cosh(2y)     &
+              u_{xx} + u_{yy}  & = 0                        \\
+              u_{xx}           & = -a^2\cos(ax) \cosh(2y) &
+              u_{yy}           & = 4\cos(ax) \cosh(2y)      \\
+              \nabla^2 u       & = 0                      &
+              \implies \quad a & = \color{y_h} 2
+          \end{align}
+          To find the harmonic conjugate,
+          \begin{align}
+              v_y     & = u_x = -2\sin(2x)\cosh(2y)      &
+              v_x     & = -u_y = -2\cos(2x)\sinh(2y)       \\
+              v(x, y) & = \color{y_p} -\sin(2x)\sinh(2y)
+          \end{align}
+
+    \item For the given function to be harmonic,
+          \begin{align}
+              u(x, y)          & = ax^3 + bxy              &
+              u_{xx} + u_{yy}  & = 0                         \\
+              u_{xx}           & = 6ax                     &
+              u_{yy}           & = 0                         \\
+              b                & = \color{y_h} \text{free} &
+              \implies \quad a & = \color{y_h} 0
+          \end{align}
+          To find the harmonic conjugate,
+          \begin{align}
+              v_y     & = u_x = by                             &
+              v_x     & = -u_y = -bx                             \\
+              v       & = \frac{by^2}{2} + f(x)                &
+              v       & = -\frac{bx^2}{2} + f(y)                 \\
+              v(x, y) & = \color{y_p} \frac{b}{2}\ (y^2 - x^2)
+          \end{align}
+
+    \item For the given function to be harmonic,
+          \begin{align}
+              u(x, y)          & = \cosh(ax) \cos(y)    &
+              u_{xx} + u_{yy}  & = 0                      \\
+              u_{xx}           & = a^2\cosh(ax) \cos(y) &
+              u_{yy}           & = -\cosh(ax) \cos(y)     \\
+              \nabla^2 u       & = 0                    &
+              \implies \quad a & = \color{y_h} 1
+          \end{align}
+          To find the harmonic conjugate,
+          \begin{align}
+              v_y     & = u_x = \sinh(x) \cos(y)       &
+              v_x     & = -u_y = \cosh(x)\sin(y)         \\
+              v(x, y) & = \color{y_p} \sinh(x) \sin(y)
+          \end{align}
+
+    \item The equipotential lines of harmonic conjugates happen to be orthogonal
+          families of curves.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          enlargelimits = false, title = $ x^2 - y^2 $,
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -5:5,
+                          restrict y to domain = -5:5,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={-9,-4,0,4,9},
+                                  labels=false,
+                              },
+                          samples=100, thick,
+                      ] {x^2 - y^2};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          enlargelimits = false, title = $ 2xy $,
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -5:5,
+                          restrict y to domain = -5:5,
+                          colormap/viridis, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={-9, -3, 0, 3, 9},
+                                  labels=false,
+                              },
+                          samples=100, thick,
+                      ] {2*x*y};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          enlargelimits = false, title = $ x(x^2 - 3y^2) $,
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -3:3,
+                          restrict y to domain = -5:5,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={-9,-4,0,4,9},
+                                  labels=false,
+                              },
+                          samples=100, thick,
+                      ] {x^3 - 3*x*y^2};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          enlargelimits = false, title = $ y(3x^2 - y^2) $,
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = -3:3,
+                          restrict y to domain = -5:5,
+                          colormap/viridis, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={-9, -3, 0, 3, 9},
+                                  labels=false,
+                              },
+                          samples=100, thick,
+                      ] {3*x^2*y - y^3};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Applying the program to the given function,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          enlargelimits = false, title = $ x(x^2 - 3y^2) $,
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = 0:8,
+                          restrict y to domain = -10:10,
+                          colormap/jet, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={-9,-4,0,4,9},
+                                  labels=false,
+                              },
+                          samples=100, thick,
+                      ] {e^x * cos(y)};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          enlargelimits = false, title = $ y(3x^2 - y^2) $,
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,
+                          Ani,
+                          axis equal,
+                          view     = {0}{90}, % for a view 'from above'
+                          domain = 0:8,
+                          restrict y to domain = -10:10,
+                          colormap/viridis, colorbar horizontal
+                      ]
+                      \addplot3 [
+                          contour gnuplot={
+                                  % number = 10,
+                                  levels={-9, -3, 0, 3, 9},
+                                  labels=false,
+                              },
+                          samples=100, thick,
+                      ] {e^x * sin(y)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Given $ v $ is the harmonic conjugate of $ u $,
+          \begin{align}
+              u_x & = v_y    & u_y & = -v_x    \\
+              v_x & = (-u)_y & v_y & = -(-u)_x
+          \end{align}
+          Thus $ (-u) $ is the harmonic conjugate of $ v $.
+
+    \item Use Problem $ 14 $.
+
+    \item Starting with equations $ 4, 5 $ and substituting the Cauchy-Riemann
+          relations,
+          \begin{align}
+              f'(z) & = u_x + \i\ v_x             &
+              u_y   & = -v_x                        \\
+              f'(z) & = \color{y_h} u_x - \i\ u_y   \\
+              f'(z) & = -\i u_y + v_y             &
+              f'(z) & = \color{y_p} v_y + \i\ v_x
+          \end{align}
+
+    \item Conditions for a constant complex function
+          \begin{enumerate}
+              \item Checking the given function,
+                    \begin{align}
+                        f(z)             & = c + \i\ v(x, y)   \\
+                        u_x              & = v_y             &
+                        \implies \quad 0 & = v_y               \\
+                        u_y              & = -v_x            &
+                        \implies \quad 0 & = v_x               \\
+                        v                & = c_1 + f(x)      &
+                        v_x              & = \diff fx = 0      \\
+                        v(x, y)          & = c
+                    \end{align}
+                    Thus, $f(z)$ is a constant function.
+
+              \item Checking the given function,
+                    \begin{align}
+                        f(z)             & = u(x, y) + c\ \i   \\
+                        u_x              & = v_y             &
+                        \implies \quad 0 & = u_x               \\
+                        u_y              & = -v_x            &
+                        \implies \quad 0 & = u_y               \\
+                        u                & = c_1 + f(x)      &
+                        u_x              & = \diff fx = 0      \\
+                        u(x, y)          & = c
+                    \end{align}
+                    Thus, $f(z)$ is a constant function.
+
+              \item Checking the given function,
+                    \begin{align}
+                        f'(z)              & = 0          \\
+                        u_x                & = \i\ u_y  &
+                        \implies \quad u_x & = -\i\ v_x   \\
+                        v_y                & = -\i\ v_x &
+                        \implies \quad v_y & = \i\ u_y    \\
+                        u_x                & = u_y = 0  &
+                        v_x                & = v_y = 0    \\
+                        f(x, y)            & = c
+                    \end{align}
+                    Since a real and complex number are being equated, the only solution
+                    is for both sides to be identically zero.
+
+              \item Checking the given function,
+                    \begin{align}
+                        \abs{f(z)}       & = c               &
+                        \abs{f(z)}^2     & = u^2 + v^2 = c^2   \\
+                        uu_x + vv_x      & = 0               &
+                        uu_y + vv_y      & = 0                 \\
+                        -uv_x + vu_x     & = 0               &
+                        (u^2 + v^2)\ u_x & = 0
+                    \end{align}
+                    Similarly, all four first order partial derivatives are constrained
+                    to be zero. This means $ f(z) = c $
+          \end{enumerate}
+\end{enumerate}

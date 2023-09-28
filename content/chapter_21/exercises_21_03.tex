@@ -1,0 +1,701 @@
+\section{Methods for Systems and Higher Order ODEs}
+
+\begin{enumerate}
+    \item Solving the system of ODEs,
+          \begin{align}
+              \vec{y}'   & = \bmattt{2}{-4}{1}{-3}\ \vec{y}                          &
+              \vec{y}(0) & = \bmatcol{3}{0}                                            \\
+              \lambda_1  & = 1, \quad  \vec{u}_1 = \bmatcol{4}{1}                    &
+              \lambda_1  & = -2, \quad  \vec{u}_1 = \bmatcol{1}{1}                     \\
+              \vec{y}    & = c_1\ \bmatcol{4}{1} e^{x} + c_2\ \bmatcol{1}{1} e^{-2x} &
+              c_1        & = 1,\ c_2 = -1
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1         & \epsilon_1  & y_2         & \epsilon_2   \\ \hline
+                  1   & \num{3.6}   & \num{0.002} & \num{0.3}   & \num{0.0135} \\
+                  5   & \num{6.11}  & \num{0.112} & \num{1.283} & \num{0.002}  \\
+                  10  & \num{10.27} & \num{0.47}  & \num{2.486} & \num{0.096}  \\ \hline
+              \end{tblr}
+          \end{table}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          grid = both,Ani, colorbar,
+                          colormap/jet, xlabel = $ y_1 $, ylabel = $ y_2 $
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:1,
+                          variable = \t]
+                      ({4*e^(\t) - e^(-2*\t)}, {e^\t - e^(-2*\t)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving the system of ODEs,
+          \begin{align}
+              \vec{y}'   & = \bmattt{-1}{1}{-1}{-1}\ \vec{y}           &
+              \vec{y}(0) & = \bmatcol{0}{4}                              \\
+              \lambda_1  & = -1-\i, \quad  \vec{u}_1 = \bmatcol{\i}{1} &
+              \lambda_1  & = -1+\i, \quad  \vec{u}_1 = \bmatcol{1}{\i}   \\
+              \vec{y}    & = \bmatcol{c_1 \sin x + c_2 \cos x}
+              {c_1 \cos x - c_2 \sin x} e^{-x}
+                         &
+              c_1        & = 4,\ c_2 = 0
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1         & \epsilon_1  & y_2         & \epsilon_2   \\ \hline
+                  1   & \num{0.8}   & \num{0.149} & \num{3.2}   & \num{0.0096} \\
+                  2   & \num{1.28}  & \num{0.235} & \num{2.4}   & \num{0.0696} \\
+                  5   & \num{1.435} & \num{0.197} & \num{0.517} & \num{0.278}  \\ \hline
+              \end{tblr}
+          \end{table}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          grid = both,Ani, colorbar,
+                          colormap/jet, xlabel = $ y_1 $, ylabel = $ y_2 $
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:1,
+                          variable = \t]
+                      ({4 * e^(-\t) * cos(\t)}, {4 * e^(-\t) * sin(\t)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving the system of ODEs,
+          \begin{align}
+              y'' + y/4  & = 0                                            \\
+              y_1'       & = y_2                                        &
+              y_2'       & = -y_1/4                                       \\
+              \vec{y}'   & = \bmattt{0}{1}{-1/4}{0}\ \vec{y}            &
+              \vec{y}(0) & = \bmatcol{1}{0}                               \\
+              \lambda_1  & = -\i/2, \quad  \vec{u}_1 = \bmatcol{2\i}{1} &
+              \lambda_1  & = \i/2, \quad  \vec{u}_1 = \bmatcol{2}{\i}     \\
+              \vec{y}    & = \bmatcol{2c_1 \sin(x/2) + 2c_2 \cos(x/2)}
+              {c_1 \cos(x/2) - c_2 \sin(x/2)}
+                         &
+              c_1        & = 0,\ c_2 = 0.5
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1          & \epsilon_1    & y_2          & \epsilon_2    \\
+                  \hline
+                  1   & \num{1}      & \num{5d-3}    & \num{-0.05}  & \num{8.33d-5} \\
+                  2   & \num{0.99}   & \num{9.93d-3} & \num{-0.1}   & \num{1.74d-3} \\
+                  5   & \num{0.9005} & \num{2.29d-2} & \num{-0.245} & \num{5.3d-3}  \\
+                  \hline
+              \end{tblr}
+          \end{table}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          grid = both,Ani, colorbar,
+                          colormap/jet, xlabel = $ y_1 $, ylabel = $ y_2 $
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:1,
+                          variable = \t]
+                      ({1 * cos(\t/2)}, {-0.5 * sin(\t/2)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving the system of ODEs,
+          \begin{align}
+              \vec{y}'   & = \bmattt{-3}{1}{1}{-3}\ \vec{y}         &
+              \vec{y}(0) & = \bmatcol{2}{0}                           \\
+              \lambda_1  & = -2, \quad  \vec{u}_1 = \bmatcol{1}{1}  &
+              \lambda_1  & = -4, \quad  \vec{u}_1 = \bmatcol{-1}{1}   \\
+              \vec{y}    & = c_1\ \bmatcol{1}{1} e^{-2x}
+              + c_2\ \bmatcol{-1}{1} e^{-4x}
+                         &
+              c_1        & = 1,\ c_2 = -1
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1          & \epsilon_1  & y_2         & \epsilon_2  \\ \hline
+                  1   & \num{0.8}    & \num{0.319} & \num{0.4}   & \num{0.179} \\
+                  2   & \num{0.4}    & \num{0.251} & \num{0.32}  & \num{0.072} \\
+                  5   & \num{0.0781} & \num{0.075} & \num{0.077} & \num{0.039} \\ \hline
+              \end{tblr}
+          \end{table}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          grid = both,Ani, colorbar,
+                          colormap/jet, xlabel = $ y_1 $, ylabel = $ y_2 $
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:1,
+                          variable = \t]
+                      ({e^(-2*\t) + e^(-4*\t)}, {e^(-2*\t) - e^(-4*\t)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving the system of ODEs,
+          \begin{align}
+              y''        & = x + y                       \\
+              y_1'       & = y_2                       &
+              y_2'       & = x + y_1                     \\
+              \vec{y}(0) & = \bmatcol{1}{-2}           &
+              y'' + y    & = x                           \\
+              y          & = A e^x + B e^{-x} + Cx + D &
+              0          & = (C+1)x + D                  \\
+              y          & = e^{-x} - x
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1          & \epsilon_1   & y_2         & \epsilon_2   \\
+                  \hline
+                  1   & \num{8}      & \num{4.8d-3} & \num{-1.9}  & \num{4.8d-3} \\
+                  2   & \num{0.61}   & \num{8.7d-3} & \num{-1.81} & \num{8.7d-3} \\
+                  5   & \num{0.0905} & \num{1.6d-2} & \num{-1.59} & \num{1.6d-2} \\
+                  \hline
+              \end{tblr}
+          \end{table}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          grid = both,Ani, colorbar,
+                          colormap/jet, xlabel = $ y_1 $, ylabel = $ y_2 $
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:0.5,
+                          variable = \t]
+                      ({e^(-\t) - \t}, {-e^(-\t) - 1});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving the system of ODEs,
+          \begin{align}
+              \vec{y}'   & = \bmattt{1}{0}{0}{-1}\ \vec{y}         &
+              \vec{y}(0) & = \bmatcol{2}{2}                          \\
+              \lambda_1  & = 1, \quad  \vec{u}_1 = \bmatcol{1}{0}  &
+              \lambda_1  & = -1, \quad  \vec{u}_1 = \bmatcol{0}{1}   \\
+              \vec{y}    & = c_1\ \bmatcol{1}{0} e^{x}
+              + c_2\ \bmatcol{0}{1} e^{-x}
+                         &
+              c_1        & = 2,\ c_2 = 2
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1         & \epsilon_1  & y_2         & \epsilon_2   \\ \hline
+                  1   & \num{2.2}   & \num{0.010} & \num{1.8}   & \num{0.0097} \\
+                  2   & \num{3.22}  & \num{0.076} & \num{1.181} & \num{0.032}  \\
+                  5   & \num{5.187} & \num{0.249} & \num{0.697} & \num{0.038}  \\ \hline
+              \end{tblr}
+          \end{table}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          grid = both,Ani, colorbar,
+                          colormap/jet, xlabel = $ y_1 $, ylabel = $ y_2 $
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:1,
+                          variable = \t]
+                      ({2*e^(\t)}, {2*e^(-\t)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Comparing the two method for Problem $ 5 $,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $ n $                         & \SetCell[c = 4]{c}
+                  \text{Error}                  &                               &   & \\
+                  \hline[dotted]
+                                                & \color{y_h} \text{Euler}\ y_1 &
+                  \color{y_p} \text{RK}\ y_1    &
+                  \color{y_h} \text{Euler}\ y_2 & \color{y_p} \text{RK}\ y_2          \\
+                  \hline
+                  1                             & \num{4.8d-3}                  &
+                  \num{8.2d-8}                  &
+                  \num{1.2d-2}                  & \num{8.2d-8}                        \\
+                  2                             & \num{1.4d-2}                  &
+                  \num{1.5d-7}                  &
+                  \num{1.4d-2}                  & \num{1.5d-7}                        \\
+                  5                             & \num{1.6d-2}                  &
+                  \num{2.75d-7}                 &
+                  \num{1.6d-2}                  & \num{2.7d-7}                        \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving Problem $ 2 $ using the RK method instead,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1         & \epsilon_1    & y_2         & \epsilon_2    \\
+                  \hline
+                  1   & \num{0.651} & \num{3.99d-5} & \num{3.21}  & \num{4.26d-5} \\
+                  2   & \num{1.044} & \num{5.02d-5} & \num{2.47}  & \num{8.13d-5} \\
+                  5   & \num{1.24}  & \num{6.18d-6} & \num{0.795} & \num{1.31d-4} \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving Problem $ 1 $ using the RK method instead,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1          & \epsilon_1    & y_2         & \epsilon_2    \\
+                  \hline
+                  1   & \num{3.602}  & \num{2.29d-6} & \num{0.286} & \num{2.66d-6} \\
+                  2   & \num{4.125}  & \num{4.97d-6} & \num{0.551} & \num{4.41d-6} \\
+                  10  & \num{10.738} & \num{1.26d-5} & \num{2.583} & \num{6.35d-6} \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving Problem $ 4 $ using the RK method instead,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1         & \epsilon_1    & y_2         & \epsilon_2    \\
+                  \hline
+                  1   & \num{1.489} & \num{8.25d-5} & \num{0.148} & \num{7.74d-5} \\
+                  2   & \num{1.12}  & \num{1.11d-4} & \num{0.221} & \num{1.02d-4} \\
+                  5   & \num{0.503} & \num{8.65d-5} & \num{2.232} & \num{7.49d-5} \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving the system of ODEs,
+          \begin{align}
+              y''          & = -\sin y                      &
+              \vec{y}(\pi) & = \bmatcol{0}{1}                 \\
+              y            & = y_1, \quad y' = y_2          &
+              y_1'         & = y_2, \quad y_2' = -\sin(y_1)
+          \end{align}
+
+          Analytic solution requires elliptic integrals. Plotting the numerical
+          solution of the ODE,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_21_03_11.csv}
+              \anitableeleven
+              \begin{tikzpicture}
+                  \begin{axis}[ width = 8cm, xlabel = $ y $, ylabel = $ y' $,
+                          grid = both,Ani, axis equal, title = Phase plane]
+                      \addplot[GraphSmooth, y_h] table[x = 0, y = 1]
+                          {\anitableeleven};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Analytic solution requires Bessel function $ J_0(x) $. Plotting the numerical
+          solution of the ODE,
+          \begin{align}
+              y''        & = -y - \frac{y'}{x}                      &
+              \vec{y}(1) & = \bmatcol{0765198}{-0.440051}             \\
+              y          & = y_1, \quad y' = y_2                    &
+              y_1'       & = y_2, \quad y_2' = -y_1 - \frac{y_2}{x}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_21_03_12.csv}
+              \anitableeleven
+              \begin{tikzpicture}
+                  \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                          legend pos = outer north east,
+                          grid = both,Ani, title = Bessel function $ J_0 $]
+                      \addplot[GraphSmooth, black, dashed, domain = 1:11]
+                      gnuplot[id = besj0] {besj0(x)};
+                      \addplot[GraphSmooth, y_p] table[x = 0, y = 1]
+                          {\anitableeleven};
+                      \addlegendentry{Numerical};
+                      \addlegendentry{Exact};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying the calculations in Example $ 2 $,
+          \begin{align}
+              y''     & = xy                                                         &
+              y       & = y_1, \quad y' = y_2                                          \\
+              y_1'    & = y_2, \quad y_2' = xy_1                                     &
+              \vec{a} & = h\ \bmatcol{y_{2,n}}{x_n\ y_{1,n}}                           \\
+              \vec{b} & = h\ \bmatcol{y_{2,n} + a_2/2}{(x_n + h/2)(y_{1,n} + a_1/2)} &
+              \vec{c} & = h\ \bmatcol{y_{2,n} + b_2/2}{(x_n + h/2)(y_{1,n} + b_1/2)}   \\
+              \vec{d} & = h\ \bmatcol{y_{2,n} + c_2}{(x_n + h)(y_{1,n} + c_1)}
+          \end{align}
+          Finally the iterative formula uses these four auxiliary values
+          \begin{align}
+              \vec{y}_{n+1} & = \vec{y}_n + \frac{\vec{a} + 2\vec{b} +
+                  2\vec{c} + \vec{d}}{6}
+          \end{align}
+          The error values for each timestep do match the values in the text.\
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_1          & \epsilon_1    & y_2           & \epsilon_2    \\
+                  \hline
+                  1   & \num{0.3037} & \num{1.23d-7} & -\num{0.2524} & \num{8.35d-7} \\
+                  2   & \num{0.2547} & \num{2.47d-7} & -\num{0.2358} & \num{1.31d-6} \\
+                  5   & \num{0.1353} & \num{3.42d-7} & -\num{0.1591} & \num{5.72d-7} \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Using the RKN method,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y                 & \epsilon      \\ \hline
+                  1   & \num{0.303703031} & \num{1.23d-7} \\
+                  2   & \num{0.254742107} & \num{2.47d-7} \\
+                  5   & \num{0.135292178} & \num{2.38d-7} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item The values in the table are verified for the Euler method and RK method
+          for the two values of $ h $.
+          \begin{enumerate}
+              \item Plotting the four plots from the data in the table,
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_a.csv}
+                        \anitablefifteena
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = outer north east,
+                                    grid = both,Ani, title = {Euler $ h = 0.1 $}]
+                                \addplot[GraphSmooth, y_h, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteena};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:2]
+                                {e^(-x) + e^(-10*x) + x};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_b.csv}
+                        \anitablefifteena
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = outer north east,
+                                    grid = both,Ani, title = {Euler $ h = 0.2 $}]
+                                \addplot[GraphSmooth, y_p, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteena};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:2]
+                                {e^(-x) + e^(-10*x) + x};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_c.csv}
+                        \anitablefifteena
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = outer north east,
+                                    grid = both,Ani, title = {RK $ h = 0.2 $}]
+                                \addplot[GraphSmooth, y_s, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteena};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:2]
+                                {e^(-x) + e^(-10*x) + x};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_d.csv}
+                        \anitablefifteena
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = outer north east,
+                                    grid = both,Ani, title = {RK $ h = 0.3 $}]
+                                \addplot[GraphSmooth, y_t, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteena};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:2]
+                                {e^(-x) + e^(-10*x) + x};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Looking at the stability for various values of $ h $ around
+                    $ h^* = 0.18 $,
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_b1.csv}
+                        \anitablefifteenbone
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = outer north east,
+                                    grid = both,Ani,
+                                    title = {Euler method, $ h = 0.12 $}]
+                                \addplot[GraphSmooth, y_h, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteenbone};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_b2.csv}
+                        \anitablefifteenbtwo
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = outer north east,
+                                    grid = both,Ani,
+                                    title = {Euler method, $ h = 0.14 $}]
+                                \addplot[GraphSmooth, y_p, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteenbtwo};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_b3.csv}
+                        \anitablefifteenbthree
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = outer north east,
+                                    grid = both,Ani,
+                                    title = {Euler method, $ h = 0.16 $}]
+                                \addplot[GraphSmooth, y_s, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteenbthree};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_b4.csv}
+                        \anitablefifteenbfour
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = outer north east,
+                                    grid = both,Ani,
+                                    title = {Euler method, $ h = 0.18 $}]
+                                \addplot[GraphSmooth, y_t, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteenbfour};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_b5.csv}
+                        \anitablefifteenbfive
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = outer north east,
+                                    grid = both,Ani,
+                                    title = {Euler method, $ h = 0.2 $}]
+                                \addplot[GraphSmooth, magenta3, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteenbfive};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item RK method for values of $ h $ between $ 0.2 $ and $ 0.3 $,
+                    the numerical approximations deviates at $ h \approxeq 0.25 $.
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_c1.csv}
+                        \anitablefifteencone
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = north west,
+                                    grid = both,Ani,]
+                                \addplot[GraphSmooth, y_h, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteencone};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                                \addlegendentry{$ h = 0.2 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_c2.csv}
+                        \anitablefifteenctwo
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = north west,
+                                    grid = both,Ani,]
+                                \addplot[GraphSmooth, y_p, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteenctwo};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                                \addlegendentry{$ h = 0.22 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_c3.csv}
+                        \anitablefifteencthree
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = north west,
+                                    grid = both,Ani,]
+                                \addplot[GraphSmooth, y_s, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteencthree};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                                \addlegendentry{$ h = 0.24 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_c4.csv}
+                        \anitablefifteencfour
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = north west,
+                                    grid = both,Ani,]
+                                \addplot[GraphSmooth, y_t, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteencfour};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                                \addlegendentry{$ h = 0.26 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_c5.csv}
+                        \anitablefifteencfive
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = north west,
+                                    grid = both,Ani,]
+                                \addplot[GraphSmooth, magenta3, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteencfive};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                                \addlegendentry{$ h = 0.28 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The backward Euler method provides the implicit relation,
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_d1.csv}
+                        \anitablefifteencone
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = north west,
+                                    grid = both,Ani,]
+                                \addplot[GraphSmooth, y_h, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteencone};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:2]
+                                {e^(-x) + e^(-10*x) + x};
+                                \addlegendentry{$ h = 0.2 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_d2.csv}
+                        \anitablefifteenctwo
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = north west,
+                                    grid = both,Ani,]
+                                \addplot[GraphSmooth, y_p, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteenctwo};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:3]
+                                {e^(-x) + e^(-10*x) + x};
+                                \addlegendentry{$ h = 0.3 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_d3.csv}
+                        \anitablefifteencthree
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = north west,
+                                    grid = both,Ani,]
+                                \addplot[GraphSmooth, y_s, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteencthree};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:4]
+                                {e^(-x) + e^(-10*x) + x};
+                                \addlegendentry{$ h = 0.4 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_03_15_d4.csv}
+                        \anitablefifteencfour
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm, xlabel = $ x $, ylabel = $ y $,
+                                    legend pos = north west,
+                                    grid = both,Ani,]
+                                \addplot[GraphSmooth, y_t, only marks,
+                                    mark size = 1.5pt]
+                                table[x = 0, y = 1] {\anitablefifteencfour};
+                                \addplot[GraphSmooth, black, dashed, domain = 0:5]
+                                {e^(-x) + e^(-10*x) + x};
+                                \addlegendentry{$ h = 0.5 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    There is no instability even for large values of $ h $.
+          \end{enumerate}
+\end{enumerate}

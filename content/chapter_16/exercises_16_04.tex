@@ -1,0 +1,564 @@
+\section{Residue Integration of Real Integrals}
+
+\begin{enumerate}
+    \item Calculating the integral, with $ \abs{k} > 1 $
+          \begin{align}
+              I             & = \frac{1}{2} \int_{-\pi}^{\pi} \frac{2}{k - \cos\theta}
+              \ \dl \theta  &
+                            & = \oint_C\ \frac{2}{2k - z - (1/z)}
+              \ \frac{\dl z}{\i z}                                                     \\
+                            & = \oint_C\ \frac{2\i}{(z - \alpha)
+                  (z - \beta)}
+              \ \dl z       &
+              \alpha, \beta & = k \pm \sqrt{k^2 - 1}
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle for
+          $ k > 1 $,
+          \begin{align}
+              \beta                 & = \color{y_h} k - \sqrt{k^2 - 1}          &
+              \Res_{z = \beta} g(z) & = \frac{-\i}{\sqrt{k^2 - 1}}                \\
+              I                     & = \color{y_p} \frac{2\pi}{\sqrt{k^2 - 1}}
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle for
+          $ k < -1 $,
+          \begin{align}
+              \alpha                 & = \color{y_h} k + \sqrt{k^2 - 1}           &
+              \Res_{z = \alpha} g(z) & = \frac{\i}{\sqrt{k^2 - 1}}                  \\
+              I                      & = \color{y_p} \frac{-2\pi}{\sqrt{k^2 - 1}}
+          \end{align}
+
+    \item Calculating the integral,
+          \begin{align}
+              I             & = \frac{1}{2} \int_{-\pi}^{\pi} \frac{1}
+              {\pi + 3\cos\theta} \ \dl \theta
+                            &
+                            & = \oint_C\ \frac{1}{2\pi + 3z + 3/z}
+              \ \frac{\dl z}{\i z}                                             \\
+                            & = \oint_C\ \frac{-\i/3}{z^2 + (2\pi/3) z + 1}
+              \ \dl z       &
+                            & = \oint_C\ \frac{-\i/3}{(z - \alpha)(z - \beta)}
+              \ \dl z                                                          \\
+              \alpha, \beta & = \frac{-\pi}{3} \pm \sqrt{\frac{\pi^2}{9} - 1}
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle,
+          \begin{align}
+              \alpha                 & = \color{y_h} \frac{-\pi}{3}
+              + \sqrt{\frac{\pi^2}{9} - 1}
+                                     &
+              \Res_{z = \alpha} g(z) & = \frac{-0.5\i}{\sqrt{\pi^2 - 9}}          \\
+              I                      & = \color{y_p} \frac{\pi}{\sqrt{\pi^2 - 9}}
+          \end{align}
+
+    \item Calculating the integral,
+          \begin{align}
+              I             & = \int_{0}^{2\pi} \frac{1 + \sin \theta}
+              {3 + \cos\theta} \ \dl \theta
+                            &
+                            & = \oint_C\ \frac{2\i + z - 1/z}{\i\ [6 + z + (1/z)]}
+              \ \frac{\dl z}{\i z}                                                 \\
+                            & = -\oint_C\ \frac{z^2 + 2\i z - 1}{(z^2 + 6z + 1)z}
+              \ \dl z       &
+                            & = \oint_C\ \frac{-(z^2 + 2\i z - 1)}
+              {z(z - \alpha)(z - \beta)} \ \dl z                                   \\
+              \alpha, \beta & = -3 \pm 2\sqrt{2}
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle,
+          \begin{align}
+              z_1                    & = \color{y_h} 0                      &
+              \Res_{z = z_1} g(z)    & = 1                                    \\
+              \alpha                 & = \color{y_h} -3 + \sqrt{8}          &
+              \Res_{z = \alpha} g(z) & = -1 - \frac{\i}{2\sqrt{2}}            \\
+              I                      & = 2\pi\i \cdot \frac{-\i}{2\sqrt{2}} &
+              I                      & = \color{y_p} \frac{\pi}{\sqrt{2}}
+          \end{align}
+
+    \item Calculating the integral,
+          \begin{align}
+              I             & = \int_{0}^{2\pi} \frac{1 + 4\cos \theta}
+              {17 - 8\cos\theta} \ \dl \theta
+                            &
+                            & = \oint_C\ \frac{2 + 4z + 4/z}{34 - 8z - (8/z)}
+              \ \frac{\dl z}{\i z}                                            \\
+                            & = \frac{\i}{2}\ \oint_C\ \frac{z^2 + 0.5z + 1}
+              {(z^2 - 4.25z + 1)z}
+              \ \dl z       &
+                            & = \frac{\i}{2}\ \oint_C\ \frac{z^2 + 0.5z + 1}
+              {(z - \alpha)(z - \beta)z} \ \dl z                              \\
+              \alpha, \beta & = 4, 0.25
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle,
+          \begin{align}
+              \beta                 & = \color{y_h} 0.25             &
+              \Res_{z = \beta} g(z) & =  -\frac{19}{30}\ \i            \\
+              z_1                   & = \color{y_h} 0                &
+              \Res_{z = z_1} g(z)   & = \frac{1}{2}\ \i                \\
+              I                     & = 2\pi\i \cdot \frac{-2\i}{15} &
+              I                     & = \color{y_p} \frac{4\pi}{15}
+          \end{align}
+
+    \item Calculating the integral,
+          \begin{align}
+              I             & = \int_{0}^{2\pi} \frac{\cos^2 \theta}
+              {5 - 4\cos\theta} \ \dl \theta
+                            &
+                            & = \oint_C\ \frac{(z^2 + 1)^2}
+              {(10z - 4z^2 - 4)} \ \frac{\dl z}{2\i\ z^2}                 \\
+                            & = \frac{\i}{8}\ \oint_C\ \frac{(z^2 + 1)^2}
+              {(z^2 - 2.5z + 1)\ z^2}
+              \ \dl z       &
+                            & = \frac{\i}{8}\ \oint_C\ \frac{(z^2 + 1)^2}
+              {(z - \alpha)(z - \beta)\ z^2} \ \dl z                      \\
+              \alpha, \beta & = 0.5, 2
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle,
+          \begin{align}
+              \alpha                 & = \color{y_h} 0.5                  &
+              \Res_{z = \alpha} g(z) & = -\frac{25}{48}\ \i                 \\
+              z_1                    & = \color{y_h} 0                    &
+              \Res_{z = z_1} g(z)    & = \lim_{z \to z_1} \diff*{\ \Bigg[
+              \frac{(z^2 + 1)^2}{z^2 - 2.5z + 1} \Bigg]}{z}                 \\
+              \Res_{z = z_1} g(z)    & = \frac{5}{16}\ \i                   \\
+              I                      & = 2\pi\i \cdot \frac{-5\i}{24}     &
+              I                      & = \color{y_p} \frac{5\pi}{12}
+          \end{align}
+
+    \item Calculating the integral,
+          \begin{align}
+              I             & = \int_{0}^{2\pi} \frac{\sin^2 \theta}
+              {5 - 4\cos\theta} \ \dl \theta
+                            &
+                            & = \oint_C\ \frac{(z^2 - 1)^2 / (-4z^2)}
+              {(10z - 4z^2 - 4) / (2z)} \ \frac{\dl z}{\i z}               \\
+                            & = \frac{-\i}{8}\ \oint_C\ \frac{(z^2 - 1)^2}
+              {(z^2 - 2.5z + 1)\ (z^2)}
+              \ \dl z       &
+                            & = \frac{-\i}{8}\ \oint_C\ \frac{(z^2 - 1)^2}
+              {(z - \alpha)(z - \beta)\ z^2} \ \dl z                       \\
+              \alpha, \beta & = 0.5, 2
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle,
+          \begin{align}
+              \alpha                 & = \color{y_h} 0.5                  &
+              \Res_{z = \alpha} g(z) & = \frac{3}{16}\ \i                   \\
+              z_1                    & = \color{y_h} 0                    &
+              \Res_{z = z_1} g(z)    & = \lim_{z \to z_1} \diff*{\ \Bigg[
+              \frac{(z^2 - 1)^2}{z^2 - 2.5z - 1} \Bigg]}{z}                 \\
+              \Res_{z = z_1} g(z)    & = -\frac{5}{16}\ \i                  \\
+              I                      & = 2\pi\i \cdot \frac{-\i}{8}       &
+              I                      & = \color{y_p} \frac{\pi}{4}
+          \end{align}
+
+    \item Calculating the integral, assuming $ \abs{a} > 1 $
+          \begin{align}
+              I             & = \int_{0}^{2\pi} \frac{a}
+              {a - \sin\theta} \ \dl \theta
+                            &
+                            & = \oint_C\ \frac{2a \i}{2a \i - z + (1/z)}
+              \ \frac{\dl z}{\i z}                                            \\
+                            & = \i\ \oint_C\ \frac{2a\ \i}{z^2 - 2a\i\ z - 1}
+              \ \dl z       &
+                            & =  \oint_C\ \frac{-2a}
+              {(z - \alpha)(z - \beta)} \ \dl z                               \\
+              \alpha, \beta & = (a \pm \sqrt{a^2 - 1})\ \i
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle for
+          $ k > 1 $,
+          \begin{align}
+              \beta                 & = \color{y_h} (a - \sqrt{a^2 - 1})\ \i      &
+              \Res_{z = \beta} g(z) & = \frac{-a\i}{\sqrt{a^2 - 1}}                 \\
+              I                     & = \color{y_p} \frac{2\pi a}{\sqrt{a^2 - 1}}
+          \end{align}
+
+    \item Calculating the integral,
+          \begin{align}
+              I             & = \int_{0}^{2\pi} \frac{1}
+              {8 - 2\sin\theta} \ \dl \theta
+                            &
+                            & = \oint_C\ \frac{2\i}{16\i - 2z + (2/z)}
+              \ \frac{\dl z}{\i z}                                     \\
+                            & = \oint_C\ \frac{-1}{z^2 - 8\i\ z - 1}
+              \ \dl z       &
+                            & =  \oint_C\ \frac{-1}
+              {(z - \alpha)(z - \beta)} \ \dl z                        \\
+              \alpha, \beta & = (4 \pm \sqrt{15})\ \i
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle for
+          $ k > 1 $,
+          \begin{align}
+              \beta                 & = \color{y_h} (4 - \sqrt{15})\ \i   &
+              \Res_{z = \beta} g(z) & = \frac{-\i}{2\sqrt{15}}              \\
+              I                     & = \color{y_p} \frac{\pi}{\sqrt{15}}
+          \end{align}
+
+    \item Calculating the integral,
+          \begin{align}
+              I                  & = \int_{0}^{2\pi} \frac{\cos \theta}
+              {13 - 12\cos(2\theta)} \ \dl \theta
+                                 &
+              I                  & = \ \int_{0}^{2\pi} \frac{\cos\theta}
+              {25 - 24\cos^2\theta}\ \dl \theta                             \\
+              I                  & = \oint_C \frac{(z^2 + 1)(2)}
+              {100z^2 - 24(z^2 + 1)^2}
+              \ \frac{\dl z}{\i} &
+                                 & = 0.5\i\ \oint_C\ \frac{z^2 + 1}
+              {6z^4 - 13z^2 + 6}
+              \ \dl z                                                       \\
+                                 & = \frac{\i}{12}\ \oint_C\ \frac{z^2 + 1}
+              {(z^2 - 3/2)(z^2 - 2/3)} \ \dl z
+          \end{align}
+          Finding the residues of the poles that lie inside the unit circle
+          \begin{align}
+              \alpha                 & = \color{y_h} \sqrt{2/3}   &
+              \Res_{z = \alpha} g(z) & = -\frac{\sqrt{6}}{24}\ \i   \\
+              \beta                  & = \color{y_h} -\sqrt{2/3}  &
+              \Res_{z = \beta} g(z)  & = \frac{\sqrt{6}}{24}\ \i    \\
+              I                      & = \color{y_p} 0
+          \end{align}
+          The integrand is odd for $ \theta \in [0, \pi] $ around $ \theta = \pi/2 $,
+          and is also odd for $ \theta \in [\pi, 2\pi] $ around $ \theta = 1.5\pi $,
+          This makes the integral zero.
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\dl x}{(1 + x^2)^3}        &
+              f(z)                & = \frac{1}{(1 + z^2)^3}                     \\
+              z_1                 & = \color{y_h} \i                          &
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1}\ \frac{1}{2!}\diff*[2]
+              {\ \Bigg[\frac{1} {(z + \i)^3}\Bigg]}{z}                          \\
+                                  & = \lim_{z \to z_1}\frac{6}{(z + \i)^5}    &
+                                  & = \color{y_p} \frac{-3}{16}\ \i
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I & = \frac{3\pi}{8}
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\dl x}{(1 + x^2)^2}      &
+              f(z)                & = \frac{1}{(1 + z^2)^2}                   \\
+              z_1                 & = \color{y_h} \i                        &
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1}\ \diff*
+              {\ \Bigg[\frac{1} {(z + \i)^2}\Bigg]}{z}                        \\
+                                  & = \lim_{z \to z_1}\frac{-2}{(z + \i)^3} &
+                                  & = \color{y_p} \frac{-1}{4}\ \i
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I & = \frac{\pi}{2}
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\dl x}{(x^2 - 2x + 5)^2}     &
+              f(z)                & = \frac{1}{(z^2 - 2z + 5)^2}                  \\
+              \alpha, \beta       & = 1 \pm 2\i                                   \\
+              z_1                 & = \color{y_h} 1 + 2\i                       &
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1}\ \diff*
+              {\ \Bigg[\frac{1} {(z - 1 + 2\i)^2}\Bigg]}{z}                       \\
+                                  & = \lim_{z \to z_1}\frac{-2}{(z -1 + 2\i)^3} &
+                                  & = \color{y_p} \frac{-1}{32}\ \i
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I & = \frac{\pi}{16}
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{x}{(x^2 + 1)(x^2 + 4)} &
+              f(z)                & = \frac{z}{(z^2 + 1)(z^2 + 4)}          \\
+              z_1                 & = \color{y_h} \i                      &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{1}{6}               \\
+              z_2                 & = \color{y_h} 2\i                     &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{-1}{6}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I & = 0
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{(x^2 + 1)}{(x^4 + 1)}     &
+              f(z)                & = \frac{(z^2 + 1)}{(z^2 + \i)(z^2 - \i)}   \\
+              z_1                 & = \color{y_h} \frac{-1 + \i}{\sqrt{2}}   &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{-\i}{\sqrt{8}}         \\
+              z_2                 & = \color{y_h} \frac{1 + \i}{\sqrt{2}}    &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{-\i}{\sqrt{8}}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I & = \sqrt{2}\pi
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{x^2}{(x^6 + 1)}         &
+              f(z)                & = \frac{z^2}{(z^3 + \i)(z^3 - \i)}       \\
+              z_1                 & = \color{y_h} \frac{-\sqrt{3} + \i}{2} &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{-\i}{6}              \\
+              z_2                 & = \color{y_h} \frac{\sqrt{3} + \i}{2}  &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{-\i}{6}              \\
+              z_3                 & = \color{y_h} \i                       &
+              \Res_{z = z_3} f(z) & = \color{y_p} \frac{\i}{6}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I & = \frac{\pi}{3}
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\cos(2x)}{(x^2 + 1)^2}\ \dl x      &
+              g(z)                & = \frac{\exp(2z\i)}{(z^2 + 1)^2}                    \\
+              z_1                 & = \color{y_h} \i                                  &
+              \Res_{z = z_1} f(z) & = \lim_{z \to z_1} \diff*{\Bigg[
+              \frac{\exp(2z\i)}{(z + \i)^2}\Bigg]}{z}                                   \\
+                                  & = \lim_{z \to z_1} \frac{(2\i z - 4)\ \exp(2z\i)}
+              {(z + \i)^3}
+                                  & = \color{y_p} \frac{-3e^{-2}}{4}\ \i                \\
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I & = -2\pi\ \sum_{k} \Im{\Big[\Res_{z = z_k} g(z)\Big]} &
+              I & = \frac{3\pi}{2e^2}
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\sin(3x)}{(x^4 + 1)}\ \dl x &
+              g(z)                & = \frac{\exp(3z\i)}{(z^2 + \i)(z^2 - \i)}    \\
+              z_1                 & = \color{y_h} \frac{1 + \i}{\sqrt{2}}      &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{\exp[(3/\sqrt{2})
+                      \ (-1 + \i)]}
+              {\sqrt{8}\ (-1 + \i)}                                              \\
+              z_2                 & = \color{y_h} \frac{-1 + \i}{\sqrt{2}}     &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{\exp[(-3/\sqrt{2})
+                      \ (1 + \i)]}
+              {\sqrt{8}\ (1 + \i)}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I & = 2\pi\ \sum_{k} \Re{\Big[\Res_{z = z_k} g(z)\Big]}                \\
+              I & = 2\pi\ \Bigg[ \frac{e^{-k}}{4\sqrt{2}}\ (\cos k - \sin k - \cos k
+              + \sin k) \Bigg]                                                       \\
+              I & = 0
+          \end{align}
+          Since the integrand is odd, the integral must vanish.
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\cos(4x)}{(x^4 + 5x^2 + 4)}\ \dl x &
+              g(z)                & = \frac{\exp(4z\i)}{(z^2 + 1)(z^2 + 4)}             \\
+              z_1                 & = \color{y_h} \i                                  &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{e^{-4}}{6\i}                    \\
+              z_2                 & = \color{y_h} 2\i                                 &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{e^{-8}}{-3(4\i)}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I & = -2\pi\ \sum_{k} \Im{\Big[\Res_{z = z_k} g(z)\Big]}      &
+              I & = -2\pi\ \Bigg[ \frac{-e^4}{6} + \frac{e^{-8}}{12} \Bigg]   \\
+              I & = \frac{\pi}{6}\ [-e^{-8} + 2e^{-4}]
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\dl x}{(x^4 - 1)} &
+              f(z)                & = \frac{1}{(z^2 + 1)(z^2 - 1)}     \\
+              z_1                 & = \color{y_h} \i                 &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{\i}{4}         \\
+              z_2                 & = \color{y_h} 1                  &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{1}{4}          \\
+              z_2                 & = \color{y_h} -1                 &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{-1}{4}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I_1 & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I_1 & = 2\pi\i\ (\i/4)                         \\
+              I_2 & = \pi\i\ \sum_{k} \Res_{z = z_j} f(z)  &
+              I_2 & = \pi\i\ (0)                             \\
+              I   & = I_1 + I_2 = \frac{-\pi}{2}
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{x\ \dl x}{(8 - x^3)} &
+              f(z)                & = \frac{-z}{(z-2)(z^2 + 2z + 4)}      \\
+              z_1                 & = \color{y_h} 2                     &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{-1}{6}            \\
+              z_2                 & = \color{y_h} -1 + \sqrt{3}\ \i     &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{-\sqrt{3} + \i}
+              {12\ (\i)}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I_1 & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I_1 & = \frac{\pi}{6}\ (-\sqrt{3} + \i)        \\
+              I_2 & = \pi\i\ \sum_{k} \Res_{z = z_j} f(z)  &
+              I_2 & = -\frac{\pi\i}{6}                       \\
+              I   & = I_1 + I_2 = -\frac{\pi}{2\sqrt{3}}
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\sin x}{(x-1)(x^2 + 4)}\ \dl x &
+              g(z)                & = \frac{\exp(z\i)}{(z - 1)(z + 2\i)(z - 2\i)}   \\
+              z_1                 & = \color{y_h} 1                               &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{[\cos 1 + \i\ \sin 1]}
+              {5}                                                                   \\
+              z_2                 & = \color{y_h} 2\i                             &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{e^{-2}(\i - 2)}{20}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I_1 & = 2\pi\ \sum_{k} \Re{\Big[\Res_{z = z_k} g(z)\Big]} &
+              I_1 & = -\frac{\pi e^{-2}}{5}                               \\
+              I_2 & = \pi\ \sum_{k} \Re{\Big[\Res_{z = z_j} g(z)\Big]}  &
+              I_2 & = \frac{\pi \cos 1}{5}                                \\
+              I   & = I_1 + I_2 = \frac{\pi}{5}\ [\cos 1 - e^{-2}]
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\dl x}{(x^2 - \i x)} &
+              f(z)                & = \frac{1}{z(z - \i)}                 \\
+              z_1                 & = \color{y_h} 0                     &
+              \Res_{z = z_1} f(z) & = \color{y_p} \i                      \\
+              z_2                 & = \color{y_h} \i                    &
+              \Res_{z = z_2} f(z) & = \color{y_p} -\i
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I_1 & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I_1 & = 2\pi                                   \\
+              I_2 & = \pi\i\ \sum_{k} \Res_{z = z_j} f(z)  &
+              I_2 & = -\pi                                   \\
+              I   & = I_1 + I_2 = \pi
+          \end{align}
+
+    \item Same as Problem $ 19 $
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{\dl x}{(x^4 + 3x^2 - 4)} &
+              f(z)                & = \frac{1}{(x^2 + 4)(x^2 - 1)}            \\
+              z_1                 & = \color{y_h} -1                        &
+              \Res_{z = z_1} f(z) & = \color{y_p} \frac{-1}{10}               \\
+              z_2                 & = \color{y_h} 1                         &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{1}{10}                \\
+              z_2                 & = \color{y_h} 2\i                       &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{\i}{20}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I_1 & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I_1 & = -\frac{\pi}{10}                        \\
+              I_2 & = \pi\i\ \sum_{k} \Res_{z = z_j} f(z)  &
+              I_2 & = 0                                      \\
+              I   & = I_1 + I_2 = \frac{-\pi}{10}
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{x + 5}{(x(x^2 - 1))} \dl x &
+              f(z)                & = \frac{x+5}{x(x + 1)(x - 1)}               \\
+              z_1                 & = \color{y_h} -1                          &
+              \Res_{z = z_1} f(z) & = \color{y_p} 2                             \\
+              z_2                 & = \color{y_h} 1                           &
+              \Res_{z = z_2} f(z) & = \color{y_p} 3                             \\
+              z_2                 & = \color{y_h} 0                           &
+              \Res_{z = z_2} f(z) & = \color{y_p} -5
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I_1 & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I_1 & = 0                                      \\
+              I_2 & = \pi\i\ \sum_{k} \Res_{z = z_j} f(z)  &
+              I_2 & = \pi\i\ (0)                             \\
+              I   & = I_1 + I_2 = 0
+          \end{align}
+
+    \item Evaluating the improper integral,
+          \begin{align}
+              I                   & = \intRL \frac{x^2}{x^4 - 1} \dl x &
+              f(z)                & = \frac{x^2}{(x^2 + 1)(x^2 - 1)}     \\
+              z_1                 & = \color{y_h} -1                   &
+              \Res_{z = z_1} f(z) & = \color{y_p} -1/4                   \\
+              z_2                 & = \color{y_h} 1                    &
+              \Res_{z = z_2} f(z) & = \color{y_p} 1/4                    \\
+              z_2                 & = \color{y_h} \i                   &
+              \Res_{z = z_2} f(z) & = \color{y_p} \frac{-\i}{4}
+          \end{align}
+          Evalauting the integral,
+          \begin{align}
+              I_1 & = 2\pi\i\ \sum_{k} \Res_{z = z_k} f(z) &
+              I_1 & = \frac{\pi}{2}                          \\
+              I_2 & = \pi\i\ \sum_{k} \Res_{z = z_j} f(z)  &
+              I_2 & = \pi\i\ (0)                             \\
+              I   & = I_1 + I_2 = \frac{\pi}{2}
+          \end{align}
+
+    \item The function has $ N > 1 $ simple poles on the real axis, by way of
+          $ N $ distinct linear factors in its denominator. \par
+          Looking at the sum of the residues for the special case of $ N = 3 $,
+          \begin{align}
+              \sum_{z = z_j} \Res_{z = z_j}f(z) & = \frac{1}{(a-b)(a-c)}
+              + \frac{1}{(b-a)(b-c)} + \frac{1}{(c-a)(c-b)}                \\
+                                                & = \frac{c-b + a-c + b-a}
+              {(a-b)(b-c)(c-a)} = 0
+          \end{align}
+          For the general case, TBC
+
+    \item Real integrals,
+          \begin{enumerate}
+              \item Starting with equation $ 9 $,
+                    \begin{align}
+                        \intRL f(x)\ \exp(\i sx)\ \dl x  & = 2\pi\i
+                        \ \sum_j \Res_{z = z_j}
+                        \Big[f(z) e^{\i sz} \Big]                   \\
+                        \intRL f(x)\ \cos(sx)\ \dl x +
+                        \intRL f(x)\ \i\ \sin(sx)\ \dl x & =
+                        2\pi\i\ \sum_j \Re{w_j} + \i\ \Im{w_j}
+                    \end{align}
+                    Equating the real and imaginary parts,
+                    \begin{align}
+                        \intRL f(x)\ \cos(sx)\ \dl x & = -2\pi\ \sum_j \Im{w_j} \\
+                        \intRL f(x)\ \sin(sx)\ \dl x & = 2\pi\ \sum_j \Re{w_j}  \\
+                        w_j                          & = \Res_{z = z_j}
+                        \Big[ f(z)\ \exp(\i sz) \Big]
+                    \end{align}
+
+              \item Performing the integration, one side at a time,
+                    \begin{align}
+                        \int_{0}^{a} e^{-x^2} \cos(2bx)\ \dl x
+                         & = \frac{1}{2}\ \int_{-a}^{a} e^{-x^2} \cos(2bx)\ \dl x     \\
+                         & = \frac{1}{2}\ \int_{-a}^{a} e^{-x^2} \exp(2bx\ \i)\ \dl x \\
+                         & = \frac{e^{-b^2}}{2}\ \int_{-a}^{a} \exp[-(x - b\i)^2]
+                        \ \dl x
+                    \end{align}
+                    Using the substitution, $ w = x - b\i $, and noting that the contour
+                    integral over the two vertical sides of the rectangle vanishes at
+                    $ R \to \infty $, Cauchy's integral theorem for an entire function
+                    gives,
+                    \begin{align}
+                        I & = \frac{e^{-b^2}}{2}\ \int_{-a-b\i}^{a-b\i}
+                        e^{-w^2}\ \dl w = \int_{-a}^{a} e^{-w^2}\ \dl w \\
+                          & = e^{-b^2}\ \int_{0}^{a} e^{-x^2}\ \dl x
+                        = \frac{e^{-b^2}\ \sqrt{\pi}}{2}
+                    \end{align}
+
+              \item These problems have odd integrands with symmetric limits.
+                    Their value is thus zero.
+
+          \end{enumerate}
+
+\end{enumerate}

@@ -1,23 +1,28 @@
-\section{Exact ODEs. Integrating Factors}
+\section{Exact ODEs, Integrating Factors}
 
 \begin{enumerate}
     \item Test for exactness passed.
 
           \begin{align}
-              \ \dl x + x^{2}\ \dl y & = 0                                     \\
-              M                      & = 2xy          & N            & = x^{2} \\
-              \diffp{M}{y}           & = 2x           & \diffp{N}{x} & = 2x    \\
+              \ \dl x + x^{2}\ \dl y & = 0              \\
+              M                      & = 2xy          &
+              N                      & = x^{2}          \\
+              \diffp{M}{y}           & = 2x           &
+              \diffp{N}{x}           & = 2x             \\
               \diffp{M}{y}           & = \diffp{N}{x}
           \end{align}
 
           Solving ODE,
 
           \begin{align}
-              u            & = \int M\ \dl x + k(y) &                     & = 2y \int\ x\ \dl x + k(y) \\
-              u            & = yx^{2} + k(y)                                                           \\
-              \diffp{u}{y} & = N                    & x^{2} + \diff{k}{y} & = x^{2}                    \\
-              \diff{k}{y}  & = 0                    & k                   & = b                        \\
-              u(x, y)      & = x^{2}y
+              u                   & = \int M\ \dl x + k(y)     &
+                                  & = 2y \int\ x\ \dl x + k(y)   \\
+              u                   & = yx^{2} + k(y)              \\
+              \diffp{u}{y}        & = N                        &
+              x^{2} + \diff{k}{y} & = x^{2}                      \\
+              \diff{k}{y}         & = 0                        &
+              k                   & = b                          \\
+              u(x, y)             & = x^{2}y
           \end{align}
 
 
@@ -51,19 +56,24 @@
     \item Test for exactness passed.
 
           \begin{align}
-              x^{3}\ \dl x + y^{3}\ \dl y & = 0                                     \\
-              M                           & = x^{3}        & N            & = y^{3} \\
-              \diffp{M}{y}                & = 0            & \diffp{N}{x} & = 0     \\
+              x^{3}\ \dl x + y^{3}\ \dl y & = 0              \\
+              M                           & = x^{3}        &
+              N                           & = y^{3}          \\
+              \diffp{M}{y}                & = 0            &
+              \diffp{N}{x}                & = 0              \\
               \diffp{M}{y}                & = \diffp{N}{x}
           \end{align}
 
           Solving ODE,
 
           \begin{align}
-              u            & = \int M\ \dl x + k(y)    &             & = \int\ x^{3}\ \dl x + k(y) \\
-              u            & = \frac{x^{4}}{4} + k(y)                                              \\
-              \diffp{u}{y} & = N                       & \diff{k}{y} & = y^{3}                     \\
-              \diff{k}{y}  & = y^{3}                   & k           & = \frac{y^{4}}{4}           \\
+              u            & = \int M\ \dl x + k(y)      &
+                           & = \int\ x^{3}\ \dl x + k(y)   \\
+              u            & = \frac{x^{4}}{4} + k(y)      \\
+              \diffp{u}{y} & = N                         &
+              \diff{k}{y}  & = y^{3}                       \\
+              \diff{k}{y}  & = y^{3}                     &
+              k            & = \frac{y^{4}}{4}             \\
               u(x, y)      & = \frac{x^{4} + y^{4}}{4}
           \end{align}
 
@@ -75,7 +85,8 @@
                           set layers,
                           colorbar,
                           colormap/jet,
-                          title = {Level curves for $ u(x, y) = \dfrac{x^{4} + y^{4}}{4} $},
+                          title = {Level curves for $ u(x, y)
+                                      = \dfrac{x^{4} + y^{4}}{4} $},
                           width = 8cm,
                           height = 8cm,
                           Ani, grid = both,
@@ -99,20 +110,25 @@
     \item Test for exactness passed.
 
           \begin{align}
-              \sin x \cos y\ \dl x + \cos x \sin y\ \dl y & = 0                                                \\
-              M                                           & = \sin x \cos y  & N            & = \cos x \sin y  \\
-              \diffp{M}{y}                                & = -\sin x \sin y & \diffp{N}{x} & = -\sin x \sin y \\
-              \diffp{M}{y}                                & = \diffp{N}{x}
+              0            & = \sin x \cos y\ \dl x + \cos x \sin y\ \dl y   \\
+              M            & = \sin x \cos y                               &
+              N            & = \cos x \sin y                                 \\
+              \diffp{M}{y} & = -\sin x \sin y                              &
+              \diffp{N}{x} & = -\sin x \sin y                                \\
+              \diffp{M}{y} & = \diffp{N}{x}
           \end{align}
 
           Solving ODE,
 
           \begin{align}
-              u            & = \int M\ \dl x + k(y)  &                             & = \cos y \int\ \sin x\ \dl x + k(y) \\
-              u            & = -\cos x \cos y + k(y)                                                                     \\
-              \diffp{u}{y} & = N                     & \diff{k}{y} + \cos x \sin y & = \cos x \sin y                     \\
-              \diff{k}{y}  & = 0                     & k                           & = b                                 \\
-              u(x, y)      & = -\cos x \cos y
+              u                           & = \int M\ \dl x + k(y)              &
+                                          & = \cos y \int\ \sin x\ \dl x + k(y)   \\
+              u                           & = -\cos x \cos y + k(y)               \\
+              \diffp{u}{y}                & = N                                 &
+              \diff{k}{y} + \cos x \sin y & = \cos x \sin y                       \\
+              \diff{k}{y}                 & = 0                                 &
+              k                           & = b                                   \\
+              u(x, y)                     & = -\cos x \cos y
           \end{align}
 
 
@@ -149,57 +165,73 @@
     \item Test for exactness passed.
 
           \begin{align}
-              e^{3\theta}\ \dl r + 3r e^{3\theta} d\theta & = 0                                             \\
-              M                                           & = e^{3\theta}  & N            & = 3re^{3\theta} \\
-              \diffp{M}{\theta}                           & = 3e^{3\theta} & \diffp{N}{r} & = 3e^{3\theta}  \\
-              \diffp{M}{\theta}                           & = \diffp{N}{r}
+              0                 & = e^{3\theta}\ \dl r + 3r e^{3\theta} d\theta   \\
+              M                 & = e^{3\theta}                                 &
+              N                 & = 3re^{3\theta}                                 \\
+              \diffp{M}{\theta} & = 3e^{3\theta}                                &
+              \diffp{N}{r}      & = 3e^{3\theta}                                  \\
+              \diffp{M}{\theta} & = \diffp{N}{r}
           \end{align}
 
           Solving ODE,
 
           \begin{align}
-              u                 & = \int M\ \dl r + k(\theta) &                                    & = e^{3\theta} \int\ \dl r + k(\theta) \\
-              u                 & = re^{3\theta} + k(\theta)                                                                               \\
-              \diffp{u}{\theta} & = N                         & \frac{dk}{d\theta} + 3re^{3\theta} & = 3re^{3\theta}                       \\
-              \diff{k}{y}       & = 0                         & k                                  & = b                                   \\
-              u(r, \theta)      & = re^{3\theta}
+              u                                 & = \int M\ \dl r + k(\theta) &
+                                                & = e^{3\theta} \int\ \dl r
+              + k(\theta)                                                       \\
+              u                                 & = re^{3\theta} + k(\theta)    \\
+              \diffp{u}{\theta}                 & = N                         &
+              \diff {k}{\theta} + 3re^{3\theta} & = 3re^{3\theta}               \\
+              \diff{k}{y}                       & = 0                         &
+              k                                 & = b                           \\
+              u(r, \theta)                      & = re^{3\theta}
           \end{align}
 
 
     \item Test for exactness failed.
 
           \begin{align}
-              (x^{2} + y^{2}) \ \dl x - 2xy \ \dl y & = 0                                       \\
-              P                                     & = x^{2} + y^{2}   & Q            & = -2xy \\
-              \diffp{P}{y}                          & = 2y              & \diffp{Q}{x} & = -2y  \\
-              \diffp{P}{y}                          & \neq \diffp{Q}{x}
+              0            & = (x^{2} + y^{2}) \ \dl x - 2xy \ \dl y   \\
+              P            & = x^{2} + y^{2}                         &
+              Q            & = -2xy                                    \\
+              \diffp{P}{y} & = 2y                                    &
+              \diffp{Q}{x} & = -2y                                     \\
+              \diffp{P}{y} & \neq \diffp{Q}{x}
           \end{align}
 
           Finding the integrating factor,
 
           \begin{align}
-              R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right) & = \frac{-4y}{x^{2} + y^{2}}                      \\
-              R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)     & = \frac{-4y}{2xy} = \frac{-2}{x}  = R(x)         \\
-              F                                                & = \exp \left( \int\ R(x)\ \dl x \right) = x^{-2}
+              R^{*} = \frac{1}{P} \left( Q_{x} - P_{y}
+              \right) & = \frac{-4y}{x^{2} + y^{2}}                      \\
+              R = \frac{-1}{Q}\left( Q_{x} - P_{y}
+              \right) & = \frac{-4y}{2xy} = \frac{-2}{x}  = R(x)         \\
+              F       & = \exp \left( \int\ R(x)\ \dl x \right) = x^{-2}
           \end{align}
 
           Checking the integrating factor $ F = x^{-2} $,
 
           \begin{align}
-              1 + \frac{y^{2}}{x^{2}}\ \dl x - \frac{2y}{x}\ \dl y & = 0                                                           \\
-              M                                                    & = 1 + \frac{y^{2}}{x^{2}} & N            & = \frac{-2y}{x}    \\
-              \diffp{M}{y}                                         & = \frac{2y}{x^{2}}        & \diffp{N}{x} & = \frac{2y}{x^{2}} \\
-              \diffp{M}{y}                                         & = \diffp{N}{x}
+              0            & = 1 + \frac{y^{2}}{x^{2}}\ \dl x - \frac{2y}{x}\ \dl y   \\
+              M            & = 1 + \frac{y^{2}}{x^{2}}                              &
+              N            & = \frac{-2y}{x}                                          \\
+              \diffp{M}{y} & = \frac{2y}{x^{2}}                                     &
+              \diffp{N}{x} & = \frac{2y}{x^{2}}                                       \\
+              \diffp{M}{y} & = \diffp{N}{x}
           \end{align}
 
           Solving ODE,
 
           \begin{align}
-              u            & = \int N\ \dl y+ k(x)     &                                   & = \frac{-2}{x} \int\ y\ \dl y+ k(x) \\
-              u            & = \frac{-y^{2}}{x} + k(x)                                                                           \\
-              \diffp{u}{x} & = M                       & \diff{k}{x} + \frac{y^{2}}{x^{2}} & =  1 + \frac{y^{2}}{x^{2}}          \\
-              \diff{k}{x}  & = 1                       & k                                 & = x                                 \\
-              u(x, y)      & = x - \frac{y^{2}}{x}
+              u                                 & = \int N\ \dl y+ k(x)         &
+                                                & = \frac{-2}{x} \int\ y\ \dl y
+              + k(x)                                                              \\
+              u                                 & = \frac{-y^{2}}{x} + k(x)       \\
+              \diffp{u}{x}                      & = M                           &
+              \diff{k}{x} + \frac{y^{2}}{x^{2}} & =  1 + \frac{y^{2}}{x^{2}}      \\
+              \diff{k}{x}                       & = 1                           &
+              k                                 & = x                             \\
+              u(x, y)                           & = x - \frac{y^{2}}{x}
           \end{align}
 
 
@@ -232,31 +264,37 @@
               \end{tikzpicture}
           \end{figure}
 
-    \item Test for exactness failed. Using the integration factor given $ F = (y + 1)x^{-4} $
+    \item Test for exactness failed. Using the integration factor given
+          $ F = (y + 1)x^{-4} $
 
           \begin{align}
-              3(y + 1)\ \dl x - 2x\ \dl y & = 0                                      \\
-              M                           & = 3y + 3          & N            & = -2x \\
-              \diffp{M}{y}                & = 3               & \diffp{N}{x} & = -2  \\
-              \diffp{M}{y}                & \neq \diffp{N}{x}
+              0            & = 3(y + 1)\ \dl x - 2x\ \dl y                        \\
+              M            & = 3y + 3                      & N            & = -2x \\
+              \diffp{M}{y} & = 3                           & \diffp{N}{x} & = -2  \\
+              \diffp{M}{y} & \neq \diffp{N}{x}
           \end{align}
 
           Checking the integrating factor,
 
           \begin{align}
-              3(y + 1)^{2}x^{-4}\ \dl x - 2x^{-3}(y+1)\ \dl y & = 0                                                 \\
-              P                                               & = 3x^{-4}(y+1)^{2} & Q            & = -2x^{-3}(y+1) \\
-              \diffp{P}{y}                                    & = 6x^{-4}(y+1)     & \diffp{Q}{x} & = 6x^{-4}(y+1)  \\
-              \diffp{P}{y}                                    & = \diffp{Q}{x}
+              0            & = 3(y + 1)^{2}x^{-4}\ \dl x - 2x^{-3}(y+1)\ \dl y   \\
+              P            & = 3x^{-4}(y+1)^{2}                                &
+              Q            & = -2x^{-3}(y+1)                                     \\
+              \diffp{P}{y} & = 6x^{-4}(y+1)                                    &
+              \diffp{Q}{x} & = 6x^{-4}(y+1)                                      \\
+              \diffp{P}{y} & = \diffp{Q}{x}
           \end{align}
 
-
+          Performing the integration,
           \begin{align}
-              u            & = \int P\ \dl x + k(y)    &                            & = 3(y+1)^{2} \int\ x^{-4}\ \dl x + k(y) \\
-              u            & = -(y+1)^{2}x^{-3} + k(y)                                                                        \\
-              \diffp{u}{y} & = Q                       & \diff{k}{y} - 2x^{-3}(y+1) & =  - 2x^{-3}(y+1)                       \\
-              \diff{k}{y}  & = 0                       & k                          & = b                                     \\
-              u(x, y)      & = -x^{-3}(y+1)
+              u                          & = \int P\ \dl x + k(y)                  \\
+                                         & = 3(y+1)^{2} \int\ x^{-4}\ \dl x + k(y) \\
+              u                          & = -(y+1)^{2}x^{-3} + k(y)               \\
+              \diffp{u}{y}               & = Q                                     \\
+              \diff{k}{y} - 2x^{-3}(y+1) & =  - 2x^{-3}(y+1)                       \\
+              \diff{k}{y}                & = 0                                     \\
+              k                          & = b                                     \\
+              u(x, y)                    & = -x^{-3}(y+1)
           \end{align}
 
 
@@ -292,37 +330,48 @@
     \item Test for exactness failed.
 
           \begin{align}
-              2x \tan y\ \dl x + \sec ^{2}y\ \dl y & = 0                                             \\
-              P                                    & = 2x \tan y       & Q            & = \sec ^{2}y \\
-              \diffp{P}{y}                         & = 2x \sec^{2}y    & \diffp{Q}{x} & = 0          \\
-              \diffp{P}{y}                         & \neq \diffp{Q}{x}
+              0            & = 2x \tan y\ \dl x + \sec ^{2}y\ \dl y   \\
+              P            & = 2x \tan y                            &
+              Q            & = \sec ^{2}y                             \\
+              \diffp{P}{y} & = 2x \sec^{2}y                         &
+              \diffp{Q}{x} & = 0                                      \\
+              \diffp{P}{y} & \neq \diffp{Q}{x}
           \end{align}
 
           Finding the integrating factor,
 
           \begin{align}
-              R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right) & = \frac{- 2x \sec ^{2}y}{2x \tan y}                 \\
-              R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)     & = \frac{- 2x \sec ^{2}y}{- \sec ^{2} y}  = R(x)     \\
-              F                                                & = \exp \left( \int\ R(x)\ \dl x \right) = e^{x^{2}}
+              R^{*} = \frac{1}{P} \left( Q_{x} - P_{y}
+              \right) & = \frac{- 2x \sec ^{2}y}{2x \tan y}                 \\
+              R = \frac{-1}{Q}\left( Q_{x} - P_{y}
+              \right) & = \frac{- 2x \sec ^{2}y}{- \sec ^{2} y}  = R(x)     \\
+              F       & = \exp \left( \int\ R(x)\ \dl x \right) = e^{x^{2}}
           \end{align}
 
           Checking the integrating factor $ F = e^{x^{2}} $
 
           \begin{align}
-              2x e^{x^{2}} \tan y\ \dl x + e^{x^{2}} \sec ^{2} y\ \dl y & = 0                                                                    \\
-              M                                                         & = 2x e^{x^{2}} \tan y      & N            & =  e^{x^{2}} \sec ^{2} y   \\
-              \diffp{M}{y}                                              & = 2x e^{x^{2}} \sec ^{2} y & \diffp{N}{x} & = 2x e^{x^{2}} \sec ^{2} y \\
-              \diffp{M}{y}                                              & = \diffp{N}{x}
+              0            & = 2x e^{x^{2}} \tan y\ \dl x + e^{x^{2}} \sec ^{2} y
+              \ \dl y                                                               \\
+              M            & = 2x e^{x^{2}} \tan y                                &
+              N            & =  e^{x^{2}} \sec ^{2} y                               \\
+              \diffp{M}{y} & = 2x e^{x^{2}} \sec ^{2} y                           &
+              \diffp{N}{x} & = 2x e^{x^{2}} \sec ^{2} y                             \\
+              \diffp{M}{y} & = \diffp{N}{x}
           \end{align}
 
           Solving the ODE
 
           \begin{align}
-              u            & = \int N\ \dl y+ k(x)     &                                  & = e^{x^{2}} \int\ \sec ^{2} y\ \dl y+ k(x) \\
-              u            & = e^{x^{2}} \tan y + k(x)                                                                                 \\
-              \diffp{u}{x} & = M                       & \diff{k}{x} + 2xe^{x^{2}} \tan y & =  2xe^{x^{2}} \tan y                      \\
-              \diff{k}{x}  & = 0                       & k                                & = b                                        \\
-              u(x, y)      & = e^{x^{2}} \tan y
+              u                                & = \int N\ \dl y+ k(x)         \\
+                                               & = e^{x^{2}} \int\ \sec ^{2} y
+              \ \dl y+ k(x)                                                    \\
+              u                                & = e^{x^{2}} \tan y + k(x)     \\
+              \diffp{u}{x}                     & = M                           \\
+              \diff{k}{x} + 2xe^{x^{2}} \tan y & =  2xe^{x^{2}} \tan y         \\
+              \diff{k}{x}                      & = 0                           \\
+              k                                & = b                           \\
+              u(x, y)                          & = e^{x^{2}} \tan y
           \end{align}
 
 
@@ -330,7 +379,7 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[
-                          PiStyleY,
+                          PiStyleY, ytick distance = 0.5 *pi,
                           set layers,
                           colorbar,
                           colormap/jet,
@@ -359,20 +408,25 @@
     \item Test for exactness passed.
 
           \begin{align}
-              e^{x} \cos y\ \dl x - e^{x} \sin y\ \dl y & = 0                                                \\
-              P                                         & = e^{x} \cos y    & Q            & = -e^{x} \sin y \\
-              \diffp{P}{y}                              & = -e^{x} \sin y   & \diffp{Q}{x} & = -e^{x} \sin y \\
-              \diffp{P}{y}                              & \neq \diffp{Q}{x}
+              0            & = e^{x} \cos y\ \dl x - e^{x} \sin y\ \dl y   \\
+              P            & = e^{x} \cos y                              &
+              Q            & = -e^{x} \sin y                               \\
+              \diffp{P}{y} & = -e^{x} \sin y                             &
+              \diffp{Q}{x} & = -e^{x} \sin y                               \\
+              \diffp{P}{y} & \neq \diffp{Q}{x}
           \end{align}
 
-          Solving the ODE, settings $ (P, Q) \rightarrow (M, N) $
+          Solving the ODE, settings $ (P, Q) \to (M, N) $
 
           \begin{align}
-              u            & = \int N\ \dl y+ k(x) &                            & = -e^{x} \int\ \sin y\ \dl y+ k(x) \\
-              u            & = e^{x} \cos y + k(x)                                                                   \\
-              \diffp{u}{x} & = M                   & \diff{k}{x} + e^{x} \cos y & =  e^{x} \cos y                    \\
-              \diff{k}{x}  & = 0                   & k                          & = b                                \\
-              u(x, y)      & = e^{x} \cos y
+              u                          & = \int N\ \dl y+ k(x)              &
+                                         & = -e^{x} \int\ \sin y\ \dl y+ k(x)   \\
+              u                          & = e^{x} \cos y + k(x)                \\
+              \diffp{u}{x}               & = M                                &
+              \diff{k}{x} + e^{x} \cos y & =  e^{x} \cos y                      \\
+              \diff{k}{x}                & = 0                                &
+              k                          & = b                                  \\
+              u(x, y)                    & = e^{x} \cos y
           \end{align}
 
 
@@ -380,7 +434,7 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[
-                          PiStyleY,
+                          PiStyleY, ytick distance = pi,
                           set layers,
                           colorbar,
                           colormap/jet,
@@ -409,21 +463,27 @@
     \item Test for exactness passed.
 
           \begin{align}
-              e^{2x} (2 \cos y)\ \dl x - e^{2x} ( \sin y)\ \dl y & = 0                                                        \\
-              P                                                  & = e^{2x} (2 \cos y)  & Q            & = -e^{2x} (\sin y)   \\
-              \diffp{P}{y}                                       & = e^{2x} (-2 \sin y) & \diffp{Q}{x} & = -e^{2x} (2 \sin y) \\
-              \diffp{P}{y}                                       & = \diffp{Q}{x}
+              0            & = e^{2x} (2 \cos y)\ \dl x - e^{2x} ( \sin y) \ \dl y   \\
+              P            & = e^{2x} (2 \cos y)                                   &
+              Q            & = -e^{2x} (\sin y)                                      \\
+              \diffp{P}{y} & = e^{2x} (-2 \sin y)                                  &
+              \diffp{Q}{x} & = -e^{2x} (2 \sin y)                                    \\
+              \diffp{P}{y} & = \diffp{Q}{x}
           \end{align}
 
-          Solving the ODE, setting $ (P, Q) \rightarrow (M, N) $, and the IC $ y(0) = 0 $
+          Solving the ODE, setting $ (P, Q) \to (M, N) $, and the IC $ y(0) = 0 $
 
           \begin{align}
-              u                          & = \int N\ \dl y+ k(x)  &                              & = -e^{2x} \int\ \sin y\ \dl y+ k(x) \\
-              u                          & = e^{2x} \cos y + k(x)                                                                      \\
-              \diffp{u}{x}               & = M                    & \diff{k}{x} + 2e^{2x} \cos y & =  e^{2x} (2\cos y)                 \\
-              \diff{k}{x}                & = 0                    & k                            & = b                                 \\
-              u(x, y)                    & = e^{2x} \cos y  + c                                                                        \\
-              \text{particular solution} &                        & e^{2x} \cos y                & = 1
+              u                            & = \int N\ \dl y+ k(x)               &
+                                           & = -e^{2x} \int\ \sin y\ \dl y+ k(x)   \\
+              u                            & = e^{2x} \cos y + k(x)              &
+              \diffp{u}{x}                 & = M                                   \\
+              \diff{k}{x} + 2e^{2x} \cos y & =  e^{2x} (2\cos y)                 &
+              \diff{k}{x}                  & = 0                                   \\
+              k                            & = b                                 &
+              u(x, y)                      & = e^{2x} \cos y  + c                  \\
+              \text{particular solution}   &                                     &
+              e^{2x} \cos y                & = 1
           \end{align}
 
 
@@ -431,7 +491,7 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[
-                          PiStyleY,
+                          PiStyleY, ytick distance = pi,
                           set layers,
                           colorbar,
                           colormap/jet,
@@ -460,9 +520,11 @@
     \item Test for exactness failed. Using the integration factor given $ F = \cos(x+y) $
 
           \begin{align}
-              y\ \dl x + [y + \tan(x + y)]\ \dl y & = 0                                                  \\
-              M                                   & = y               & N            & = [y + \tan(x+y)] \\
-              \diffp{M}{y}                        & = 1               & \diffp{N}{x} & = \sec ^{2}(x+y)  \\
+              y\ \dl x + [y + \tan(x + y)]\ \dl y & = 0                 \\
+              M                                   & = y               &
+              N                                   & = [y + \tan(x+y)]   \\
+              \diffp{M}{y}                        & = 1               &
+              \diffp{N}{x}                        & = \sec ^{2}(x+y)    \\
               \diffp{M}{y}                        & \neq \diffp{N}{x}
           \end{align}
 
@@ -480,12 +542,14 @@
           Solving the ODE,
 
           \begin{align}
-              u                                    & = \int P\ \dl x + k(y)                      \\
-                                                   & = y \int\ \cos(x+y)\ \dl x + k(y)           \\
-              u                                    & = y \sin(x+y) + k(y)                        \\
-              \diffp{u}{y}                         & = Q                                         \\
-              \diff{k}{y} + y\cos(x+y) + \sin(x+y) & = [y \cos(x+y) + \sin(x+y)]                 \\
-              \diff{k}{y}                          & = 0                               & k & = b \\
+              u                                    & = \int P\ \dl x + k(y)        \\
+                                                   & = y \int\ \cos(x+y)\ \dl x
+              + k(y)                                                               \\
+              u                                    & = y \sin(x+y) + k(y)          \\
+              \diffp{u}{y}                         & = Q                           \\
+              \diff{k}{y} + y\cos(x+y) + \sin(x+y) & = [y \cos(x+y) + \sin(x+y)]   \\
+              \diff{k}{y}                          & = 0                         &
+              k                                    & = b                           \\
               u(x, y)                              & = y\sin(x+y)
           \end{align}
 
@@ -522,42 +586,52 @@
     \item Test for exactness failed.
 
           \begin{align}
-              0            & = 2 \cosh x \cos y\ \dl x - \sinh x \sin y \ \dl y                                    \\
-              P            & = 2\cosh x \cos y                                  & Q            & = -\sinh x \sin y \\
-              \diffp{P}{y} & = -2 \cosh x \sin y                                & \diffp{Q}{x} & = -\cosh x \sin y \\
+              0            & = 2 \cosh x \cos y\ \dl x - \sinh x \sin y \ \dl y   \\
+              P            & = 2\cosh x \cos y                                  &
+              Q            & = -\sinh x \sin y                                    \\
+              \diffp{P}{y} & = -2 \cosh x \sin y                                &
+              \diffp{Q}{x} & = -\cosh x \sin y                                    \\
               \diffp{P}{y} & \neq \diffp{Q}{x}
           \end{align}
 
           Finding the integrating factor,
 
           \begin{align}
-              R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right) & = \frac{\cosh x \sin y}{2 \cosh x \cos y}    = R^{*}(y) \\
-              R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)     & = \frac{\cosh x \sin y}{\sinh x \sin y}  = R(x)         \\
-              F                                                & = \exp \left( \int\ R(x)\ \dl x \right) = \sinh |x|
+              R^{*} = \frac{1}{P} \left( Q_{x} - P_{y}
+              \right) & = \frac{\cosh x \sin y}{2 \cosh x \cos y}    = R^{*}(y) \\
+              R = \frac{-1}{Q}\left( Q_{x} - P_{y}
+              \right) & = \frac{\cosh x \sin y}{\sinh x \sin y}  = R(x)         \\
+              F       & = \exp \left( \int\ R(x)\ \dl x \right) = \sinh |x|
           \end{align}
 
           Checking the integrating factor $ F = \sinh |x| $
 
           \begin{align}
-              0                             & =2 \cosh x \sinh |x| \cos y\ \dl x - \sinh x \sinh |x| \sin y \ \dl y  \\
-              M                             & = 2 \cosh x \sinh |x| \cos y                                           \\
-              N                             & =  - \sinh x \sinh |x| \sin y                                          \\
-              \diffp{M}{y}                  & = -2 \cosh x \sinh |x| \sin y                                          \\
-              \diffp{N}{x}                  & = -\sin y \cosh x \sinh |x| - \sin y \sinh x \cosh x \ \frac{x}{|x|}   \\
-              \text{using} \qquad \sinh(-x) & = -\sinh x \qquad \text{and} \qquad \sinh x\ \frac{x}{|x|} = \sinh |x| \\
-              \diffp{M}{y}                  & = \diffp{N}{x}
+              0            & =2 \cosh x \sinh |x| \cos y\ \dl x - \sinh x
+              \sinh |x| \sin y \ \dl y                                            \\
+              M            & = 2 \cosh x \sinh |x| \cos y                         \\
+              N            & =  - \sinh x \sinh |x| \sin y                        \\
+              \diffp{M}{y} & = -2 \cosh x \sinh |x| \sin y                        \\
+              \diffp{N}{x} & = -\sin y \cosh x \sinh |x| - \sin y \sinh x \cosh x
+              \ \frac{x}{|x|}                                                     \\
+              \text{using} \qquad \sinh(-x)
+                           & = -\sinh x \qquad \text{and} \qquad \sinh x
+              \ \frac{x}{|x|} = \sinh |x|                                         \\
+              \diffp{M}{y} & = \diffp{N}{x}
           \end{align}
 
           Solving the ODE,
 
           \begin{align}
-              u                                            & = \int N\ \dl y+ k(x)                                     \\
-                                                           & = -\sinh x \sinh |x| \int\ \sin(y)\ \dl y+ k(x)           \\
-              u                                            & = \sinh x \sinh |x| \cos y + k(x)                         \\
-              \diffp{u}{x}                                 & = M                                                       \\
-              \diff{k}{x} + \cos y \ (2 \sinh |x| \cosh x) & = 2 \cosh x \sinh |x| \cos y                              \\
-              \diff{k}{x}                                  & = 0                                             & k & = b \\
-              u(x, y)                                      & = \sinh x \sinh |x| \cos y
+              u            & = \int N\ \dl y+ k(x)                             \\
+                           & = -\sinh x \sinh |x| \int\ \sin(y)\ \dl y+ k(x)   \\
+              u            & = \sinh x \sinh |x| \cos y + k(x)                 \\
+              \diffp{u}{x} & = M                                               \\
+              \diff{k}{x} + \cos y \ (2 \sinh |x| \cosh x)
+                           & = 2 \cosh x \sinh |x| \cos y                      \\
+              \diff{k}{x}  & = 0                                             &
+              k            & = b                                               \\
+              u(x, y)      & = \sinh x \sinh |x| \cos y
           \end{align}
 
 
@@ -565,11 +639,12 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[
-                          PiStyleY,
+                          PiStyleY, ytick distance = pi,
                           set layers,
                           colorbar,
                           colormap/jet,
-                          title = {Level curves for $ u(x, y) = \sinh x \sinh |x| \cos y $},
+                          title = {Level curves for
+                                  $ u(x, y) = \sinh x \sinh |x| \cos y $},
                           width = 8cm,
                           height = 8cm,
                           Ani, grid = both,
@@ -594,22 +669,25 @@
     \item Test for exactness passed.
 
           \begin{align}
-              0            & = 2 xy\ e^{x^{2}}\ \dl x + e^{x^{2}} \ \dl y                                  \\
-              P            & = 2 xy\ e^{x^{2}}                            & Q            & = e^{x^{2}}     \\
-              \diffp{P}{y} & = 2x\ e^{x^{2}}                              & \diffp{Q}{x} & = 2x\ e^{x^{2}} \\
+              0            & = 2 xy\ e^{x^{2}}\ \dl x + e^{x^{2}} \ \dl y   \\
+              P            & = 2 xy\ e^{x^{2}}                            &
+              Q            & = e^{x^{2}}                                    \\
+              \diffp{P}{y} & = 2x\ e^{x^{2}}                              &
+              \diffp{Q}{x} & = 2x\ e^{x^{2}}                                \\
               \diffp{P}{y} & \neq \diffp{Q}{x}
           \end{align}
 
-          Solving the ODE, setting $ (P, Q) \rightarrow (M, N) $, and the IC $ y(0) = 2 $
+          Solving the ODE, setting $ (P, Q) \to (M, N) $, and the IC $ y(0) = 2 $
 
           \begin{align}
-              u                       & = \int M\ \dl x + k(y)                          \\
-                                      & = y \int\ 2x\ e^{x^{2}}\ \dl x + k(y)           \\
-              u                       & = e^{x^{2}}y + k(y)                             \\
-              \diffp{u}{y}            & = N                                             \\
-              \diff{k}{y} + e^{x^{2}} & = e^{x^{2}}                                     \\
-              \diff{k}{y}             & = 0                                   & k & = b \\
-              u(x, y)                 & = e^{x^{2}}y + c                                \\
+              u                       & = \int M\ \dl x + k(y)                &
+                                      & = y \int\ 2x\ e^{x^{2}}\ \dl x + k(y)   \\
+              u                       & = e^{x^{2}}y + k(y)                   &
+              \diffp{u}{y}            & = N                                     \\
+              \diff{k}{y} + e^{x^{2}} & = e^{x^{2}}                             \\
+              \diff{k}{y}             & = 0                                   &
+              k                       & = b                                     \\
+              u(x, y)                 & = e^{x^{2}}y + c                      &
               c                       & = -2
           \end{align}
 
@@ -646,32 +724,35 @@
     \item Test for exactness failed. Using the integration factor given $ F = \exp(x+y) $
 
           \begin{align}
-              0            & = e^{-y}\ \dl x + e^{-x}[1 - e^{-y}]\ \dl y                                        \\
-              M            & = e^{-y}                                    & N            & = e^{-x}[1 - e^{-y}]  \\
-              \diffp{M}{y} & = -e^{-y}                                   & \diffp{N}{x} & = -e^{-x}[1 - e^{-y}] \\
+              0            & = e^{-y}\ \dl x + e^{-x}[1 - e^{-y}]\ \dl y   \\
+              M            & = e^{-y}                                    &
+              N            & = e^{-x}[1 - e^{-y}]                          \\
+              \diffp{M}{y} & = -e^{-y}                                   &
+              \diffp{N}{x} & = -e^{-x}[1 - e^{-y}]                         \\
               \diffp{M}{y} & \neq \diffp{N}{x}
           \end{align}
 
           Checking the integrating factor,
 
           \begin{align}
-              0            & = e^{x}\ \dl x + (e^{y} - 1)\ \dl y \\
-              P            & = e^{x}                             \\
-              Q            & = e^{y} - 1                         \\
-              \diffp{P}{y} & = 0                                 \\
-              \diffp{Q}{x} & = 0                                 \\
+              0            & = e^{x}\ \dl x + (e^{y} - 1)\ \dl y &
+              P            & = e^{x}                               \\
+              Q            & = e^{y} - 1                         &
+              \diffp{P}{y} & = 0                                   \\
+              \diffp{Q}{x} & = 0                                 &
               \diffp{P}{y} & = \diffp{Q}{x}
           \end{align}
 
           Solving the ODE,
 
           \begin{align}
-              u               & = \int P\ \dl x + k(y)                        \\
-                              & = \int\ e^{x}\ \dl x + k(y)                   \\
-              u               & = e^{x} + k(y)                                \\
-              \diffp{u}{y}    & = Q                                           \\
-              \diff{k}{y} + 0 & = e^{y} - 1                                   \\
-              \diff{k}{y}     & = e^{y} - 1                 & k & = e^{y} - y \\
+              u               & = \int P\ \dl x + k(y)      &
+                              & = \int\ e^{x}\ \dl x + k(y)   \\
+              u               & = e^{x} + k(y)              &
+              \diffp{u}{y}    & = Q                           \\
+              \diff{k}{y} + 0 & = e^{y} - 1                   \\
+              \diff{k}{y}     & = e^{y} - 1                 &
+              k               & = e^{y} - y                   \\
               u(x, y)         & = e^{x} + e^{y} - y
           \end{align}
 
@@ -705,35 +786,41 @@
               \end{tikzpicture}
           \end{figure}
 
-    \item Test for exactness failed. Using the integration factor given $ F = x^{a}y^{b} $
+    \item Test for exactness failed. Using the integration factor given
+          $ F = x^{a}y^{b} $
 
           \begin{align}
-              0            & = (a+1)y\ \dl x + (b+1)x\ \dl y                           \\
-              M            & = (a+1)y                        & N            & = (b+1)x \\
-              \diffp{M}{y} & = (a+1)                         & \diffp{N}{x} & = (b+1)  \\
+              0            & = (a+1)y\ \dl x + (b+1)x\ \dl y   \\
+              M            & = (a+1)y                        &
+              N            & = (b+1)x                          \\
+              \diffp{M}{y} & = (a+1)                         &
+              \diffp{N}{x} & = (b+1)                           \\
               \diffp{M}{y} & \neq \diffp{N}{x}
           \end{align}
 
           Checking the integrating factor,
 
           \begin{align}
-              0            & = (a+1)x^{a}y^{(b+1)}\ \dl x + (b+1)x^{(a+1)}y^{b}\ \dl y \\
-              P            & = (a+1)x^{a}y^{(b+1)}                                     \\
-              Q            & = (b+1)x^{(a+1)}y^{b}                                     \\
-              \diffp{P}{y} & = (a+1)(b+1)x^{a}y^{b}                                    \\
-              \diffp{Q}{x} & = (b+1)(a+1)x^{a}y^{b}                                    \\
+              0            & = (a+1)x^{a}y^{(b+1)}\ \dl x + (b+1)x^{(a+1)}y^{b}
+              \ \dl y                                                           \\
+              P            & = (a+1)x^{a}y^{(b+1)}                              \\
+              Q            & = (b+1)x^{(a+1)}y^{b}                              \\
+              \diffp{P}{y} & = (a+1)(b+1)x^{a}y^{b}                             \\
+              \diffp{Q}{x} & = (b+1)(a+1)x^{a}y^{b}                             \\
               \diffp{P}{y} & = \diffp{Q}{x}
           \end{align}
 
           Solving the ODE,
 
           \begin{align}
-              u                                 & = \int P\ \dl x + k(y)                              \\
-                                                & = (a+1)y^{(b+1)}\int\ x^{a}\ \dl x + k(y)           \\
-              u                                 & = x^{(a+1)}y^{(b+1)} + k(y)                         \\
-              \diffp{u}{y}                      & = Q                                                 \\
-              \diff{k}{y} + (b+1)x^{(a+1)}y^{b} & = (b+1)x^{(a+1)}y^{b}                               \\
-              \diff{k}{y}                       & = 0                                       & k & = b \\
+              u                                 & = \int P\ \dl x + k(y)        \\
+                                                & = (a+1)y^{(b+1)}\int\ x^{a}
+              \ \dl x + k(y)                                                    \\
+              u                                 & = x^{(a+1)}y^{(b+1)} + k(y)   \\
+              \diffp{u}{y}                      & = Q                           \\
+              \diff{k}{y} + (b+1)x^{(a+1)}y^{b} & = (b+1)x^{(a+1)}y^{b}         \\
+              \diff{k}{y}                       & = 0                         &
+              k                                 & = b                           \\
               u(x, y)                           & = x^{(a+1)}y^{(b+1)}
           \end{align}
 
@@ -741,22 +828,26 @@
     \item Test for exactness passes if $ b = k $.
 
           \begin{align}
-              0            & = (ax + by)\ \dl x + (kx + ly)\ \dl y                                 \\
-              M            & = ax+by                               & N                   & = kx+ly \\
-              \diffp{M}{y} & = b                                   & \diffp{N}{x}        & = k     \\
-              \diffp{M}{y} & = \diffp{N}{x}                        & \text{if}\qquad   b & = k
+              0                   & = (ax + by)\ \dl x + (kx + ly)\ \dl y   \\
+              M                   & = ax+by                               &
+              N                   & = kx+ly                                 \\
+              \diffp{M}{y}        & = b                                   &
+              \diffp{N}{x}        & = k                                     \\
+              \diffp{M}{y}        & = \diffp{N}{x}                        &
+              \text{if}\qquad   b & = k
           \end{align}
 
-          Solving the ODE, after setting $ k = b $, and $ (M, N) \rightarrow (P, Q)$
+          Solving the ODE, after setting $ k = b $, and $ (M, N) \to (P, Q)$
 
           \begin{align}
-              u                  & = \int P\ \dl x + g(y)                                                  \\
-                                 & = \int\ (ax + by)\ \dl x + g(y)                                         \\
-              u                  & = \frac{ax^{2}}{2} + bxy + g(y)                                         \\
-              \diffp{u}{y}       & = Q                                                                     \\
-              \frac{dg}{dy} + bx & = bx + ly                                                               \\
-              \frac{dg}{dy}      & = ly                                        & g(y) & = \frac{ly^{2}}{2} \\
-              u(x, y)            & = \frac{ax^{2}}{2} + bxy + \frac{ly^{2}}{2}
+              u             & = \int P\ \dl x + g(y)                        \\
+                            & = \int\ (ax + by)\ \dl x + g(y)               \\
+              u             & = \frac{ax^{2}}{2} + bxy + g(y)               \\
+              \diffp{u}{y}  & = Q                                           \\
+              \diff gy + bx & = bx + ly                                     \\
+              \diff gy      & = ly                                        &
+              g(y)          & = \frac{ly^{2}}{2}                            \\
+              u(x, y)       & = \frac{ax^{2}}{2} + bxy + \frac{ly^{2}}{2}
           \end{align}
 
           \begin{figure}[H]
@@ -766,7 +857,8 @@
                           set layers,
                           colorbar,
                           colormap/jet,
-                          title = {Level curves for $ u(x, y) = \dfrac{x^{2}}{2} + xy + \dfrac{y^{2}}{2} $},
+                          title = {Level curves for $ u(x, y) = \dfrac{x^{2}}{2}
+                                      + xy + \dfrac{y^{2}}{2} $},
                           width = 8cm,
                           height = 8cm,
                           Ani, grid = both,
@@ -792,22 +884,27 @@
               \item Solving as an exact ODE,
 
                     \begin{align}
-                        0            & = e^{y}\sinh x  \ \dl x + e^{y} \cosh x\ \dl y                                  \\
-                        M            & = e^{y} \sinh x                                & N            & = e^{y} \cosh x \\
-                        \diffp{M}{y} & = e^{y} \sinh x                                & \diffp{N}{x} & = e^{y} \sinh x \\
+                        0            & = e^{y}\sinh x  \ \dl x + e^{y} \cosh x
+                        \ \dl y                                                  \\
+                        M            & = e^{y} \sinh x                         &
+                        N            & = e^{y} \cosh x                           \\
+                        \diffp{M}{y} & = e^{y} \sinh x                         &
+                        \diffp{N}{x} & = e^{y} \sinh x                           \\
                         \diffp{M}{y} & = \diffp{N}{x}
                     \end{align}
 
-                    Solving the ODE, after setting $ k = b $, and $ (M, N) \rightarrow (P, Q)$
+                    Solving the ODE, after setting $ k = b $, and $ (M, N) \to (P, Q)$
 
                     \begin{align}
-                        u                            & = \int P\ \dl x + g(y)                          \\
-                                                     & = e^{y}\int\ \sinh x\ \dl x + g(y)              \\
-                        u                            & = e^{y} \cosh x + g(y)                          \\
-                        \diffp{u}{y}                 & = Q                                             \\
-                        \frac{dg}{dy} + e^{y}\cosh x & = e^{y}\cosh x                                  \\
-                        \frac{dg}{dy}                & = 0                                & g(y) & = b \\
-                        u(x, y)                      & = e^{y} \cosh x
+                        u                       & = \int P\ \dl x + g(y)        \\
+                                                & = e^{y}\int\ \sinh x\ \dl x
+                        + g(y)                                                  \\
+                        u                       & = e^{y} \cosh x + g(y)        \\
+                        \diffp{u}{y}            & = Q                           \\
+                        \diff gy + e^{y}\cosh x & = e^{y}\cosh x                \\
+                        \diff gy                & = 0                         &
+                        g(y)                    & = b                           \\
+                        u(x, y)                 & = e^{y} \cosh x
                     \end{align}
 
 
@@ -825,41 +922,52 @@
               \item Test for exactness failed.
 
                     \begin{align}
-                        0            & = (1+2x) \cos y\ \dl x + \frac{1}{\cos y} \ \dl y                           \\
-                        P            & = (1+2x) \cos y                                   & Q            & = \sec y \\
-                        \diffp{P}{y} & = -(1+2x) \sin y                                  & \diffp{Q}{x} & = 0      \\
+                        0            & = (1+2x) \cos y\ \dl x + \frac{1}{\cos y}
+                        \ \dl y                                                    \\
+                        P            & = (1+2x) \cos y                           &
+                        Q            & = \sec y                                    \\
+                        \diffp{P}{y} & = -(1+2x) \sin y                          &
+                        \diffp{Q}{x} & = 0                                         \\
                         \diffp{P}{y} & \neq \diffp{Q}{x}
                     \end{align}
 
                     Finding the integrating factor,
 
                     \begin{align}
-                        R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right) & = \frac{(1+2x) \sin y}{(1+2x) \cos y}    = R^{*}(y) \\
-                        R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)     & = \frac{(1+2x) \sin y}{- \sec y}                    \\
-                        F = \exp \left( \int\ R^{*}(y)\ \dl y\right)     & = \exp (-\ln |\cos y|) = | \sec y |
+                        R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right)
+                         & = \frac{(1+2x) \sin y}{(1+2x) \cos y}    = R^{*}(y) \\
+                        R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)
+                         & = \frac{(1+2x) \sin y}{- \sec y}                    \\
+                        F = \exp \left( \int\ R^{*}(y)\ \dl y\right)
+                         & = \exp (-\ln |\cos y|) = | \sec y |
                     \end{align}
 
                     Checking the integrating factor $ F = | \sec y | $
 
                     \begin{align}
-                        0            & = (1 +2x) \frac{\cos y}{|\cos y|}\ \dl x + \frac{1}{\cos y\ |\cos y|} \ \dl y \\
-                        M            & = (1 +2x) \frac{\cos y}{|\cos y|}                                             \\
-                        N            & = \frac{1}{\cos y\ |\cos y|}                                                  \\
-                        \diffp{M}{y} & = 0                                                                           \\
-                        \diffp{N}{x} & = 0                                                                           \\
+                        0            & = (1 +2x) \frac{\cos y}{|\cos y|}\ \dl x
+                        + \frac{1}{\cos y\ |\cos y|} \ \dl y                    \\
+                        M            & = (1 +2x) \frac{\cos y}{|\cos y|}        \\
+                        N            & = \frac{1}{\cos y\ |\cos y|}             \\
+                        \diffp{M}{y} & = 0                                      \\
+                        \diffp{N}{x} & = 0                                      \\
                         \diffp{M}{y} & = \diffp{N}{x}
                     \end{align}
 
                     Solving the ODE,
 
                     \begin{align}
-                        u               & = \int M\ \dl x + k(y)                                                                \\
-                                        & = \frac{\cos y}{|\cos y|}\ \int\ (1+2x)\ \dl x + k(y)                                 \\
-                        u               & = \frac{\cos y}{|\cos y|} (x + x^{2}) + k(y)                                          \\
-                        \diffp{u}{y}    & = N                                                                                   \\
-                        \diff{k}{y} + 0 & = \frac{1}{\cos y\ |\cos y|}                                                          \\
-                        \diff{k}{y}     & = \frac{1}{\cos y\ |\cos y|}                          & k & = \frac{\sin y}{|\cos y|} \\
-                        u(x, y)         & = \frac{(x+x^{2})\cos y + \sin y}{|\cos y|}
+                        u               & = \int M\ \dl x + k(y)                    \\
+                                        & = \frac{\cos y}{|\cos y|}\ \int\ (1+2x)
+                        \ \dl x + k(y)                                              \\
+                        u               & = \frac{\cos y}{|\cos y|} (x + x^{2})
+                        + k(y)                                                      \\
+                        \diffp{u}{y}    & = N                                       \\
+                        \diff{k}{y} + 0 & = \frac{1}{\cos y\ |\cos y|}              \\
+                        \diff{k}{y}     & = \frac{1}{\cos y\ |\cos y|}            &
+                        k               & = \frac{\sin y}{|\cos y|}                 \\
+                        u(x, y)         & = \frac{(x+x^{2})\cos y + \sin y}
+                        {|\cos y|}
                     \end{align}
 
                     Solving by separation,
@@ -874,52 +982,66 @@
               \item Test for exactness failed.
 
                     \begin{align}
-                        0            & = (x^{2} + y^{2})\ \dl x - 2xy\ \dl y                         \\
-                        P            & = x^{2} + y^{2}                       & Q            & = -2xy \\
-                        \diffp{P}{y} & = 2y                                  & \diffp{Q}{x} & = -2y  \\
+                        0            & = (x^{2} + y^{2})\ \dl x - 2xy\ \dl y   \\
+                        P            & = x^{2} + y^{2}                       &
+                        Q            & = -2xy                                  \\
+                        \diffp{P}{y} & = 2y                                  &
+                        \diffp{Q}{x} & = -2y                                   \\
                         \diffp{P}{y} & \neq \diffp{Q}{x}
                     \end{align}
 
                     Finding the integrating factor,
 
                     \begin{align}
-                        R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right) & = \frac{-4y}{x^{2} + y^{2}} \\
-                        R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)     & = \frac{-4y}{2xy} = R(x)    \\
-                        F = \exp \left( \int\ R(x)\ \dl x \right)        & = \exp (-2\ln x) = x^{-2}
+                        R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right)
+                         & = \frac{-4y}{x^{2} + y^{2}} \\
+                        R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)
+                         & = \frac{-4y}{2xy} = R(x)    \\
+                        F = \exp \left( \int\ R(x)\ \dl x \right)
+                         & = \exp (-2\ln x) = x^{-2}
                     \end{align}
 
                     Checking the integrating factor $ F = x^{-2} $
 
                     \begin{align}
-                        0            & = \left( 1 + \frac{y^{2}}{x^{2}} \right)\ \dl x - \frac{2y}{x}\ \dl y \\
-                        M            & = 1 + \frac{y^{2}}{x^{2}}                                             \\
-                        N            & = - \frac{2y}{x}                                                      \\
-                        \diffp{M}{y} & = \frac{2y}{x^{2}}                                                    \\
-                        \diffp{N}{x} & = \frac{2y}{x^{2}}                                                    \\
+                        0            & = \left( 1 + \frac{y^{2}}{x^{2}} \right)
+                        \ \dl x - \frac{2y}{x}\ \dl y
+                                     &
+                        M            & = 1 + \frac{y^{2}}{x^{2}}                  \\
+                        N            & = - \frac{2y}{x}                         &
+                        \diffp{M}{y} & = \frac{2y}{x^{2}}                         \\
+                        \diffp{N}{x} & = \frac{2y}{x^{2}}                       &
                         \diffp{M}{y} & = \diffp{N}{x}
                     \end{align}
 
                     Solving the ODE,
 
                     \begin{align}
-                        u                                 & = \int N\ \dl y+ k(x)                        \\
-                                                          & = \int\ \frac{-2y}{x}\ \dl y+ k(x)           \\
-                        u                                 & = \frac{-y^{2}}{x} + k(x)                    \\
-                        \diffp{u}{x}                      & = M                                          \\
-                        \diff{k}{x} + \frac{y^{2}}{x^{2}} & = 1 + \frac{y^{2}}{x^{2}}                    \\
-                        \diff{k}{x}                       & = 1                                & k & = x \\
-                        u(x, y)                           & = x - \frac{-y^{2}}{x}
+                        u            & = \int N\ \dl y+ k(x)              &
+                                     & = \int\ \frac{-2y}{x}\ \dl y+ k(x)   \\
+                        u            & = \frac{-y^{2}}{x} + k(x)          &
+                        \diffp{u}{x} & = M                                  \\
+                        \diff{k}{x} + \frac{y^{2}}{x^{2}}
+                                     & = 1 + \frac{y^{2}}{x^{2}}            \\
+                        \diff{k}{x}  & = 1                                &
+                        k            & = x                                  \\
+                        u(x, y)      & = x - \frac{-y^{2}}{x}
                     \end{align}
 
                     Solving by separation, with $ v = y/x $
 
                     \begin{align}
-                        y'                                     & = \frac{x^{2} + y^{2}}{2xy} &                             & = \frac{1}{2v} + \frac{v}{2} \\
-                        v                                      & = \frac{y}{x}               & y'                          & = xv' + v                    \\
-                        xv'                                    & =  \frac{1 - v^{2}}{2v}     & \frac{2v}{1 - v^{2}}\ dv    & = \frac{1}{x}\ \dl x         \\
-                        \ln \left( \frac{1}{1 - v^{2}} \right) & = \ln x + b                                                                              \\
-                        \frac{1}{1 - v^{2}}                    & = cx                        & \frac{x^{2}}{x^{2} - y^{2}} & = cx                         \\
-                        \frac{1}{c}                            & = x - \frac{y^{2}}{x}
+                        y'                          & = \frac{x^{2} + y^{2}}{2xy}  &
+                                                    & = \frac{1}{2v} + \frac{v}{2}   \\
+                        v                           & = \frac{y}{x}                &
+                        y'                          & = xv' + v                      \\
+                        xv'                         & =  \frac{1 - v^{2}}{2v}      &
+                        \frac{2v}{1 - v^{2}}\ dv    & = \frac{1}{x}\ \dl x           \\
+                        \ln \left( \frac{1}{1 - v^{2}} \right)
+                                                    & = \ln x + b                    \\
+                        \frac{1}{1 - v^{2}}         & = cx                         &
+                        \frac{x^{2}}{x^{2} - y^{2}} & = cx                           \\
+                        \frac{1}{c}                 & = x - \frac{y^{2}}{x}
                     \end{align}
 
                     Both answers match.
@@ -927,55 +1049,63 @@
               \item Test for exactness failed.
 
                     \begin{align}
-                        0            & = 3x^{2}y\ \dl x + 4x^{3}\ \dl y                            \\
-                        P            & = 3x^{2}y                        & Q            & = 4x^{3}  \\
-                        \diffp{P}{y} & = 3x^{2}                         & \diffp{Q}{x} & = 12x^{2} \\
+                        0            & = 3x^{2}y\ \dl x + 4x^{3}\ \dl y   \\
+                        P            & = 3x^{2}y                        &
+                        Q            & = 4x^{3}                           \\
+                        \diffp{P}{y} & = 3x^{2}                         &
+                        \diffp{Q}{x} & = 12x^{2}                          \\
                         \diffp{P}{y} & \neq \diffp{Q}{x}
                     \end{align}
 
                     Finding the integrating factor,
 
                     \begin{align}
-                        R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right) & = \frac{9x^{2}}{3x^{2}y} = R^{*}(y) \\
-                        R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)     & = \frac{9x^{2}}{-4x^{3}} = R(x)     \\
-                        F = \exp \left( \int\ R^{*}(y)\ \dl y\right)     & = \exp (3\ln y) = y^{3}
+                        R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right)
+                         & = \frac{9x^{2}}{3x^{2}y} = R^{*}(y) \\
+                        R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)
+                         & = \frac{9x^{2}}{-4x^{3}} = R(x)     \\
+                        F = \exp \left( \int\ R^{*}(y)\ \dl y\right)
+                         & = \exp (3\ln y) = y^{3}
                     \end{align}
 
                     Checking the integrating factor $ F = y^{3} $
 
                     \begin{align}
-                        0            & = 3x^{2}y^{4}\ \dl x + 4x^{3}y^{3}\ \dl y \\
-                        M            & = 3x^{2}y^{4}                             \\
-                        N            & = 4x^{3}y^{3}                             \\
-                        \diffp{M}{y} & = 12x^{2}y^{3}                            \\
-                        \diffp{N}{x} & = 12x^{2}y^{3}                            \\
+                        0            & = 3x^{2}y^{4}\ \dl x + 4x^{3}y^{3}\ \dl y &
+                        M            & = 3x^{2}y^{4}                               \\
+                        N            & = 4x^{3}y^{3}                             &
+                        \diffp{M}{y} & = 12x^{2}y^{3}                              \\
+                        \diffp{N}{x} & = 12x^{2}y^{3}                            &
                         \diffp{M}{y} & = \diffp{N}{x}
                     \end{align}
 
                     Solving the ODE,
 
                     \begin{align}
-                        u                         & = \int N\ \dl y+ k(x)                      \\
-                                                  & = \int\ 4x^{3}y^{3}\ \dl y+ k(x)           \\
-                        u                         & = x^{3}y^{4} + k(x)                        \\
-                        \diffp{u}{x}              & = M                                        \\
-                        \diff{k}{x} + 3x^{2}y^{4} & = 3x^{2}y^{4}                              \\
-                        \diff{k}{x}               & = 0                              & k & = b \\
+                        u                         & = \int N\ \dl y+ k(x)            &
+                                                  & = \int\ 4x^{3}y^{3}\ \dl y+ k(x)   \\
+                        u                         & = x^{3}y^{4} + k(x)              &
+                        \diffp{u}{x}              & = M                                \\
+                        \diff{k}{x} + 3x^{2}y^{4} & = 3x^{2}y^{4}                      \\
+                        \diff{k}{x}               & = 0                              &
+                        k                         & = b                                \\
                         u(x, y)                   & = x^{3}y^{4}
                     \end{align}
 
                     Solving by separation,
 
                     \begin{align}
-                        3y\ \dl x                 & = -4x\ dy                  \\
-                        \int\ \frac{-4}{y}\ \dl y & = \int\ \frac{3}{x}\ \dl x \\
-                        \ln y^{-4}                & = \ln x^{3} + b            \\
+                        3y\ \dl x                 & = -4x\ dy                  &
+                        \int\ \frac{-4}{y}\ \dl y & = \int\ \frac{3}{x}\ \dl x   \\
+                        \ln y^{-4}                & = \ln x^{3} + b            &
                         x^{3}y^{4}                & = c
                     \end{align}
 
                     Both answers match.
-              \item  Wherever possible, separation of variables is a far shorter method. TBC.
+              \item  Wherever possible, separation of variables is a far shorter method.
+                    TBC.
           \end{enumerate}
+
     \item Starting with $ u(x, y) = x^{2} \cos y $,
 
           \begin{align}
@@ -984,38 +1114,44 @@
               0                    & = 2\cos y\ \dl x - x\sin y \ dy
           \end{align}
 
-          The above ODE is still solvable by separation, after destroying exactness. More complex
-          integrating factors can be divided out from the ODE if needed.
+          The above ODE is still solvable by separation, after destroying exactness.
+          More complex integrating factors can be divided out from the ODE if needed.
 
     \item
           \begin{enumerate}
               \item Test for exactness failed.
 
                     \begin{align}
-                        0            & = dy - y^{2}\sin x\ \dl x                      \\
-                        P            & = -y^{2}\sin x            & Q            & = 1 \\
-                        \diffp{P}{y} & = -2y\sin x               & \diffp{Q}{x} & = 0 \\
+                        0            & = \dl y - y^{2}\sin x\ \dl x   \\
+                        P            & = -y^{2}\sin x               &
+                        Q            & = 1                            \\
+                        \diffp{P}{y} & = -2y\sin x                  &
+                        \diffp{Q}{x} & = 0                            \\
                         \diffp{P}{y} & \neq \diffp{Q}{x}
                     \end{align}
 
                     Finding the integrating factor,
 
                     \begin{align}
-                        R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right) & = \frac{2y\sin x}{-y^{2}\sin x}    = R^{*}(y)       \\
-                        R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)     & = \frac{2y\sin x}{-1}                               \\
-                        F                                                & = \exp \left( \int\ R^{*}(y)\ \dl y\right) = y^{-2}
+                        R^{*} = \frac{1}{P} \left( Q_{x} - P_{y} \right)
+                         & = \frac{2y\sin x}{-y^{2}\sin x}    = R^{*}(y)       \\
+                        R = \frac{-1}{Q}\left( Q_{x} - P_{y} \right)
+                         & = \frac{2y\sin x}{-1}                               \\
+                        F
+                         & = \exp \left( \int\ R^{*}(y)\ \dl y\right) = y^{-2}
                     \end{align}
 
-                    Solving the ODE, using $ (P, Q) \rightarrow (M, N) $
+                    Solving the ODE, using $ (P, Q) \to (M, N) $
 
                     \begin{align}
-                        0               & = y^{-2}\ \dl y- \sin x\ \dl x                \\
-                        u               & = \int N\ \dl y+ k(x)                         \\
-                                        & = \int\ y^{-2}\ \dl y+ k(x)                   \\
-                        u               & = -1/y + k(x)                                 \\
-                        \diffp{u}{x}    & = M                                           \\
-                        \diff{k}{x} + 0 & = -\sin x                                     \\
-                        \diff{k}{x}     & = -\sin x                      & k & = \cos x \\
+                        0               & = y^{-2}\ \dl y- \sin x\ \dl x &
+                        u               & = \int N\ \dl y+ k(x)            \\
+                                        & = \int\ y^{-2}\ \dl y+ k(x)    &
+                        u               & = -1/y + k(x)                    \\
+                        \diffp{u}{x}    & = M                            &
+                        \diff{k}{x} + 0 & = -\sin x                        \\
+                        \diff{k}{x}     & = -\sin x                      &
+                        k               & = \cos x                         \\
                         u(x, y)         & = \frac{-1}{y} + \cos x
                     \end{align}
 
@@ -1023,14 +1159,15 @@
               \item Solving by separation of variables,
 
                     \begin{align}
-                        \frac{dy}{y^{2}}             & = \sin x\ \dl x       \\
+                        \frac{\dl y}{y^{2}}          & = \sin x\ \dl x       \\
                         \int\ \frac{1}{y^{2}}\ \dl y & = \int\ \sin x\ \dl x \\
                         \frac{-1}{y} + \cos x        & = c
                     \end{align}
 
                     Both methods match, but this method is simpler.
 
-              \item Graphing the particular solutions given, $ c = 0, -2, +2, +1.5, -1.5, +1, -1 $
+              \item Graphing the particular solutions given,
+                    $ c = 0, -2, +2, +1.5, -1.5, +1, -1 $
                     \begin{figure}[H]
                         \centering
                         \begin{tikzpicture}
@@ -1039,7 +1176,8 @@
                                     set layers,
                                     colorbar,
                                     colormap/jet,
-                                    title = {Level curves for $ u(x, y) = \dfrac{-1}{y} + \cos x $},
+                                    title = {Level curves for
+                                            $ u(x, y) = \dfrac{-1}{y} + \cos x $},
                                     width = 8cm,
                                     height = 8cm,
                                     Ani, grid = both,
@@ -1061,7 +1199,7 @@
                         \end{tikzpicture}
                     \end{figure}
 
-              \item The solutions $ y = 0 $ and $ x = n\pi+ \frac{\pi}{2}$ do not show up in
-                    the general solution.
+              \item The solutions $ y = 0 $ and $ x = n\pi+ \frac{\pi}{2}$ do
+                    not show up in the general solution.
           \end{enumerate}
 \end{enumerate}

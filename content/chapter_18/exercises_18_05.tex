@@ -1,0 +1,707 @@
+\section{Poisson's Integral Formula for Potentials}
+
+\begin{enumerate}
+    \item Starting from the Poisson integral formula,
+          \begin{align}
+              F(z) & = \frac{1}{2\pi} \int_{0}^{2\pi} F(z^*)
+              \ \Bigg[\frac{\abs{z^*}^2 - \abs{z}^2} {\abs{(z^* - z)}^2}\Bigg]
+              \ \dl \alpha
+          \end{align}
+          The quotient in the integrand is real and can be written as the real part of
+          \begin{align}
+              \frac{z^* + z}{z^* - z} & = \frac{\abs{z^*}^2 - \abs{z}^2
+                  + 2\i\ \Im(z \overline{z^*})}{\abs{z^* - z}^2}
+          \end{align}
+          Using a Fourier series expansion on the LHS,
+          \begin{align}
+              \frac{1 + z/z^*}{1 - z/z^*} = (1 + z/z^*)\ \iser[n]{0}
+              \Big(\frac{z}{z^*}\Big)^n = 1 + 2\iser[n]{0} \Big(\frac{z}{z^*}
+              \Big)^n
+          \end{align}
+          The real part of the RHS is $ K $,
+          \begin{align}
+              K   & = 1 + 2 \iser[n]{1} \Re{\Bigg[ \Big(\frac{z}{z^*} \Big)^n \Bigg]} \\
+              z^* & = R\exp(\i \alpha), \qquad z = r\exp(\i \theta)                   \\
+              K   & = 1 + 2 \iser[n]{1} \Big( \frac{r}{R} \Big)^n \cos(n\theta
+              - n\alpha)
+          \end{align}
+          Substituting into the Poisson integral formula,
+          \begin{align}
+              \Phi(r, \theta) & = \frac{1}{2\pi}\ \int_{0}^{2\pi} \Phi(R, \alpha)
+              \Bigg[ 1 + 2\iser[n]{1} \cos(n\theta)\cos(n\alpha)
+              + \sin(n\theta)\sin(n\alpha) \Bigg]\ \dl \alpha                     \\
+              \Phi(r, \theta) & = a_0 + \iser[n]{1} a_n\cos(n\theta)
+              + b_n\sin(n\theta)
+          \end{align}
+          This reduces to the Fourier expansion of $ \Phi(R, \theta) $ on the
+          boundary $ r = R $.
+
+    \item The numerator is,
+          \begin{align}
+              -\Big(z^*\bar{z} - \abs{z^*}^2 - \bar{z}z^* + \abs{z}^2\Big) & =
+              \abs{z^*}^2 - \abs{z}^2
+          \end{align}
+
+    \item Checking if the elements in the infinite series are harmonic,
+          \begin{align}
+              \nabla^2 \Phi     & = \frac{1}{r} \Phi_r + \Phi_{rr}
+              + \frac{1}{r^2} \Phi_{\theta\theta} = 0                      \\
+              \Phi_n(r, \theta) & = \frac{r^n}{R^n}\Big[a_n\cos(n\theta) +
+              b_n\sin(n\theta)\Big]                                        \\
+              0                 & = \frac{a_n r^{n-2}}{R^n}\ \cos(n\theta)
+              \ \Bigg[ n + (n^2 - n) - n^2 \Bigg] + \dots
+          \end{align}
+
+    \item The Fourier expansion of an even function has to contain even terms, and
+          thus cannot contain any sine terms.
+
+    \item Since the function is odd,
+          \begin{align}
+              \Phi(1, \theta) & = 1.5\sin(3\theta)                &
+              a_0             & = a_n = 0                                  \\
+              b_n             & = \frac{1.5}{\pi} \int_{0}^{2\pi}
+              \sin(3\alpha)\ \sin(n\alpha)\ \dl \alpha
+                              &
+              b_n             & = \color{y_s} \begin{cases}
+                                                  1.5 & \quad n = 3            \\
+                                                  0   & \quad \text{otherwise}
+                                              \end{cases} \\
+              \Phi(r, \theta) & = 1.5r^3 \sin(3\theta)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = 0:360, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 15,
+                                  labels = false}, samples = 100]
+                      {1.5*y^3*sin(3*x)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is even, and is already a Fourier series,
+          \begin{align}
+              \Phi(1, \theta) & = 5 - \cos(2\theta)            &
+              b_n             & = 0                                       \\
+              a_0             & = \color{y_h} 5                &
+              a_n             & = \color{y_p} \begin{cases}
+                                                  -1 & \quad n = 2            \\
+                                                  0  & \quad \text{otherwise}
+                                              \end{cases} \\
+              \Phi(r, \theta) & = 5 - r^2\cos(2\theta)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = 0:360, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 21,
+                                  labels = false}, samples = 100]
+                      {5 - y^2*cos(2*x)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is even, and is already a Fourier series,
+          \begin{align}
+              \Phi(1, \theta) & = a\cos^2(4\theta)                          &
+                              & = \frac{a}{2} + \frac{a\cos(8\theta)}{2}      \\
+              b_n             & = 0                                           \\
+              a_0             & = \color{y_h} a/2                           &
+              a_n             & = \color{y_p} \begin{cases}
+                                                  a/2 & \quad n = 8            \\
+                                                  0   & \quad \text{otherwise}
+                                              \end{cases}    \\
+              \Phi(r, \theta) & = \frac{a}{2} + \frac{ar^8}{2}\cos(8\theta)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = 0:360, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 15,
+                                  labels = false}, samples = 200]
+                      {0.5 + 0.5* y^8*cos(8*x)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is even, and is already a Fourier series,
+          \begin{align}
+              \Phi(1, \theta) & = 4\sin^3\theta                     &
+                              & = 3 \sin \theta - \sin(3\theta)           \\
+              b_n             & = \color{y_s} \begin{cases}
+                                                  3  & \quad n = 1            \\
+                                                  -1 & \quad n = 3            \\
+                                                  0  & \quad \text{otherwise}
+                                              \end{cases} \\
+              a_0             & = \color{y_h} 0                     &
+              a_n             & = \color{y_p} 0                           \\
+              \Phi(r, \theta) & = 3r\sin(\theta) - r^3\sin(3\theta)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = 0:360, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 15,
+                                  labels = false}, samples = 200]
+                      {3*y*sin(x) -y^3*sin(3*x)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is even, and is already a Fourier series,
+          \begin{align}
+              \Phi(1, \theta) & = 8\sin^4\theta                            &
+                              & = 3 - 4\cos(2\theta) + \cos(4\theta)         \\
+              b_n             & = \color{y_s} 0                              \\
+              a_0             & = \color{y_h} 3                            &
+              a_n             & = \color{y_p} \begin{cases}
+                                                  -4 & \quad n = 2            \\
+                                                  1  & \quad n = 4            \\
+                                                  0  & \quad \text{otherwise}
+                                              \end{cases}    \\
+              \Phi(r, \theta) & = 3 - 4r^2\cos(2\theta) + r^4\cos(4\theta)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = 0:360, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 15,
+                                  labels = false}, samples = 200]
+                      {3 - 4*y^2*cos(2*x) + y^4*cos(4*x)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is even, and is already a Fourier series,
+          \begin{align}
+              \Phi(1, \theta) & = 16\cos^3(2\theta)                      &
+                              & = 12\cos(2\theta) + 4\cos(6\theta)         \\
+              b_n             & = \color{y_s} 0                            \\
+              a_0             & = \color{y_h} 0                          &
+              a_n             & = \color{y_p} \begin{cases}
+                                                  12 & \quad n = 2            \\
+                                                  4  & \quad n = 6            \\
+                                                  0  & \quad \text{otherwise}
+                                              \end{cases}  \\
+              \Phi(r, \theta) & = 12r^2\cos(2\theta) + 4r^6\cos(6\theta)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = 0:360, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 15,
+                                  labels = false}, samples = 200]
+                      {12*y^2*cos(2*x) + 4*y^6*cos(6*x)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is odd,
+          \begin{align}
+              \Phi(1, \theta) & = \frac{\theta}{\pi}                              &
+              \theta          & \in (-\pi, \pi)                                     \\
+              b_n             & = \frac{2}{\pi} \int_{0}^{\pi} \frac{\alpha}{\pi}
+              \ \sin(n\alpha)\ \dl \alpha
+                              &
+              b_n             & = 2\Bigg[ \frac{\sin(n\alpha)
+              - n\alpha\cos(n\alpha)}{\pi^2n^2} \Bigg]_0^{\pi}                      \\
+              b_n             & = \color{y_s} \frac{-2\cos(n\pi)}{n\pi}             \\
+              a_0             & = \color{y_h} 0                                   &
+              a_n             & = \color{y_p} 0
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x,\y)
+                              = (-2/pi) * (cos(\n*pi)/\n) * sin(\n * \x) * (\y^\n) ;}]
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = -180:180, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 23,
+                                  labels = false}, samples = 100]
+                      {fou_s(1,x,y) + fou_s(2,x,y) + fou_s(3,x,y) +
+                          fou_s(4,x,y) + fou_s(5,x,y) + fou_s(6,x,y)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is odd,
+          \begin{align}
+              \Phi(1, \theta) & = k                                             &
+              \theta          & \in (0, \pi)                                      \\
+              b_n             & = \frac{1}{\pi} \int_{0}^{\pi} k
+              \ \sin(n\alpha)\ \dl \alpha
+                              &
+              b_n             & = \Bigg[ \frac{-k\cos(n\alpha)}
+              {\pi n} \Bigg]_0^{\pi}                                              \\
+              b_n             & = \color{y_s} \frac{k}{n\pi}\ [1 - \cos(n\pi)]    \\
+              a_0             & = \frac{1}{2\pi} \int_{0}^{\pi} k\ \dl \alpha   &
+              a_0             & = \color{y_h} \frac{k}{2}                         \\
+              a_n             & = \frac{1}{\pi} \int_{0}^{\pi} k\ \cos(n\alpha)
+              \ \dl \alpha    &
+              a_n             & = \color{y_p} 0
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x,\y)
+                              = (2/(\n*pi)) * sin(\n * \x) * (\y^\n) ;}]
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = -180:180, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 23,
+                                  labels = false}, samples = 100]
+                      {(1/2) + fou_s(1,x,y) + fou_s(3,x,y) + fou_s(5,x,y) +
+                          fou_s(7,x,y) + fou_s(9,x,y) + fou_s(11,x,y)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is odd,
+          \begin{align}
+              \Phi(1, \theta) & = \theta                                             &
+              \theta          & \in (-\pi/2, \pi/2)                                    \\
+              a_n             & = \color{y_p} 0                                      &
+              a_0             & = \color{y_h} 0                                        \\
+              b_n             & = \frac{1}{\pi} \int_{-\pi/2}^{\pi/2} \alpha
+              \ \sin(n\alpha) \ \dl \alpha
+                              &
+              b_n             & = \Bigg[ \frac{\sin(n\alpha) - n\alpha\cos(n\alpha)}
+              {\pi n^2} \Bigg]_{-\pi/2}^{\pi/2}                                        \\
+              b_n             & = \color{y_p} \frac{2\sin(n\pi/2)}{\pi n^2}
+              - \frac{\cos(n\pi/2)}{n}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x,\y)
+                              = ((2/(pi*\n^2))*sin(0.5*\n*pi)
+                              - (1/\n)*cos(0.5*\n*pi)) * sin(\n * \x) * (\y^\n) ;}]
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = -180:180, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 23,
+                                  labels = false}, samples = 100]
+                      {fou_s(1,x,y) + fou_s(2,x,y) + fou_s(3,x,y) +
+                          fou_s(4,x,y) + fou_s(5,x,y) + fou_s(6,x,y)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is even,
+          \begin{align}
+              \Phi(1, \theta) & = \frac{\abs{\theta}}{\pi}                           &
+              \theta          & \in (-\pi, \pi)                                        \\
+              a_0             & = \frac{2}{\pi}\ \int_{0}^{\pi} \frac{\alpha}{\pi}
+              \ \dl \alpha    &
+              a_0             & = \color{y_h} \frac{1}{2}                              \\
+              a_n             & = \frac{1}{\pi}\ \int_{0}^{\pi} \frac{\alpha}{\pi}
+              \ \cos(n\alpha)\ \dl \alpha
+                              &
+              a_n             & = \Bigg[ \frac{n\alpha\sin(n\alpha) + \cos(n\alpha)}
+              {\pi^2 n^2} \Bigg]_0^{\pi}                                               \\
+              a_n             & = \color{y_p} \frac{\cos(n\pi) - 1}{n^2 \pi^2}       &
+              b_n             & = \color{y_s} 0
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x,\y)
+                              = (-2/(pi^2*\n^2))  * cos(\n * \x)
+                              * (\y^\n) ;}]
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = -180:180, y domain = 0:1,
+                          colormap/jet, colorbar]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 23,
+                                  labels = false}, samples = 100]
+                      {0.5 + fou_s(1,x,y) + fou_s(3,x,y) + fou_s(5,x,y) +
+                          fou_s(7,x,y) + fou_s(9,x,y) + fou_s(11,x,y)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is even,
+          \begin{align}
+              \Phi(1, \theta) & = 1                                               &
+              \theta          & \in (-\pi/2, \pi/2)                                 \\
+              a_0             & = \frac{1}{\pi}\ \int_{0}^{\pi/2} (1)\ \dl \alpha &
+              a_0             & = \color{y_h} \frac{1}{2}                           \\
+              a_n             & = \frac{2}{\pi}\ \int_{0}^{\pi/2} \cos(n\alpha)
+              \ \dl \alpha
+                              &
+              a_n             & = 2\Bigg[ \frac{\sin(n\alpha)}{n\pi}
+              \Bigg]_0^{\pi/2}                                                      \\
+              a_n             & = \color{y_p} \frac{2\sin(n\pi/2)}{n \pi}         &
+              b_n             & = \color{y_s} 0
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x,\y)
+                              = (2/(pi*\n))* sin(0.5*\n*pi)  * cos(\n * \x)
+                              * (\y^\n) ;}]
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = -180:180, y domain = 0:1,
+                          colormap/jet, colorbar horizontal]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 23,
+                                  labels = false}, samples = 100]
+                      {0.5 + fou_s(1,x,y) + fou_s(3,x,y) + fou_s(5,x,y) +
+                          fou_s(7,x,y) + fou_s(9,x,y) + fou_s(11,x,y) +
+                          fou_s(13,x,y) + fou_s(15,x,y) + fou_s(17,x,y)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x)
+                              = (2/(pi*\n))* sin(0.5*\n*pi)  * cos(\n * \x);}]
+                  \begin{axis}[ width = 8cm, Ani, grid = both,
+                          PiStyleX, xtick distance = pi/2]
+                      \addplot [thick, samples = 400, domain = -pi:pi, y_h]
+                      {0.5 + fou_s(1,x) + fou_s(3,x) + fou_s(5,x) +
+                          fou_s(7,x) + fou_s(9,x) + fou_s(11,x) +
+                          fou_s(13,x) + fou_s(15,x) + fou_s(17,x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is odd,
+          \begin{align}
+              \Phi(1, \theta) & = \begin{cases}
+                                      \theta + \pi & \quad \theta \in (-\pi, 0) \\
+                                      \theta - \pi & \quad \theta \in (0, \pi)  \\
+                                  \end{cases}    \\
+              a_0             & = \color{y_h} 0                                \\
+              a_n             & = \color{y_p} 0                                \\
+              b_n             & = \frac{1}{\pi} \int_{-\pi}^{0} (\alpha + \pi)
+              \ \sin(n\alpha)\ \dl \alpha
+              + \frac{1}{\pi} \int_{0}^{\pi} (\alpha - \pi)\ \sin(n\alpha)
+              \ \dl \alpha                                                     \\
+                              & = \Bigg[ \frac{\sin(n\alpha) - n(\alpha + \pi)
+                      \cos(n\alpha)}{n^2 \pi} \Bigg]_{-\pi}^0
+              + \Bigg[ \frac{\sin(n\alpha) + n(\pi - \alpha)
+              \cos(n\alpha)}{n^2 \pi} \Bigg]_{0}^\pi                           \\
+              b_n             & = \color{y_s} \frac{-2}{n}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x,\y)
+                              = (-2/\n)  * sin(\n * \x)
+                              * (\y^\n) ;}]
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = -180:180, y domain = 0:1,
+                          colormap/jet, colorbar horizontal]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 23,
+                                  labels = false}, samples = 100]
+                      {fou_s(1,x,y) + fou_s(2,x,y) + fou_s(3,x,y) +
+                          fou_s(4,x,y) + fou_s(5,x,y) + fou_s(6,x,y) +
+                          fou_s(7,x,y) + fou_s(8,x,y) + fou_s(9,x,y)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x)
+                              = (-2/\n)  * sin(\n * \x);}]
+                  \begin{axis}[ width = 8cm, Ani, grid = both,
+                          PiStyleX, xtick distance = pi/2]
+                      \addplot [thick, samples = 400, domain = -pi:pi, y_h]
+                      {fou_s(1,x) + fou_s(2,x) + fou_s(3,x) +
+                          fou_s(4,x) + fou_s(5,x) + fou_s(6,x) +
+                          fou_s(7,x) + fou_s(8,x) + fou_s(9,x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is even,
+          \begin{align}
+              \Phi(1, \theta) & = \frac{\theta^2}{\pi^2}                       &
+              \theta          & \in (-\pi, \pi)                                  \\
+              b_n             & = \color{y_s} 0                                &
+              a_0             & = \frac{1}{\pi} \int_{0}^{\pi} \frac{\alpha^2}
+              {\pi^2} \ \dl \alpha = \color{y_h} \frac{1}{3}                     \\
+              a_n             & = \frac{2}{\pi} \int_{0}^{\pi} \frac{\alpha^2}
+              {\pi^2}\ \cos(n\alpha)\ \dl \alpha
+                              &
+              a_n             & = \color{y_p} \frac{4\cos(n\pi)}{n^2 \pi^2}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x,\y)
+                              = (4/\n^2*pi^2)  * cos(\n*pi) * cos(\n * \x)
+                              * (\y^\n) ;}]
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = -180:180, y domain = 0:1,
+                          colormap/jet, colorbar horizontal]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 23,
+                                  labels = false}, samples = 100]
+                      {(1/3) + fou_s(1,x,y) + fou_s(2,x,y) + fou_s(3,x,y) +
+                          fou_s(4,x,y) + fou_s(5,x,y) + fou_s(6,x,y) +
+                          fou_s(7,x,y) + fou_s(8,x,y) + fou_s(9,x,y)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x)
+                              = (4/\n^2*pi^2)  * cos(\n*pi) * cos(\n * \x);}]
+                  \begin{axis}[ width = 8cm, Ani, grid = both,
+                          PiStyleX, xtick distance = pi/2]
+                      \addplot [thick, samples = 400, domain = -pi:pi, y_h]
+                      {(1/3) + fou_s(1,x) + fou_s(2,x) + fou_s(3,x) +
+                          fou_s(4,x) + fou_s(5,x) + fou_s(6,x) +
+                          fou_s(7,x) + fou_s(8,x) + fou_s(9,x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Since the function is even,
+          \begin{align}
+              \Phi(1, \theta) & = \begin{cases}
+                                      0      & \quad \theta \in (-\pi, 0) \\
+                                      \theta & \quad \theta \in (0, \pi)  \\
+                                  \end{cases}        \\
+              a_0             & = \frac{1}{2\pi} \int_{0}^{\pi} \alpha
+              \ \dl \alpha    &
+              a_0             & = \color{y_h} \frac{\pi}{4}                  \\
+              a_n             & = \frac{1}{\pi} \int_{0}^{\pi} \alpha
+              \ \cos(n\alpha)\ \dl \alpha
+                              &
+              a_n             & = \Bigg[ \frac{n\alpha\sin(n\alpha)
+              + \cos(n\alpha)}{\pi n^2} \Bigg]_0^\pi                         \\
+              a_n             & = \color{y_p} \frac{\cos(n\pi) - 1}{\pi n^2} \\
+              b_n             & = \frac{1}{\pi} \int_{0}^{\pi} \alpha
+              \ \sin(n\alpha)\ \dl \alpha
+                              &
+              b_n             & = \Bigg[ \frac{\sin(n\alpha)
+              - n\alpha \cos(n\alpha)}{\pi n^2} \Bigg]_0^\pi                 \\
+              b_n             & = \color{y_s} \frac{-\cos(n\pi)}{n}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x,\y)
+                              = (1/(\n^2*pi))  * (cos(\n*pi) - 1) * cos(\n * \x)
+                              * (\y^\n)
+                              - (cos(\n *pi) / \n) * sin(\n * \x) * (\y^\n) ;}]
+                  \begin{polaraxis}[
+                          width = 8cm,
+                          grid = both, enlargelimits = false,
+                          restrict y to domain = 0:8, hide y axis,
+                          Ani, trig format plots = deg,
+                          view = {0}{90}, grid = both,
+                          domain = -180:180, y domain = 0:1,
+                          colormap/jet, colorbar horizontal]
+                      \addplot3 [thick, contour gnuplot={
+                                  number = 23,
+                                  labels = false}, samples = 100]
+                      {(pi/4) + fou_s(1,x,y) + fou_s(2,x,y) + fou_s(3,x,y) +
+                          fou_s(4,x,y) + fou_s(5,x,y) + fou_s(6,x,y) +
+                          fou_s(7,x,y) + fou_s(8,x,y) + fou_s(9,x,y)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+              \begin{tikzpicture}[declare function = {fou_s(\n,\x)
+                              = (1/(\n^2*pi))  * (cos(\n*pi) - 1) * cos(\n * \x)
+                              - (cos(\n * pi) / \n) * sin(\n * x);}]
+                  \begin{axis}[ width = 8cm, Ani, grid = both,
+                          PiStyleX, xtick distance = pi/2]
+                      \addplot [thick, samples = 400, domain = -pi:pi, y_h]
+                      {(pi/4) + fou_s(1,x) + fou_s(2,x) + fou_s(3,x) +
+                          fou_s(4,x) + fou_s(5,x) + fou_s(6,x) +
+                          fou_s(7,x) + fou_s(8,x) + fou_s(9,x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Coded in \texttt{sympy}. TBC.
+
+    \item Potential in a disk
+          \begin{enumerate}
+              \item Using the Fourier series expansion of $ \Phi(r, \theta) $,
+                    \begin{align}
+                        \Phi(0, \theta) & = a_0 = I_0 + \iser[n]{1}I_{n,c} + I_{n,s} \\
+                        I_{0}           & = \frac{1}{\pi R^2} \int_{0}^{R}
+                        \int_{-\pi}^{\pi} a_0\ \dl r\ (r)\dl \alpha = a_0            \\
+                        I_{n,c}         & = \frac{1}{\pi R^2} \int_{0}^{R}
+                        \int_{-\pi}^{\pi} a_n\ r\cos(n\alpha)\ \dl r\ \dl \alpha     \\
+                        \int_{-\pi}^{\pi} \cos(n\alpha)\ \dl \alpha
+                                        & = \Bigg[ \frac{\sin(n\alpha)}{n}
+                        \Bigg]_{-\pi}^{\pi} = 0                                      \\
+                        I_{n,s}         & = \frac{1}{\pi R^2} \int_{0}^{R}
+                        \int_{-\pi}^{\pi} a_n\ r\sin(n\alpha)\ \dl r\ \dl \alpha     \\
+                        \int_{-\pi}^{\pi} \sin(n\alpha)\ \dl \alpha
+                                        & = \Bigg[ \frac{\cos(n\alpha)}{n}
+                            \Bigg]_{\pi}^{-\pi} = 0
+                    \end{align}
+                    Since all the integrals vanish except for $ I_0 $, the relation is
+                    true.
+
+              \item Laplace's equation in polar coordinates is,
+                    \begin{align}
+                        \frac{1}{r} \Phi_r + \Phi_{rr} + \frac{1}{r^2}
+                        \Phi_{\theta\theta} & = 0
+                                            &
+                        \Phi(r, \theta)     & = F(r) \cdot G(\theta) \\
+                        G \cdot (rF') + G \cdot (r^2 F'')
+                                            & = -F \cdot \ddot{G}
+                    \end{align}
+                    Separating the variables,
+                    \begin{align}
+                        -k^2 & = \frac{\ddot{G}}{G}                   &
+                        G_k  & = p_1 \cos(k\theta) + p_2\sin(k\theta)   \\
+                        0    & = r^2 F'' + r F' - k^2 F               &
+                        F_k  & = q_1 r^k + q_2 r^{-k}
+                    \end{align}
+                    Since $ G_k(\theta + 2\pi) = G_k(\theta) $,
+                    \begin{align}
+                        G_k (\theta + 2\pi) & = p_1\cos(2k\pi + k\theta)
+                        + p_2\sin(2k\pi + k\theta)                       \\
+                        k                   & \in \mathcal{I}
+                    \end{align}
+                    Since the function $ F_k $ has to be valid at $ r = 0 $, $ q_2 = 0 $
+                    . Consolidating the $ p, q $ parameters,
+                    \begin{align}
+                        \Phi_n(R, \theta) & = R^n\ \Big[ p_n \cos(n\theta)
+                            + q_n \sin(n\theta) \Big]
+                    \end{align}
+                    Since the potential reduces to the Fourier series of the function
+                    at its boundary,
+                    \begin{align}
+                        p_n & = \frac{a_n}{R^n} & q_n & = \frac{b_n}{R^n} \\
+                        p_0 & = a_0
+                    \end{align}
+                    Finally, the potential is,
+                    \begin{align}
+                        \Phi(r, \theta) & = a_0 + \iser[n]{1} \Big( \frac{r}{R} \Big)^n
+                        \ \Big[ a_n \cos(n\theta) + b_n \sin(n\theta) \Big]
+                    \end{align}
+
+              \item Using the Cauchy Riemann equations for polar coordinates,
+                    \begin{align}
+                        \Phi_r      & = \frac{\Psi_\theta}{r} \qquad\qquad
+                        \Psi_r = -\frac{\Phi_\theta}{r}                          \\
+                        \Psi_\theta & = \iser[n]{1} n\ \Big( \frac{r}{R} \Big)^n
+                        \ \Big[ a_n \cos(n\theta) + b_n \sin(n\theta) \Big]      \\
+                        \Psi        & = \iser[n]{1} \frac{r^{n}}{R^n}\ \Big[
+                        a_n \sin(n\theta) - b_n \cos(n\theta) \Big] + F(r) + C   \\
+                        \Psi_r      & = \iser[n]{1} \frac{nr^{n-1}}{R^n}\ \Big[
+                        a_n \sin(n\theta) - b_n \cos(n\theta) \Big]              \\
+                        \Psi        & = \iser[n]{1} \frac{r^{n}}{R^n}\ \Big[
+                            a_n \sin(n\theta) - b_n \cos(n\theta) \Big] + G(\theta) + C
+                    \end{align}
+                    Comparing the two expressions for $ \Psi(r, \theta) $,
+                    \begin{align}
+                        \Psi & = C + \iser[n]{1} \Big( \frac{r}{R} \Big)^n
+                        \ \Big[ a_n \sin(n\theta) - b_n\cos(n\theta) \Big]
+                    \end{align}
+                    Since $ C $ is the mean value of $ \Psi $ over the boundary,
+                    \begin{align}
+                        \int_{0}^{2\pi} \Psi(R, \alpha)\ \dl \alpha
+                          & = 2\pi C                                         \\
+                        C & = \frac{1}{2\pi} \int_{0}^{2\pi} \Psi(R, \alpha)
+                        \ \dl \alpha
+                    \end{align}
+
+              \item A series for the complex potential $ \Phi + \i\ \Psi $
+                    \begin{align}
+                        F(z)         & = a_0 + \i\ C + \frac{r^n\ a_n}{R^n}\ \Big[
+                            \cos(n\theta) + \i\ \sin(n\theta) \Big] +
+                        \frac{r^n\ b_n}{R^n}\ \Big[
+                        \sin(n\theta) - \i\ \cos(n\theta) \Big]                    \\
+                                     & = a_0 + \i\ C + \Big[a_n - \i\ b_n\Big]
+                        \ \Bigg[\frac{r \exp(\i \theta)}{R}  \Bigg]^n              \\
+                        F(r, \theta) & = \frac{1}{2\pi} \int_{0}^{2\pi}
+                        F(R, \alpha)\ \dl \alpha + \iser[n]{1} \Big[a_n - \i\ b_n
+                            \Big] \cdot \Bigg( \frac{z}{R} \Bigg)^n
+                    \end{align}
+          \end{enumerate}
+\end{enumerate}

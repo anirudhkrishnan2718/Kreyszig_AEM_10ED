@@ -1,0 +1,274 @@
+\section{Complex Numbers and Their Geometric Representation}
+
+\begin{enumerate}
+    \item Powers of $ \i $,
+          \begin{align}
+              \i   & = (0, 1)                               &
+              \i^2 & = (0, 1) \cdot (0, 1) = \color{y_h} -1   \\
+              \i^3 & = \i^2 \cdot \i = \color{y_h} -\i      &
+              \i^4 & = (\i^2)^2 = (-1)^2 = \color{y_h} 1
+          \end{align}
+          This repeats with a period of $ 4 $.
+          \begin{align}
+              \i             & = (0, 1)                                   &
+              \frac{1}{\i}   & = \frac{-\i}{\i^2} = \color{y_p} -\i         \\
+              \frac{1}{\i^2} & = \frac{1}{-1} = \color{y_p} -1            &
+              \frac{1}{\i^3} & = \frac{1}{(-1) \cdot \i} = \color{y_p} \i
+          \end{align}
+          This also repeats with a period of $ 4 $.
+
+    \item Plotting the rotated real numbers,
+          \begin{align}
+              z_1 & = 1 + \i   & \i z_1 & = -1 + \i \\
+              z_2 & = -1 + 2\i & \i z_2 & = -2 - \i \\
+              z_3 & = 4 - 3\i  & \i z_3 & = 3 + 4\i
+          \end{align}
+          Using the geometric verificiation of perpendicular lines having their slopes
+          multiply to $ -1 $,
+          \begin{align}
+              m_1 n_1 & = 1 \cdot -1 = -1         &
+              m_2 n_2 & = -2 \cdot (1/2) = -1       \\
+              m_3 n_3 & = (-3/4) \cdot (4/3) = -1
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east, title = {Complex plane},
+                          grid = both,Ani,xlabel = $ \Re(z) $, ylabel = $ \Im(z) $,
+                          xmin = -2.5, xmax = 2.5, ymin = -2.5, ymax = 2.5,
+                          axis equal, width = 8cm]
+                      \draw[thick,dashed, y_h] (axis cs:0, 0) -- (axis cs:1, 1);
+                      \draw[thick, y_h] (axis cs:0, 0) -- (axis cs:-1, 1);
+                      \draw[thick,dashed, y_p] (axis cs:0, 0) -- (axis cs:-1, 2);
+                      \draw[thick, y_p] (axis cs:0, 0) -- (axis cs:-2, -1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east, title = {Complex plane},
+                          grid = both,Ani,xlabel = $ \Re(z) $,
+                          xmin = -4.5, xmax = 4.5, ymin = -4.5, ymax = 4.5,
+                          axis equal, width = 8cm]
+                      \draw[thick,dashed, azure4] (axis cs:0, 0) -- (axis cs:4, -3);
+                      \draw[thick, azure4] (axis cs:0, 0) -- (axis cs:3, 4);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying the division,
+          \begin{align}
+              z & = \frac{x_1 + y_1\i}{x_2 + y_2\i}                 &
+                & = \frac{x_1 + y_1\i}{x_2 + y_2\i} \cdot \frac{x_2
+              - y_2\i}{x_2 - y_2\i}                                   \\
+                & = \frac{x_1x_2 + y_1y_2}{x_2^2 + y_2^2}
+              + \frac{x_2y_1 - x_1y_2}{x_2^2 + y_2^2}\ \i
+          \end{align}
+          Applying the above relation to the given complex number quotient,
+          \begin{align}
+              z & = \frac{26 - 18\i}{6 - 2\i} &
+              z & = \frac{192 - 56\i}{40}       \\
+              z & = 4.8 - 1.4\i
+          \end{align}
+
+    \item Verifying the relations for arithmetic on conjugate complex numbers,
+          \begin{align}
+              \overline{(z_1 + z_2)}     & = \overline{(-12 + 14\i)} =
+              \color{y_h} -12 - 14\i                                             \\
+              \bar{z_1} + \bar{z_2}      & = (-11 - 10\i) + (-1 - 4\i) =
+              \color{y_p} -12 - 14\i                                             \\
+              \overline{(z_1 - z_2)}     & = \overline{(-10 + 6\i)} =
+              \color{y_h} -10 - 6\i                                              \\
+              \bar{z_1} - \bar{z_2}      & = (-11 - 10\i) - (-1 - 4\i) =
+              \color{y_p} -10 - 6\i                                              \\
+              \overline{(z_1 \cdot z_2)} & = \overline{(-11 + 10\i)
+              \cdot (-1 + 4\i)} = \overline{-29 - 54\i} = \color{y_h} -29 + 54\i \\
+              \bar{z_1} \cdot \bar{z_2}  & = (-11 + 10\i) \cdot (-1 + 4\i)
+              =\color{y_p} -29 - 54\i
+          \end{align}
+          For division, using the formula,
+          \begin{align}
+              \overline{\Big(
+              \frac{z_1}{z_2} \Big)}      & = \overline{\frac{54 + 34\i}{9}}
+              = \color{y_h} \frac{54 - 34\i}{9}                              \\
+              \frac{\bar{z_1}}{\bar{z_2}} & = \frac{-11 - 10\i}{-1 - 4\i}
+              =\color{y_p} \frac{54 - 34\i}{9}
+          \end{align}
+
+    \item Checking if the real part of $ z $ is zero, which makes it purely imaginary,
+          \begin{align}
+              \bar{z} + z & = (x + x) + (y - y)\i = 2x + 0\i \\
+              \bar{z} + z & = 0 \iff x = 0
+          \end{align}
+
+    \item Product of two complex numbers is zero,
+          \begin{align}
+              z_1 \cdot z_2 & = (x_1x_2 - y_1y_2) + (x_1y_2 + x_2 y_1)\ \i = 0 + 0\i \\
+              x_1x_2        & = y_1y_2                                               \\
+              x_1y_2        & = -x_2y_1
+          \end{align}
+          These two conditions are only satisfied if at least $ x_1 = y_1 = 0 $. Only one
+          of the two being zero means that the product has either a nonzero real or
+          imaginary part.
+
+    \item Commutative law,
+          \begin{align}
+              \color{y_h}z_1 + z_2     & = (x_1 + x_2) + (y_1 + y_2)\ \i             \\
+                                       & = (x_2 + x_1) + (y_2 + y_1)\ \i
+              =\color{y_p}  z_2 + z_1                                                \\
+              \color{y_h}z_1 \cdot z_2 & = (x_1x_2 - y_1y_2) + (x_1y_2 + x_2y_1)\ \i \\
+                                       & = (x_2x_1 - y_2y_1) + (x_2y_1 + x_1y_2)\ \i
+              = \color{y_p} z_2 \cdot z_1
+          \end{align}
+          Associative law,
+          \begin{align}
+              \color{y_h}
+              (z_1 + z_2) + z_3 & = (x_1 + x_2) + x_3 + (y_1 + y_2)\ \i + y_3\ \i   \\
+                                & = x_1 + (x_2 + x_3) + y_1\ \i + (y_2 + y_3)\ \i
+              = \color{y_p} z_1 + (z_2 + z_3)                                       \\
+              \color{y_h}(z_1 \cdot z_2)
+              \cdot z_3         & = (x_1x_2 - y_1y_2) + (x_1y_2 + x_2y_1)\ \i       \\
+                                & = (x_1x_2x_3 - y_1y_2x_3 - x_1y_2y_3 - x_2y_1y_3) \\
+                                & + (x_1x_3y_2 + x_2x_3y_1 + x_1x_2y_3 - y_1y_2y_3)
+              \ \i                                                                  \\
+                                & = x_1\ (x_2x_3 - y_2y_3) - y_1\ (x_2y_3 + x_3y_2) \\
+                                & + x_1\ (x_2y_3 + x_3y_2)\ \i
+              + y_1\ (x_2x_3 - y_2y_3)\ \i
+              = \color{y_p} z_1 \cdot (z_2 \cdot z_3)
+          \end{align}
+          Distributive law,
+          \begin{align}
+              \color{y_h}
+              z_1(z_2 + z_3) & = \Big[ x_1(x_2 + x_3) - y_1(y_2 + y_3) \Big]
+              + \Big[ x_1(y_2 + y_3) + y_1(x_2 + x_3) \Big]\ \i              \\
+                             & = (x_1x_2 - y_1y_2) + (x_1y_2 + x_2y_1)\ \i   \\
+                             & + (x_1x_3 - y_1y_3) + (x_1y_3 + x_3y_1)\ \i   \\
+                             & = \color{y_p}z_1 z_2 + z_1 z_3
+          \end{align}
+          Additive null,
+          \begin{align}
+              \color{y_h}z + 0 & = (x + 0) + (y + 0)\ \i
+              = (0 + x) + (0 + y)\ \i = 0 + z = \color{y_p}z
+          \end{align}
+          Additive inverse,
+          \begin{align}
+              z + 0 & = z & \implies \color{y_h}z + (-z) & = \color{y_p}0
+          \end{align}
+          Multiplicative identity,
+          \begin{align}
+              \color{y_h}z \cdot 1 &
+              = (x \cdot 1 - y_1 \cdot 0) + (x \cdot 0 + 1 \cdot y)\ \i = x + y \i
+              = \color{y_p}z
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              z_1z_2              & = (-2 + 11\i) \cdot (2 - \i) = 7 + 24 \i \\
+              \overline{(z_1z_2)} & = (-2 - 11\i) \cdot (2 + \i) = 7 - 24 \i
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              \Re (z_1^2)           & = \Re (-117  - 44\i) = \color{y_h} -117 \\
+              \Big[\Re (z_1)\Big]^2 & = (-2)^2 = \color{y_p} 4
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              \Re{\Bigg( \frac{1}{z_2^2} \Bigg)} & = \Re{\Bigg( \frac{1}{3 - 4\i}
+                  \Bigg)} = \Re{\Bigg( \frac{3 + 4\i}{25} \Bigg)}
+              = \color{y_h} \frac{3}{25}                                          \\
+              \frac{1}{\Re{(z_2^2)}}             & = \frac{1}{\Re{(3 - 4\i)}}
+              = \color{y_p} \frac{1}{3}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              \frac{(z_1 - z_2)^2}{16} & = \frac{(-4 + 12\i)^2}{16}
+              = \frac{-128 - 96\i}{16} = \color{y_h} -8 - 6\i                     \\
+              \Bigg( \frac{z_1}{4}
+              - \frac{z_2}{4} \Bigg)^2 & = \Biggl(\frac{-2}{4} + \frac{11}{4}\ \i
+              - \frac{2}{4} + \frac{1}{4}\ \i\Biggr)^2 = (-1 + 3\i)^2
+              = \color{y_h} -8 - 6\i
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              \frac{z_1}{z_2} & = \frac{-2 + 11\i}{2 - \i}
+              = \frac{(-2 + 11\i) \cdot (2 + \i)}{5} = \color{y_h} -3 + 4\i \\
+              \frac{z_2}{z_1} & = \frac{2 - \i}{-2 + 11\i}
+              = \frac{(2 - \i) \cdot (-2 - 11\i)}{125}
+              = \color{y_p} \frac{-3 - 4\i}{25}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (z_1 + z_2) \cdot (z_1 - z_2) & = (10\i) \cdot (-4 + 12\i)
+              = \color{y_h} -120 - 40\i                                   \\
+              z_1^2 - z_2^2                 & = (-117 - 44\i) - (3 - 4\i)
+              = \color{y_h} -120 - 40\i
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              \overline{\Big(\frac{z_1}{z_2}\Big)} & = \overline{-3 + 4\i}
+              = \color{y_h} -3 - 4\i                                            \\
+              \frac{\bar{z_1}}{\bar{z_2}}          & = \frac{-2 - 11\i}{2 + \i}
+              = \frac{(-2 - 11\i) \cdot (2 - \i)}{5}
+              = \color{y_h} -3 - 4\i
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              4\ \frac{z_1 + z_2}{z_1 - z_2} & = 4\ \frac{10\i}{-4 + 12\i}
+              = \frac{120 -40\i}{40} = \color{y_h} 3 - \i
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              \frac{1}{z}                     & = \frac{x - y\i}{x^2 + y^2}    &
+              \Im{\Big( \frac{1}{z} \Big)}    & = \frac{-y}{x^2 + y^2}           \\
+              \frac{1}{z^2}                   & = \frac{1}{x^2 - y^2 + 2xy \i} &
+              \frac{1}{z^2}                   & = \frac{x^2 - y^2 - 2xy\i}
+              {(x^2 - y^2)^2 + (2xy)^2}                                          \\
+              \Im{ \Big( \frac{1}{z^2} \Big)} & = \frac{-2xy}{(x^2 - y^2)^2
+                  + (2xy)^2}
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              z^2                       & = x^2 - y^2 + (2xy)\i                 \\
+              z^4                       & = (x^4 + y^4 - 6x^2y^2)
+              + 4xy(x^2 - y^2) \i                                               \\
+              \Re{(z^4)}                & = x^4 + y^4 - 6x^2y^2                 \\
+              \Big[\Re{(z^2)}\Big]^2    & = (x^2 - y^2)^2 = x^4 + y^4 - 2x^2y^2 \\
+              \Re{(z^4)}
+              -  \Big[\Re{(z^2)}\Big]^2 & = -4x^2y^2
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              (1 + \i)^2      & = 2\i              &
+              (1 + \i)^{16}   & = (2\i)^8 = 256      \\
+              \Re{(256\ z^2)} & = 256\ (x^2 - y^2)
+          \end{align}
+
+    \item Performing the given computations,
+          \begin{align}
+              \frac{z}{\bar{z}}                  & = \frac{x + y\i}{x - y\i}    &
+              \frac{z}{\bar{z}}                  & = \frac{(x^2 - y^2) + 2xy\i}
+              {x^2 + y^2}                                                         \\
+              \Re{\Big( \frac{z}{\bar{z}} \Big)} & = \frac{(x^2 - y^2)}
+              {x^2 + y^2}                        &
+              \Im{\Big( \frac{z}{\bar{z}} \Big)} & = \frac{2xy}
+              {x^2 + y^2}
+          \end{align}
+
+    \item Using the result from Problem $ 16 $ with $ y \to -y $,
+          \begin{align}
+              \Im{ \Big( \frac{1}{\bar{z}^2} \Big)} & = \frac{2xy}{(x^2 - y^2)^2
+                  + (2xy)^2}
+          \end{align}
+
+
+\end{enumerate}

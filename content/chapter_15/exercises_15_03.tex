@@ -1,0 +1,333 @@
+\section{Functions Given by Power Series}
+
+\begin{enumerate}
+    \item Refer notes. TBC.
+
+    \item Let the two power series centered around the origin be,
+          \begin{align}
+              f(z)                        & = \iser[n]{0} a_n z^n &
+              g(z)                        & = \iser[n]{0} b_n z^n   \\
+              f(z) + g(z)                 & = h(z)                &
+              \iser[n]{0} (a_n + b_n) z^n & = \iser[n]{0} c_n z^n
+          \end{align}
+          Let the series converge for $ \abs{z} < R_1 $ and $ \abs{z} < R_2 $
+          respectively, with $ R_1 < R_2 $
+          \begin{align}
+              R_1 & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}} &
+              R_2 & = \lim_{n \to \infty} \abs{\frac{b_n}{b_{n+1}}}   \\
+          \end{align}
+          Now, the new series is convergent only for $ \abs{z} < R_1 $ which is the
+          smaller radius of convergence.
+
+    \item To prove the limit, which is an indeterminate form,
+          \begin{align}
+              \lim_{n \to \infty} n^{1/n} & = \exp\Bigg[ \lim_{n \to \infty}
+                  \frac{\ln n}{n} \Bigg]
+              = \exp\Bigg[ \lim_{n \to \infty}
+                  \frac{1}{n} \Bigg] = \color{y_p} 1
+          \end{align}
+
+    \item Using the Cauchy product of two geometric series,
+          \begin{align}
+              \frac{1}{(1-z)^2} & = \iser[n]{0} \Bigg[\sum_{r=0}^{n} a_r b_{n-r}
+              \Bigg] z^n        &
+              a_i = b_i         & = 1 \quad \forall \quad i                      \\
+              \frac{1}{(1-z)^2} & = \iser[n]{0} (n+1) z^n
+          \end{align}
+          By differentiating a single geometric series,
+          \begin{align}
+              f(z) = \frac{1}{1-z}      & = \iser[n]{0} z^n      &
+              f'(z) = \frac{1}{(1-z)^2} & = \iser[n]{1} nz^{n-1}   \\
+              \frac{1}{(1-z)^2}         & = \iser[0]{n} (n+1)z^n
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula,
+          \begin{align}
+              a_n & = \frac{n(n-1)}{2^n}                             &
+              R   & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}    \\
+              R   & = \lim_{n \to \infty} \abs{\frac{(n-1)2}{(n+1)}}
+              = \color{y_h} 2
+          \end{align}
+          Using differentiation,
+          \begin{align}
+              f(z)                & = \iser[n]{0} \frac{(z-2\i)^n}{2^n}             &
+              f''(z)              & = \iser[n]{2} \frac{n(n-1)}{2^n}\ (z-2\i)^{n-2}   \\
+              (z - 2\i)^2\ f''(z) & = \iser[n]{2} \frac{n(n-1)}{2^n}\ (z-2\i)^{n}   &
+              R                   & = \lim_{n \to \infty} \abs{\frac{2^{n+1}}{2^n}}
+              = \color{y_p} 2
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula,
+          \begin{align}
+              s^*                & = \iser[n]{0} \frac{(-1)^n}{(2n+1)\ (4\pi^2)^n}
+              \ z^n              &
+              R^*                & = \lim_{n \to \infty} \abs{\frac{a^*_n}{a^*_{n+1}}} \\
+              R^*                & = \lim_{n \to \infty} \abs{\frac{(-4\pi^2)(2n+3)}
+              {(2n+1)}} = 4\pi^2 &
+              R                  & = \sqrt{R^*} = \color{y_h} 2\pi
+          \end{align}
+          Using differentiation,
+          \begin{align}
+              f'(z)    & = \iser[n]{0} \Big(\frac{-1}{4\pi^2}\Big)^n
+              \ z^{2n} &
+              R^*      & = \lim_{n \to \infty} \abs{\frac{a^*_n}
+              {a^*_{n+1}}}                                                     \\
+              R^*      & = \lim_{n \to \infty} \abs{-4\pi^2} = 4\pi^2        &
+              R        & = \lim_{n \to \infty} \sqrt{R^*} = \color{y_p} 2\pi
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula,
+          \begin{align}
+              s^* & = \iser[n]{1} \frac{n}{3^n}\ (z + 2\i)^n       &
+              R^* & = \lim_{n \to \infty} \abs{\frac{a^*_n}
+              {a^*_{n+1}}}                                           \\
+              R^* & = \lim_{n \to \infty} \abs{\frac{3n}{n+1}} = 3 &
+              R   & = \sqrt{R^*} = \color{y_h} \sqrt{3}
+          \end{align}
+          Using integration,
+          \begin{align}
+              f(z)           & = \iser[n]{0} \frac{(z + 2\i)^n}{3^n}               &
+              f'(z)          & = \iser[n]{1} \frac{n}{3^n}\ (z + 2\i)^{n-1}          \\
+              (z+2\i)\ f'(z) & = \iser[n]{1} \frac{n}{3^n}\ (z + 2\i)^{n}          &
+              R^*            & = \lim_{n \to \infty} \abs{\frac{a^*_n}
+              {a^*_{n+1}}}                                                           \\
+              R^*            & = \lim_{n \to \infty} \abs{\frac{3^{n+1}}{3^n}} = 3 &
+              R              & = \lim_{n \to \infty} \sqrt{R^*}
+              = \color{y_p} \sqrt{3}
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula,
+          \begin{align}
+              s & = \iser[n]{1} \frac{5^n}{n(n+1)}\ z^n          &
+              R & = \lim_{n \to \infty} \abs{\frac{a_n}
+              {a_{n+1}}}                                           \\
+              R & = \lim_{n \to \infty} \abs{\frac{(n+2)}{5n}} =
+              \color{y_h} \frac{1}{5}
+          \end{align}
+          Using integration twice,
+          \begin{align}
+              f(z)         & = \iser[n]{0} 5^n\ z^n                       \\
+              g(z)         & = \int \Big[\int f \dl z\Big] \dl z        &
+              g(z)         & = \iser[n]{0} \frac{5^n}{n(n+1)}\ z^{n+2}    \\
+              z^{-2}\ g(z) & = \iser[n]{1} \frac{5^n}{n(n+1)}\ z^n      &
+              R            & = \lim_{n \to \infty} \abs{\frac{a_n}
+              {a_{n+1}}}                                                  \\
+              R            & = \lim_{n \to \infty} \abs{\frac{n+2}{5n}}
+              = \color{y_p} \frac{1}{5}
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula,
+          \begin{align}
+              s^*                  & = \iser[n]{1} \frac{(-2)^n}{n(n+1)(n+2)}
+              \ z^{n}              &
+              R^*                  & = \lim_{n \to \infty} \abs{\frac{a^*_n}
+              {a^*_{n+1}}}                                                         \\
+              R^*                  & = \lim_{n \to \infty} \abs{\frac{(n+3)}
+              {-2n}} = \frac{1}{2} &
+              R                    & = \sqrt{R^*} = \color{y_h} \frac{1}{\sqrt{2}}
+          \end{align}
+          Using integration thrice,
+          \begin{align}
+              f(z)         & = \iser[n]{0} (-2)^n\ z^n                         &
+              g(z)         & = \iser[n]{0} \frac{(-2)^n}{n(n+1)(n+2)}\ z^{n+3}   \\
+              z^{-3}\ g(z) & = \iser[n]{1} \frac{(-2)^n}{n(n+1)(n+2)}\ z^n     &
+              R^*          & = \lim_{n \to \infty} \abs{\frac{a^*_n}
+              {a^*_{n+1}}}                                                       \\
+              R^*          & = \lim_{n \to \infty} \abs{\frac{1}{-2}}          &
+              R            & = \sqrt{R^*}= \color{y_p} \frac{1}{\sqrt{2}}
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula,
+          \begin{align}
+              s       & = \iser[n]{k} \frac{n!}{(n-k)!\ k!\ 2^n}
+              \ z^{n} &
+              R       & = \lim_{n \to \infty} \abs{\frac{a_n}
+              {a_{n+1}}}                                           \\
+              R       & = \lim_{n \to \infty} \abs{\frac{2(n+1-k)}
+                  {(n+1)}} = \color{y_h} 2
+          \end{align}
+          Using differentiation $ k $ times,
+          \begin{align}
+              f(z)                 & = \iser[n]{0} \Big(\frac{z}{2}\Big)^n           &
+              g(z) = f^{(k)}(z)    & = \iser[n]{k} \frac{n!}{2^n\ (n-k)!}\ z^{n-k}     \\
+              \frac{z^k}{k!}\ g(z) & = \iser[n]{1} \binom{n}{k}\ \Bigg(\frac{z}{2}
+              \Bigg)^n             &
+              R                    & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}   \\
+              R                    & = \color{y_p} 2
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula,
+          \begin{align}
+              s^* & = \iser[n]{0} \frac{3^n\ n(n+1)}{7^n}\ (z + 2)^n            &
+              R^* & = \lim_{n \to \infty} \abs{\frac{a^*_n}
+              {a^*_{n+1}}}                                                        \\
+              R^* & = \lim_{n \to \infty} \abs{\frac{7n}{3(n+2)}} = \frac{7}{3} &
+              R   & = \sqrt{R^*} = \color{y_h} \sqrt{\frac{7}{3}}
+          \end{align}
+          Using differentiation twice,
+          \begin{align}
+              f(z)      & = \iser[n]{0} (3/7)^n\ (z+2)^n                &
+              g = f''   & = \iser[n]{2} (3/7)^n\ n(n+1)\ (z+2)^{n-2}      \\
+              z^2\ g(z) & = \iser[n]{2} (3/7)^n\ n(n+1)\ (z+2)^{n}      &
+              R^*       & = \lim_{n \to \infty} \abs{\frac{a^*_n}
+              {a^*_{n+1}}}                                                \\
+              R^*       & = \lim_{n \to \infty} \abs{\frac{7}{3}}       &
+              R         & = \sqrt{R^*} = \color{y_p} \sqrt{\frac{7}{3}}
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula, setting $ z^2 = w $
+          \begin{align}
+              s^*                      & = \iser[n]{0} \frac{2n(2n-1)}{n^n}\ z^{2n} &
+              R^*                      & = \lim_{n \to \infty} \abs{\frac{a^*_n}
+              {a^*_{n+1}}}                                                            \\
+              R^*                      & = \lim_{n \to \infty} \abs{\frac{n(2n-1)
+              \ (n+1)^n}{(2n+1)\ n^n}} &
+              R^*                      & = \abs{\frac{n(2n-1)}{(2n+1)}
+              \ \Big(1 + \frac{1}{n} \Big)^n}                                         \\
+              R^*                      & = \infty                                   &
+              R                        & = \sqrt{R^*} = \color{y_h} \infty
+          \end{align}
+          Using differentiation twice,
+          \begin{align}
+              f(z)    & = \iser[n]{0} \frac{z^{2n}}{n^n}                          &
+              g = f'' & = \iser[n]{2} \frac{(2n)(2n-1)}{n^n}\ z^{2n-2}              \\
+              f^*(z)  & = \iser[n]{0} \frac{z^n}{n^n}                             &
+              R^*     & = \lim_{n \to \infty} \abs{\frac{a^*_n}
+              {a^*_{n+1}}}                                                          \\
+              R^*     & = \lim_{n \to \infty} \abs{\Big( \frac{n+1}{n} \Big)^n}   &
+              R^*     & = \lim_{n \to \infty} \abs{\Big( 1 + \frac{1}{n} \Big)^n}   \\
+              R^*     & = \infty                                                  &
+              R       & = \sqrt{R^*} = \color{y_p} \infty
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula
+          \begin{align}
+              s        & = \iser[n]{0} \binom{n+k}{k}^{-1}\ z^{n+k} &
+              R        & = \lim_{n \to \infty} \abs{\frac{a_n}
+              {a_{n+1}}}                                              \\
+              R        & = \lim_{n \to \infty} \abs{\frac{(n+1+k)}
+              {(n+1)}} &
+              R        & = \color{y_h} 1
+          \end{align}
+          Using differentiation $k$ times,
+          \begin{align}
+              f(z)        & = \iser[n]{0} \binom{n+k}{k}^{-1}\ z^{n+k}      &
+              g = f^{(k)} & = \iser[n]{0} k!\ z^n                             \\
+              R           & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}} &
+              R           & = \color{y_p} 1
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula
+          \begin{align}
+              s          & = \iser[n]{0} \binom{n+m}{m}\ z^{n}     &
+              R          & = \lim_{n \to \infty} \abs{\frac{a_n}
+              {a_{n+1}}}                                             \\
+              R          & = \lim_{n \to \infty} \abs{\frac{(n+1)}
+              {(n+m+1)}} &
+              R          & = \color{y_h} 1
+          \end{align}
+          Using differentiation $m$ times,
+          \begin{align}
+              f(z)            & = \iser[n]{0} z^{n+m}                           &
+              g = f^{(m)}     & = \iser[n]{0} \frac{(n+m)!}{n!}\ z^{n}            \\
+              \frac{1}{m!}\ g & = \iser[n]{0} \binom{n+m}{m}\ z^{n}               \\
+              R               & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}} &
+              R               & = \color{y_p} 1
+          \end{align}
+
+    \item By using the Cauchy-Hadamard formula
+          \begin{align}
+              s         & = \iser[n]{2} \frac{4^n\ n(n-1)}{3^n}\ (z - \i)^{n} &
+              R         & = \lim_{n \to \infty} \abs{\frac{a_n}
+              {a_{n+1}}}                                                        \\
+              R         & = \lim_{n \to \infty} \abs{\frac{3(n-1)}
+              {4(n+1)}} &
+              R         & = \color{y_h} \frac{3}{4}
+          \end{align}
+          Using differentiation $m$ times,
+          \begin{align}
+              f(z)        & = \iser[n]{0} (4/3)^n\ (z - \i)^{n}             &
+              g = f''     & = \iser[n]{2} (4/3)^n\ n(n-1)\ (z - \i)^{n-2}     \\
+              (z-\i)^2\ g & = \iser[n]{2} (4/3)^n\ n(n-1)\ (z - \i)^{n}     &
+              R           & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}
+              = \color{y_p} \frac{3}{4}
+          \end{align}
+
+    \item For an even function, given that its power series is unique,
+          \begin{align}
+              f(z)     & = a_0 + a_1 z + a_2 z^2 + a_3 z^3 + \dots \\
+              f(-z)    & = a_0 - a_1 z + a_2 z^2 - a_3 z^3 + \dots \\
+              f(-z)    & = f(z)                                    \\
+              a^{2m+1} & = -a^{2m+1} \quad \implies a^{2m+1} = 0
+          \end{align}
+          Thus, the coefficients of odd powers are zero. Example is cosine function
+
+    \item For an even function, given that its power series is unique,
+          \begin{align}
+              f(z)   & = a_0 + a_1 z + a_2 z^2 + a_3 z^3 + \dots \\
+              f(-z)  & = a_0 - a_1 z + a_2 z^2 - a_3 z^3 + \dots \\
+              f(-z)  & = -f(z)                                   \\
+              a^{2m} & = -a^{2m} \quad \implies a^{2m} = 0
+          \end{align}
+          Thus, the coefficients of even powers are zero. Example is the sine function
+
+    \item Using the Cauchy product,
+          \begin{align}
+              (1+z)^p \cdot (1+z)^q & = \sum_{r=0}^{p+q} \Bigg[\sum_{n=0}^{r}
+              a_n \cdot b_{r-n}\Bigg]\ x^r                                     \\
+              (1+z)^p               & = \sum_{n=0}^{p} \binom{p}{n} z^n \qquad
+              \implies \qquad a_n = \binom{p}{n}                               \\
+              (1+z)^q               & = \sum_{n=0}^{q} \binom{q}{n} z^n \qquad
+              \implies \qquad b_n = \binom{q}{n}                               \\
+              \binom{p}{n} \cdot \binom
+              {q}{r-n}              & = \binom{p+q}{r}
+          \end{align}
+
+    \item Refer to the Chapter $ 5 $ on the power series method for solving ODEs.
+
+    \item Fibonacci sequence,
+          \begin{enumerate}
+              \item Plotting the ratios of successive Fibonacci numbers, the limit is
+                    1.618
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_15_03_20.csv}
+                        \anitablenine
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ n=20 $},
+                                    height = 8cm, width = 8cm,
+                                    grid = both,Ani,]
+                                \addplot[only marks] table[x = 0, y = 1]{\anitablenine};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The Fibonacci sequence is computed and $ a_{12} = 233 $ is verified.
+                    The total number off rabbits is equal to the number of rabbits born to
+                    pairs ready to breed and the number of pairs too young to breed.
+                    \begin{align}
+                        a_{n} & = 2a_{n-2} + (a_{n-1} - a_{n-2}) \\
+                              & = a_{n-2} + a_{n-1}
+                    \end{align}
+
+              \item Using the Cauchy product,
+                    \begin{align}
+                        f(z)      & = \iser[n]{0} a_n z^n                  \\
+                        z\ f(z)   & = \iser[n]{0} a_n z^{n+1}            &
+                        z\ f(z)   & = \iser[n]{1} a_{n-1} z^n              \\
+                        z^2\ f(z) & = \iser[n]{0} a_n z^{n+2}            &
+                        z^2\ f(z) & = \iser[n]{2} a_{n-2} z^n              \\
+                        g(z)      & = f(z) - zf(z) - z^2f(z)               \\
+                        g(z)      & = a_0 + (a_1 - a_0)\ z + \iser[n]{2}
+                        \Big[ a_n - a_{n-1} - a_{n-2} \Big]\ z^n
+                    \end{align}
+                    For $ a_0 = 1 $ and $ a_1 = a_0 $ and
+                    $ a_n = a_{n-1} + a_{n-2} $, the function
+                    \begin{align}
+                        g(z) & = 1 & f(z) & = \frac{1}{1 - z - z^2}
+                    \end{align}
+                    This is the generating function of the Fibonacci sequence.
+          \end{enumerate}
+
+\end{enumerate}

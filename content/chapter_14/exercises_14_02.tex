@@ -1,0 +1,471 @@
+\section{Cauchy's Integral Theorem}
+
+\begin{enumerate}
+    \item Verifying, using path deformation to make a unit circle,
+          \begin{align}
+              z(t)       & = e^{\i t}                                         &
+              t          & \in [0, 2\pi]                                        \\
+              f[z(t)]    & = e^{2\i t}                                        &
+              \dot{z}(t) & = \i\ e^{\i t}                                       \\
+              I          & = \int_{0}^{2\pi} e^{2\i t}\ (\i\ e^{\i t})\ \dl t &
+                         & = \Bigg[ \frac{e^{3\i t}}{3} \Bigg]_0^{2\pi}         \\
+              I          & = 0
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {Path is deformed to unit circle},
+                          height = 8cm, width = 8cm, axis equal,
+                          %   xmin = -1, xmax = 6,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({cos(\t)}, {-sin(\t)});
+                      \node[GraphNode, label =
+                              {[fill = white]below left:\scriptsize $ t = 0 $}]
+                      at (axis cs:1, 0){};
+                      \node[GraphNode, label =
+                              {[fill = white]above left:\scriptsize $ t = 2\pi $}]
+                      at (axis cs:1, 0){};
+                      \draw[dashed, black] (1,-1) -- (1,1) -- (-1,1) -- (-1,-1) -- cycle;
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Checking the points where the functions are not analytic,
+          \begin{enumerate}
+              \item $ f(z) = 1/z $ is not analytic at $ z = 0 $. So any domain that does
+                    not contain the origin is usable.
+              \item The function is,
+                    \begin{align}
+                        g(z) & = \frac{\exp(1/z^2)}{z^2 + 16}
+                    \end{align}
+                    This function is not analytic at $ z = 0, 4\i, -4\i $, so any domain
+                    excluding these points is usable.
+          \end{enumerate}
+
+    \item \textcolor{y_h}{Yes}. From example $ 6 $, deformation of path does not change
+          the value of the integral, since the square and the unit circle enclose points
+          where the function is analytic. \par
+          The only point where $ f(z) = z^{-2} $ is not analytic is at the origin.
+
+    \item \textcolor{y_p}{No}, since this violates the theorem of path deformation.
+          The values of both integrals being different makes it so that the function is
+          not analytic everywhere in between the two paths.
+
+    \item For the given function,
+          \begin{align}
+              f(z) & = \frac{\cos(z^2)}{z^4 + 1} &
+              S    & = \{\pm 1, \pm \i\}
+          \end{align}
+          The points in set $ S $ are points where $ f(z) $ is not analytic. So, the
+          domain of analyticity is $ 5 $ connected.
+
+    \item Integrating over the first path,
+          \begin{align}
+              z(t)       & = (1 + \i)\ t                               &
+              t          & \in [0, 1]                                    \\
+              \dot{z}(t) & = (1 + \i)                                  &
+              f[z(t)]    & = \exp[(1+\i)t]                               \\
+              I_1        & = \int_{0}^{1} (1 + \i)\ e^{(1+\i)t}\ \dl t &
+                         & = \color{y_h} e^{1+\i} - e^{0}
+          \end{align}
+          Integrating over the second path,
+          \begin{align}
+              I_2 & = \int_{0}^{1} (1)\ e^{t}\ \dl t         &
+                  & = \color{y_p} e^{1} - e^{0}                \\
+              I_3 & = \int_{0}^{1} (\i)\ e^{1 + \i t}\ \dl t &
+                  & = \color{y_p} e^{1+\i} - e^{1}             \\
+          \end{align}
+          Since $ I_2 + I_3 = I_1 $, path independence is verified.
+
+    \item The distance between $ z_1 = 0 + 2\i $ and $ z_2 = 2 + 0\i $ is equal to
+          $ 2\sqrt{2} $. This number is larger than 2 but less than 3. \par
+          So \textcolor{y_h}{Yes} and \textcolor{y_p}{No}.
+
+    \item Cauchy's integral theorem,
+          \begin{enumerate}
+              \item Refer notes for facts. Examples TBC.
+              \item Resolving into partial fractions,
+                    \begin{align}
+                        f(z)    & = \frac{8z + 12\ \i}{4z^2 + 1}     &
+                                & = \frac{a + b\ i}{2z + \i}
+                        + \frac{c + d\ \i}{2z - \i}                    \\
+                        4 + 0\i & = (a + c) + (b + d)\ \i            &
+                        12\ \i  & = (b - d) + \i\ (c - a)              \\
+                        f(z)    & = \color{y_h} \frac{-2}{z + 0.5\i}
+                        + \frac{4}{z - 0.5\i}
+                    \end{align}
+                    Since the unit circle encloses both the points, $ (0, -0.5) $ and
+                    $ (0, 0.5) $, the result is,
+                    \begin{align}
+                        I & = I_1 + I_2 = -2 (2\pi\ \i) + 4(2\pi\ \i) = 4\pi\ \i
+                    \end{align}
+                    Resolving into partial fractions,
+                    \begin{align}
+                        g(z)    & = \frac{z + 1}{z^2 + 2z}        &
+                                & = \frac{a + b\ i}{z + 2}
+                        + \frac{c + d\ \i}{z}                       \\
+                        1 + 0\i & = (a + c) + (b + d)\ \i         &
+                        1 + 0\i & = (2c) + \i\ (2d)                 \\
+                        g(z)    & = \color{y_p} \frac{0.5}{z + 2}
+                        + \frac{0.5}{z}
+                    \end{align}
+                    Since the unit circle encloses both the points, $ (0, 0) $ but not
+                    $ (-2, 0) $, the result is,
+                    \begin{align}
+                        I & = 0 + I_2 = 0 + 0.5(2\pi\ \i) = \pi\ \i
+                    \end{align}
+              \item From the earlier team project, the deformation of paths led
+                    to no change in the integral only when the function was analytic over
+                    the region of path deformation, in agreement with the theorem. \par
+                    For the new path, an analytic function yields,
+                    \begin{align}
+                        z(t)       & = t + \i\ at(1-t)                               &
+                        \dot{z}(t) & = 1 + \i\ a(1 - 2t)                               \\
+                        f(z)       & = z                                               \\
+                        I_1        & = \int_{0}^{1} t - a^2(t - 3t^2 + 2t^3)\ \dl t  &
+                                   & = \Bigg[ \frac{t^2}{2} - \frac{a^2(6t^2 - 12t^3
+                        + 6t^4)}{12}  \Bigg]_0^1                                       \\
+                                   & = \color{y_h} \frac{1}{2}                         \\
+                        I_2        & = \int_{0}^{1} a(2t - 3t^2)\ \dl t              &
+                                   & = \Big[ a (t^2 - t^3) \Big]_0^1
+                        = \color{y_h} 0
+                    \end{align}
+                    Whereas a non-analytic function yields,
+                    \begin{align}
+                        z(t)       & = t + \i\ at(1-t)                           &
+                        \dot{z}(t) & = 1 + \i\ a(1 - 2t)                           \\
+                        f(z)       & = \Re z = t                                   \\
+                        I_1        & = \int_{0}^{1} t + a\i\ (t - 2t^2)\ \dl t   &
+                                   & = \Bigg[ \frac{t^2}{2} + a\i\ \frac{(3t^2
+                        - 4t^3)}{6}  \Bigg]_0^1                                    \\
+                                   & = \color{y_p} \frac{1}{2} - \frac{a}{6}\ \i
+                    \end{align}
+                    Notice the dependence on $ a $ for the non-analytic function.
+          \end{enumerate}
+
+    \item Cauchy's theorem \textcolor{y_h}{is applicable}, since the function is
+          entire.
+          \begin{align}
+              I & = \oint_{C} \exp(-z^2)\ \dl z = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_h}{is applicable}, since the function only has
+          poles outside the unit circle.
+          \begin{align}
+              \tan(z/4)        & = 0                               &
+              \implies \quad z & = 4(n\pi + \pi/2)                   \\
+              S                & = \{2\pi + 4n\pi \}               &
+                               & = \{-2\pi, 2\pi, 6\pi,\dots\}       \\
+              I                & = \oint_{C} \exp(-z^2)\ \dl z = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}.
+          \begin{align}
+              2z - 1           & = 0                                    &
+              \implies \quad z & = 0.5 + 0\i                              \\
+              I                & = \oint_{C} \frac{0.5}{z - 0.5}\ \dl z
+                               & = \i\ \pi
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. Using the standard result
+          for the integral of $ z^n $ around the unit circle,
+          \begin{align}
+              \bar{z}^3        & = 0                                      &
+              \implies \quad z & = 0 + 0\i                                  \\
+              I                & = \oint_{C} \frac{\abs{z}^6}{z^3}\ \dl z
+                               & = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_h}{is applicable}, since $ (1.1)^{1/4} $ has a
+          modulus greater than one.
+          \begin{align}
+              \bar{z}^4        & = 1.1                                   &
+              \implies \quad z & = (1.1)^{1/4}\ e^{\i k\pi/2}              \\
+              I                & = \oint_{C} \frac{1}{z^4 - 1.1} \ \dl z
+                               & = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. Using the standard result
+          for the integral of $ z^n $ around the unit circle,
+          \begin{align}
+              \bar{z}          & = 0                                     &
+              \implies \quad z & = 0 + 0\ \i                               \\
+              I                & = \oint_{C} \frac{z}{\abs{z}^2} \ \dl z
+                               & = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}, since the function is not
+          analytic anywhere.
+          \begin{align}
+              z(t) & = \cos t + \i\ \sin t                                     &
+              t    & \in [0, 2\pi]                                               \\
+              I    & = \oint_{C} f(z) \ \dl z                                  &
+                   & = \int_{0}^{2\pi} (\sin t)\ (-\sin t + \i\ \cos t)\ \dl t   \\
+                   & = \int_{0}^{2\pi} \frac{[\cos(2t) - 1]}{2}\ \dl t         &
+                   & = -\pi
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. Using the standard result
+          for the integral of $ z^n $ around the unit circle,
+          \begin{align}
+              \pi z - 1        & = 0                                             &
+              \implies \quad z & = \frac{1}{\pi} + 0\ \i                           \\
+              I                & = \oint_{C} \frac{(1/\pi)}{z - (1/\pi)} \ \dl z
+                               & = 2\i
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. Using the standard result
+          for the integral of $ z^n $ around the unit circle,
+          \begin{align}
+              \abs{z}^2        & = 0                             &
+              \implies \quad z & = 0 + 0\ \i                       \\
+              z(t)             & = \cos t + \i\ \sin t           &
+              t                & \in [0, 2\pi]                     \\
+              f[z(t)]          & = 1                             &
+              I                & = \oint_{C} \i\ e^{\i t}\ \dl t
+              = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. Using the standard result
+          for the integral of $ z^n $ around the unit circle,
+          \begin{align}
+              4z - 3           & = 0                                       &
+              \implies \quad z & = \frac{3}{4} + 0\ \i                       \\
+              I                & = \oint_{C} \frac{0.25}{z - 0.75} \ \dl z
+                               & = \frac{\pi}{2}\ \i
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_h}{is applicable}.
+          \begin{align}
+              \cot(z)          & = 0                             &
+              \implies \quad z & = n\pi                            \\
+              I                & = \oint_{C} z^3 \cot(z) \ \dl z
+                               & = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_h}{is applicable}.
+          \begin{align}
+              \Ln(1-z)         & = 0                          &
+              \implies \quad z & = 1 + 0\ \i                    \\
+              I                & = \oint_{C} \Ln(1-z) \ \dl z
+                               & = 0
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          xmin = -1.2, xmax = 1.2,
+                          ymin = -1.2, ymax = 1.2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \node[GraphNode, fill = y_p] at (axis cs:1, 0){};
+                      \draw[y_h]
+                      (0,1) -- (1,1) -- (0,-1) -- (-1,-1) -- cycle;
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. Using the standard result
+          for the integral of $ z^n $ around the unit circle,
+          \begin{align}
+              z - 3\i          & = 0                                   &
+              \implies \quad z & = 0 + 3\ \i                             \\
+              z(t)             & = \pi\ e^{\i t}                       &
+              t                & \in [0, 2\pi]                           \\
+              I                & = \oint_{C} \frac{1}{z - 3\i} \ \dl z
+                               & = 2\pi\ \i
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. Using the standard result
+          for the integral of $ z^n $ around the unit circle,
+          \begin{align}
+              f[z(t)]    & = \cos t                                             &
+              z(t)       & = e^{\i t} \qquad t \in [0, \pi]                       \\
+              \dot{z}(t) & = \i e^{\i t}                                          \\
+              I_1        & = \int_{0}^{\pi} (\i \cos t - \sin t)\ \cos t\ \dl t
+                         & = \color{y_p} \frac{\pi}{2}\ \i
+          \end{align}
+          For the straight line path,
+          \begin{align}
+              f[z(t)] & = t                                           &
+              t       & \in [-1, 1]                                     \\
+              z(t)    & = t + 0\ \i                                     \\
+              I_2     & = \int_{-1}^{1} (1)(t)\ \dl t = \color{y_p} 0 &
+              I       & = I_1 + I_2 = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable} \par
+          Resolving using partial fractions,
+          \begin{align}
+              g(z) & = \frac{2z - 1}{z(z-1)}       &
+                   & = \frac{a}{z} + \frac{b}{z-1}   \\
+              a    & = 1                           &
+              b    & = 1                             \\
+          \end{align}
+          Since the path encloses both points $ (0, 0) $ and $ (1, 0) $, the standard
+          result for $ z^n $ gives,
+          \begin{align}
+              I & = \oint_{C} \Bigg[\frac{1}{z} + \frac{1}{z-1}\Bigg]\ \dl z
+              = 4\pi\ \i
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. \par
+          Let the path be split into two parts, the clockwise circle centered on
+          $ (-1, 0) $ called $ C_1 $ and the counterclockwise circle centered on
+          $ (1, 0) $ called $ C_2 $. \par
+          \begin{align}
+              g(z) & = \frac{1}{z^2 - 1}                                         &
+                   & = \frac{0.5}{z-1} - \frac{0.5}{z+1}                           \\
+              I_1  & = \oint_C \frac{0.5}{z-1}                                   &
+                   & = \oint_{C_1} \frac{0.5}{z-1} + \oint_{C_2} \frac{0.5}{z-1}   \\
+                   & = \color{y_h} 0 + \pi\ \i                                     \\
+              I_2  & = \oint_C \frac{0.5}{z+1}                                   &
+                   & = \oint_{C_1} \frac{0.5}{z+1} + \oint_{C_2} \frac{0.5}{z+1}   \\
+                   & = \color{y_p} -\pi\ \i + 0                                    \\
+              I    & = I_1 - I_2 = 2\pi\ \i
+          \end{align}
+          Since the path is the union of two simple closed paths, each of the paths
+          can be integrated over separately.
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. \par
+          Since the function is not analytic only at the origin, path deformation
+          theorem ensures that the closed integral over any path encircling the origin
+          remains the same.
+          \begin{align}
+              I_1              & : \abs{z} = 1           &
+                               & \text{clockwise}          \\
+              I_2              & : \abs{z} = 2           &
+                               & \text{counterclockwise}   \\
+              I_2              & = -I_1                  &
+              \implies \quad I & = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. \par
+          \begin{align}
+              \sinh(z/2) & = 0                       &
+              z          & = 2n\pi\ \i                 \\
+              I          & = \oint_C f(z)\ \dl z = 0
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          xmin = -1.2, xmax = 1.2,
+                          ymin = -0.5, ymax = 6.5,
+                          PiStyleY, ytick distance = 0.5*pi,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \node[GraphNode, fill = black] at (axis cs:0, 6.28){};
+                      \node[GraphNode, fill = black] at (axis cs:0, 0){};
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({cos(\t)}, {pi/2 - sin(\t)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. \par
+          Since the function is not analytic only at the origin, path deformation
+          theorem ensures that the closed integral over any path encircling the origin
+          remains the same.
+          \begin{align}
+              I_1              & : \abs{z} = 3           &
+                               & \text{clockwise}          \\
+              I_2              & : \abs{z} = 1           &
+                               & \text{counterclockwise}   \\
+              I_2              & = -I_1                  &
+              \implies \quad I & = 0
+          \end{align}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable}. \par
+          The function is analytic at all enclosed by the path of integration.
+          \begin{align}
+              z^4 - 16 & = 0                       &
+              z        & = \{\pm 2, \pm 2\i\}        \\
+              I        & = \oint_C f(z)\ \dl z = 0
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          xmin = -2.2, xmax = 2.2,
+                          ymin = -2.2, ymax = 2.2,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \node[GraphNode, fill = y_p] at (axis cs:2, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:-2, 0){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0, 2){};
+                      \node[GraphNode, fill = y_p] at (axis cs:0, -2){};
+                      \draw[y_h]
+                      (1,0) -- (0,1) -- (-1,0) -- (0,-1) -- cycle;
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Cauchy's theorem \textcolor{y_p}{is not applicable} since the contour
+          includes $ z = 0 $. Using path deformation to convert the path into the unit
+          circle,
+          \begin{align}
+              f(z)       & = \frac{\sin z}{z}                                    &
+                         & = \frac{\sin(e^{-\i t})}{e^{-\i t}}                     \\
+              z(t)       & = e^{-\i t}                                           &
+              t          & \in [0, 2\pi]                                           \\
+              \dot{z}(t) & = -\i\ e^{-\i t}                                      &
+              I          & = \int_{0}^{2\pi} \sin(e^{-\i t}) (-\i)\ \dl t          \\
+              I_1        & = \int_{0}^{\pi} \sin\Big[\cos t - \i\ \sin t\Big]
+              \ \dl t    &
+              I_2        & = \int_{\pi}^{2\pi} \sin\Big[\cos t - \i\ \sin t\Big]
+              \ \dl t                                                              \\
+              u          & = t-\pi                                               &
+              \dl u      & = \dl t                                                 \\
+              I_2        & = \int_{0}^{\pi} \sin\Big[ \cos(u+\pi) - \i
+                  \sin(u + \pi)\Big]
+              \dl u      &
+              I_2        & = -I_1                                                  \\
+              I_1 + I_2  & = 0
+          \end{align}
+
+    \item Resolving into partial fractions,
+          \begin{align}
+              f(z) & = \frac{2z^3 + z^2 + 4}{z^2(z^2 + 4)} = \frac{1}{z+2\i}
+              + \frac{1}{z - 2\i} + \frac{1}{z^2}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          height = 8cm, width = 8cm, axis equal,
+                          %   xmin = -1.2, xmax = 1.2,
+                          %   ymin = -0.5, ymax = 6.5,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \node[GraphNode, fill = black] at (axis cs:0, 2){};
+                      \node[GraphNode, fill = black] at (axis cs:0, -2){};
+                      \node[GraphNode, fill = black] at (axis cs:0, 0){};
+                      \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:2*pi,
+                          variable = \t]
+                      ({2 + 4*cos(\t)}, {-4*sin(\t)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Using the standard result for $ z^n $, and the fact that all 3 poles are
+          contained within the contour,
+          \begin{align}
+              I & = -2\pi\ \i - 2\pi\ \i - 0 = -4\pi\ \i
+          \end{align}
+\end{enumerate}

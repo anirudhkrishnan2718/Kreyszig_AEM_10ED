@@ -1,0 +1,1052 @@
+\section{Solution by Separating Variables, Use of Fourier Series}
+
+\begin{enumerate}
+    \item Fundamental frequency is,
+          \begin{align}
+              \lambda_n   & = \frac{cn\pi}{L}                        &
+              f_n         & = \frac{\lambda_n}{2\pi} = \frac{cn}{2L}   \\
+              f_1         & = \frac{c}{2L} = \frac{1}{2L} \cdot
+              \sqrt{\frac{T}{\rho}}                                    \\
+              f_1         & \propto \sqrt{T}                         &
+              f_1         & \propto \frac{1}{\sqrt{\rho}}              \\
+              T           & \to 2T                                   &
+              \implies\ f & \to 1.414\ f
+          \end{align}
+
+    \item \begin{itemize}
+              \item {\color{violet3}The motion is no longer strictly vertical}.\par
+                    Then the net force in the vertical direction is no longer zero and
+                    the PDE cannot be simplified using Newton's second law.
+              \item {\color{violet3}Gravitational force is no longer negligible}. \par
+                    This means that there is a gravitational term in the PDE
+                    \begin{align}
+                        T_2 \sin \beta - T_1 \sin \alpha - (\rho \Delta x) g & =
+                        (\rho \Delta x)\ \diffp[2] ut
+                    \end{align}
+                    The resulting PDE is much less tractable.
+              \item {\color{violet3}The string is no longer perfectly elastic}. \par
+                    This means that the motion is a damped oscillation, and the ODE
+                    becomes,
+                    \begin{align}
+                        \diffp[2] ut + \mu\ \diffp ut = c^2\ \diffp[2] ux
+                    \end{align}
+                    $ \mu(x) $ here is a constant function.
+              \item {\color{violet3}The string is no longer homogeneous}. \par
+                    The parameter $ c^2 $ in the PDE is now dependent on $ x $, since
+                    $ c^2  = T / \rho $.
+          \end{itemize}
+
+    \item Derivation for special case $ L = \pi $,
+          \begin{align}
+              F_n(x)    & = \sin(nx)                            &
+              \lambda_n & = cn                                    \\
+              G_n(t)    & = B_n \cos(cn\ t) + B_n^* \sin(cn\ t)
+          \end{align}
+          Given the initial deflection $ f(x) $ and initial velocity $ g(x) $,
+          \begin{align}
+              B_n   & = \frac{2}{\pi} \int_{0}^{\pi} f(x)\ \sin(nx)\ \dl x   &
+              B_n^* & = \frac{2}{cn\pi} \int_{0}^{\pi} g(x)\ \sin(nx)\ \dl x &
+          \end{align}
+          It is much easier to see the significance of the Fourier series expansion
+          in solving this PDE.
+
+    \item Graphing the first few normal modes as a function of time, evaluated at
+          $ t = 0, T/6, T/3, T/2 $ where the time period is $ T $. For simplicity,
+          the amplitude is normalized to $ 1 $.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$n = 1$},
+                          grid = both, domain = 0:pi, PiStyleX, xtick distance = pi/4,
+                          Ani]
+                      \addplot[GraphSmooth, y_h] {mode(1, 0, x)};
+                      \addplot[GraphSmooth, y_h, densely dashed] {mode(1, 0.33, x)};
+                      \addplot[GraphSmooth, y_h, loosely dashed] {mode(1, 0.66, x)};
+                      \addplot[GraphSmooth, y_h, dotted] {mode(1, 1, x)};
+                      \addlegendentry{$t = 0$};
+                      \addlegendentry{$t = T/6$};
+                      \addlegendentry{$t = T/3$};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$n = 2$},
+                          grid = both, domain = 0:pi, PiStyleX, xtick distance = pi/4,
+                          Ani]
+                      \addplot[GraphSmooth, y_p] {mode(2, 0, x)};
+                      \addplot[GraphSmooth, y_p, densely dashed] {mode(2, 0.33, x)};
+                      \addplot[GraphSmooth, y_p, loosely dashed] {mode(2, 0.66, x)};
+                      \addplot[GraphSmooth, y_p, dotted] {mode(2, 1, x)};
+                      \addlegendentry{$t = 0$};
+                      \addlegendentry{$t = T/6$};
+                      \addlegendentry{$t = T/3$};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$n = 3$},
+                          grid = both, domain = 0:pi, PiStyleX, xtick distance = pi/4,
+                          Ani]
+                      \addplot[GraphSmooth, y_t] {mode(3, 0, x)};
+                      \addplot[GraphSmooth, y_t, densely dashed] {mode(3, 0.33, x)};
+                      \addplot[GraphSmooth, y_t, loosely dashed] {mode(3, 0.66, x)};
+                      \addplot[GraphSmooth, y_t, dotted] {mode(3, 1, x)};
+                      \addlegendentry{$t = 0$};
+                      \addlegendentry{$t = T/6$};
+                      \addlegendentry{$t = T/3$};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$n = 4$},
+                          grid = both, domain = 0:pi, PiStyleX, xtick distance = pi/4,
+                          Ani]
+                      \addplot[GraphSmooth, azure4] {mode(4, 0, x)};
+                      \addplot[GraphSmooth, azure4, densely dashed] {mode(4, 0.33, x)};
+                      \addplot[GraphSmooth, azure4, loosely dashed] {mode(4, 0.66, x)};
+                      \addplot[GraphSmooth, azure4, dotted] {mode(4, 1, x)};
+                      \addlegendentry{$t = 0$};
+                      \addlegendentry{$t = T/6$};
+                      \addlegendentry{$t = T/3$};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.48\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = {$ n = 1 $},
+                              width = 8cm, height = 8cm,
+                              grid = none,
+                              ticks = none,
+                              view={60}{30},
+                              xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                              enlargelimits=0.1, colormap/jet,
+                              Ani]
+                          \addplot3 [surf, opacity= 0.5,
+                              domain = 0:pi, y domain = 0:4*pi, samples = 50,
+                              faceted color = black] {sin(x) * cos(y)};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}{0.48\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = {$ n = 2 $},
+                              width = 8cm, height = 8cm,
+                              grid = none,
+                              ticks = none,
+                              view={60}{30},
+                              xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                              enlargelimits=0.1, colormap/jet,
+                              Ani]
+                          \addplot3 [surf, opacity= 0.5,
+                              domain = 0:pi, y domain = 0:4*pi, samples = 50,
+                              faceted color = black] {sin(2*x) * cos(y)};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.48\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = {$ n = 3 $},
+                              width = 8cm, height = 8cm,
+                              grid = none,
+                              ticks = none,
+                              view={60}{30},
+                              xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                              enlargelimits=0.1, colormap/jet,
+                              Ani]
+                          \addplot3 [surf, opacity= 0.5,
+                              domain = 0:pi, y domain = 0:4*pi, samples = 50,
+                              faceted color = black] {sin(3*x) * cos(y)};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+              \begin{subfigure}{0.48\textwidth}
+                  \begin{tikzpicture}
+                      \begin{axis}[
+                              title = {$ n = 4 $},
+                              width = 8cm, height = 8cm,
+                              grid = none,
+                              ticks = none,
+                              view={60}{30},
+                              xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                              enlargelimits=0.1, colormap/jet,
+                              Ani]
+                          \addplot3 [surf, opacity= 0.5,
+                              domain = 0:pi, y domain = 0:4*pi, samples = 50,
+                              faceted color = black] {sin(4*x) * cos(y)};
+                      \end{axis}
+                  \end{tikzpicture}
+              \end{subfigure}
+          \end{figure}
+          The sinusoidal nature of the surface along both the $ x $ and $ t $ axes is
+          apparent from the $ u_n(x, t) $ plots.
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n & = 2\ \int_{0}^{1} f(x) \sin (n\pi x)\ \dl x            &
+                  & = 2\ \int_{0}^{1} k\ \sin(3\pi x)\ \sin(n\pi x)\ \dl x   \\
+              B_n & = 0\ \forall\ n \neq 3                                 &
+              B_3 & = k\ \Bigg[x - \cos(2\pi x)\Bigg]_0^1 = k
+          \end{align}
+          Substituting into the general solution,
+          \begin{align}
+              \lambda_n & = \frac{cn\pi}{L} = n\pi            &
+              B_n^*     & = 0                                   \\
+              u_n(x, t) & = B_n\ \cos(n\pi\ t)\ \sin(n\pi\ x) &
+              u = u_3   & = k\ \cos(3\pi t)\ \sin(3\pi x)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n * pi * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {mode(3, 0, x)};
+                      \addplot[GraphSmooth, y_p] {mode(3, 1/6, x)};
+                      \addplot[GraphSmooth, y_t] {mode(3, 1/3, x)};
+                      \addplot[GraphSmooth, azure4] {mode(3, 1/2, x)};
+                      \addlegendentry{$t = 0$};
+                      \addlegendentry{$t = T/6$};
+                      \addlegendentry{$t = T/3$};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n * pi * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {mode(3, 3/6, x)};
+                      \addplot[GraphSmooth, y_p] {mode(3, 4/6, x)};
+                      \addplot[GraphSmooth, y_t] {mode(3, 5/6, x)};
+                      \addplot[GraphSmooth, azure4] {mode(3, 6/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addlegendentry{$t = 2T/3$};
+                      \addlegendentry{$t = 5T/6$};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n & = 2\ \int_{0}^{1} f(x) \sin (n\pi x)\ \dl x        \\
+                  & = 2\ \int_{0}^{1} k\ \Big[\sin(\pi x)
+              - 0.5\sin(2\pi x)\Big]\ \sin(n\pi x)\ \dl x              \\
+              B_n & = 0\ \forall\ n \neq \{1, 2\}                      \\
+              B_1 & = k\ \Bigg[x - \cos(2\pi x)\Bigg]_0^1 = k          \\
+              B_2 & = -0.5k \Bigg[ x - \cos(4\pi x) \Bigg]_0^1 = -0.5k
+          \end{align}
+          Substituting into the general solution,
+          \begin{align}
+              \lambda_n & = \frac{cn\pi}{L} = n\pi                             \\
+              B_n^*     & = 0                                                  \\
+              u_n(x, t) & = \iser[n]{1} B_n\ \cos(n\pi\ t)\ \sin(n\pi\ x)      \\
+              u         & = k\ \cos(\pi t)\ \sin(\pi x) - 0.5k\ \cos(2\pi\ t)\
+              \sin(2\pi\ x)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n * pi * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {mode(1, 0, x) -
+                          0.5 * mode(2, 0, x)};
+                      \addplot[GraphSmooth, y_p] {mode(1, 1/6, x) -
+                          0.5 * mode(2, 1/6, x)};
+                      \addplot[GraphSmooth, y_t] {mode(1, 1/3, x) -
+                          0.5 * mode(2, 1/3, x)};
+                      \addplot[GraphSmooth, azure4] {mode(1, 1/2, x) -
+                          0.5 * mode(2, 1/2, x)};
+                      \addlegendentry{$t = 0$};
+                      \addlegendentry{$t = T/6$};
+                      \addlegendentry{$t = T/3$};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n * pi * \x) * cos(\t * pi);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {mode(1, 3/6, x) -
+                          0.5 * mode(2, 3/6, x)};
+                      \addplot[GraphSmooth, y_p] {mode(1, 4/6, x) -
+                          0.5 * mode(2, 4/6, x)};
+                      \addplot[GraphSmooth, y_t] {mode(1, 5/6, x) -
+                          0.5 * mode(2, 5/6, x)};
+                      \addplot[GraphSmooth, azure4] {mode(1, 6/6, x) -
+                          0.5 * mode(2, 6/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addlegendentry{$t = 2T/3$};
+                      \addlegendentry{$t = 5T/6$};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n & = 2\ \int_{0}^{1} f(x) \sin (n\pi x)\ \dl x            \\
+                  & = 2\ \int_{0}^{1} kx(1-x)\ \sin(n\pi x)\ \dl x         \\
+              B_n & = 2k\ \Bigg[ \frac{(1-2x)}{n^2\pi^2}\ \sin(n\pi x) +
+              \frac{x(x-1)n^2\pi^2 - 2}{\pi^3n^3}\ \cos(n\pi x) \Bigg]_0^1 \\
+                  & = \frac{4k}{\pi^3 n^3}\ [1 - \cos(n\pi)]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (8/ (pi^3 * \n^3))
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(3, \t, \x)
+                              + mode(5, \t, \x) + mode(7, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(0, x)};
+                      \addlegendentry{$t = 0$};
+                      \addplot[GraphSmooth, y_p] {Fou(1/6, x)};
+                      \addlegendentry{$t = T/6$};
+                      \addplot[GraphSmooth, y_t] {Fou(2/6, x)};
+                      \addlegendentry{$t = T/3$};
+                      \addplot[GraphSmooth, azure4] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (8/ (pi^3 * \n^3))
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(3, \t, \x)
+                              + mode(5, \t, \x) + mode(7, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addplot[GraphSmooth, y_p] {Fou(4/6, x)};
+                      \addlegendentry{$t = 2T/3$};
+                      \addplot[GraphSmooth, y_t] {Fou(5/6, x)};
+                      \addlegendentry{$t = 5T/6$};
+                      \addplot[GraphSmooth, azure4] {Fou(6/6, x)};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n & = 2\ \int_{0}^{1} f(x) \sin (n\pi x)\ \dl x      \\
+                  & = 2\ \int_{0}^{1} kx^2(1-x)\ \sin(n\pi x)\ \dl x \\
+              B_n & = 2k\ \Bigg[ f(x)\ \sin(n\pi x) +
+                  \frac{x^2(x-1)n^3\pi^3 - 6n\pi x + 2n\pi}{\pi^4n^4}
+              \ \cos(n\pi x) \Bigg]_0^1                              \\
+                  & = \frac{-4k}{\pi^3 n^3}\ [1 + 2\cos(n\pi)]
+          \end{align}
+          Substituting into the general solution,
+          \begin{align}
+              \lambda_n & = \frac{cn\pi}{L} = n\pi                        \\
+              B_n^*     & = 0                                             \\
+              u_n(x, t) & = \iser[n]{1} B_n\ \cos(n\pi\ t)\ \sin(n\pi\ x)
+              \sin(2\pi\ x)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (-4/ (pi^3 * \n^3))
+                              * (1 + 2*cos(\n * pi)) * sin(\n * pi * \x)
+                              * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(0, x)};
+                      \addlegendentry{$t = 0$};
+                      \addplot[GraphSmooth, y_p] {Fou(1/6, x)};
+                      \addlegendentry{$t = T/6$};
+                      \addplot[GraphSmooth, y_t] {Fou(2/6, x)};
+                      \addlegendentry{$t = T/3$};
+                      \addplot[GraphSmooth, azure4] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (-4/ (pi^3 * \n^3))
+                              * (1 + 2*cos(\n * pi)) * sin(\n * pi * \x)
+                              * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addplot[GraphSmooth, y_p] {Fou(4/6, x)};
+                      \addlegendentry{$t = 2T/3$};
+                      \addplot[GraphSmooth, y_t] {Fou(5/6, x)};
+                      \addlegendentry{$t = 5T/6$};
+                      \addplot[GraphSmooth, azure4] {Fou(6/6, x)};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n & = 2\ \int_{0}^{1} f(x) \sin (n\pi x)\ \dl x               \\
+                  & = 0.4\ \int_{0}^{0.5} (x)\ \sin(n\pi x)\ \dl x
+              + 0.4\ \int_{0.5}^{1} (1-x)\ \sin(n\pi x)\ \dl x                \\
+              B_n & = 0.4\ \Bigg[ \frac{\sin(n\pi x) - n\pi x\ \cos(n\pi x)}
+              {\pi^2n^2}\Bigg]_0^{0.5}                                        \\
+                  & +0.4 \Bigg[ \frac{\sin(n\pi x) - (x-1)n\pi\ \cos(n\pi x)}
+              {\pi^2 n^2}\Bigg]_{1}^{0.5}                                     \\
+                  & = \frac{0.8}{n^2\pi^2}\ \sin\left( \frac{n\pi}{2} \right)
+          \end{align}
+          Substituting into the general solution,
+          \begin{align}
+              \lambda_n & = \frac{cn\pi}{L} = n\pi                        \\
+              B_n^*     & = 0                                             \\
+              u_n(x, t) & = \iser[n]{1} B_n\ \cos(n\pi\ t)\ \sin(n\pi\ x)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (0.8/ (pi^2 * \n^2)) * sin(\n * 0.5 * pi)
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(3, \t, \x)
+                              + mode(5, \t, \x) + mode(7, \t, \x) + mode(9, \t, \x)
+                              + mode(11, \t, \x) + mode(13, \t, \x) + mode(15, \t, \x)
+                              + mode(17, \t, \x) + mode(19, \t, \x) + mode(21, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(0, x)};
+                      \addlegendentry{$t = 0$};
+                      \addplot[GraphSmooth, y_p] {Fou(1/6, x)};
+                      \addlegendentry{$t = T/6$};
+                      \addplot[GraphSmooth, y_t] {Fou(2/6, x)};
+                      \addlegendentry{$t = T/3$};
+                      \addplot[GraphSmooth, azure4] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (0.8/ (pi^2 * \n^2)) * sin(\n * 0.5 * pi)
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(3, \t, \x)
+                              + mode(5, \t, \x) + mode(7, \t, \x) + mode(9, \t, \x)
+                              + mode(11, \t, \x) + mode(13, \t, \x) + mode(15, \t, \x)
+                              + mode(17, \t, \x) + mode(19, \t, \x) + mode(21, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addplot[GraphSmooth, y_p] {Fou(4/6, x)};
+                      \addlegendentry{$t = 2T/3$};
+                      \addplot[GraphSmooth, y_t] {Fou(5/6, x)};
+                      \addlegendentry{$t = 5T/6$};
+                      \addplot[GraphSmooth, azure4] {Fou(6/6, x)};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n & = 2\ \int_{0}^{1} f(x) \sin (n\pi x)\ \dl x             \\
+                  & = 2\ \int_{0}^{0.25} (x)\ \sin(n\pi x)\ \dl x
+              + 2\ \int_{0.25}^{0.75} (0.5-x)\ \sin(n\pi x)\ \dl x          \\
+                  & + 2\ \int_{0.75}^{1} (x - 1)\ \sin(n\pi x)\ \dl x       \\
+              B_n & = 2\Bigg[ \frac{\sin(n\pi x) - n\pi x\ \cos(n\pi x)}
+              {\pi^2n^2}\Bigg]_0^{0.25}                                     \\
+                  & +2\Bigg[ \frac{-\sin(n\pi x)
+              + n\pi (x - 0.5)\ \cos(n\pi x)}{\pi^2n^2}\Bigg]_{0.25}^{0.75} \\
+                  & +2\Bigg[ \frac{\sin(n\pi x) + n\pi (1-x)\ \cos(n\pi x)}
+              {\pi^2n^2}\Bigg]_{0.75}^{1}                                   \\
+                  & = \frac{4}{n^2 \pi^2}\ [\sin(n\pi/4) - \sin(3n\pi/4)]
+          \end{align}
+          Substituting into the general solution,
+          \begin{align}
+              \lambda_n & = \frac{cn\pi}{L} = n\pi                        \\
+              B_n^*     & = 0                                             \\
+              u_n(x, t) & = \iser[n]{1} B_n\ \cos(n\pi\ t)\ \sin(n\pi\ x)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (4/ (pi^2 * \n^2)) * (sin(\n * 0.25 * pi)
+                              - sin(0.75 * \n * pi))
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(0, x)};
+                      \addlegendentry{$t = 0$};
+                      \addplot[GraphSmooth, y_p] {Fou(1/6, x)};
+                      \addlegendentry{$t = T/6$};
+                      \addplot[GraphSmooth, y_t] {Fou(2/6, x)};
+                      \addlegendentry{$t = T/3$};
+                      \addplot[GraphSmooth, azure4] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (4/ (pi^2 * \n^2)) * (sin(\n * 0.25 * pi)
+                              - sin(0.75 * \n * pi))
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addplot[GraphSmooth, y_p] {Fou(4/6, x)};
+                      \addlegendentry{$t = 2T/3$};
+                      \addplot[GraphSmooth, y_t] {Fou(5/6, x)};
+                      \addlegendentry{$t = 5T/6$};
+                      \addplot[GraphSmooth, azure4] {Fou(6/6, x)};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n & = 2\ \int_{0}^{1} f(x) \sin (n\pi x)\ \dl x                     \\
+                  & = 2\int_{0.25}^{0.5} (x - 0.25)\ \sin(n\pi x)\ \dl x
+              + 2\int_{0.5}^{0.75} (0.75 - x)\ \sin(n\pi x)\ \dl x                  \\
+              B_n & = 2\ \Bigg[ \frac{\sin(n\pi x) - n\pi (x - 0.25)\ \cos(n\pi x)}
+              {\pi^2n^2}\Bigg]_{0.25}^{0.5}                                         \\
+                  & +2\ \Bigg[ \frac{\sin(n\pi x) + (0.75 - x)n\pi\ \cos(n\pi x)}
+              {\pi^2 n^2}\Bigg]_{0.75}^{0.5}                                        \\
+                  & = \frac{2}{n^2\pi^2}\ \Bigg[2 \sin\left( \frac{n\pi}{2} \right)
+                  - \sin\left( \frac{n\pi}{4} \right)
+                  - \sin\left( \frac{3n\pi}{4} \right)\Bigg]
+          \end{align}
+          Substituting into the general solution,
+          \begin{align}
+              \lambda_n & = \frac{cn\pi}{L} = n\pi                        \\
+              B_n^*     & = 0                                             \\
+              u_n(x, t) & = \iser[n]{1} B_n\ \cos(n\pi\ t)\ \sin(n\pi\ x)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (2/ (pi^2 * \n^2)) * (2*sin(\n * 0.5 * pi)
+                              - sin(0.25 * \n * pi) - sin(0.75 * \n * pi))
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(0, x)};
+                      \addlegendentry{$t = 0$};
+                      \addplot[GraphSmooth, y_p] {Fou(1/6, x)};
+                      \addlegendentry{$t = T/6$};
+                      \addplot[GraphSmooth, y_t] {Fou(2/6, x)};
+                      \addlegendentry{$t = T/3$};
+                      \addplot[GraphSmooth, azure4] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (2/ (pi^2 * \n^2)) * (2*sin(\n * 0.5 * pi)
+                              - sin(0.25 * \n * pi) - sin(0.75 * \n * pi))
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addplot[GraphSmooth, y_p] {Fou(4/6, x)};
+                      \addlegendentry{$t = 2T/3$};
+                      \addplot[GraphSmooth, y_t] {Fou(5/6, x)};
+                      \addlegendentry{$t = 5T/6$};
+                      \addplot[GraphSmooth, azure4] {Fou(6/6, x)};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n & = 2\ \int_{0}^{1} f(x) \sin (n\pi x)\ \dl x                     \\
+                  & = 2\ \int_{0}^{0.25} (x)\ \sin(n\pi x)\ \dl x
+              + 2\ \int_{0.25}^{0.75} (0.25)\ \sin(n\pi x)\ \dl x                   \\
+                  & + 2\ \int_{0.75}^{1} (1-x)\ \sin(n\pi x)\ \dl x                 \\
+              B_n & = 2\Bigg[ \frac{\sin(n\pi x) - n\pi x\ \cos(n\pi x)}
+                  {\pi^2n^2}\Bigg]_0^{0.25}
+              + 2\Bigg[ \frac{-0.25 \cos(n\pi x)}{n\pi} \Bigg]_{0.25}^{0.75}        \\
+                  & +2\Bigg[ \frac{\sin(n\pi x) + n\pi (1-x)\ \cos(n\pi x)}
+              {\pi^2n^2}\Bigg]_{1}^{0.75}                                           \\
+                  & = \frac{2}{n^2 \pi^2} \Bigg[ \sin \left( \frac{n\pi}{4} \right)
+                  + \sin\left( \frac{3n\pi}{4} \right) \Bigg]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (2/ (pi^2 * \n^2)) * (sin(0.25 * \n * pi)
+                              + sin(0.75 * \n * pi))
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(0, x)};
+                      \addlegendentry{$t = 0$};
+                      \addplot[GraphSmooth, y_p] {Fou(1/6, x)};
+                      \addlegendentry{$t = T/6$};
+                      \addplot[GraphSmooth, y_t] {Fou(2/6, x)};
+                      \addlegendentry{$t = T/3$};
+                      \addplot[GraphSmooth, azure4] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (2/ (pi^2 * \n^2)) * (sin(0.25 * \n * pi)
+                              + sin(0.75 * \n * pi))
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addplot[GraphSmooth, y_p] {Fou(4/6, x)};
+                      \addlegendentry{$t = 2T/3$};
+                      \addplot[GraphSmooth, y_t] {Fou(5/6, x)};
+                      \addlegendentry{$t = 5T/6$};
+                      \addplot[GraphSmooth, azure4] {Fou(6/6, x)};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n & = 2\ \int_{0}^{1} f(x) \sin (n\pi x)\ \dl x                     \\
+                  & = 2\ \int_{0}^{0.5} (2x)(1 - 2x)\ \sin(n\pi x)\ \dl x           \\
+              B_n & = 4 \Bigg[ \frac{n\pi (1 - 4x)}{n^3 \pi^3}\ \sin(n\pi x)
+              - \frac{n^2\pi^2 x(1-2x) + 4}{n^3 \pi^3}\ \cos(n\pi x) \Bigg]_0^{0.5} \\
+                  & = \frac{1}{n^3 \pi^3} \Bigg[ -4n\pi\sin \left( \frac{n\pi}{2}
+                  \right) - 16 \cos\left( \frac{n\pi}{2} \right) + 16 \Bigg]
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (1/ (pi^3 * \n^3))
+                              * (-4*\n*pi * sin(0.5 * \n * pi)
+                              - 16 * cos(0.5 * \n * pi) + 16)
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(0, x)};
+                      \addlegendentry{$t = 0$};
+                      \addplot[GraphSmooth, y_p] {Fou(1/6, x)};
+                      \addlegendentry{$t = T/6$};
+                      \addplot[GraphSmooth, y_t] {Fou(2/6, x)};
+                      \addlegendentry{$t = T/3$};
+                      \addplot[GraphSmooth, azure4] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (1/ (pi^3 * \n^3))
+                              * (-4*\n*pi * sin(0.5 * \n * pi)
+                              - 16 * cos(0.5 * \n * pi) + 16)
+                              * sin(\n * pi * \x) * cos(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:1,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addplot[GraphSmooth, y_p] {Fou(4/6, x)};
+                      \addlegendentry{$t = 2T/3$};
+                      \addplot[GraphSmooth, y_t] {Fou(5/6, x)};
+                      \addlegendentry{$t = 5T/6$};
+                      \addplot[GraphSmooth, azure4] {Fou(6/6, x)};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the general solution of the PDE, with $ L = c^2 = 1 $
+          \begin{align}
+              B_n^* & = \frac{2}{n\pi}\ \int_{0}^{\pi} g(x) \sin (n x)\ \dl x       \\
+                    & = \frac{0.02}{n\pi}\ \Bigg[\int_{0}^{\pi/2} (x) \sin (n x)
+              \ \dl x + \int_{\pi/2}^{\pi} (\pi - x)\ \sin(nx)\ \dl x\Bigg]         \\
+                    & = \frac{0.02}{n\pi}\ \Bigg[ \frac{\sin(nx) - nx\cos(nx)}{n^2}
+                  \Bigg]_0^{\pi/2} + \frac{0.02}{n\pi}\ \Bigg[ \frac{\sin(nx)
+              + n(\pi - x)\cos(nx)}{n^2} \Bigg]_{\pi}^{\pi/2}                       \\
+              B_n^* & = \frac{0.04}{n^3\pi}\ \sin\left( \frac{n\pi}{2} \right)
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (0.04/ (pi * \n^3)) * sin(0.5 * \n * pi)
+                              * sin(\n * \x) * sin(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ First quarter
+                                  period},
+                          grid = both, domain = 0:pi,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(0, x)};
+                      \addlegendentry{$t = 0$};
+                      \addplot[GraphSmooth, y_p] {Fou(1/6, x)};
+                      \addlegendentry{$t = T/6$};
+                      \addplot[GraphSmooth, y_t] {Fou(2/6, x)};
+                      \addlegendentry{$t = T/3$};
+                      \addplot[GraphSmooth, azure4] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = (0.04/ (pi * \n^3)) * sin(0.5 * \n * pi)
+                              * sin(\n * \x) * sin(\n * \t * pi);
+                              Fou(\t, \x) = mode(1, \t, \x) + mode(2, \t, \x)
+                              + mode(3, \t, \x) + mode(4, \t, \x) + mode(5, \t, \x)
+                              + mode(6, \t, \x) + mode(7, \t, \x) + mode(8, \t, \x)
+                              + mode(9, \t, \x) + mode(10, \t, \x) + mode(11, \t, \x)
+                              + mode(12, \t, \x) + mode(13, \t, \x) + mode(14, \t, \x)
+                              + mode(15, \t, \x) + mode(16, \t, \x) + mode(17, \t, \x)
+                              + mode(18, \t, \x) + mode(19, \t, \x) + mode(20, \t, \x)
+                              + mode(21, \t, \x) + mode(22, \t, \x) + mode(23, \t, \x);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ Second quarter
+                                  period},
+                          grid = both, domain = 0:pi,Ani]
+                      \addplot[GraphSmooth, y_h] {Fou(3/6, x)};
+                      \addlegendentry{$t = T/2$};
+                      \addplot[GraphSmooth, y_p] {Fou(4/6, x)};
+                      \addlegendentry{$t = 2T/3$};
+                      \addplot[GraphSmooth, y_t] {Fou(5/6, x)};
+                      \addlegendentry{$t = 5T/6$};
+                      \addplot[GraphSmooth, azure4] {Fou(6/6, x)};
+                      \addlegendentry{$t = T$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Elastic beam PDE,
+          Substituting,
+          \begin{align}
+              \diffp[2] ut      & = -c^2\ \diffp[4] ux                      &
+              u(x, t)           & = F(x) \cdot G(t)                           \\
+              F \cdot \ddot{G}  & = -c^2\ G \cdot F^{(4)}                   &
+              \frac{F^{(4)}}{F} & = \frac{-\ddot{G}}{c^2 \cdot G} = \beta^4
+          \end{align}
+          Solving the ODE in time,
+          \begin{align}
+              \ddot{G} & = -(c \beta^2)^2 \cdot G                      &
+              G(t)     & = a\ \cos(c\beta^2\ t) + b\ \sin(c\beta^2\ t)
+          \end{align}
+          Solving the ODE in space,
+          \begin{align}
+              \diff[4] Fx & = \beta^4\ F(x)                       \\
+              \lambda     & = \{\pm 1, \pm i\}                    \\
+              F(x)        & = A\ \cos(\beta x) + B\ \sin(\beta x)
+              + C\ \cosh(\beta x) + D\ \sinh(\beta x)
+          \end{align}
+
+    \item For a simply supported beam,
+          \begin{align}
+              u(0, t)            & = 0  &
+              (A + C) \cdot G(t) & = 0    \\
+              A                  & = -C   \\
+              u(L, t)            & = 0  &
+              A\ [\cos(\beta L) - \cosh(\beta L)] + B\ \sin(\beta L) + D\ \sinh(\beta L)
+                                 & = 0
+          \end{align}
+          Finding the second partial derivative in $ x $,
+          \begin{align}
+              \diffp[2] ux                 & = -\beta^2 \Big[ A\ \cos(\beta x)
+              + B\ \sin(\beta x) + A\ \cosh(\beta x) - D\ \sinh(\beta x) \Big] \\
+              \difcp[2] ux \Bigg|_{(0, t)} & = 0                               \\
+              \color{y_h} A                & \color{y_h} = 0, \qquad C = 0     \\
+              \difcp[2] ux \Bigg|_{(L, t)} & = 0
+          \end{align}
+          Solving the linear system in $ B, D $ gives,
+          \begin{align}
+              B\ \sin(\beta L) + D\ \sinh(\beta L) & = 0                            \\
+              B\ \sin(\beta L) - D\ \sinh(\beta L) & = 0                            \\
+              2D\ \sinh(\beta L)                   & = 0 \implies \color{y_h} D = 0 \\
+              2B\ \sin(\beta L)                    & = 0 \implies \beta L = 0
+          \end{align}
+          Since $ B = 0 $ would lead to a trivial solution, the infinite set of
+          eigenvalues $ \lambda $ and corresponding eigenfunctions are,
+          \begin{align}
+              \beta_n                  & = \color{y_p}\frac{n\pi}{L}                \\
+              u_n(x, t)                & = \Big[a_n\ \cos(c\beta_n^2\ t)
+                  + b_n\ \sin(c\beta_n^2\ t)\Big]\ \sin\left( \frac{n\pi}{L}
+              \ x \right)                                                           \\
+              \diffp ut                & = (c\beta^2) \Big[ -a_n\ \sin(c\beta^2\ t)
+                  + b_n\ \cos(c\beta^2\ t) \Big]\ \sin\left( \frac{n\pi}{L}
+              \ x \right)                                                           \\
+              \diffp ut\Bigg|_{(x, 0)} & = 0 \implies \color{y_h} b_n = 0           \\
+              u(x, t)                  & = \color{y_p} a_n\ \cos(c\beta_n^2\ t)
+              \cdot \sin(\beta_n\ x)
+          \end{align}
+
+    \item Using the result of Problem $ 17 $, and the half-range Fourier series
+          \begin{align}
+              u(x, 0) & = \iser[n]{1} a_n \sin\left( \frac{n\pi x}{L}
+              \right) = x(L - x)                                                     \\
+              a_n     & = \frac{2}{L} \int_{0}^{L} f(x)\ \sin\left( \frac{n\pi x}{L}
+              \right)\ \dl x                                                         \\
+                      & = 2\ \Bigg[ g(x) \cdot \sin\left( \frac{n\pi x}{L}
+                  \right) + \frac{n^2 \pi^2\ x(x - L) - 2L^2}{n^3 \pi^3}\ \cos\left(
+              \frac{n\pi x}{L} \right) \Bigg]_0^L                                    \\
+                      & = \color{y_p} \frac{4L^2}{n^3 \pi^3}\ [1 - \cos(n \pi)]      \\
+              u(x, t) & = a_n\ \cos(c\beta_n^2\ t)
+              \cdot \sin(\beta_n\ x)                                                 \\
+              \beta_n & = \frac{n\pi}{L}
+          \end{align}
+
+    \item Compared to Problem $ 7 $, the argument of $ G(t) $ has a square term
+          (in $ n $) in the beam, and only a linear term in the string.
+
+    \item The endpoints of the beam have zero deflection and zero velocity for all $ t $.
+          \begin{align}
+              u(0, t)                   & = 0 & u(L, t)                   & = 0 \\
+              \diffp ux \Bigg|_{(0, t)} & = 0 & \diffp ux \Bigg|_{(L, t)} & = 0
+          \end{align}
+          Using these conditions,
+          \begin{align}
+              F(0) \cdot G(t) & = (A + C) \cdot G(t) = 0                        \\
+              A               & = -C                                            \\
+              F(L) \cdot G(t) & = \Big[A\cos(\beta L)  - A\cosh(\beta L)
+              + B\sin(\beta L) + D \sinh(\beta L)\Big] \cdot G(t) = 0           \\
+              \diffp ux       & = \beta\ \Big[ -A\sin(\beta x) + B\cos(\beta x)
+              - A\sinh(\beta x) + D\cosh(\beta x) \Big] \cdot G(t)              \\
+              \diffp ux
+              \Bigg|_{(0, t)} & = 0 \qquad \implies \qquad B = -D               \\
+              \diffp ux
+              \Bigg|_{(L, t)} & = 0 = -A \Big[ \sin(\beta L) +
+                  \sinh(\beta L) \Big] + B \Big[ \cos(\beta L) - \cosh(\beta L) \Big]
+          \end{align}
+          This is a system of two linear equations in $ A, B $. The Cramer
+          determinant has to be zero to ensure a nontrivial solution. With
+          $ z = \beta L $ for convenience,
+          \begin{align}
+              M       & = \begin{bNiceMatrix}[r, margin]
+                              (\cos z - \cosh z)  & (\sin z - \sinh z) \\
+                              (-\sin z - \sinh z) & (\cos z - \cosh z) \\
+                          \end{bNiceMatrix} \\
+              \det{M} & = \cos^2 z + \cosh^2 z - 2\cos z \cosh z
+              + \sin^2 z - \sinh^2 z                               \\
+                      & = 2(1 - \cos z \cosh z)
+          \end{align}
+          From reading the graphs of these two functions, solutions are,
+          \begin{align}
+              \cos(\theta) \cosh(\theta) & = 1                            \\
+              \theta                     & = \{4.73, 7.85, 10.99, \dots\}
+          \end{align}
+          There are infinitely many solutions.
+
+    \item Using the given boundary conditions, and $ z = \beta L $
+          \begin{align}
+              F(x)                    & = A\ \cos(\beta x) + B\ \sin(\beta x)
+              + C\ \cosh(\beta x) + D\ \sinh(\beta x)                                  \\
+              F(0)                    & = A + C = 0                                    \\
+              \diff Fx                & = \beta \Big[ -A\sin(\beta x) + B\cos(\beta x)
+              + C \sinh(\beta x) + D \cosh(\beta x) \Big]                              \\
+              \diff Fx\Bigg|_{x=0}    & = B + D = 0                                    \\
+              \diff[2] Fx             & = \beta^2 \Big[ -A\cos(\beta x)
+              - B\sin(\beta x) + C \cosh(\beta x) + D \sinh(\beta x) \Big]             \\
+              \diff[2] Fx\Bigg|_{x=L} & = -A \Big[ \cos z + \cosh z \Big]
+              - B \Big[ \sin z + \sinh z \Big] = 0                                     \\
+              \diff[3] Fx             & = \beta^3 \Big[ A\sin(\beta x)
+              - B\cos(\beta x) + C \sinh(\beta x) + D \cosh(\beta x) \Big]             \\
+              \diff[3] Fx\Bigg|_{x=L} & = A \Big[ \sin z - \sinh z \Big]
+              - B \Big[ \cos z + \cosh z \Big] = 0
+          \end{align}
+          This is a system of linear equations in $ A, B $ which needs a zero
+          Cramer determinant to ensure a nontrivial solution.
+          \begin{align}
+              M       & = \begin{bNiceMatrix}[r, margin]
+                              (\cos z + \cosh z) & (\sin z + \sinh z) \\
+                              (\sin z - \sinh z) & (\cos z + \cosh z) \\
+                          \end{bNiceMatrix} \\
+              \det{M} & = \cos^2 z + \cosh^2 z + 2\cos z \cosh z
+              + \sin^2 z - \sinh^2 z                              \\
+                      & = 2(1 + \cos z \cosh z)
+          \end{align}
+          From reading the graphs of these two functions, solutions are,
+          \begin{align}
+              \cos(\theta) \cosh(\theta) & = -1                           \\
+              \theta                     & = \{4.73, 7.85, 10.99, \dots\}
+          \end{align}
+          There are infinitely many solutions.
+\end{enumerate}

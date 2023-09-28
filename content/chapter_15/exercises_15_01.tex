@@ -1,0 +1,395 @@
+\section{Sequences, Series, Convergence Tests}
+
+\begin{enumerate}
+    \item The sequence is bounded but \textcolor{y_p}{diverges},
+          \begin{align}
+              z_n & = \frac{(1+\i)^{2n}}{2^n} &
+              z_n & = \i^n
+          \end{align}
+
+    \item The sequence is bounded and \textcolor{y_h}{converges},
+          \begin{align}
+              z_n                       & = \frac{(3+4\i)^{n}}{n!} &
+              \frac{z_{n+1}}{z_n}       & = \frac{3+ 4\i}{n+1}       \\
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}} & = 0                      &
+              L                         & = 0 + 0\i
+          \end{align}
+
+    \item The sequence is bounded and \textcolor{y_h}{converges},
+          \begin{align}
+              z_n                                 & = \frac{n\pi}{(4 + 2n\i)}
+              = \frac{n\pi}{2}\ \frac{1}{2 + n\i} &
+              z_n                                 & = \frac{n\pi}{2}\ \Bigg[
+              \frac{2 - n\i}{n^2 + 4}\Bigg]                                        \\
+              x_n                                 & = \frac{n\pi}{n^2 + 4}       &
+              y_n                                 & = -\frac{\pi}{2}\ \frac{n^2}
+              {n^2 + 4}                                                            \\
+              \lim_{n \to \infty} x_n             & = 0                          &
+              \lim_{n \to \infty} y_n             & = -\frac{\pi}{2}               \\
+              L                                   & = 0 - \frac{\pi}{2}\ \i
+          \end{align}
+
+    \item The sequence is not bounded and \textcolor{y_p}{diverges},
+          \begin{align}
+              z_n                       & = (1 + 2\i)^n  &
+              \frac{z_{n+1}}{z_n}       & = (1 + 2\i)      \\
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}} & = \sqrt{5} > 1
+          \end{align}
+
+    \item The sequence is bounded but \textcolor{y_p}{diverges},
+          \begin{align}
+              z_n     & = (-1)^n + 10\i           &
+              \{z_n\} & = \{-1 + 10\i, 1 + 10\i\}
+          \end{align}
+
+    \item The sequence is not bounded and \textcolor{y_p}{diverges},
+          \begin{align}
+              z_n                 & = \frac{\cos(n\pi \i)}{n}                     &
+              z_n                 & = \frac{\cosh(n\pi)}{n}\ \i                     \\
+              \lim_{n \to \infty}
+              \frac{e^{n\pi}}{2n} & = \lim_{n \to \infty} \frac{\pi\ e^{n\pi}}{2} &
+                                  & = \infty                                        \\
+              z_n                 & = \frac{e^{n\pi} + e^{-n\pi}}{2n}
+          \end{align}
+
+    \item The sequence is not bounded and \textcolor{y_p}{diverges},
+          \begin{align}
+              x_n                     & = n^2           &
+              y_n                     & = \frac{1}{n^2}   \\
+              \lim_{n \to \infty} x_n & = \infty        &
+              \lim_{n \to \infty} y_n & = 0
+          \end{align}
+
+    \item The sequence is bounded but \textcolor{y_p}{diverges},
+          \begin{align}
+              z_n       & = \Bigg[\frac{(1 + 3\i)}{\sqrt{10}}\Bigg]^n &
+              \abs{z_n} & = 1^n = 1
+          \end{align}
+
+    \item The sequence is bounded and \textcolor{y_h}{converges},
+          \begin{align}
+              z_n                           & = (3 + 3\i)^{-n} = \Bigg[\frac{3 - 3\i}
+              {18}\Bigg]^n                  &
+              \abs{z_n}                     & = \frac{1}{(18)^{n/2}}                  \\
+              \lim_{n \to \infty} \abs{z_n} & = 0
+          \end{align}
+
+    \item The sequence is bounded but \textcolor{y_p}{diverges},
+          \begin{align}
+              x_n & = \sin\Big( \frac{n\pi}{4}\ \i \Big)                &
+                  & = \left\{ 0, \pm \frac{1}{\sqrt{2}}, \pm 1 \right\}   \\
+              y_n & = \i^n                                              &
+                  & = \left\{ \pm \i, \pm 1 \right\}                      \\
+          \end{align}
+
+    \item Plotting a few types of complex sequences,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {Bounded but not convergent},
+                          height = 8cm, width = 8cm,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[scatter, only marks,
+                          samples at = {0,1,...,19}, scatter src = \t, variable = \t]
+                      ({cos(\t*pi/10)}, {sin(\t*pi/10)});
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {Bounded and convergent},
+                          height = 8cm, width = 8cm,
+                          xmin = -1.1, xmax = 1.1,
+                          ymin = -1.1, ymax = 1.1,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[scatter, only marks, mark size = 1.5pt,
+                          samples at = {0,2,...,40}, scatter src = \t, variable = \t]
+                      ({(1.1)^(-\t)*cos(\t*pi/10)}, {(1.1)^(-\t)*sin(\t*pi/10)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Infinitely many limit points TBC.
+
+    \item Using the linearity of the limit operation, the limit of a sum is equal to
+          the sum of the limits.
+          \begin{align}
+              l                           & = a + b\ \i     &
+              l^*                         & = a^* + b^*\ \i   \\
+              \lim_{n \to \infty} x_n     & = a_n           &
+              \lim_{n \to \infty} y_n     & = b_n             \\
+              \lim_{n \to \infty} x_n^*   & = a_n^*         &
+              \lim_{n \to \infty} y_n^*   & = b_n^*           \\
+              \lim_{n \to \infty} z + z^* & = l + l^*
+          \end{align}
+
+    \item The forward proof, starting with the fact that $ \{x_n\}, \{y_n\} $
+          are bounded.
+          \begin{align}
+              \abs{x_n}       & \leq a             &
+              \forall \quad n & > N_1                \\
+              \abs{y_n}       & \leq b             &
+              \forall \quad n & > N_2                \\
+              N               & = \max{(N_1, N_2)}   \\
+              \abs{z_n}^2     & \leq a^2 + b^2     &
+              \forall \quad n & > N                  \\
+              \abs{z_n}       & \leq \abs{l}       &
+              \forall \quad n & > N
+          \end{align}
+          This proves that $ z_n $ is bounded by $ l = a + b\i $. \par
+          For the reverse proof, start with $ z_n $ being bounded.
+          \begin{align}
+              \abs{z_n}^2               & \leq M^2 &
+              \forall \quad n           & > N        \\
+              \abs{x_n}^2 + \abs{y_n}^2 & \leq M^2 &
+              \forall \quad n           & > N        \\
+              \abs{x_n}^2               & \leq M^2 &
+              \abs{y_n}^2               & \leq M^2
+          \end{align}
+          This means that the real and imaginary parts are bounded sequences.
+          (The other two sides of a right triangle have to be smaller than the
+          hypotenuse).
+
+    \item Consider the complex sequence,
+          \begin{align}
+              z_n                           & = [0.9\exp(\i \pi/4)]^{n}               &
+                                            & = (0.9)^{1/n} \exp \Big( \frac{n\pi}{4}
+              \ \i \Big)                                                                \\
+              \lim_{n \to \infty} \abs{z_n} & = \lim_{n \to \infty} (0.9)^n = l       &
+              l                             & = 0
+          \end{align}
+          Comparing the real and imaginary parts of this sequence,
+          \begin{align}
+              x_n                           & = (0.9)^n \cos\Big( \frac{n\pi}{4}
+              \Big)                         &
+              y_n                           & = (0.9)^n \sin\Big( \frac{n\pi}{4}
+              \Big)                                                                  \\
+              \lim_{n \to \infty} \abs{x_n} & \leq \lim_{n \to \infty }(0.9)^n = a &
+              \lim_{n \to \infty} \abs{y_n} & \leq \lim_{n \to \infty }(0.9)^n = b   \\
+              a                             & = 0                                  &
+              b                             & = 0
+          \end{align}
+          The results match since $ l = a + \i\ b $. The reverse verification can also
+          be proved similarly.
+
+    \item Consider the complex sequence,
+          \begin{align}
+              z_n & = \frac{(1 + \i)}{2^n}                 &
+              s   & = (1 + \i)\ \lim_{n \to \infty} 2^{-n}   \\
+              s   & = (1 + \i)\ \frac{1/2}{1 - 1/2}        &
+              s   & = 1 + \i
+          \end{align}
+          Comparing the real and imaginary parts of this sequence,
+          \begin{align}
+              x_n                           & = 2^{-n}                       &
+              y_n                           & = 2^{-n}                         \\
+              \lim_{n \to \infty} \abs{u_n} & \lim_{n \to \infty} 2^{-n} = u &
+              \lim_{n \to \infty} \abs{v_n} & \lim_{n \to \infty} 2^{-n} = v   \\
+              u                             & = 1                            &
+              v                             & = 1
+          \end{align}
+          The results match since $ s = u + \i\ v $. The reverse verification can also
+          be proved similarly. \par
+
+    \item Using the ratio test, the series sum converges absolutely and is thus
+          \textcolor{y_h}{convergent}.
+          \begin{align}
+              z_n                       & = \frac{(20 + 30\i)^n}{n!}    &
+              \abs{\frac{z_{n+1}}{z_n}} & = \abs{\frac{20 + 30\i}{n+1}}   \\
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}} & = 0 < 1
+          \end{align}
+
+    \item Using the ratio test, is inconclusive.
+          \begin{align}
+              \frac{z_{n+1}}{z_n}       & = \frac{(-\i)\ \ln(n)}{\ln(n+1)} &
+              \abs{\frac{z_{n+1}}{z_n}} & = \abs{\frac{\ln(n)}{\ln(n+1)}}    \\
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}} & = 1
+          \end{align}
+          Using the fact that $ \ln n < n $ for all integers greater than 2,
+          \begin{align}
+              \abs{z_n} & \geq \abs{\frac{(-\i)^n}{n}} &
+              \abs{z_n} & \geq \frac{1}{n}
+          \end{align}
+          Since each term of $ z_n $ is larger in absolute value than the sequence
+          $ \{1/n\} $ which is known to diverge, it also \textcolor{y_p}{diverges}.
+
+    \item Using the ratio test, the series sum converges absolutely and is thus
+          \textcolor{y_h}{convergent}.
+          \begin{align}
+              z_n                       & = \frac{n^2\ \i^n}{4^n}          &
+              \abs{\frac{z_{n+1}}{z_n}} & = \abs{\frac{(n+1)^2\ \i}{4n^2}}   \\
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}} & = \frac{1}{4} < 1
+          \end{align}
+
+    \item Using the ratio test, is inconclusive.
+          \begin{align}
+              z_n                                & = \frac{\i^n}{n^2 - \i}
+              = \frac{\i^n\ (n^2 + \i)}{n^4 + 1} &
+              \frac{z_{n+1}}{z_n}                & = \frac{\i\ [n^2 - \i]}
+              {(n+1)^2 - \i}                                                         \\
+              \abs{\frac{z_{n+1}}{z_n}}^2        & = \frac{n^4 + 1}{(n + 1)^4 + 1} &
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}}          & = 1
+          \end{align}
+          Using the allied series, for $ n \geq 1 $,
+          \begin{align}
+              z^*_n       & = \frac{1}{n^2}            &
+              \abs{z^*_n} & = \frac{1}{n^2}              \\
+              \abs{z_n}   & = \frac{1}{\sqrt{n^4 + 1}} &
+              \abs{z_n}   & < \abs{z^*_n}
+          \end{align}
+          Since the series $ z^*_n $ is convergent, the given series is also
+          \textcolor{y_h}{convergent}.
+
+    \item Using the ratio test, is inconclusive.
+          \begin{align}
+              z_n                         & = \frac{n + \i}{3n^2 + 2\i}   &
+              \abs{\frac{z_{n+1}}{z_n}}^2 & = \frac{(n+1)^2 + 1}{n^2 + 1}
+              \ \frac{n^4 + 4/9}{(n+1)^4 + 4/9}                             \\
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}}   & = 1
+          \end{align}
+          Using the allied series, for $ n \geq 1 $,
+          \begin{align}
+              \abs{z_n} & = \sqrt{\frac{n^2 + 1}{9n^4 + 4}} &
+              9n^4 + 4  & \leq 9n^4 + 9n^2                    \\
+              9n^4 + 4  & \leq 9n^2(n^2 + 1)                &
+              \abs{z_n} & \geq \frac{1}{3n}                   \\
+              z_n^*     & = \frac{1}{3n}
+          \end{align}
+          Since the series $ z^*_n $ is divergent, the given series is also
+          \textcolor{y_p}{divergent}.
+
+    \item Using the ratio test, the series sum converges absolutely and is thus
+          \textcolor{y_h}{convergent}.
+          \begin{align}
+              z_n                       & = \frac{(2\pi^2\ \i)^n}{(2n+1)!}        &
+              \frac{z_{n+1}}{z_n}       & = \frac{2\pi^2\ \i}{(2n+2)(2n+3)}         \\
+              \abs{\frac{z_{n+1}}{z_n}} & = 2\pi^2 \abs{\frac{1}{4n^2 + 10n + 6}} &
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}} & = 0
+          \end{align}
+
+    \item Using the comparison test, knowing thet $ 1/n $ diverges, the given series also
+          \textcolor{y_p}{diverges}.
+          \begin{align}
+              z_n              & = \frac{1}{\sqrt{n}} &
+              z_n^*            & = \frac{1}{n}          \\
+              \sqrt{n}         & \leq n               &
+              \forall \qquad n & \geq 1                 \\
+              z_n              & \geq  z_n^*
+          \end{align}
+
+    \item Using the ratio test, the series sum converges absolutely and is thus
+          \textcolor{y_h}{convergent}.
+          \begin{align}
+              z_n                       & = \frac{(-2\i)^n}{(2n)!}        &
+              \frac{z_{n+1}}{z_n}       & = \frac{-2\i}{(n+1)(n+2)}         \\
+              \abs{\frac{z_{n+1}}{z_n}} & = \abs{\frac{2}{n^2 + 3n + 2 }} &
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}} & = 0
+          \end{align}
+
+    \item Using the ratio test, the series \textcolor{y_p}{diverges}.
+          \begin{align}
+              z_n                 & = \frac{(3\i)^n\ n!}{n^n}             &
+              \frac{z_{n+1}}{z_n} & = \frac{3\i\ (n+1)\ n^n}{(n+1)^{n+1}}   \\
+              \frac{z_{n+1}}{z_n} & = 3\i\ \Bigg[\frac{n}{n+1}\Bigg]^n
+          \end{align}
+          Evaluating the limit of this indeterminate form,
+          \begin{align}
+              \lim_{n \to \infty}
+              \Bigg[\frac{n}{n+1}\Bigg]^n & = \exp\Bigg[\lim_{n \to \infty}
+              \frac{\ln(n/n+1)}{1/n}\Bigg]                                  \\
+                                          & = \exp\Bigg[\lim_{n \to \infty}
+              \frac{-n}{n + 1}\Bigg] = \frac{1}{e}                          \\
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}}   & = \frac{3}{e} > 1
+          \end{align}
+
+    \item Using the comparison test, is inconclusive.
+          \begin{align}
+              z_n                                   & = \frac{\i^n}{n}          &
+              z_n                                   & = x_m + \i\ y_m             \\
+              x_m                                   & = \frac{(-1)^m}{2m}       &
+              y_m                                   & = \frac{(-1)^{m}}{2m + 1}   \\
+              x_m^*                                 & = \frac{(-1)^m}{m}        &
+              y_m^*                                 & = \frac{(-1)^{m}}{m}        \\
+              \lim_{m \to \infty} \frac{y_m}{y_m^*} & = \lim_{m \to \infty}
+              \frac{m}{2m+1}                        &
+                                                    & = \frac{1}{2}
+          \end{align}
+          Since $ x^*_m $ is known to converge, $ x_m $ also converges because it is
+          term-wise half of $ x^*_m $. \par
+          By a similar argument, $ y_m $ also converges, and thus the given series
+          $ z_n $ \textcolor{y_h}{converges}.
+
+    \item The difference is that the limit has to be less than 1. For example,
+          $ z_n = 1/n $ does fulfil this criterion but diverges, since the limit of
+          the ratio is equal to 1.
+
+    \item Consider the series $ z_n = 1/n^3 $,
+          \begin{align}
+              \frac{z_{n+1}}{z_n}                     & = \frac{n^3}{(n+1)^3}  &
+              \lim_{n \to \infty} \frac{z_{n+1}}{z_n} & = 1                      \\
+              s_n                                     & = 1 + \frac{1}{2^3}
+              + \frac{1}{3^3} + \dots + \frac{1}{n^3} &
+              s                                       & \leq 1 + \int_{1}^{n}
+              \frac{\dl x}{x^3}                                                  \\
+              s                                       & \leq 1 + \Bigg[
+              \frac{2}{x^2} \Bigg]_n^1                &
+              s                                       & \leq 3 - \frac{2}{n^2}
+          \end{align}
+          This is another example of a series failing the conditions of Theorem 8, but
+          still satisfying Theorem 7.
+
+    \item Code written in \texttt{sympy}. Plotting TBC.
+
+    \item Given a series converges absolutely. For every given $ \epsilon > 0 $,
+          however small, there exists an $ N $, such that
+          \begin{align}
+              \abs{z_{N+1}} + \abs{z_{N+2}} + \abs{z_{N+p}} & < \epsilon &
+              \forall \qquad n                              & > N
+          \end{align}
+          and $ p $ some positive integer. Using the generalized triangle inequality,
+          \begin{align}
+              \abs{z_{N+1} + z_{N+2} + \dots + z_{N+p}} & \leq
+              \abs{z_{N+1}} + \abs{z_{N+2}} + \abs{z_{N+p}}
+          \end{align}
+
+          This immediately means that replacing the series of absolute values
+          $ \abs{z_n} $ with the actual complex numbers $ z_n $ does not change the
+          convergent nature of the series.
+
+    \item The series converges by the ratio test. Using the result for the infinite
+          series sum of a geometric series,
+          \begin{align}
+              R_n       & = z_{n+1} + z_{n+2} + \dots                   &
+              R_n       & \leq z_{n+1}\ \Big[ 1 + q + q^2 + \dots \Big]   \\
+              \abs{R_n} & \leq \abs{z_{n+1}}\ \frac{1}{1-q}
+          \end{align}
+          For the given series,
+          \begin{align}
+              \abs{\frac{z_{n+1}}{z_n}} & = \abs{\frac{n+1 + \i}{n+\i}}
+              \cdot \abs{\frac{n}{2(n+1)}}                                \\
+              \lim_{n \to \infty}
+              \abs{\frac{z_{n+1}}{z_n}} & = \frac{1}{2}                 &
+              q                         & = 1/2                           \\
+              0.025                     & \geq \abs{z_{n+1}}
+          \end{align}
+          The smallest $ n $ satisfying this inequality is n = 5.
+          \begin{align}
+              s_5       & = \frac{31}{32} + \frac{661}{960}\ \i &
+              s         & = 1 + \frac{\pi}{ln(4)}\ \i             \\
+              \abs{R_5} & = 0.03125 < 0.05
+          \end{align}
+
+\end{enumerate}

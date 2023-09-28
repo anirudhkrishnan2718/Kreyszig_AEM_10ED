@@ -1,0 +1,267 @@
+\chapter{Conformal Mapping}
+
+\section{Geometry of Analytic Functions: Conformal Mapping}
+
+\begin{description}
+    \item[Complex function] A mapping from a complex variable to another.
+        \begin{align}
+            w & \equiv f(z) = u(x, y) + \i\ v(x, y) &
+            z & = x + \i\ y
+        \end{align}
+        The domain of definition $ D $ of this function maps onto the range $ R $, both
+        of which are complex planes.
+
+    \item[Mapping terminology] A map is
+        \begin{itemize}
+            \item surjective, if every element of $ R $ is the image of at least
+                  one element in $ D $.
+            \item injective, if different elements of $ D $ have different images
+                  in $ R $.
+            \item bijective, if it is both of the above.
+        \end{itemize}
+
+        The result of a mapping function acting on a point $ z_0 $ is called its image
+        $ f(z_0) $.
+        \begin{align}
+            w_0 & = f(z_0)
+        \end{align}
+
+    \item[Conformal map] A mapping that preserves angles between oriented curves in
+        direction as well as sense. \par
+        The mapping by an analytic function is conformal, except at its critical points
+        (where the derivative $ f' $ is zero).
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[set layers,
+                        width = 8cm, height = 8cm, title = Domain,
+                        xmin = 0, xmax = 1.2, ymin = 0, ymax = 2, grid = both,
+                        xlabel = \normalsize $ \Re{z} $, ylabel = \normalsize $ \Im{z} $,
+                        axis equal,
+                        ytick = {0.577, 1.732,1},
+                        xtick = {0,1},
+                        Ani]
+                    \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                    (0,0.577) -- (1, 0.577) -- (1, 1.732) -- (0, 1.732)
+                    -- cycle;
+                    \draw [very thick, y_h] (0, 0.577) -- (0, 1.732);
+                    \draw [very thick, y_p] (1, 0.577) -- (1, 1.732);
+                    \draw [very thick, y_t] (0, 0.577) -- (1, 0.577);
+                    \draw [very thick, azure4] (0, 1.732) -- (1, 1.732);
+                \end{axis}
+            \end{tikzpicture}
+            \begin{tikzpicture}
+                \begin{axis}[set layers,
+                        width = 8cm, height = 8cm, title = {Image under $ e^z $},
+                        xmin = 0, xmax = 3, ymin = 0, ymax = 3, grid = both,
+                        xlabel = \normalsize $ \Re{w} $, ylabel = \normalsize $ \Im{w} $,
+                        axis equal, xtick = {1,2}, ytick = {1,2},
+                        ytick = {1,2.71},yticklabels={\normalsize 1, \normalsize $ e $},
+                        xtick = {1,2.71},xticklabels={\normalsize 1, \normalsize $ e $},
+                        Ani]
+                    \draw [draw = black!0, fill = black, fill opacity = 0.08]
+                    (30:2.71)--(30:1) arc (30:60:1) -- (60:2.71) arc(60:30:2.71)
+                    -- cycle;
+                    \draw [draw = black, dotted, thick] (0:1) arc (0:90:1);
+                    \draw [draw = black, dotted, thick] (0:2.71) arc (0:90:2.71);
+                    \addplot[GraphSmooth, dotted, thick, black, domain= 0:4,
+                        variable=\t]
+                    ({\t*cos(pi/6)}, {\t*sin(pi/6)});
+                    \addplot[GraphSmooth, dotted, thick, black, domain= 0:4,
+                        variable=\t]
+                    ({\t * cos(pi/3)}, {\t * sin(pi/3)});
+                    \addplot[GraphSmooth, very thick, y_h, domain= pi/6:pi/3, variable=\t]
+                    ({cos(\t)}, {sin(\t)});
+                    \addplot[GraphSmooth, very thick, y_p, domain= pi/6:pi/3, variable=\t]
+                    ({2.71 * cos(\t)}, {2.71 * sin(\t)});
+                    \addplot[GraphSmooth, very thick, y_t, domain= 1:2.71, variable=\t]
+                    ({\t*cos(pi/6)}, {\t*sin(pi/6)})
+                    node[midway, below, sloped]{$ \phi = \pi/6 $};
+                    \addplot[GraphSmooth, very thick, azure4, domain= 1:2.71, variable=\t]
+                    ({\t * cos(pi/3)}, {\t * sin(pi/3)})
+                    node[midway, above, sloped]{$ \phi = \pi/3 $};
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+
+    \item[Magnification ratio] The ratio of the lenghts of a line segment in the domain
+        $ D $ to the length of the corresponding image in $ R $.
+        \begin{align}
+            M & = \lim_{z \to z_0} \abs{\frac{f(z) - f(z_0)}{z - z_0}}
+            = \abs{f'(z_0)}
+        \end{align}
+
+    \item[Jacobian] The condition $ f'(z)  \neq 0$ is equivalent to a nonzero
+        Jacobian at $ z = z_0 $.
+        \begin{align}
+            \abs{f'(z)}^2 & = \begin{vNiceMatrix}[margin]
+                                  \difcp ux & \difcp uy \\
+                                  \difcp vx & \difcp vy \\
+                              \end{vNiceMatrix} = \frac{\partial(u, v)}{\partial(x, y)}
+        \end{align}
+        This requires the Cauchy-Riemann equations and
+        \begin{align}
+            f'(z)         & = \diffp ux + \i\ \diffp vx                             &
+            \abs{f'(z)}^2 & = (\difcp ux)^2 + (\difcp uy)^2                           \\
+            \abs{f'(z)}^2 & = \difcp ux \cdot \difcp vy - \difcp uy \cdot \difcp vx
+        \end{align}
+
+\end{description}
+
+\section{Linear Fractional Transformations (Mobius Transformations)}
+
+\begin{description}
+    \item[Utility] Mobius transformations help map one kind of region into another in
+        order ease the solution of BVPs.
+        \begin{align}
+            w & = \frac{az + b}{cz + d} & ad & \neq bc
+        \end{align}
+        Where $ a,b,c,d $ are complex numbers.
+
+    \item[Special Mobius transformations] Of particular interest in BVPs are
+        \begin{align}
+            w & = z + b                  &  & \text{Translation}                  \\
+            w & = az, \qquad \abs{a} = 1 &  & \text{Rotation}                     \\
+            w & = az + b                 &  & \text{Linear transformation}        \\
+            w & = \frac{1}{z}            &  & \text{Inversion in the unit circle}
+        \end{align}
+        All Mobius transformations are a composite of these four special maps.
+
+    \item[Circles and straight lines] Every linear fractional transformation maps the
+        totality of circles and straight lines in $ \mathcal{C} $ onto the totality of
+        circles and straight lines in $ \mathcal{C^*} $. \par
+        Here, the plane $ C^* $ is the plane containing the image of the map.
+
+    \item[Extended complex plane] The Mobius transformation is injective except for
+        points of the form $ z = -d/c $. The special point $ \infty $ is now defined as
+        the extra point in $ \mathcal{C^*} $ that is the image of this special $ z $.
+        (assuming $ c \neq 0 $)
+
+    \item[Inverse mapping] The inverse of the standard Mobius transformation is,
+        \begin{align}
+            z & = \frac{dw - b}{-cw + a}
+        \end{align}
+        Now, for $ c \neq 0 $, the special point $ w = a/c $ maps onto $ \infty $ in the
+        original $ \mathcal{C} $ plane. Taken together with the above result,
+        Mobius transformations map the extended complex plane onto iself.
+
+    \item[Fixed points] Points that are mapped onto themselves.
+        \begin{align}
+            f(z) = w = z
+        \end{align}
+        The special identity map $ f(z) = z $ has the entire complex plane as its
+        fixed point. \par
+        A mobius transformation (that is not the identity map) has at most two fixed
+        points. If the mobius map is known to have three or more fixed points, it has to
+        be the identity map.
+\end{description}
+
+\section{Special Linear Fractional Transformations}
+
+\begin{description}
+    \item[Three points to map] Three given distinct points $ z_1,z_2,z_3 $
+        can always be mapped onto three prescribed distinct points $ w_1,w_2,w_3 $,
+        by one and only one L.F.T.
+        \begin{align}
+            \Bigg( \frac{w - w_1}{w - w_3} \Bigg) \Bigg( \frac{w_2 - w_3}
+            {w_2 - w_1} \Bigg) & = \Bigg( \frac{z - z_1}{z - z_3} \Bigg)
+            \Bigg( \frac{z_2 - z_3}{z_2 - z_1} \Bigg)
+        \end{align}
+        Any fraction containing $ \infty $ is evaluated to $ 1 $.
+
+    \item[Standard domains] Start with choosing the points $ z_1,z_2,z_3 $ on the
+        boudnary of the domain and then the points $ w_1, w_2, w_3 $ on the boundary of
+        the image $ D^* $. \par
+        To map a unit disk centered at $ z_0 $ onto another unit disk centered at the
+        origin,
+        \begin{align}
+            w & = \frac{(z - z_0)}{cz - 1} & c & = \overline{z_0} \qquad \abs{z_0} < 1
+        \end{align}
+        To map the upper half plane onto the unit circle,
+        \begin{align}
+            w & = \frac{z - \i}{-\i z + 1}
+        \end{align}
+
+    \item[Cayley transform] A special transform that maps the real line onto the
+        unit circle and the upper half plane onto the interior of the unit circle.
+        \begin{align}
+            w & = \frac{z - \i}{z + \i}
+        \end{align}
+\end{description}
+
+\section{Conformal Mapping by Other Functions}
+
+\begin{description}
+    \item[Sine function] The mapping uses the fundamental period
+        $ x \in [-\pi/2, \pi/2] $.
+        \begin{align}
+            w         & = \sin z                              &
+            u + \i\ v & = \sin x \cosh y + \i\ \cos x \sinh y
+        \end{align}
+        The mapping is not conformal at the critical points $ \pm \pi/2 $. \par
+        In the figure, vertical lines in the
+        \textcolor{y_h}{upper} and \textcolor{y_p}{lower} half plane, map onto
+        hyperbolas. \par
+        Whereas, the horizontal lines in the \textcolor{y_t}{right} and
+        \textcolor{azure4}{left} half planes, map onto ellipses.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[
+                        title = {mapping a grid under $ \sin z $},
+                        grid = both, Ani,
+                        width = 8cm, height = 8cm, enlargelimits = false,
+                        axis equal,
+                    ]
+                    \foreach \k in {-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4}
+                        {
+                            \edef\temp{%
+                                \noexpand \addplot[GraphSmooth, semithick,
+                                    y_h, domain = 0:1.5]
+                                ({sin(\k*pi)*cosh(x)}, {cos(\k*pi)*sinh(x)});
+                                \noexpand \addplot[GraphSmooth, semithick,
+                                    y_p, domain = -1.5:0]
+                                ({sin(\k*pi)*cosh(x)}, {cos(\k*pi)*sinh(x)});
+                                \noexpand \addplot[GraphSmooth, semithick,
+                                    y_t, domain = 0:1.5]
+                                ({sin(x)*cosh(\k*pi)}, {cos(x)*sinh(\k*pi)});
+                                \noexpand \addplot[GraphSmooth, semithick,
+                                    azure4, domain = -1.5:0]
+                                ({sin(x)*cosh(\k*pi)}, {cos(x)*sinh(\k*pi)});
+                            }\temp
+                        }
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+        The other functions are derived from this map using,
+        \begin{align}
+            \cos z   & = \sin(z + \pi/2) & \sinh(z) & = -\i\ \sin(\i z) \\
+            \cosh(z) & = \cos(\i z)
+        \end{align}
+
+    \item[Tangent function] The function $ f(z) = \tan(z) $ is similarly, a
+        composition of L.F.T.s and an exponentiation.
+        \begin{align}
+            \tan(z) & = -\i\ \frac{e^{2\i z} - 1}{e^{2\i z} + 1} &
+            w_1     & = e^{2\i z}                                  \\
+            w_2     & = \frac{w_1 - 1}{w_1 + 1}                  &
+            w       & = \i\ w_2
+        \end{align}
+        This maps the infinite vertical strip $ x \in (-\pi/4, \pi/4) $ onto the
+        unit circle.
+
+\end{description}
+
+\section{Riemann Surfaces}
+
+\begin{description}
+    \item[Utility] Consider maps such as $ w = z^2 $, which cover the $ w $ plane
+        twice over when traversing the entire $ z $ plane. \par
+        Multiple passes of the $ w $ plane can be differentiated in order to make the
+        many-to-one function a one-to-one function.
+
+    \item[Branch point] A point in the $ w $ plane that is the image of just one
+        point in the $ z $ plane.
+
+    \item
+\end{description}

@@ -1,0 +1,650 @@
+\chapter{Numeric Linear Algebra}
+
+\section{Linear Systems: Gauss Elimination}
+
+\begin{description}
+    \item[Matrix representation] A linear system of equations is represented in matrix
+        form as
+        \begin{align}
+            \vec{Ax} & = \vec{B} & \vec{\wt{A}} & = \begin{bNiceArray}{r|r}[margin]
+                                                        A & b
+                                                    \end{bNiceArray}
+        \end{align}
+        Here, $ \vec{\wt{A}} $ is called the augmented matrix.
+
+    \item[Cramer's rule] Cramer's rule is impractical for machine numbers, in spite of
+        efficient methods for computing determinants being available. Gauss elimination
+        happens to be the simplest numerical method.
+
+    \item[Triangular form] When a matrix is in triangular form, back-substitution is a
+        straightforward means of recovering the values of all the $ n $ variables in
+        a linear system.
+
+    \item[Pivoting] In order to eliminate $ x_j $ from all the rows below row $ j $,
+        row operations are carried out on these rows using row $ j $ as the pivot. \par
+        Iteratively pivoting a coefficient matrix starting from the top will reduce it
+        to triangular form.
+
+    \item[Partial pivoting] The pivot term $ a_{kk} $ in the $ k^{\text{th}} $
+        step needs to be nonzero and have large absolute value to avoid division by small
+        numbers. \par
+        The matrix rows are interchanged at each pivoting step in order make the row
+        with the largest absolute value of $ x_k $ the pivot row. \par
+        In case of a tie, the topmost row is picked to be the pivot.
+
+    \item[Number of operations] In step $ k $, there are $ n-k $ equations from which
+        $ x_k $ is eliminated. Counting the number of operations, \par
+        Using the shorthand $ (n-k) = s $, one step involves,
+        \begin{table}[H]
+            \centering
+            \SetTblrInner{rowsep=0.4em}
+            \begin{tblr}{
+                colspec = {r|[dotted]l|r|[dotted]l},
+                colsep = 1em}
+                \SetCell[c=2]{c} \color{y_h}Elimination
+                                       &                &
+                \SetCell[c=2]{c} \color{y_p}Back-substitution
+                                       &                  \\ \hline
+                \text{Number}          & Kind           &
+                Number                 & Kind             \\ \hline[dotted]
+                $s        $            & Division       &
+                $s$                    & Multiplication   \\
+                $s(s + 1) $            & Multiplication &
+                $s$                    & Subtraction      \\
+                $s(s + 1) $            & Addition       &
+                \\ \hline[dotted]
+                \color{y_h}$s^2 + 2s $ & Total          &
+                \color{y_p}$ 2s $      & Total
+            \end{tblr}
+        \end{table}
+        This results in a total number of operations that scales with $ n^3 $ for the
+        elimination and $ n^2 $ for the back-substitution parts. The overall order is
+        thus $ O(n^3) $
+\end{description}
+
+\section{Linear Systems: LU-Factorization, Matrix Inversion}
+
+\begin{description}
+    \item[Motivation] Some improvements to the Gauss elimination method can save on the
+        number of operations needed.
+
+    \item[LU-factorization] The representation of a matrix as the product of a lower
+        and an upper triangular matrix. \par
+        Any nonsingular matrix has an $ LU $ factorization that only requires a
+        reordering of the rows of $ A $.
+        \begin{align}
+            \vec{A}  & = \vec{LU} & \vec{Ax} & = \vec{b} \\
+            \vec{Ux} & = \vec{y}  & \vec{Ly} & = \vec{b}
+        \end{align}
+        This set of two triangular systems can be solved directly by back-substitution,
+        avoiding the elimination steps altogether. \par
+
+    \item[Doolittle's method] The matrix is written as the product of its factors and the
+        terms are computed starting with the first row of $ \vec{U} $ and the first
+        column of $ \vec{L} $.
+        \begin{align}
+            \vec{A} & = \begin{bNiceMatrix}[margin]
+                            1      & 0      & 0 \\
+                            m_{21} & 1      & 0 \\
+                            m_{31} & m_{32} & 1 \\
+                        \end{bNiceMatrix}
+            \ \begin{bNiceMatrix}[margin]
+                  u_{11} & u_{12} & u_{13} \\
+                  0      & u_{22} & u_{23} \\
+                  0      & 0      & u_{33} \\
+              \end{bNiceMatrix} = \vec{LU}
+        \end{align}
+        Starting from the first row, these values can be determined one-by-one. \par
+        The terms $ m_{jk} $ are the multiplying factors in Gauss elimination and the
+        matrix $ \vec{U} $ is the end product of Gauss elimination.
+
+    \item[Cholesky's method] If the matrix $ \vec{A} $ is symmetric and
+        positive-definite, then a convenient choice for $ \vec{U} $ is
+        \begin{align}
+            \vec{A}                & = \vec{A}^T                        &
+            \vec{x}^T \vec{Ax}     & > 0 \quad \forall\quad \vec{x} > 0   \\
+            \implies \quad \vec{A} & = \vec{LU} = \vec{L}\ \vec{L}^T
+        \end{align}
+        No conditions can now be imposed on the main diagonal, however.
+
+    \item[Stability of Cholesky factorization] The terms in $ \vec{L} $ are bounded
+        in value by a corresponding diagonal entry of $ \vec{A} $. \par
+        This means that the Cholesky method is numerically stable.
+
+    \item[Gauss-Jordan elimination] The back-substitution process is avoided by further
+        reducing the triangular form of $ \vec{A} $ into a diagonal form. \par
+        This method is worse in general for solving linear systems, but useful for
+        matrix inversion. \par
+        \begin{align}
+            \vec{A} \cdot \vec{x}_i & = \vec{b}_i
+        \end{align}
+        Here, $ \vec{b}_i $ is the $ i^{\text{th}} $ column of the identity matrix and
+        $ \vec{x}_i $ is the corresponding column of $ \vec{A}^{-1} $. \par
+        However, a nicer method is usually the mirroring method where $ \vec{A} $ is
+        augmented with $ \vec{I} $ and row operations are used to reduce $ \vec{A} $ to
+        identity, with the right half automatically transforming into $ \vec{A}^{-1} $
+\end{description}
+
+\section{Linear Systems: Solution by Iteration}
+
+\begin{description}
+    \item[Motivation] In order to save computations, some linear systems can be solved
+        with good initial guesses and an iterative method that converges quickly to a
+        fixed point. \par
+        This is especially useful in sparse systems, where most of the coefficient
+        matrix is zero terms.
+
+    \item[Gauss Seidel method] A method that involves splitting the coefficient matrix
+        into three parts as
+        \begin{align}
+            \vec{A}         & = \vec{I} + \vec{L} + \vec{U}                   \\
+            \vec{Ax}        & = \vec{b}                                     &
+            \vec{x}         & = \vec{b} - \vec{Lx} - \vec{Ux}                 \\
+            \vec{x}^{(m+1)} & = \vec{b} - \vec{Lx}^{(m+1)} - \vec{Ux}^{(m)}
+        \end{align}
+        This means that values of $ x_i $ are updated as soon as they are computed and
+        used in finding $ x_j,\ j>i $ within the same iteration. \par
+        The matrix $ A $ must have no zero elements on its diagonal, which may require
+        some row exchanges.
+
+    \item[Matrix norms] The Frobenius norm covers every matrix element and uses
+        square instead of absolute value.
+        \begin{align}
+            \lVert A \rVert & = \sqrt{\sum_{j=1}^{n} \sum_{k=1}^{n} a^2_{jk}}
+        \end{align}
+        Other norms involve comparing either the sum of absolute values of every column
+        or every row
+        \begin{align}
+            \lVert A \rVert_k & = \max_{k} \sum_{j=1}^{n} \abs{a_jk} &
+            \lVert A \rVert_j & = \max_{j} \sum_{k=1}^{n} \abs{a_jk}
+        \end{align}
+
+    \item[Convergence] For the Gauss-Seidel iteration method,
+        \begin{align}
+            (\vec{I} + \vec{L})\ \vec{x}^{(m+1)}
+                            & = \vec{b} - \vec{U}\vec{x}^{(m)}                    &
+            \vec{C}         & = -(\vec{I} + \vec{L})^{-1}\ \vec{U}                  \\
+            \vec{x}^{(m+1)} & = \vec{Cx}^{(m)} + (\vec{I} + \vec{L})^{-1} \vec{b}
+        \end{align}
+        The iteration method converges regardless of initial guess
+        $ \vec{x}^{(0)} $, if and only if all the eigenvalues of the iteration
+        matrix $ \vec{C} $ have absolute value less than 1. \par
+        A sufficient convergence condition is simply $ \lVert \vec{C} \rVert < 1 $
+
+    \item[Jacobi method] A slight modification to the Gauss-Seidel iteration that makes
+        it update the elements of $ \vec{x} $ simultaneously. This makes the formula
+        \begin{align}
+            \vec{x}^{(m+1)} & = \vec{b} + (\vec{I} - \vec{A})\ \vec{x}^{(m)}
+        \end{align}
+        with the constratint that all the diagonal terms of $ \vec{A} $ are equal to 1.
+        \par
+        The convergence condition for any choice of intial guess is that the spectral
+        radius of $ \vec{I} - \vec{A} $ is less than one. \par
+        Parallelization of computations has made this method more attractive in recent
+        times.
+
+\end{description}
+
+\section{Linear Systems: Ill-Conditioning, Norms}
+
+\begin{description}
+    \item[Ill conditioned] A system that exhibits large changes in its output for small
+        changes in the input. This is problematic for solving by numerical methods.
+
+    \item[Well conditioned] A system that exhibits small changes in its output for small
+        changes in the input. This makes the system robust to rounding errors, and
+        inaccuracies in the coefficient matrix. \par
+        This is seen as the diagonal entries of $ \vec{A} $ having large absolute values
+        compared to the other entries within their rows. Also, $ \vec{A} $ and
+        $ \vec{A}^{-1} $ have the same absolute value of their largest entries.
+
+    \item[Residual] The residual of an approximate solution $ \vec{\tilde{x}} $ is
+        \begin{align}
+            \vec{r} & = \vec{b} - \vec{A \tilde{x}}     &
+            \vec{r} & = \vec{A}\ (\vec{x -  \tilde{x}})
+        \end{align}
+        Ill conditioned systems can produce deceptively small residuals even when the
+        approximation is poor.
+
+    \item[Vector norms] A generalization of the length of a vector to $ n $ dimensions,
+        which has the following properties
+        \begin{itemize}
+            \item $ \lVert \vec{x} \rVert $ is a non-negative real number
+            \item $ \lVert \vec{x} \rVert = 0 $ if and only if $ \vec{x} = \vec{0} $
+            \item $ \lVert k\vec{x} \rVert  = \abs{k} \lVert \vec{x} \rVert $
+                  for some scalar $ k $
+            \item $ \lVert \vec{x} + \vec{y} \rVert \leq
+                      \lVert \vec{x} \rVert + \lVert \vec{y} \rVert $, the triangle
+                  inequality.
+        \end{itemize}
+
+    \item[$ l_1 $ norm] The sum of absolute values of all the terms of a vector.
+        \begin{align}
+            \lVert \vec{x} \rVert_1 & = \abs{x_1} + \dots + \abs{x_n}
+        \end{align}
+
+    \item[$ l_2 $ norm] The root of the sum of squares of all the terms of a vector.
+        \begin{align}
+            \lVert \vec{x} \rVert_2 & = \sqrt{x_1^2 + \dots + x_n^2}
+        \end{align}
+        This is also called the Euclidean norm, since it reduces to the Euclidean
+        length of a vector in $ 2D $ space
+
+    \item[$ l_\infty $ norm] The greatest absolute value of all the terms of a vector.
+        \begin{align}
+            \lVert \vec{x} \rVert_\infty & = \max_{j} \abs{x_j}
+        \end{align}
+
+    \item[p-norm] For some fixed number $ p \geq 1 $, the generalization of the
+        Euclidean norm is
+        \begin{align}
+            \lVert \vec{x} \rVert_p & = (\abs{x_1}^p + \dots + \abs{x_n}^p)^{1/p}
+        \end{align}
+
+    \item[Matrix norm] Depending on the vector norm being used, the matrix norm is
+        obtained as
+        \begin{align}
+            \lVert \vec{A} \rVert   & = \frac{\lVert \vec{Ax} \rVert}
+            {\lVert \vec{x} \rVert} &
+            \forall \quad \vec{x}   & \neq \vec{0}
+        \end{align}
+        There exists a number $ c $ depending on $ \vec{A} $ such that
+        \begin{align}
+            \lVert \vec{Ax} \rVert & \leq c\ \lVert \vec{x} \rVert &
+            \forall                & \ \vec{x}
+        \end{align}
+        The matrix norm can now also be defined as the smallest possible $ c $ that
+        satisfies this relation.
+        The $ l_1 $ and $ l_\infty $ vector norms correspond to the column sum and
+        row sum matrix norms respectively.
+
+    \item[Properties of matrix norms] For two matrices $ \vec{A} $ and $ \vec{B} $,
+        \begin{align}
+            \lVert \vec{Ax} \rVert  & \leq \lVert \vec{A} \rVert\ \lVert \vec{x}
+            \rVert                                                               \\
+            \lVert \vec{AB} \rVert  & \leq \lVert \vec{A} \rVert\ \lVert \vec{B}
+            \rVert                                                               \\
+            \lVert \vec{A}^n \rVert & \leq \lVert \vec{A} \rVert^n
+        \end{align}
+
+    \item[Condition number of a matrix] For a nonsingular matrix $ \vec{A} $, the
+        condition number is defined as,
+        \begin{align}
+            \kappa(\vec{A}) & = \lVert \vec{A} \rVert\ \lVert \vec{A}^{-1} \rVert &
+            \kappa(\vec{A}) & \geq 1
+        \end{align}
+        Qualitatively, a linear system with a small condition number is well-conditioned,
+        and vice versa. \par
+        Let the approximation $ \vec{\tilde{x}} $ to the system $ \vec{Ax} = \vec{b} $
+        give the norm,
+        \begin{align}
+            \vec{r}                         & = \vec{A}\ (\vec{x} - \vec{\tilde{x}}) &
+            \vec{x} - \vec{\tilde{x}}       & = \vec{A}^{-1}\ \vec{r}                  \\
+            \frac{1}{\lVert \vec{x} \rVert} & \leq \frac{\lVert \vec{A} \rVert}
+            {\lVert \vec{b} \rVert}         &
+            \frac{\lVert \vec{x} - \vec{\tilde{x}} \rVert}
+            {\lVert \vec{x} \rVert}         & = \kappa(\vec{A})
+            \ \frac{\lVert \vec{r} \rVert}{\lVert \vec{b} \rVert}
+        \end{align}
+        This assumes that the vectors $ \vec{b} $ and $ \vec{x} $ are nonzero. \par
+        For a well conditioned system, a small residual therefore guarantees a small
+        relative error in the approximation.
+
+    \item[Inaccurate matrix entries] Errors in measurement can yield a linear system with
+        small errors in its elements.
+        \begin{align}
+            (\vec{A} + \vec{\delta A})(\vec{x} + \vec{\delta x}) & = \vec{b}       \\
+            \vec{\delta x}                                       & = -\vec{A}^{-1}
+            \ \vec{\delta \vec{A}}\ (\vec{x} + \vec{\delta x})                     \\
+            \vec{\delta x}                                       & \leq
+            \lVert\vec{A}^{-1}\rVert \ \lVert\vec{\delta \vec{A}}\rVert
+            \ \lVert \vec{x} + \vec{\delta x} \rVert
+        \end{align}
+        The definition of condition number now gives,
+        \begin{align}
+            \frac{\lVert \vec{\delta x} \rVert}{\lVert \vec{x} \rVert}
+                                               & \approxeq
+            \frac{\lVert \vec{\delta x} \rVert}
+            {\lVert \vec{x} + \delta x \rVert} &
+            \frac{\lVert \vec{\delta x} \rVert}{\lVert \vec{x} \rVert}
+                                               & \leq \kappa(\vec{A})
+            \ \frac{\lVert \vec{\delta A} \rVert}{\lVert \vec{A} \rVert}
+        \end{align}
+        For a well conditioned system, small perturbations in $ \vec{A} $ only have a
+        small effect on the solution. No such guarantee can be made for ill-conditioned
+        systems. \par
+        For perturbations in $ \vec{b} $ with accurate $ \vec{A} $, a similar relation
+        is,
+        \begin{align}
+            \frac{\lVert \vec{\delta x} \rVert}{\lVert \vec{x} \rVert}
+             & \leq \kappa(\vec{A})
+            \ \frac{\lVert \vec{\delta b} \rVert}{\lVert \vec{b} \rVert}
+        \end{align}
+\end{description}
+
+\section{Least Squares Method}
+
+\begin{description}
+    \item[Straight line fitting] When the underlying physical principle suggests a
+        linear relationship between variables, the set of observed data points
+        $ \{(x_i, y_i)\} $ can be fitted using a straight line. \par
+        Unline polynomial interpolation, this straight line does not need to pass through
+        any of these data points.
+
+    \item[Error] The goodness of the fit is measured by the sum of the squares of
+        distances (along the $ y $ axis) from the straight line to each data point. \par
+        The line of best fit minimizes this error.
+        \begin{align}
+            y & = a + bx                            &
+            P & : \{(x_1, y_1), \dots, (x_n, y_n)\}
+        \end{align}
+
+    \item[Normal equations] The system of linear equations that yield the coefficients
+        of the best fit line are,
+        \begin{align}
+            \sum_{j} y_j    & =  an + b\sum_{j} x_j            &
+            \sum_{j} x_jy_j & = a\sum_{j}x_j + b\sum_{j} x^2_j
+        \end{align}
+
+    \item[Polynomial fitting] For a set of $ n $ points, this procedure can also be used
+        to obtain a polynomial fit of order less than $ n $.
+        \begin{align}
+            p(x) & = b_0 + b_1 x + \dots + b_mx^m             &
+            m    & \leq n-1                                     \\
+            q    & = \sum_{j=1}^{n}\ \big[y_j - p(x_j)\big]^2
+        \end{align}
+        The set of $ m+1 $ linear equations for the coefficients $ \{b_0,\dots,b_m\} $
+        now becomes,
+        \begin{align}
+            \begin{bNiceMatrix}[margin]
+                \sum 1     & \sum x_j       & \dots  & \sum x_j^m     \\
+                \sum x_j   & \sum x^2_j     & \dots  & \sum x_j^{m+1} \\
+                \vdots     & \vdots         & \ddots & \vdots         \\
+                \sum x_j^m & \sum x^{m+1}_j & \dots  & \sum x_j^{2m}
+            \end{bNiceMatrix}
+            \ \begin{bNiceMatrix}[margin]
+                  b_0 \\ b_1 \\ \vdots \\ b_m
+              \end{bNiceMatrix} & = \begin{bNiceMatrix}[margin]
+                                        \sum y_j \\ \sum x_j y_j \\
+                                        \vdots   \\ \sum x_j^m y_j
+                                    \end{bNiceMatrix}
+        \end{align}
+        If the matrix above is nonsingular, it can be solved using Cholesky factorization
+        (since it is symmetric and positive definite), to yield the unique fitting
+        polynomial. \par
+        If the rows are almost linearly dependent, then the matrix is ill conditioned
+        and this is no longer a suitable method to find the fitting polynomial.
+\end{description}
+
+\section{Matrix Eigenvalue Problems: Introduction}
+
+\begin{description}
+    \item[Eigenvalue and eigenvector] Given a matrix $ \vec{A} $, the vector $ \vec{v} $
+        which staisfies
+        \begin{align}
+            \vec{Ax} & = \lambda \vec{x} & \lambda & \quad \text{scalar}
+        \end{align}
+        is called its eigenvector with corresponding eigenvalue $ \lambda $. \par
+        These are special inputs to the operation $ \vec{A} $ for which the output is
+        a scalar multiple of the input itself.
+
+    \item[Spectrum] The set of all eigenvalues of $ \vec{A} $
+
+    \item[Characteristic equation] The polynomial equation whose solutions are the
+        eigenvalues of $ \vec{A} $
+        \begin{align}
+            (\vec{A} - \lambda \vec{I})\ \vec{x} & = \vec{0}
+        \end{align}
+        The matrix $ \vec{A}_{n \times n} $ has at least one and at most $ n $ different
+        eigenvalues. If the entries of $ \vec{A} $ are real, its eigenvalues are either
+        real or complex conjugate pairs.
+
+        \begin{align}
+            \sum_{k=1}^{n} \lambda_k  & = \sum_{j=1}^{n} a_{jj} = \tr(\vec{A}) \\
+            \prod_{k=1}^{n} \lambda_k & = \det(\vec{A})
+        \end{align}
+
+    \item[Multiplicity of eigenvalues] The number of repetitions of $ \lambda_j $ in
+        the characteristic equation is called its algebraic multiplicity. \par
+        The maximum number of L.I. eigenvectors corresponding to $ \lambda_j $ is called
+        its geometric multiplicity.
+
+    \item[Invariant subspace] A subspace $ S $ of $ \mathcal{R}^n $ or
+        $ \mathcal{C}^n $ is called an invariant subspace of matrix $ \vec{A} $, if for
+        every vector $ \vec{v} $ in $ S $, the output $ \vec{Av} $ is also in $ S $.
+        \par An important example is the eigenspace of $ \vec{A} $
+
+    \item[Similar matrix] The new matrix $ \vec{B} $ is similar to matrix $ \vec{A} $
+        if for some nonsingular matrix $ \vec{T} $
+        \begin{align}
+            \vec{B} & = \vec{T}^{-1}\vec{AT}
+        \end{align}
+        Similar matrices have the same eigenvectors.
+
+    \item[Spectral shift] If a new matrix $ \vec{B} $ for some constant $ k $ is defined
+        as
+        \begin{align}
+            \vec{B} & = \vec{A} - k\vec{I}
+        \end{align}
+        then $ \vec{B} $ has eigenvalues $ \{\lambda_1 - k, \dots,\lambda_n - k\} $
+
+    \item[Polynomial matrix] Generalizing the above result to higher order polynomials
+        in the matrix $ \vec{A} $,
+        \begin{align}
+            q(\vec{A}) & = \alpha_s \vec{A}^s + \alpha_{s-1}\vec{A}^{s-1} + \dots
+            + \alpha_1 \vec{A} + \alpha_0 \vec{I}
+        \end{align}
+        is a polynomial whose eigenvalues are also transformed using the same polynomial
+        \begin{align}
+            \mu & = q(\lambda) = \alpha_s\lambda^s + \alpha_{s-1}\lambda^{s-1}
+            + \dots + \alpha_1\lambda + \alpha_0
+        \end{align}
+
+    \item[Special matrices and their eigenvalues] Some matrices have restrictions on
+        their eigenvalues.
+        \begin{itemize}
+            \item A matrix has real eigenvalues if it is,
+                  \begin{align}
+                      \vec{A}^\dag & = \vec{A}                   &
+                                   & \color{y_h}\text{hermitian}   \\
+                      \vec{A}^T    & = \vec{A}                   &
+                                   & \color{y_p}\text{symmetric}
+                  \end{align}
+            \item A matrix has purely imaginary or zero eigenvalues if it is,
+                  \begin{align}
+                      \vec{A}^\dag & = -\vec{A}                       &
+                                   & \color{y_h}\text{skew-hermitian}   \\
+                      \vec{A}^T    & = -\vec{A}                       &
+                                   & \color{y_p}\text{skew-symmetric}
+                  \end{align}
+            \item The eigenvalues of a matrix have absolute value is 1 if it is,
+                  \begin{align}
+                      \vec{A}^\dag & = \vec{A}^{-1}               &
+                                   & \color{y_h}\text{unitary}      \\
+                      \vec{A}^T    & = \vec{A}^{-1}               &
+                                   & \color{y_p}\text{orthogonal}
+                  \end{align}
+                  These special names are for \textcolor{y_h}{complex} and
+                  \textcolor{y_p}{real} valued matrices respectively.
+        \end{itemize}
+\end{description}
+
+\section{Inclusion of Matrix Eigenvalues}
+
+\begin{description}
+    \item[Determining eigenvalues] This is very difficult via direct calculation since
+        it involves finding the roots of higher order polynomials. \par
+
+    \item[Gerschgorin theorem] Let $ \lambda $ be an eigenvalue of a square matrix
+        $ \vec{A}_{n \times n} $. Then, for some integer $ j \in \{1,2,\dots,n\} $
+        \begin{align}
+            \abs{a_{jj} - \lambda} & \leq \abs{a_{j1}} + \dots + \abs{a_{j,j-1}}
+            + \abs{a_{j,j+1}} + \dots + \abs{a_{jn}}
+        \end{align}
+        On the complex plane, this provides disks that contain each eigenvalue.
+
+    \item[Content of Gerschgorin disks] If $ p $ out of $ n $ Gerschgorin disks form
+        a set $ S $ that is disjoint from the other $ n-p $ disks of a given matrix
+        $ \vec{A}_{n \times n} $, then the set $ S $ contains precisely $ p $ of
+        the eigenvalues of $ \vec{A} $ (each counted with its algebraic multiplicity).
+
+    \item[Diagonally dominant] A matrix is diagonally dominant if its diagonal entries
+        are larger in absolute value than the sum of the rest of the entries in their
+        respective rows.
+        \begin{align}
+            \abs{a_{jj}} & \leq \sum_{k\neq j} \abs{a_{jk}} &
+            j            & = \{1,2,\dots,n\}
+        \end{align}
+        Strictly diagonally dominant matrices, (where the equality does not hold above)
+        are nonsingular.
+
+    \item[Inclusion theorem] A theorem which specifies a set that contains at least
+        one of the eigenvalues of a matrix $ \vec{A} $.
+
+    \item[Schur's theorem] For each of the eigenvalues
+        $ \{\lambda_1, \dots, \lambda_n\} $, of a square matrix $ \vec{A}_{n \times n} $
+        \begin{align}
+            \abs{\lambda_m}^2 & \leq \sum_{i=1}^{n} \abs{\lambda_i}^2
+            \leq \sum_{j=1}^{n} \sum_{k=1}^{n} \abs{a_{jk}}^2
+        \end{align}
+        The second inequality only holds if the matrix is normal.
+
+    \item[Normal matrix] If a matrix $ \vec{A} $ commutes with its conjugate
+        transpose $ \vec{A}^\dag $, then it is called normal. Exmaples are Hermitian
+        (symmetric), skew-Hermitian (skew-symmetric) and unitary (orthogonal) matrices.
+        \begin{align}
+            \vec{AA}^\dag & = \vec{A}^\dag \vec{A}
+        \end{align}
+
+    \item[Perron's theorem] Let $ \vec{A}_{n\times n} $ have all positive entries. Then,
+        $ \vec{A} $ has a positive real eigenvalue $ \lambda^* $ of multiplicity 1. The
+        corresponding eigenvector can be chosen with all components positive. \par
+        All other eigenvalues have absolute value less than $ \abs{\lambda^*} $
+
+    \item[Collatz inclusion theorem] Let $ \vec{A}_{n\times n} $ have all positive
+        entries. Let $ \vec{x} $ be any vector whose components are all positive.
+        \begin{align}
+            \vec{y} & = \vec{Ax}                                 &
+            q_j     & = \frac{y_j}{x_j}                            \\
+            I       & = \Big[\min_j{(q_j)},\  \max_j{(q_j)}\Big]
+        \end{align}
+        The interval $ I $ on the real axis contains at least one eigenvalue of
+        $ \vec{A} $.
+
+    \item[Collatz iteration] Using the iteration rule
+        \begin{align}
+            \vec{x}^{(m+1)} & = \vec{Ax}^{(m)} & q_j & = \frac{x^{(m+1)}_j}{x^{(m)}_j}
+        \end{align}
+        Successive iterations lead to a reduction in the size of the closed interval
+        made by the extreme values of $ q_j $, which helps narrow down the location
+        on the real line of the eigenvalue with the largest eigenvalue.
+
+\end{description}
+
+\section{Power Method for Eigenvalues}
+
+\begin{description}
+    \item[Power method] For a real symmetric matrix $ \vec{A}_{n\times n} $, and some
+        nonzero vector $ \vec{x} $ with $ n $ real components,
+        \begin{align}
+            \vec{y} & = \vec{Ax}         & m_0 & = \vec{x}^T \vec{x} \\
+            m_1     & = \vec{x}^T\vec{y} & m_2 & = \vec{y}^T \vec{y}
+        \end{align}
+        Then, the Rayleigh quotient is an approximation for an eigenvalue of $ \vec{A} $
+        \begin{align}
+            q & = \frac{m_0}{m_1}
+        \end{align}
+        This requires $ \vec{A} $ to have a dominant eigenvalue, which has the largest
+        absolute value in the set $ \{\lambda_i\} $
+
+    \item[Error in power method] For the special case where $ \vec{A} $ is symmetric,
+        the error in $ q $ and an error bound is given by,
+        \begin{align}
+            \epsilon       & = \lambda - q                              &
+            \abs{\epsilon} & \leq \delta = \sqrt{\frac{m_2}{m_0} - q^2}
+        \end{align}
+
+    \item[Iterative method] Iterating using the formula,
+        \begin{align}
+            x^{(m)}         & \to \frac{1}{x^*}\ \vec{x^{(m)}} &
+            \vec{x}^{(m+1)} & = \vec{A} \vec{x}^{(m)}            \\
+        \end{align}
+        Here, $ x^* $ is the largest element of the vector $ \vec{x} $. This scaling
+        step ensures that the vector converges to an eigenvector.
+\end{description}
+
+\section{Tridiagonalization and QR-Factorization}
+
+\begin{description}
+    \item[Householder's Tridiagonalization] A real symmetric matrix
+        $ \vec{A}_{n \times n} $ can be reduced by $ (n-2) $ similarity transformations
+        into a tridiagonal matrix. \par
+        Each of these transforming matrices is orthogonal and symmetric.
+        \begin{align}
+            \vec{A}_1            & = \vec{P}_1\ \vec{A}_0\ \vec{P}_1\ \dots      &
+            \dots\ \vec{A}_{n-2} & = \vec{P}_{n-2}\ \vec{A}_{n-3}\ \vec{P}_{n-2}   \\
+            \vec{B}              & = \vec{A}_{n-2}
+        \end{align}
+        These transformations successively set the non-tridiagonal elements in each
+        row to zero, starting from the first to the $ (n-2)^{\text{nd}} $
+
+    \item[Diagonalizing vectors] The set of matrices $ \vec{P} $ are of the form
+        \begin{align}
+            \vec{P} & = \vec{I} - 2\ \vec{v}_r\ \vec{v}_r^T &
+            r       & = \{1,2,\dots,n-2\}
+        \end{align}
+        The unit vectors $ \vec{v}_r $ have their first $ r $ terms zero. The rest of
+        the terms are given by
+        \begin{align}
+            S_r       & = \sqrt{\sum_{k=r+1}^{n} a^2_{kr}}                     \\
+            v_{1r}    & = v_{2r} = \dots = v_{rr} = 0                          \\
+            v_{r+1,r} & = \sqrt{\frac{1}{2}\ \Bigg[ 1 + \frac{\abs{a_{r+1,r}}}
+            {S_r} \Bigg]}                                                      \\
+            v_{kr}    & = \frac{a_{kr}\ \sgn{a_{r+1,r}}}{2\ v_{r+1,r}\ S_r}
+            \qquad k \in \{r+2,\dots,n\}
+        \end{align}
+        The matrix is updated at each step using the similarity transform described
+        above. \par
+        The vectors $ \vec{P_i} $ are orthogonal, which trivially proves the fact that
+        the transformation is similar.
+
+    \item[QR Factorization method] Given a real symmetric matrix, this method factorizes
+        it into an orthogonal matrix $ \vec{Q} $ and an upper triangular matrix
+        $ \vec{R} $. \par
+        The iterative procedure is
+        \begin{align}
+            \vec{B}_s     & = \vec{Q}_s\ \vec{R}_s &  & \text{factorize} \\
+            \vec{B}_{s+1} & = \vec{R}_s\ \vec{Q}_s &  & \text{compute}
+        \end{align}
+        This is a similarity transformation, which preserves eigenvalues, while
+        successive iterations converge to a diagonal matrix.
+        \begin{align}
+            \lim_{s \to \infty} \vec{B}_s & = \vec{D}
+        \end{align}
+        provided all the eigenvalues of $ \vec{B} $ are different in absolute value.
+
+    \item[Computing the $\vec{Q}$ matrices] Using the shorthand notation for a rotation
+        matrix in 2 dimensions,
+        \begin{align}
+            \bmattt{\cos\theta_j}{\sin\theta_j}{-\sin\theta_j}{\cos\theta_j}
+             & = \bmattt{c_j}{s_j}{-s_j}{c_j}
+        \end{align}
+        The set of matrices $ \vec{C}_j $ are defined as identity matrices with rows
+        and columns at index $ j-1, j $ replaced by the above rotation matrix.
+
+        \begin{align}
+            (\vec{C}_n\ \vec{C}_{n-1}\ \dots\ \vec{C}_2)\ \vec{B}_s & = \vec{R}_s \\
+            (\vec{C}_n\ \vec{C}_{n-1}\ \dots\ \vec{C}_2)^{-1}       & = \vec{Q}_s
+            = \vec{C}_2^T\ \vec{C}_3^T\ \dots\ \vec{C}_n^T
+        \end{align}
+        The effect of pre-multiplying $ \vec{B}_s $ each $ \vec{C}_j $ serves to set the
+        term below the diagonal in the $ j^{\text{th}} $ term to zero. \par
+        By the end, the tridiagonal matrix $ \vec{B}_s $ has become an upper triangular
+        matrix $ R_s $
+        \begin{align}
+            \vec{B}_{s+1} & = \vec{R}_s\ \vec{Q}_s
+        \end{align}
+        now provides the starting point for the next iterative step.\par
+        The absolute size of the off-diagonal elements is a measure of how well the
+        diagonal elements are approximating the eigenvalues.
+\end{description}

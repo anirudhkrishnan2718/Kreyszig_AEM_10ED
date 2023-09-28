@@ -1,0 +1,190 @@
+\chapter{Complex Integration}
+
+\section{Line Integral in the Complex Plane}
+
+\begin{description}
+    \item[Complex curves] On the complex plane, a path $ C $ (called a curve) is defined
+        using a parameter $ t $ as,
+        \begin{align}
+            C & : x(t) + \i\ y(t) & y & \in [a,b]
+        \end{align}
+        The path is considered oriented in the direction of increasing $ t $. \par
+        This path is assumed to have a continuous and nonzero derivative at each
+        point.
+        \begin{align}
+            \dot{z}(t) & = \lim_{\Delta t \to 0} \frac{z(t + \Delta t) - z(t)}
+            {\Delta t}                                                         \\
+            \dot{z}(t) & = \dot{x}(t) + \i\ \dot{y}(t)
+        \end{align}
+        The tangent to the curve C varies smoothly with the parameter $ t $.
+
+    \item[Line integrals]  The name for definite integrals in the complex plane. Unlike
+        the real case, there are infinitely many paths between two points, which makes
+        the specification of a path necessary.
+        \begin{align}
+            I_1 & = \int_C f(z)\ \dl z  &  & \text{open path}   \\
+            I_2 & = \oint_C f(z)\ \dl z &  & \text{closed path}
+        \end{align}
+        These paths are assumed to be at least piecewise smooth.
+
+    \item[Properties of the line integral] Similar to the real case, integration is
+        linear in the integrands.
+        \begin{align}
+            \int_C \Big[k_1f_1(z) + k_2 f_2(z)\Big]\ \dl z &
+            = k_1 \int_C f_1\ \dl z + k_2 \int_C f_2\ \dl z
+        \end{align}
+        Reversing the direction of traversal on the path adds a factor of $ -1 $ to the
+        result.
+        \begin{align}
+            \int_{z_1}^{z_0} f(z)\ \dl z & = -\int_{z_0}^{z_1} f(z)\ \dl z
+        \end{align}
+        The path of integration can be split up, which also splits up the result.
+        \begin{align}
+            \int_{z_0}^{z_1} f\ \dl z + \int_{z_1}^{z_2} f\ \dl z
+             & = \int_{z_0}^{z_2} f\ \dl z
+        \end{align}
+
+    \item[Existence] The fact that the real functions $ u, v $ are continuous, implies
+        \begin{align}
+            \int_C f(z)\ \dl z & = \int_C \Big[u(x, y) + \i\ v(x, y)\Big]\ (\dl x
+            + \i\ \dl y)                                                          \\
+                               & = \int_C u\ \dl x - \int_C v\ \dl y + \i \Bigg[
+                \int_C u\ \dl y + \int_C v\ \dl x \Bigg]
+        \end{align}
+        is a sum of integrals of continuous functions and guaranteed to exist, provided
+        $ f, C $ are continuous.
+
+    \item[Indefinite integration method] Similar to the real case, the substitution of
+        the endpoints into the antiderivative is the simplest method of evaluating complex
+        line integrals. \par
+        Let $ f(z) $ be analytic in some simply connected domain $ D $. Then, it has an
+        antiderivative $ F(z) $ in $ D $,
+        \begin{align}
+            \int_{z_0}^{z_1} f(z)\ \dl z & = F(z_1) - F(z_0)
+        \end{align}
+        This is path independent and thus no longer needs a path specification.
+
+    \item[Parametric integration] Using the definition of the unit tangent vector,
+        \begin{align}
+            \int_{C} f(z)\ \dl z & = \int_{a}^{b} f[z(t)]\ \dot{z}(t)\ \dl t
+        \end{align}
+        The proof requires the existence of real line integrals and the fact that
+        $ f[z(t)] = u[x(t), y(t)] + \i\ v[x(t), y(t)] $ is a continuous function.
+
+    \item[Useful results] Some special results of path integration are,
+        \begin{align}
+            \oint_{C_1} \frac{\dl z}{z}       & = 2\pi\ \i \\
+            \oint_{C_\rho} (z - z_0)^m\ \dl z & =
+            \begin{cases}
+                2\pi\ \i & \quad m = -1                \\
+                0        & \quad \text{other integers}
+            \end{cases}
+        \end{align}
+        Here, counterclockwise circular paths are of unit radius in $ C_1 $ centered
+        around the origin and of radius $ \rho $ centered around $ z_0 $ for $ C_\rho $.
+
+    \item[Path Dependence] In general, complex line integrals are path dependent.
+        (except for the special case of analytic functions).
+
+    \item[ML inequality for bounds] Let $ L $ be the path length and $ M $ be a real
+        number such that
+        \begin{align}
+            \abs{f(z)} & \leq M & \forall \quad & z \in C
+        \end{align}
+        Then, an upper bound on the absolute value of the integral is,
+        \begin{align}
+            \abs{\int_C f(z)\ \dl z} & \leq ML
+        \end{align}
+\end{description}
+
+\section{Cauchy's Integral Theorem}
+\begin{description}
+    \item[Simple closed path] A closed path that does not intersect or touch itself.
+    \item[Simply connected domain] A domain $ D $ such that every simple closed path
+        in $ D $ encloses only points in $ D $.
+    \item[p-fold connected domain] A domain whose boundary consists of $ p $ closed
+        connected sets without common points (contains $ p-1 $ \emph{holes}).
+
+    \item[Cauchy's integral theorem] If $ f(z) $ is analytic in a simply connected
+        domain $ D $, then for every simple closed path $ C $ in this domain,
+        \begin{align}
+            \oint_C f(z)\ \dl z & = 0
+        \end{align}
+        The condition that $ f(z) $ be analytic is sufficient, but not necessary.
+
+    \item[Path independence of integral] If $ f(z) $ is analytic in a simply connected
+        domain $ D $, then the integral is independent of the path in $ D $. \par
+        As a corollary, if a path $ C_1 $ connecting two points can be continuously
+        deformed into another path $ C_2 $ all while covering points in which $ f(z) $
+        is analytic, then the value of the integral remains unchanged.
+
+    \item[Existence of indefinite integral] If $ f(z) $ is analytic in a simply connected
+        domain $ D $, then there exists an antiderivative $ F(z) $ in $ D $.
+
+    \item[Multiply connected domains] The integral over the outer boundary
+        curve is equal to the sum of the integral over each of the inner boundaries
+        (all traversed with the same orientation).
+\end{description}
+
+\section{Cauchy's Integral Formula}
+\begin{description}
+    \item[Cauchy's theorem] Let $ f(z) $ be analytic in some simply connected domain
+        $ D $. For a point $ z_0 $ in $ D $, and any simple closed path $ C $
+        (counterclockwise) that encloses this point,
+        \begin{align}
+            \oint_C \frac{f(z)}{z - z_0} & = 2\pi \i\ f(z_0)
+        \end{align}
+
+    \item[Proof] Where the path length is $ 2\pi \rho $, for a circular path of radius
+        $ \rho $, around the point $ z = z_0 $. This is the only point where the
+        integrand is not analytic. \par
+        Consider some $ \epsilon > 0 $ such that
+        \begin{align}
+            \abs{f(z) - f(z_0)}                 & < \epsilon              &
+            \implies \quad \abs{z - z_0}        & < \delta                  \\
+            \rho                                & < \delta                &
+            \abs{\frac{f(z) - f(z_0)}{z - z_0}} & < \frac{\epsilon}{\rho}
+        \end{align}
+        Applying the ML inequality,
+        \begin{align}
+            \abs{\oint_C \frac{f(z) - f(z_0)}{z - z_0}\ \dl z} & < 2\pi \epsilon
+        \end{align}
+        Since $ \epsilon $ can be arbitrarily small, this integral is zero.
+\end{description}
+
+\section{Derivatives of Analytic Functions}
+
+\begin{description}
+    \item[Derivatives] If $ f(z) $ is analytic in domain $ D $, then it has all
+        derivatives in $ D $, which are also analytic in $ D $. \par
+        \begin{align}
+            f^{(n)}(z_0) & = \frac{n!}{2\pi\ \i}\ \oint_C \frac{f(z)}{(z - z_0)^{n+1}}
+            \ \dl z
+        \end{align}
+        Here, $ C $ is an (anticlockwise) simple closed path enclosing $ z_0 $ whose
+        interior fully belongs to $ D $. \par
+        The proof uses ML inequality and Cauchy's integral formula. Induction is used
+        to prove the relation for higher order derivatives.
+
+    \item[Cauchy's inequality] Using the ML inequality on a unit circle and Cauchy's
+        theorem for derivatives,
+        \begin{align}
+            \text{given}\ \abs{f(z)}           & \leq M                 &
+            \implies \qquad \abs{f^{(n)}(z_0)} & \leq \frac{n!\ M}{r^n}
+        \end{align}
+        Here, the integration is carried out counterclockise on a circle of radius $ r $
+        centered on $ z_0 $
+
+    \item[Liouville's theorem] If an entire function is bounded in absolute value in
+        $ \mathcal{C} $, then this function must be constant. \par
+        The proof uses Cauchy-Riemann equations and Cauchy's inequality for the first
+        derivative.
+
+    \item[Morera's theorem] If $ f(z) $ is continuous in a simply connected domain $ D $,
+        and if
+        \begin{align}
+            \oint_C f(z)\ \dl z & = 0
+        \end{align}
+        for any closed simple path in $ D $, then $ f(z) $ is analytic in $ D $. \par
+        This is the converse of Cauchy's integral theorem.
+\end{description}

@@ -1,0 +1,266 @@
+\section{Quality Control}
+
+\begin{enumerate}
+    \item The control limits for the mean are,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}     & \text{Value} \\ \hline
+                  \texttt{LCL}\ (1\%) & 0.9485       \\
+                  \texttt{UCL}\ (1\%) & 1.0515       \\
+              \end{tblr}
+          \end{table}
+
+    \item For integer multiples of $\sigma$, with the pre-factors $ k_1 $ and $ k_2 $
+          attached to the terms $ \sigma/\sqrt{n} $ to cross check,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}       & \text{Value} \\ \hline
+                  \texttt{LCL}\ (0.3\%) & 0.9703       \\
+                  k_1                   & 2.97         \\
+                  \texttt{UCL}\ (0.3\%) & 1.0297       \\
+                  k_2                   & -2.97        \\
+              \end{tblr}
+          \end{table}
+
+    \item Using the formula for the range,
+          \begin{align}
+              Y & = \text{UCL} - \text{LCL}                                         &
+              Y & = 2 \cdot \frac{2.58 \sigma}{\sqrt{n}}                              \\
+              n & = \left( \frac{2 \cdot 2.58 \cdot 0.02}{0.02} \right)^2 = 26.6256 &
+              n & \geq 27
+          \end{align}
+
+    \item $ n \to 2n $ makes the ctrol limit span go from $ Y \to Y/\sqrt{2} $
+          \begin{align}
+              \alpha & = 1\%   & k_1 & = 2.58       \\
+              \alpha & = 5\%   & k_1 & = 1.96       \\
+              k_1    & \to k_2 & Y   & \to 1.316\ Y
+          \end{align}
+
+    \item Using the relation,
+          \begin{align}
+              Y                 & = \frac{2k_{\alpha} \cdot \sigma}{\sqrt{n}} &
+              Y \to \frac{Y}{2} & \implies n \to 4n
+          \end{align}
+
+    \item The control chart for the mean is,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[title = {Control chart for $ \mu $}, Ani,
+                          grid = both, ymin = 3.6, ymax = 6.4]
+                      \addplot[sharp plot, black, mark = *,
+                          mark options = {fill = black}]
+                      coordinates {(10,4.5) (11,5) (12,5.25) (13,4.25)
+                              (14,5.25) (15,5) (16,5) (17,3.75) (18,4.75) (19,5.75)};
+                      \draw[y_h, very thick] (9,3.7) -- (20,3.7)
+                      node[midway, above, y_p] {\texttt{LCL} = 3.7};
+                      \draw[y_h, very thick] (9,6.3) -- (20,6.3)
+                      node[midway, below, y_p] {\texttt{UCL} = 6.3};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The control chart for the ranges is,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[title = {Control chart for $ R $}, Ani,
+                          grid = both]
+                      \addplot[sharp plot, black, mark = *,
+                          mark options = {fill = black}]
+                      coordinates {(10,4) (11,3) (12,4) (13,3)
+                              (14,2) (15,2) (16,2) (17,3) (18,5) (19,5)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The function is a monotone decreasing function, since an increase in sample
+          size leads to a decrease in standard error in the mean and therefore in the
+          interval.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[xlabel = $ n $, ylabel = $ \lambda_n $, Ani,
+                          grid = both]
+                      \addplot[sharp plot, black, mark = *,
+                          mark options = {fill = black}]
+                      coordinates {(2,0.89) (3,0.59) (4,0.49) (5,0.43)
+                              (6,0.4) (7,0.37) (8,0.35) (9,0.34) (10,0.32)
+                              (12,0.31) (14, 0.29) (16,0.28) (18,0.28) (20, 0.27)
+                              (30, 0.25) (40, 0.23) (50, 0.22)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The control chart for the mean is,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[title = {Control chart for $ \mu $}, Ani,
+                          grid = both, ymin = 3.45, ymax = 3.54]
+                      \addplot[sharp plot, black, mark = *,
+                          mark options = {fill = black}]
+                      coordinates {(1,3.505) (2,3.495) (3,3.495)
+                              (4,3.51) (5,3.51) (6,3.495) (7,3.475) (8,3.505)};
+                      \draw[y_h, very thick] (0,3.46) -- (9,3.46)
+                      node[midway, above, y_p] {\texttt{LCL} = 3.46};
+                      \draw[y_h, very thick] (0,3.536) -- (9,3.536)
+                      node[midway, below, y_p] {\texttt{UCL} = 3.536};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The control chart for the fraction defective is,
+          \begin{align}
+              p          & = 0.04                                  &
+              \sigma^2   & = pq = 0.0384                             \\
+              \sigma     & = 0.196                                 &
+              \text{UCL} & = p + \frac{3\sigma}{\sqrt{n}} = 0.0988
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[title = {Control chart for $ p $}, Ani,
+                          grid = both, ymin = -0.02, ymax = 0.15]
+                      \addplot[sharp plot, black, mark = *,
+                          mark options = {fill = black}]
+                      coordinates {(1,0.01) (2,0.04) (3,0.05) (4,0.04) (5,0.09)
+                              (6,0.07) (7,0) (8,0.05) (9,0.06) (10,0.13)
+                              (11,0) (12,0.02) (13,0.01) (14,0.12) (15,0.08)};
+                      \draw[y_h, very thick] (0,0) -- (16,0)
+                      node[near start, below, y_p] {\texttt{LCL} = 0};
+                      \draw[y_h, very thick] (0,0.0988) -- (16,0.0988)
+                      node[near start, above, y_p] {\texttt{UCL} = 0.0988};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The control chart for the fraction defective is,
+          \begin{align}
+              \text{UCL} & = p + \frac{3\sigma}{\sqrt{n}} &
+              \text{LCL} & = p - \frac{3\sigma}{\sqrt{n}}   \\
+              \text{CL}  & = p
+          \end{align}
+          Now, for the number defective per sample,
+          \begin{align}
+              \text{UCL}      & = p + 3\sqrt{n}\ \sigma &
+              \text{LCL}      & = p - 3\sqrt{n}\ \sigma   \\
+              \text{CL} = \mu & = np                    &
+              \sigma          & = \sqrt{p(1-p)}
+          \end{align}
+
+    \item Control charts
+          \begin{enumerate}
+              \item Random numbers generated in \texttt{numpy}
+
+              \item The control charts for the mean,
+                    \begin{align}
+                        \text{LCL} & = \mu_0 - 2.58 \frac{\sigma}{\sqrt{n}} = 7.484 &
+                        \text{UCL} & = \mu_0 + 2.58 \frac{\sigma}{\sqrt{n}} = 8.516
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_25_05_12.csv}
+                        \anitableten
+                        \begin{tikzpicture}
+                            \begin{axis}[title = {Control chart for $ \mu $},
+                                    grid = both,Ani, ymin = 7.2, ymax = 8.7]
+                                \addplot[only marks]
+                                table[x index = 0, y index = 1] {\anitableten};
+                                \draw[y_h, very thick] (-10,7.484) -- (110,7.484)
+                                node[near start, below, y_p] {\texttt{LCL} = 7.484};
+                                \draw[y_h, very thick] (-10,8.516) -- (110,8.516)
+                                node[near start, above, y_p] {\texttt{UCL} = 8.516};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The control charts for the standard deviation,
+                    \begin{align}
+                        \text{LCL} & = \sqrt{\frac{\sigma^2}{(n-1)}\ c_1} = 0.1073 &
+                        \text{UCL} & = \sqrt{\frac{\sigma^2}{(n-1)}\ c_2} = 0.7061
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_25_05_12.csv}
+                        \anitableten
+                        \begin{tikzpicture}
+                            \begin{axis}[title = {Control chart for $ \sigma $},
+                                    grid = both,Ani, ymin = 0, ymax = 0.8]
+                                \addplot[only marks]
+                                table[x index = 0, y index = 2] {\anitableten};
+                                \draw[y_h, very thick] (-10,0.1073) -- (110,0.1073)
+                                node[near start, below, y_p] {\texttt{LCL} = 0.1073};
+                                \draw[y_h, very thick] (-10,0.7061) -- (110,0.7061)
+                                node[near start, above, y_p] {\texttt{UCL} = 0.7061};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The control charts for the range,
+                    \begin{align}
+                        \text{LCL} & = \frac{\sigma_L}{\lambda_4} = 0.219 &
+                        \text{UCL} & = \frac{\sigma_U}{\lambda_4} = 1.441
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_25_05_12.csv}
+                        \anitableten
+                        \begin{tikzpicture}
+                            \begin{axis}[title = {Control chart for $ R $},
+                                    grid = both,Ani, ymin = 0, ymax = 1.6]
+                                \addplot[only marks]
+                                table[x index = 0, y index = 3] {\anitableten};
+                                \draw[y_h, very thick] (-10,0.219) -- (110,0.219)
+                                node[near start, below, y_p] {\texttt{LCL} = 0.219};
+                                \draw[y_h, very thick] (-10,1.441) -- (110,1.441)
+                                node[near start, above, y_p] {\texttt{UCL} = 1.441};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item In correspondence with $ \alpha = 5\% $, a small fraction of
+                    the samples are outside control limits in each of the three control
+                    charts.
+          \end{enumerate}
+
+    \item The fraction of all data points lying outside $ \mu \pm k\sigma $ for a normal
+          RV is,
+          \begin{align}
+              1 - P(\mu - \sigma < X < \mu + \sigma) = 31.73\%  \\
+              1 - P(\mu - 2\sigma < X < \mu + 2\sigma) = 4.55\% \\
+              1 - P(\mu - 3\sigma < X < \mu + 3\sigma) = 0.27\%
+          \end{align}
+
+    \item The new control limits are,
+          \begin{align}
+              \bar{x}               & \to \sum_j x_j                      &
+              \mu                   & \to n\mu                              \\
+              \sigma                & \to n\sigma                         &
+              \text{LCL}/\text{UCL} & = n\mu \pm k_\alpha\ \sigma\sqrt{n}
+          \end{align}
+          The mean and variance are both multiplied by a factor $ n $. Here, $ k $
+          is a function of the confidence level.
+
+    \item For a Poisson process with parameter $ \lambda $,
+          \begin{align}
+              \text{LCL} & = \mu - 3\sigma
+              = \lambda - 3\sqrt{\lambda}  \\
+              \text{UCL} & = \mu + 3\sigma
+              = \lambda + 3\sqrt{\lambda}
+          \end{align}
+          For the specific case of $ \lambda = 3.6 $,
+          \begin{align}
+              \text{LCL} & = 3.6 - 3\sqrt{3.6} = -2.09 &
+              \text{LCL} & = 3.6 + 3\sqrt{3.6} = 9.29    \\
+              \text{CL}  & = \lambda = 3.6
+          \end{align}
+          Since a Poisson process has to be non-negative, the \texttt{LCL} is set to
+          zero whenever the formula yields a negative lower limit.
+
+\end{enumerate}

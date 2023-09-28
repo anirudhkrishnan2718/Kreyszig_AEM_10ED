@@ -2,18 +2,19 @@
 \begin{enumerate}
     \item Solving h-ODE
           \begin{align}
-              y''' + 25y'             & = 0                                                   \\
-              \lambda^{3} + 25\lambda & = 0                                                   \\
-              \lambda                 & = \{0, 5i, -5i\}                                      \\
-              y_{h}                   & = {\color{y_h} c_{1} + c_{2}\cos(5x) + c_{3}\sin(5x)}
+              y''' + 25y'             & = 0                                  \\
+              \lambda^{3} + 25\lambda & = 0                                  \\
+              \lambda                 & = \{0, 5i, -5i\}                     \\
+              y_{h}                   & = {\color{y_h} c_{1} + c_{2}\cos(5x)
+              + c_{3}\sin(5x)}
           \end{align}
     \item Solving h-ODE
           \begin{align}
-              y^{(iv)} + 2y'' + y            & = 0                                      \\
-              \lambda^{4} + 2\lambda^{2} + 1 & = 0                                      \\
-              \lambda                        & = \{i, i, -i, -i\}                       \\
-              y_{h}                          & = {\color{y_h} [c_{1} + c_{2}x] \cos x +
-              [c_{3} + c_{4}x] \sin x}
+              y^{(iv)} + 2y'' + y            & = 0                             \\
+              \lambda^{4} + 2\lambda^{2} + 1 & = 0                             \\
+              \lambda                        & = \{i, i, -i, -i\}              \\
+              y_{h}                          & = {\color{y_h} [c_{1} + c_{2}x]
+              \cos x + [c_{3} + c_{4}x] \sin x}
           \end{align}
     \item Solving h-ODE
           \begin{align}
@@ -25,34 +26,38 @@
           \end{align}
     \item Solving h-ODE
           \begin{align}
-              y''' - y'' - y' + y                     & = 0                                    \\
-              \lambda^{3} - \lambda^{2} - \lambda + 1 & = 0                                    \\
-              \lambda                                 & = \{-1, 1, 1\}                         \\
-              y_{h}                                   & = {\color{y_h} [c_{1} + c_{2}x]e^{x} +
+              y''' - y'' - y' + y                     & = 0                   \\
+              \lambda^{3} - \lambda^{2} - \lambda + 1 & = 0                   \\
+              \lambda                                 & = \{-1, 1, 1\}        \\
+              y_{h}                                   & = {\color{y_h} [c_{1}
+                  + c_{2}x]e^{x} +
               c_{3}e^{-x}}
           \end{align}
     \item Solving h-ODE
           \begin{align}
-              y^{iv} + 10y'' + 9y             & = 0                                         \\
-              \lambda^{4} + 10\lambda^{2} + 9 & = 0                                         \\
-              \lambda                         & = \{-i, i, -3i, 3i\}                        \\
-              y_{h}                           & = {\color{y_h} c_{1}\cos x + c_{2} \sin x +
-              c_{3}\cos(3x) + c_{4}\sin(3x) }
+              y^{iv} + 10y'' + 9y             & = 0                        \\
+              \lambda^{4} + 10\lambda^{2} + 9 & = 0                        \\
+              \lambda                         & = \{-i, i, -3i, 3i\}       \\
+              y_{h}                           & = {\color{y_h} c_{1}\cos x
+              + c_{2} \sin x + c_{3}\cos(3x) + c_{4}\sin(3x) }
           \end{align}
     \item Solving h-ODE
           \begin{align}
-              y^{v} + 8y''' + 16y'                   & = 0                                       \\
-              \lambda^{5} + 8\lambda^{3} + 16\lambda & = 0                                       \\
-              \lambda                                & = \{0, 2i, 2i, -2i, -2i\}                 \\
-              y_{h}                                  & = {\color{y_h} [c_{1} + c_{2}x]\cos(2x) +
+              y^{v} + 8y''' + 16y'                   & = 0                       \\
+              \lambda^{5} + 8\lambda^{3} + 16\lambda & = 0                       \\
+              \lambda                                & = \{0, 2i, 2i, -2i, -2i\} \\
+              y_{h}                                  & = {\color{y_h} [c_{1}
+                  + c_{2}x]\cos(2x) +
               [c_{3} + c_{4}x]\sin(x) + c_{5} }
           \end{align}
     \item Solving the h-ODE,
           \begin{align}
-              y''' + 3.2y'' + 4.81y'                     & = 0                                            \\
-              \lambda^{3} + 3.2\lambda^{2} + 4.81\lambda & = 0                                            \\
-              \lambda_{1}, \lambda_{2}                   & = \frac{-3.2 \pm i\sqrt{9}}{2} = -1.6 \pm 1.5i \\
-              y_{h}                                      & = \color{y_h} e^{-1.6x}[c_{1}\cos(1.5x)
+              y''' + 3.2y'' + 4.81y'                     & = 0           \\
+              \lambda^{3} + 3.2\lambda^{2} + 4.81\lambda & = 0           \\
+              \lambda_{1}, \lambda_{2}                   & = \frac{-3.2
+              \pm i\sqrt{9}}{2} = -1.6 \pm 1.5i                          \\
+              y_{h}                                      & = \color{y_h}
+              e^{-1.6x}[c_{1}\cos(1.5x)
                       + c_{2}\sin(1.5x)] + c_{3}
           \end{align}
           Applying IC $ y(0) = 3.4, y'(0) = -4.6, y''(0) = 9.91 $,
@@ -103,7 +108,8 @@
               \centering
               \begin{tikzpicture}[
                       declare function = {
-                              y_p = -0.65*e^(0.5*x) + e^(-4*x)*(10.7*cos(1.5*x) - 7.78*sin(1.5*x)) ;
+                              y_p = -0.65*e^(0.5*x) + e^(-4*x)*(10.7*cos(1.5*x)
+                              - 7.78*sin(1.5*x)) ;
                           }
                   ]
                   \begin{axis}[
@@ -238,7 +244,8 @@
               y_{h}           & = \color{y_h} c_{1}e^{-2x} + c_{2}e^{-x} + c_{3}
               + c_{4}e^{x} + c_{5}e^{2x}
           \end{align}
-          Applying IC $ y(0) = 0, y'(0) = -5, y''(0) = 11, y'''(0) = -23, y^{iv}(0) = 47 $,
+          Applying IC $ y(0) = 0, y'(0) = -5, y''(0) = 11, y'''(0) = -23,
+              y^{iv}(0) = 47 $,
           \begin{align}
               0     & = c_{1} + c_{2} + c_{3} + c_{4} + c_{5} \\
               -5    & = -2c_{1} - c_{2} + c_{4} + 2c_{5}      \\
@@ -271,12 +278,12 @@
               0               & = y^{iv} + 0.45y''' - 0.165y'' + 0.0045y' - 0.00175y \\
               0               & = \lambda^{4} + 0.45\lambda^{3} - 0.165\lambda^{2}
               + 0.0045\lambda - 0.00175                                              \\
-              %   sympy.Poly(x**4 + 0.45*x**3 - 0.165*x**2 + 0.0045*x - 0.00175).all_roots() = [-7/10, 1/4, -I/10, I/10]
               \{\lambda_{i}\} & = \{-0.7, 0.25, -0.1i, 0.1i\}                        \\
               y_{h}           & = \color{y_h} c_{1}e^{-0.7x} + c_{2}e^{0.25x}
               + c_{3}\cos(0.1x) + c_{4}\sin(0.1x)
           \end{align}
-          Applying IC $ y(0) = 17.4, y'(0) = -2.82, y''(0) = 2.0485, y'''(0) = -1.458675 $,
+          Applying IC $ y(0) = 17.4, y'(0) = -2.82, y''(0) = 2.0485, y'''(0)
+              = -1.458675 $,
           \begin{align}
               17.4      & = c_{1} + c_{2} + c_{3}                                 \\
               -2.82     & = -0.7c_{1} + 0.25c_{2} + 0.1c_{4}                      \\
@@ -307,7 +314,8 @@
 
     \item
           \begin{enumerate}
-              \item For a constant coefficient ODE, if one solution $ \lambda_{1} $ is known,
+              \item For a constant coefficient ODE, if one solution $ \lambda_{1} $
+                    is known,
                     \begin{align}
                         (\lambda - \lambda_{1}) \cdot h(\lambda) & = P(\lambda)
                     \end{align}
@@ -316,19 +324,22 @@
                     reduction of order.
               \item $ y_{1} $ is a known solution of
                     \begin{align}
-                        0                      & = y''' + p_{2}(x)y'' + p_{1}(x)y' + p_{0}(x)y \\
-                        \text{Let} \quad y_{2} & = uy_{1}                                      \\
-                        y_{2}'                 & = u'y_{1} + uy_{1}'                           \\
-                        y_{2}''                & = u''y_{1} + uy_{1}'' + 2u'y_{1}'             \\
+                        0                      & = y''' + p_{2}(x)y'' + p_{1}(x)y'
+                        + p_{0}(x)y                                                   \\
+                        \text{Let} \quad y_{2} & = uy_{1}                             \\
+                        y_{2}'                 & = u'y_{1} + uy_{1}'                  \\
+                        y_{2}''                & = u''y_{1} + uy_{1}'' + 2u'y_{1}'    \\
                         y_{2}'''               & = u'''y_{1} + 3u''y_{1}' + uy_{1}'''
-                        + 3u'y_{1}''                                                           \\
-                        0                      & = u'''[y_{1}] + u''[3y_{1}' + p_{2}y_{1}]
-                        + u'[3y_{1}'' + 2p_{2}y_{1}' + p_{1}y_{1}]  \nonumber                  \\
-                                               & + u[y_{1}''' + p_{2}y_{1}'' + p_{1}y_{1}'
+                        + 3u'y_{1}''                                                  \\
+                        0                      & = u'''[y_{1}] + u''[3y_{1}'
+                        + p_{2}y_{1}]
+                        + u'[3y_{1}'' + 2p_{2}y_{1}' + p_{1}y_{1}]  \nonumber         \\
+                                               & + u[y_{1}''' + p_{2}y_{1}''
+                        + p_{1}y_{1}'
                         + p_{0}y_{1}]
                     \end{align}
-                    Setting $ z = u' $ and thus, $ u = \int z(x) \dl x $, the ODE of 1 lesser
-                    order is given by,
+                    Setting $ z = u' $ and thus, $ u = \int z(x) \dl x $, the ODE of 1
+                    lesser order is given by,
                     \begin{align}
                         y_{1}z'' + (3y_{1}' + p_{2}y_{1})z' + (3y_{1}'' + 2p_{2}y_{1}'
                         + p_{1}y_{1})z & = 0
@@ -336,15 +347,19 @@
 
               \item Applying the above method with $ y_{1} = x $,
                     \begin{align}
-                        x^{3}y''' - 3x^{2}y'' + (6 - x^{2})xy' - (6 - x^{2})y & = 0                              \\
-                        y_{2} = ux \qquad y_{2}'                              & = u + xu'                        \\
-                        y_{2}'' =2u' + xu'' \qquad y_{2}'''                   & = 3u'' + xu'''                   \\
-                        u'''[x^{4}] + u'[-x^{4}]                              & = 0                              \\
-                        u''' - u'                                             & = 0                              \\
-                        \text{Let} \quad u' = z \qquad z'' - z                & = 0                              \\
-                        z                                                     & = c_{1}e^{-x} + c_{2}e^{x}       \\
-                        u                                                     & = c_{1}e^{-x} + c_{2}e^{x}       \\
-                        y_{2}                                                 & = c_{1}\ xe^{x} + c_{2}\ xe^{-x}
+                        x^{3}y''' - 3x^{2}y'' + (6 - x^{2})xy' - (6 - x^{2})y
+                                                               & = 0             \\
+                        y_{2} = ux \qquad y_{2}'               & = u + xu'       \\
+                        y_{2}'' =2u' + xu'' \qquad y_{2}'''    & = 3u'' + xu'''  \\
+                        u'''[x^{4}] + u'[-x^{4}]               & = 0             \\
+                        u''' - u'                              & = 0             \\
+                        \text{Let} \quad u' = z \qquad z'' - z & = 0             \\
+                        z                                      & = c_{1}e^{-x}
+                        + c_{2}e^{x}                                             \\
+                        u                                      & = c_{1}e^{-x}
+                        + c_{2}e^{x}                                             \\
+                        y_{2}                                  & = c_{1}\ xe^{x}
+                        + c_{2}\ xe^{-x}
                     \end{align}
 
               \item TBC. Trying Euler Cauchy third order ODEs with a basis given by,
@@ -352,8 +367,8 @@
                         \text{Basis}\ S         & = \{1, x, x^{2}\} \\
                         x^{2}y''' - 2xy'' + 2y' & = 0
                     \end{align}
-                    By inspection, one of the solutions is $ x^{0} $. Reduction of order is also
-                    trivial by assigning $ z = y' $.
+                    By inspection, one of the solutions is $ x^{0} $. Reduction of order
+                    is also trivial by assigning $ z = y' $.
                     \begin{align}
                         x^{2}z'' - 2xz' + 2z & = 0
                     \end{align}

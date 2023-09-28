@@ -1,0 +1,188 @@
+\section{Goodness of Fit, Chi-squared Test}
+
+\begin{enumerate}
+    \item Performing the $ \chi^2 $ goodness of fit test,
+          the sample being normally distributed is \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.05         \\
+                  K                & 10           \\
+                  \wt{\mu}         & 364.7        \\
+                  \wt{\sigma}      & 26.7         \\
+                  \text{Statistic} & 2.81         \\
+                  \text{Limit}     & 14.07        \\
+              \end{tblr}
+          \end{table}
+
+    \item Using the binomial distribution, the sample having a binomial distribution with
+          $ p = 0.25 $ is \textcolor{y_h}{accepted}.
+          \begin{align}
+              \chi^2       & = \frac{(27 - 0.25 \cdot 80)^2}{0.25 \cdot 80}
+              + \frac{(53 - 0.75 \cdot 80)^2}{0.75 \cdot 80} = 3.27         \\
+              \text{limit} & = \chi^2_{1}(0.05) = 3.8414
+          \end{align}
+
+    \item The sample having a binomial distribution with
+          $ p = 0.5 $ is \textcolor{y_p}{rejected}.
+          \begin{align}
+              \chi^2       & = \frac{(40 - 0.5 \cdot 100)^2}{0.5 \cdot 100}
+              + \frac{(60 - 0.5 \cdot 100)^2}{0.5 \cdot 100} = 4            \\
+              \text{limit} & = \chi^2_{1}(0.05) = 3.8414
+          \end{align}
+
+    \item The sample having a uniform distribution with $ K = 2 $ is
+          \textcolor{y_h}{accepted}.
+          \begin{align}
+              \chi^2       & = \frac{(4 - 0.5 \cdot 10)^2}{0.5 \cdot 10}
+              + \frac{(6 - 0.5 \cdot 10)^2}{0.5 \cdot 10} = 0.4          \\
+              \text{limit} & = \chi^2_{1}(0.05) = 3.8414
+          \end{align}
+          This is a much less egregious result under the assumption of fairness, and the
+          hypothesis is much less likely to be rejected.
+
+    \item The sample having a uniform distribution with $ K=6 $ is
+          \textcolor{y_h}{accepted}.
+          \begin{align}
+              \chi^2       & = \frac{(10 - 10)^2}{10} + \frac{(13 - 10)^2}{10}
+              + \frac{(9 - 10)^2}{10}                                          \\
+                           & + \frac{(11 - 10)^2}{10} + \frac{(9 - 10)^2}{10}
+              + \frac{(8 - 10)^2}{10} = 1.6                                    \\
+              \text{limit} & = \chi^2_{5}(0.05) = 11.07
+          \end{align}
+
+    \item The sample having a uniform distribution with $ K=6 $ is
+          \textcolor{y_h}{accepted}.
+          \begin{align}
+              \chi^2       & = \frac{(33 - 30)^2}{30} + \frac{(27 - 30)^2}{30}
+              + \frac{(29 - 30)^2}{30}                                         \\
+                           & + \frac{(35 - 30)^2}{30} + \frac{(25 - 30)^2}{30}
+              + \frac{(31 - 30)^2}{30} = \frac{7}{3}                           \\
+              \text{limit} & = \chi^2_{5}(0.05) = 11.07
+          \end{align}
+
+    \item The sample having a uniform distribution with
+          $ K=6 $ is \textcolor{y_h}{accepted}.
+          \begin{align}
+              \wt{x}       & = \frac{60+49+56+46+68+39}{6} = 53                \\
+              \chi^2       & = \frac{(60 - 53)^2}{53} + \frac{(49 - 53)^2}{53}
+              + \frac{(56 - 53)^2}{53}                                         \\
+                           & + \frac{(46 - 53)^2}{53} + \frac{(68 - 53)^2}{53}
+              + \frac{(39 - 53)^2}{53} = 10.26                                 \\
+              \text{limit} & = \chi^2_{5}(0.05) = 11.07
+          \end{align}
+
+    \item The sample having a binomial distribution with
+          $ p = 0.025 $ is \textcolor{y_p}{rejected}.
+          \begin{align}
+              \chi^2       & = \frac{(17 - 0.025 \cdot 400)^2}{0.025 \cdot 400}
+              + \frac{(383 - 0.975 \cdot 400)^2}{0.975 \cdot 400} = 5.026       \\
+              \text{limit} & = \chi^2_{1}(0.05) = 3.8414
+          \end{align}
+
+    \item The sample having a uniform distribution with $ K = 2 $ is
+          \textcolor{y_h}{accepted}.
+          \begin{align}
+              \chi^2       & = \frac{(42 - 0.5 \cdot 90)^2}{0.5 \cdot 90}
+              + \frac{(48 - 0.5 \cdot 90)^2}{0.5 \cdot 90} = 0.4          \\
+              \text{limit} & = \chi^2_{1}(0.05) = 3.8414
+          \end{align}
+
+    \item Choosing random numbers
+          \begin{enumerate}
+              \item The sample having a uniform distribution with $ K = 20 $ is
+                    \textcolor{y_h}{accepted}.
+                    \begin{align}
+                        \chi^2       & = \sum_{j=1}^{20} \frac{(x_j - 11.55)^2}{11.55}
+                        = 24.32                                                        \\
+                        \text{limit} & = \chi^2_{19}(0.05) = 30.14
+                    \end{align}
+              \item The sample having a uniform distribution with $ K = 2 $ is
+                    \textcolor{y_p}{rejected}.
+                    \begin{align}
+                        \chi^2       & = \frac{(143 - 115.5)^2}{115.5}
+                        + \frac{(88 - 115.5)^2}{115.5} = 13.1          \\
+                        \text{limit} & = \chi^2_{1}(0.05) = 3.84
+                    \end{align}
+              \item The sample having a binomial distribution with $ K = 2 $ and
+                    $ p = 0.3 $ is
+                    \textcolor{y_p}{rejected}.
+                    \begin{align}
+                        \chi^2       & = \frac{(96 - 0.3*231)^2}{0.3*231}
+                        + \frac{(135 - 0.7*231)^2}{0.7*231} = 14.69       \\
+                        \text{limit} & = \chi^2_{1}(0.05) = 3.84
+                    \end{align}
+          \end{enumerate}
+
+    \item Running $ n $ experiments with a die rolled $ 300 $ times and checking
+          for fairness using the $ \chi^2 $ goodness of fit test on the uniform
+          distribution,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  n      & \text{Number rejected at}\ \alpha = 0.05 \\ \hline
+                  10     & 1                                        \\
+                  100    & 7                                        \\
+                  1000   & 45                                       \\
+                  10000  & 465                                      \\
+                  100000 & 4931                                     \\
+              \end{tblr}
+          \end{table}
+          Similar tests TBC.
+
+    \item Performing the $ \chi^2 $ goodness of fit test,
+          the sample being normally distributed is \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.01         \\
+                  K                & 4.00         \\
+                  \wt{\mu}         & 59.87        \\
+                  \wt{\sigma}      & 1.50         \\
+                  \text{Statistic} & 3.31         \\
+                  \text{Limit}     & 6.63         \\
+              \end{tblr}
+          \end{table}
+          This uses $ 5 $ bins by combining the first 2 and last 3 bins together. The
+          resulting limit is $ \chi^2_2(0.01) $
+
+    \item Using the binomial distribution, the sample having a binomial distribution with
+          $ p = 0.25 $ is \textcolor{y_h}{accepted}.
+          \begin{align}
+              \chi^2       & = \frac{(123 - 0.25 \cdot 478)^2}{0.25 \cdot 478}
+              + \frac{(355 - 0.75 \cdot 478)^2}{0.75 \cdot 478} = 0.1367       \\
+              \text{limit} & = \chi^2_{1}(0.05) = 3.8414
+          \end{align}
+
+    \item The values of $ e_j $ are computed first, using $ \wt{x} = 23/50 = 0.46 $
+          \begin{align}
+              \{e_0, e_1,e_2\} & = \{0.6313, 0.2904, 0.06679\}  \\
+              \chi^2           & = \frac{(33 - 31.56)^2}{31.56}
+              + \frac{(11 - 14.52)^2}{14.52}
+              + \frac{(6 - 3.34)^2}{3.34}                       \\
+                               & = 3.037                        \\
+              \text{limit}     & = \chi^2_1(0.95) = 3.84
+          \end{align}
+          The sample having a Poisson distribution with is \textcolor{y_h}{accepted}. \par
+          Since only $ K=3 $ bins are used, the d.o.f. of the $ \chi^2 $ distribution is
+          1.
+
+    \item Performing the $ \chi^2 $ goodness of fit test,
+          the sample being Poisson distributed is \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.05         \\
+                  K                & 13           \\
+                  \text{Statistic} & 13.36        \\
+                  \text{Limit}     & 19.68        \\
+              \end{tblr}
+          \end{table}
+\end{enumerate}

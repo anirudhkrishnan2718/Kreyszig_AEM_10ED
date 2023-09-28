@@ -11,251 +11,334 @@
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 6y' + 8y                          & a & = 6, \quad b = 8 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-6 \pm \sqrt{4}}{2}               &   & = -2, -4         \\
+              0                        & = y'' + 6y' + 8y                          &
+              a                        & = 6, \quad b = 8                            \\
+              \lambda_{1}, \lambda_{2} & = \frac{-6 \pm \sqrt{4}}{2}               &
+                                       & = -2, -4                                    \\
               y_{h}                    & = \color{y_h} c_{1}e^{-2x} + c_{2}e^{-4x}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 6y + 8y & = 42.5\cos(2x)                                                                         \\
-              y_{p}         & = K \cos(2x) + M \sin(2x)                           &              & \text{basic rule} \\
-              42.5          & = -4K + 12M + 8K                                    & \cdots\cdots & [\cos(2x)]        \\
-              0             & = -4M - 12K + 8M                                    & \cdots\cdots & [\sin(2x)]        \\
-              K             & = \frac{17}{16}                                     & M            & = \frac{51}{16}   \\
-              y_{p}         & = \color{y_p} \frac{17}{16}\ [\cos(2x) + 3\sin(2x)]                                    \\
+              y'' + 6y + 8y & = 42.5\cos(2x)                                        \\
+              y_{p}         & = K \cos(2x) + M \sin(2x)                           &
+                            & \text{basic rule}                                     \\
+              42.5          & = -4K + 12M + 8K                                    &
+              \cdots\cdots  & [\cos(2x)]                                            \\
+              0             & = -4M - 12K + 8M                                    &
+              \cdots\cdots  & [\sin(2x)]                                            \\
+              K             & = \frac{17}{16}                                     &
+              M             & = \frac{51}{16}                                       \\
+              y_{p}         & = \color{y_p} \frac{17}{16}\ [\cos(2x) + 3\sin(2x)]   \\
               y             & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 2.5y' + 10y                                                   & a & = 2.5, \quad b = 10   \\
-              \lambda_{1}, \lambda_{2} & = \frac{-2.5 \pm i\ 5.809}{2}                                         &   & = -1.25 \pm i\ 2.9045 \\
-              y_{h}                    & = \color{y_h} e^{-1.25x}[c_{1} \cos(2.9045 x) + c_{2} \sin(2.9045 x)]
+              0                        & = y'' + 2.5y' + 10y            &
+              a                        & = 2.5, \quad b = 10              \\
+              \lambda_{1}, \lambda_{2} & = \frac{-2.5 \pm i\ 5.809}{2}  &
+                                       & = -1.25 \pm i\ 2.9045            \\
+              y_{h}                    & = \color{y_h} e^{-1.25x}[c_{1}
+                      \cos(2.9045 x) + c_{2} \sin(2.9045 x)]
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 2.5y + 10y & = -13.6 \sin(4x)                                                               \\
-              y_{p}            & = K \cos(4x) + M \sin(4x)                   &              & \text{basic rule} \\
-              0                & = -16K + 10M + 10K                          & \cdots\cdots & [\cos(2x)]        \\
-              -13.6            & = -16M - 10K + 10M                          & \cdots\cdots & [\sin(2x)]        \\
-              K                & = 1                                         & M            & = 0.6             \\
-              y_{p}            & = \color{y_p} \cos(4x) + 0.6 \sin(4x)                                          \\
+              y'' + 2.5y + 10y & = -13.6 \sin(4x)                              \\
+              y_{p}            & = K \cos(4x) + M \sin(4x)                   &
+                               & \text{basic rule}                             \\
+              0                & = -16K + 10M + 10K                          &
+              \cdots\cdots     & [\cos(2x)]                                    \\
+              -13.6            & = -16M - 10K + 10M                          &
+              \cdots\cdots     & [\sin(2x)]                                    \\
+              K                & = 1                                         &
+              M                & = 0.6                                         \\
+              y_{p}            & = \color{y_p} \cos(4x) + 0.6 \sin(4x)         \\
               y                & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + y' + 4.25y                                       & a & = 1, \quad b = 4.25 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-1 \pm 4i}{2}                                    &   & = -0.5 \pm 2i       \\
-              y_{h}                    & = \color{y_h} e^{-0.5x}[c_{1} \cos(2x) + c_{2} \sin(2x)]
+              0                        & = y'' + y' + 4.25y                     &
+              a                        & = 1, \quad b = 4.25                      \\
+              \lambda_{1}, \lambda_{2} & = \frac{-1 \pm 4i}{2}                  &
+                                       & = -0.5 \pm 2i                            \\
+              y_{h}                    & = \color{y_h} e^{-0.5x}[c_{1} \cos(2x)
+                      + c_{2} \sin(2x)]
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + y' + 4.25y & = 22.1 \cos(4.5x)                                                                   \\
-              y_{p}            & = K \cos(4.5x) + M \sin(4.5x)                    &              & \text{basic rule} \\
-              22.1             & = -20.25K + 4.5M + 4.25K                         & \cdots\cdots & [\cos(4.5x)]      \\
-              0                & = -20.25M - 4.5K + 4.25M                         & \cdots\cdots & [\sin(4.5x)]      \\
-              K                & = -1.28                                          & M            & = 0.36            \\
-              y_{p}            & = \color{y_p} -1.28 \cos(4.5x) + 0.36 \sin(4.5x)                                    \\
+              y'' + y' + 4.25y & = 22.1 \cos(4.5x)                                  \\
+              y_{p}            & = K \cos(4.5x) + M \sin(4.5x)                    &
+                               & \text{basic rule}                                  \\
+              22.1             & = -20.25K + 4.5M + 4.25K                         &
+              \cdots\cdots     & [\cos(4.5x)]                                       \\
+              0                & = -20.25M - 4.5K + 4.25M                         &
+              \cdots\cdots     & [\sin(4.5x)]                                       \\
+              K                & = -1.28                                          &
+              M                & = 0.36                                             \\
+              y_{p}            & = \color{y_p} -1.28 \cos(4.5x) + 0.36 \sin(4.5x)   \\
               y                & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 4y' + 3y                         & a & = 4, \quad b = 3 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-4 \pm \sqrt{4}}{2}              &   & = -3, -1         \\
+              0                        & = y'' + 4y' + 3y                         &
+              a                        & = 4, \quad b = 3                           \\
+              \lambda_{1}, \lambda_{2} & = \frac{-4 \pm \sqrt{4}}{2}              &
+                                       & = -3, -1                                   \\
               y_{h}                    & = \color{y_h} c_{1}e^{-3x} + c_{2}e^{-x}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 4y' + 3y & = \cos x + \frac{1}{3}\cos(3x)                                                                   \\
-              y_{p}          & = K_{1} \cos(x) + K_{2} \sin(x) + M_{1}\cos(3x) + M_{2}\sin(3x)                                  \\
-              1              & = -K_{1} + 4K_{2} + 3K_{1}                                           & \cdots\cdots & [\cos(x)]  \\
-              0              & = -K_{2} - 4K_{1} + 3K_{2}                                           & \cdots\cdots & [\sin(x)]  \\
-              1/3            & = -9M_{1} + 12M_{2} + 3M_{1}                                         & \cdots\cdots & [\cos(3x)] \\
-              0              & = -9M_{2} - 12M_{1} + 3M_{2}                                         & \cdots\cdots & [\sin(x)]  \\
-              K_{1}          & = 0.1, \qquad K_{2} = 0.2, \qquad M_{1} = -1/90, \qquad M_{2} = 1/45                             \\
-              y_{p}          & = \color{y_p} \frac{1}{10} \cos(x) + \frac{1}{5} \sin(x) +
-              \frac{-1}{90}\cos(3x) + \frac{1}{45}\sin(3x)                                                                      \\
+              y'' + 4y' + 3y & = \cos x + \frac{1}{3}\cos(3x)                     \\
+              y_{p}          & = K_{1} \cos(x) + K_{2} \sin(x) + M_{1}\cos(3x)
+              + M_{2}\sin(3x)                                                     \\
+              1              & = -K_{1} + 4K_{2} + 3K_{1}                       &
+              \cdots\cdots   & [\cos(x)]                                          \\
+              0              & = -K_{2} - 4K_{1} + 3K_{2}                       &
+              \cdots\cdots   & [\sin(x)]                                          \\
+              1/3            & = -9M_{1} + 12M_{2} + 3M_{1}                     &
+              \cdots\cdots   & [\cos(3x)]                                         \\
+              0              & = -9M_{2} - 12M_{1} + 3M_{2}                     &
+              \cdots\cdots   & [\sin(x)]                                          \\
+              K_{1}          & = 0.1, \qquad K_{2} = 0.2, \qquad M_{1} = -1/90
+              , \qquad M_{2} = 1/45                                               \\
+              y_{p}          & = \color{y_p} \frac{1}{10} \cos(x) + \frac{1}{5}
+              \sin(x) +
+              \frac{-1}{90}\cos(3x) + \frac{1}{45}\sin(3x)                        \\
               y              & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = 4y'' + 12y' + 9y                      & a & = 3, \quad b = 9/4 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-3 \pm \sqrt{0}}{2}             &   & = -1.5, -1.5       \\
+              0                        & = 4y'' + 12y' + 9y                      &
+              a                        & = 3, \quad b = 9/4                        \\
+              \lambda_{1}, \lambda_{2} & = \frac{-3 \pm \sqrt{0}}{2}             &
+                                       & = -1.5, -1.5                              \\
               y_{h}                    & = \color{y_h} (c_{1} + c_{2}x)e^{-1.5x}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              4y'' + 12y' + 9y   & = 225 - 75\sin(3x)                                                            \\
-              y_{p}              & = K_{1} \cos(3x) + K_{2} \sin(3x) + M_{0}                                     \\
-              0                  & = -36K_{1} + 36K_{2} + 9K_{1}                     & \cdots\cdots & [\cos(3x)] \\
-              -75                & = -36K_{2} - 36K_{1} + 9K_{2}                     & \cdots\cdots & [\sin(3x)] \\
-              [x^{0}] \qquad 225 & = 9M_{0}                                                                      \\
-              M_{0}              & = 25, \qquad K_{1} = 4/3, \qquad K_{2} = 1                                    \\
-              y_{p}              & = \color{y_p} \frac{4}{3}\cos(3x) + \sin(3x) + 25                             \\
+              4y'' + 12y' + 9y   & = 225 - 75\sin(3x)                                  \\
+              y_{p}              & = K_{1} \cos(3x) + K_{2} \sin(3x) + M_{0}           \\
+              0                  & = -36K_{1} + 36K_{2} + 9K_{1}                     &
+              \cdots\cdots       & [\cos(3x)]                                          \\
+              -75                & = -36K_{2} - 36K_{1} + 9K_{2}                     &
+              \cdots\cdots       & [\sin(3x)]                                          \\
+              [x^{0}] \qquad 225 & = 9M_{0}                                            \\
+              M_{0}              & = 25, \qquad K_{1} = 4/3, \qquad K_{2} = 1          \\
+              y_{p}              & = \color{y_p} \frac{4}{3}\cos(3x) + \sin(3x) + 25   \\
               y                  & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = 2y'' + 4y' + 6.5y                                     & a & = 2, \quad b = 13/4 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-2 \pm i\sqrt{9}}{2}                            &   & = -1 \pm 1.5i       \\
-              y_{h}                    & = \color{y_h} [c_{1}\sin(1.5x) + c_{2}\cos(1.5x)]e^{-x}
+              0                        & = 2y'' + 4y' + 6.5y            &
+              a                        & = 2, \quad b = 13/4              \\
+              \lambda_{1}, \lambda_{2} & = \frac{-2 \pm i\sqrt{9}}{2}   &
+                                       & = -1 \pm 1.5i                    \\
+              y_{h}                    & = \color{y_h} [c_{1}\sin(1.5x)
+                  + c_{2}\cos(1.5x)]e^{-x}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              2y'' + 4y' + 6.5y & = 4\sin(1.5x)                                                                              \\
-              y_{p}             & = K \cos(1.5x) + M \sin(1.5x)                                                              \\
-              0                 & = -4.5K + 6M + 6.5K                                          & \cdots\cdots & [\cos(1.5x)] \\
-              4                 & = -4.5M - 6K + 6.5M                                          & \cdots\cdots & [\sin(1.5x)] \\
-              K                 & = 0.2, \qquad M = -0.6                                                                     \\
-              y_{p}             & = \color{y_p} \frac{1}{5}\cos(1.5x) + \frac{-3}{5}\sin(1.5x)                               \\
+              2y'' + 4y' + 6.5y & = 4\sin(1.5x)                                 \\
+              y_{p}             & = K \cos(1.5x) + M \sin(1.5x)                 \\
+              0                 & = -4.5K + 6M + 6.5K                         &
+              \cdots\cdots      & [\cos(1.5x)]                                  \\
+              4                 & = -4.5M - 6K + 6.5M                         &
+              \cdots\cdots      & [\sin(1.5x)]                                  \\
+              K                 & = 0.2, \qquad M = -0.6                        \\
+              y_{p}             & = \color{y_p} \frac{1}{5}\cos(1.5x)
+              + \frac{-3}{5}\sin(1.5x)                                          \\
               y                 & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 3y' + 3.25y                                  & a & = 3, \quad b = 3.25 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-3 \pm i\sqrt{4}}{2}                         &   & = -1.5 \pm i        \\
-              y_{h}                    & = \color{y_h} [c_{1}\sin(x) + c_{2}\cos(x)]e^{-1.5x}
+              0                        & = y'' + 3y' + 3.25y          &
+              a                        & = 3, \quad b = 3.25            \\
+              \lambda_{1}, \lambda_{2} & = \frac{-3 \pm i\sqrt{4}}{2} &
+                                       & = -1.5 \pm i                   \\
+              y_{h}                    & = \color{y_h} [c_{1}\sin(x)
+                  + c_{2}\cos(x)]e^{-1.5x}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 3y' + 3.25y & = 3\cos x - 1.5\sin x                                                          \\
-              y_{p}             & = K \cos x + M \sin x                                                          \\
-              3                 & = -K + 3M + 3.25K                                   & \cdots\cdots & [\cos(x)] \\
-              -1.5              & = -M - 3K + 3.25M                                   & \cdots\cdots & [\sin(x)] \\
-              K                 & = 0.8, \qquad M = 0.4                                                          \\
-              y_{p}             & = \color{y_p} \frac{4}{5}\cos x + \frac{2}{5}\sin x                            \\
+              y'' + 3y' + 3.25y & = 3\cos x - 1.5\sin x                         \\
+              y_{p}             & = K \cos x + M \sin x                         \\
+              3                 & = -K + 3M + 3.25K                           &
+              \cdots\cdots      & [\cos(x)]                                     \\
+              -1.5              & = -M - 3K + 3.25M                           &
+              \cdots\cdots      & [\sin(x)]                                     \\
+              K                 & = 0.8, \qquad M = 0.4                         \\
+              y_{p}             & = \color{y_p} \frac{4}{5}\cos x
+              + \frac{2}{5}\sin x                                               \\
               y                 & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 16y                                 & a & = 0, \quad b = 16 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{64}}{2}                &   & = 0 \pm 4i        \\
+              0                        & = y'' + 16y                                 &
+              a                        & = 0, \quad b = 16                             \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{64}}{2}                &
+                                       & = 0 \pm 4i                                    \\
               y_{h}                    & = \color{y_h} c_{1}\sin(4x) + c_{2}\cos(4x)
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 16y & = 56\cos(4x)                                                               \\
-              y_{p}     & = Kx \cos(4x) + Mx \sin(4x)                                                \\
-              y_{p}'    & = [K + 4Mx] \cos(4x) + [M - 4Kx] \sin(4x)                                  \\
-              y_{p}''   & = [8M - 16Kx] \cos(4x) + [-8K - 16Mx] \sin(4x)                             \\
-              56        & = 8M                                           & \cdots\cdots & [\cos(4x)] \\
-              0         & = -8K                                          & \cdots\cdots & [\sin(4x)] \\
-              K         & = 0, \qquad M = 7                                                          \\
-              y_{p}     & = \color{y_p} 7x \sin(4x)                                                  \\
-              y         & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
+              y'' + 16y    & = 56\cos(4x)                                     \\
+              y_{p}        & = Kx \cos(4x) + Mx \sin(4x)                      \\
+              y_{p}'       & = [K + 4Mx] \cos(4x) + [M - 4Kx] \sin(4x)        \\
+              y_{p}''      & = [8M - 16Kx] \cos(4x) + [-8K - 16Mx] \sin(4x)   \\
+              56           & = 8M                                           &
+              \cdots\cdots & [\cos(4x)]                                       \\
+              0            & = -8K                                          &
+              \cdots\cdots & [\sin(4x)]                                       \\
+              K            & = 0, \qquad M = 7                                \\
+              y_{p}        & = \color{y_p} 7x \sin(4x)                        \\
+              y            & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 2y                                                & a & = 0, \quad b = 2  \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{8}}{2}                               &   & = 0 \pm \sqrt{2}i \\
-              y_{h}                    & = \color{y_h} c_{1}\sin(\sqrt{2}x) + c_{2}\cos(\sqrt{2}x)
+              0                        & = y'' + 2y                         &
+              a                        & = 0, \quad b = 2                     \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{8}}{2}        &
+                                       & = 0 \pm \sqrt{2}i                    \\
+              y_{h}                    & = \color{y_h} c_{1}\sin(\sqrt{2}x)
+              + c_{2}\cos(\sqrt{2}x)
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 2y & = \cos(\sqrt{2}x) + \sin(\sqrt{2}x)                                                                           \\
-              y_{p}    & = Kx \cos(\sqrt{2}x) + Mx \sin(\sqrt{2}x)                                                                     \\
-              y_{p}'   & = [K + \sqrt{2}Mx] \cos(\sqrt{2}x) + [M - \sqrt{2}Kx] \sin(\sqrt{2}x)                                         \\
-              y_{p}''  & = [2\sqrt{2}M - 2Kx] \cos(\sqrt{2}x) + [-2\sqrt{2}K - 2Mx] \sin(\sqrt{2}x)                                    \\
-              1        & = 2\sqrt{2}M                                                               & \cdots\cdots & [\cos(\sqrt{2}x)] \\
-              1        & = -2\sqrt{2}K                                                              & \cdots\cdots & [\cos(\sqrt{2}x)] \\
-              K        & = \frac{-1}{2\sqrt{2}}, \qquad M = \frac{1}{2\sqrt{2}}                                                        \\
-              y_{p}    & = \color{y_p} \frac{-x\cos(\sqrt{2}x) + x\sin(\sqrt{2}x)}{2\sqrt{2}}                                          \\
-              y        & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
+              y'' + 2y     & = \cos(\sqrt{2}x) + \sin(\sqrt{2}x)           \\
+              y_{p}        & = Kx \cos(\sqrt{2}x) + Mx \sin(\sqrt{2}x)     \\
+              y_{p}'       & = [K + \sqrt{2}Mx] \cos(\sqrt{2}x)
+              + [M - \sqrt{2}Kx] \sin(\sqrt{2}x)                           \\
+              y_{p}''      & = [2\sqrt{2}M - 2Kx] \cos(\sqrt{2}x)
+              + [-2\sqrt{2}K - 2Mx] \sin(\sqrt{2}x)                        \\
+              1            & = 2\sqrt{2}M                                &
+              \cdots\cdots & [\cos(\sqrt{2}x)]                             \\
+              1            & = -2\sqrt{2}K                               &
+              \cdots\cdots & [\cos(\sqrt{2}x)]                             \\
+              K            & = \frac{-1}{2\sqrt{2}}, \qquad M
+              = \frac{1}{2\sqrt{2}}                                        \\
+              y_{p}        & = \color{y_p} \frac{-x\cos(\sqrt{2}x)
+              + x\sin(\sqrt{2}x)}{2\sqrt{2}}                               \\
+              y            & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 2y' + 5y                                    & a & = 2, \quad b = 5 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-2 \pm i\sqrt{16}}{2}                       &   & = -1 \pm 2i      \\
-              y_{h}                    & = \color{y_h} [c_{1}\sin(2x) + c_{2}\cos(2x)]e^{-x}
+              0                        & = y'' + 2y' + 5y               &
+              a                        & = 2, \quad b = 5                 \\
+              \lambda_{1}, \lambda_{2} & = \frac{-2 \pm i\sqrt{16}}{2}  &
+                                       & = -1 \pm 2i                      \\
+              y_{h}                    & = \color{y_h} [c_{1}\sin(2x) +
+                  c_{2}\cos(2x)]e^{-x}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 2y' + 5y & = 4\cos x + 8\sin x                                                   \\
-              y_{p}          & = K \cos x + M \sin x                                                 \\
-              4              & = -K + 2M + 5K                              & \cdots\cdots & [\cos x] \\
-              8              & = -M - 2K + 5M                              & \cdots\cdots & [\sin x] \\
-              K              & = 0, \qquad M = 2                                                     \\
-              y_{p}          & = \color{y_p} 2\sin x                                                 \\
+              y'' + 2y' + 5y & = 4\cos x + 8\sin x                           \\
+              y_{p}          & = K \cos x + M \sin x                         \\
+              4              & = -K + 2M + 5K                              &
+              \cdots\cdots   & [\cos x]                                      \\
+              8              & = -M - 2K + 5M                              &
+              \cdots\cdots   & [\sin x]                                      \\
+              K              & = 0, \qquad M = 2                             \\
+              y_{p}          & = \color{y_p} 2\sin x                         \\
               y              & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + y                                 & a & = 0, \quad b = 1 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}               &   & = 0 \pm i        \\
+              0                        & = y'' + y                                 &
+              a                        & = 0, \quad b = 1                            \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}               &
+                                       & = 0 \pm i                                   \\
               y_{h}                    & = \color{y_h} c_{1}\sin(x) + c_{2}\cos(x)
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + y & = \cos(\omega x)                                                                                                   \\
-              y_{p}   & = K \cos(\omega x) + M \sin(\omega x)                                                                              \\
-              1       & = -\omega^{2}K + K                                                               & \cdots\cdots & [\cos(\omega x)] \\
-              0       & = -\omega^{2}M + M                                                               & \cdots\cdots & [\sin(\omega x)] \\
-              K       & = \frac{1}{1 - \omega^{2}}, \qquad M = 0 \quad (\text{since}\ \omega^{2} \neq 1)                                   \\
-              y_{p}   & = \color{y_p} \frac{1}{1 - \omega^{2}}\ \cos(\omega x)                                                             \\
-              y       & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
+              y'' + y      & = \cos(\omega x)                                         \\
+              y_{p}        & = K \cos(\omega x) + M \sin(\omega x)                    \\
+              1            & = -\omega^{2}K + K                                     &
+              \cdots\cdots & [\cos(\omega x)]                                         \\
+              0            & = -\omega^{2}M + M                                     &
+              \cdots\cdots & [\sin(\omega x)]                                         \\
+              K            & = \frac{1}{1 - \omega^{2}},
+              \qquad M = 0 \quad (\text{since}\ \omega^{2} \neq 1)                    \\
+              y_{p}        & = \color{y_p} \frac{1}{1 - \omega^{2}}\ \cos(\omega x)   \\
+              y            & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + y                                 & a & = 0, \quad b = 1 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}               &   & = 0 \pm i        \\
+              0                        & = y'' + y                                 &
+              a                        & = 0, \quad b = 1                            \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}               &
+                                       & = 0 \pm i                                   \\
               y_{h}                    & = \color{y_h} c_{1}\sin(x) + c_{2}\cos(x)
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + y & = 5e^{-x}\cos x                                                             \\
-              y_{p}   & = e^{-x}[K \cos x + M \sin x]                                               \\
-              y_{p}'  & = e^{-x}[(-K + M) \cos x + (-M - K) \sin x]                                 \\
-              y_{p}'' & = e^{-x}[(-2M) \cos x + (2K) \sin x]                                        \\
-              5       & = -2M + K                                   & \cdots\cdots & [e^{-x}\cos x] \\
-              0       & = 2K + M                                    & \cdots\cdots & [e^{-x}\sin x] \\
-              K       & = 1, \qquad M = -2                                                          \\
-              y_{p}   & = \color{y_p} e^{-x}[\cos x - 2\sin x]                                      \\
-              y       & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
+              y'' + y      & = 5e^{-x}\cos x                               \\
+              y_{p}        & = e^{-x}[K \cos x + M \sin x]                 \\
+              y_{p}'       & = e^{-x}[(-K + M) \cos x + (-M - K) \sin x]   \\
+              y_{p}''      & = e^{-x}[(-2M) \cos x + (2K) \sin x]          \\
+              5            & = -2M + K                                   &
+              \cdots\cdots & [e^{-x}\cos x]                                \\
+              0            & = 2K + M                                    &
+              \cdots\cdots & [e^{-x}\sin x]                                \\
+              K            & = 1, \qquad M = -2                            \\
+              y_{p}        & = \color{y_p} e^{-x}[\cos x - 2\sin x]        \\
+              y            & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 4y' + 8y                                     & a & = 4, \quad b = 8 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-4 \pm i\sqrt{16}}{2}                        &   & = -2 \pm 2i      \\
-              y_{h}                    & = \color{y_h} [c_{1}\sin(2x) + c_{2}\cos(2x)]e^{-2x}
+              0                        & = y'' + 4y' + 8y               &
+              a                        & = 4, \quad b = 8                 \\
+              \lambda_{1}, \lambda_{2} & = \frac{-4 \pm i\sqrt{16}}{2}  &
+                                       & = -2 \pm 2i                      \\
+              y_{h}                    & = \color{y_h} [c_{1}\sin(2x) +
+                  c_{2}\cos(2x)]e^{-2x}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 4y' + 8y & = 2\cos(2x) + \sin(2x)                                                  \\
-              y_{p}          & = K \cos(2x) + M \sin(2x)                                               \\
-              2              & = -4K + 8M + 8K                             & \cdots\cdots & [\cos(2x)] \\
-              1              & = -4M - 8K + 8M                             & \cdots\cdots & [\sin(2x)] \\
-              K              & = 0, \qquad M = 1/4                                                     \\
-              y_{p}          & = \color{y_p} 0.25 \sin(2x)                                             \\
+              y'' + 4y' + 8y & = 2\cos(2x) + \sin(2x)                        \\
+              y_{p}          & = K \cos(2x) + M \sin(2x)                     \\
+              2              & = -4K + 8M + 8K                             &
+              \cdots\cdots   & [\cos(2x)]                                    \\
+              1              & = -4M - 8K + 8M                             &
+              \cdots\cdots   & [\sin(2x)]                                    \\
+              K              & = 0, \qquad M = 1/4                           \\
+              y_{p}          & = \color{y_p} 0.25 \sin(2x)                   \\
               y              & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 25y                                 & a & = 0, \quad b = 25 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{100}}{2}               &   & = 0 \pm 5i        \\
-              y_{h}                    & = \color{y_h} c_{1}\cos(5x) + c_{2}\sin(5x)
+              0                        & = y'' + 25y                   &
+              a                        & = 0, \quad b = 25               \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{100}}{2} &
+                                       & = 0 \pm 5i                      \\
+              y_{h}                    & = \color{y_h} c_{1}\cos(5x)
+              + c_{2}\sin(5x)
           \end{align}
           Solving the nh-ODE, with IC $ y(0) = 1, y'(0) = 1 $,
           \begin{align}
-              y'' + 25y & = 24\sin x                                                                    \\
-              y_{p}     & = K \cos(x) + M \sin(x)                                                       \\
-              0         & = -K + 25K                                      & \cdots\cdots & [\cos(x)]    \\
-              24        & = -M + 25M                                      & \cdots\cdots & [\sin(x)]    \\
-              K         & = 0, \qquad M = 1                                                             \\
-              y_{p}     & = \color{y_p} \sin(x)                                                         \\
-              y(0) = 1  & = c_{1}                                         & y'(0) = 1    & = 5c_{2} + 1 \\
-              y         & = {\color{y_p} \sin x} + {\color{y_h} \cos(5x)}
+              y'' + 25y    & = 24\sin x                                        \\
+              y_{p}        & = K \cos(x) + M \sin(x)                           \\
+              0            & = -K + 25K                                      &
+              \cdots\cdots & [\cos(x)]                                         \\
+              24           & = -M + 25M                                      &
+              \cdots\cdots & [\sin(x)]                                         \\
+              K            & = 0, \qquad M = 1                                 \\
+              y_{p}        & = \color{y_p} \sin(x)                             \\
+              y(0) = 1     & = c_{1}                                         &
+              y'(0) = 1    & = 5c_{2} + 1                                      \\
+              y            & = {\color{y_p} \sin x} + {\color{y_h} \cos(5x)}
           \end{align}
 
           \begin{figure}[H]
@@ -271,13 +354,11 @@
                           domain = 0:15,
                           legend pos = north west,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_h, thin]{y_h};
+                      \addplot[GraphSmooth, y_h]{y_h};
                       \addlegendentry{$y - y_{p}$};
-                      \addplot[GraphSmooth, red, color = y_p]{y_p + y_h};
+                      \addplot[GraphSmooth, y_p]{y_p + y_h};
                       \addlegendentry{$y$};
                   \end{axis}
               \end{tikzpicture}
@@ -285,21 +366,34 @@
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 4y                                  & a & = 0, \quad b = 4 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{16}}{2}                &   & = 0 \pm 2i       \\
+              0                        & = y'' + 4y                                  &
+              a                        & = 0, \quad b = 4                              \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{16}}{2}                &
+                                       & = 0 \pm 2i                                    \\
               y_{h}                    & = \color{y_h} c_{1}\cos(2x) + c_{2}\sin(2x)
           \end{align}
           Solving the nh-ODE, with IC $ y(0) = 0, y'(0) = \frac{3}{35} $,
           \begin{align}
-              y'' + 4y & = \sin(x) + \frac{1}{3}\sin(3x) + \frac{1}{5}\sin(5x)                                                                                               \\
-              y_{p}    & = M_{1} \sin x + M_{2}\sin(3x) + M_{3}\sin(5x)                                                                                                      \\
-              1        & = -M_{1} + 4M_{1}                                                                                  & \cdots\cdots         & [\sin(x)]               \\
-              1/3      & = -9M_{2} + 4M_{2}                                                                                 & \cdots\cdots         & [\sin(3x)]              \\
-              1/5      & = -25M_{3}  + 4M_{3}                                                                               & \cdots\cdots         & [\sin(5x)]              \\
-              M_{1}    & = 1/3 \qquad M_{2} = -1/15 \qquad M_{3} = -1/105                                                                                                    \\
-              y_{p}    & = \color{y_p} \frac{1}{3}\sin(x) - \frac{1}{15}\sin(3x) - \frac{1}{105}\sin(5x)                                                                     \\
-              y(0) = 0 & = c_{1}                                                                                            & y'(0) = \frac{3}{35} & = 2c_{2} + \frac{3}{35} \\
-              y        & = {\color{y_p} \frac{1}{3}\sin(x) - \frac{1}{15}\sin(3x) - \frac{1}{105}\sin(5x)} + {\color{y_h}0}
+              y'' + 4y             & = \sin(x) + \frac{1}{3}\sin(3x)
+              + \frac{1}{5}\sin(5x)                                            \\
+              y_{p}                & = M_{1} \sin x + M_{2}\sin(3x)
+              + M_{3}\sin(5x)                                                  \\
+              1                    & = -M_{1} + 4M_{1}                       &
+              \cdots\cdots         & [\sin(x)]                                 \\
+              1/3                  & = -9M_{2} + 4M_{2}                      &
+              \cdots\cdots         & [\sin(3x)]                                \\
+              1/5                  & = -25M_{3}  + 4M_{3}                    &
+              \cdots\cdots         & [\sin(5x)]                                \\
+              M_{1}                & = 1/3 \qquad M_{2} = -1/15 \qquad M_{3}
+              = -1/105                                                         \\
+              y_{p}                & = \color{y_p} \frac{1}{3}\sin(x)
+              - \frac{1}{15}\sin(3x)
+              - \frac{1}{105}\sin(5x)                                          \\
+              y(0) = 0             & = c_{1}                                 &
+              y'(0) = \frac{3}{35} & = 2c_{2} + \frac{3}{35}                   \\
+              y                    & = {\color{y_p} \frac{1}{3}\sin(x)
+              - \frac{1}{15}\sin(3x)
+              - \frac{1}{105}\sin(5x)} + {\color{y_h}0}
           \end{align}
 
           \begin{figure}[H]
@@ -315,13 +409,11 @@
                           domain = 0:15,
                           legend pos = north west,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_h, thin]{y_h};
+                      \addplot[GraphSmooth, y_h, thin]{y_h};
                       \addlegendentry{$y - y_{p}$};
-                      \addplot[GraphSmooth, red, color = y_p]{y_p + y_h};
+                      \addplot[GraphSmooth, y_p]{y_p + y_h};
                       \addlegendentry{$y$};
                   \end{axis}
               \end{tikzpicture}
@@ -329,20 +421,28 @@
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 8y' + 17y                                  & a & = 8, \quad b = 17 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-8 \pm i\sqrt{4}}{2}                       &   & = -4 \pm i        \\
-              y_{h}                    & = \color{y_h} [c_{1}\cos(x) + c_{2}\sin(x)]e^{-4x}
+              0                        & = y'' + 8y' + 17y            &
+              a                        & = 8, \quad b = 17              \\
+              \lambda_{1}, \lambda_{2} & = \frac{-8 \pm i\sqrt{4}}{2} &
+                                       & = -4 \pm i                     \\
+              y_{h}                    & = \color{y_h} [c_{1}\cos(x)
+                  + c_{2}\sin(x)]e^{-4x}
           \end{align}
           Solving the nh-ODE, with IC $ y(0) = -5.4, y'(0) = 9.4 $,
           \begin{align}
-              y'' + 8y' + 17y & = 474.5\sin(0.5x)                                                                                                          \\
-              y_{p}           & = K\cos(0.5x) + M\sin(0.5x)                                                                                                \\
-              0               & = -0.25K + 4M + 17K                                                                   & \cdots\cdots & [\cos(0.5x)]        \\
-              474.5           & = -0.25M - 4K + 17M                                                                   & \cdots\cdots & [\sin(0.5x)]        \\
-              K               & = \frac{-32}{5} \qquad M = \frac{134}{5}                                                                                   \\
-              y_{p}           & = \color{y_p} \frac{-32\cos(0.5x) + 134\sin(0.5x)}{5}                                                                      \\
-              y(0) = -5.4     & = c_{1} - 6.4                                                                         & y'(0) = -4   & = (-4c_{1} + c_{2}) \\
-              y               & = {\color{y_p} \frac{-32\cos(0.5x) + 134\sin(0.5x)}{5}} + {\color{y_h} e^{-4x}\cos x}
+              y'' + 8y' + 17y & = 474.5\sin(0.5x)                          \\
+              y_{p}           & = K\cos(0.5x) + M\sin(0.5x)                \\
+              0               & = -0.25K + 4M + 17K                      &
+              \cdots\cdots    & [\cos(0.5x)]                               \\
+              474.5           & = -0.25M - 4K + 17M                      &
+              \cdots\cdots    & [\sin(0.5x)]                               \\
+              K               & = \frac{-32}{5} \qquad M = \frac{134}{5}   \\
+              y_{p}           & = \color{y_p} \frac{-32\cos(0.5x)
+              + 134\sin(0.5x)}{5}                                          \\
+              y(0) = -5.4     & = c_{1} - 6.4                            &
+              y'(0) = -4      & = (-4c_{1} + c_{2})                        \\
+              y               & = {\color{y_p} \frac{-32\cos(0.5x)
+                  + 134\sin(0.5x)}{5}} + {\color{y_h} e^{-4x}\cos x}
           \end{align}
 
           \begin{figure}[H]
@@ -357,13 +457,11 @@
                           domain = 0:30,
                           legend pos = south east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_h, thin]{y_h};
+                      \addplot[GraphSmooth, y_h]{y_h};
                       \addlegendentry{$y - y_{p}$};
-                      \addplot[GraphSmooth, red, color = y_p]{y_p + y_h};
+                      \addplot[GraphSmooth, y_p]{y_p + y_h};
                       \addlegendentry{$y$};
                   \end{axis}
               \end{tikzpicture}
@@ -371,27 +469,34 @@
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 2y' + 2y                                  & a & = 2, \quad b = 2 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-2 \pm i\sqrt{4}}{2}                      &   & = -1 \pm i       \\
-              y_{h}                    & = \color{y_h} [c_{1}\cos(x) + c_{2}\sin(x)]e^{-x}
+              0                        & = y'' + 2y' + 2y              &
+              a                        & = 2, \quad b = 2                \\
+              \lambda_{1}, \lambda_{2} & = \frac{-2 \pm i\sqrt{4}}{2}  &
+                                       & = -1 \pm i                      \\
+              y_{h}                    & = \color{y_h} [c_{1}\cos(x) +
+                  c_{2}\sin(x)]e^{-x}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 2y' + 2y & = e^{-0.5x}\sin(0.5x)                                                                                              \\
-              y_{p}          & = e^{-0.5x}[K\cos(0.5x) + M\sin(0.5x)]                                                                             \\
-              y_{p}'         & = e^{-0.5x}[(-0.5K + 0.5M)\cos(0.5x)                                                                               \\
-                             & + (-0.5M - 0.5K)\sin(0.5x)]                                                                                        \\
-              y_{p}''        & = e^{-0.5x}[(-0.5M)\cos(0.5x) + (0.5K)\sin(0.5x)]                                                                  \\
-              0              & = -0.5M -K + M + 2K                                                         & \cdots\cdots & [e^{-0.5x}\cos(0.5x)] \\
-              1              & = 0.5K - M - K + 2M                                                         & \cdots\cdots & [e^{-0.5x}\sin(0.5x)] \\
-              K              & = \frac{-2}{5} \qquad M = \frac{4}{5}                                                                              \\
-              y_{p}          & = \color{y_p} \left[ \frac{-2\cos(0.5x) + 4\sin(0.5x)}{5} \right] e^{-0.5x}
+              y'' + 2y' + 2y & = e^{-0.5x}\sin(0.5x)                               \\
+              y_{p}          & = e^{-0.5x}[K\cos(0.5x) + M\sin(0.5x)]              \\
+              y_{p}'         & = e^{-0.5x}[(-0.5K + 0.5M)\cos(0.5x)                \\
+                             & + (-0.5M - 0.5K)\sin(0.5x)]                         \\
+              y_{p}''        & = e^{-0.5x}[(-0.5M)\cos(0.5x) + (0.5K)\sin(0.5x)]   \\
+              0              & = -0.5M -K + M + 2K                               &
+              \cdots\cdots   & [e^{-0.5x}\cos(0.5x)]                               \\
+              1              & = 0.5K - M - K + 2M                               &
+              \cdots\cdots   & [e^{-0.5x}\sin(0.5x)]                               \\
+              K              & = \frac{-2}{5} \qquad M = \frac{4}{5}               \\
+              y_{p}          & = \color{y_p} \left[ \frac{-2\cos(0.5x)
+                      + 4\sin(0.5x)}{5} \right] e^{-0.5x}
           \end{align}
           Solving the IC, $ y(0) = 0, y'(0) = 1 $,
           \begin{align}
-              y(0) = 0  & = c_{1} - 0.4                                                                                           \\
-              y'(0) = 1 & = (-c_{1} + c_{2}) + 0.2 + 0.4                                                                          \\
-              y         & = {\color{y_p} e^{-0.5x}[-0.4\cos(0.5x) + 0.8\sin(0.5x)]} + {\color{y_h} e^{-x}[0.4\cos x + 0.8\sin x]}
+              y(0) = 0  & = c_{1} - 0.4                                             \\
+              y'(0) = 1 & = (-c_{1} + c_{2}) + 0.2 + 0.4                            \\
+              y         & = {\color{y_p} e^{-0.5x}[-0.4\cos(0.5x) + 0.8\sin(0.5x)]}
+              + {\color{y_h} e^{-x}[0.4\cos x + 0.8\sin x]}
           \end{align}
 
           \begin{figure}[H]
@@ -406,13 +511,11 @@
                           domain = 0:15,
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_h, thin]{y_h};
+                      \addplot[GraphSmooth,y_h]{y_h};
                       \addlegendentry{$y - y_{p}$};
-                      \addplot[GraphSmooth, red, color = y_p]{y_p + y_h};
+                      \addplot[GraphSmooth,y_p]{y_p + y_h};
                       \addlegendentry{$y$};
                   \end{axis}
               \end{tikzpicture}
@@ -420,25 +523,35 @@
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 5y                                                & a & = 0, \quad b = 5  \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{20}}{2}                              &   & = 0 \pm i\sqrt{5} \\
-              y_{h}                    & = \color{y_h} c_{1}\cos(\sqrt{5}x) + c_{2}\sin(\sqrt{5}x)
+              0                        & = y'' + 5y                         &
+              a                        & = 0, \quad b = 5                     \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{20}}{2}       &
+                                       & = 0 \pm i\sqrt{5}                    \\
+              y_{h}                    & = \color{y_h} c_{1}\cos(\sqrt{5}x)
+              + c_{2}\sin(\sqrt{5}x)
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + 5y & = \cos(\pi x) - \sin(\pi x)                                                                 \\
-              y_{p}    & = K\cos(\pi x) + M\sin(\pi x)                                                               \\
-              1        & = -\pi^{2}K + 5K                                             & \cdots\cdots & [\cos(\pi x)] \\
-              -1       & = -\pi^{2}M + 5M                                             & \cdots\cdots & [\sin(\pi x)] \\
-              K        & = \frac{-1}{\pi^{2} - 5} \qquad M = \frac{1}{\pi^{2} - 5}                                   \\
-              y_{p}    & = \color{y_p} \frac{-\cos(\pi x) + \sin(\pi x)}{\pi^{2} - 5}
+              y'' + 5y     & = \cos(\pi x) - \sin(\pi x)         \\
+              y_{p}        & = K\cos(\pi x) + M\sin(\pi x)       \\
+              1            & = -\pi^{2}K + 5K                  &
+              \cdots\cdots & [\cos(\pi x)]                       \\
+              -1           & = -\pi^{2}M + 5M                  &
+              \cdots\cdots & [\sin(\pi x)]                       \\
+              K            & = \frac{-1}{\pi^{2} - 5} \qquad M
+              = \frac{1}{\pi^{2} - 5}                            \\
+              y_{p}        & = \color{y_p} \frac{-\cos(\pi x)
+                  + \sin(\pi x)}{\pi^{2} - 5}
           \end{align}
           Solving the IC, $ y(0) = 0, y'(0) = 0 $,
           \begin{align}
-              y(0) = 0  & = c_{1} - \frac{1}{\pi^{2} - 5}                                 \\
-              y'(0) = 0 & = \sqrt{5}c_{2} + \frac{\pi}{\pi^{2} - 5}                       \\
-              y         & = {\color{y_p} \frac{-\cos(\pi x) + \sin(\pi x)}{\pi^{2} - 5} }
-              + {\color{y_h} \frac{\cos(\sqrt{5}x) - (\pi/\sqrt{5})\sin(\sqrt{5}x) }{\pi^{2} - 5}}
+              y(0) = 0  & = c_{1} - \frac{1}{\pi^{2} - 5}   \\
+              y'(0) = 0 & = \sqrt{5}c_{2}
+              + \frac{\pi}{\pi^{2} - 5}                     \\
+              y         & = {\color{y_p} \frac{-\cos(\pi x)
+                  + \sin(\pi x)}{\pi^{2} - 5} }
+              + {\color{y_h} \frac{\cos(\sqrt{5}x)
+                  - (\pi/\sqrt{5})\sin(\sqrt{5}x) }{\pi^{2} - 5}}
           \end{align}
 
           \begin{figure}[H]
@@ -454,13 +567,11 @@
                           domain = 0:20,
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_h, thin]{y_h};
+                      \addplot[GraphSmooth, y_h]{y_h};
                       \addlegendentry{$y - y_{p}$};
-                      \addplot[GraphSmooth, red, color = y_p]{y_p + y_h};
+                      \addplot[GraphSmooth, y_p]{y_p + y_h};
                       \addlegendentry{$y$};
                   \end{axis}
               \end{tikzpicture}
@@ -470,25 +581,31 @@
 
     \item Beats formula,
           \begin{align}
-              y & = Y_{0}[\cos(\omega t) - \cos(\omega_{0} t)]                                                        \\
-                & = Y_{0}\left[\cos\left( \frac{\omega t + \omega_{0}t}{2} + \frac{\omega t - \omega_{0}t}{2} \right)
-              - \cos\left( \frac{\omega t + \omega_{0}t}{2} - \frac{\omega t - \omega_{0}t}{2} \right)\right]         \\
-                & = Y_{0} [\cos(a+b) - \cos(a-b)]                                                                     \\
-                & = Y_{0}[-2\sin a \sin b] = -2Y_{0} \left[ \sin\left( \frac{\omega + \omega_{0}}{2}\ t \right)
-              \sin\left( \frac{\omega - \omega_{0}}{2}\ t \right)\right]                                              \\
+              y & = Y_{0}[\cos(\omega t) - \cos(\omega_{0} t)]                       \\
+                & = Y_{0}\left[\cos\left( \frac{\omega t + \omega_{0}t}{2}
+                  + \frac{\omega t - \omega_{0}t}{2} \right)
+                  - \cos\left( \frac{\omega t + \omega_{0}t}{2} - \frac{\omega t
+              - \omega_{0}t}{2} \right)\right]                                       \\
+                & = Y_{0} [\cos(a+b) - \cos(a-b)]                                    \\
+                & = Y_{0}[-2\sin a \sin b] = -2Y_{0} \left[ \sin\left( \frac{\omega
+                      + \omega_{0}}{2}\ t \right)
+              \sin\left( \frac{\omega - \omega_{0}}{2}\ t \right)\right]             \\
                 & = 2Y_{0}\left[ \sin\left( \frac{\omega_{0} + \omega}{2}\ t \right)
                   \sin\left( \frac{\omega_{0} - \omega}{2}\ t \right)\right]
           \end{align}
           In a damped forced harmonic oscillator, $ a > 0 $, and the solutions have an
-          exponential decay multiplier $ \exp(-ax/2) $. Thus, beats will quickly die out along
-          with the rest of the transient response $ y_{h} $ leaving only the steady state
-          response $ y_{p} $ remaining. \par
-          No damping, implies $ a = 0 $ and the beats persist to the point of being noticeable.
+          exponential decay multiplier $ \exp(-ax/2) $. Thus, beats will quickly die out
+          along with the rest of the transient response $ y_{h} $ leaving only the
+          steady state response $ y_{p} $ remaining. \par
+          No damping, implies $ a = 0 $ and the beats persist to the point of being
+          noticeable.
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + 25y                                 & a & = 0, \quad b = 25 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{100}}{2}               &   & = 0 \pm 5i        \\
+              0                        & = y'' + 25y                                 &
+              a                        & = 0, \quad b = 25                             \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{100}}{2}               &
+                                       & = 0 \pm 5i                                    \\
               y_{h}                    & = \color{y_h} c_{1}\cos(5x) + c_{2}\sin(5x)
           \end{align}
           Solving the nh-ODE,
@@ -519,8 +636,6 @@
                           domain = 0:70,
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
                       \addplot[GraphSmooth, color = y_h,very thin]{y_h};
@@ -552,8 +667,6 @@
                           domain = 0:70,
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
                       \addplot[GraphSmooth, color = y_h,very thin]{y_h};
@@ -566,42 +679,56 @@
           \end{figure}
           \par
           Changing the frequency of the input to move it closer to the natural frequency,
-          makes the envelope frequency $ (\omega_{0} - \omega)/2 $ smaller, and the envelope
-          time period larger.
+          makes the envelope frequency $ (\omega_{0} - \omega)/2 $ smaller, and the
+          envelope time period larger.
 
     \item
           \begin{enumerate}
               \item Deriving the maximum amplitude as a function of input frequency,
                     \begin{align}
-                        C^{*}                    & = \frac{F_{0}}{\sqrt{[m(\omega_{0}^{2}
+                        C^{*}                    & = \frac{F_{0}}
+                        {\sqrt{[m(\omega_{0}^{2}
                                 - \omega^{2})]^{2} + [\omega c]^{2}}}
-                        = \frac{F_{0}}{\sqrt{R(\omega)}}                                                                \\
-                        \diff {C^{*}}{\omega}    & = \frac{-F_{0}R^{-3/2}}{2}\ \diff {R}{\omega}                        \\
-                                                 & = \frac{-F_{0}R^{-3/2}}{2} [2m^{2}(\omega_{0}^{2}
-                        - \omega^{2})(-2\omega) + 2\omega c^{2}]                                                        \\
-                        \diff{C^{*}}{\omega} = 0 & \implies c^{2} = 2m^{2}(\omega_{0}^{2} - \omega^{2})                 \\
-                        \omega^{2}               & = \omega_{0}^{2} - \frac{c^{2}}{2m^{2}} = \frac{2mk - c^{2}}{2m^{2}} \\
+                        = \frac{F_{0}}{\sqrt{R(\omega)}}                      \\
+                        \diff {C^{*}}{\omega}    & = \frac{-F_{0}R^{-3/2}}{2}
+                        \ \diff {R}{\omega}                                   \\
+                                                 & = \frac{-F_{0}R^{-3/2}}{2}
+                        [2m^{2}(\omega_{0}^{2}
+                        - \omega^{2})(-2\omega) + 2\omega c^{2}]              \\
+                        \diff{C^{*}}{\omega} = 0 & \implies c^{2} = 2m^{2}
+                        (\omega_{0}^{2} - \omega^{2})                         \\
+                        \omega^{2}               & = \omega_{0}^{2}
+                        - \frac{c^{2}}{2m^{2}} = \frac{2mk - c^{2}}{2m^{2}}   \\
                     \end{align}
-                    For $ c^{2} > 2mk $, no real solution exists for $ \difs {C^{*}}{\omega} = 0$, and there is
-                    no extremum of $ C(\omega) $, and thus no peak in the function. \par
+                    For $ c^{2} > 2mk $, no real solution exists for $ \difs {C^{*}}
+                        {\omega} = 0$, and there is no extremum of $ C(\omega) $, and thus
+                    no peak in the function. \par
                     For $ c^{2} < 2mk $,
                     \begin{align}
-                        \omega_{\text{max}}^{2}    & = \omega_{0}^{2} - \frac{c^{2}}{2m^{2}}                                \\
-                        C^{*}(\omega_{\text{max}}) & = F_{0}\left[ c^{2}\omega_{0}^{2} - \frac{c^{4}}{4m^{2}}\right]^{-1/2} \\
-                                                   & = \frac{2mF_{0}}{c}\ [4m^{2}\omega_{0}^{2} - c^{2}]^{-1/2}
+                        \omega_{\text{max}}^{2}    & = \omega_{0}^{2} -
+                        \frac{c^{2}}{2m^{2}}                                \\
+                        C^{*}(\omega_{\text{max}}) & = F_{0}\left[ c^{2}
+                        \omega_{0}^{2} - \frac{c^{4}}{4m^{2}}\right]^{-1/2} \\
+                                                   & = \frac{2mF_{0}}{c}
+                        \ [4m^{2}\omega_{0}^{2} - c^{2}]^{-1/2}
                     \end{align}
 
               \item Looking at the variation of $ C^{*} $ with $ c $,
                     \begin{align}
-                        S(c)             & = Pc^{2} + Q, \qquad P = \omega^{2}, \qquad Q = m^{2}(\omega_{0}^{2} - \omega^{2})^{2} \\
-                        \diff {C^{*}}{c} & = \frac{-F_{0}}{2} [S(c)]^{-3/2}\ \diff Sc                                             \\
-                                         & = \frac{-F_{0}}{2} [Pc^{2} + Q]^{-3/2}\ 2Pc                                            \\
+                        S(c)             & = Pc^{2} + Q, \qquad P = \omega^{2},
+                        \qquad Q = m^{2}(\omega_{0}^{2} - \omega^{2})^{2}         \\
+                        \diff {C^{*}}{c} & = \frac{-F_{0}}{2} [S(c)]^{-3/2}
+                        \ \diff Sc                                                \\
+                                         & = \frac{-F_{0}}{2} [Pc^{2} + Q]^{-3/2}
+                        \ 2Pc                                                     \\
                     \end{align}
-                    For $ P, Q > 0 $, $ S(c) $ is always positive, which means that $ \difs {C^{*}}{c} $
-                    is negative and $ C^{*} $ increases for decreasing $ c $.
+                    For $ P, Q > 0 $, $ S(c) $ is always positive, which means that
+                    $ \difs {C^{*}}{c} $ is negative and $ C^{*} $ increases for
+                    decreasing $ c $.
 
-              \item Graphing the variation of $ C^{*} $ vs $ \omega $ for differing values of $ c $,
-                    Dummy values are $ m = 1, k = 1, \omega_{0} = 1 $
+              \item Graphing the variation of $ C^{*} $ vs $ \omega $ for differing
+                    values of $ c $, \par Dummy values are
+                    $ m = 1, k = 1, \omega_{0} = 1 $
 
                     \begin{figure}[H]
                         \centering
@@ -609,21 +736,20 @@
                             \begin{axis}[
                                     title = {Practical resonance},
                                     xlabel = {Input frequency ($ \omega $)},
-                                    ylabel = {Amplification $ \left( \dfrac{C^{*}}{F_{0}} \right) $},
+                                    ylabel = {Amplification $ \left( \dfrac{C^{*}}
+                                                {F_{0}} \right) $},
                                     legend pos = north west,
                                     grid = both,
-                                    width = 12cm,
-                                    height = 8cm,
-                                    Ani,
+                                    Ani,height = 12cm,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 7]},
                                 ]
-                                \foreach [evaluate=\c as \n using (\c + 3)*100/(6)] \c in {-3,...,3} {%
+                                \foreach [evaluate=\c as \n using (\c + 3)*100/(6)]
+                                \c in {-3,...,3} {%
                                         \edef\temp{%
                                             \noexpand
-                                            \addplot[
-                                                samples = 200,
-                                                domain=0:2,
-                                                color=blue!\n!red, thin,
-                                            ]
+                                            \addplot+[samples = 200, thick,
+                                                domain=0:2]
                                             {((1 - x^(2))^(2) + x^(2)*2^(2*\c))^(-1/2)};
                                             \noexpand \addlegendentry{$ c = 2^{\c}$};
                                         }\temp
@@ -633,16 +759,24 @@
                     \end{figure}
               \item Solving the h-ODE, with $ m = k = 1, c = 0.25 $,
                     \begin{align}
-                        \omega_{\text{max}}      & = \sqrt{\left[ 1 - \frac{c^{2}}{2} \right]} = \SI{0.9843}{\Hz}                                \\
-                        0                        & = y'' + 0.25y' +  y                                                & a & = 0.25, \quad b = 1  \\
-                        \lambda_{1}, \lambda_{2} & = \frac{-.25 \pm i\sqrt{3.9375}}{2}                                &   & = -0.125 \pm 0.9922i \\
-                        y_{h}                    & = \color{y_h} [c_{1}\cos(0.9922x) + c_{2}\sin(0.9922x)]e^{-0.125x}
+                        \omega_{\text{max}}
+                              & = \sqrt{\left[ 1 - \frac{c^{2}}{2}
+                        \right]} = \SI{0.9843}{\Hz}                   \\
+                        0     & = y'' + 0.25y' +  y                 &
+                        a     & = 0.25, \quad b = 1                   \\
+                        \lambda_{1}, \lambda_{2}
+                              & = \frac{-.25 \pm i\sqrt{3.9375}}{2} &
+                              & = -0.125 \pm 0.9922i                  \\
+                        y_{h} & = \color{y_h} [c_{1}\cos(0.9922x)
+                            + c_{2}\sin(0.9922x)]e^{-0.125x}
                     \end{align}
                     Solving the nh-ODE,
                     \begin{align}
-                        y'' + 0.25y' + y & = \cos(3x) + \cos(0.984x)                              \\
-                        y_{p}            & = \color{y_p} 3.9985 \sin(0.984x) + 0.516 \cos(0.984x) \\
-                                         & \color{y_p} + 0.0116 \sin(3x) - 0.124\cos(3x)
+                        y'' + 0.25y' + y & = \cos(3x) + \cos(0.984x)         \\
+                        y_{p}            & = \color{y_p} 3.9985 \sin(0.984x)
+                        + 0.516 \cos(0.984x)                                 \\
+                                         & \color{y_p} + 0.0116 \sin(3x)
+                        - 0.124\cos(3x)
                     \end{align}
                     Solving the IC, $ y(0) = 2, y'(0) = 0 $,
                     \begin{align}
@@ -650,9 +784,9 @@
                         y'(0) = 0 & = 5c_{2}                                    \\
                         y         & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
                     \end{align}
-                    The response amplification is much larger for the input frequency close to
-                    the practical resonance frequency than the other input farther away, as seen
-                    in the coefficients of the output function.
+                    The response amplification is much larger for the input frequency
+                    close to the practical resonance frequency than the other input
+                    farther away, as seen in the coefficients of the output function.
 
                     \begin{figure}[H]
                         \centering
@@ -666,17 +800,17 @@
                                     domain = 0:10,
                                     legend pos = north east,
                                     grid = both,
-                                    width = 12cm,
-                                    height = 8cm,
                                     Ani,
                                 ]
-                                \addplot[GraphSmooth, color = y_h]{y_h};
+                                \addplot[GraphSmooth, y_h]{y_h};
                                 \addlegendentry{Close output};
-                                \addplot[GraphSmooth, red, color = y_p]{y_p};
+                                \addplot[GraphSmooth, y_p]{y_p};
                                 \addlegendentry{Far output};
-                                \addplot[GraphSmooth, dashed, color = y_p, dashed]{cos(3*x)};
+                                \addplot[GraphSmooth, dashed, y_p, dashed]
+                                {cos(3*x)};
                                 \addlegendentry{Far Input}
-                                \addplot[GraphSmooth, dashed, color = y_h, dashed]{cos(0.984*x)};
+                                \addplot[GraphSmooth, dashed, y_h, dashed]
+                                {cos(0.984*x)};
                                 \addlegendentry{Close Input}
                             \end{axis}
                         \end{tikzpicture}
@@ -689,18 +823,24 @@
     \item Piecewise continuous forcing function, \par
           Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + y                                 & a & = 0, \quad b = 1 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}               &   & = 0 \pm i        \\
+              0                        & = y'' + y                                 &
+              a                        & = 0, \quad b = 1                            \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}               &
+                                       & = 0 \pm i                                   \\
               y_{h}                    & = \color{y_h} c_{1}\cos(x) + c_{2}\sin(x)
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + y             & = 1 - \frac{x^{2}}{\pi^{2}}                                                                           \\
-              y_{p}               & = K_{0} + K_{1}x + K_{2}x^{2}                                                                         \\
-              1                   & = 2K_{2} + K_{0}                                                             & \cdots\cdots & [x^{0}] \\
-              \frac{-1}{\pi ^{2}} & = K_{2}                                                                      & \cdots\cdots & [x^{2}] \\
-              K_{0}               & = 1 + \frac{2}{\pi^{2}}, \qquad K_{1} = 0, \qquad K_{2} = \frac{-1}{\pi^{2}}                          \\
-              y_{p}               & = \color{y_p} \frac{2 + \pi^{2} - x^{2}}{\pi^{2}}
+              y'' + y             & = 1 - \frac{x^{2}}{\pi^{2}}                  \\
+              y_{p}               & = K_{0} + K_{1}x + K_{2}x^{2}                \\
+              1                   & = 2K_{2} + K_{0}                           &
+              \cdots\cdots        & [x^{0}]                                      \\
+              \frac{-1}{\pi ^{2}} & = K_{2}                                    &
+              \cdots\cdots        & [x^{2}]                                      \\
+              K_{0}               & = 1 + \frac{2}{\pi^{2}}, \qquad K_{1} = 0,
+              \qquad K_{2} = \frac{-1}{\pi^{2}}                                  \\
+              y_{p}               & = \color{y_p} \frac{2 + \pi^{2}
+                  - x^{2}}{\pi^{2}}
           \end{align}
           Solving the IC $ y(0) = 0,\ y'(0) = 0 $,
           \begin{align}
@@ -711,31 +851,34 @@
           \end{align}
           To guarantee continuity of the output and its derivative at $ x = \pi $,
           \begin{align}
-              y_{2}                               & = M \cos x + N \sin x                                    & x                                   & > \pi \\
-              \lim_{x \rightarrow \pi^{-}} y_{1}  & = \frac{4 + \pi^{2}}{\pi^{2}}                            & \lim_{x \rightarrow \pi^{+}} y_{2}  & = -M  \\
-              \lim_{x \rightarrow \pi^{-}} y_{1}' & = \frac{-2}{\pi}                                         & \lim_{x \rightarrow \pi^{+}} y_{2}' & = -N  \\
-              y_{2}                               & = -\frac{4+\pi^{2}}{\pi^{2}}\cos x + \frac{2}{\pi}\sin x
+              y_{2}                       & = M \cos x + N \sin x              &
+              x                           & > \pi                                \\
+              \lim_{x \to \pi^{-}} y_{1}  & = \frac{4 + \pi^{2}}{\pi^{2}}      &
+              \lim_{x \to \pi^{+}} y_{2}  & = -M                                 \\
+              \lim_{x \to \pi^{-}} y_{1}' & = \frac{-2}{\pi}                   &
+              \lim_{x \to \pi^{+}} y_{2}' & = -N                                 \\
+              y_{2}                       & = -\frac{4+\pi^{2}}{\pi^{2}}\cos x
+              + \frac{2}{\pi}\sin x
           \end{align}
 
           \begin{figure}[H]
               \centering
               \begin{tikzpicture}[
                       declare function = {
-                              y_1 = (2 + pi^(2) - x^(2))/pi^(2) - cos(x)*((2 + pi^(2))/pi^(2));
+                              y_1 = (2 + pi^(2) - x^(2))/pi^(2)
+                              - cos(x)*((2 + pi^(2))/pi^(2));
                               y_2 = - cos(x)*((4 + pi^(2))/pi^(2)) + (2/pi)*sin(x) ;
                           }
                   ]
                   \begin{axis}[
-                          PiStyleX,
+                          PiStyleX, xtick distance = pi,
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_h, domain = 0:pi]{y_1};
+                      \addplot[GraphSmooth, y_h, domain = 0:pi]{y_1};
                       \addlegendentry{Forced};
-                      \addplot[GraphSmooth, red, color = y_p, domain = pi:4*pi]{y_2};
+                      \addplot[GraphSmooth, y_p, domain = pi:4*pi]{y_2};
                       \addlegendentry{Free};
                       \node[GraphNode, label={45:$x = \pi$}] at (axis cs:pi, 1.4053) {};
                   \end{axis}
@@ -744,43 +887,50 @@
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = y'' + y                                 & a & = 0, \quad b = 1 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}               &   & = 0 \pm i        \\
+              0                        & = y'' + y                                 &
+              a                        & = 0, \quad b = 1                            \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}               &
+                                       & = 0 \pm i                                   \\
               y_{h}                    & = \color{y_h} c_{1}\sin(x) + c_{2}\cos(x)
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              y'' + y & = \cos(\omega x)                                                                                                   \\
-              y_{p}   & = K \cos(\omega x) + M \sin(\omega x)                                                                              \\
-              1       & = -\omega^{2}K + K                                                               & \cdots\cdots & [\cos(\omega x)] \\
-              0       & = -\omega^{2}M + M                                                               & \cdots\cdots & [\sin(\omega x)] \\
-              K       & = \frac{1}{1 - \omega^{2}}, \qquad M = 0 \quad (\text{since}\ \omega^{2} \neq 1)                                   \\
-              y_{p}   & = \color{y_p} \frac{1}{1 - \omega^{2}}\ \cos(\omega x)                                                             \\
-              y       & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
+              y'' + y      & = \cos(\omega x)                                         \\
+              y_{p}        & = K \cos(\omega x) + M \sin(\omega x)                    \\
+              1            & = -\omega^{2}K + K                                     &
+              \cdots\cdots & [\cos(\omega x)]                                         \\
+              0            & = -\omega^{2}M + M                                     &
+              \cdots\cdots & [\sin(\omega x)]                                         \\
+              K            & = \frac{1}{1 - \omega^{2}}, \qquad M = 0 \quad
+              (\text{since}\ \omega^{2} \neq 1)                                       \\
+              y_{p}        & = \color{y_p} \frac{1}{1 - \omega^{2}}\ \cos(\omega x)   \\
+              y            & = {\color{y_p} y_{p}} + {\color{y_h} y_{h}}
           \end{align}
           Solving the IVP $ y(0) = 0,\ y'(0) = 0 $,
           \begin{align}
-              y(0) = 0  & = c_{2} + \frac{1}{1 - \omega^{2}}                                  \\
-              y'(0) = 0 & = c_{1}                                                             \\
-              y         & = \frac{1}{1 - \omega^{2}} [\cos(\omega x) - \cos(x)]               \\
-                        & = \frac{2}{1 - \omega^{2}}\sin\left( \frac{x + \omega x}{2} \right)
+              y(0) = 0  & = c_{2} + \frac{1}{1 - \omega^{2}}                          \\
+              y'(0) = 0 & = c_{1}                                                     \\
+              y         & = \frac{1}{1 - \omega^{2}} [\cos(\omega x) - \cos(x)]       \\
+                        & = \frac{2}{1 - \omega^{2}}\sin\left( \frac{x + \omega x}{2}
+              \right)
               \sin\left( \frac{x - \omega x}{2} \right)
           \end{align}
           \begin{figure}[H]
               \centering
               \begin{tikzpicture}[
                       declare function = {
-                              fun_y(\o, \x) = 2*(1 - \o*\o)^(-1)*sin(0.5*(\x + \o*\x))*sin(0.5*(\x - \o*\x)) ;
+                              fun_y(\o, \x) =
+                              2*(1 - \o*\o)^(-1)*sin(0.5*(\x + \o*\x))*
+                              sin(0.5*(\x - \o*\x)) ;
                           }
                   ]
                   \begin{axis}[
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, red, color = y_p, domain = 0:40*pi]{fun_y(0.1, x)};
+                      \addplot[GraphSmooth, y_p,
+                          domain = 0:40*pi]{fun_y(0.1, x)};
                       \addlegendentry{$ \omega = 0.1 $};
                   \end{axis}
               \end{tikzpicture}
@@ -789,17 +939,16 @@
               \centering
               \begin{tikzpicture}[
                       declare function = {
-                              fun_y(\o, \x) = 2*(1 - \o*\o)^(-1)*sin(0.5*(\x + \o*\x))*sin(0.5*(\x - \o*\x)) ;
+                              fun_y(\o, \x) = 2*(1 - \o*\o)^(-1)
+                              *sin(0.5*(\x + \o*\x))*sin(0.5*(\x - \o*\x)) ;
                           }
                   ]
                   \begin{axis}[
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, red, color = y_p, domain = 0:80*pi]{fun_y(0.95, x)};
+                      \addplot[GraphSmooth, y_p, domain = 0:80*pi]{fun_y(0.95, x)};
                       \addlegendentry{$ \omega = 0.95 $};
                   \end{axis}
               \end{tikzpicture}
@@ -808,17 +957,17 @@
               \centering
               \begin{tikzpicture}[
                       declare function = {
-                              fun_y(\o, \x) = 2*(1 - \o*\o)^(-1)*sin(0.5*(\x + \o*\x))*sin(0.5*(\x - \o*\x)) ;
+                              fun_y(\o, \x) =
+                              2*(1 - \o*\o)^(-1)*sin(0.5*(\x + \o*\x))
+                              *sin(0.5*(\x - \o*\x)) ;
                           }
                   ]
                   \begin{axis}[
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, red, color = y_p, domain = 0:10*pi]{fun_y(4, x)};
+                      \addplot[GraphSmooth, y_p, domain = 0:10*pi]{fun_y(4, x)};
                       \addlegendentry{$ \omega = 4 $};
                   \end{axis}
               \end{tikzpicture}
@@ -827,17 +976,17 @@
               \centering
               \begin{tikzpicture}[
                       declare function = {
-                              fun_y(\o, \x) = 2*(1 - \o*\o)^(-1)*sin(0.5*(\x + \o*\x))*sin(0.5*(\x - \o*\x)) ;
+                              fun_y(\o, \x) =
+                              2*(1 - \o*\o)^(-1)*sin(0.5*(\x + \o*\x))
+                              *sin(0.5*(\x - \o*\x)) ;
                           }
                   ]
                   \begin{axis}[
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, red, color = y_p, domain = 0:40*pi]{fun_y(20, x)};
+                      \addplot[GraphSmooth, y_p, domain = 0:40*pi]{fun_y(20, x)};
                       \addlegendentry{$ \omega = 20 $};
                   \end{axis}
               \end{tikzpicture}

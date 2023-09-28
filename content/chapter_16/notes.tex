@@ -1,0 +1,351 @@
+\chapter{Laurent Series, Residue Integration}
+
+\section{Laurent Series}
+
+\begin{description}
+    \item[Laurent's theorem] Let $ f(z) $ be analytic in a domain containing two
+        concentric circles $ C_1,\ C_2 $ both centered on $ z = z_0 $ and the annular
+        region in between.
+        \begin{align}
+            f(z) & = \iser[n]{0} a_n\ (z - z_0)^n\ +
+            \ \iser[n]{1} \frac{b_n}{(z - z_0)^n}
+        \end{align}
+        The Taylor series is now generalized to all integer powers (including negative
+        powers). This allows the Laurent series to represent functions with a
+        singularity within the outer circle $ C_1 $.
+        \begin{align}
+            a_n & = \frac{1}{2\pi \i} \oint_C \frac{f(w)}{(w - z_0)^{n+1}}\ \dl w \\
+            b_n & = \frac{1}{2\pi \i} \oint_C f(w)\ (w - z_0)^{n-1}\ \dl w
+        \end{align}
+        Here, $ C $ represents any simple closed path that lies in the annulus and
+        encircles the inner boundary. \par
+    \item[Region of series convergence] The Laurent series converges and represents the
+        function $ f(z) $ in the extended annulus where $ C_1 $ gets bigger and $ C_2 $
+        gets smaller until they both hit a singular point of $ f(z) $.
+
+    \item[Principal part of function] For the special case that $ z = z_0 $ is the
+        only singularity of $ f(z) $, the series sum is called the principal part
+        of $ f(z) $ at $ z_0 $, since the region of convergence is $ \{\mathcal{C}
+            \setminus z_0\} $.
+
+    \item[Uniqueness of Laurent series] The Laurent series of an analytic function in its
+        annulus of convergence is unique, assuming $ z_0, r_1, r_2 $ are fixed. \par
+        A change in the inner or outer radii of the annulus might give a different Laurent
+        series for the same $ f(z) $
+
+    \item[Reduction to Taylor series] The coefficients $\{b_n\}$ become zero for $ f(z) $
+        being analytic everywhere inside the outer circle and the Laurent series reduces
+        to a Taylor series.
+\end{description}
+
+\section{Singularities and Zeros, Infinity}
+
+\begin{description}
+    \item[Singularity] A point $ z_0 $ at which $ f(z) $ is not analytic (perhaps not
+        even defined).
+        However, every neighbourhood of $ z_0 $ contains points at which $ f(z) $ is
+        analytic.
+
+    \item[Isolated singularity] A function has an isolated singularity at $ z_0 $ if
+        $ z_0 $ has a neighbourhood without further singularities of $ f(z) $. \par
+        This function can be classified using its Laurent series valid in the
+        neighbourhood of $ z_0 $.
+
+    \item[Pole] If the Laurent series of $ f(z) $ around a singularity $ z_0 $
+        only has a finite number of terms of negative power in $ (z - z_0) $, then
+        \begin{align}
+            f(z) & = \iser[n]{0} a_n (z - z_0)^n + \sum_{n=0}^{m}
+            \frac{b_n}{(z - z_0)^n}
+        \end{align}
+        the pole is of \emph{order} m
+
+    \item[Simple pole] A pole of order $ 1 $, characterized by the principal part of
+        the Laurent series having only a single term.
+
+    \item[Essential singularity] A singularity at which the Laurent series of
+        $ f(z) $ has infinitely many terms in negative powers.
+
+    \item[Behavior near poles] If $ f(z) $ is analytic and has a pole at $ z_0 $ then
+        \begin{align}
+            \lim_{z \to z_0} \abs{f(z)} & = \infty &  & \text{in any manner}
+        \end{align}
+
+    \item[Picard's theorem] If $ f(z) $ is analytic and has an isolated essential
+        singularity at a point $ z_0 $, it takes on every value, with at most one
+        exceptional value, in an arbitrarily small $ \epsilon $-neighbourhood of $ z_0 $.
+
+    \item[Removable singularity] A singularity at $ z_0 $ is removable if the function
+        can be made analytic at $ z_0 $ by assigning a suitable value to $ f(z_0) $.
+
+    \item[Order of zeros] A function has a zero of order $ n $ at $ z_0 $ if the
+        function itself and its first $ (n-1) $ derivatives are all zero at $ z_0 $.
+        \begin{align}
+            f(z_0)       & = f'(z_0) = \dots = f^{(n-1)}(z_0) = 0 \\
+            f^{(n)}(z_0) & \neq 0
+        \end{align}
+        A zero of first order is called a \emph{simple zero}.
+
+    \item[Taylor series at zero] At a zero of order $ n $, the first $ (n-1) $
+        coefficients of the Taylor series are zero.
+
+    \item[Isolated zeros] The zeros of an analytic function are always isolated. Each
+        zero has a neighbourhood that contains no further zeros of $ f(z) $
+
+    \item[Relating poles and zeros] If $ f(z) $ has a zero of order $ n $ at $ z_0 $,
+        then $ 1/f(z) $ has a pole of order $ n $ at $ z_0 $. \par
+        For some function $ h(z) $ which is analytic at $ z_0 $ and $ h(z_0) \neq 0 $,
+        the quotient $ h(z)/f(z) $ also has a pole of order $ n $ at $ z_0 $.
+
+    \item[Riemann sphere] Place a sphere of diameter $ 1 $ on top of the complex plane,
+        touching it at the origin. \par
+        Every point on $ \mathcal{C} $ maps onto the sphere at the point where the line
+        joining it and the north pole intersects the sphere's surface.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[legend pos = outer north east,
+                        height = 8cm, width = 12cm, axis equal,
+                        title = {Riemann sphere},
+                        xmin = -1.5, xmax = 1.5,
+                        ymin = -0.25, ymax = 1.25,
+                        grid = both,Ani,
+                        colormap/jet,
+                    ]
+                    \filldraw[draw=y_h,fill=y_h, fill opacity = 0.05]
+                    (axis cs:0,0.5) circle (0.5);
+                    \addplot[thin, black]{0};
+                    \addplot[y_p, dotted, domain = 0:1]{1-x};
+                    \node[GraphNode, label =
+                            {[fill = white]above: $ N $},
+                        fill = white, draw = black] at (axis cs:0, 1){};
+                    \node[GraphNode, label =
+                            {[fill = white]above right: $ P $},
+                        fill = white, draw = y_p] at (axis cs:1, 0){};
+                    \node[GraphNode, label =
+                            {[fill = white]above right: $ P^* $},
+                        fill = y_p, draw = black] at (axis cs:0.5, 0.5){};
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+
+    \item[Extended complex plane] The complex plane mapped onto the Riemann sphere
+        along with a special point $ \infty $ which maps onto the north pole. This
+        is now a stereographic projection of the finite complex plane onto this sphere.
+
+    \item[Function behavior at infinity] Investigate the behaviour of $ g(w) $ where
+        \begin{align}
+            w    & = \frac{1}{z}   &
+            g(w) & = f(1/w) = f(z)
+        \end{align}
+        The original function $ f(z) $ is analytic or singular at infinity bsaed on the
+        behaviour of the new function $ g(w) $ at $ w = 0 $. \par
+        The types of and orders of singularities also transfer over from $ g(w) $ to
+        $ f(z) $.
+
+
+    \item[Meromorphic function] A function whose only singularities in the finite
+        complex plane are poles.
+\end{description}
+
+\section{Residue Integration Method}
+
+\begin{description}
+    \item[Residue] Consider a function $ f(z) $ that is analytic everywhere on and
+        inside a closed contour $ C $ except at the interior point $ z_0 $. \par
+        \begin{align}
+            f(z)                & = \iser[n]{0} a_n\ (z - z_0)^n
+            + \iser{1} \frac{b_m}{(z - z_0)^m}                                      \\
+            \oint_C f(z)\ \dl z & = 2\pi\i\ b_1                                     \\
+            \Res_{z = z_0} f(z) & \equiv b_1 = \frac{1}{2\pi\i} \oint_C f(z)\ \dl z
+        \end{align}
+        The backwards method of finding $ b_1 $ using the Laurent series and then
+        evaluating the integral is called residue integration.
+
+    \item[Simple poles] For a simple pole at $ z = z_0 $,
+        \begin{align}
+            \Res_{z = z_0} f(z) & = \lim_{z \to z_0} (z - z_0) f(z)
+        \end{align}
+        If a function is a quotient of two other functions where $ q(z) $ has a simple
+        zero at $ z_0 $, then
+        \begin{align}
+            f(z)                & = \frac{p(z)}{q(z)}      &
+            p(z_0)              & \neq 0                     \\
+            \Res_{z = z_0} f(z) & = \frac{p(z_0)}{q'(z_0)}
+        \end{align}
+
+    \item[Poles of any order] The residue at $ z_0 $ which is a pole of order $ m $,
+        \begin{align}
+            \Res_{z = z_0} f(z) & = \frac{1}{(m-1)!}\ \lim_{z \to z_0}
+            \ \diff*[m-1] {\Big[(z - z_0)^m\ f(z)\Big]}{z}
+        \end{align}
+        For the special case of a second order pole,
+        \begin{align}
+            \Res_{z = z_0} f(z) & = \lim_{z \to z_0}
+            \ \diff* {\Big[(z - z_0)^2\ f(z)\Big]}{z}
+        \end{align}
+
+    \item[Residue theorem] When there are multiple singularities of $ f(z) $ inside
+        the contour, and $ f(z) $ is analytic everywhere on the contour $ C $ and inside
+        $ C $ except for these finitely many points $ \{z_k\} $,
+        \begin{align}
+            \oint_C f(z)\ \dl z & = 2\pi\i\ \sum_{j=1}^{k} \Res_{z = z_j} f(z)
+        \end{align}
+        The proof involves making a multiply connected domain $ D $ by excluding a
+        small contour encircling each singularity. \par
+        Cauchy's integral theorem makes the integral over the outside contour $ C $
+        equal to the sum of the integrals over each of the inner contours $ C_k $
+        (all taken ccl).
+        \begin{align}
+            \oint_C f(z)\ \dl z & = \oint_{C_1} f(z)\ \dl z + \quad \dots\quad
+            + \oint_{C_n}f(z)\ \dl z
+        \end{align}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[legend pos = outer north east,
+                        height = 8cm, width = 8cm, axis equal,
+                        title = {Multiply connected domain},
+                        xmin = -3.5, xmax = 3.5,
+                        ymin = -3.5, ymax = 3.5,
+                        grid = both,Ani,
+                        colormap/jet,
+                    ]
+                    \filldraw[draw opacity = 0, fill=y_h,
+                        fill opacity = 0.1,even odd rule]
+                    (axis cs:0,0) circle (3) (axis cs:0,2) circle (0.5)
+                    (axis cs: 1, -1) circle (0.5) (axis cs:-1.5, -0.5) circle (0.5);
+                    \node[GraphNode, fill = y_p] at (axis cs:0, 2){};
+                    \node[GraphNode, fill = y_p] at (axis cs:1, -1){};
+                    \node[GraphNode,fill = y_p] at (axis cs:-1.5, -0.5){};
+                    \draw[y_h] (axis cs:0,0) circle (3);
+                    \draw[y_p] (axis cs:0,2) circle (0.5);
+                    \draw[y_p] (axis cs:1,-1) circle (0.5);
+                    \draw[y_p] (axis cs:-1.5,-0.5) circle (0.5);
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+\end{description}
+
+\section{Residue Integration of Real Integrals}
+
+\begin{description}
+    \item[Rational function of sine and cosine] Consider integrating some function
+        that does not become infinite on the interval of integration $ [0, 2\pi] $,
+        \begin{align}
+            J           & = \int_{0}^{2\pi}\ F(\cos \theta, \sin \theta)\ \dl \theta &
+            J           & = \oint_{C} \frac{f(z)}{\i z}\ \dl z                         \\
+            \cos \theta & = \frac{1}{2} \Bigg( z + \frac{1}{z} \Bigg)                &
+            \sin \theta & = \frac{1}{2\i} \Bigg( z - \frac{1}{z} \Bigg)
+        \end{align}
+        Where, $ z = \exp(\i \theta) $ and the closed contour in the complex plane
+        is the unit circle ccl.
+
+    \item[Cauchy principal value of integral] An improper integral obtained by
+        making the limits symmetrically tend to infinity
+        \begin{align}
+            \prv \Bigg[\intRL f(x)\ \dl x\Bigg] & = \lim_{R \to \infty}
+            \ \int_{-R}^{R} f(x)\ \dl x
+        \end{align}
+        Given that $ f(x) $ is,
+        \begin{itemize}
+            \item a real rational function.
+            \item has a denominator that never vanishes in the interval of integration.
+            \item has a denominator at least two degrees higher than the numerator.
+        \end{itemize}
+        \begin{align}
+            \intRL f(x)\ \dl x & = 2\pi\i\ \sum_k \Res_{z = z_k} f(z)
+        \end{align}
+        where the summation is over all the poles of $ f(z) $ in the upper half plane.
+
+    \item[Fourier integrals] Similar to the above style of integrating over a
+        closed semicircular contour in the upper half plane,
+        \begin{align}
+            \intRL f(x)\ \cos(sx)\ \dl x & = -2\pi\ \sum_k \Im {\Res_{z = z_k} [f(z)
+            \ \exp(\i sz)]}                                                          \\
+            \intRL f(x)\ \sin(sx)\ \dl x & = 2\pi\ \sum_k \Re {\Res_{z = z_k} [f(z)
+                    \ \exp(\i sz)]}
+        \end{align}
+        where $ s $ is a positive real number and the function $ f(z) $ is a rational
+        function satisfying the conditions listed above. \par
+        Also only the poles of $ f(z) $ in the upper half plane get summed over.
+
+    \item[Integrand not defined along interval] Consider an integral of the form
+        \begin{align}
+            I                         & = \int_{A}^{B} f(x)\ \dl x             \\
+            \lim_{x \to c} \abs{f(x)} & = \infty \quad \text{for some} \quad c
+            \in [A, B]
+        \end{align}
+        The Cauchy principal value of this integral is,
+        \begin{align}
+            \prv \Bigg[\int_{A}^{B} f(x) \dl x\Bigg] & = \lim_{\epsilon \to 0}
+            \Bigg[ \int_{A}^{c-\epsilon} f(x) \dl x
+                + \int_{c + \epsilon}^{B} f(x) \dl x  \Bigg]
+        \end{align}
+
+    \item[Simple poles on real axis] If $ f(z) $ has a simple pole at $ z = a $ on
+        the real axis, and $ C_2 $ is the semicircular contour ccl, of radius $ r $,
+        \begin{align}
+            \lim_{r \to 0} \int_{C_2} f(z) \dl z & = \pi\i\ \Res_{z = a}f(z)
+        \end{align}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[legend pos = outer north east,
+                        height = 8cm, width = 8cm, axis equal,
+                        title = {Closed semicircular path},
+                        % xmin = -1.5, xmax = 1.5,
+                        % ymin = -1, ymax = 2,
+                        grid = both,Ani,
+                        colormap/jet,
+                        xtick = {-1,0,1}, xticklabels = {$ a-r $, $ a $, $ a+r $},
+                        ytick = {0},
+                    ]
+                    \addplot[GraphSmooth, dotted, black, domain = -1:1]{0};
+                    \node[GraphNode, fill = white, draw = black] at (axis cs:0, 0){};
+                    \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:pi,
+                        variable = \t]
+                    ({cos(\t)}, {sin(\t)})
+                    node[midway, above]{$ C_2 $};
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+
+    \item[Improper real integrals] Let a function $ f(z) $ have
+        many simple poles on the real axis,
+        \begin{align}
+            \prv \Bigg[\intRL f(x) \dl x\Bigg] & = 2\pi\i\ \sum_k \Res_{z = z_k} f(z)
+            + \pi\i\ \sum_j \Res_{z = z_j} f(z)
+        \end{align}
+        Here, $ z_k $ are the poles in the upper half plane and $ z_j $ are the simple
+        poles on the real line.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[legend pos = outer north east,
+                        height = 8cm, width = 8cm, axis equal,
+                        title = {Closed semicircular path},
+                        % xmin = -1.5, xmax = 1.5,
+                        % ymin = -1, ymax = 2,
+                        grid = both,Ani,
+                        colormap/jet,
+                        xtick = {-2,-0.8,0,0.8,2},
+                        xticklabels = {$ -R $,$ a-r $, $ a $, $ a+r $, $ R $},
+                        ytick = {0},
+                    ]
+                    \addplot[GraphSmooth, dotted, black, domain = -2:2]{0};
+                    \node[GraphNode, fill = white, draw = black] at (axis cs:0, 0){};
+                    \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:pi,
+                        variable = \t]
+                    ({-0.8*cos(\t)}, {0.8*sin(\t)})
+                    node[midway, above]{$ C_2 $};
+                    \addplot[GraphSmooth, mesh, point meta = \t, domain = 0:pi,
+                        variable = \t]
+                    ({2*cos(\t)}, {2*sin(\t)})
+                    node[midway, above]{$ S $};
+                    \addplot[GraphSmooth, black, domain = -2:-0.8]{0};
+                    \addplot[GraphSmooth, black, domain = 0.8:2]{0};
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+
+\end{description}

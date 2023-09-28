@@ -1,0 +1,290 @@
+\section{Interpolation}
+
+\begin{enumerate}
+    \item Finding $ p_1(x) $, using the given nodes,
+          \begin{align}
+              L_0      & = \frac{x - 9.5}{-0.5} = -2x + 19 &
+              L_1      & = \frac{x - 9.0}{0.5} = 2x - 18     \\
+              p_1(x)   & = 0.1082 x + 1.2234               &
+              p_1(9.3) & = 2.2297
+          \end{align}
+
+    \item Estimating the error,
+          \begin{align}
+              \epsilon_1(x)   & = (x-x_0)(x-x_1) \cdot \frac{f''(t)}{2!} &
+              \epsilon_1(9.3) & = (0.3)(-0.2) \cdot \frac{-1}{2t^2}        \\
+              \epsilon_1(9.3) & = \frac{0.03}{t^2}                       &
+              \epsilon_1(9.3) & = [3.3241, 3.7037] \cdot 10^{-4}
+          \end{align}
+
+    \item Calculating $ p_2(x) $ using the three given nodes,
+          \begin{align}
+              p_2(x)    & = x^{2} - 2.58 x + 2.58 &
+              p_2(1.01) & = 0.9943                  \\
+              p_2(1.03) & = 0.9835
+          \end{align}
+
+    \item Using equation $ 5 $ to calculate the error,
+          \begin{align}
+              \epsilon_2(9.2) & = \frac{0.036}{t^3}                &
+              \epsilon_2(9.2) & \in [2.7047, 4.9383] \cdot 10^{-5}
+          \end{align}
+
+    \item Using $ x_0 = 0, x_1 = 0.5 $,
+          \begin{align}
+              f(x)             & = e^{-x}  & f(0.25) & \approxeq 0.8032 \\
+              \epsilon_1(0.25) & = -0.0244
+          \end{align}
+          Using $ x_0 = 0.5, x_1 = 1 $,
+          \begin{align}
+              f(x)             & = e^{-x}  & f(0.75) & \approxeq 0.4872 \\
+              \epsilon_1(0.75) & = -0.0148
+          \end{align}
+          Using all three nodes to find the quadratic interpolant,
+          \begin{align}
+              p_2(0.25) & = 0.7839 & \epsilon_2(0.25) & = -0.0051 \\
+              p_2(0.75) & = 0.4678 & \epsilon_2(0.75) & = 0.0046
+          \end{align}
+
+    \item Using the results of problem 2, to find $ p_2(x) $
+          \begin{align}
+              p_2(x)    & = - 0.005233 x^{2}
+              + 0.205 x + 0.7759                                            \\
+              p_2(9.4)  & = 2.241            & \epsilon_2(9.4)  & = -0.0003 \\
+              p_2(10)   & = 2.303            & \epsilon_2(10)   & = -0.0004 \\
+              p_2(10.5) & = 2.352            & \epsilon_2(10.5) & = -0.0006 \\
+              p_2(11.5) & = 2.441            & \epsilon_2(11.5) & = 0.0013  \\
+              p_2(12)   & = 2.483            & \epsilon_2(12)   & = 0.0019
+          \end{align}
+          The errors are small only within the domain spanned by the nodes.
+
+    \item Using the results of problem 2, to find $ p_2(x) $
+          \begin{align}
+              p_2(x)      & = 0.1013 x \left(11.49
+              - 3.314 x\right)                                                      \\
+              p_2(-\pi/8) & = -0.5089              & \epsilon_2(-\pi/8) & = 0.1262  \\
+              p_2(\pi/8)  & = 0.4053               & \epsilon_2(\pi/8)  & = -0.0226 \\
+              p_2(3\pi/8) & = 0.9053               & \epsilon_2(3\pi/8) & = 0.0186  \\
+              p_2(5\pi/8) & = 0.9911               & \epsilon_2(5\pi/8) & = -0.0672
+          \end{align}
+          The errors are small only within the domain spanned by the nodes.
+
+    \item Plotting the interpolant and the actual function, the errors are very small
+          within the
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 12cm, legend pos = south east,
+                          grid = both,Ani, domain = 1:20]
+                      \addplot[GraphSmooth, y_h] { - 0.005233*x^2 + 0.205*x + 0.7759};
+                      \addplot[GraphSmooth, y_p] {ln(x)};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:9,2.2){};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:9.5,2.25){};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:11,2.40){};
+                      \addlegendentry{$ p_2(x) $}
+                      \addlegendentry{$ \ln(x) $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item For the error function,
+          \begin{align}
+              f(x)             & = \erf(x)                               &
+              p_2(x)           & = - 0.44304 x^{2} + 1.30896 x - 0.02322   \\
+              p_2(0.75)        & = 0.70929                               &
+              \epsilon_2(0.75) & = 0.00187
+          \end{align}
+
+    \item Using the data in Problem $ 9 $,
+          \begin{align}
+              \epsilon_2(x) & = -0.020833 (2t^2 - 1)\ \frac{e^{-t^2}}{\sqrt{\pi}} &
+              \epsilon_2(x) & \in [0.0043240, 0.0096616]
+          \end{align}
+
+    \item Plotting the individual polynomials $ L_k $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 12cm, legend pos = outer north east,
+                          grid = both,Ani, domain = -0.25:3.25]
+                      \addplot[GraphSmooth, y_h] {(-1/6)*(x-3)*(x-2)*(x-1)};
+                      \addplot[GraphSmooth, y_p] {0.382599*(x)*(x-2)*(x-3)};
+                      \addplot[GraphSmooth, y_s] {-0.111945*(x)*(x-1)*(x-3)};
+                      \addplot[GraphSmooth, azure4] {-0.043342*(x)*(x-1)*(x-2)};
+                      \addplot[GraphSmooth, black, dashed]
+                      { 0.0606448*x^3 - 0.335187*x^2 + 0.0397402*x + 1.0};
+                      % \node[GraphNode, inner sep = 1pt] at (axis cs:11,2.40){};
+                      \addlegendentry{$ L_0(x) $}
+                      \addlegendentry{$ L_1(x) $}
+                      \addlegendentry{$ L_2(x) $}
+                      \addlegendentry{$ L_3(x) $}
+                      \addlegendentry{$ p_3(x) $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Note that only one polynomial is nonzero at each node.
+          \begin{align}
+              p_3(0.5) & = 0.943654   & \epsilon_3(0.5) & = -0.005184  \\
+              p_3(1.5) & = 0.510116   & \epsilon_3(1.5) & = 0.001712   \\
+              p_3(2.5) & = -0.0447993 & \epsilon_3(2.5) & = -0.0035847
+          \end{align}
+
+    \item Coded in \texttt{sympy}. The table of forward differences is not shown
+          for clarity.
+          \begin{align}
+              p_1(1.25) & = 1.135380 & \epsilon_1(1.25) & = \num{1.107d-2}  \\
+              p_2(1.25) & = 1.147614 & \epsilon_2(1.25) & = \num{-1.164d-3} \\
+              p_3(1.25) & = 1.147004 & \epsilon_3(1.25) & = \num{-5.54d-4}
+          \end{align}
+          The approximation is improving with each additional node, and thus with
+          increasing order of $ p_n $
+
+    \item Automating using \texttt{sympy}, and guessing that two pairs of nodes share the
+          same value leading to a reduction in order of $ 2 $,
+          \begin{align}
+              p_n(x) & = 2x^2 - 4x + 2
+          \end{align}
+          This is two orders lower than it could have been.
+
+    \item Coded in \texttt{sympy}. The table of forward differences is not shown
+          for clarity.
+          \begin{align}
+              p_2(1.01) & = 0.9943 & \epsilon_2(1.01) & = 2.0 \cdot 10^{-5} \\
+              p_2(1.03) & = 0.9835 & \epsilon_2(1.03) & = 5.0 \cdot 10^{-5} \\
+              p_2(1.05) & = 0.9735 & \epsilon_2(1.05) & = 0
+          \end{align}
+
+    \item Coded in \texttt{sympy}
+          \begin{align}
+              p_2(x) & = -0.005233\ x^2 + 0.2050\ x + 0.7759
+          \end{align}
+
+    \item Coded in \texttt{sympy}
+          \begin{align}
+              p_2(x)           & = -0.044304\ x^2 + 1.3090\ x - 0.02322   \\
+              p_2(0.75)        & = 0.70929                              &
+              \epsilon_2(0.75) & = 0.0018656
+          \end{align}
+
+    \item Using both Newton's forward and backward difference formulas,
+          \begin{align}
+              p_2(0.3) & = 0.3293 & \epsilon_2(0.3) & = -0.0007
+          \end{align}
+
+    \item Using Newton's backward difference formula on Example $ 5 $,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ x_i $ & $ f_i $              & First                &
+                  Second  & Third                                         \\
+                  \hline
+                  0.5     & 1.127626                                      \\
+                  \hline[dotted]
+                          &                      & 0.057839               \\
+                  \hline[dotted]
+                  0.6     & 1.185465             &                      &
+                  0.011865                                                \\
+                  \hline[dotted]
+                          &                      & 0.069704             &
+                          & \color{y_p} 0.000697                          \\
+                  \hline[dotted]
+                  0.7     & 1.225169             &                      &
+                  \color{y_p} 0.012562                                    \\
+                  \hline[dotted]
+                          &                      & \color{y_p} 0.082266   \\
+                  \hline[dotted]
+                  0.8     & \color{y_p} 1.337435                          \\
+                  \hline
+              \end{tblr}
+          \end{table}
+          \begin{align}
+              p_3(x)    & = 0.116167\ x^3 + 0.38415\ x^2 + 0.050113\ x + 0.99201 \\
+              p_3(0.56) & = 1.160945
+          \end{align}
+          The result matches Example $ 5 $ to $ 7S $
+
+    \item Using the $ \erf $ function whose values are given in the Appendix,
+          \begin{align}
+              x_0             & = \{0.2, 0.4, 0.6, 0.8, 1.0\} &
+              x^*             & = 0.3                           \\
+              p_1(0.3)        & = 0.325550                    &
+              \epsilon_1(0.3) & = \num{3.077d-3}                \\
+              p_2(0.3)        & = 0.329325                    &
+              \epsilon_2(0.3) & = \num{-6.98d-4}                \\
+              p_3(0.3)        & = 0.328881                    &
+              \epsilon_3(0.3) & = \num{-2.54d-4}                \\
+              p_4(0.3)        & = 0.328616                    &
+              \epsilon_4(0.3) & = \num{1.1d-5}
+          \end{align}
+          Starting with the first two nodes and successively adding nodes decreases the
+          error.
+
+    \item Interpolation and extrapolation,
+          \begin{enumerate}
+              \item Lagrange method practical error estimate, uses the difference between
+                    the better and worse estimate,
+                    \begin{align}
+                        \epsilon_1(9.2)        & = 2.21885 &
+                        \epsilon_2(9.2)        & = 2.21916   \\
+                        \wt{\epsilon_1}        & = 0.00031 &
+                        \epsilon_{\text{true}} & = 0.00035
+                    \end{align}
+                    This is a very good approximation of the true error.
+
+              \item Plotting the three quadratic polynomials,
+                    \begin{align}
+                        x_0             & = \{0.2, 0.4, 0.6, 0.8, 1.0\} &
+                        x^*             & = 0.7                           \\
+                        p_{2a}(0.7)     & = 0.7185                      &
+                        \epsilon_a(0.7) & = \num{-4d-4}                   \\
+                        p_{2b}(0.7)     & = 0.7131                      &
+                        \epsilon_b(0.7) & = \num{5d-3}                    \\
+                        p_{2c}(0.7)     & = 0.7466                      &
+                        \epsilon_c(0.7) & = \num{-2.85d-2}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[width = 12cm, legend pos = outer north east,
+                                    grid = both,Ani, domain = 0.65:0.75]
+                                \addplot[GraphSmooth, y_h] {-2.84125*x^2 + 2.43525*x
+                                    + 0.406};
+                                \addplot[GraphSmooth, y_p] {-2.3025*x^2 + 1.681*x
+                                    + 0.6646};
+                                \addplot[GraphSmooth, y_s] {-1.18625*x^2 + 0.56475*x
+                                    + 0.9325};
+                                \addplot[GraphSmooth, black, dashed]
+                                {cos((pi/2)*x^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    The error is smallest when the interpolation point is as central to
+                    the domain spanned by the nodes as possible.
+
+              \item Plotting just 3 of the graphs for $ n = 2, 6, 10 $ using the points
+                    $ \{0.1,0.2,\dots,1\} $ as nodes,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[width = 12cm, legend pos = outer north east,
+                                    grid = both,Ani, domain = -0.2:1.3]
+                                \addplot[GraphSmooth, y_h] {(x-0.1)*(x-0.2)};
+                                \addplot[GraphSmooth, y_p] {(x-0.1)*(x-0.2)*(x-0.3)
+                                    *(x-0.4)*(x-0.5) *(x-0.6)};
+                                \addplot[GraphSmooth, y_s] {(x-0.1)*(x-0.2)*(x-0.3)
+                                    *(x-0.4)*(x-0.5) *(x-0.6)*(x-0.7)*(x-0.8)*(x-0.9)
+                                    *(x-1)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    The plynomials using a smaller number of nodes start to misbehave
+                    much quicker upon leaving the domain spanned by their respective
+                    sets of nodes.
+          \end{enumerate}
+
+    \item Refer notes. TBC.
+
+\end{enumerate}

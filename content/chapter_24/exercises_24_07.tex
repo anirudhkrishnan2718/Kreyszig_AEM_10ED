@@ -1,0 +1,334 @@
+\section{Binomial, Poisson, and Hypergeometric Distributions}
+
+\begin{enumerate}
+    \item Marking the positions of the mean, at $ \mu = np $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {Binomial $ p=0.1 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,5}] {binom(x,5,0.1)};
+                      \draw[dashed, thick ,y_p] (0.5,-1) -- (0.5,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=0.2 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,5}] {binom(x,5,0.2)};
+                      \draw[dashed, thick ,y_p] (1,-1) -- (1,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=0.3 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,5}] {binom(x,5,0.3)};
+                      \draw[dashed, thick ,y_p] (1.5,-1) -- (1.5,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=0.4 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,5}] {binom(x,5,0.4)};
+                      \draw[dashed, thick ,y_p] (2,-1) -- (2,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=0.5 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,5}] {binom(x,5,0.5)};
+                      \draw[dashed, thick ,y_p] (2.5,-1) -- (2.5,1);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+
+    \item Marking the positions of the mean, at $ \mu = np $, with $ n = 8 $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {Binomial $ p=1/16 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,8}] {binom(x,8,1/16)};
+                      \draw[dashed, thick ,y_p] (0.5,-1) -- (0.5,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=2/16 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,8}] {binom(x,8,2/16)};
+                      \draw[dashed, thick ,y_p] (1,-1) -- (1,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=3/16 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,8}] {binom(x,8,3/16)};
+                      \draw[dashed, thick ,y_p] (1.5,-1) -- (1.5,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=4/16 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,8}] {binom(x,8,4/16)};
+                      \draw[dashed, thick ,y_p] (2,-1) -- (2,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=5/16 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,8}] {binom(x,8,5/16)};
+                      \draw[dashed, thick ,y_p] (2.5,-1) -- (2.5,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=6/16 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,8}] {binom(x,8,6/16)};
+                      \draw[dashed, thick ,y_p] (3,-1) -- (3,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=7/16 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,8}] {binom(x,8,7/16)};
+                      \draw[dashed, thick ,y_p] (3.5,-1) -- (3.5,1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 6cm, height = 6cm,
+                          title = {$ p=8/16 $}, Ani, grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,...,8}] {binom(x,8,8/16)};
+                      \draw[dashed, thick ,y_p] (4,-1) -- (4,1);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the Poisson distribution with $\lambda = 5 $
+          \begin{align}
+              P(X \leq 5) & = e^{-5} \Bigg[ \frac{5^0}{0!} + \frac{5^1}{1!} +
+              \frac{5^2}{2!} + \frac{5^3}{3!} + \frac{5^4}{4!} + \frac{5^5}{5!} \Bigg] \\
+                          & = \frac{1097}{12}\ e^{-5} = \SI{61.6}{\percent}            \\
+              P(X \geq 6) & = \SI{38.4}{\percent}
+          \end{align}
+          The probability is larger than in Example $ 3 $ since the value is closer to
+          the mean.
+
+    \item Finding the probabilities, noting that the probabilities of success are
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {r|[dotted]l|[dotted]l},
+                  colsep = 1.2em}
+                  Number $ (x) $ & $f(x)$ with rep & $ f(x) $ without rep \\ \hline
+                  0              & 0.2401          & 0.2066               \\
+                  1              & 0.4116          & 0.45077              \\
+                  2              & 0.2646          & 0.28173              \\
+                  3              & 0.0756          & 0.05779              \\
+                  4              & 0.0081          & 0.0031               \\
+              \end{tblr}
+          \end{table}
+          using the binomial distribution and hypergeometric distribution respectively.
+
+    \item For a fair coin, $ p = q = 0.5 $ and $ X $ being the number of heads,
+          \begin{align}
+              f(x)        & = \binom{5}{x} (0.5)^{x}\ (0.5)^{5-x} &
+              f(x)        & = \frac{1}{32} \ \binom{5}{x}           \\
+              P(X = 0)    & = \frac{1}{32}                        &
+              P(X = 1)    & = \frac{5}{32}                          \\
+              P(X \geq 1) & = \frac{31}{32}                       &
+              P(X \leq 4) & = \frac{31}{32}                         \\
+          \end{align}
+
+    \item Finding the probabilities, noting that the probabilities of success are
+          \begin{align}
+              \lambda & = np = 100(0.04) = 4    &
+              f(x)    & = e^{-4} \frac{4^x}{x!}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {r|[dotted]l},
+                  colsep = 1.2em}
+                  Number $ (x) $ & $f(x)$ \\ \hline
+                  0              & 0.018  \\
+                  1              & 0.073  \\
+                  2              & 0.147  \\
+                  3              & 0.195  \\
+                  4              & 0.195  \\
+                  5              & 0.156  \\
+              \end{tblr}
+          \end{table}
+
+    \item Finding the probabilities, noting that the probabilities of success are
+          \begin{align}
+              \lambda     & = np = 100(0.04) = 4                           &
+              f(x)        & = e^{-5} \frac{5^x}{x!}                          \\
+              P(X \leq 4) & = e^{-5}\ \Bigg[ \frac{5^0}{0!} + \frac{5}{1!}
+                  + \frac{5^2}{2!} + \frac{5^3}{3!} + \frac{5^4}{4!}
+              \Bigg]      &
+                          & = 0.440
+          \end{align}
+
+    \item Finding the probabilities, noting that the calls received per minute are
+          Poisson distributed with $ \lambda = 5 $,
+          \begin{align}
+              f(x)      & = e^{-5} \frac{5^x}{x!}    &
+              P(X > 10) & = 1 - P(X \leq 10) = 0.014
+          \end{align}
+
+    \item Finding the probabilities, noting that the particles emitted per second are
+          Poisson distributed with $ \lambda = 0.5 $,
+          \begin{align}
+              f(x)        & = e^{-0.5} \frac{0.5^x}{x!} &
+              P(X \geq 2) & = 1 - P(X < 2) = 0.09
+          \end{align}
+
+    \item Since each bulb is independent, this is a binomial PDF with $ n = 15 $,
+          $ p = 0.02 $,
+          \begin{align}
+              P(X = 0) & = \binom{15}{0}\ (0.02)^0\ (0.98)^{15} = 0.739
+          \end{align}
+
+    \item The new probability would be,
+          \begin{align}
+              P(E_2) & = (0.98)^100 = 0.1326
+          \end{align}
+
+    \item The number of defects per $ \SI{600}{\m} $ is Poisson distributed with
+          parameter $ \lambda = 6 $,
+          \begin{align}
+              f(x) & = e^{-6}\ \frac{6^x}{x!} &
+              f(0) & = 0.0025
+          \end{align}
+
+    \item This is a hypergeometric distribution with $ N = 13 $ and desirable
+          draws $ M = 3 $.
+          \begin{align}
+              f(x) & = \frac{\binom{3}{x}\ \binom{10}{3-x}}{\binom{13}{3}} \\
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {r|[dotted]l},
+                  colsep = 1.2em}
+                  Number $ (x) $ & $f(x)$ \\ \hline
+                  0              & 0.4196 \\
+                  1              & 0.472  \\
+                  2              & 0.1049 \\
+                  3              & 0.0035 \\
+              \end{tblr}
+          \end{table}
+
+    \item Finding the probabilities, noting that the customers per minute are
+          Poisson distributed with $ \lambda = 2 $,
+          \begin{align}
+              f(x)     & = e^{-2} \frac{2^x}{x!}    &
+              P(X > 4) & = 1 - P(X \leq 4) = 0.0527
+          \end{align}
+
+    \item Finding the probabilities, noting that the number of defects per lot are
+          Poisson distributed with $ \lambda = 0.2 $,
+          \begin{align}
+              f(x)     & = e^{-0.2}\ \frac{0.2^x}{x!} &
+              P(X > 0) & = 1 - P(X = 0) = 0.18127
+          \end{align}
+
+    \item MGF
+          \begin{enumerate}
+              \item Using differentiation under the integral sign,
+                    \begin{align}
+                        \diff[k] Gt   & = \intRL \diff*[k]{\Big[\exp(xt)\Big]}{t}
+                        \ f(x)\ \dl x &
+                                      & = \intRL x^k\ e^{kt}\ f(x)\ \dl x           \\
+                        \diff[k] Gt \Bigg|_{t=0}
+                                      & = \intRL x^k\ \ f(x)\ \dl x = \ex[X^k]    &
+                        G'(0)         & = \ex[X^1] = \mu
+                    \end{align}
+
+              \item Looking at $ G^{(k)}(t=0) $,
+                    \begin{align}
+                        G(t)        & = (pe^t+q)^n                               &
+                        \diff[k] Gt & = \sum_{x=0}^{n} x^k\ e^{tx}\ \binom{n}{x}
+                        \ p^x\ q^{n-x}                                             \\
+                        \diff[k] Gt & = \sum_{x=0}^{n} x^k\ f_b(x) = \ex[X^k]
+                    \end{align}
+                    Since the moments uniquely describe a PDF, this is the moment
+                    generating function of the binomial distribution $ f_b(x) $.
+
+              \item Using $ b $,
+                    \begin{align}
+                        \mu = \ex[X] & = \diff Gt \Bigg|_{t=0}
+                        = \Big[n(pe^t + q)^{n-1}\ (p)\Big]_{t=0} \\
+                                     & = np
+                    \end{align}
+
+              \item Using $ b $,
+                    \begin{align}
+                        \ex[(X-\mu)^2] & = \ex[X^2 - 2\mu X + \mu^2]               &
+                                       & = \ex[X^2] - 2\mu \ex[X] + \mu^2 \ex[X^0]   \\
+                                       & = \ex[X^2] - 2\mu^2 + \mu^2 (1)           &
+                                       & = \ex[X^2] - \mu^2                          \\
+                        \diff Gt       & = (npe^t)\ (pe^t + q)^{n-1}               &
+                        \diff[2] Gt    & = (np)(np - p + 1)
+                    \end{align}
+                    Subsittuting into the expression for the variance,
+                    \begin{align}
+                        \sigma^2 & = np\ (np - p + 1 - np) = npq
+                    \end{align}
+
+              \item From the definition of the MGF for the discrete case,
+                    \begin{align}
+                        G(t)           & = \sum_{j=0}^{\infty} e^{tx_j}\ e^{-\mu}
+                        \ \frac{\mu^{x_j}}{x_j!} = e^{-\mu}\ \sum_j
+                        \frac{(\mu e^t)^{x_j}}{x_j!} = e^{-\mu}\ \exp(\mu e^t)    \\
+                        \ex[X]         & = G'(0) = e^{-\mu}\ \mu e^t
+                        \ \exp(\mu e^t)\Big|_{t=0} = \mu                          \\
+                        \ex[(X-\mu)^2] & = \ex[X^2] - 2\mu \ex[X] + \mu^2 \ex[1]
+                    \end{align}
+                    This requires the second moment,
+                    \begin{align}
+                        G''(0)   & = e^{-\mu}\ (\mu e^t)(1 + \mu e^t)\
+                        \exp(\mu e^t) \Big|_{t=0} = \mu (1+\mu)          \\
+                        \sigma^2 & = \mu(1 + \mu) + 2\mu^2 - \mu^2 = \mu
+                    \end{align}
+
+              \item Proving the relation,
+                    \begin{align}
+                        x\ \binom{M}{x} & = x \cdot \frac{M!}{x!\ (M-x)!}
+                        = \frac{M!}{(x-1)!\ (M-x)!}
+                        = M \cdot \frac{(M-1)!}{(x-1)!\ (M-x)!}           \\
+                                        & = M\ \binom{M-1}{x-1}
+                    \end{align}
+
+              \item Since each of the outcomes $ A_j $ have to occur $ x_j $ times out
+                    of a total of $ n $ trials,
+                    \begin{align}
+                        p(E) & = p_1^{x_1} \cdot p_2^{x_2} \dots p_j^{x_j}
+                    \end{align}
+                    Since this outcome is counted multiple times, the number of outcomes
+                    disregarding order is,
+                    \begin{align}
+                        f(x_1,x_2,\dots,x_j) & = \frac{n!}{x_1!\ x_2!\ \dots\ x_j!}
+                        \ p_1^{x_1} \cdot p_2^{x_2} \dots p_j^{x_j}
+                    \end{align}
+                    The factorial expression is the number of ways of arranging $ n $
+                    items, such that $ x_j $ is the number of items belonging to class
+                    $ j $, (all of which are identical).
+          \end{enumerate}
+
+    \item This is a binomial distribution with $ p = 0.1 $,
+          \begin{align}
+              P(E) & = P(X \geq 1) = 1 - P(X= 0)  & P(E) & = 0.95 \\
+              0.05 & = \binom{n}{0}\ p^0\ (1-p)^n & n    & = 28
+          \end{align}
+\end{enumerate}

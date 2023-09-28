@@ -6,7 +6,7 @@
               {2^{2m+n}\ m!\ (n+m)!}                                                  \\
               \text{Ratio test} \quad
               \frac{a_{m+1}}{a_m}               & = \frac{-x^2}{2^2(m+1)(n+m+1)}      \\
-              \lim_{m \rightarrow \infty}
+              \lim_{m \to \infty}
               \Bigg| \frac{a_{m+1}}{a_m} \Bigg| & = 0
           \end{align}
           This guarantees convergence for all $ x $. In case $ n < 0 $, the ratio
@@ -38,14 +38,15 @@
 
     \item Reducing to Bessel form ODE,
           \begin{align}
-              0                      & = y'' + \left( e^{-2x} - \frac{1}{9} \right) y &
-              z                      & = e^{-x}                                         \\
-              \diff zx               & = -z                                           &
-              \diff[2] yx            & = z (\dot{y} + z\ddot{y})                        \\
+              0                      & = y'' + \left( e^{-2x} - \frac{1}{9}
+              \right) y              &
+              z                      & = e^{-x}                                   \\
+              \diff zx               & = -z                                     &
+              \diff[2] yx            & = z (\dot{y} + z\ddot{y})                  \\
               0                      & = z^2 \ddot{y} + z\dot{y} + \left( z^2 -
               \frac{1}{3^2} \right)y &
-              \nu                    & = 1/3                                            \\
-              y_1                    & = \color{y_h} J_{1/3}(e^{-x})                  &
+              \nu                    & = 1/3                                      \\
+              y_1                    & = \color{y_h} J_{1/3}(e^{-x})            &
               y_2                    & = \color{y_p} J_{-1/3}(e^{-x})
           \end{align}
 
@@ -63,20 +64,21 @@
 
     \item Transforming both dependent and independent variable,
           \begin{align}
-              0               & = x^2y'' + \left( x + \frac{3}{4} \right) \frac{y}{4}   \\
-              y               & = u\sqrt{x}                                           &
-              \sqrt{x}        & = z                                                     \\
-              y'              & = \frac{1}{2z} \left( z\dot{u} + u \right)            &
+              0               & = x^2y'' + \left( x + \frac{3}{4} \right)
+              \frac{y}{4}                                                            \\
+              y               & = u\sqrt{x}                                        &
+              \sqrt{x}        & = z                                                  \\
+              y'              & = \frac{1}{2z} \left( z\dot{u} + u \right)         &
               y''             & = \frac{1}{2z} \diff**{z}{\left( \frac{\dot{u}}{2}
-              + \frac{u}{2z} \right)}                                                   \\
+              + \frac{u}{2z} \right)}                                                \\
               y''             & = \frac{1}{2z} \left( \frac{\ddot{u}}{2}
-              + \frac{\dot{u}} {2z} - \frac{u}{2z^2} \right)                            \\
+              + \frac{\dot{u}} {2z} - \frac{u}{2z^2} \right)                         \\
               0               & = \frac{z^3\ddot{u}}{4} + \frac{z^2\dot{u}}{4}
               -\frac{zu}{4} + \frac{uz^3}{4}
               +\frac{3uz}{16} &
               0               & = z^2\ddot{u} + z\dot{u}
-              + u \left( z^2 - \frac{1}{4} \right)                                      \\
-              y_1             & = \color{y_h} \sqrt{x}\ J_{1/2}(\sqrt{x})             &
+              + u \left( z^2 - \frac{1}{4} \right)                                   \\
+              y_1             & = \color{y_h} \sqrt{x}\ J_{1/2}(\sqrt{x})          &
               y_2             & = \color{y_p} \sqrt{x}\ J_{-1/2}(\sqrt{x})
           \end{align}
 
@@ -153,15 +155,16 @@
                           width = 12cm,
                           height = 12cm,
                           Ani,
+                          colormap/jet,
+                          cycle list = {[samples of colormap = 9]},
                       ]
                       \foreach [evaluate=\c as \n using (\c)*100/(10)] \c in {2,...,10}
                           {%
                               \edef\temp{%
                                   \noexpand
-                                  \addplot[
+                                  \addplot+[thick,
                                       samples = 200,
-                                      domain=0:4*pi,
-                                      color=blue!\n!red, thin,
+                                      domain=0.5:4*pi,
                                   ] gnuplot[id=besjn] {x^((1-\c)/2)*besjn((\c-1)/2, x)};
                                   \noexpand \addlegendentry{$ k = \c$};
                               }\temp
@@ -178,15 +181,16 @@
                           width = 12cm,
                           height = 12cm,
                           Ani,
+                          colormap/jet,
+                          cycle list = {[samples of colormap = 5]},
                       ]
                       \foreach [evaluate=\c as \n using (\c-1)*100/(1)] \c in {1,3,...,9}
                           {%
                               \edef\temp{%
                                   \noexpand
-                                  \addplot[
+                                  \addplot+[thick,
                                       samples = 200,
-                                      domain=0:4*pi,
-                                      color=blue!\n!red, thin,
+                                      domain=0.5:4*pi,
                                   ] gnuplot[id=besjn] {x^((1-\c)/2)*besjn((\c-1)/2, x)};
                                   \noexpand \addlegendentry{$ k = \c$};
                               }\temp
@@ -205,24 +209,26 @@
                           legend pos = south east,
                           legend style={nodes={scale=0.75}},
                           grid = both,
+                          colormap/jet, unbounded coords=jump,
+                          cycle list = {[samples of colormap = 6]},
                           Ani]
-                      \addplot[GraphSmooth, color = red5] table[x index=0,y index=1,
+                      \addplot+[thick, samples = 200] table[x index=0,y index=1,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 0.0$}
-                      \addplot[GraphSmooth, color = yellow8] table[x index=4,y index=5,
+                      \addplot+[thick, samples = 200] table[x index=4,y index=5,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 0.4$}
-                      \addplot[GraphSmooth, color = green8] table[x index=8,y index=9,
+                      \addplot+[thick, samples = 200] table[x index=8,y index=9,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 0.8$}
-                      \addplot[GraphSmooth, color = blue3] table[x index=12,y index=13,
+                      \addplot+[thick, samples = 200] table[x index=12,y index=13,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 1.2$}
-                      \addplot[GraphSmooth, color = purple3]
+                      \addplot+[thick, samples = 200]
                       table[x index=16,y index=17,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 1.6$}
-                      \addplot[GraphSmooth, color = magenta3]
+                      \addplot+[thick, samples = 200]
                       table[x index=20,y index=21,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 2.0$}
@@ -240,20 +246,22 @@
                           legend pos = south east,
                           legend style={nodes={scale=0.75}},
                           grid = both,
+                          colormap/viridis, unbounded coords=jump,
+                          cycle list = {[samples of colormap = 5]},
                           Ani]
-                      \addplot[GraphSmooth, color = red5] table[x index=2,y index=3,
+                      \addplot+[thick, samples = 200] table[x index=2,y index=3,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 0.2$}
-                      \addplot[GraphSmooth, color = yellow8] table[x index=6,y index=7,
+                      \addplot+[thick, samples = 200] table[x index=6,y index=7,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 0.6$}
-                      \addplot[GraphSmooth, color = green8] table[x index=10,y index=11,
+                      \addplot+[thick, samples = 200] table[x index=10,y index=11,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 1.0$}
-                      \addplot[GraphSmooth, color = blue3] table[x index=14,y index=15,
+                      \addplot+[thick, samples = 200] table[x index=14,y index=15,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 1.4$}
-                      \addplot[GraphSmooth, color = purple3]
+                      \addplot+[thick, samples = 200]
                       table[x index=18,y index=19,
                               col sep=comma, ]{\anitable};
                       \addlegendentry{$k = 1.8$}
@@ -277,16 +285,17 @@
                                     width = 12cm,
                                     height = 12cm,
                                     Ani,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 6]},
                                 ]
                                 \foreach [evaluate=\c as \n using (\c)*100/(5)]
                                 \c in {0,...,5}
                                     {
                                         \edef\temp{%
                                             \noexpand
-                                            \addplot[
+                                            \addplot+[thick,
                                                 samples = 200,
                                                 domain=1000:1010,
-                                                color=blue!\n!red, thin,
                                             ] gnuplot[id=besjn] {besjn(\c, x)};
                                             \noexpand \addlegendentry{$ n = \c$};
                                         }\temp
@@ -298,7 +307,8 @@
                     resembles $ k\cos(x) $ for even $ n $ and $ k\sin(x) $ for odd $ n $.
 
               \item Checking the difference function between the $ J_n $ and its
-                    approximation, the difference goes to zero for around $ x_n = 200\pi $.
+                    approximation, the difference goes to zero for around
+                    $ x_n = 200\pi $.
                     \begin{figure}[H]
                         \centering
                         \begin{tikzpicture}
@@ -312,14 +322,15 @@
                                     domain = 0:200*pi,
                                     PiStyleX,
                                     xtick distance = 40*pi,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 11]},
                                 ]
                                 \foreach [evaluate=\c as \n using (\c)*100/(10)]
                                 \c in {0,...,10}
                                     {
                                         \edef\temp{%
-                                            \noexpand \addplot[
+                                            \noexpand \addplot+[thick,
                                                 samples = 200,
-                                                color=blue!\n!red, thin,
                                             ] gnuplot[id = besjn] {besjn(\c, x)-
                                                     ((cos(x - \c*0.5*pi
                                                     - 0.25*pi))*sqrt(2/(x*pi)))};
@@ -344,15 +355,12 @@
                                     height = 8cm,
                                     Ani,
                                     domain = 0:20*pi,
-                                    % ymin = -1e-9,ymax=1e-9,
                                 ]
-                                \addplot[samples = 200,
-                                    color=blue, thin,]
+                                \addplot[GraphSmooth, y_h]
                                 gnuplot {(sin(x) - (cos(x - 0.5*0.5*pi - 0.25*pi)))
                                         *sqrt(2/(x*pi))};
                                 \addlegendentry{$ J_{1/2}(x)$};
-                                \addplot[samples = 200,
-                                    color=red, thin,]
+                                \addplot[GraphSmooth, y_p]
                                 gnuplot {(cos(x) - (cos(x + 0.5*0.5*pi - 0.25*pi)))
                                         *sqrt(2/(x*pi))};
                                 \addlegendentry{$ J_{-1/2}(x)$};
@@ -595,7 +603,7 @@
           \end{align}
 
     \item Using recurrence relation, such that the result does not have any powers of
-    $ x $, and only linear combinations of loewr order $ J_n $,
+          $ x $, and only linear combinations of loewr order $ J_n $,
           \begin{align}
               \int J_5 \dl x & = \int J_3 \dl x - 2 \int J_4' \dl x         \\
                              & = -2J_4 + \int J_3 \dl x                     \\

@@ -1,0 +1,305 @@
+\section{General Properties of Harmonic Functions}
+
+\begin{enumerate}
+    \item Verifying Theorem $ 1 $,
+          \begin{align}
+              F(z)   & = (z + 1)^3                                     &
+              z_0    & = 2.5                                             \\
+              F(z_0) & = (3.5)^3                                       &
+              I      & = \oint_C F(z)\ \dl z                             \\
+              I      & = \frac{1}{2\pi}\ \int_{0}^{2\pi}
+              (3.5 + re^{\i \theta})^3\ \dl \theta                       \\
+              I      & = \frac{1}{2\pi}\Bigg[ 3.5^3 \theta + 3r(3.5)^2
+                  \ \frac{e^{\i \theta}}{\i} + 10.5r^2\ \frac{e^{2\i \theta}}
+              {2\i} + r^3\ \frac{e^{3\i \theta}}{3\i}\Bigg]_0^{2\pi}     \\
+              I      & = (3.5)^3 = F(z_0)
+          \end{align}
+
+    \item Verifying Theorem $ 1 $,
+          \begin{align}
+              F(z)   & = 2z^4                                                   &
+              z_0    & = -2                                                       \\
+              F(z_0) & = 2(-2)^4 = 32                                           &
+              I      & = \oint_C F(z)\ \dl z                                      \\
+              I      & = \frac{1}{2\pi}\ \int_{0}^{2\pi}
+              2(-2 + re^{\i \theta})^4\ \dl \theta
+                     &
+              I      & = \frac{1}{\pi}\ \Bigg[ (-2)^4\ \theta + f(e^{\i\theta})
+              \Bigg]_0^{2\pi}                                                     \\
+              I      & = 32
+          \end{align}
+
+    \item Verifying Theorem $ 1 $,
+          \begin{align}
+              F(z)   & = (3z - 2)^2                                              &
+              z_0    & = 4                                                         \\
+              F(z_0) & = 100                                                     &
+              I      & = \oint_C F(z)\ \dl z                                       \\
+              I      & = \frac{1}{2\pi}\ \int_{0}^{2\pi}
+              (10 + 3re^{\i \theta})^2\ \dl \theta
+                     &
+              I      & = \frac{1}{2\pi}\ \Bigg[ (10)^2\ \theta + f(e^{\i\theta})
+              \Bigg]_0^{2\pi}                                                      \\
+              I      & = 100
+          \end{align}
+
+    \item Verifying Theorem $ 1 $, using $ G(z)  = 1/F(z)$
+          \begin{align}
+              G(z)   & = (z - 1)^2                                               &
+              z_0    & = -1                                                        \\
+              G(z_0) & = 4 = \frac{1}{F(z_0)}                                    &
+              I_g    & = \oint_C F(z)\ \dl z                                       \\
+              I_g    & = \frac{1}{2\pi}\ \int_{0}^{2\pi}
+              (-2 - re^{\i \theta})^{2}\ \dl \theta
+                     &
+              I      & = \frac{1}{2\pi}\ \Bigg[ (-2)^2\ \theta + f(e^{\i\theta})
+              \Bigg]_0^{2\pi}                                                      \\
+              I_g    & = 4 = \frac{1}{I_f}
+          \end{align}
+          Since $ G(z) $ is never zero in the unit disk centered on $ z_0 $,
+          $ F(z) $ is analytic in this disk and the theorem holds for $ F $ as well.
+
+    \item The theorem does not hold, but this is not a violation of the theorem.
+          \begin{align}
+              F(z) & = \sqrt{x^2 + y^2} + 0\ \i &
+              F(z) & = u(x, y) + \i\ v(x, y)                      \\
+              u_x  & \neq v_y                   & u_y & \neq -v_x
+          \end{align}
+          Since the Cauchy-Riemann relations do not hold, $ \abs{z} $ is not analytic.
+
+    \item Using Poisson's integral formula, with the point $ z_0 $ being the origin
+          using the transform, $ w = z - z_0 $
+          \begin{align}
+              \Phi(0, \theta) & = \frac{1}{2\pi} \int_{0}^{2\pi} \Phi(R, \alpha)
+              \ \frac{R^2}{R^2}\ \dl \alpha = \frac{1}{2\pi R}
+              \ \int_{0}^{2\pi} \Phi(R, \alpha)\ R \dl \alpha
+          \end{align}
+          The last expression is the mean value of $ \Phi $ on the boundary $ C $, for
+          $ C $ being any circle centered on $ z_0 $.
+
+    \item Verifying the second statement of Theorem $ 2 $,
+          \begin{align}
+              \Phi(x,y)      & = (x-1)(y-1)     &
+              (x_0, y_0)     & = (2, -2)          \\
+              \Phi(x_0, y_0) & = \color{y_h} -3
+          \end{align}
+          Integrating over a disk of radius $ 1 $ centered at $ z_0 $,
+          \begin{align}
+              I        & = \frac{1}{\pi}\ \int_{0}^{1} \int_{0}^{2\pi}
+              (1 + \cos\alpha)(-3 + \sin\alpha)\ (r)\dl r\ \dl \alpha     \\
+              I_\alpha & = \Bigg[ -3\alpha - 3\sin\alpha - \cos\alpha -
+              \frac{\cos(2\alpha)}{2} \Bigg]_0^{2\pi} = \color{y_p} -6\pi \\
+              I        & = \int_{0}^{1} (-6r)\ \dl r = \color{y_s} -3
+          \end{align}
+
+    \item Verifying the second statement of Theorem $ 2 $,
+          \begin{align}
+              \Phi(x,y)      & = x^2 - y^2       &
+              (x_0, y_0)     & = (3, 8)            \\
+              \Phi(x_0, y_0) & = \color{y_h} -55
+          \end{align}
+          Integrating over a disk of radius $ 1 $ centered at $ z_0 $,
+          \begin{align}
+              I        & = \frac{1}{\pi}\ \int_{0}^{1} \int_{0}^{2\pi}
+              \Big[(3 + \cos\alpha)^2 - (8 + \sin\alpha)^2\Big]\ (r)\dl r\ \dl \alpha \\
+              I_\alpha & = \Bigg[ -55\alpha + \frac{\sin(2\alpha)}{2}
+              + 6\sin\alpha + 16\cos\alpha \Bigg]_0^{2\pi} = \color{y_p} -110\pi      \\
+              I        & = \int_{0}^{1} (-110r)\ \dl r = \color{y_s} -55
+          \end{align}
+
+    \item Verifying the second statement of Theorem $ 2 $,
+          \begin{align}
+              \Phi(x,y)      & = x + y + xy    &
+              (x_0, y_0)     & = (1, 1)          \\
+              \Phi(x_0, y_0) & = \color{y_h} 3
+          \end{align}
+          Integrating over a disk of radius $ 1 $ centered at $ z_0 $,
+          \begin{align}
+              I        & = \frac{1}{\pi}\ \int_{0}^{1} \int_{0}^{2\pi}
+              \Big[3 + 2\cos\alpha + 2\sin \alpha + 0.5\sin(2\alpha)
+              \Big]\ (r)\dl r\ \dl \alpha                                    \\
+              I_\alpha & = \Bigg[ 3\alpha - \frac{\cos(2\alpha)}{2}
+              - 2\cos\alpha + 2\sin\alpha \Bigg]_0^{2\pi} = \color{y_p} 6\pi \\
+              I        & = \int_{0}^{1} (6r)\ \dl r = \color{y_s} 3
+          \end{align}
+
+    \item Let the maximum value of $ \abs{F(z)} $ be $ M $, which the function attains
+          at an interior point $ z_0 $ of the region $ R $
+          \begin{align}
+              M = \abs{F(z_0)} & \leq \frac{1}{2\pi} \abs{\oint_{C_1 + C_2}
+              \frac{F(z)}{z - z_0}\ \dl z}                                        \\
+                               & \leq \frac{1}{2\pi} \abs{\oint_{C_1}
+                  \frac{F(z)}{z - z_0}\ \dl z} + \frac{1}{2\pi} \abs{\oint_{C_2}
+              \frac{F(z)}{z - z_0}\ \dl z}                                        \\
+              \abs{F(z)}       & \leq M-k \qquad \forall \qquad z\ \text{on}\ C_1
+          \end{align}
+          Here $ K > 0 $. The continuity of $ F(z) $ on $ C $, ensures that there exists
+          some arc of the circular boundary of length $ L_1 $ on which $ \abs{F(z)}
+              \leq M - k $
+          \begin{align}
+              M & \leq \frac{1}{2\pi}\ \frac{M-k}{r}\ L_1 + \frac{1}{2\pi}
+              \ \frac{M}{r}\ (2\pi r - L_1)                                \\
+                & \leq M - \frac{k}{2\pi r}\ L_1
+          \end{align}
+          This is a contradiction since $ M < M $, which means the initial assumption is
+          wrong.
+
+    \item Plotting the surfaces $ F(x, y) $, and checking the positions of the
+          extrema, (interactive plots not shown here) \par.
+          Looking at problems $ 7,8,9 $
+          \begin{enumerate}
+              \item Saddle point at $ (1,1) $, with no other extrema.
+              \item Saddle point at the origin, with no other extrema.
+              \item Saddle point at $ (-1,-1) $ with no other extrema.
+          \end{enumerate}
+
+    \item Maximum modulus theorem,
+          \begin{enumerate}
+              \item For the function $ F(z) = z^2 $,
+                    \begin{align}
+                        F(z)               & = z^2                            &
+                        R                  & : x \in [1,5] \quad y \in [2,4]    \\
+                        \abs{F(z)}         & = x^2 + y^2                      &
+                        P^*                & = (0, 0) \qquad \text{(minimum)}   \\
+                        \max_R{\abs{F(z)}} & = \max_{x \in R}{x^2}
+                        + \max_{y \in R}{y^2}
+                    \end{align}
+                    Clearly this value is reached at the point $ (5, 4) $, which lies on
+                    the boundary. \par
+                    For the function $ F(z) = \sin z $,
+                    \begin{align}
+                        F(z)       & = \sin z                                &
+                        R          & : r \in [0,1] \quad \theta \in [0,2\pi]   \\
+                        \abs{F(z)} & = \sqrt{\sin^2[r\cos\theta]
+                        + \sinh^2[r\sin\theta]}
+                    \end{align}
+                    Clearly this value is reached at the boundary since both
+                    $ \sin^2(r\cos\theta) $ and $ \sinh^2(r\sin\theta) $ are both
+                    increasing functions of $ r $ for the interval $ r \in [0,1] $.
+                    \par
+                    For the function $ F(z) = e^z $,
+                    \begin{align}
+                        F(z)               & = e^z                       &
+                        R                  & : \text{any bounded domain}   \\
+                        \abs{F(z)}         & = e^x                       &
+                        \max_R{\abs{F(z)}} & = \max_{x \in R} e^x
+                    \end{align}
+                    Clearly this value is reached at the boundary since $ e^x $
+                    is an increasing function of $ x $ in any bounded interval
+                    $ [x_a, x_b] $
+
+              \item Since $ \abs{z} $ is not analytic at the origin, and the region
+                    $ \abs{z} \leq 2 $ contains this point, Theorem 3 does not apply.
+                    (Use Cauchy-Riemann equations to check).
+
+              \item Consider the vertical line $ L: \pi/2 + y\i $
+                    \begin{align}
+                        \sin(z)        & = \cosh y                   &
+                        \max_R{[F(z)]} & = \max_{y \in R}{[\cosh y]}   \\
+                    \end{align}
+                    Any region containing $ \pi/2 + 0\i $ must contain points not on the
+                    real axis, where the value of $ \sin z $ is greater than the value
+                    at this point.
+
+              \item Let $ f(z) \neq 0 $ everywhere in the region $ R $. By Theorem
+                    $ 3 $, $ \abs{F(z)} $ must take its maximum and minimum values at the
+                    boundary. \par
+                    This means that $ F(z) $ has the same maximum and minimum value making
+                    it a constant function. \par
+                    This is a contradiction which means that the assumption is incorrect.
+          \end{enumerate}
+
+    \item Finding the maximum in the unit disk,
+          \begin{align}
+              F(z)                        & = \cos z                                &
+              \abs{F(z)}                  & = \sqrt{\sinh^2 y + \cos^2 x}             \\
+              \max_{(1,\theta)}\abs{F(z)} & = \max_\theta{\sqrt{\sinh^2(\sin\theta)
+              + \cos^2(\cos\theta)}}      &
+              \theta^*                    & = \frac{\pi}{2}, \frac{3\pi}{2}           \\
+              \max{\abs{F(z)}}            & = \sqrt{1 + \sinh^2(1)}
+          \end{align}
+
+    \item Finding the maximum in the unit disk,
+          \begin{align}
+              F(z)                        & = \exp(z^2)                         &
+              \abs{F(z)}                  & = e^{x^2 - y^2}                       \\
+              \max_{(1,\theta)}\abs{F(z)} & = \max_\theta{[\exp(\cos 2\theta)]} &
+              \theta^*                    & = 0, \pi                              \\
+              \max{\abs{F(z)}}            & = e
+          \end{align}
+
+    \item Finding the maximum in the unit disk,
+          \begin{align}
+              F(z)                        & = \sinh(2z)                              &
+              \abs{F(z)}                  & = \sqrt{\sinh^2(2x) + \sin^2(2y)}          \\
+              \max_{(1,\theta)}\abs{F(z)} & = \max_\theta{\sqrt{\sinh^2(2\cos\theta)
+              + \sin^2(2\sin\theta)}}     &
+              \theta^*                    & = 0, \pi                                   \\
+              \max{\abs{F(z)}}            & = \sinh(2)
+          \end{align}
+
+    \item Finding the maximum in the unit disk,
+          \begin{align}
+              F(z)             & = az + b, \qquad a \neq 0          &
+              \abs{F(z)}       & = \abs{A e^{\i(\alpha + \theta)} +
+              B e^{\i \beta}}                                         \\
+              \theta^*         & = \beta - \alpha                     \\
+              \max{\abs{F(z)}} & = \abs{a} + \abs{b}
+          \end{align}
+          The maximum is obtained by rotating $ a $ so that it faces the same direction
+          as $ b $. The transform $ az = ae^{\i \theta} $ is the act of rotating $ a $
+          by some angle without changing its modulus. \par
+          By the triangle inequality,
+          \begin{align}
+              \abs{a} + \abs{b} & \geq \abs{a + b} \geq {ae^{\i \theta} + b}
+          \end{align}
+
+    \item Finding the maximum in the unit disk,
+          \begin{align}
+              F(z)                        & = 2z^2 - 2                             &
+              \abs{F(z)}                  & = \sqrt{(2x^2 - 2y^2 - 2)^2 + (4xy)^2}   \\
+              \max_{(1,\theta)}\abs{F(z)} & = \max_\theta{\Big[2\sqrt{2 -
+              2\cos(2\theta)}\Big]}       &
+              \theta^*                    & = \frac{\pi}{2}, \frac{3\pi}{2}          \\
+              \max{\abs{F(z)}}            & = 4
+          \end{align}
+
+    \item Finding the maximum in the given rectangle,
+          \begin{align}
+              F(z)               & = e^x\ \sin y                        &
+              R                  & : x \in [a,b], \quad y \in [0, 2\pi]   \\
+              x^*                & = b                                  &
+              y^*                & = \frac{\pi}{2}, \frac{3\pi}{2}        \\
+              \max_{R}\abs{F(z)} & = e^b
+          \end{align}
+          Clearly, this value is reached on the boundary of the rectangle. Since $ e^x $
+          is a monotonically increasing function of $ x $, the maxima is easy to find.
+
+    \item Looking at $ \Phi $ and its harmonic conjugate $ \Psi $,
+          \begin{align}
+              F(z)         & = \Phi(x, y) + \i\ \Psi(x, y) &
+              F(z)         & = x + \i y                      \\
+              \max_R{\Phi} & = \max{x \in R} x             &
+              \max_R{\Psi} & = \max{y \in R} y
+          \end{align}
+          Clearly, this counterexample proves that $ \Phi $ and $ \Psi $ need not reach
+          their maximum at the same point in the region $ R $.
+
+    \item Finding the maximum in the upper half unit disc in $ R^* $,
+          \begin{align}
+              F^*(w)              & = e^w                             &
+              \Phi^* + \i\ \Psi^* & = (e^u \cos v) + \i\ (e^u \sin v)   \\
+              R                   & : \abs{w} \leq 1, \quad v \geq 0  &
+              (u_1, v_1)          & = (1, 0)
+          \end{align}
+          The inverse mapping yields the region $ R $ as
+          \begin{align}
+              R          & : x \geq 0, \quad y \geq 0, \quad \abs{z} \leq 1 &
+              u + \i\ v  & = (x^2 - y^2) + \i\ (2xy)                          \\
+              \Phi(x, y) & = \exp(x^2 - y^2)\ \cos(2xy)                     &
+              (x_1, y_1) & = (1, 0)
+          \end{align}
+          This happens to be the pre-image of $ (u_1, y_1) $, under the mapping
+          $ w = z^2 $. The mapping is conformal and bijective, which means that this is
+          not a chance occurrence.
+\end{enumerate}

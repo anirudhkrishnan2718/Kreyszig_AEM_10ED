@@ -1,0 +1,427 @@
+\section{Laurent Series}
+
+\begin{enumerate}
+    \item Finding the Laurent series,
+          \begin{align}
+              f(z)    & = \frac{\cos z}{z^4}                                       &
+              f(z)    & = \iser[n]{0} (-1)^n\ \frac{z^{2n - 4}}{(2n)!}               \\
+              f(z)    & = \color{y_h}\frac{1}{z^4} - \frac{1}{2z^2} + \frac{1}{4!}
+              - \frac{z^2}{6!} + \frac{z^4}{8!}
+              - \dots &
+              \abs{z} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series,
+          \begin{align}
+              w       & = \frac{1}{z}                                         &
+              f(w)    & = w^2 e^{-w^2}                                          \\
+              f(w)    & = \frac{(-1)^n\ w^{2n + 2}}{n!}                       &
+              f(z)    & = \iser[n]{0} \frac{(-1)^n}{n!}\ \frac{1}{z^{2n + 2}}   \\
+              f(z)    & = \color{y_h}\frac{1}{z^2} - \frac{1}{z^4}
+              + \frac{1}{2!\ z^6} - \frac{1}{3!\ z^8}
+              + \dots &
+              \abs{z} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series,
+          \begin{align}
+              f(z)    & = z^{-3}\ \exp(z^2)                      &
+              f(z)    & = \iser[n]{0} \frac{1}{n!}\ z^{2n - 3}     \\
+              f(z)    & = \color{y_h}\frac{1}{z^3} + \frac{1}{z}
+              + \frac{z}{2!} + \frac{z^3}{3!}
+              + \dots &
+              \abs{z} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series,
+          \begin{align}
+              f(z)    & = z^{-2}\ \sin(\pi z)                                       &
+              f(z)    & = \pi^2\ \iser[n]{0} (-1)^n\ \frac{(\pi z)^{2n-1}}{(2n+1)!}   \\
+              f(z)    & = \color{y_h}\frac{\pi}{z} - \frac{\pi^3 z}{3!}
+              + \frac{\pi^5 z^3}{5!} - \frac{\pi^7 z^5}{7!}
+              + \dots &
+              \abs{z} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series,
+          \begin{align}
+              f(z)    & = \frac{1}{z^2 - z^3}                    &
+              f(z)    & = \frac{1}{z^2} \cdot \frac{1}{1 - z}      \\
+              f(z)    & = \iser[n]{0} z^{n-2}                    &
+              S       & = \{0, 1\}                                 \\
+              f(z)    & = \color{y_h}\frac{1}{z^2} + \frac{1}{z}
+              + 1 + z + z^2 + \dots
+                      &
+              \abs{z} & \in \color{y_p} (0, 1)
+          \end{align}
+
+    \item Finding the Laurent series,
+          \begin{align}
+              f(z)    & = \frac{\sinh(2z)}{z^2}                          &
+              f(z)    & = \iser[n]{0} \frac{2^{2n+1}\ z^{2n-1}}{(2n+1)!}   \\
+              f(z)    & = \color{y_h}\frac{2}{1!\ z} + \frac{2^3\ z}{3!}
+              + \frac{2^5\ z^3}{5!} + \frac{2^7\ z^5}{7!} + \dots
+                      &
+              \abs{z} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series,
+          \begin{align}
+              w       & = \frac{1}{z}                                       &
+              f(w)    & = w^{-3} \cosh(w)                                     \\
+              f(w)    & = \iser[n]{0} \frac{w^{2n - 3}}{(2n)!}              &
+              f(z)    & = \iser[n]{0} \frac{1}{(2n)!}\ \frac{1}{z^{2n - 3}}   \\
+              f(z)    & = \color{y_h}\frac{z^3}{0!} + \frac{z}{2!}
+              + \frac{1}{4!\ z} + \frac{1}{6!\ z^3}
+              + \dots &
+              \abs{z} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series,
+          \begin{align}
+              f(z)    & = \frac{1}{z^2} \cdot \frac{e^z}{1 - z}       &
+              f(z)    & = z^{-2}\ \Bigg[\iser[n]{0} z^{n}\Bigg] \cdot
+              \Bigg[\iser[n]{0} \frac{z^n}{n!} \Bigg]                   \\
+              f(z)    & = z^{-2}\ \iser[n]{0} c_n\ z^n                &
+              c_n     & = \sum_{k=0}^{n} a_k b_{n-k}                    \\
+              c_n     & = \color{y_h} \sum_{k=0}^{n} \frac{1}{(n-k)!} &
+              f(z)    & = \color{y_h}\frac{1}{z^2} + \frac{2}{z}
+              + \frac{5}{2} + \frac{8z}{3} + \dots                      \\
+              S       & = \{0, 1\}                                    &
+              \abs{z} & \in \color{y_p} (0, 1)
+          \end{align}
+
+    \item Finding the Laurent series, centered on $ z_0 = 1 $
+          \begin{align}
+              w    & = z - 1                                 &
+              f(w) & = e\ \frac{e^w}{w^2}                      \\
+              f(w) & = e\ \iser[n]{0} \frac{w^{n - 2}}{n!}   &
+              f(z) & = e\ \iser[n]{0} \frac{(z-1)^{n-2}}{n!}
+          \end{align}
+          Finding the radius of convergence,
+          \begin{align}
+              f(z)        & = \color{y_h}e\ \Bigg[\frac{1}{0!\ (z-1)^2}
+                  + \frac{1}{1!\ (z-1)} + \frac{1}{2} + \frac{(z-1)}{3!}
+              + \frac{(z-1)^2}{4!} + \dots \Bigg]                       \\
+              \abs{z - 1} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series, centered on $ z_0 = 3 $
+          \begin{align}
+              w    & = z - 3                                 &
+              f(w) & = \frac{w^2 + 6w + 9 - 3\i}{w^2}          \\
+              f(w) & = \frac{9 - 3\i}{w^2} + \frac{6}{w} + 1
+          \end{align}
+          Finding the radius of convergence,
+          \begin{align}
+              f(z)                  & = \color{y_h} \frac{9 - 3\i}{(z-3)^2}
+              + \frac{6}{(z-3)} + 1 &
+              \abs{z - 1}           & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series, centered on $ z_0 = \pi\i $
+          \begin{align}
+              w    & = z - \pi\i                           &
+              f(w) & = \frac{(w + \pi\i)^2}{w^4}             \\
+              f(w) & = \frac{w^2 + 2\pi\i\ w - \pi^2}{w^4}
+          \end{align}
+          Finding the radius of convergence,
+          \begin{align}
+              f(z)            & = \color{y_h} \frac{1}{(z - \pi\i)^2}
+              + \frac{2\pi\i}{(z-\pi\i)^3} - \frac{\pi^2}{(z - \pi\i)^4}
+                              &
+              \abs{z - \pi\i} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series, centered on $ z_0 = \i $
+          \begin{align}
+              w                                 & = z - \i                         &
+              f(w)                              & = \frac{1}{w(w + \i)^2}            \\
+              f(w)                              & = \frac{-1}{w} \cdot \iser[n]{0}
+              \binom{-2}{n}\frac{w^{n}}{\i^{n}} &
+              \forall \quad  \abs{w}            & < 1
+          \end{align}
+          Finding the radius of convergence,
+          \begin{align}
+              f(z)         & = \frac{-1}{(z - \i)}\ \Bigg[ 1 - \frac{2(z - \i)}{\i}
+              - \frac{3(z - \i)^2}{1} + \frac{4(z - \i)^3}{\i} - \dots \Bigg]       \\
+              f(z)         & = \color{y_h} -\frac{1}{(z - \i)}
+              + \frac{2}{\i} + 3(z - \i) - \frac{4(z-\i)^2}{\i} + \dots             \\
+              \abs{z - \i} & \in \color{y_p} (0, 1)
+          \end{align}
+
+    \item Finding the Laurent series, centered on $ z_0 = \i $
+          \begin{align}
+              w                                 & = z - \i                           &
+              f(w)                              & = \frac{1}{w^2(w + \i)^3}            \\
+              f(w)                              & = \frac{-1}{w^2} \cdot \iser[n]{0}
+              \binom{-3}{n}\frac{w^{n}}{\i^{n}} &
+              \forall \quad  \abs{w}            & < 1
+          \end{align}
+          Finding the radius of convergence,
+          \begin{align}
+              f(z)         & = \frac{\i}{(z - \i)^2}\ \Bigg[ 1 - \frac{3(z - \i)}{\i}
+              - 12(z - \i)^2 + \frac{30(z - \i)^3}{\i} - \dots \Bigg]                 \\
+              f(z)         & = \color{y_h} \frac{\i}{(z - \i)^2}
+              - \frac{3}{(z - \i)} - 6\i + 10(z-\i) + \dots                           \\
+              \abs{z - \i} & \in \color{y_p} (0, 1)
+          \end{align}
+
+    \item Finding the Laurent series, centered on $ z_0 = b $
+          \begin{align}
+              w    & = z - b                     &
+              f(w) & = e^{ab}\ \frac{e^{aw}}{w}    \\
+              f(w) & = e^{ab}\ \cdot \iser[n]{0}
+              \frac{a^n}{n!}\ w^{n-1}
+          \end{align}
+          Finding the radius of convergence,
+          \begin{align}
+              f(z)        & = \color{y_h} e^{ab}\ \Bigg[ \frac{1}{w} + a
+              + \frac{a^2\ w}{2!} + \frac{a^3\ w^2}{3!} + \dots \Bigg]   \\
+              \abs{z - b} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series, centered on $ z_0 = \pi $
+          \begin{align}
+              w    & = z - \pi                                        &
+              f(w) & = \frac{\cos(w + \pi)}{w^2}                        \\
+              f(w) & = -\frac{\cos w}{w^2}                            &
+              f(w) & = \iser[n]{0} (-1)^{n+1}\ \frac{w^{2n-2}}{(2n)!}
+          \end{align}
+          Finding the radius of convergence,
+          \begin{align}
+              f(z)          & = \color{y_h} -\frac{1}{0!\ (z-\pi)^2} + \frac{1}{2!}
+              - \frac{(z-\pi)^2}{4!} + \frac{(z-\pi)^4}{6!} + \dots                 \\
+              \abs{z - \pi} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Finding the Laurent series, centered on $ z_0 = \pi $
+          \begin{align}
+              w      & = z - \pi/4                                                &
+              f(w)   & = \frac{\sin(w + \pi/4)}{w^3}                                \\
+              f(w)   & = \frac{\sin w - \cos w}{\sqrt{2}\ w^3}                    &
+              f_1(w) & = \iser[n]{0} (-1)^{n}\ \frac{w^{2n-3}}{\sqrt{2}\ (2n)!}     \\
+              f_2(w) & = \iser[n]{0} (-1)^{n}\ \frac{w^{2n-2}}{\sqrt{2}\ (2n+1)!}
+          \end{align}
+          Finding the radius of convergence,
+          \begin{align}
+              f_1(z)          & = \color{y_h} \frac{1}{\sqrt{2}}\
+              \Bigg[\frac{1}{(z-\pi/4)^3} - \frac{1}{2\ (z - \pi/4)}
+              + \frac{(z - \pi/4)}{4!} - \frac{(z - \pi/4)^3}{6!} + \dots\Bigg]   \\
+              f_2(z)          & = \color{y_h} \frac{1}{\sqrt{2}}\
+              \Bigg[\frac{1}{(z-\pi/4)^2} - \frac{1}{3!}
+              + \frac{(z - \pi/4)^2}{5!} - \frac{(z - \pi/4)^4}{7!} + \dots\Bigg] \\
+              f(z)            & = f_2(z) - f_1(z)                                 \\
+              \abs{z - \pi/4} & \in \color{y_p} (0, \infty)
+          \end{align}
+
+    \item Program written in \texttt{sympy}. Using it to find the Laurent series
+          of a single term,
+          \begin{align}
+              \frac{1}{az+b}         & = \frac{1/b}{1 - (-az/b)}                     &
+              T(z)                   & = \color{y_h} \frac{1}{b}\ \iser[n]{0}
+              \Big(\frac{-az}{b}\Big)^n                                                \\
+              w                      & = \frac{1}{z}                                 &
+              \frac{1}{az + b}       & = \frac{w}{a + bw}                              \\
+              \frac{w/a}{1 + (bw/a)} & = \frac{w/a}{1 - (-bw/a)}                     &
+                                     & = \frac{w}{a}\ \iser[n]{0} \Big(\frac{-bw}{a}
+              \Big)^n                                                                  \\
+              L(z)                   & = \color{y_p} \iser[n]{0}
+              \frac{-b^n}{a^{n+1}}
+              \ \frac{1}{z^{n+1}}
+          \end{align}
+          Since partial fraction decomposition produces linear factors in the
+          denominators, this procedure takes care of all the factors after decomposition.
+          \par Other functions TBC.
+
+    \item Laurent Series
+          \begin{enumerate}
+              \item Let there be two Laurent expansions for $ f(z) $ with coefficients.
+                    Without loss of generality, let the expansions be centered on the
+                    origin. $ \{a_n,\ b_n\} $.
+                    \begin{align}
+                        f(z)           & = \sum_{n = -\infty}^{\infty} a_n\ z^n =
+                        \sum_{n = -\infty}^{\infty} b_n\ z^n                          \\
+                        z^{-m-1}\ f(z) & = \sum_{n = -\infty}^{\infty} a_n\ z^{n-m-1}
+                        = \sum_{n = -\infty}^{\infty} b_n\ z^{n-m-1}                  \\
+                    \end{align}
+                    for some integer $ m $. Consider some closed simple path in the
+                    annulus encircling $ z_0 = 0 $ once ccl. \par
+                    Now, since a Laurent series converges uniformly in its annulus of
+                    definition, it can be integrated term-wise.
+                    \begin{align}
+                        \sum_{n = -\infty}^{\infty} \oint_C\ a_n\ z^{n-m-1}\ \dl z & =
+                        \sum_{n = -\infty}^{\infty} \oint_C\ b_n\ z^{n-m-1}\ \dl z     \\
+                        \oint_C z^\alpha\ \dl z                                    &
+                        = \begin{cases}
+                              2\pi\i & \quad \alpha = -1      \\
+                              0      & \quad \text{otherwise} \\
+                          \end{cases}                              \\
+                        a_m                                                        &
+                        = b_m \quad \forall \quad m \in \mathcal{I}
+                    \end{align}
+                    This proves that the two Laurent series are identical and that a
+                    Laurent series expansion, if it exists, must be unique.
+
+              \item Looking at the singular points of the function,
+                    \begin{align}
+                        \cos1/z)             & = 0                      &
+                        \implies \frac{1}{z} & = n\pi + \frac{\pi}{2}     \\
+                        z                    & = \frac{1}{n\pi + \pi/2} &
+                        z                    & = \left\{ \frac{2}{\pi},
+                        \frac{2}{3\pi}, \frac{-2}{\pi}, \frac{2}{5\pi},
+                        \frac{-2}{3\pi}, \dots \right\}
+                    \end{align}
+                    There is an infinite number of singular points arbitrarily close to
+                    the origin for large enough $ n $. \par
+                    This means that the function \textcolor{y_p}{can never have a Laurent
+                        series that converges} for
+                    $ \abs{z} \in (0, R) $, however small $ R $ may be.
+
+              \item Integrating term-wise, given that the Laurent series converges,
+                    \begin{align}
+                        \frac{e^t - 1}{t} & = \iser[n]{0} \frac{t^n}{(n+1)!}         \\
+                        \int_{0}^{z} f(t)\ \dl t
+                                          & = \iser[n]{0} \frac{z^{n+1}}
+                        {(n+1) (n+1)!}                                               \\
+                        g(z)              & = \color{y_h} \iser[n]{0} \frac{z^{n-1}}
+                        {(n+1)!\ (n+1)}
+                    \end{align}
+
+                    Integrating term-wise, given that the Laurent series converges,
+                    \begin{align}
+                        \frac{\sin t}{t} & = \iser[n]{0} (-1)^n
+                        \ \frac{t^{2n}}{(2n+1)!}                                 \\
+                        \int_{0}^{z} f(t)\ \dl t
+                                         & = \iser[n]{0} (-1)^n\ \frac{z^{2n+1}}
+                        {(2n+1) (2n+1)!}                                         \\
+                        g(z)             & = \color{y_h} \iser[n]{0} (-1)^n
+                        \ \frac{z^{2n-2}} {(2n+1)!\ (2n+1)}
+                    \end{align}
+          \end{enumerate}
+
+    \item Finding the Taylor series,
+          \begin{align}
+              \frac{1}{1-z^2} & = \frac{1/2}{1+z} + \frac{1/2}{1-z}       &
+              f(z)            & = \iser[n]{0} z^{2n}                        \\
+              T(z)            & = \color{y_h} 1 + z^2 + z^4 + z^6 + \dots &
+              \abs{z}         & \color{y_p} < 1
+          \end{align}
+          Finding the Laurent series, with $ w = 1/z $,
+          \begin{align}
+              f(w)    & = \frac{-w^2}{1 - w^2}                                 &
+              f(w)    & = -\iser[n]{0} w^{2n + 2}                                \\
+              L(z)    & = \color{y_h} -\frac{1}{z^2}\ \Bigg[ 1 + \frac{1}{z^2}
+                  + \frac{1}{z^4} + \dots
+              \Bigg]  &
+              \abs{z} & \color{y_p} > 1
+          \end{align}
+
+    \item Finding the Taylor series, around $ z_0 = 1 $
+          \begin{align}
+              f(z)        & = \frac{1}{z}                                       &
+              w           & = z - 1                                               \\
+              f(w)        & = \frac{1}{1 + w}                                   &
+              f(w)        & = \iser[n]{0} (-1)^n w^{n}                            \\
+              T(z)        & = \color{y_h} 1 - (z-1) + (z-1)^2 - (z-1)^3 + \dots &
+              \abs{z - 1} & \color{y_p} < 1
+          \end{align}
+          Finding the Laurent series, with $ v = 1/w $,
+          \begin{align}
+              f(v)        & = \frac{v}{1 + v}                                   &
+              f(v)        & = \iser[n]{0} (-1)^n\ v^{n+1}                         \\
+              L(z)        & = \color{y_h} \frac{1}{(z - 1)} - \frac{1}{(z-1)^2}
+              + \frac{1}{(z-1)^3} - \frac{1}{(z - 1)^4}
+              + \dots     &
+              \abs{z - 1} & \color{y_p} > 1
+          \end{align}
+
+    \item Finding the Taylor series, around $ z_0 = -\pi/2 $
+          \begin{align}
+              f(z)            & = \frac{\sin z}{z + \pi/2}                       &
+              w               & = z + \pi/2                                        \\
+              f(w)            & = \frac{-\cos w}{w}                              &
+              f(w)            & = \iser[n]{0} (-1)^{n+1}\ \frac{w^{2n-1}}{(2n)!}   \\
+              T(z)            & = \color{y_h} -\frac{1}{(z + \pi/2)}
+              + \frac{(z + \pi/2)}{2!} - \frac{(z + \pi/2)^3}{4!}
+              + \dots         &
+              \abs{z + \pi/2} & \color{y_p} > 0
+          \end{align}
+          This also happens to be the Laurent series, since it contains negative
+          powers of $ (z - z_0) $.
+
+    \item Finding the Taylor series, around $ z_0 = \i $
+          \begin{align}
+              f(z)         & = \frac{1}{z^2}                                     &
+              w            & = z - \i                                              \\
+              f(w)         & = \frac{1}{(w + \i)^2}                              &
+              f(w)         & = - (1 - w\i)^{-2}                                    \\
+              T(w)         & = -\iser[n]{0} \binom{-2}{n} (-\i w)^n              &
+              T(w)         & = -1 - 2\i w + 3w^2 + 4w^3 - \dots                    \\
+              T(z)         & = \color{y_h} -1 - 2\i (z - \i) + 3(z-\i)^2 - \dots &
+              \abs{z - \i} & \color{y_p} < 1
+          \end{align}
+          Finding the Laurent series, with $ v = 1/w $,
+          \begin{align}
+              f(v)         & = \frac{v^2}{(1 + \i v)^2}                &
+              f(v)         & = \iser[n]{0} \binom{-2}{n}\ (\i v)^{n+2}   \\
+              f(v)         & = 1 + 2\i v - 3 v^2 - 4\i v^3 + \dots       \\
+              L(z)         & = \color{y_h} 1 + \frac{2\i}{(z - \i)}
+              - \frac{3}{(z-\i)^2} - \frac{4\i}{(z-\i)^3}
+              + \dots      &
+              \abs{z - \i} & \color{y_p} > 1
+          \end{align}
+
+    \item Finding the Taylor series,
+          \begin{align}
+              f(z)    & = \frac{z^8}{1-z^4}                         &
+              f(z)    & = \iser[n]{0} z^{4n + 8}                      \\
+              T(z)    & = \color{y_h} z^8 + z^{12} + z^{16} + \dots &
+              \abs{z} & \color{y_p} < 1
+          \end{align}
+          Finding the Laurent series, with $ w = 1/z $,
+          \begin{align}
+              f(w)    & = \frac{-w^{-4}}{1 - w^4}                              &
+              f(w)    & = -\iser[n]{0} w^{4n - 4}                                \\
+              L(z)    & = \color{y_h} -\frac{1}{z^4}\ \Bigg[ 1 + \frac{1}{z^4}
+                  + \frac{1}{z^8} + \dots
+              \Bigg]  &
+              \abs{z} & \color{y_p} > 1
+          \end{align}
+
+    \item Finding the Taylor series, around $ z_0 = 1 $
+          \begin{align}
+              f(z) & = \frac{\sinh z}{(z - 1)^4}                       &
+              w    & = z - 1                                             \\
+              f(w) & = \frac{\sinh(w + 1)}{w^4}                        &
+              f(w) & = \frac{\sinh(w)\cosh(1) + \cosh(w)\sinh(1)}{w^4}
+          \end{align}
+          Treating the two parts separately,
+          \begin{align}
+              T_1(w)      & = \cosh 1\ \Bigg[ \frac{1}{w^3} + \frac{1}{3!\ w}
+              + \frac{w}{5!} + \frac{w^3}{7!} + \dots \Bigg]                    \\
+              T_1(w)      & = \color{y_h} \cosh 1\ \Bigg[ \frac{1}{(z-1)^3}
+              + \frac{1}{3!\ (z-1)} + \frac{(z-1)}{5!} + \dots \Bigg]           \\
+              \abs{z - 1} & \color{y_p} > 0                                     \\
+              T_2(w)      & = \sinh 1\ \Bigg[ \frac{1}{w^4} + \frac{1}{2!\ w^2}
+              + \frac{1}{4!} + \frac{w^2}{6!} + \dots \Bigg]                    \\
+              T_1(w)      & = \color{y_h} \sinh 1\ \Bigg[ \frac{1}{(z-1)^4}
+                  + \frac{1}{2!\ (z-1)^2} + \frac{1}{4!} + \frac{(z-1)^2}{6!}
+              + \dots \Bigg]                                                    \\
+              \abs{z - 1} & \color{y_p} > 0
+          \end{align}
+          This also happens to be the Laurent series, since it contains negative
+          powers of $ (z - z_0) $.
+
+    \item Finding the Taylor series, around $ z_0 = \i $
+          \begin{align}
+              f(z) & = \frac{z^3 - 2\i z^2}{(z - \i)^2}                   &
+              w    & = z - \i                                               \\
+              f(w) & = \frac{(w + \i)^2 (w - \i)}{w^2}                    &
+              f(w) & = w + \i + \frac{1}{w} + \frac{\i}{w^2}                \\
+              f(z) & = \color{y_h} \frac{\i}{(z-\i)^2} + \frac{1}{(z-\i)}
+              + \i + (z-\i)
+          \end{align}
+          This also happens to be the Laurent series, since it contains negative
+          powers of $ (z - z_0) $.
+\end{enumerate}

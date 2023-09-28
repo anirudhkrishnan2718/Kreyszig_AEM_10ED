@@ -4,14 +4,14 @@
           First shitfing theorem helps identify the effect on $ \Lap^{-1} $ of
           translations of the Laplace transfor along the $ s$ -axis.
           \begin{align}
-              F(s)                 & \rightarrow F(s-a)     \\
-              \implies \qquad f(t) & \rightarrow e^{at}f(t)
+              F(s)                 & \to F(s-a)     \\
+              \implies \qquad f(t) & \to e^{at}f(t)
           \end{align}
           Second shitfing theorem helps identify the effect on $ \Lap $ of
           translations of the original function along the $ t$ -axis.
           \begin{align}
-              f(t)                 & \rightarrow f(t-a)u(t-a) \\
-              \implies \qquad F(s) & \rightarrow e^{-as}F(s)
+              f(t)                 & \to f(t-a)u(t-a) \\
+              \implies \qquad F(s) & \to e^{-as}F(s)
           \end{align}
 
     \item Graphing and finding Laplace transform,
@@ -795,9 +795,10 @@
                   t & t < 1 \\
                   0 & t > 1
               \end{dcases} &
-              r(t)           & = t[1 - u(t-1)]                                             \\
-              r(t)           & = t - [(t-1) + 1]u(t-1)                                   &
-              R(s)           & = \color{y_p} \frac{1}{s^2} - e^{-s}\ \frac{(1 + s)}{s^2}
+              r(t)           & = t[1 - u(t-1)]                        \\
+              r(t)           & = t - [(t-1) + 1]u(t-1)              &
+              R(s)           & = \color{y_p} \frac{1}{s^2} - e^{-s}
+              \ \frac{(1 + s)}{s^2}
           \end{align}
           Solving the ODE,
           \begin{align}
@@ -1299,8 +1300,10 @@
               j(t) & = \color{y_h}
               \begin{dcases}
                   27\cos(t) + 6\sin(t) - e^{-t}\Big[ 27\cos(3t)
-                  + 11\sin(3t) \Big]                                         & t < 2\pi \\
-                  e^{-t}\Big\{ 27\cos(3t) + 11\sin(3t) \Big\} [e^{2\pi} - 1] & t > 2\pi
+                  + 11\sin(3t) \Big]                                         &
+                  t < 2\pi                                                     \\
+                  e^{-t}\Big\{ 27\cos(3t) + 11\sin(3t) \Big\} [e^{2\pi} - 1] &
+                  t > 2\pi
               \end{dcases}
           \end{align}
 \end{enumerate}

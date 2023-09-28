@@ -1,0 +1,249 @@
+\section{Permutations and Combinations}
+
+\begin{enumerate}
+    \item Assigning $ 10 $ drivers to $ 10 $ buses,
+          \begin{align}
+              A = 10 \cdot 9 \cdot 8 \cdot 1 = 10!
+          \end{align}
+          Assigning $ 10 $ buses to $ 10 $ drivers,
+          \begin{align}
+              B = 10 \cdot 9 \cdot 8 \cdot 1 = 10!
+          \end{align}
+
+    \item 5 letters taken 2 at a time, first without then with repetition,
+          \begin{align}
+              P_1 & = 5 \cdot 4 = 20                        &
+              P_2 & = 5^2 = 25                                \\
+              C_1 & = \binom{5}{2} = \frac{5!}{2!\ 3!} = 10 &
+              C_2 & = 5^2 = \binom{5+2-1}{2} = 15             \\
+          \end{align}
+
+    \item For drawing the plastic then the rubber gaskets,
+          \begin{align}
+              N      & = 6! = 15                                      &
+              P(E_1) & = \frac{2!\ 4!}{N} = \frac{1}{15}                \\
+              P(E_1) & = \frac{2}{6} \cdot \frac{1}{5} = \frac{1}{15}
+          \end{align}
+          For drawing the rubber then the plastic gaskets,
+          \begin{align}
+              N      & = 6! = 15                                         &
+              P(E_1) & = \frac{4!\ 2!}{N} = \frac{1}{15}                   \\
+              P(E_1) & = \frac{4}{6} \cdot \frac{3}{5} \cdot \frac{2}{4}
+              \frac{1}{3} = \frac{1}{15}
+          \end{align}
+
+    \item Box contains $ 2G, 3Y $ and $ 5R $ balls
+          \begin{align}
+              P(G,Y,B) & = \frac{2!\ 3!\ 5!}{10!} = \frac{1}{2520}
+          \end{align}
+
+    \item The total number of combinations is,
+          \begin{align}
+              N & = \binom{10}{3} \cdot \binom{5}{2} \cdot \binom{6}{2} = 18000
+          \end{align}
+
+    \item The total number of combinations is,
+          \begin{align}
+              N & = \binom{50}{4} = \frac{47 \cdot 48 \cdot 49 \cdot 50}{24} = 230300
+          \end{align}
+
+    \item The total number of combinations is,
+          \begin{align}
+              N   & = \binom{10}{4} = 210                   &
+              N_0 & = \binom{8}{4} = 70                       \\
+              N_1 & = \binom{8}{3} \cdot \binom{2}{1} = 112 &
+              N_2 & = \binom{8}{2} \cdot \binom{2}{2} = 28
+          \end{align}
+          Note that $ N_0 + N_1 + N_2 = N $, as in the theory of probabilities.
+
+    \item The total number of combinations is,
+          \begin{align}
+              N & = \binom{52}{13} = \num{635013559600}
+          \end{align}
+
+    \item The total number of permutations is,
+          \begin{align}
+              N & = \frac{6!}{6} = 120
+          \end{align}
+          A round table means that the permutations \texttt{ABCDEF} and
+          \texttt{FABCDE} are equivalent, unlike a straight line that has a definite
+          start and end point.
+
+    \item The total number of combinations is,
+          \begin{align}
+              N   & = \binom{100}{10}                  &
+              N_1 & = \binom{97}{7} \cdot \binom{3}{3}   \\
+              P   & = \frac{N_1}{N} = \frac{2}{2695}
+          \end{align}
+
+    \item All three digits are different, which means there are 9 different choices
+          each for the second and 8 leftover choices for the third digit.
+          \begin{align}
+              N & = 9 \cdot 8 = 72
+          \end{align}
+
+    \item The total number of combinations is, (innocent first, guilty second).
+          \begin{align}
+              N   & = \binom{9}{3}                          \\
+              N_1 & = \binom{6}{0} \cdot \binom{3}{3} = 1 &
+              P_1 & = \frac{N_1}{N} = \frac{1}{84}          \\
+              N_2 & = \binom{6}{3} \cdot \binom{3}{0} = 1 &
+              P_2 & = \frac{N_2}{N} = \frac{5}{21}
+          \end{align}
+
+    \item Stirling formula,
+          \begin{enumerate}
+              \item Tabulating the errors in the Stirling approximation,
+                    \begin{table}[H]
+                        \centering
+                        \begin{tblr}{rowsep=0.5em,
+                            colspec = {l|[dotted]r|l|[dotted]r},
+                            colsep = 1.2em}
+                            $ n $ & Error \% & $ n $ & Error \% \\ \hline
+                            1     & 7.79     & 11    & 0.75     \\
+                            2     & 4.05     & 12    & 0.69     \\
+                            3     & 2.73     & 13    & 0.64     \\
+                            4     & 2.06     & 14    & 0.59     \\
+                            5     & 1.65     & 15    & 0.55     \\
+                            6     & 1.38     & 16    & 0.52     \\
+                            7     & 1.18     & 17    & 0.49     \\
+                            8     & 1.04     & 18    & 0.46     \\
+                            9     & 0.92     & 19    & 0.44     \\
+                            10    & 0.83     & 20    & 0.42
+                        \end{tblr}
+                    \end{table}
+
+              \item An empirical formula using the exponential function is,
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_24_04_13_b.csv}
+                        \anitablefit
+                        \begin{tikzpicture}
+                            \begin{axis}[legend pos=outer north east, Ani,
+                                    width = 8cm, grid = both,
+                                    xlabel = $ n $, ylabel = Relative error]
+                                \addplot [only marks, color = y_p, mark size = 1pt]
+                                table {\anitablefit};
+                                \addplot [GraphSmooth, y_h, domain = 1:20]
+                                {e^(0.0753/x) - 1};
+                                \addlegendentry{$(x_j,y_j)$}
+                                \addlegendentry{$\exp(1/13.28n) - 1$}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The actual error is smaller than the upper bound on the error
+                    \begin{align}
+                        \exp\Bigg(\frac{1}{13.28n}\Bigg) &
+                        < \exp\Bigg(\frac{1}{12n}\Bigg)
+                    \end{align}
+
+              \item TBC.
+          \end{enumerate}
+
+    \item Permutations and combinations
+          \begin{enumerate}
+              \item Permutations of $ n $ different things taken $ k $ at a time gives,
+                    \begin{itemize}
+                        \item $ n $ choices for the first item
+                        \item $ n-1 $ choices for the second item, since one has
+                              already been taken
+                        \item $ n-2 $ choices for the third item, since two have
+                              already been taken
+                        \item $ n-(k-1) $ choices for the $ k^{\text{th}} $ item, since
+                              $ (k-1) $ items have already been taken.
+                    \end{itemize}
+                    By this logic, the number of permutations is,
+                    \begin{align}
+                        n \cdot (n-1) \cdot (n-2) \cdot \dots (n-+1) = \frac{n!}{(n-k)!}
+                    \end{align}
+                    With repetition, the number of permutations is simply the number
+                    of choices for each draw $ (n) $ raised to the power of the number
+                    of draws $ (k) $.
+
+              \item Consider the relation for $ k=1 $,
+                    \begin{align}
+                        C_1 & = n = \binom{n+1-1}{1}                    \\
+                        C_2 & = n + \binom{n}{2} = \frac{n(n+1)}{2}
+                        = \binom{n+2-1}{2}                              \\
+                        C_3 & = n + 2 \cdot \binom{n}{2} + \binom{n}{3}
+                        = \frac{n(n+1)(n+2)}{6} = \binom{n+3-1}{3}
+                    \end{align}
+                    Consider the arrangement of $ k $ identical objects separated by
+                    $ (n-1) $ dividers, resulting in each of the objects belonging to
+                    one of $ n $ classes. \par
+                    This is the same problem as the one being asked for, and hence has
+                    the same number of possible combinations.
+                    \begin{align}
+                        \begin{NiceMatrix}[c, margin]
+                            O & | & | & O & O & | & O & | & O
+                        \end{NiceMatrix}
+                    \end{align}
+                    is an example of 5 objects and 5 classes, represented by the 4
+                    class dividers. The new divider can be placed in one of $ (k+n) $
+                    possible positions, for example
+                    \begin{align}
+                        \begin{NiceMatrix}[c, margin]
+                            \color{y_p} \bullet & O & |                   & | & O &
+                            O                   & | & O                   & | & O   \\
+                            |                   & O & \color{y_h} \bullet & | & O &
+                            O                   & | & O                   & | & O
+                        \end{NiceMatrix}
+                    \end{align}
+                    Although the red and green new dividers result in the same final
+                    combination, they started off as different initial combinations.
+                    \par This implies there is a $ (k+1) $ fold overcounting.
+                    \begin{align}
+                        C_{k+1} & = C_k \cdot \frac{(n+k)}{(k+1)}
+                        = \frac{(n+k)!}{(n-1)!\ (k+1)!} = \binom{n+k}{k+1}
+                    \end{align}
+                    By induction, the relation is true for all $ k $.
+
+              \item Deriving the relation, for some non-negative integer $ k $,
+                    \begin{align}
+                        \binom{a}{k} + \binom{a}{k+1}
+                         & = \frac{a!}{(a-k)!\ k!}
+                        + \frac{a!}{(a-k-1)!\ (k+1)!}                              \\
+                         & =
+                        \frac{a!}{(a-k)!\ k!}\ \Bigg[1 + \frac{(a-k)}{(k+1)}\Bigg] \\
+                         & =
+                        \frac{a!}{(a-k)!\ k!}\ \Bigg[\frac{a+1}{(k+1)}\Bigg]       \\
+                         & = \frac{(a+1)!}{(a-k)!\ (k+1)!} = \binom{a+1}{k+1}
+                    \end{align}
+
+              \item Out of the $ n $ factors $ (a+b) $, choose $ k $ factors from
+                    which to take $ a $ and the then take $ b $ from the remaining
+                    $ (n-k) $ factors. The result is,
+                    \begin{align}
+                        T_k = \binom{n}{k} a^k\ b^{n-k}
+                    \end{align}
+                    This is why the coefficient of the term $ a^k b^{n-k} $ is the
+                    number of combinations of $ n $ objects taken $ k $ at a time.
+
+              \item Proving the relation,
+                    \begin{align}
+                        (a+b)^{p+q} & = (a+b)^p\ (a+b)^q \\
+                        \Bigg[\sum_{r=0}^{p+q} \binom{p+q}{r} a^r\ b^{p+q-r}\Bigg]
+                                    & =
+                        \Bigg[\sum_{m=0}^{p} \binom{p}{m} a^m\ b^{p-m}\Bigg]
+                        \ \Bigg[\sum_{n=0}^{q} \binom{q}{n} a^n\ b^{q-n}\Bigg]
+                    \end{align}
+                    Matching coefficients of $ a^r $,
+                    \begin{align}
+                        \binom{p+q}{r} & = \binom{p}{0} \binom{q}{r} +
+                        \binom{p}{1} \binom{q}{r-1} + \dots + \binom{p}{r}
+                        \binom{q}{0}                                                   \\
+                                       & = \sum_{k=0}^{r} \binom{p}{k}\ \binom{q}{r-k}
+                    \end{align}
+
+              \item TBC
+          \end{enumerate}
+
+    \item Birthday problem, with 20 people. The probability of all their birthdays being
+          distinct is,
+          \begin{align}
+              P(E) & = \binom{365}{20} \cdot 20! \cdot \frac{1}{365^{20}} = 0.5886
+          \end{align}
+          The event required is the complement of $ E $, which means the probability of
+          at least two birthdays coinciding is $ 0.4114 $.
+\end{enumerate}

@@ -1,0 +1,575 @@
+\chapter{Numerics for ODEs and PDEs}
+
+\section{Methods for First-Order ODEs}
+
+\begin{description}
+    \item[Euler's method] Given an ODE, with initial conditions, there exists a unique
+        solution that cannot always be solved analytically. \par
+        A numerical solution for a set of points of the form $ \{x_0 + rh\} $ evenly
+        spaced at intervals $ h $ uses Taylor's formula
+        \begin{align}
+            y(x + h) & = y(x) + hy'(x) + \frac{h^2}{2!}\ y''(x) + \dots \\
+            y(x+h)   & \approxeq y(x) + hy'(x) = y(x) + h\ f(x,y)
+        \end{align}
+        An iterative process can now be obtained
+        \begin{align}
+            y_{n+1} & = y_n + h\ f(x_n, y_n)
+        \end{align}
+
+    \item[Error in Euler's formula] Using the remainder of Taylor's formula,
+        \begin{align}
+            f(x + h) & = f(x) + hf'(x) + \frac{h^2}{2!}\ f''(\xi)
+        \end{align}
+        for some $ \xi \in [x, x+h] $. The error in Euler's formula now becomes
+        $ O(h^2) $ locally and $ O(h) $ globally, since the number of subintervals
+        $ n \propto 1/h $. \par
+        Euler's method is therefore called a \emph{first$-$order method}.
+
+    \item[Automatic step size selection] Using the relation
+        \begin{align}
+            y'  & = f(x, y)                        &
+            y'' & = f' = \difcp fx + \difcp fy\ y'   \\
+            y'' & = \difcp fx + \difcp fy \cdot f
+        \end{align}
+        For a given tolerance $ \Delta $, the step size is found using the local error,
+        \begin{align}
+            \Delta(x = x_n) & = \frac{h_n^2}{2}\ \abs{y''(\xi)}        &
+            K               & = \min_{x \in [x_0, x_n)} \abs{f''(\xi)}   \\
+            H               & = \max_{x \in [x_0, x_n)} h =
+            \sqrt{\frac{2\Delta}{K}}
+        \end{align}
+        Assuming that $ K > 0 $ and $ y''(x) \neq 0 $ in this interval, the adaptive
+        step size is a multiple of the maximal step size
+        \begin{align}
+            h_n & = H \cdot \sqrt{\frac{K}{\abs{y''(\xi_n)}}}
+        \end{align}
+
+    \item[Improved Euler method] In order to obtain methods of higher order, which
+        diverge from the analytical result slower,
+        \begin{align}
+            y^*_{n+1}                      & = y_n + h \cdot f(x_n, y_n)             &
+                                           & \text{predictor}                          \\
+            y_{n+1}                        & = y_n + \frac{h}{2}\ \Bigg[ f(x_n, y_n)
+            + f(x_{n+1}, y^*_{n+1}) \Bigg] &                                         &
+            \text{corrector}
+        \end{align}
+        This is a \emph{second-order method}, since the local error is $ O(h^3) $ and
+        the global error is $ O(h^2) $.
+
+    \item[Classical Runge Kutta method] An extension of the Simpson's rule for
+        integtation when $ y' $ is depends both on $ x $ and $ y $, using four auxiliary
+        values instead of just one in the improved Euler's method.
+
+        \begin{align}
+            k_1     & = h \cdot f(x_n, y_n)                     &
+            k_2     & = h \cdot f(x_n + h/2, y_n + k_1/2)         \\
+            k_3     & = h \cdot f(x_n + h/2, y_n + k_2/2)       &
+            k_4     & = h \cdot f(x_n + h, y_n + k_3)             \\
+            x_{n+1} & = x_n + h                                 &
+            y_{n+1} & = y_n + \frac{k_1 + 2k_2 + 2k_3 + k_4}{6}
+        \end{align}
+        At the cost of more function evaluations in each iteration, the method itself
+        is much more stable and diverges much slower than the Euler methods. \par
+        This method is of \emph{fourth order} and thus, the local error is of order
+        $ O(h^5) $.
+
+    \item[Runge-Kutta-Fehlberg method] Incorporating the adaptive step size into the
+        basic RK method, yields further increase in order.
+        \par Let $ y_h $ and $ y_{2h} $ be the RK approximations computed using step
+        size $ h $ and $ 2h $  respectively. \par
+        Since the number of subintervals is halved,
+        \begin{align}
+            \epsilon_{h} & \approxeq \frac{2}{2^5}\ \epsilon_{2h} = \frac{e_{2h}}{16} &
+            \epsilon_h   & \approxeq \frac{y_h - y_{2h}}{15}
+        \end{align}
+        Fehlberg's improvement to the RK method similarly involves using a fourth and
+        fifth order RK method to compute the same end result. The difference between
+        the two approximations gives an error estimate.
+        \begin{align}
+            y_{n+1}   & = y_n + \frac{16}{135}\ k_1 + 0\ k_2 + \frac{6656}{12825}\ k_3
+            + \frac{28561}{56430}\ k_4 - \frac{9}{50}\ k_5 + \frac{2}{55}\ k_6         \\
+            y^*_{n+1} & = y_n + \frac{25}{216}\ k_1 + 0\ k_2 + \frac{1408}{2565}\ k_3
+            + \frac{2197}{4104}\ k_4 - \frac{1}{5}\ k_5
+        \end{align}
+        The set of 6 auxiliary values that are used in both the RK methods above, are
+        \begin{align}
+            k_1 & = h \cdot f(x_n, y_n)                                             \\
+            k_2 & = h \cdot f\Bigg[x_n + \frac{h}{4}, y_n + \frac{k_1}{4}\Bigg]     \\
+            k_3 & = h \cdot f\Bigg[x_n + \frac{3h}{8}, y_n + \frac{3k_1}{32}
+            + \frac{9k_2}{32}\Bigg]                                                 \\
+            k_4 & = h \cdot f\Bigg[x_n + \frac{12h}{13}, y_n + \frac{1932k_1}{2197}
+            - \frac{7200k_2}{2197} + \frac{7296k_3}{2197} \Bigg]                    \\
+            k_5 & = h \cdot f\Bigg[x_n + h, y_n + \frac{439k_1}{216}
+            - 8k_2 + \frac{3680k_3}{513} - \frac{845k_4}{5104} \Bigg]               \\
+            k_6 & = h \cdot f\Bigg[x_n + \frac{h}{2}, y_n - \frac{8k_1}{27}
+                + 2k_2 - \frac{3544k_3}{2565} + \frac{1859k_4}{4104} - \frac{11k_5}{40}
+                \Bigg]
+        \end{align}
+
+    \item[Stiff ODEs] Some ODEs do not grow fast with increasing $ x $, putting limits on
+        how small $ h $ can be in the explicit methods used above. To combat this,
+        implicit methods can be used which remain stable regardless of the size of $ h $.
+
+    \item[Backward Euler method] Instead of explicitly calculating $ y_{n+1} $, an
+        implicit equation for $ y_{n+1} $ can be found using
+        \begin{align}
+            y_{n+1} & = y_n + h \cdot f(x_{n+1}, y_{n+1})
+        \end{align}
+        Increasing $ h $ preserves stability, and only reduces accuracy.
+\end{description}
+
+\section{Multistep Methods}
+
+\begin{description}
+    \item[Multi-step method] A method using the values from two or more previous steps
+        of the iteration. This is not a \emph{self-starting} method, and requires some
+        seed in addition to the IVP itself.
+
+    \item[Adams-Bashforth methods] Consider an IVP with a unique solution in some
+        open interval containing $ x_0 $
+        \begin{align}
+            y(x_{n+1}) - y(x_n) & = \int_{x_n}^{x_{n+1}} f\Big[x, y(x)\Big]\ \dl x \\
+            y_{n+1}             & = y_n + \int_{x_n}^{x_{n+1}}p(x)\ \dl x
+        \end{align}
+        Here, the function $ f(x, y) $ is replaced by an interpolating polynomial
+        $ p(x) $. This gives the approximations $ y(x_n) \approxeq y_n $ and
+        $ y(x_{n+1}) \approxeq y_{n+1} $.
+
+    \item[Cubic interpolating polynomial] Using three backward points equally spaced
+        backwards,\par
+        $ \{x_n,\dots,x_{n-3}\} $, the Newton's backward difference method
+        gives,
+        \begin{align}
+            p_3(x)                             & = f_n + r\ \nabla f_n
+            + \frac{r(r+1)}{2}\ \nabla^2 f_n
+            + \frac{r(r+1)(r+2)}{6}\ \nabla^3 f_n                             \\
+            r                                  & = \frac{x - x_n}{h}          \\
+            \int_{x_n}^{x_n + h} p_3(x)\ \dl x & = h\ \int_{0}^{1} p_3\ \dl r \\
+                                               & = h\ \Bigg[ f_n
+                + \frac{1}{2}\ \nabla f_n + \frac{5}{12}\ \nabla^2 f_n
+            + \frac{3}{8}\ \nabla^3 f_n \Bigg]                                \\
+            y_{n+1}                            & = y_n + \frac{h}{24}
+            \ \Big[ 55 f_n - 59f_{n-1} +37f_{n-2} - 9f_{n-3} \Big]
+        \end{align}
+        Here, $ f_{n-1} = f(x_{n-1}, y_{n-1}) $ and so on for the other 3 backward
+        points. \par
+        This is a \emph{fourth order method}, since the global error is $ O(h^4) $ and
+        the local error is $ O(h^5) $
+
+    \item[Adams-Moulton method] The primary difference is that the set of points that
+        the polynomial interpolates begin at $ x_{n+1} $ instead of $ x_n $. For the
+        cubic polynomial, the set of four points $ x_{n+1},\dots,x_{n-2} $ give,
+        \begin{align}
+            r                                       & = \frac{x - x_{n+1}}{h}    \\
+            \int_{x_n}^{x_{n+1}} \wt{p_3}(x)\ \dl x & = \int_{-1}^{0} p_3\ \dl r \\
+                                                    & = h\ \Bigg[ f_{n+1}
+                - \frac{1}{2}\ \nabla f_{n+1} - \frac{1}{12}\ \nabla^2 f_{n+1}
+            - \frac{1}{24}\ \nabla^3 f_{n+1} \Bigg]                              \\
+            y_{n+1}                                 & = y_n + \frac{h}{24}
+            \ \Big[ 9f_{n+1} + 19 f_n - 5f_{n-1} + f_{n-2} \Big]
+        \end{align}
+        This is an implicit formula, since $ f_{n+1} $ appears on the right as well. \par
+        The workaround is to use an auxiliary $ y^*_{n+1} $ using the Adams$-$Bashford
+        method,
+        \begin{align}
+            y^*_{n+1} & = y_n + \frac{h}{24}
+            \ \Big[ 55 f_n - 59f_{n-1} +37f_{n-2} - 9f_{n-3} \Big] \\
+            f^*_{n+1} & = f(x_{n+1}, y^*_{n+1})                    \\
+            y_{n+1}   & = y_n + \frac{h}{24}
+            \ \Big[ 9f^*_{n+1} + 19 f_n - 5f_{n-1} + f_{n-2} \Big]
+        \end{align}
+        This is a predictor$-$corrector method that has the added benefit over the RK
+        method of an error estimate
+        \begin{align}
+            \epsilon_{n+1} & = \frac{y_{n+1} - y^*_{n+1}}{15}
+        \end{align}
+
+    \item[Seeding] Some other method such as the RK method needs to be used to find
+        the first few $ y_n $ that can then be used to kickstart the Adams$-$Moulton
+        method.
+
+    \item[Stability] Adams-Moulton methods are generally more accurate than
+        Adams$-$Bashforth methods since they compensate for instability in the first step
+        using the second corrector step.
+\end{description}
+
+\section{Methods for Systems and Higher Order ODEs}
+
+\begin{description}
+    \item[Systems of ODE] Replacing the single ode with a vector of ODEs,
+        \begin{align}
+            \vec{y}' & = \vec{f}(x, \vec{y}) & \vec{f}(x_0) & = \vec{y}_0
+        \end{align}
+        Here, $ \vec{f}(x, \vec{y}) $ depends on the entire set $ \{y_1,\dots,y_m\} $
+
+    \item[Higher order ODEs] A single ODE of order $ m $ can be converted to a system of
+        $ m $ ODEs of order one, using
+        \begin{align}
+            y^{(m)} & = f(x, y, y', y'', \dots, y^{(m-1)})                       \\
+            y_1     & = y                                  & y_2   & = y'        \\
+            y_3     & = y''                                & y_{m} & = y^{(m-1)}
+        \end{align}
+        Converting these derivatives into separater variables,
+        \begin{align}
+            y        & = y_1 & y_1' & = y_2                \\
+            y'_{m-1} & = y_m & y'_m & = f(x,y_1,\dots,y_m)
+        \end{align}
+        The set of initial conditions becomes $ y_r(x_0) = K_r \quad r \in\{1,\dots,m\}$
+
+    \item[Euler method for systems] Replacing the scalars $ y, f $ with vectors,
+        \begin{align}
+            \vec{y}_{n+1} & = \vec{y}_n + h \cdot \vec{f}(x, \vec{y}_n)
+        \end{align}
+
+    \item[Runge-Kutta method] The classical RK method of fourth order also generalizes
+        the same way,
+        \begin{align}
+            \vec{y}(x_0)  & = \vec{y_0}                                             \\
+            \vec{k_1}     & = h \cdot f(x_n, \vec{y_n})
+            \nonumber                                                               \\
+            \vec{k_2}     & = h \cdot f(x_n + h/2, \vec{y_n} + \vec{k_1}/2)
+            \nonumber                                                               \\
+            \vec{k_3}     & = h \cdot f(x_n + h/2, \vec{y_n} + \vec{k_2}/2)
+            \nonumber                                                               \\
+            \vec{k_4}     & = h \cdot f(x_n + h, \vec{y_n} + \vec{k_3})             \\
+            x_{n+1}       & = x_n + h                                               \\
+            \vec{y}_{n+1} & = \vec{y}_n + \frac{\vec{k_1} + 2\vec{k_2} + 2\vec{k_3}
+                + \vec{k_4}}{6}
+        \end{align}
+
+    \item[Runge-Kutta-Nystrom method] A special case of RK methods to ODEs of the form
+        \begin{align}
+            y'' & = f(x,\ y,\ y')                                                  \\
+            k_1 & = \frac{h}{2} \cdot f\Big[x_n,\ y_n,\ y_n'\Big]                  \\
+            k_2 & = \frac{h}{2} \cdot f\Big[x_n + h/2,\ y_n + K,\ y_n' + k_1 \Big] \\
+            k_3 & = \frac{h}{2} \cdot f\Big[x_n + h/2,\ y_n + K,\ y_n' + k_2 \Big] \\
+            k_4 & = \frac{h}{2} \cdot f\Big[x_n + h,\ y_n + L,\ y_n' + 2k_3 \Big]
+        \end{align}
+        Here, the two shorthand notations are for
+        \begin{align}
+            K & = \frac{h}{2} \cdot (y_n' + k_1/2) &
+            L & = h \cdot (y_n' + k_3)
+        \end{align}
+        Here, $ n \in\{0,1,\dots,N-1\} $ for the total number of steps $ N $. The
+        approximations of the function and its derivative at the next point
+        \begin{align}
+            y_{n+1}  & = y_n + h \cdot \Bigg[ y_n' + \frac{k_1 + k_2 + k_3}{3} \Bigg] \\
+            y'_{n+1} & = y'_n + \frac{1}{3} \cdot \Big[ k_1 + 2k_2 + 2k_3 + k_4 \Big]
+        \end{align}
+
+    \item[Special case for RKN] For the even more special case of the function
+        $ f $ not containing $ y' $, the method simplifies using $ k_2 = k_3 $,
+        \begin{align}
+            k_1       & = \frac{h}{2} \cdot f(x_n,\ y_n)                              \\
+            k_2 = k_3 & = \frac{h}{2} \cdot f\Bigg[ x_n + h/2,\ y_n
+            + \frac{h}{2}\ (y_n' + k_1/2) \Bigg]                                      \\
+            k_4       & = \frac{h}{2} \cdot f\Big[x_n + h,\ y_n + h (y_n' + k_2)\Big]
+        \end{align}
+        The iterative computation then simpliies to
+        \begin{align}
+            y_{n+1}  & = y_n + h \cdot \Bigg[y_n' + \frac{k_1 + 2k_2}{3}\Bigg] \\
+            y'_{n+1} & = y'_n + \frac{h}{3}\ (k_1 + 4k_2 + k_4)
+        \end{align}
+
+    \item[Backward Euler method] For stiff systems especially, the implicit relation
+        provided by backward Euler methods is useful in avoiding instability.
+        \begin{align}
+            \vec{y}_{n+1} & = \vec{y}_n + h \cdot \vec{f}(x_{n+1}, \vec{y}_{n+1})
+        \end{align}
+\end{description}
+
+\section{Methods for Elliptic PDEs}
+
+\begin{description}
+    \item[Quasilinear PDE] A PDE that is linear in the highest order of partial
+        derivatives.
+        \begin{align}
+            a\ u_{xx} + 2b\ u_{xy} + c\ u_{yy} & = F(x, y, u, u_x, u_y)
+        \end{align}
+        \begin{table}[H]
+            \centering
+            \SetTblrInner{rowsep=0.4em}
+            \begin{tblr}{
+                colspec ={l|r|[dotted]r},
+                colsep = 1em}
+                Discriminant   & Name       & Example          \\ \hline
+                $ac - b^2 > 0$ & Elliptic   & Laplace equation \\
+                $ac - b^2 = 0$ & Parabolic  & heat equation    \\
+                $ac - b^2 < 0$ & Hyperbolic & wave equation    \\ \hline
+            \end{tblr}
+        \end{table}
+        The coeffieicnts $ a,b,c $ may themselves depend on $ x, y $, which means the
+        PDE vary in type with region.
+
+    \item[Difference quotients] The first derivatives can be replaced by the centered
+        finite differences
+        \begin{align}
+            u_x & = \frac{u(x+h, y) - u(x-h, y)}{2h} &
+            u_y & = \frac{u(x, y+k) - u(x, y-k)}{2k}
+        \end{align}
+        The second order derivatives in the $ x $ and $ y $ directions similarly can be
+        found using,
+        \begin{align}
+            u_{xx} & = \frac{u(x+h, y) - 2u(x, y) + u(x-h, y)}{h^2}     \\
+            u_{yy} & = \frac{u(x, y + k) - 2u(x, y) + u(x, y - k)}{k^2}
+        \end{align}
+
+    \item[Mesh] Using the mean value property of harmonic functions, the discrete
+        analog is the result that the mean value of the function evaluated at the four
+        axial neighbours is equal to the function at the center point. \par
+        For the Laplace equation,
+        \begin{align}
+            \nabla^2 u                                              &
+            = u_{xx} + u_{yy} = 0                                     \\
+            \frac{u(x+h, y) + u(x-h, y) + u(x, y+h) + u(x, y-h)}{4} &
+            = u(x, y)
+        \end{align}
+        Here, $ h $ is the mesh size. \par
+        For a general Poisson equation, with the four neighbours being assigned the
+        shorthand $ N,S,E,W $,
+        \begin{align}
+            \nabla^2 u                           & = f(x, y)      \\
+            u(N) + u(S) + u(E) + u(W) - 4u(x, y) & = h^2\ f(x, y)
+        \end{align}
+
+    \item[Stencil] Using a matrix as the shorthand notation to refer to the weights
+        assigned to each neighbour being considered,
+        \begin{align}
+            \begin{bNiceMatrix}[margin, r]
+                \cdot         & \color{y_h} 1  & \cdot         \\
+                \color{y_h} 1 & \color{y_p} -4 & \color{y_h} 1 \\
+                \cdot         & \color{y_h} 1  & \cdot         \\
+            \end{bNiceMatrix} \cdot u(x, y) & = h^2\ f(x, y)
+        \end{align}
+
+    \item[Dirichlet problem] Given a mesh size $ h $, a given bounded region contains
+        $ p $ points of grid intersection, called mesh points. \par
+        For small enough $ p $, this is a set of $ p $ linear equations in $ p $
+        unknowns, that can be solved directly. \par
+        The Dirichlet BC specify the values of $ u $ everywhere on the boundary.
+
+    \item[Sparse matrix] Since each point is only related to four of its nearest
+        neighbours, the coefficient matrix has only a few nonzero elements in each row.
+        This means some shortcuts can be used to deal with storage issues for small mesh
+        sizes.
+
+    \item[Liebmann method] Repurposing the Gauss-Seidel method, with strict diagonal
+        dominance, enables the use of instantaneous updating of each row of the
+        coefficient matrix at each iteration. \par
+        Using the subscript notation $ u_{ij} = u(ih, jh) $
+        \begin{align}
+            u_{i+1, j} + u_{i-1, j} + u_{i, j+1} + u_{i, j-1} = 4u_{i,j}
+        \end{align}
+        Given $ n $ vertical and horizontal gridlines, the set of $ (n-1)^2 $ interior
+        points at which the function needs to be evaluated can be arranged into a
+        coefficient matrix,
+        \begin{align}
+            \vec{A} & = \begin{bNiceMatrix}[margin, r]
+                            \vec{B} & \vec{I} &         &         &         \\
+                            \vec{I} & \vec{B} & \vec{I} &         &         \\
+                                    & \vec{I} & \vec{B} & \vec{I} &         \\
+                                    &         & \vec{I} & \vec{B} & \vec{I} \\
+                                    &         &         & \vec{I} & \vec{B} \\
+                        \end{bNiceMatrix} &
+            \vec{B} & = \begin{bNiceMatrix}[margin, r]
+                            -4 & 1  &    &    &    \\
+                            1  & -4 & 1  &    &    \\
+                               & 1  & -4 & 1  &    \\
+                               &    & 1  & -4 & 1  \\
+                               &    &    & 1  & -4 \\
+                        \end{bNiceMatrix}
+        \end{align}
+        Each of the elements of $ \vec{A} $ is an $ n \times n $ matrix. The specific
+        case of $ n=6 $, leads to a $ 25 \times 25 $ matrix $ \vec{A} $, composed of
+        $ 5 \times 5 $ matrices $ \vec{B} $.
+
+    \item[Band matrix] Matrices which only have nonzero elements on the main diagonal
+        or on other diagonals parallel to it. The above matrices are examples. By design,
+        the above matrices are nonsingular.
+
+    \item[ADI method] Alternate direction implicit method, which exploits the
+        simplicity of a tridiagonal matrix, as follows,
+        \begin{align}
+            u_{i-1,j}^{(m+1)} - 4u_{i,j}^{(m+1)} + u_{i+1,j}^{(m+1)}
+             & = -u_{i,j-1}^{(m)} - u_{i,j+1}^{(m)}
+        \end{align}
+        For a fixed row $ j $, this is a set of $ N $ equations in $ N $ unknowns that
+        can be solved by Gaussian elimination. The left hand side only contains points
+        on this fixed row. \par
+        Then, for a fixed column $ i $, the next iterative step solves a system of
+        linear equations for each row using
+        \begin{align}
+            u_{i,j-1}^{(m+2)} - 4u_{i,j}^{(m+2)} + u_{i,j+1}^{(m+2)}
+             & = -u_{i-1,j}^{(m+1)} - u_{i+1,j}^{(m+1)}
+        \end{align}
+        Thus, the direction alternates at each iteration, while simplifying the size of
+        the system from $ N^2 $ to $ N $.
+
+    \item[Improving convergence] A generalization of the ADI iterative steps is,
+        \begin{align}
+            u_{i-1,j}^{(m+1)} - (2+p)\ u_{i,j}^{(m+1)} + u_{i+1,j}^{(m+1)}
+             & = -u_{i,j-1}^{(m)} + (2-p)\ u_{i,j}^{(m)} - u_{i,j+1}^{(m)}       \\
+            u_{i,j-1}^{(m+2)} - (2+p)\ u_{i,j}^{(m+2)} + u_{i,j+1}^{(m+2)}
+             & = -u_{i-1,j}^{(m+1)} + (2-p)\ u_{i,j}^{(m+1)} - u_{i+1,j}^{(m+1)}
+        \end{align}
+        For $ p=2 $ this reduces to the base formula. While convergence is guaranteed for
+        any $ p > 0 $, there are better choices of $ p $ possible for faster convergence.
+        \begin{align}
+            p^* & = 2\sin(\pi/K) & K & = \max{M+1, N+1}
+        \end{align}
+        where, the mesh has $ M,N $ are the number of mesh points per column and row
+        respectively.
+\end{description}
+
+\section{Neumann and Mixed Problems. Irregular Boundary}
+
+\begin{description}
+    \item[Neumann BVP] For cases where the normal derivative is known at the boundary
+        and not the function itself,
+        \begin{align}
+            h^2\ f(x,y) & = u(x+h,y) + u(x-h,y) + u(x,y+k) + u(x,y-k) - 4 u(x,y) \\
+            f(x,y)      & = \nabla^2\ u(x,y)
+        \end{align}
+        In order to deal with this issue, simply extend the region $ R $ outward at
+        its boundary by one mesh point. \par
+        The normal derivative is replaced by the centered finite difference formula in
+        that direction.
+        \begin{align}
+            \diffp un & \approx \frac{u(\vec{x} + \vec{n}) - u(\vec{x} - \vec{n})}{2h}
+        \end{align}
+        This can now eliminate the exterior point in favor of $ \difcp un $ at the
+        boundary point and the next inner mesh point.
+
+    \item[Irregular boundary] For the cases where a mesh cannot be used elegantly to
+        assign values to all points on the boundary, the Taylor series gives,
+        \begin{align}
+            u_A                & = u_O + (ah)\ \diffp{u_o}{x} + \frac{(ah)^2}{2!}
+            \ \diffp[2]{u_O}{x} + \dots                                           \\
+            u_P                & = u_O - (h)\ \diffp{u_o}{x} + \frac{(h)^2}{2!}
+            \ \diffp[2]{u_O}{x} + \dots                                           \\
+            \diffp[2] {u_O}{x} & \approxeq \frac{2}{h^2}\ \Bigg[
+                \frac{u_A}{a(1+a)} + \frac{u_P}{(1+a)} - \frac{u_O}{a} \Bigg]
+        \end{align}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[height = 10cm, width = 10cm,
+                        Ani, enlargelimits = false,
+                        axis equal, grid = both,
+                        xtick = {0,0.5,1}, ytick = {0,0.5,1},
+                        xticklabels = {$ 0 $,$ h $, $ 2h $},
+                        yticklabels = {$ 0 $,$ h $, $ 2h $},
+                        xmin = -0.1, xmax = 0.9, ymin = -0.1, ymax = 0.9]
+                    \draw[y_h, thick, stealth-stealth] (0.5,0.52) -- (0.5,0.73)
+                    node[midway,left]{$ bh $};
+                    \draw[y_p, thick, stealth-stealth] (0.52,0.5) -- (0.687,0.5)
+                    node[midway,below]{$ ah $};
+                    \addplot[GraphSmooth, black]{1-x^2};
+                    \node[GraphNode, inner sep = 1pt,
+                    label={-135:{\footnotesize $ O $}}] at (axis cs:0.5, 0.5) {};
+                    \node[GraphNode, inner sep = 1pt,
+                    label={-135:{\footnotesize $ P $}}] at (axis cs:0, 0.5) {};
+                    \node[GraphNode, inner sep = 1pt,
+                    label={-135:{\footnotesize $ Q $}}] at (axis cs:0.5, 0) {};
+                    \node[GraphNode, inner sep = 1pt, fill = white, draw = black,
+                    label={45:{\footnotesize $ A $}}] at (axis cs:0.707, 0.5) {};
+                    \node[GraphNode, inner sep = 1pt, fill = white, draw = black,
+                    label={45:{\footnotesize $ B $}}] at (axis cs:0.5, 0.75) {};
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+        The laplacian can now be approximated as
+        \begin{align}
+            \nabla^2 u_O & = \frac{2}{h^2}\ \Bigg[ \frac{u_A}{a(1+a)}
+                + \frac{u_P}{(1+a)} + \frac{u_B}{b(1+b)} + \frac{u_Q}{(1+b)}
+                - \frac{u_O(a+b)}{ab} \Bigg]
+        \end{align}
+        For the special case $ a = b = 1 $, this reduces to the old formula for regular
+        boundary shapes.
+
+    \item[Irregular stencils] The irregular boundary is incorporated into the existing
+        algorithm by changing the stencil to be a different set of weights (that still
+        must add up to zero).
+\end{description}
+
+\section{Methods for Parabolic PDEs}
+
+\begin{description}
+    \item[Parabolic PDEs] Unlike elliptic PDEs, hyperbolic and parabolic PDEs are not
+        guaranteed to converge to the analytical result as mesh size $ h \to 0 $. \par
+        Also, these algorithms require addtional constraints to be stable.
+
+    \item[Heat equation] Using a finite difference approximation with space and time
+        discretized using $ h $ and $ k $ respectively,
+        \begin{align}
+            \diffp ut                    & = \diffp[2] ux                           \\
+            \frac{u_{i,j+1} - u_{ij}}{k} & = \frac{u_{i+1,j} - 2u_{ij} + u_{i-1,j}}
+            {h^2}
+        \end{align}
+        Consolidating $ h $ and $ k $ into a single variable yields an iterative formula
+        for the value of the function at the next timestep,
+        \begin{align}
+            u_{i,j+1} & = (1-2r)\ u_{ij} + r\ (u_{i+1,j} + u_{i-1,j}) &
+            r         & = \frac{k}{h^2}
+        \end{align}
+        Convergence requires that the coefficient of $ u_{ij} $ above be nonnegative,
+        which means $ r \leq 1/2$
+
+    \item[Crank-Nicholson method] Unlike the above explicit method which makes $ k $
+        too small for computational convenience, a new method that makes no such demands.
+        \par
+        This replaces the $ u_{xx} $ term with the average of the spatial derivatives
+        calculated at $ t=j $ and $ t = j+1 $
+        \begin{align}
+            \frac{u_{i,j+1} - u_{ij}}{k} & = \frac{u_{i+1,j} - 2u_{ij} + u_{i-1,j}}
+            {2h^2} + \frac{u_{i+1,j+1} - 2u_{i,j+1} + u_{i-1,j+1}}
+            {2h^2}
+        \end{align}
+        Collecting the terms for the current and next time-step on two sides,
+        \begin{align}
+            (2 + 2r)\ u_{i,j+1} - (r)\ u_{i+1,j+1} - (r)\ u_{i-1,j+1}
+             & = (2 - 2r)\ u_{ij} + (r)\ u_{i+1,j} + (r)\ u_{i-1,j}
+        \end{align}
+        This is a system of $ (n-1) $ linear equations for $ n $ mesh points per time
+        step. Smaller values of $ r $ give better results.
+
+    \item[Choice of $ r $] Simplifying caluclations using $ r=1 $ gives the iterative
+        formula,
+        \begin{align}
+            4u_{i,j+1} - u_{i+1,j+1} - u_{i-1,j+1} & = u_{i+1,j} + u_{i-1,j}
+        \end{align}
+
+\end{description}
+
+\section{Method for Hyperbolic PDEs}
+
+\begin{description}
+    \item[Worked example] The most important example of a hyperbolic PDE is the wave
+        equation
+        \begin{align}
+            \diffp[2] ut & = \diffp[2] ux & x & \in [0,1], \quad t \geq 0
+        \end{align}
+        The initial displacement and initial velocity together make up the I.C.
+        Along with some boundary conditions, these specify a complete problem.
+
+    \item[Differencec equation] Using numerical approximations for the second order
+        derivatives. ($ k $ and $ h $ are the time and position step sizes)
+        \begin{align}
+            \frac{u_{i,j+1} - 2u_{ij} + u_{i,j-1}}{k^2} &
+            = \frac{u_{i+1,j} - 2u_{ij} + u_{i-1,j}}{h^2}                   \\
+            r^*                                         & = \frac{k^2}{h^2}
+        \end{align}
+        For the special case of $ r^* = 1 $,
+        \begin{align}
+            u_{i,j+1} & = u_{i-1,j} + u_{i+1,j} - u_{i,j-1}
+        \end{align}
+        This explicit method is stable for $ r^* \in (0,1] $, provided the I.C. has no
+        discontinuities.
+
+    \item[Initial velocity] The initial velocity can be used to deal with the mesh points
+        $ u_{i,-1} $ by using a difference equation in time,
+        \begin{align}
+            g_i     & = g(ih) = \frac{u_{i,1} - u_{i,-1}}{2k}  \\
+            u_{i,1} & = kg_i + \frac{u_{i-1,0} + u_{i+1,0}}{2}
+        \end{align}
+\end{description}

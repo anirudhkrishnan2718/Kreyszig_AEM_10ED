@@ -1,0 +1,445 @@
+\section{Neumann and Mixed Problems. Irregular Boundary}
+
+\begin{enumerate}
+    \item Solving equation $ 3 $ by Gaussian elimination,
+          \begin{align}
+              \vec{\wt{x}} & = \begin{bNiceMatrix}
+                                   0.07686 & 0.19099 & 0.86646 & 1.81211
+                               \end{bNiceMatrix}
+          \end{align}
+          This matches the result shown in the text.
+
+    \item Mixed BVP with normal derivative at right edge.
+          \begin{align}
+              \nabla^2 u & = f(x, y) = 2(x^2 + y^2)                      &
+              h          & = 1                                             \\
+              \vec{Au}   & = \begin{bNiceMatrix}[margin]
+                                 -4 & 1  & 0  & 1  & 0  & 0  \\
+                                 1  & -4 & 1  & 0  & 1  & 0  \\
+                                 0  & 1  & -4 & 0  & 0  & 1  \\
+                                 1  & 0  & 0  & -4 & 1  & 0  \\
+                                 0  & 1  & 0  & 1  & -4 & 1  \\
+                                 0  & 0  & 1  & 0  & 1  & -4
+                             \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                   u_{11} \\ u_{21} \\ u_{31} \\
+                                                   u_{12} \\ u_{22} \\ u_{32}
+                                               \end{bNiceMatrix} &
+              \vec{b}    & =  \begin{bNiceMatrix}[margin]
+                                  -0-0 + 4   \\ -0 + 10 \\ -0-u_{41} + 20 \\
+                                  -0 -9 + 10 \\ -36 + 16 \\ -u_{42} + 81
+                              \end{bNiceMatrix}      \\
+              2 \cdot 6  & = u_{41} - u_{21}                             &
+              2 \cdot 24 & = u_{42} - u_{22}                               \\
+              \vec{Au}   & = \begin{bNiceMatrix}[margin]
+                                 -4 & 1  & 0  & 1  & 0  & 0  \\
+                                 1  & -4 & 1  & 0  & 1  & 0  \\
+                                 0  & 2  & -4 & 0  & 0  & 1  \\
+                                 1  & 0  & 0  & -4 & 1  & 0  \\
+                                 0  & 1  & 0  & 1  & -4 & 1  \\
+                                 0  & 0  & 1  & 0  & 2  & -4
+                             \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                   u_{11} \\ u_{21} \\ u_{31} \\
+                                                   u_{12} \\ u_{22} \\ u_{32}
+                                               \end{bNiceMatrix} &
+              \vec{b}    & =  \begin{bNiceMatrix}[margin]
+                                  4 \\ 10 \\ 8 \\
+                                  1 \\ -20 \\  33
+                              \end{bNiceMatrix}
+          \end{align}
+          The exact solution using Gaussian elimination is,
+          \begin{align}
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              -2.16 & -4.24 & -6.38 & -0.396 & 1.57 & -9.06
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item TBC
+
+    \item Mixed BVP with normal derivative at right edge.
+          \begin{align}
+              \nabla^2 u & = f(x, y) = 2(x^2 + y^2)                      &
+              h          & = 0.5                                           \\
+              \vec{Au}   & = \begin{bNiceMatrix}[margin]
+                                 -4 & 1  & 0  & 0  \\
+                                 1  & -4 & 1  & 0  \\
+                                 0  & 1  & -4 & 1  \\
+                                 0  & 0  & 1  & -4
+                             \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                   u_{01} \\ u_{11} \\
+                                                   u_{21} \\ u_{31}
+                                               \end{bNiceMatrix} &
+              \vec{b}    & =  \begin{bNiceMatrix}[margin]
+                                  -u_{-1,1} - 0 + 1 \\
+                                  -0.25-0.75        \\
+                                  -1-0              \\
+                                  -u_{41} - 2.25 + 1.25
+                              \end{bNiceMatrix}                   \\
+              1 \cdot 0  & = u_{-1,1} - u_{11}                           &
+              1 \cdot 3  & = u_{41} - u_{21}                               \\
+              \vec{Au}   & = \begin{bNiceMatrix}[margin]
+                                 -4 & 2  & 0  & 0  \\
+                                 1  & -4 & 1  & 0  \\
+                                 0  & 1  & -4 & 1  \\
+                                 0  & 0  & 2  & -4
+                             \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                   u_{01} \\ u_{11} \\
+                                                   u_{21} \\ u_{31}
+                                               \end{bNiceMatrix} &
+              \vec{b}    & =  \begin{bNiceMatrix}[margin]
+                                  1  \\
+                                  -1 \\
+                                  -1 \\
+                                  -7
+                              \end{bNiceMatrix}
+          \end{align}
+          The exact solution using Gaussian elimination is,
+          \begin{align}
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              -0.0111 & 0.4778 & 0.9222 & 2.2111
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Mixed BVP with normal derivative at right edge.
+          \begin{align}
+              \nabla^2 u & = f(x, y) = 0                                 &
+              h          & = 0.5                                           \\
+              \vec{Au}   & = \begin{bNiceMatrix}[margin]
+                                 -4 & 1  & 1  & 0  \\
+                                 1  & -4 & 0  & 1  \\
+                                 1  & 0  & -4 & 1  \\
+                                 0  & 1  & 1  & -4
+                             \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                   u_{11} \\ u_{21} \\
+                                                   u_{12} \\ u_{22}
+                                               \end{bNiceMatrix} &
+              \vec{b}    & =  \begin{bNiceMatrix}[margin]
+                                  - 0 - 0     \\
+                                  -0 - 0.375  \\
+                                  -u_{13} - 0 \\
+                                  -u_{23} - 3
+                              \end{bNiceMatrix}                   \\
+              1 \cdot 3  & = u_{13} - u_{11}                             &
+              1 \cdot 6  & = u_{23} - u_{21}                               \\
+              \vec{Au}   & = \begin{bNiceMatrix}[margin]
+                                 -4 & 1  & 1  & 0  \\
+                                 1  & -4 & 0  & 1  \\
+                                 2  & 0  & -4 & 1  \\
+                                 0  & 2  & 1  & -4
+                             \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                   u_{11} \\ u_{21} \\
+                                                   u_{12} \\ u_{22}
+                                               \end{bNiceMatrix} &
+              \vec{b}    & =  \begin{bNiceMatrix}[margin]
+                                  0      \\
+                                  -0.375 \\
+                                  - 3    \\
+                                  -9
+                              \end{bNiceMatrix}
+          \end{align}
+          The exact solution using Gaussian elimination is,
+          \begin{align}
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              0.766 & 1.109 & 1.956 & 3.293
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Mixed BVP with normal derivative at top edge.
+          \begin{align}
+              \nabla^2 u & = f(x, y) = -\pi^2y\ \sin(\pi x/3)            &
+              h          & = 1                                             \\
+              \vec{Au}   & = \begin{bNiceMatrix}[margin]
+                                 -4 & 1  & 1  & 0  & 0  & 0  \\
+                                 1  & -4 & 0  & 1  & 0  & 0  \\
+                                 1  & 0  & -4 & 1  & 1  & 0  \\
+                                 0  & 1  & 1  & -4 & 0  & 1  \\
+                                 0  & 0  & 1  & 0  & -4 & 1  \\
+                                 0  & 0  & 0  & 1  & 1  & -4
+                             \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                   u_{11} \\ u_{21} \\ u_{12} \\
+                                                   u_{22} \\ u_{13} \\ u_{23}
+                                               \end{bNiceMatrix}  \\
+              \vec{b}    & =  \begin{bNiceMatrix}[margin]
+                                  -0-0 - \pi^2 \sqrt{3}/2            \\
+                                  -0-0 - \pi^2 \sqrt{3}/2            \\
+                                  -0 - \pi^2 \sqrt{3}                \\
+                                  -0 - \pi^2 \sqrt{3}                \\
+                                  -0 - u_{14} - \pi^2\ (3\sqrt{3}/2) \\
+                                  -0 - u_{24} - \pi^2\ (3\sqrt{3}/2)
+                              \end{bNiceMatrix}           \\
+              2 \cdot \frac{9\sqrt{3}}{2}
+                         & = u_{14} - u_{12}                             &
+              2 \cdot \frac{9\sqrt{3}}{2}
+                         & = u_{24} - u_{22}                               \\
+              \vec{Au}   & = \begin{bNiceMatrix}[margin]
+                                 -4 & 1  & 1  & 0  & 0  & 0  \\
+                                 1  & -4 & 0  & 1  & 0  & 0  \\
+                                 1  & 0  & -4 & 1  & 1  & 0  \\
+                                 0  & 1  & 1  & -4 & 0  & 1  \\
+                                 0  & 0  & 2  & 0  & -4 & 1  \\
+                                 0  & 0  & 0  & 2  & 1  & -4
+                             \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                   u_{11} \\ u_{21} \\ u_{12} \\
+                                                   u_{22} \\ u_{13} \\ u_{23}
+                                               \end{bNiceMatrix} &
+              \vec{b}    & =  \begin{bNiceMatrix}[margin]
+                                  - \pi^2 \sqrt{3}/2      \\
+                                  -\pi^2 \sqrt{3}/2       \\
+                                  - \pi^2 \sqrt{3}        \\
+                                  -\pi^2 \sqrt{3}         \\
+                                  (-9 - 1.5\pi^2)\sqrt{3} \\
+                                  (-9 - 1.5\pi^2)\sqrt{3}
+                              \end{bNiceMatrix}                   \\
+          \end{align}
+          The exact solution using Gaussian elimination is,
+          \begin{align}
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              8.463 & 8.463 & 16.844 & 16.844 & 24.972 & 24.972
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Mixed BVP with normal derivative at upper edge.
+          \begin{align}
+              \nabla^2 u  & = f(x, y) = 2(x^2 + y^2)                      &
+              h           & = 0.5                                           \\
+              \vec{Au}    & = \begin{bNiceMatrix}[margin]
+                                  -4 & 1  & 1  & 0  \\
+                                  1  & -4 & 0  & 1  \\
+                                  1  & 0  & -4 & 1  \\
+                                  0  & 1  & 1  & -4
+                              \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                    u_{11} \\ u_{21} \\
+                                                    u_{12} \\ u_{22}
+                                                \end{bNiceMatrix} &
+              \vec{b}     & =  \begin{bNiceMatrix}[margin]
+                                   -110-110    \\
+                                   -110-110    \\
+                                   -110-u_{13} \\
+                                   -110-u_{23}
+                               \end{bNiceMatrix}                   \\
+              1 \cdot 110 & = u_{13} - u_{11}                             &
+              1 \cdot 110 & = u_{23} - u_{21}                               \\
+              \vec{Au}    & = \begin{bNiceMatrix}[margin]
+                                  -4 & 1  & 1  & 0  \\
+                                  1  & -4 & 0  & 1  \\
+                                  2  & 0  & -4 & 1  \\
+                                  0  & 2  & 1  & -4
+                              \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                    u_{11} \\ u_{21} \\
+                                                    u_{12} \\ u_{22}
+                                                \end{bNiceMatrix} &
+              \vec{b}     & =  \begin{bNiceMatrix}[margin]
+                                   -220 \\
+                                   -220 \\
+                                   -220 \\
+                                   -220
+                               \end{bNiceMatrix}
+          \end{align}
+          The exact solution using Gaussian elimination is,
+          \begin{align}
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              125.71 & 125.71 & 157.14 & 157.14
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item For $ a = b = 1/2 $,
+          \begin{align}
+              \nabla^2 u_O & = \frac{2}{h^2}\ \Bigg[\frac{4u_A}{3} + \frac{4u_B}{3}
+              + \frac{2u_P}{3} + \frac{2u_Q}{3} - 4u_O\Bigg]                        \\
+              \vec{S}      & = \begin{bNiceMatrix}[margin, r]
+                                   \cdot & 4/3 & \cdot \\
+                                   2/3   & -4  & 4/3   \\
+                                   \cdot & 2/3 & \cdot
+                               \end{bNiceMatrix}
+          \end{align}
+
+    \item Using the Taylor expansion and keeping terms upto second order,
+          \begin{align}
+              u_A                & = u_O + (ah)\ \diffp{u_o}{x} + \frac{(ah)^2}{2!}
+              \ \diffp[2]{u_O}{x} + \dots                                           \\
+              u_P                & = u_O - (h)\ \diffp{u_o}{x} + \frac{(h)^2}{2!}
+              \ \diffp[2]{u_O}{x} + \dots                                           \\
+              \diffp[2] {u_O}{x} & \approxeq \frac{2}{h^2}\ \Bigg[
+              \frac{u_A}{a(1+a)} + \frac{u_P}{(1+a)} - \frac{u_O}{a} \Bigg]         \\
+              \diffp[2] {u_O}{y} & \approxeq \frac{2}{h^2}\ \Bigg[
+              \frac{u_B}{b(1+b)} + \frac{u_Q}{(1+b)} - \frac{u_O}{b} \Bigg]         \\
+              \nabla^2 u_O       & \approxeq \frac{2}{h^2}\ \Bigg[
+                  \frac{u_B}{b(1+b)} + \frac{u_Q}{(1+b)} +
+                  \frac{u_A}{a(1+a)} + \frac{u_P}{(1+a)}
+                  - \frac{(a+b) u_O}{ab} \Bigg]
+          \end{align}
+
+    \item For the general case where the distances to the points $ A,B,P,Q $ are
+          $ ah,bh,ph,qh $ respectively.
+          \begin{align}
+              u_A                & = u_O + (ah)\ \diffp{u_o}{x} + \frac{(ah)^2}{2!}
+              \ \diffp[2]{u_O}{x} + \dots                                           \\
+              u_P                & = u_O - (ph)\ \diffp{u_o}{x} + \frac{(ph)^2}{2!}
+              \ \diffp[2]{u_O}{x} + \dots                                           \\
+              \diffp[2] {u_O}{x}
+                                 & \approxeq \frac{2}{h^2}\ \Bigg[
+              \frac{u_A}{a(a+p)} + \frac{u_P}{p(a+p)} - \frac{u_O}{ap} \Bigg]       \\
+              \diffp[2] {u_O}{y} & \approxeq \frac{2}{h^2}\ \Bigg[
+              \frac{u_B}{b(b+q)} + \frac{u_Q}{q(b+q)} - \frac{u_O}{bq} \Bigg]       \\
+              \nabla^2 u_O       & \approxeq \frac{2}{h^2}\ \Bigg[
+                  \frac{u_B}{b(b+q)} + \frac{u_Q}{q(b+q)} +
+                  \frac{u_A}{a(a+p)} + \frac{u_P}{p(a+p)}
+                  - \frac{(ap+bq) u_O}{apbq} \Bigg]
+          \end{align}
+
+    \item For Example $ 2 $ in the text,
+          \begin{align}
+              \vec{Au} & = \begin{bNiceMatrix}[margin]
+                               -4  & 1   & 1   & 0  \\
+                               1.2 & -5  & 0   & 1  \\
+                               1   & 0   & -4  & 1  \\
+                               0   & 1.2 & 1.2 & -6
+                           \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                 u_{11} \\ u_{21} \\
+                                                 u_{12} \\ u_{22}
+                                             \end{bNiceMatrix} &
+              \vec{b}  & =  \begin{bNiceMatrix}[margin]
+                                -27-0           \\
+                                -216 - 296(9/5) \\
+                                -0 + 702        \\
+                                352(9/5) + 936(9/5)
+                            \end{bNiceMatrix}                  \\
+              \vec{b}  & =  \begin{bNiceMatrix}[margin]
+                                -27    \\
+                                -748.8 \\
+                                702    \\
+                                2318.4
+                            \end{bNiceMatrix}
+          \end{align}
+          The second and fourth rows are doubled as compared to the text, but the linear
+          system itself is the same.
+
+    \item Using Gaussian elimination,
+          \begin{align}
+              \vec{u} & = \begin{bNiceMatrix}[margin]
+                              -55.57 & 49.17 & -298.46 & -436.26
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Solving the irregular boundary $ y = 4.5 - x $
+          \begin{align}
+              \vec{Au} & = \begin{bNiceMatrix}[margin]
+                               -4 & 1           & 1           & 0  \\
+                               1  & -4          & 0           & 1  \\
+                               1  & 0           & -4          & 1  \\
+                               0  & \frac{4}{3} & \frac{4}{3} & -8
+                           \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                 u_{11} \\ u_{21} \\
+                                                 u_{12} \\ u_{22}
+                                             \end{bNiceMatrix} &
+              \vec{b}  & =  \begin{bNiceMatrix}[margin]
+                                -3 - 0 \\
+                                -6 - 6 \\
+                                -0 - 0 \\
+                                -(8/3)2.5 - (8/3)(1)
+                            \end{bNiceMatrix}                  \\
+              \vec{b}  & =  \begin{bNiceMatrix}[margin]
+                                -3  \\
+                                -12 \\
+                                0   \\
+                                -\frac{28}{3}
+                            \end{bNiceMatrix}                &
+              \vec{u}  & =  \begin{bNiceMatrix}[margin]
+                                2 \\
+                                4 \\
+                                1 \\
+                                2
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Solving with the unknown potential $ V $ on the boundary
+          \begin{align}
+              \vec{Au}      & = \begin{bNiceMatrix}[margin]
+                                    -4 & 1           & 1           & 0  \\
+                                    1  & -4          & 0           & 1  \\
+                                    1  & 0           & -4          & 1  \\
+                                    0  & \frac{4}{3} & \frac{4}{3} & -8
+                                \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                      u_{11} \\ u_{21} \\
+                                                      u_{12} \\ u_{22}
+                                                  \end{bNiceMatrix} &
+              \vec{b}       & =  \begin{bNiceMatrix}[margin]
+                                     -0 - 0 \\
+                                     -0 - V \\
+                                     -0 - V \\
+                                     -(8/3)V - (8/3)V
+                                 \end{bNiceMatrix}                   \\
+              \vec{b}       & =  \begin{bNiceMatrix}[margin]
+                                     0  \\
+                                     -V \\
+                                     -V \\
+                                     -\frac{16}{3}\ V
+                                 \end{bNiceMatrix}                &
+              \vec{u}       & =  \frac{V}{19}\ \begin{bNiceMatrix}[margin]
+                                                   5  \\
+                                                   10 \\
+                                                   10 \\
+                                                   16
+                                               \end{bNiceMatrix}     \\
+              \frac{5V}{19} & = 220                                         &
+              V             & = 836
+          \end{align}
+
+    \item Solving the system with $ u=0 $ on the outer portion and $ u = 100 $
+          on the axes,
+          \begin{align}
+              \vec{Au} & = \begin{bNiceMatrix}[margin]
+                               -4 & 1           & 1           & 0  \\
+                               1  & -4          & 0           & 1  \\
+                               1  & 0           & -4          & 1  \\
+                               0  & \frac{4}{3} & \frac{4}{3} & -8
+                           \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                 u_{11} \\ u_{21} \\
+                                                 u_{12} \\ u_{22}
+                                             \end{bNiceMatrix}  &
+              \vec{b}  & =  \begin{bNiceMatrix}[margin]
+                                -100 - 100 \\
+                                -100 - 0   \\
+                                -100 - 0   \\
+                                -(8/3)0 - (8/3)0
+                            \end{bNiceMatrix}                  \\
+              \vec{b}  & =  \begin{bNiceMatrix}[margin]
+                                -200 \\
+                                -100 \\
+                                -100 \\
+                                0
+                            \end{bNiceMatrix}                 &
+              \vec{u}  & =  \frac{100}{19}\ \begin{bNiceMatrix}[margin]
+                                                14 \\
+                                                9  \\
+                                                9  \\
+                                                3
+                                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Solving the Poisson equation with $ f(x,y) = 2 $ and $ h = 1 $
+          \begin{align}
+              \vec{Au} & = \begin{bNiceMatrix}[margin]
+                               -4  & 1  & 1  \\
+                               1   & -4 & 0  \\
+                               4/3 & 0  & -6 \\
+                           \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                                 u_{11} \\ u_{21} \\
+                                                 u_{12}
+                                             \end{bNiceMatrix} &
+              \vec{b}  & =  \begin{bNiceMatrix}[margin]
+                                2 - 0 + 2   \\
+                                2 - 0 + 0.5 \\
+                                2 + 2 - 0 - (8/3)(0)
+                            \end{bNiceMatrix}                  \\
+              \vec{b}  & =  \begin{bNiceMatrix}[margin]
+                                4   \\
+                                2.5 \\
+                                4
+                            \end{bNiceMatrix}                &
+              \vec{u}  & =  \begin{bNiceMatrix}[margin]
+                                -1.5 \\
+                                -1   \\
+                                -1
+                            \end{bNiceMatrix}
+          \end{align}
+\end{enumerate}

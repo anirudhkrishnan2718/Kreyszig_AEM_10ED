@@ -1,0 +1,684 @@
+\chapter{Partial Differential Equations}
+
+\section{Basic Concepts of PDEs}
+
+\begin{description}
+    \item[Partial Differential equation] A differential equation where a function of two
+        or more variables is differentiated with respect to just one of them. In
+        real-world applications, second order PDEs are the most common.
+
+    \item[Order] The order of the highest derivative in the PDE
+    \item[Homogeneous PDE] A PDE is homogeneous if all of its terms involve some partial
+        derivative of the function.
+    \item[Linear PDE] A PDE that is of the first degree in the unknown function and all
+        of its partial derivatives.
+
+    \item[Solution] A solution to a PDE in some region $ R $ in space has all partial
+        derivatives that appear in the PDE in some domain $ D $ containing $ R $, and
+        satisfies the PDE everywhere in $ R $.
+
+    \item[Particular solution] A particular solution to the ODE is obtained by using
+        boundary conditions, (specified at two points in $ xy $ space) or using initial
+        conditions (where time $ t $ is a variable)
+
+    \item[Superposition] Similar to ODEs, linear homogeneous PDEs also follow the
+        superposition rule for solutions.
+        \begin{align}
+            u & = c_1 u_1 + c_2 u_2
+        \end{align}
+        is also a solution for some constants $ c_1, c_2 $ provided $ u_1,u_2 $ are
+        solutions.
+
+    \item[Solution by direct integration] Very simple PDEs can often be solved by
+        direct integration with respect to one variable at a time. This method fails for
+        all but the simplest PDEs.
+\end{description}
+
+\section{Modeling: Vibrating String, Wave Equation}
+
+\begin{description}
+    \item[Physical system] A string stretched along the $ x $ axis with the two ends
+        constrained to be at $ (0, 0) $ and $ (L, 0) $. \par
+        The string performs small transverse vibrations as a result of being released at
+        $ t = 0 $ with some perturbation.
+
+    \item[Solution] Solutions are of the form $ u(x, t) $ which describe the y-coordinate
+        of every point on the string  $ x \in [0, L] $ at all times $ t > 0 $
+
+    \item[Assumptions] In order to simplify the system,
+        \begin{itemize}
+            \item The string is homogeneous and perfectly elastic.
+            \item Gravitational force is negligible compared to the tension within the
+                  string.
+            \item Points on the string only move in the vertical (transverse) direction.
+        \end{itemize}
+
+    \item[PDE] Using Newton's second law, and the fact that the net horizontal force
+        acting on a small piece of string must be zero,
+        \begin{align}
+            \diffp[2] ut & = c^2\ \diffp[2] ux & c^2 & = \frac{T}{\rho}
+        \end{align}
+        The constant $ c^2 $ is a positive constant dependent on the tension in the
+        string $ T $ and the mass per unit length of the string $ \rho $.
+\end{description}
+
+\section{Solution by Separating Variables, Use of Fourier Series}
+
+\begin{description}
+    \item[Boudnary conditions] Since the string is fastened at both ends, the two B.C.
+        are,
+        \begin{align}
+            u(0, t) & = 0 & u(L, t) & = 0 \qquad \forall \ t \geq 0
+        \end{align}
+
+    \item[Initial conditions] Since the string can have some initial deflection and
+        initial velocity, the two I.C. are,
+        \begin{align}
+            u(x, 0)                      & = f(x)                           &
+            \diffp {u}{t}\Bigg|_{(x, 0)} & = g(x) \qquad \forall x \in[0,L]
+        \end{align}
+
+    \item[Separation of variables] The first step in solving the PDE is to assume that
+        the final result is the product of two functions each dependent on only one of
+        the variables $ x, t $.
+        \begin{align}
+            u(x, t)      & = F(x) \cdot G(t)           \\
+            \diffp[2] ut & = F(x) \cdot \diffp[2] Gt &
+            \diffp[2] ux & = G(t) \cdot \diffp[2] Fx
+        \end{align}
+        Substituting into the wave equation leads to one ODE each in $ x $ and $ t $,
+        which can be solved separately to obtain $ F(x) $ and $ G(t) $.
+        \begin{align}
+            \diff[2] Fx & = kF      &
+            \diff[2] Gt & = c^2\ kG
+        \end{align}
+
+    \item[Satisfying boundary conditions] To make the solution satisfy the boundary
+        conditions,
+        \begin{align}
+            u(0, t) = 0 & \implies F(0) = 0 &
+            u(L, t) = 0 & \implies F(L) = 0
+        \end{align}
+        This places a constraint on $ k $ in the system of ODEs above.
+        \begin{align}
+            k           & = -p^2                                 &
+            F(x)        & = A\ \cos(px) + B\ \sin(px)              \\
+            A           & = 0                                    &
+            B\ \sin(pL) & = 0                                      \\
+            F_n(x)      & = \sin\left( \frac{n\pi}{L}\ x \right)
+        \end{align}
+        This is an infinite set of solutions for natural numbers $ n $.
+        Using this set of values for $ k $, the ODE for $ G $ is solved to yield
+        \begin{align}
+            \lambda_n & = cp = \frac{cn\pi}{L}                              &
+            G_n(t)    & = B_n\ \cos(\lambda_n t) + B_n^*\ \sin(\lambda_n t)
+        \end{align}
+        Here, the set of eigenvalues $ \{\lambda_n\} $ is called the spectrum and each
+        corresponding solution is called an eigenfunction $ u_n(x, t) $.
+
+    \item[Normal mode] The points on a string that do not move in addition to the
+        endpoints are called nodes. These correspond to,
+        \begin{align}
+            \sin\left( \frac{n\pi}{L}\ x \right) & = 0                                &
+            x                                    & = \Bigg\{\frac{L}{n}, \frac{2L}{n}
+            , \dots , \frac{(n-1)L}{n}\Bigg\}
+        \end{align}
+        The motion $ u_n $ having $ (n-1) $ nodes is called a normal mode of the system.
+        \par The fundamental mode corresponds to $ n = 1 $.
+
+    \item[Fourier series solution] In order to satisfy the initial conditions, the
+        infinite set of solutions $ \{u_n\} $ can be expanded in terms of Fourier
+        integrals. \par
+        Given an initial postiion $ f(x) $,
+        \begin{align}
+            u(x, 0)        & = \iser[n]{0}\ B_n\ \sin\left( \frac{n\pi}{L}\ x
+            \right) = f(x) &
+            x              & \in [0, L]                                       \\
+            B_n            & = \frac{2}{L}\ \int_{0}^{L} f(x)\
+            \sin\left( \frac{n\pi}{L}\ x
+            \right)\ \dl x &
+            n              & = \{1,2,3,\dots\}
+        \end{align}
+        Similarly, given an initial velocity $ g(x) $,
+        \begin{align}
+            \diffp ut\Bigg|_{t=0} & = \iser[n]{0}\ (B_n^* \lambda_n)
+            \ \sin\left( \frac{n\pi}{L}\ x
+            \right) = g(x)        &
+            x                     & \in [0, L]                            \\
+            B_n^*                 & = \frac{2}{cn\pi}\ \int_{0}^{L} g(x)\
+            \sin\left( \frac{n\pi}{L}\ x
+            \right)\ \dl x        &
+            n                     & = \{1,2,3,\dots\}
+        \end{align}
+
+    \item[Closed form solution] For the special case of zero initial velocity, which
+        makes $ B_n^* = 0 $. Further,
+        \begin{align}
+            u(x, t) & = \frac{f^*(x - ct) + f^*(x + ct)}{2}
+        \end{align}
+        Here, $ f^* $ is the odd periodic extension of $ f(x) $ with period $ 2L $.
+
+    \item[Generalized solution] Suppose the initial deflection is such that $ f'(x) $ and
+        $ f''(x) $ are only piecewise continuous, or that these one-sided derivatives are
+        not zero. \par
+        Then, there will be finitely many points at which the $ \difcp[2]{}{x} $ terms in
+        the PDE do not exist. The wave equation is still a solution at all the remaining
+        points in the domain.
+
+    \item[Physical interpretation] The standing wave that is set up in the string can
+        be considered a superposition of waves with the same waveform traveling in
+        opposite directions at equal speed ($ c $ above).
+\end{description}
+
+\section{D'Alembert's Solution of the Wave Equation}
+
+\begin{description}
+    \item[D'Alembert's solution] By introducing two new variables,
+        \begin{align}
+            v                         & = x + ct                                &
+            w                         & = x - ct                                  \\
+            u                         & \to u(v, w)                               \\
+            \difcp[2] ux              & = \difcp[2] uv + \difcp[2] uw
+            + 2\ \difcp{u}{v, w}      &
+            \difcp[2] ut              & = c^2\ \Big[\difcp[2] uv + \difcp[2] uw
+            - 2\ \difcp{u}{v, w}\Big] &
+        \end{align}
+        Substituting into the wave equation yields,
+        \begin{align}
+            \difcp{u}{v, w} & = 0                             \\
+            u(x, t)         & = \phi (x + ct) + \psi (x - ct)
+        \end{align}
+        Differentiating $ v, w $  with respect to $ (x + ct), (x - ct) $ respectively,
+        using the chain rule,
+        \begin{align}
+            u(x, 0)                  & = \phi(x) + \psi(x)  = f(x)         &
+                                     & \text{initial deflection}             \\
+            \difcp ut\Bigg|_{(x, 0)} & = c\ \phi'(x) - c\ \psi'(x)  = g(x) &
+                                     & \text{initial velocity}
+        \end{align}
+        Solving this system yields the earlier relation for $ u(x, t) $,
+        \begin{align}
+            u(x, t) & = \frac{f(x + ct) + f(x - ct)}{2} + \frac{1}{2c}
+            \ \int_{x-ct}^{x + ct}\ g(s)\ \dl s
+        \end{align}
+        Thus, the initial deflection and velocity uniquely determine the solution of
+        the wave equation.
+
+    \item[Method of characteristics] A method of approaching quasilinear PDEs of the
+        form,
+        \begin{align}
+            A\ \difcp[2] ux + 2B\ \difcp{u}{x, y} + C\ \difcp[2] uy
+             & = F(u, x, y, \difcp ux, \difcp uy)
+        \end{align}
+        This PDE is linear in the highest order derivatives (here second order).
+        \begin{table}[ht]
+            \centering
+            \SetTblrInner{rowsep=0.5em}
+            \begin{tblr}{colspec={Q[l]|Q[l]|Q[l]}, colsep = 2em}
+                \textbf{Type} & \textbf{Condition} & \textbf{Example} \\ \hline[dotted]
+                Hyperbolic    & $AC - B^2 < 0$     & Wave equation    \\
+                Parabolic     & $AC - B^2 = 0$     & Heat equation    \\
+                Elliptic      & $AC - B^2 > 0$     & Laplace equation \\ \hline
+            \end{tblr}
+        \end{table}
+        Here, the conversion $ y \to t $ is accomplished by using $ y = ct $
+        for example. \par
+        $ A, B, C $ may be functions of mixed type, which means they are of different
+        types in different regions of the $ xt $ plane.
+
+    \item[Characteristic equation] The characteristic equation of the above PDE is,
+        \begin{align}
+            y' & = \diff yx & A\ y'^2 - 2B\ y' + C & = 0
+        \end{align}
+        The solutions of this equation are expressed as level curves in $ (x, y) $,
+        \begin{align}
+            \Phi(x, y) & = c_1 & \Psi(x, y) & = c_2
+        \end{align}
+        Now, the new variables $ (v, w) $ can be arrived at from the existing $ (x, y) $
+        using the transformations, \par
+        \begin{table}[ht]
+            \centering
+            \SetTblrInner{rowsep=0.75em}
+            \begin{tblr}{colspec={Q[l]|Q[l, $$]|Q[l, $$]|Q[l]}, colsep = 2em}
+                \textbf{Type}          & \vec{v}                             &
+                \vec{w}                & \text{\textbf{Normal Form}}           \\
+                \hline[dotted]
+                Hyperbolic             & \Phi                                &
+                \Psi                   & $\difcp{u}{v, w} = F_1$               \\
+                Parabolic              & x                                   &
+                \Psi = \Phi            & $\difcp[2] uw = F_2$                  \\
+                Elliptic               & \frac{\Phi + \Psi}{2}               &
+                \frac{\Phi - \Psi}{2i} & $\difcp[2] uv + \difcp[2] uw = F_3$   \\ \hline
+            \end{tblr}
+        \end{table}
+        For example, the general form of a hyperbolic PDE resembles D'Alembert's
+        solution. The wave equation happens to lead to the very special case of
+        $ F_1(v, w, u, \difcp uv, \difcp uw) = 0 $
+\end{description}
+
+\section{Modeling: Heat Flow from a Body in Space. Heat Equation}
+
+\begin{description}
+    \item[Assumptions] In order to simplify the mode,
+        \begin{itemize}
+            \item The specific heat $ \sigma $ and density $ \rho $ of the material are
+                  constant. There are no heat sources or sinks within the body.
+            \item Heat flow is proportional to the gradient of the temperature in the
+                  direction of decreasing temperature. (empirical result)
+                  \begin{align}
+                      \vec{v} & = -K\ \nabla u
+                  \end{align}
+                  Here, $ u(x, y, z, t) $ is the temperature, and $\vec{v} $ is the
+                  heat flow.
+            \item The thermal conductivity $ K $ is constant.
+        \end{itemize}
+
+    \item[Physical system] Consider a region $ T $ in $ 3d $ space bounded by a surface
+        $ R $ such that the divergence theorem applies. With $ \vec{n} $ being the outer
+        normal vector,
+        \begin{align}
+            \vec{v} \dotp \vec{n}\ \Delta A
+        \end{align}
+        is the amount of heat leaving the region $ T $ through the small surface
+        $ \dl A $. (positive sign by convention is heat lost). \par
+        The total heat leaving the surface, is
+        \begin{align}
+            \iint_S (\vec{v} \dotp \vec{n})\ \dl A & =
+            -K\ \iiint_T \nabla^2 u\ \dl x\ \dl y\ \dl z
+        \end{align}
+        Since there are no sources or sinks of heat inside $ T $, this must equal the
+        rate of decrease of heat $ H $ in the region $ T $,
+        \begin{align}
+            -\diffp Ht & = - \iiint_T\ (\rho \sigma)\ \diffp ut\ \dl x\ \dl y\ \dl z
+        \end{align}
+        Equating these two sides of yields the heat equation.
+        \begin{align}
+            \diffp ut & = c^2\ \nabla^2 u       &
+            c^2       & = \frac{K}{\rho \sigma}
+        \end{align}
+        This equation also models the diffusion of gases.
+\end{description}
+
+\section{Heat Equation: Solution by Fourier Series, Dirichlet Problem}
+
+\begin{description}
+    \item[One dimensional heat equation] For the special case of one dimension, with
+        heat constrained to flow along the $ x $ axis,
+        \begin{align}
+            \diffp ut & = c^2\ \diffp[2] ux
+        \end{align}
+
+    \item[Separation into ODEs] Similar to the wave equation, the full solution
+        $ u(x, t) $ can be represented as the product of functions of $ x $ and $ t $.
+        \begin{align}
+            u(x, t)   & = F(x) \cdot G(t)                   \\
+            F_n(x)    & = a\ \cos(p_n x) + b\ \sin(p_n x) &
+            p_n       & = \frac{n\pi}{L}                    \\
+            G_n(t)    & = B_n\ \exp(-\lambda_n^2 t)       &
+            \lambda_n & = \frac{cn \pi}{L}
+        \end{align}
+
+    \item[Special cases] Starting with the boundary conditions where both ends are kept
+        at zero temperature, and the initial temperature throughout the bar is $ f(x) $,
+        \begin{align}
+            u(0, t) & = 0    & u(L, t) & = 0 \\
+            u(x, 0) & = f(x)
+        \end{align}
+        This simplifies the general solution to give,
+        \begin{align}
+            A      & = 0                                                            &
+            F_n(x) & = \sin\left( \frac{n\pi x}{L} \right)                            \\
+            G_n(t) & = B_n \exp(-\lambda_n^2 t)                                     &
+            B_n    & = \frac{2}{L}\ \int_{0}^{L}\ f(x)\ \sin\left( \frac{n\pi x}{L}
+            \right)\ \dl x
+        \end{align}
+        Each of the terms in the Fourier series for $ f(x) $ corresponds to an eigenvalue
+        $ \lambda_n $. Since the exponential decay of heat in time is of the order
+        $ \lambda_n^2 \propto n^2 $, the higher order terms decay faster.
+
+    \item[Insulated ends] For the special case where the two ends of the bar are
+        insulated so that no heat can flow through them,
+        \begin{align}
+            \diffp ux \Big|_{(x = 0)} & = \diffp ux \Big|_{(x = L)} = 0     \\
+            u(x, t)                   & = A_0 + \iser[n]{1} A_n\ \cos\left(
+            \frac{n\pi x}{L} \right)\ \exp(-\lambda_n^2 t)
+        \end{align}
+        The new constant term corresponds to zero eigenvalue and is the special case of
+        constant initial temperature over the entire bar.
+
+    \item[Steady heat problems in 2d] Steady-state problems, where the temperature is
+        independent of time, leads to the heat equation reducing to Laplace's equation,
+        \begin{align}
+            \diffp ut & = 0 & \implies \quad \nabla^2 u & = 0
+        \end{align}
+        The three kinds of problem based on the boudnary conditions on the boundary
+        $ C $ of the region $ R $,
+        \begin{itemize}
+            \item Dirichlet B.C. - prescribing $ u $ on the boundary
+            \item Neumann B.C. - prescribing $ \difcp un $ on the boundary
+            \item Robin B.C. - a mix of both
+        \end{itemize}
+        Here, $ \difcp un $ is the normal derivative of the temperature $ u $. These
+        problems are also solved by decomposing $ u(x, y) $ into a product of functions
+        in $ x $ and $ y $. \par
+
+    \item[Existence of solutions] This requires that $ f, f' $ are continuous and
+        $ f'' $ is at least piecewise continuous on the boundary $ C $
+\end{description}
+
+
+\section{Heat Equation: Modeling Very Long Bars, Solution using Fourier transforms}
+
+\begin{description}
+    \item[Infinite bars] When the bar is of infinite length, boundary conditions no
+        longer exist. The particular solution is determined solely by the initial
+        condition.
+
+    \item[Solution by Fourier integrals] Since the initial condition $ u(x, 0) = f(x) $
+        is no longer a periodic function with period $ L $, the general solution becomes,
+        \begin{align}
+            \diffp ut   & = c^2\ \difcp[2] ux                                   \\
+            u(x, t ; p) & = \Big[ A\cos(px) + B\sin(px) \Big]\ \exp(-c^2p^2\ t) \\
+        \end{align}
+        The Fourier series sum in the earlier section is replaced by a Fourier integral,
+        with $ A, B $ also being functions of $ p $,
+        \begin{align}
+            u(x, t) & = \infint u(x, t; p)\ \dl p                               \\
+            u(x, 0) & = \infint \Big[ A\cos(px) + B\sin(px) \Big]\ \dl p = f(x)
+        \end{align}
+        The spectrum of eigenvalues is now the entire line $ \mathcal{R}^+ $ instead of
+        discrete values $ cn\pi/L $ as in the finite case. \par
+        The above expression for $ f(x) $ is simply the Fourier sine and cosine integral
+        for $ f(x) $.
+        \begin{align}
+            u(x, t) & = \frac{1}{\pi} \intRL f(v) \Bigg[ \infint
+                \exp(-c^2p^2\ t)\cos(px - pv)\ \dl p \Bigg]\ \dl v
+        \end{align}
+
+    \item[General solution] Using a special finite integral,
+        \begin{align}
+            \infint e^{-b^2} \cos(2bs)\ \dl s & = \frac{\sqrt{\pi}}{2}\ e^{-b^2} \\
+            u(x, t)                           & = \frac{1}{2c \sqrt{\pi t}}
+            \intRL f(v)\ \exp\Bigg[-\frac{(x-v)^2}{4c^2 t}\Bigg]\ \dl v          \\
+            u(x, t)                           & = \frac{1}{\sqrt{\pi}} \intRL
+            f(x + 2cz\sqrt{t})\ e^{-z^2}\ \dl z
+        \end{align}
+        The above simplificcation uses the change of variables $ v \to z $. \par
+        If $ f(x) $ is bounded for all values of $ x $ and integrable in every finite
+        interval, then the above expression satisfies the heat equation.
+
+    \item[Solution using Fourier transforms] Taking the Fourier transform results
+        in an ODE in time $ (t) $ which is usually easier to solve.
+\end{description}
+
+\section{Modeling: Membrane, Two-Dimensional Wave Equation}
+
+\begin{description}
+    \item[Assumptions] The assumptions are all analogous to the one dimensional wave
+        equation for a stretched string.
+        \begin{itemize}
+            \item The membrane is homogeneous. Its mass per unit area $ (\rho) $ is
+                  constant.
+            \item The tension $ (T) $ in the membrane is the same at all points and does
+                  not change during the motion.
+            \item The deflection in the membrane is small and only in the
+                  transverse direction.
+        \end{itemize}
+
+    \item[PDE using Newton's law] Equating the net vertical force acting on a small
+        area of the membrane to its acceleration yields,
+        \begin{align}
+            \diffp[2] ut & = c^2\ \Bigg( \diffp[2] ux + \diffp[2] uy \Bigg)
+            = c^2\ \nabla^2 u                                               \\
+            c^2          & = \frac{T}{\rho}
+        \end{align}
+\end{description}
+
+\section{Rectangular Membrane. Double Fourier Series}
+
+\begin{description}
+    \item[Statement of the problem] The full problem is stated as,
+        \begin{align}
+            \diffp[2] ut & = c^2\ \nabla^2 u &  & \text{PDE}                  \\
+            u            & = 0               &  & \text{boundary condition}   \\
+            u(x, y, 0)   & = f(x, y)         &  & \text{initial displacement} \\
+            u_t(x, y, 0) & = g(x, y)         &  & \text{initial velocity}
+        \end{align}
+        Here, the boundary condition is the simplest possible case, where the
+        displacement is identically zero on the boundary for all time.
+
+    \item[Separation of variables] Let the full solution be a product of time and space
+        dependent functions $ G, F $,
+        \begin{align}
+            u(x, t)         & = F(x, y) \cdot G(t)                              \\
+            F\ \diffp[2] Gt & = c^2G\ \Bigg[ \diffp[2] Fx + \diffp[2] Fy \Bigg] \\
+            \ddot{G}        & = -\lambda^2 G                                    \\
+            \lambda         & = c\nu
+        \end{align}
+
+    \item[Two dimensional Helmholtz equation] A further separation of the space dependent
+        term in the solution is possible, using
+        \begin{align}
+            F(x, y)                     & = H(x) \cdot Q(y)         &
+            \difcp[2] Fx + \difcp[2] Fy & = -\nu^2 F                  \\
+            \diff[2] Hx                 & = -k^2H                   &
+            \diff[2] Qy                 & = (k^2 - \nu^2)Q = -p^2 Q
+        \end{align}
+
+    \item[Rectangular membrane] Consider a particular solution for the simple case
+        of a rectangular membrane of width $ a $ and height $ b $.
+        \begin{align}
+            H(x)        & = A\cos(kx) + B \sin(kx) &
+            Q(y)        & = C\cos(py) + D \sin(py)   \\
+            H(x)\Big|_0 & = H(x)\Big|_a = 0        &
+            Q(y)\Big|_0 & = Q(y)\Big|_b = 0
+        \end{align}
+        Each of the functions $ H, Q $ are identical to the corresponding one dimensional
+        string case, resulting in,
+        \begin{align}
+            F_{mn} & = H_m(x) \cdot Q_n(y) = \sin\Bigg( \frac{m\pi x}{a} \Bigg)
+            \sin\Bigg( \frac{n\pi y}{b}\Bigg)
+        \end{align}
+        for positive integers $ m, n $.
+
+    \item[Eigenvalues and eigenfunctions] Since the eigenvalues of the PDE are
+        $ \lambda = c\nu $,
+        \begin{align}
+            \lambda_{mn} & = c\sqrt{k^2 + p^2} = c\pi
+            \sqrt{\Bigg(\frac{m}{a}\Bigg)^2 + \Bigg(\frac{y}{b}\Bigg)^2}               \\
+            G_{mn}(t)    & = B_{mn} \cos(\lambda_{mn} t) + B^*_{mn}\sin(\lambda_{mn}t) \\
+            u_{mn}(x, t) & = G_{mn}(t) \cdot F_{mn}(x, y)
+        \end{align}
+        This is a general solution to the PDE apart from matching the initial
+        displacement $ f(x, y) $ and initial velocity $ g(x, y) $. \par
+        There are many possible solutions corresponding to the same eigenvalue
+        $ \lambda $, which physically corresponds to the membrane exhibiting different
+        modes.
+
+    \item[Double Fourier series] Similar to the one dimensional fourier series for an
+        elastic vibrating string,
+        \begin{align}
+            u(x, y, t) & = \iser[m]{0} \iser[n]{0} u_{mn}(x, y, t)               \\
+            u(x, y, 0) & = \iser[m]{0} \iser[n]{0} B_{mn}\
+            \sin\Bigg( \frac{m\pi x}{a} \Bigg) \sin\Bigg( \frac{n\pi y}{b}\Bigg) \\
+            B_{mn}     & = \frac{4}{ab} \int_{0}^{b} \int_{0}^{a} f(x, y)
+            \sin\Bigg( \frac{m\pi x}{a} \Bigg) \sin\Bigg( \frac{n\pi y}{b}\Bigg)
+            \ \dl x\ \dl y
+        \end{align}
+        This requires that the initial displacement $ f(x, y) $ is continuous in $ R $.
+        Further $ f_x, f_y, f_{xy} $ are also continuous in $ R $. \par
+        The initial velocity $ g(x, y) $ can be obtained by a similar procedure acting
+        on the $ B^*_{mn} $.
+\end{description}
+
+\section{Circular Membrane, Fourier-Bessel Series}
+
+\begin{description}
+    \item[Laplacian in Polar coordinates] Using the chain rule in partial
+        differentiation,
+        \begin{align}
+            x          & = r \cos \theta               &
+            y          & = r \sin \theta                 \\
+            u_x        & = u_r r_x + u_\theta \theta_x &
+            u_y        & = u_r r_y + u_\theta \theta_y   \\
+            \nabla^2 u & = u_{xx} + u_{yy}
+        \end{align}
+        Performing the differentiation twice and substituting yields,
+        \begin{align}
+            \nabla^2 u & = \diffp[2] ur + \frac{1}{r}\ \diffp ur + \frac{1}{r^2}
+            \ \diffp[2] {u}{\theta}
+        \end{align}
+
+    \item[Circular membrane] A circular flat membrane which is elastic and offers no
+        resistance to bending can be described using the PDE,
+        \begin{align}
+            \diffp[2] ut & = c^2\ \nabla^2 u & c^2       & = \frac{T}{\rho} \\
+            u(R, t)      & = 0               & \forall\  & t \geq 0         \\
+            u(r, 0)      & = f(r)            & u_t(r, 0) & = g(r)           \\
+        \end{align}
+        The above PDE assumes radial symmetry in the deflection.
+
+    \item[Separation of variables] Once again, the radial and time components of the
+        solutions can be separated to yield two ODEs,
+        \begin{align}
+            u(r, t)                                    & = W(r) \cdot G(t)   \\
+            \diff[2] Gt                                & = -\lambda^2 G    &
+            \lambda                                    & = ck                \\
+            \diff[2] Wr + \frac{1}{r}\ \diff Wr + k^2W & = 0
+        \end{align}
+
+    \item[Bessel ODE] The ODE for $ W(r) $ can be reformulated into Bessel's ODE with
+        zero parameter using the substitution,
+        \begin{align}
+            s                                       & = kr &
+            s^2\ \diff[2] Ws + s\ \diff Ws + s^2\ W & = 0
+        \end{align}
+        Only Bessel functions of the first kind are useful solutions to this equation,
+        since the solution has to remain bounded at infinite $ r $.
+
+    \item[Full solution to PDE] In order to satisfy the boundary conditions, the
+        constraint on $ k $ is,
+        \begin{align}
+            W(r)\Big|_{R} & = 0                  & \implies J_0(kr) \Big|_{R} & = 0 \\
+            k             & = \frac{\alpha_m}{R}
+        \end{align}
+        Here, $ \alpha_m $ is a positive zero of $ J_0 $. Since this is an infinite set,
+        the solution is also an infinite series sum. \par
+        Incorporating the initial deflection and velocity, the full solution is,
+        \begin{align}
+            u(r, t)   & = \iser{1} \Big[ A_m \cos(\lambda_m t) + B_m \sin(\lambda_m t)
+            \Big]\ J_0 \Big( \frac{\alpha_m\ r}{R} \Big)                               \\
+            \lambda_m & = \frac{c\ \alpha_m}{R}
+        \end{align}
+
+    \item[Nodal line] Similar to the rectangular membrane, nodal lines here are
+        circles,
+        \begin{align}
+            r & = \frac{\alpha_k}{\alpha_m}\ R & k & < m
+        \end{align}
+        Thus, the $ m^{\text{th}} $ normal mode has $ (m-1) $ modal lines.
+
+    \item[Initial conditions] The Fourier-Bessel series is used to find the
+        coefficients of each term in the full solution using,
+        \begin{align}
+            u(r, 0) & = f(r) = \iser{0} A_m\  J_0 \Big( \frac{\alpha_m\ r}{R} \Big) \\
+            A_m     & = \frac{2}{R^2\ J_1^2(\alpha_m)}\ \int_{0}^{R}
+            r\ f(r)\ J_0 \Big( \frac{\alpha_m\ r}{R} \Big)\ \dl r
+        \end{align}
+        The abvoe forumla is usable if $ f(r) $ is differentiable in the interval
+        $ r \in [0, R] $.
+\end{description}
+
+\section{Laplace's Equation in Cylindrical and Spherical Coordinates}
+
+\begin{description}
+    \item[Potential theory] In physics, a potential is a scalar function whose gradient
+        happens to be a conservative vector field. Potential theory refers to solutions
+        of Laplace's equation $ \nabla^2 u  = 0$
+
+    \item[Gravitational potential] As an example, consider the potential $ u $ at a point
+        $ P $, caused by a point mass located at $ P_0 $,
+        \begin{align}
+            u & = \frac{c}{r} = \frac{c}{\sqrt{(x - x_0)^2 + (y - y_0)^2 + (z - z_0)^2}}
+        \end{align}
+        Next, the potential due to a mass in region $ T $ with density
+        $ \rho(x_0, y_0, z_0) $ at a point outisde $ T $ is given by
+        \begin{align}
+            u(x, y, z) & = k\iiint\ \frac{\rho(x_0, y_0, z_0)}{r}\ \dl x_0\ \dl y_0
+            \ \dl z_0
+        \end{align}
+
+    \item[Cylindrical coordinates] Since this involves adding an independent $ z $
+        coordinate, the Laplacian adds a corresponding $ u_{zz} $ term.
+        \begin{align}
+            \nabla^2 u & = u_{rr} + \frac{1}{r}\ u_r + \frac{1}{r^2}\ u_{\theta\theta}
+            + u_{zz}
+        \end{align}
+
+    \item[Spherical coordinates] Using the chain rule for multiplication,
+        \begin{align}
+            x          & = r\cos\theta\sin\phi \qquad y = r\sin\theta\sin\phi
+            \qquad z = r\cos\phi                                              \\
+            \nabla^2 u & = \frac{1}{r^2}\ \Bigg[ \diffp*{\ (r^2\ u_r)}{r}
+                + \frac{1}{\sin\phi}\ \diffp*{\ (\sin\phi\ u_\phi)}{\phi}
+                + \frac{1}{\sin^2\phi}\ \diffp[2]u\theta\Bigg]
+        \end{align}
+        Here, the azimuthal coordinate $ \phi \in [0, \pi] $ and the polar coordinate
+        $ \theta \in [0, 2\pi] $
+
+    \item[Simple Dirichlet example] Consider the common physical system represented
+        by the Dirichlet BVP
+        \begin{align}
+            \nabla^2 u                     & = 0 & u(R, \phi) & = f(\phi) \\
+            \lim_{r \to \infty} u(r, \phi) & = 0
+        \end{align}
+        The BC, and therefore the solutions are independent of $ \theta $. The potential
+        decaying to zero at long distances is a general feature of physically plausible
+        potentials.
+
+    \item[Separation of variables] Separating into functiond depending on $ r, \phi $,
+        \begin{align}
+            u(r, \phi)                 & = G(r) \cdot H(\phi)                    \\
+            r^2\ \diff[2] Gr
+            + 2r\ \diff Gr - n(n+1)\ G & = 0                                     \\
+            w                          & = \cos \phi \qquad (1-w^2) = \sin^2\phi \\
+            (1-w^2)\ \diff[2]Hw
+            - 2w\ \diff Hw + n(n+1)\ H & = 0
+        \end{align}
+        The solutions by equating each side of the PDE to $ k = n(n+1) $, are,
+        \begin{align}
+            G_n(r) & = A_n r^n + \frac{B_n}{r^{n+1}}                          \\
+            H_n(r) & = P_n(\cos\phi) \qquad \forall\ n \in \{0, 1, 2, \dots\}
+        \end{align}
+
+    \item[Fourier-Legendre series] For problems inside the sphere, where $ r=0 $
+        needs to exist, only the $ A_n $ part of the solution matters,
+        \begin{align}
+            u(r, \phi) & = \iser{0} A_n\ r^n\ P_n(\cos\phi)                          \\
+            A_n        & = \frac{2n+1}{2R^n}\ \int_{0}^{\pi} f(\phi)\ P_n(\cos \phi)
+            \ \sin\phi\ \dl \phi
+        \end{align}
+        Conversely, for the exterior of the sphere, where the potential at long distances
+        needs to decay to zero, only the $ B_n $ part of the solution matters.
+        \begin{align}
+            u(r, \phi) & = \iser{0} \frac{B_n}{r^{n+1}}\ P_n(\cos\phi) \\
+            A_n        & = \frac{2n+1}{2}\ R^{n+1}
+            \ \int_{0}^{\pi} f(\phi)\ P_n(\cos \phi) \ \sin\phi\ \dl \phi
+        \end{align}
+\end{description}
+
+\section{Solution of PDEs by Laplace Transforms}
+
+\begin{description}
+    \item[Lapalcian applied to PDEs] The general procedure is as follows,
+        \begin{itemize}
+            \item Incorporate the I.C. when taking the Laplace transform w.r.t. time
+                  $ (t) $.
+            \item Since time is replaced by $ s $, the remaining equation is an ODE in
+                  $ x $ with $ s $ being a parameter.
+            \item Use the Laplace transform of the B.C. in order to determine the
+                  constants of integration.
+            \item Apply inverse Laplace transform to recover the solution in terms of
+                  position and time.
+        \end{itemize}
+\end{description}

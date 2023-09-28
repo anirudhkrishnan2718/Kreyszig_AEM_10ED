@@ -38,14 +38,15 @@
                                     domain = 0.5*pi:4*pi,
                                     PiStyleX,
                                     xtick distance = pi,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 5]},
                                 ]
                                 \foreach [evaluate=\c as \n using (\c)*100/(2)]
                                 \c in {0, 0.5, 1, 1.5, 2}
                                     {
                                         \edef\temp{%
-                                            \noexpand \addplot[
+                                            \noexpand \addplot+[thick,
                                                 samples = 200,
-                                                color=blue!\n!red, thin,
                                             ]{f(\c, x)};
                                             \noexpand \addlegendentry{$ c = \c $};
                                         }\temp
@@ -90,14 +91,15 @@
                                     domain = 0.5*pi:4*pi,
                                     PiStyleX,
                                     xtick distance = pi,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 4]},
                                 ]
                                 \foreach [evaluate=\k as \n using (\k)*100/(3)]
                                 \k in {0,1,2,3}
                                     {
                                         \edef\temp{%
-                                            \noexpand \addplot[
+                                            \noexpand \addplot+[thick,
                                                 samples = 200,
-                                                color=blue!\n!red, thin,
                                             ]{f(\k^2, x)};
                                             \noexpand \addlegendentry{$ k = \k^2 $};
                                         }\temp
@@ -149,14 +151,15 @@
                                     domain = 0.5*pi:6*pi,
                                     PiStyleX,
                                     xtick distance = pi,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 5]},
                                 ]
                                 \foreach [evaluate=\c as \n using (\c)*100/(2)]
                                 \c in {0, 0.5, 1, 1.5, 2}
                                     {
                                         \edef\temp{%
-                                            \noexpand \addplot[
+                                            \noexpand \addplot+[thick,
                                                 samples = 200,
-                                                color=blue!\n!red, thin,
                                             ]{f(\c, x)};
                                             \noexpand \addlegendentry{$ c = \c $};
                                         }\temp
@@ -205,14 +208,15 @@
                                     domain = 0.5*pi:4*pi,
                                     PiStyleX,
                                     xtick distance = pi,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 4]},
                                 ]
                                 \foreach [evaluate=\k as \n using (\k)*100/(3)]
                                 \k in {0,1,2,3}
                                     {
                                         \edef\temp{%
-                                            \noexpand \addplot[
+                                            \noexpand \addplot+[thick,
                                                 samples = 200,
-                                                color=blue!\n!red, thin,
                                             ]{f(\k^2, x)};
                                             \noexpand \addlegendentry{$ k = \k^2 $};
                                         }\temp
@@ -255,14 +259,15 @@
                                     Ani,
                                     % restrict y to domain = -2:1,
                                     domain = 0.5:7,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 5]},
                                 ]
                                 \foreach [evaluate=\k as \n using (\k + 4)*100/(4)]
                                 \k in {-4,...,0}
                                     {
                                         \edef\temp{%
-                                            \noexpand \addplot[
+                                            \noexpand \addplot+[thick,
                                                 samples = 200,
-                                                color=blue!\n!red, thin,
                                             ] {j(2^\k, x)};
                                             \noexpand \addlegendentry{$ k = 2^{\k} $};
                                         }\temp
@@ -306,14 +311,15 @@
                                     Ani,
                                     % restrict y to domain = -2:1,
                                     domain = 0:10,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 6]},
                                 ]
                                 \foreach [evaluate=\k as \n using (\k)*100/(5)]
                                 \k in {0,...,5}
                                     {
                                         \edef\temp{%
-                                            \noexpand \addplot[
+                                            \noexpand \addplot+[thick,
                                                 samples = 200,
-                                                color=blue!\n!red, thin,
                                             ] {j(\k, x)};
                                             \noexpand \addlegendentry{$ k = \k $};
                                         }\temp
@@ -454,8 +460,8 @@
                       \addplot[GraphSmooth, y_p, domain = a+0.001:b - 0.001]{f(x)};
                       \addplot[GraphSmooth, dashed, y_p, domain = a+0.001:b - 0.001]
                       {-sin(x)};
-                      \addplot[GraphSmooth, blue3, domain = b+0.001:4*pi]{f(x)};
-                      \addplot[GraphSmooth, dashed, blue3, domain = b+0.001:4*pi]
+                      \addplot[GraphSmooth, y_t, domain = b+0.001:4*pi]{f(x)};
+                      \addplot[GraphSmooth, dashed, y_t, domain = b+0.001:4*pi]
                       {-sin(x)};
                       \addlegendentry{$ y_1$};
                       \addlegendentry{$ y_2$};
@@ -704,7 +710,7 @@
                       ]
                       \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
                       \addplot[GraphSmooth, y_p, domain = a+0.001:b - 0.001]{f(x)};
-                      \addplot[GraphSmooth, blue3, domain = b+0.001:c]
+                      \addplot[GraphSmooth, y_t, domain = b+0.001:c]
                       {f(x)};
                       \addlegendentry{$ y_1$};
                       \addlegendentry{$ y_2$};
@@ -759,7 +765,7 @@
                       ]
                       \addplot[GraphSmooth, y_h, domain = 0:a-0.001]{f(x)};
                       \addplot[GraphSmooth, y_p, domain = a+0.001:b - 0.001]{f(x)};
-                      \addplot[GraphSmooth, blue3, domain = b+0.001:c]
+                      \addplot[GraphSmooth, y_t, domain = b+0.001:c]
                       {f(x)};
                       \addlegendentry{$ y_1$};
                       \addlegendentry{$ y_2$};
@@ -821,10 +827,11 @@
               \item $ a $ is a simple root. After decomposition into fractions, the other
                     terms are guaranteed not to have $ (s-a) $ in their denominator.
                     \begin{align}
-                        \frac{F(s)}{G(s)}      & = \frac{A}{(s-a)} + \text{other terms} \\
-                        \frac{(s-a)F(s)}{G(s)} & = A + (s-a) [\text{other terms}]       \\
-                        \lim_{s \rightarrow a}
-                        \frac{(s-a)F(s)}{G(s)} & = A + (0) [\text{other terms}]         \\
+                        \frac{F(s)}{G(s)}      & = \frac{A}{(s-a)}
+                        + \text{other terms}                                      \\
+                        \frac{(s-a)F(s)}{G(s)} & = A + (s-a) [\text{other terms}] \\
+                        \lim_{s \to a}
+                        \frac{(s-a)F(s)}{G(s)} & = A + (0) [\text{other terms}]   \\
                                                & = A
                     \end{align}
 
@@ -832,12 +839,13 @@
                     \begin{align}
                         \frac{F(s)}{G(s)}         & = \frac{A_m}{(s-a)^m}
                         + \frac{A_{m-1}} {(s-a)^{m-1}} + \dots
-                        + \frac{A_1}{(s-a)} + \text{other terms}                        \\
+                        + \frac{A_1}{(s-a)} + \text{other terms}                   \\
                         \frac{(s-a)^m F(s)}{G(s)} & = A_m + (s-a)A_{m-1} + \dots
-                        + (s-a)^{m-1}A_1                                                \\
-                                                  & + (s-a)^m [\text{other terms}]      \\
-                        \lim_{s \rightarrow a}
-                        \frac{(s-a)^m F(s)}{G(s)} & = A_m + 0\ [\text{all other terms}]
+                        + (s-a)^{m-1}A_1                                           \\
+                                                  & + (s-a)^m [\text{other terms}] \\
+                        \lim_{s \to a}
+                        \frac{(s-a)^m F(s)}{G(s)} & = A_m + 0
+                        \ [\text{all other terms}]
                         = A_m
                     \end{align}
                     For the other terms, consider the $ (m-k)$ th derivative,
@@ -848,17 +856,17 @@
                         + (s-a) [\text{some terms}]                  \\
                                    & + (s-a)^m\ [\text{other terms}]
                     \end{align}
-                    Taking the limit $ s \rightarrow a$ makes every term except
+                    Taking the limit $ s \to a$ makes every term except
                     $ (m-k)!\ A_k $ go to zero, which proves the relation.
           \end{enumerate}
 
     \item \begin{enumerate}
-              \item For a piecewise continuous function with period $ p $, and some positive
-                    integer $ k $,
+              \item For a piecewise continuous function with period $ p $, and some
+                    positive integer $ k $,
                     \begin{align}
                         \Lap\{f(t)\}               & = \int_{0}^{p}
                         e^{-st}f(t)\ \dl t + \int_{p}^{2p} e^{-st}f(t)\ \dl t + \dots \\
-                        \text{Substitute }\ t - kp & \rightarrow r                    \\
+                        \text{Substitute }\ t - kp & \to r                            \\
                         \int_{kp}^{(k+1)p} e^{-st}f(t)
                         \ \dl t                    & = \int_{0}^{p}
                         e^{-s(r + kp)} f(r + kp)\ \dl r                               \\

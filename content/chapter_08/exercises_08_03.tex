@@ -41,7 +41,7 @@
               0                          & = (\lambda - \cos \theta)^2
               + \sin^2 \theta            &
               \{\lambda_i\}              & = \{\cos \theta \pm \sin \theta\}    \\
-              \abs{\lambda_i\rvert       & = 1 \quad \forall \quad i
+              \abs{\lambda_i}            & = 1 \quad \forall \quad i
           \end{align}
           The eigenvalues are real or complex conjugate pairs, with absolute value 1.
 
@@ -142,7 +142,7 @@
               \{\lambda_i\} & = \{1, \cos \theta \pm i \sin \theta\}
           \end{align}
           The eigenvalues are either real or complex conjuagate pairs with
-          $ \abs{ \lambda_i \rvert = 1 $.
+          $ \abs{ \lambda_i} = 1 $.
 
     \item The matrix is orthogonal
           \begin{align}
@@ -166,7 +166,7 @@
               \{\lambda_i\} & = \{1, 0 \pm i\}
           \end{align}
           The eigenvalues are either real or complex conjuagate pairs with
-          $ \abs{ \lambda_i \rvert = 1 $.
+          $ \abs{\lambda_i} = 1 $.
 
     \item The matrix is orthogonal
           \begin{align}
@@ -195,7 +195,7 @@
               \frac{7}{18} \pm \frac{\sqrt{275}}{18}i \right\}
           \end{align}
           The eigenvalues are either real or complex conjuagate pairs with
-          $ \abs{ \lambda_i \rvert = 1 $.
+          $ \abs{\lambda_i} = 1 $.
 
     \item Refer notes. Exmaples TBC. (Take from exercises)
 
@@ -221,7 +221,7 @@
                         0                          & = (\lambda - \cos \theta)^2
                         + \sin^2 \theta            &
                         \{\lambda_i\}              & = \{\cos \theta \pm \sin \theta\} \\
-                        \abs{\lambda_i\rvert       & = 1 \quad \forall \quad i
+                        \abs{\lambda_i}            & = 1 \quad \forall \quad i
                     \end{align}
                     Checking the orthonormality of rows,
                     \begin{align}
@@ -263,43 +263,38 @@
                     \end{align}
                     \begin{figure}[H]
                         \centering
-                        \begin{subfigure}[b]{0.49\textwidth}
-                            \begin{tikzpicture}
-                                \begin{axis}[
-                                        title = {$ \lambda_1 $},
-                                        grid = both,
-                                        xlabel = Real,
-                                        ylabel = Imaginary,
-                                        axis equal,
-                                        width = 8cm,
-                                        legend pos = north west,
-                                        domain = 0:100,
-                                        Ani]
-                                    \addplot[GraphSmooth, color = y_h]
-                                    ({0.9^(x) * cos(x * atan(3/4))},
-                                    {0.9^(x) * sin(x * atan(3/4))});
-                                \end{axis}
-                            \end{tikzpicture}
-                        \end{subfigure}
-                        \hfill
-                        \begin{subfigure}[b]{0.49\textwidth}
-                            \begin{tikzpicture}
-                                \begin{axis}[
-                                        title = {$\lambda_2$},
-                                        grid = both,
-                                        xlabel = Real,
-                                        ylabel = Imaginary,
-                                        axis equal,
-                                        width = 8cm,
-                                        legend pos = north west,
-                                        domain = 0:100,
-                                        Ani]
-                                    \addplot[GraphSmooth, color = y_p]
-                                    ({0.9^(x) * cos(x * atan(3/4))},
-                                    {0.9^(x) * (-1) * sin(x * atan(3/4))});
-                                \end{axis}
-                            \end{tikzpicture}
-                        \end{subfigure}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \lambda_1 $},
+                                    grid = both,
+                                    xlabel = Real,
+                                    ylabel = Imaginary,
+                                    axis equal,
+                                    width = 8cm,
+                                    legend pos = north west,
+                                    domain = 0:100,
+                                    Ani]
+                                \addplot[GraphSmooth, color = y_h]
+                                ({0.9^(x) * cos(x * atan(3/4))},
+                                {0.9^(x) * sin(x * atan(3/4))});
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$\lambda_2$},
+                                    grid = both,
+                                    xlabel = Real,
+                                    ylabel = Imaginary,
+                                    axis equal,
+                                    width = 8cm,
+                                    legend pos = north west,
+                                    domain = 0:100,
+                                    Ani]
+                                \addplot[GraphSmooth, color = y_p]
+                                ({0.9^(x) * cos(x * atan(3/4))},
+                                {0.9^(x) * (-1) * sin(x * atan(3/4))});
+                            \end{axis}
+                        \end{tikzpicture}
                     \end{figure}
 
                     The eigenvalues approach the limit $ 0 \pm 0i $ along a spiral.

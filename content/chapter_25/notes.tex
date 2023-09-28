@@ -1,0 +1,642 @@
+\chapter{Mathematical Statistics}
+
+\section{Introduction, Random Sampling}
+
+\begin{description}
+    \item[Sample] A small percentage of a population on which tests are conducted.
+          Random sampling means selection of elements from the population with no bias.
+          \par This helps draw inferences about the characteristics of the population
+          from tests conducted on the sample.
+
+    \item[Independent sample] For a population being sampled with replacement, or a
+          very large finite population being sampled without replacement, the samples
+          are independent. \par
+          Samples from a distribution that has an infinite sample space $ S $ are also
+          independent.
+
+    \item[Psudorandom numbers] Computer programs that generate random numbers are not
+          truly random, since there is an underlying mathematical function responsible
+          for generating them. \par
+          They are however, good enough for all practical purposes (barring niche uses
+          such as cryptography).
+
+    \item[Sample mean] Consider a set of $ n $ samples selected from a population. The
+          mean of the sample is now,
+          \begin{align}
+              \bar{x} & = \frac{1}{n}\ \sum_{j=1}^{n} x_j
+              = \frac{x_1 + x_2 + \dots + x_n}{n}
+          \end{align}
+          Here, $ n $ is called the sample size.
+
+    \item[Sample variance] Analogously, the sample variance is defiend as,
+          \begin{align}
+              s^2 & = \frac{1}{n-1}\ \sum_{j=1}^{n} (x_j - \bar{x})^2
+              = \frac{(x_1 - \bar{x})^2 + \dots + (x_n - \bar{x})^2}{n-1}
+          \end{align}
+          The square root of the sample variance is called the sample standard deviation
+          $ s $. The factor being $ (n-1) $ instead of $ n $, is preferable for smaller
+          sample sizes.
+\end{description}
+
+\section{Point Estimation of Parameters}
+
+\begin{description}
+    \item[Point estimate] A real number that serves as an approximation to the population
+          statistic computed from some operation on a random sample. \par
+          The convention used for point estimates here is a hat.
+
+    \item[Mean] The sample mean is the point estimate of the population mean.
+
+    \item[Variance] The sample variance is the point estimate of the population variance.
+
+    \item[Binomial parameter] Since the binomial parameter is,
+          \begin{align}
+              p & = \frac{\mu}{n} & \hat{p} & = \frac{\bar{x}}{n}
+          \end{align}
+
+    \item[Moments] Since most parameters of a PDF can be expressed in terms of the
+          population moments, they can in turn be approximated by the sample moments in
+          order to obtain point estimates of these parameters.
+          \begin{align}
+              m_k & = \frac{1}{n}\ \sum_{j=1}^{n} x_j^k
+          \end{align}
+          for a sample of size $ n $. For example, the mean is the first moment, and
+          the variance is the second central moment.
+
+    \item[Maximum Likelihood method] Consider a PDF dependent on a single parameter
+          $ \theta $, with a $ n $ independent random values drawn from it randomly.
+          \par The probability that the sample drawn consists of the specific values
+          $ \{x_1,x_2,\dots,x_n\} $ is called the likelihood $ l $,
+          \begin{align}
+              l & \equiv f(X = x_1) \cdot f(X = x_2) \cdots f(X = x_n)
+          \end{align}
+          The MLE method now involves choosing the value of the parameter $ \theta^* $
+          such that $ l $ is maximized.
+          \begin{align}
+              l                  & \to l\Big( \theta\ ; \{x_i\}\Big) &
+              \diffp {l}{\theta} & = 0
+          \end{align}
+          That value of $ \theta $ for which this probabiliity $ (l) $ is the greatest
+          is considered the point estimate of $ \theta $. This is called the MLE of
+          the parameter $ \theta $. \par
+          Sometimes, the monotonous nature of $ l $, means that a sufficient condition
+          for the maxima is,
+          \begin{align}
+              \diffp {\ln(l)}{\theta} = 0
+          \end{align}
+
+    \item[MLE with multiple parameters] For more than one parameter $ \{\theta_j\} $,
+          the likelihood needs to be minimized w.r.t. each of these parameters.
+          \begin{align}
+              \diffp {l}{\theta_j} & = 0 & \forall \quad j & \in \{1,2,\dots,M\}
+          \end{align}
+\end{description}
+
+\section{Confidence Intervals}
+
+\begin{description}
+    \item[Confidence interval] An interval within which a statistic is estimated to
+          lie with some probability (called the confidence).
+          \begin{align}
+              \CONF_\gamma\{\theta_1 \leq \theta \leq \theta_2\}
+          \end{align}
+          Popular choices for the confidence $ \gamma $ are $ 95\% $ and $ 99\% $. \par
+          This is not a declaration that $ \theta $ must lie within the interval
+          $ [\theta_1,\theta_2] $, only that it does so with a certain probability.
+
+    \item[Mean of normal distribution with known variance] Let $ \{X_i\} $ be a set of
+          RVs that are independent and each of which has mean $ \mu $ and variance
+          $ \sigma^2 $. \par
+          The sample mean $ \bar{X} $ has mean $ \mu $ and variance $ \sigma^2/n $
+          \begin{align}
+              Z & = \frac{\bar{x} - \mu}{\sigma/\sqrt{n}}
+          \end{align}
+          is a standard normal RV. (in spite of the original $ X $ not having a normal
+          PDF). \par
+          This uses the trick that flipping the same coin many times is statistically
+          the same as flipping many coins once.
+
+    \item[Student's t-distribution] Consider a population of mean $ \mu $ and variance
+          $ \sigma^2 $ from which a sample of size $ n $ is drawn, with sample mean
+          $ \bar{X} $ and sample variance $ S $,
+          \begin{align}
+              S       & = \frac{1}{(n-1)} \sum_{j=1}^{n} (X_j - \bar{X})^2 &
+              \bar{X} & = \frac{1}{n}\ \sum_{j=1}^{n} X_j
+          \end{align}
+          The following analog of the standard normal variable,
+          \begin{align}
+              T & = \frac{\bar{X} - \mu}{S/\sqrt{n}}
+          \end{align}
+          has a CDF called the Student's t-distribution with $ (n-1) $ degrees of freedom
+          (which looks very similar to the standard normal CDF). \par
+          This CDF becomes the Cauchy distribution for $ n=0 $ and the normal
+          distribution asymptotically as $ n \to \infty $. \par
+          The CDF is given by
+          \begin{align}
+              F(z) & = K_m\ \int_{-\infty}^{x} \Bigg( 1 + \frac{u^2}{m}
+              \Bigg)^{(m+1)/2}
+              \ \dl u                                                                \\
+              K_m  & = \frac{1}{\sqrt{m\pi}}\ \frac{\Gamma\Big( \frac{m+1}{2} \Big)}
+              {\Gamma(m/2)}
+          \end{align}
+          with the normalization term $ K_m $, which depends on the Gamma function.
+
+    \item[Mean of normal distribution with unknown variance] For a given confidence
+          level $ \gamma $, find the $ t $ score corresponding to
+          \begin{align}
+              F(t) & = \frac{\gamma + 1}{2}
+          \end{align}
+          using lookup tables for the Student's t-distribution with $ (n-1) $ degrees of
+          freedom. Then,
+          \begin{align}
+              k & = \frac{cs}{\sqrt{n}} &
+              \CONF_\gamma\{\bar{x} - k \leq \mu \leq \bar{x} + k\}
+          \end{align}
+          Here, $ \bar{x} $ and $ s $ are the sample mean and standard deviation for a
+          sample of size $ n $. \par
+          Not knowing the variance means that the same confidence value requires a
+          larger interval than the normal distribution (which is used when the variance
+          is known). \par
+          The smaller the sample size, the tighter the confidence interval when
+          the variance is known.
+
+    \item[Chi-squared distribution] The PDF of the sum of the squares of $ m $
+          independent standard normal variables.
+          \begin{align}
+              F(z) & = C_m\ \int_{0}^{z} e^{-u/2}\ u^{(m-2)/2}\ \dl u &
+              u    & \geq 0                                             \\
+              C_m  & = \frac{1}{2^{m/2}\ \Gamma(m/2)}
+          \end{align}
+          where $ m $ is the degree of freedom and $ C_m $ is the corresponding
+          normalization constant. \par
+          For a sample with standard deviation $ S $, the variable
+          \begin{align}
+              Y & = (n-1)\ \frac{S^2}{\sigma^2}
+          \end{align}
+          has a $ \chi^2 $ distribution with $ (n-1) $ degrees of freedom.
+
+    \item[Variance of normal distribution] For a confidence level $ \gamma $, use the
+          lookup table of the $ \chi^2 $ distribution with $ (n-1) $ degrees of freedom,
+          to find
+          \begin{align}
+              F(\chi_1) & = \frac{1-\gamma}{2}                             &
+              F(\chi_2) & = \frac{1+\gamma}{2}                               \\
+              k_1       & = \frac{(n-1)}{\chi_1}\ s^2                      &
+              k_2       & = \frac{(n-1)}{\chi_2}\ s^2                        \\
+                        & \CONF_\gamma\{\chi_2 \leq \sigma^2 \leq \chi_1\}
+          \end{align}
+
+    \item[Central limit theorem] Let $ \{X_i\} $ be independent identically distributed
+          RVs, each with the same mean $ \mu $ and same variance $ \sigma^2 $. \par
+          Define the new RV using their sum,
+          \begin{align}
+              Y_n & = X_1 + \dots + X_n                    &
+              Z_n & = \frac{Y_n - n\mu}{\sigma / \sqrt{n}}
+          \end{align}
+          The RV $ Z_n $ is asymptotically a standard normal RV, satisfying,
+          \begin{align}
+              \lim_{n \to \infty} F_n(x) & = \Phi(x) = \frac{1}{\sqrt{2\pi}}
+              \ \int_{-\infty}^{x} e^{-u^2/2}\ \dl u
+          \end{align}
+          A rule of thumb is to use $ n \geq 20 $ for the mean and $ n \geq 50 $ for
+          the variance.
+
+\end{description}
+
+\section{Testing of Hypotheses. Decisions}
+
+\begin{description}
+    \item[Null hypotesis] A claim that is to be tested using statistical methods. If the
+          null hypothesis is only wrong within the limits of the confidence value of
+          the test, it is accepted.
+          \begin{align}
+              \theta & = \theta_0
+          \end{align}
+    \item[Alternative hypothesis] Another hypothesis mutually exclusive to the null
+          hypothesis that, if true, leads to the initial claim being rejected.
+          \begin{align}
+              \theta & \neq \theta_0 &  & \text{Two - sided}         \\
+              \theta & \geq \theta_0 &  & \text{One - sided (right)} \\
+              \theta & \leq \theta_0 &  & \text{One - sided (left)}
+          \end{align}
+
+    \item[Rejection region] The part of the real line on which the statistic has to
+          lie for the null hypothesis to be rejected.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[height = 6cm, title = {Rejection (Critical) regions},
+                          Ani, xmin = -3,xmax = 3, xlabel = Statistic,
+                          ymin = -1, ymax = 3, axis lines = none]
+                      \addplot[y_p, domain = 1:3, very thick] ({x},{0});
+                      \addplot[y_h, domain = -3:1, thin] ({x},{0});
+                      \addplot[y_p, domain = -3:-1, very thick] ({x},{1});
+                      \addplot[y_h, domain = -1:3, thin] ({x},{1});
+                      \addplot[y_p, domain = 1:3, very thick] ({x},{2});
+                      \addplot[y_p, domain = -3:-1, very thick] ({x},{2});
+                      \addplot[y_h, domain = -1:1, thin] ({x},{2});
+                      \node at (axis cs:0,0.2){Right-sided test};
+                      \node at (axis cs:0,1.2){Left-sided test};
+                      \node at (axis cs:0,2.2){Two-sided test};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item[Errors in tests] The act of rejecting a true hypothesis is called a Type I
+          error, denoted $ \alpha $. \par
+          The act of accepting a false hypothesis is called a Type II
+          error, denoted $ \beta $. \par
+          For simplicity, consider a test where the null and alternative hypotheses are
+          two values of the parameter $ \theta $, given by $ \theta_0, \theta_1 $
+          respectively. Now,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {cccc}, rowsep = 1em, colsep = 1.5em,
+                  vline{3,4,5} = {3,4}{solid}}
+                                                            &                       &
+                  \SetCell[c=2]{m} Unknown truth            &                         \\
+                  \hline[dotted]
+                                                            &                       &
+                  $ \theta = \theta_0 $                     & $ \theta = \theta_1 $   \\
+                  \hline
+                  \SetCell[r=2]{m} \rotatebox{90}{Accepted} & $ \theta = \theta_0 $ &
+                  {\textcolor{y_h}{True Decision}                                     \\
+                  $ P = 1-\alpha $}                         & {\textcolor{y_p}
+                  {Type II Error}                                                     \\
+                  $ P = \beta $}                                                      \\
+                  \hline[dotted]
+                                                            & $ \theta = \theta_1 $ &
+                  {\textcolor{y_p}{Type I Error}                                      \\
+                  $ P = \alpha $}                           & {\textcolor{y_h}
+                  {True Decision}                                                     \\
+                  $ P = 1 - \beta $}                                                  \\
+                  \hline
+              \end{tblr}
+          \end{table}
+          Since reducing Type I errors involves changing the significance value in a way
+          that increases Type II errors, there is a delicate balance needed between these
+          two issues.
+
+    \item[Power of a test] The probability of a Type I error is the familiar
+          significance level of a test. It measures the chances of rejecting a true n.h.
+          \par
+          The analog is the value $ (\beta) $ of a test, which measures the probability
+          of accepting a false hypothesis. The power is then defined as
+          \begin{align}
+              \eta & = 1 - \beta &  & = P(\ \text{rejection}\ |\ \text{false}\ )
+          \end{align}
+
+    \item[Operating Characteristic] If the alternative hypothesis is an interval instead
+          of a single point, then $ \beta $ is a function of $ \theta $ and is called the
+          operating characteristic (OC) curve. \par
+          Similarly, the power $ \eta $ is also a function of $ \theta $ and is called
+          the power function of the test.
+
+    \item[Comparison between the means of two samples] If the elements of the two samples
+          can be paired, (possibly because they imply the use of two different methods to
+          measure the same value), then testing for the difference between the pairwise
+          elements of the two samples having zero mean is more useful. \par
+          If no such pairing across samples is possible, then they can be consolidated
+          into a single RV,
+          \begin{align}
+              Z     & = X - Y                           &
+              \mu   & = \bar{x} - \bar{y}                 \\
+              s_z^2 & = (n_x - 1)s_x^2 + (n_y - 1)s_y^2
+          \end{align}
+          Here the addition of variances is used, assuming that the sample elements are
+          independently drawn and have the same underlying PDF.
+
+    \item[Comparison of variances of two samples] The ratio of the sample variance of
+          two different samples $ s_x, s_y $ when arranged as
+          \begin{align}
+              V & = \frac{s_x^2}{s_y^2}
+          \end{align}
+          where $ v $ is an RV with an $ F $ distribution with $ (n_1-1, n_2-1) $
+          degrees of freedom. \par
+          The F-distribution is given by,
+          \begin{align}
+              F(z) & = K_{mn}\ \int_{0}^{z} t^{(m-2)/2}\ (mt + n)^{-(m+n)/2}\ \dl t
+          \end{align}
+          and $ K_{mn} $ is the normalization constant given by
+          \begin{align}
+              K_{mn} & = \frac{m^{m/2}\ n^{n/2}\ \Gamma[(m+n)/2]}
+              {\Gamma(m/2)\ \Gamma(n/2)}
+          \end{align}
+          This is the ration of two independent $ \chi^2 $ RVs, normalized by their
+          respective degrees of freedom.
+          \begin{align}
+              F & = \frac{\chi_1 / d_1}{\chi_2 / d_2}
+          \end{align}
+          This is an indication of how the ration of the variances of two samples might
+          use the $ F $ distribution as a basis for hypothesis testing.
+
+\end{description}
+
+\section{Quality Control}
+
+\begin{description}
+    \item[Periodic testing] Instead of waiting for an entire lot of products to be
+          produced before performing statistical inference on a random sample, industrial
+          processes prefer to sample periodically from the assembly line during
+          production.
+
+    \item[Control chart for the mean] The upper and lower control limits are the limits
+          corresponding to the $ 99\% $ confidence interval for the mean, which
+          corresponds to $ \alpha = 1\% $ (by convention).
+
+          \begin{align}
+              \text{LCL}         & = \mu_0 - \frac{c\sigma}{\sqrt{n}} &
+              \text{UCL}         & = \mu_0 + \frac{c\sigma}{\sqrt{n}}   \\
+              \Phi(c) - \Phi(-c) & = 0.99
+          \end{align}
+
+    \item[Variance] The variance is assumed to be known from historical data, or is
+          calculated as the average of the variance from the past few samples (about 25
+          by convention).
+
+    \item[Control chart for the Variance] The confidence interval for the
+          variance (as caluclated by the $ \chi^2 $ test) is imposed.
+          \begin{align}
+              \text{LCL}            & = \frac{\sigma^2}{n-1}\ c_1 &
+              \text{UCL}            & = \frac{\sigma^2}{n-1}\ c_2   \\
+              P(\chi^2_{n-1} < c_1) & = \alpha/2                  &
+              P(\chi^2_{n-1} > c_2) & = \alpha/2
+          \end{align}
+          The corresponding right sided $ \chi^2 $ test is used if only an upper limit on
+          the variance needs to be enforced.
+
+    \item[Control chart for the range] The expected value of the range $ (R) $ of a
+          sample, is proportional to the sample standard deviation $ (s) $ by a factor
+          dependent on the sample size $ n $.
+          \begin{align}
+              \sigma & = \lambda_n \cdot \ex[R^*]
+          \end{align}
+          By convention, it is better to use $ s $ instead of $ R $ as a quality
+          control method when $ n > 10 $.
+\end{description}
+
+\section{Acceptance Sampling}
+
+\begin{description}
+    \item[Acceptance number] An upper limit on the number of defective items in a
+          random sample of size $ n $ from a population of size $ N $. \par
+          If the number of defectives is larger than this limit $ c $, the lot is
+          rejected.
+
+    \item[Operating Characteristic] A curve showing the CDF of the hypergeometric
+          distribution with $ n $ items selected out of a population of size $ N $ with
+          defective fraction $ \theta $
+          \begin{align}
+              P(A\ ;\ \theta) & = \frac{1}{\binom{N}{n}}
+              \ \sum_{x=0}^{c} \binom{N\theta}{n}
+              \ \binom{N - N\theta}{n-x}
+          \end{align}
+          As the fraction defective increases from 0 to 1, the probability of event
+          $ A $, (accepting the lot) goes from 1 to 0. \par
+          The acceptance number remains fixed for an OC curve.
+
+    \item[Poisson approximation] When the sample size $ n $ is much smaller than the lot
+          size $ n $, the hypergeometric PDF can be replaced by a Poisson PDF using,
+          \begin{align}
+              P(A\ ;\ \theta) & = e^{-\mu}\ \sum_{x=0}^{c} \frac{\mu^x}{x!} &
+              \mu             & = n\theta
+          \end{align}
+
+    \item[Producer's risk] The producer seeks to minimize the probability of rejecting an
+          acceptable lot $ (\theta \leq \theta_0) $, where this constant $ \theta_0 $ is
+          called the acceptable quality level (AQL). \par
+          This corresponds to Type I errors. The probability $ \alpha $ is called
+          the producer's risk.
+
+    \item[Consumer's risk] The consumer seeks to minimize the probability of accepting
+          an unacceptable lot $ (\theta \geq \theta_1) $ where $ \theta_1 $ is called the
+          rejectable quality level (RQL). \par
+          This corresponds to Type II errors. The probability $ \beta $ is called
+          the consumer's risk.
+
+
+    \item[Rectification] Consider a production process with $ \theta $ fraction of items
+          defective. It is supplied in $ K $ lots, each of size $ N $. \par
+          The probability of a lot being accepted is $ P $, which itself is a function
+          of $ \theta $. \par
+          Rectification involves going through rejected lots item by item and replacing
+          any defective items with normal ones.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r]|[dotted]Q[r]},
+                  colsep = 1.2em, rowsep = 0.5em}
+                  \text{Quantity}                    & \text{Value}         \\ \hline
+                  Total number of items              & $KN$                 \\
+                  Total number of defective items    & $\theta \cdot KN$    \\
+                  Number of lots accepted            & $P \cdot K$          \\
+                  Number of lots accepted            & $P \cdot K$          \\
+                  Number of defective items accepted & $ PK \cdot N\theta $ \\
+              \end{tblr}
+          \end{table}
+
+    \item[Average outgoing quality] This is the fraction of items defective across all
+          $ K $ lots after rectification,
+          \begin{align}
+              \text{AOQ}         & = \frac{KP \cdot N\theta}{KN} &
+              \text{AOQ}(\theta) & = \theta \cdot P(\theta)
+          \end{align}
+          The AOQ curve is zero at both $ \theta = 0 $ and at $ \theta = 1 $, which
+          means it has a maximum at some intermediate value, called the AOQ Limit
+          ($ \theta^* $).
+\end{description}
+
+\section{Goodness of Fit, Chi-squared Test}
+
+\begin{description}
+    \item[Sample distribution function] The sum of the relative frequencies of all
+          elements $ \{x_j\} $ of the sample not exceeding $ x $. This is the sample
+          analog of the population CDF. It is denoted.
+          \begin{align}
+              \wt{F}(x) & = \frac{1}{n}\ \sum_{x_j \leq x} f_j
+          \end{align}
+          Where $ f_j $ is the fraction of all sample elements that are equal to $ x_j $.
+
+    \item[Chi squared test] In order to test whether a random sample is drawn from a
+          population with underlying distribution function $ F(x) $,
+          \begin{itemize}
+              \item Subdivide the $x$ axis into $ K $ intervals each containing at least
+                    5 elements of the sample $ \{x_1,\dots,x_n\} $.
+              \item The set of intervals is $ \{I_j\} $ with the
+                    number of elements of the sample in each interval being $ \{b_j\} $.
+              \item Sample elements at the boundary of two intervals contribute a half to
+                    both of those $ b_j $ instead.
+              \item Determine the number of elements $ e_j $ of a sample of size
+                    $ n $ that will fall into the interval $ I_j $ under the assumed CDF
+                    $ f(x) $
+                    \begin{align}
+                        e_j & = n \cdot p_j & p_j & = \int_{I_j} f(u)\ \dl u
+                    \end{align}
+              \item Compute the deviation between these numbers, summed over all
+                    intervals.
+                    \begin{align}
+                        \chi_0^2 & = \sum_{j=1}^{K} \frac{(b_j - e_j)^2}{e_j}
+                    \end{align}
+          \end{itemize}
+          The $ \chi^2 $ distribution with $ (K-1) $ degrees of freedom can now be used
+          along with some confidence value $ \gamma $ in order to test whether this
+          assumed PDF is in fact the distribution from which the sample is drawn.
+
+    \item[Multiple parameters] The procedure above can be used with a PDF that has
+          $ r > 1 $ parameters, if the MLE estimates of those parameters are substituted
+          and the $ \chi^2 $ distribution has $ (K-r-1) $ degrees of freedom.
+\end{description}
+
+\section{Nonparametric Tests}
+
+\begin{description}
+    \item[Nonparametric test] A test that does not care about the distribution. These are
+          usually worse than the parametric tests corresponding some underlying PDF.
+
+    \item[Sign test for the median] Since the median corresponds to $ F(m) = 0.5 $,
+          A set of differences between paired data points should be binomially distributed
+          with $ p = 0.5 $, if the median of the difference were assumed to be zero. \par
+          A non-parametric test involves assigning a binomial probability of observing
+          $ k $ positive differences out of $ n $ and checking if this exceeds the
+          $ \alpha $ value.
+
+    \item[Test for arbitrary trend] A transposition is the number of smaller values
+          following the current value, if the trend being asserted is monotonic increase.
+          \par
+          The number of possible permutations of $ n $ elements that have the observed
+          number of transpositions or fewer becomes the test statistic.
+\end{description}
+
+\section{Regression. Fitting Straight Lines. Correlation}
+
+\begin{description}
+    \item[Regression analysis] Measurements in the experiment are ordered pairs
+          $ \{(x_i, y_i)\} $ where $ x_i $ is the indepedent variable, which can be
+          measured without substantial error or whose value can be set manually.
+
+    \item[Regression] The relation between the depedent variable $ y $ and the
+          controlled variable $ x $, most commonly analysed using a linear relationship.
+
+    \item[Linear regression] The assertion that the mean of $ y $ is dependent on $ x $
+          using the linear relation
+          \begin{align}
+              \mu_Y & \equiv \mu_Y(x) = \kappa_0 + \kappa_1\ x
+          \end{align}
+          An important assumption is the set of points $ \{(x_i, y_i)\} $ are not all
+          equal. This ensures the answer is unique.
+
+    \item[Sample covariance] A measure of how much each ordered deviates simultaneously
+          from their respective mean values in the same direction.
+          \begin{align}
+              s_{xy} & = \frac{1}{(n-1)}\ \sum_{j=1}^{n}\ (x_j - \bar{x})
+              (y_j - \bar{y})                                             \\
+                     & = \frac{1}{(n-1)} \Bigg[\sum_j\ x_j y_j\Bigg] -
+              \frac{n}{n(n-1)}\ \bar{x}\bar{y}
+          \end{align}
+          Both $ x $ and $ y $ in the above formula being the same reduces it to
+          the sample variance $ (s_x^2) $. \par
+          The crucial difference here is that $ x $ is an ordinary variable, not a
+          stochastic RV.
+
+    \item[Least squares principle] Given $ n $ points, the straight line fitting this
+          data is that line which minimizes the vertical distance from each point to
+          the line.
+          \begin{align}
+              q               & = \sum_{j=1}^{n}\ (y_j - k_0 - k_1x_j)^2 &
+              \diffp {q}{k_0} & = 0 = \diffp{q}{k_1}                       \\
+              y - \bar{y}     & = k_1\ (x - \bar{x})                     &
+              k_1             & = \frac{s_{xy}}{s^2_x}
+          \end{align}
+          Here, $ k_1 $ is called the regression coefficient.
+
+    \item[Normal equations] In deriving the least squares fit line, the differentiation
+          with respect to $ k_0 $ and $ k_1 $ yield,
+          \begin{align}
+              k_0\ \sum_j 1 + k_1\ \sum_j x_j     & = \sum_j y_j     \\
+              k_0\ \sum_j x_j + k_1\ \sum_j x^2_j & = \sum_j x_j y_j
+          \end{align}
+          This is a system of two linear equations, that is guaranteed to have a unique
+          solution as long as the data points $ \{x_i\} $ are not all equal.
+
+    \item[Confidence intervals in regression] Using the additional assumptions that
+          \begin{itemize}
+              \item For each fixed $ x $, the RV $ Y $ is normally distributed with mean
+                    \begin{align}
+                        \mu(x) & = \kappa_0 + \kappa_1\ x
+                    \end{align}
+                    and variance $ \sigma^2 $ indepdent of $ x $.
+              \item The experiments that lead to obtaining $ n $ ordered pairs of the
+                    form $ \{x_1, y_i\}$ are all independent. \par
+              \item The MLE for $ \kappa_1 $ happens to be $ k_1 $ as defined earlier,
+                    and this also acts as the center of any confidence intervals for
+                    $ \kappa_1 $.
+          \end{itemize}
+
+    \item[t-test for regression] Using some confidence level $ \gamma $,
+          \begin{itemize}
+              \item Find the percent point function corresponding to
+                    \begin{align}
+                        F(c) & = \frac{\gamma + 1}{2}
+                    \end{align}
+                    using the $ t -$distribution with $ (n-2) $ degrees of freedom.
+              \item Compute the interval length $ K $ using
+                    \begin{align}
+                        q_0    & = (n-1)\ (s_y^2 - k_1^2\ s_x^2)         &
+                        \Delta & = c\ \sqrt{\frac{q_0}{(n-2)(n-1)s_x^2}}
+                    \end{align}
+              \item The confidence interval is now,
+                    \begin{align}
+                        \CONF_\gamma\{k_1 - \Delta \leq \kappa_1 \leq k_1 + \Delta\}
+                    \end{align}
+          \end{itemize}
+
+    \item[Correlation analysis] Investigation of the relationship between two RVs, $ X $
+          and $ Y $ that together make up a two-dimensional RV $ (X, Y) $. \par
+          A sample still consits of $ n $ ordered pairs of the form $ \{x_i, y_i\} $,
+          but a random variable $ X $ replaces the independent variable $ x $.
+
+    \item[Correlation coefficient] The sample covariance normalized using the standard
+          deviations of each of the constituent RVs. For the population and the sample
+          respectively,
+          \begin{align}
+              \rho & = \frac{\sigma_{XY}}{\sigma_X \cdot \sigma_Y} &
+              r    & = \frac{s_{xy}}{s_x \cdot s_y}
+          \end{align}
+          This is invariant under multiplication of $ X $ or $ Y $ by some fixed scalar.
+          \par
+    \item[Properties of correlation coefficient] This value satisfies $ r \in [-1,1] $
+          with the extreme values only attained when all the ordered pairs lie on
+          a straight line. \par
+          Analogously, when $ \rho = \pm 1 $, the RVs have a linear relation.
+          \begin{align}
+              X & = a_1Y + a_2 & Y & = b_1X + b_2
+          \end{align}
+          The RVs are called uncorrelated if $ \rho = 0 $.
+
+    \item[2d normal distribution] If $ X $ and $ Y $ are independent, they are
+          uncorrelated. \par
+          If $ (X, Y) $ is a 2d normal RV, then uncorrelated $ X $ and $ Y $
+          are independent. \par
+          Consider two standard normal RVs, $ x^* $ and $ y^* $,
+          \begin{align}
+              X       & = \mu_X + \sigma_x\ X^*                                 \\
+              Y       & = \mu_Y + \rho\ \sigma_Y\ X^* + \sqrt{1 - \rho^2}
+              \ \sigma_Y\ Y^*                                                   \\
+              f(x, y) & = \frac{1}{2\pi\ \sigma_X\ \sigma_Y\ \sqrt{1 - \rho^2}}
+              \ e^{-h(x, y)/2}                                                  \\
+              h(x, y) & = \frac{1}{1  -\rho^2}\ \Bigg[\left( \frac{x - \mu_X}
+                  {\sigma_X^2} \right) + \left( \frac{y - \mu_Y}
+                  {\sigma_Y^2} \right) - 2\rho\ \left( \frac{x - \mu_X}
+                  {\sigma_X} \right)\left( \frac{y - \mu_Y}
+                  {\sigma_Y} \right)\Bigg]
+          \end{align}
+          Clearly, the two variables $ X, Y $ are indepedent only if the joint
+          probability is normal and they are uncorrelated $(\rho = 0)$.
+
+    \item[Test for correlation coefficient] A $ t $ statistic can be formed using a
+          sample of size $ n $, for $ 2d $ normal distributions.
+          \begin{align}
+              r & = \frac{s_{xy}}{s_x \cdot x_y} & t & = \frac{r}{\sqrt{1 - r^2}}
+              \ \sqrt{n-2}
+          \end{align}
+          This $ t- $statistic has $ (n-2) $ degrees of freedom.
+\end{description}

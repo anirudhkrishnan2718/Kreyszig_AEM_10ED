@@ -1,0 +1,379 @@
+\section{Singularities and Zeros, Infinity}
+
+\begin{enumerate}
+    \item Finding the zeros,
+          \begin{align}
+              f(z) & = \sin^4(z/2) &
+              z^*  & = 2n\pi + 0\i
+          \end{align}
+          All the zeros are of order $ 4 $.
+
+    \item Finding the zeros,
+          \begin{align}
+              f(z) & = (z^4 - 81)^3                 &
+              f(z) & = [(z+3)(z-3)(z+3\i)(z-3\i)]^3   \\
+              z^*  & = \{\pm 3, \pm 3\i\}
+          \end{align}
+          All the zeros are of order $ 3 $.
+
+    \item Finding the zeros,
+          \begin{align}
+              f(z) & = (z + 81\i)^4 &
+              z^*  & = -81\ \i
+          \end{align}
+          All the zeros are of order $ 4 $.
+
+    \item Finding the zeros,
+          \begin{align}
+              f(z) & = \tan^2(2z)     &
+              z^*  & = \frac{n\pi}{2}
+          \end{align}
+          All the zeros are of order $ 2 $.
+
+    \item Finding the zeros,
+          \begin{align}
+              f(z) & = z^{-2}\ \sin^2(\pi z)         &
+              z^*  & = n \in \mathcal{I} \setminus 0
+          \end{align}
+          All the zeros are of order $ 2 $. $ n = 0 $ is not a zero since the sinc
+          function does not approach zero at the origin.
+
+    \item Finding the zeros,
+          \begin{align}
+              f(z) & = \cosh^4(z)                           &
+              z^*  & = \Bigg[n\pi + \frac{\pi}{2}\Bigg]\ \i
+          \end{align}
+          All the zeros are of order $ 4 $.
+
+    \item Finding the zeros,
+          \begin{align}
+              f(z) & = z^4 + (1 - 8\i)z^2 - 8\i     &
+              f(z) & = (z^2 + 1)(z^2 - 8\i)           \\
+              z^*  & = \{\pm \i, 2 + 2\i, -2 -2\i\}
+          \end{align}
+          All the zeros are of order $ 1 $.
+
+    \item Finding the zeros,
+          \begin{align}
+              f(z) & = (\sin z - 1)^3        &
+              z^*  & = 2n\pi + \frac{\pi}{2}
+          \end{align}
+          All the zeros are of order $ 3 $.
+
+    \item Finding the zeros,
+          \begin{align}
+              f(z) & = \sin(2z)\cos(2z) &
+              f(z) & = 0.5\sin(4z)        \\
+              z^*  & = \frac{n\pi}{4}
+          \end{align}
+          All the zeros are of order $ 1 $.
+
+    \item Finding the zeros,
+          \begin{align}
+              f(z)                    & = (z^2 - 8)^3\ [\exp(z^2) - 1]     \\
+              e^x[\cos y + \i \sin y] & = 1                              &
+              z^*                     & = \sqrt{n\pi}\ (1 + \i)            \\
+              (z^2 - 8)               & = 0                              &
+              z^*                     & = \pm 2\sqrt{2},\ \text{order 3}
+          \end{align}
+          All the zeros are of order $ 1 $.
+
+    \item Given that $ f(z) $ has a zero of order $ n $,
+          \begin{align}
+              f(z)     & = (z - z_0)^n\ g(z)      &
+              g(z_0)   & \neq 0                     \\
+              f^2(z)   & = (z - z_0)^{2n}\ g^2(z) &
+              g^2(z_0) & \neq 0
+          \end{align}
+          Thus, $ f^2(z) $ has a zero of order $ 2n $ at $ z_0 $
+
+    \item Zeros,
+          \begin{enumerate}
+              \item Let $ g(z) \equiv f'(z) $,
+                    \begin{align}
+                        g(z_0)         & = g'(z_0) = \dots = g^{(n-2)}(z_0) = 0 &
+                        g^{(n-1)}(z_0) & \neq 0
+                    \end{align}
+                    Thus, $ g(z) $ has a zero of order $ (n-1) $ at $ z = z_0 $.
+
+              \item Since $ f(z) $ is analytic at $ z = z_0 $ and has a zero of order
+                    $ n $ at $ z_0 $,
+                    \begin{align}
+                        f(z)             & = (z - z_0)^n\ g(z)            &
+                        g(z_0)           & \neq 0                           \\
+                        \frac{1}{f(z)}   & = \frac{1}{(z - z_0)^n}  \cdot
+                        \frac{1}{g(z)}   &
+                        \frac{1}{g(z_0)} & \neq 0
+                    \end{align}
+                    Thus, the reciprocal of $ f(z) $ has a pole of order $ n $ at
+                    $ z_0 $.
+
+              \item A nonconstant analytic function $ f(z) $, by Liouville's
+                    theorem, has to be unbounded.
+                    \begin{align}
+                        g(z) & = f(z) - k
+                    \end{align}
+                    $ g(z) $ is also a nonconstant analytic function. By Theorem 3,
+                    the zeros of $ g(z) $ are isolated.
+
+              \item Consider the difference function,
+                    \begin{align}
+                        g(z)   & = f_1(z) - f_2(z)               &
+                        g(z_n) & = 0 \quad \forall \quad \{z_n\}
+                    \end{align}
+                    This sequence is convergent. Suppose it converges to $ w $.
+                    \begin{align}
+                        \abs{z_{n} - w} & < \epsilon    &
+                        \forall \quad n & > N(\epsilon)
+                    \end{align}
+                    This means $ z = w $ is not an isolated zero of $ g(z) $. This means
+                    that $ g(z) $, if analytic, has to be a constant function.
+                    \begin{align}
+                        g(z) & \equiv 0 & \implies f_1(z) & \equiv f_2(z)
+                    \end{align}
+          \end{enumerate}
+
+    \item Finding the singularities, using the fact that the denominator is zero at
+          every singularity.
+          \begin{align}
+              z_1 & = \color{y_h} -2\i & O_1 & = \color{y_p} 2 \\
+              z_2 & = \color{y_h} \i   & O_2 & = \color{y_p} 2
+          \end{align}
+
+    \item Finding the singularities, using the fact that the denominator is zero at
+          every singularity.
+          \begin{align}
+              z_1 & = \color{y_h} \i & O_1 & = \color{y_p} 3
+          \end{align}
+          This is the only singularity since $ e^z $ is entire.
+
+    \item Finding the singularities,
+          \begin{align}
+              w    & = \frac{1}{z}                                             &
+              g(w) & = \frac{1}{w}\ \exp\Bigg[ \frac{w^2}{(1 - wz_0)^2} \Bigg]   \\
+              w_1  & = 0                                                       &
+                   & \text{simple pole}                                          \\
+              z_1  & = \color{y_h} \infty                                      &
+              O_1  & = \color{y_p} 1 \quad  \text{(simple pole)}
+          \end{align}
+          Finding essential singularities,
+          \begin{align}
+              \exp\Bigg[ \frac{1}{(z - E_1)^2} \Bigg] & = \iser[n]{0}
+              \frac{(z - E_1)^{-2n}}{n!}              &
+              E_1                                     & = \color{y_h} 1 + \i
+          \end{align}
+          Since this is an infinite Laurent series, this is an essential singularity,
+
+    \item Finding the singularities, using the fact that the denominator is zero at
+          every singularity.
+          \begin{align}
+              \cos(\pi z) & = 0                                             &
+              \implies z  & = n + 0.5 \quad \forall \quad n \in \mathcal{I}   \\
+              z_1         & = \color{y_h} n + 0.5                           &
+              O_1         & = \color{y_p} 1
+          \end{align}
+          Finding singularities at infinity,
+          \begin{align}
+              \cos(\pi/w)        & = 0                  &
+              \implies \quad w^* & =  \frac{1}{n + 0.5}   \\
+              E_1                & = \color{y_h} \infty
+          \end{align}
+          Since $ g(w) $ has an essential zero at the origin,
+          $ f(z) $ has an essential singularity at infinity.
+
+    \item Finding the singularities, using the fact that the denominator is zero at
+          every singularity.
+          \begin{align}
+              \sin^4 z   & = 0                                          &
+              \implies z & = n\pi \quad \forall \quad n \in \mathcal{I}   \\
+              z_1        & = \color{y_h} n\pi                           &
+              O_1        & = \color{y_p} 4
+          \end{align}
+          Finding singularities at infinity,
+          \begin{align}
+              \sin^4(1/w)        & = 0                  &
+              \implies \quad w^* & =  \frac{1}{n\pi}      \\
+              E_1                & = \color{y_h} \infty
+          \end{align}
+          Since $ g(w) $ has an essential zero at the origin,
+          $ f(z) $ has an essential singularity at infinity.
+
+    \item Finding the singularities,
+          \begin{align}
+              w    & = \frac{1}{z}                                      &
+              g(w) & = \frac{1}{w^3}\ \exp\Bigg[ \frac{w}{w - 1} \Bigg]   \\
+              w_1  & = 0                                                &
+                   & \text{triple pole}                                   \\
+              z_1  & = \color{y_h} \infty                               &
+              O_1  & = \color{y_p} 3 \quad  \text{(triple pole)}
+          \end{align}
+          Finding essential singularities,
+          \begin{align}
+              \exp\Bigg[ \frac{1}{(z - E_1)^2} \Bigg] & = \iser[n]{0}
+              \frac{(z - E_1)^{-2n}}{n!}              &
+              E_1                                     & = \color{y_h} 1
+          \end{align}
+          Since this is an infinite Laurent series, this is an essential singularity,
+
+    \item Finding the singularities, using the fact that the denominator is zero at
+          every singularity.
+          \begin{align}
+              f(z)       & = e^{-z} + \frac{1}{1 - e^z}                      &
+              \implies z & = 2n\pi\ \i \quad \forall \quad n \in \mathcal{I}   \\
+              z_1        & = \color{y_h} 2n\pi\ \i                           &
+              O_1        & = \color{y_p} 1
+          \end{align}
+          Finding singularities at infinity,
+          \begin{align}
+              g(w)                         & = e^{-1/w} + \frac{1}{1 - e^{1/w}} &
+              \implies \lim_{w \to 0} g(w) & =  0                                 \\
+              E_1                          & = \color{y_h} \infty
+          \end{align}
+          Since the denominator of $ g(w) $ has an essential zero at the origin,
+          $ f(z) $ has an essential singularity at infinity.
+
+    \item Finding the singularities, using the fact that the denominator is zero at
+          every singularity.
+          \begin{align}
+              f(z)       & = \frac{\cos z + \sin z}{\cos(2z)}    &
+              \implies z & = \frac{n\pi}{2} + \frac{\pi}{4}
+              \quad \forall \quad n \in \mathcal{I}                \\
+              z_1        & = \color{y_h} (2n + 1)\ \frac{\pi}{4} &
+              O_1        & = \color{y_p} 1
+          \end{align}
+          Finding singularities at infinity,
+          \begin{align}
+              g(w)         & = \frac{\cos(1/w) + \sin(1/w)}{\cos(2/w)} = 0 &
+              \implies w^* & = \phi
+          \end{align}
+          Since $ g(w) $ is analytic at the origin,
+          $ f(z) $ is analytic at infinity.
+
+    \item Finding the singularities, using the fact that the denominator is zero at
+          every singularity.
+          \begin{align}
+              f(z)       & = e^{1/(z-1)} \cdot \frac{1}{e^z - 1} &
+              \implies z & = 2n\i\ \i
+              \quad \forall \quad n \in \mathcal{I}                \\
+              z_1        & = \color{y_h} 2n\pi\ \i               &
+              O_1        & = \color{y_p} 1
+          \end{align}
+          The Laurent series around $ z = 1 $, is
+          \begin{align}
+              L(z = 1) & = \iser{0}  \frac{1}{m!\ (z-1)^m}
+          \end{align}
+          This means that there is an essential singularity at $ z = 1 $. \par
+          Finding singularities at infinity,
+          \begin{align}
+              g(w)         & = e^{w/(1-w)} \cdot \frac{1}{e^{1/w} - 1} &
+              \implies w^* & = \frac{1}{2n\pi\ \i}
+          \end{align}
+          Since $ g(w) $ has an essential singularity at the origin,
+          $ f(z) $ has an essential singularity at infinity.
+
+    \item Finding the singularities, using the fact that the denominator is zero at
+          every singularity.
+          \begin{align}
+              f(z) & = \frac{\sin z}{z - \pi}         &
+                   & = -\frac{\sin(z - \pi)}{z - \pi}
+          \end{align}
+          The Laurent series around $ z = \pi $, is
+          \begin{align}
+              L(z = \pi) & = \iser{0} (-1)^{m+1}\ \frac{(z-\pi)^{2m}}{(2m+1)!}
+          \end{align}
+          This means that there is an essential singularity at $ z = \pi $. \par
+          Finding singularities at infinity,
+          \begin{align}
+              g(w)         & = e^{w/(1-w)} \cdot \frac{1}{e^{1/w} - 1} &
+              \implies w^* & = \frac{1}{2n\pi\ \i}
+          \end{align}
+          Since $ g(w) $ has an essential singularity at the origin,
+          $ f(z) $ has an essential singularity at infinity.
+
+    \item Using the same steps as in Example $ 3 $,
+          \begin{align}
+              f(z) & = \exp\Bigg( \frac{1}{z^2} \Bigg)  &
+              f(z) & = \iser[n]{0} \frac{1}{z^{2n}\ n!}
+          \end{align}
+          Since the principal part has infinitely many negative powers of $ z $,
+          the function has an essential singularity at $ z = 0 $
+          \begin{align}
+              z              & = r \exp(\i \theta)              &
+              f              & = \exp(r^{-2} e^{-2\i \theta})     \\
+              f(z)           & = c_0 \exp(\i \alpha)            &
+              \frac{\cos(2\theta) - \i\ \sin(2\theta)}
+              {r^2}          & = \ln c_0  + \i \alpha             \\
+              \cos(2\theta)  & = r^2\ \ln c_0                   &
+              -\sin(2\theta) & = r^2 \alpha                       \\
+              r^4            & = \frac{1}{\ln^2 c_0 + \alpha^2} &
+              \tan(2\theta)  & = -\frac{\alpha}{\ln c_0}
+          \end{align}
+          Increasing $ \alpha $ by multiples of $ 2\pi $, does not change $ c_0 $ while
+          making $ r $ arbitrarily small. This means there is no limit when approaching
+          $ z = 0 $.
+
+    \item Verifying Theorem 1,
+          \begin{align}
+              f(z)                & = \frac{1 - z^2}{z^3}          &
+              z_0                 & = \{0\}                          \\
+              \lim_{z \to 0} f(z) & = \frac{\to 1}{\to 0} = \infty
+          \end{align}
+          Since the function has poles at $ z = z_0 $, its Laurent series is of the form
+          \begin{align}
+              f(z) & = \iser{0}a_m\ (z - z_0)^m + \sum_{n=1}^{N} \frac{b_n}{(z - z_0)^n}
+          \end{align}
+          for some finite $ N $. The first series is approaches zero as $ z \to z_0 $.
+          \par The second series approaches infinity.
+
+    \item Riemann sphere,
+          \begin{enumerate}
+              \item The region $ \abs{z} > 100 $
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[legend pos = outer north east,
+                                    height = 8cm, width = 16cm, axis equal,
+                                    title = {Riemann sphere},
+                                    xmin = -0.75, xmax = 3.25,
+                                    ymin = -0.25, ymax = 1.25,
+                                    xtick = {0, 3},
+                                    xticklabels={0, $ l $},
+                                    grid = both,Ani,
+                                    colormap/jet,
+                                ]
+                                \filldraw[draw=y_h,fill=y_h, fill opacity = 0.05]
+                                (axis cs:0,0.5) circle (0.5);
+                                \addplot[thin, black]{0};
+                                \draw[dotted, y_p, thick] (0,1) -- (3,0);
+                                \node[GraphNode, label =
+                                        {[fill = white]above: $ N $},
+                                    fill = white, draw = black] at (axis cs:0, 1){};
+                                \node[GraphNode, label =
+                                        {[fill = white]above right: $ P $},
+                                    fill = white, draw = y_p] at (axis cs:3, 0){};
+                                \node[GraphNode, label =
+                                        {[fill = white]above right: $ P^* $},
+                                    fill = y_p, draw = black] at (axis cs:0.3, 0.9){};
+                                \node[GraphNode, label =
+                                        {[fill = white]below: $ O $},
+                                    fill = black, draw = black] at (axis cs:0, 0){};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    The region of the sphere corresponding to $ \abs{z} \geq l $ is,
+                    \begin{align}
+                        \angle ONP & \geq \arctan(l)
+                    \end{align}
+
+              \item The lower half plane maps onto the western hemisphere.
+              \item Using the result from part $ a $,
+                    \begin{align}
+                        \abs{z}     & = \tan(\alpha)                 &
+                        \tan \alpha & \in [0.5, 2]                     \\
+                        \alpha      & \in [\arctan(0.5), \arctan(2)]
+                    \end{align}
+          \end{enumerate}
+
+
+
+\end{enumerate}

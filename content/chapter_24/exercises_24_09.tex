@@ -1,0 +1,285 @@
+\section{Distributions of Several Random Variables}
+
+\begin{enumerate}
+    \item Using the normalization condition,
+          \begin{align}
+              1      & = \int_{0}^{2} \int_{8}^{12} k\ \dl x\ \dl y = 8k  &
+              k      & = \frac{1}{8}                                        \\
+              P(E_1) & = \int_{1}^{1.5} \int_{8}^{11} (1/8)\ \dl x\ \dl y &
+                     & = \frac{3}{16}                                       \\
+              P(E_2) & = \int_{0}^{1} \int_{9}^{12} (1/8)\ \dl x\ \dl y   &
+                     & = \frac{3}{8}
+          \end{align}
+
+    \item Since the PDF is defined nonzero over the region
+          \begin{align}
+              x      & \geq 0, \quad y \geq 0                                     &
+              x+y    & \leq 8                                                       \\
+              P(E_1) & = \int_{4}^{\infty} \int_{4}^{\infty} f(x,y)\ \dl x\ \dl y &
+                     & = 0                                                          \\
+              P(E_2) & = \int_{0}^{1} \int_{0}^{1} (1/32)\ \dl x\ \dl y           &
+                     & = \frac{1}{32}
+          \end{align}
+
+    \item Using the normalization condition,
+          \begin{align}
+              1      & = \int_{0}^{3} \int_{0}^{3-y} k\ \dl x\ \dl y           &
+                     & = k\ \Bigg[3y - \frac{y^2}{2}\Bigg]_0^3                   \\
+              k      & = \frac{2}{9}                                             \\
+              P(E_1) & = \int_{0}^{1} \int_{0}^{1-y} (2/9)\ \dl x\ \dl y       &
+                     & = \frac{2}{9}\ \Bigg[ y - \frac{y^2}{2} \Bigg]_0^1
+              = \frac{1}{9}                                                      \\
+              P(E_2) & = \int_{0}^{1.5} \int_{x}^{3-x} (2/9)\ \dl y\ \dl x     &
+                     & = \frac{2}{9}\ \Bigg[3x-x^2\Bigg]_0^{1.5} = \frac{1}{2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Uniform PDF}, Ani,
+                          grid = both, xmin = -0.5, xmax = 4, ymin = -0.5, ymax = 4]
+                      \filldraw[y_h, fill opacity = 0.08] (0,0) -- (3,0) -- (0,3)
+                      -- (0,0) -- cycle;
+                      \node[y_p] at (axis cs:1,1) {$2/9$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The marginal PDF of $ x $ is,
+          \begin{align}
+              f_1(x) & = \int_{0}^{8-x} \frac{1}{32}\ \dl y = \frac{8-x}{32} &
+              f_1(x) & = \begin{dcases}
+                             \frac{8-x}{32} & \quad x \in [0,8]      \\
+                             0              & \quad \text{otherwise}
+                         \end{dcases}
+          \end{align}
+
+    \item The marginal PDF of $ x $ is,
+          \begin{align}
+              f_2(y) & = \int_{\alpha_1}^{\beta_1} \frac{1}{k}\ \dl x
+              = \frac{1}{(\beta_2 - \alpha_2)}                        \\
+              f_2(y) & = \begin{dcases}
+                             \frac{1}{(\beta_2 - \alpha_2)}
+                               & \quad y \in [\alpha_2,\beta_2] \\
+                             0 & \quad \text{otherwise}
+                         \end{dcases}
+          \end{align}
+
+    \item Using the sum of variances of I.I.D. RVs
+          \begin{align}
+              \mu      & = \SI{10}{\g}                  &
+              \sigma   & = \SI{0.05}{\g}                  \\
+              n        & = 10000                        &
+              Y        & = nX                             \\
+              \mu_Y    & = n\mu = \SI{100}{\kg}         &
+              \sigma_Y & = \sqrt{n} \sigma = \SI{5}{\g}
+          \end{align}
+
+    \item Using the sum of variances of I.I.D. RVs
+          \begin{align}
+              n_1                        & = 50, \quad n_2 = 49                    &
+              Z                          & = n_1X + n_2Y                             \\
+              \mu_Z                      & = n_1\mu_X + n_2\mu_Y = \SI{27.45}{\mm}   \\
+              \sigma^2_Z                 & = n_1 \sigma^2_X + n_2 \sigma^2_Y
+              = \SI{0.1446}{\mm\squared} &
+              \sigma_Z                   & = \SI{0.38}{\mm}
+          \end{align}
+
+    \item The marginal PDFs are,
+          \begin{align}
+              f_1(x) & = \int_{1}^{1.04} f(x,y)\ \dl y            &
+                     & = 25 \quad \forall \quad x \in [0.98,1.02]   \\
+              f_2(y) & = \int_{0.98}^{1.02} f(x,y)\ \dl x         &
+                     & = 25 \quad \forall \quad y \in [1,1.04]      \\
+              P(X<1) & = \int_{0.98}^{1} f_1(x)\ \dl x = 0.5
+          \end{align}
+
+    \item The binomial theorem is a set of $ n $ I.I.D. RVs, each of which has
+          $ \mu = p $ and $ \sigma^2 = p(1-p) $
+          \begin{align}
+              \ex[X_1 + X_2 + \dots + X_n]  & = np      \\
+              \Var[X_1 + X_2 + \dots + X_n] & = np(1-p)
+          \end{align}
+          These match the mean and variance of a binomial distribution.
+
+    \item Consider the expected value of the second hypergeometric trial,
+          \begin{align}
+              \ex[X_2] & = \frac{M}{N} \cdot \frac{M-1}{N-1} +
+              \frac{N-M}{N} \cdot \frac{M}{N-1}
+              = \frac{MN - M}{N(N-1)} = \frac{M}{N}
+          \end{align}
+          This means that the second trial is identically distributed to the first Trial
+          in spite of these trials not being independent. \par
+          Using the addition of means,
+          \begin{align}
+              \ex[X_1 + X_2 + \dots + X_n] & = n \cdot \frac{M}{N}
+          \end{align}
+          The addition of variances cannot be used since the trials are not independent.
+
+    \item Using the sum of variances of I.I.D. RVs
+          \begin{align}
+              n_1                        & = 5, \quad n_2 = 4                      &
+              Z                          & = n_1X + n_2Y                             \\
+              \mu_Z                      & = n_1\mu_X + n_2\mu_Y = \SI{25.26}{\cm}   \\
+              \sigma^2_Z                 & = n_1 \sigma^2_X + n_2 \sigma^2_Y
+              = \SI{6.1d-5}{\cm\squared} &
+              \sigma_Z                   & = \SI{0.0078}{\cm}
+          \end{align}
+
+    \item Using the sum of variances of I.I.D. RVs
+          \begin{align}
+              Z          & = X + Y                     \\
+              \mu_Z      & = \mu_X + \mu_Y = 105       \\
+              \sigma^2_Z & =  \sigma^2_X +  \sigma^2_Y
+              = 0.29     &
+              \sigma_Z   & = 0.5385
+          \end{align}
+
+    \item The probability is,
+          \begin{align}
+              P(X > Y) & = \int_{0}^{\infty} \int_{y}^{\infty} 0.25\ e^{-0.5(x+y)}
+              \ \dl x\ \dl y                                                        \\
+                       & = \int_{0}^{\infty} 0.25e^{-0.5y}\ \Bigg[\int_{y}^{\infty}
+              e^{-0.5x} \ \dl x\Bigg]\ \dl y                                        \\
+              I_1      & = \Bigg[-2e^{-0.5x}\Bigg]_y^\infty = 2e^{-0.5y}            \\
+              I_2      & = 0.5\ \infint e^{-y} = 0.5
+          \end{align}
+          Heuristically, the PDF is symmetric about the line $ y=x $, which means the
+          probability is half.
+
+    \item Solving,
+          \begin{enumerate}
+              \item They are independent since the joint PDF is a product of individual
+                    PDFs $ f_1(x) $ and $ f_2(y) $.
+
+              \item The marginal distributions are,
+                    \begin{align}
+                        f_1(x) & = \infint f(x,y)\ \dl y = 4e^{-2x}
+                        \Bigg[\frac{e^{-2y}}{-2}\Bigg]_0^\infty = 2e^{-2x} \\
+                        f_2(y) & = 2e^{-2y}
+                    \end{align}
+                    using a similar calculation.
+
+              \item Using the marginal PDFs,
+                    \begin{align}
+                        P(X > 2) & = \int_{2}^{\infty} f_1(x)\ \dl x
+                        = \Bigg[-e^{-2x}\Bigg]_2^\infty = e^{-4} = 0.0183
+                    \end{align}
+          \end{enumerate}
+
+    \item Let $ f(x,y) $ and $ g(x,y) $ be two PDFs,
+          \begin{align}
+              f_1(x) & = \begin{dcases}
+                             \frac{1}{2\pi} & \quad x \in [0,2\pi]   \\
+                             0              & \quad \text{otherwise} \\
+                         \end{dcases}           &
+              g_1(x) & = \begin{dcases}
+                             \frac{1}{2\pi} + \sin(x) & \quad x \in [0,2\pi]   \\
+                             0                        & \quad \text{otherwise} \\
+                         \end{dcases}
+          \end{align}
+          Clearly, the marginal PDF in $ y $ is the same.
+          \begin{align}
+              f_2(y) & = \int_{0}^{2\pi} f_1(x)\ f_2(y)\ \dl x = g_2(y)
+          \end{align}
+          By a similar process, the other marginal PDFs can also be made equal.
+
+    \item Deriving, using the four areas as defined,
+          \begin{align}
+              Z_3        & : x < a_1, \qquad y \in [a_2,b_2]        &
+              Z_4        & : x \in [a_1,b_1], \qquad y < b_1          \\
+              Z_2        & : x < a_1, \qquad y < b_1                &
+              Z_4        & : x \in[a_1,b_1], \qquad y \in [a_2,b_2]   \\
+              F(a_1,a_2) & = Z_2                                    &
+              F(b_1,b_2) & = Z_1 + Z_2 + Z_3 + Z_4                    \\
+              F(b_1,a_2) & = Z_2 + Z_4                              &
+              F(a_1,b_2) & = Z_2 + Z_4
+          \end{align}
+          Clearly, there is a double subtraction of $ Z_2 $, which means
+          \begin{align}
+              Z_1 & = (Z_1 + Z_2 + Z_3 + Z_4) - (Z_2 + Z_3) - (Z_2 + Z_4) + Z_2 \\
+                  & = F(b_1,b_2) - F(b_1,a_2) - F(a_1,b_2) + F(a_1,a_2)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Uniform PDF}, Ani, axis equal,
+                          grid = both, xmin = -2, xmax = 4, ymin = -1, ymax = 3,
+                          xtick = {0,3}, ytick = {0,2},
+                          xticklabels = {$ a_1 $, $ b_1 $},
+                          yticklabels = {$ a_2 $, $ b_2 $}]
+                      \filldraw[black, fill opacity = 0.08] (0,0) rectangle (3,2);
+                      \filldraw[y_h, fill opacity = 0.08] (-3,-3) rectangle (0,0);
+                      \filldraw[y_p, fill opacity = 0.08] (-3,0) rectangle (0,2);
+                      \filldraw[y_t, fill opacity = 0.08] (0,-3) rectangle (3,0);
+                      \node[black] at (axis cs:1.5,1) {$Z_1$};
+                      \node[y_h] at (axis cs:-1,-1) {$Z_2$};
+                      \node[y_p] at (axis cs:-1,1) {$Z_3$};
+                      \node[y_t] at (axis cs:1.5,-1) {$Z_4$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the marginal distribution,
+          \begin{align}
+              f_1(x)              & = \begin{dcases}
+                                          1/2 & \quad x = 0 \\
+                                          1/2 & \quad x = 1 \\
+                                      \end{dcases}      &
+              f_2(y)              & = \begin{dcases}
+                                          1/2 & \quad y = 0 \\
+                                          1/2 & \quad y = 1 \\
+                                      \end{dcases}       \\
+              f_1(0) \cdot f_2(0) & = \frac{1}{4} \neq f(0,0)
+          \end{align}
+          This means the RVs are not independent.
+
+    \item Using the normalization condition,
+          \begin{align}
+              1            & = \int_{0}^{2\pi}\ \int_{0}^{1}\ k\ \dl r\ (r)
+              \ \dl \theta &
+              1            & = 2k\pi \Bigg[\frac{r^2}{2}\Bigg]_0^1            \\
+              k            & = \frac{1}{\pi}                                  \\
+              P(r < 1/2)   & = 2\pi\ \int_{0}^{1/2} \frac{r}{\pi}\ \dl r    &
+              P(r < 1/2)   & = \frac{1}{4}
+          \end{align}
+          This is the fraction of the area of a circle contained within the inner half
+          radius.
+
+    \item Finding the marginal PDF,
+          \begin{align}
+              f_1(x) & = \int_{0}^{1} f(x, y)\ \dl y                           &
+                     & = \Bigg[xy + \frac{y^2}{2} \Bigg]_0^1 = x + \frac{1}{2}   \\
+              f_2(y) & = \int_{0}^{1} f(x, y)\ \dl x                           &
+                     & = \Bigg[xy + \frac{x^2}{2} \Bigg]_0^1 = y + \frac{1}{2}   \\
+              g_1(x) & = \int_{0}^{1} g(x, y)\ \dl y                           &
+                     & = (x+1/2)\ \Bigg[\frac{y + y^2}{2} \Bigg]_0^1
+              = x + \frac{1}{2}                                                  \\
+              g_2(y) & = \int_{0}^{1} g(x, y)\ \dl x                           &
+                     & = (y+1/2)\ \Bigg[\frac{x + x^2}{2} \Bigg]_0^1
+              = y + \frac{1}{2}
+          \end{align}
+          Both $ f(x, y) $ and $ g(x,y) $ have the same marginal PDFs.
+
+    \item Let the condition hold,
+          \begin{align}
+              f(x,y)  & = f_1(x) \cdot f_2(y)                                       \\
+              F(x, y) & = \int_{-\infty}^{x} \int_{-\infty}^{y} f_1(u) \cdot f_2(v)
+              \ \dl u\ \dl v                                                        \\
+                      & = \int_{-\infty}^{x} f_1(u)\ \Bigg[\int_{-\infty}^{y}
+                  f_2(v)\ \dl y\Bigg]\ \dl x
+                      &
+                      & = F_2(y)\ \int_{-\infty}^{x} f_1(u)\ \dl x                  \\
+                      & = F_2(y) \cdot F_1(x)
+          \end{align}
+          This means the condition is sufficient. \par
+          For the inverse, assume the RVs are independent,
+          \begin{align}
+              F(x, y) & = F_1(x) \cdot F_2(y)                                       \\
+              F(x, y) & = \Bigg[\int_{-\infty}^{x} f_1(u)\ \dl u\Bigg]
+              \ \Bigg[\int_{-\infty}^{y} f_2(v)\ \dl y\Bigg]                        \\
+                      & = \int_{-\infty}^{x} \int_{-\infty}^{y} f_1(u) \cdot f_2(v)
+              \ \dl u\ \dl v                                                        \\
+              f(x, y) & = f_1(x) \cdot f_2(y)
+          \end{align}
+          This means the condition is necessary.
+\end{enumerate}

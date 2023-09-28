@@ -3,10 +3,12 @@
 \begin{enumerate}
     \item Solving ODE,
           \begin{align}
-              4y'' - 25y               & = 0                                                      \\
-              a                        & = 0                              & b & = \frac{-25}{4}   \\
-              a^{2} - 4b               & = 25 > 0                                                 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{25}}{2}      &   & = \pm \frac{5}{2} \\
+              4y'' - 25y               & = 0                                \\
+              a                        & = 0                              &
+              b                        & = \frac{-25}{4}                    \\
+              a^{2} - 4b               & = 25 > 0                           \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{25}}{2}      &
+                                       & = \pm \frac{5}{2}                  \\
               y                        & = c_{1}e^{5x/2} + c_{2}e^{-5x/2}
           \end{align}
           Checking by substitution,
@@ -33,10 +35,12 @@
 
     \item Solving ODE,
           \begin{align}
-              y'' + 6y' + 8.96y        & = 0                                                  \\
-              a                        & = 6                               & b & = 8.96       \\
-              a^{2} - 4b               & = 36 - 4(8.96) = \frac{4}{25} > 0                    \\
-              \lambda_{1}, \lambda_{2} & = \frac{-6 \pm \sqrt{4/25}}{2}    &   & = -3.2, -2.8 \\
+              y'' + 6y' + 8.96y        & = 0                                 \\
+              a                        & = 6                               &
+              b                        & = 8.96                              \\
+              a^{2} - 4b               & = 36 - 4(8.96) = \frac{4}{25} > 0   \\
+              \lambda_{1}, \lambda_{2} & = \frac{-6 \pm \sqrt{4/25}}{2}    &
+                                       & = -3.2, -2.8                        \\
               y                        & = c_{1}e^{-3.2x} + c_{2}e^{-2.8x}
           \end{align}
           Checking by substitution,
@@ -50,43 +54,55 @@
 
     \item Solving ODE,
           \begin{align}
-              y'' + 4y' + (\pi^{2} + 4)y & = 0                                                                     \\
-              a                          & = 4                                               & b & = (\pi^{2} + 4) \\
-              a^{2} - 4b                 & = -4\pi ^{2} < 0                                                        \\
-              \omega^{2}                 & = (\pi ^{2} + 4) - \frac{4^{2}}{4} = \pi ^{2}                           \\
-              y                          & = [c_{1}\cos(\pi x) + c_{2}\sin(\pi x)] \exp(-2x)
+              y'' + 4y' + (\pi^{2} + 4)y & = 0                                       \\
+              a                          & = 4                                     &
+              b                          & = (\pi^{2} + 4)                           \\
+              a^{2} - 4b                 & = -4\pi ^{2} < 0                          \\
+              \omega^{2}                 & = (\pi ^{2} + 4) - \frac{4^{2}}{4}
+              = \pi ^{2}                                                             \\
+              y                          & = [c_{1}\cos(\pi x) + c_{2}\sin(\pi x)]
+              \exp(-2x)
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'        & = e^{-2x}\cos(\pi x) (\pi c_{2} - 2c_{1}) + e^{-2x}\sin(\pi x)(-\pi c_{1} - 2c_{2}) \\
-              y''       & = e^{-2x}\cos(\pi x)(-2\pi c_{2} + 4c_{1} - \pi ^{2}c_{1} - 2\pi c_{2})             \\
-                        & + e^{-2x}\sin(\pi x)(2\pi c_{1} + 4c_{2} - \pi ^{2}c_{2} + 2\pi c_{1})              \\
-              y'' + 4y' & = c_{1}e^{-2x}\cos(\pi x)(-4-\pi ^{2}) + c_{2}e^{-2x}\sin(\pi x)(-4-\pi ^{2})       \\
+              y'        & = e^{-2x}\cos(\pi x) (\pi c_{2} - 2c_{1})
+              + e^{-2x}\sin(\pi x)(-\pi c_{1} - 2c_{2})             \\
+              y''       & = e^{-2x}\cos(\pi x)(-2\pi c_{2} + 4c_{1}
+              - \pi ^{2}c_{1} - 2\pi c_{2})                         \\
+                        & + e^{-2x}\sin(\pi x)(2\pi c_{1} + 4c_{2}
+              - \pi ^{2}c_{2} + 2\pi c_{1})                         \\
+              y'' + 4y' & = c_{1}e^{-2x}\cos(\pi x)(-4-\pi ^{2})
+              + c_{2}e^{-2x}\sin(\pi x)(-4-\pi ^{2})                \\
                         & = -(4 + \pi ^{2})y
           \end{align}
 
     \item Solving ODE,
           \begin{align}
-              y'' + 2\pi y' + \pi ^{2}y & = 0                                          \\
-              a                         & = 2\pi                      & b & = \pi ^{2} \\
-              a^{2} - 4b                & = 0                                          \\
-              \lambda_{1}, \lambda_{2}  & = \frac{-2\pi \pm 0}{2}     &   & = -\pi     \\
+              y'' + 2\pi y' + \pi ^{2}y & = 0                           \\
+              a                         & = 2\pi                      &
+              b                         & = \pi ^{2}                    \\
+              a^{2} - 4b                & = 0                           \\
+              \lambda_{1}, \lambda_{2}  & = \frac{-2\pi \pm 0}{2}     &
+                                        & = -\pi                        \\
               y                         & = (c_{1}+ c_{2}x)e^{-\pi x}
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'           & = e^{-\pi x}(c_{2} - \pi c_{1} - \pi c_{2}x)                        \\
-              y''          & = e^{-\pi x}(-\pi c_{2}-\pi c_{2} + \pi ^{2}c_{1} + \pi ^{2}c_{2}x) \\
-              y''+ 2\pi y' & = e^{-\pi x}(-\pi ^{2}c_{1} - \pi ^{2}c_{2}x)                       \\
+              y'           & = e^{-\pi x}(c_{2} - \pi c_{1} - \pi c_{2}x)      \\
+              y''          & = e^{-\pi x}(-\pi c_{2}-\pi c_{2} + \pi ^{2}c_{1}
+              + \pi ^{2}c_{2}x)                                                \\
+              y''+ 2\pi y' & = e^{-\pi x}(-\pi ^{2}c_{1} - \pi ^{2}c_{2}x)     \\
                            & = -\pi ^{2}y
           \end{align}
 
     \item Solving ODE,
           \begin{align}
-              10y'' - 32y' + 25.6y     & = 0                                     \\
-              a                        & = -3.2                     & b & = 2.56 \\
-              a^{2} - 4b               & = 3.2^{2} - 4(2.56) = 0                 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-3.2 \pm 0}{2}     &   & = -1.6 \\
+              10y'' - 32y' + 25.6y     & = 0                          \\
+              a                        & = -3.2                     &
+              b                        & = 2.56                       \\
+              a^{2} - 4b               & = 3.2^{2} - 4(2.56) = 0      \\
+              \lambda_{1}, \lambda_{2} & = \frac{-3.2 \pm 0}{2}     &
+                                       & = -1.6                       \\
               y                        & = (c_{1}+ c_{2}x)e^{1.6 x}
           \end{align}
           Checking by substitution,
@@ -99,10 +115,12 @@
 
     \item Solving ODE,
           \begin{align}
-              y'' + 4.5y'              & = 0                                               \\
-              a                        & = 4.5                             & b & = 0       \\
-              a^{2} - 4b               & = 20.25 > 0                                       \\
-              \lambda_{1}, \lambda_{2} & = \frac{-4.5 \pm \sqrt{20.25}}{2} &   & = -4.5, 0 \\
+              y'' + 4.5y'              & = 0                                 \\
+              a                        & = 4.5                             &
+              b                        & = 0                                 \\
+              a^{2} - 4b               & = 20.25 > 0                         \\
+              \lambda_{1}, \lambda_{2} & = \frac{-4.5 \pm \sqrt{20.25}}{2} &
+                                       & = -4.5, 0                           \\
               y                        & = c_{1}e^{-9x} + c_{2}
           \end{align}
           Checking by substitution,
@@ -115,27 +133,34 @@
 
     \item Solving ODE,
           \begin{align}
-              y'' + y' + 3.25y & = 0                                                                       \\
-              a                & = 1                                                          & b & = 3.25 \\
-              a^{2} - 4b       & = 1 - 13 = -12 < 0                                                        \\
-              \omega^{2}       & = 3.25 - \frac{1^{2}}{4} = 3                                              \\
-              y                & = [c_{1}\cos(\sqrt{3} x) + c_{2}\sin(\sqrt{3} x)] \exp(-x/2)
+              y'' + y' + 3.25y & = 0                                       \\
+              a                & = 1                          & b & = 3.25 \\
+              a^{2} - 4b       & = 1 - 13 = -12 < 0                        \\
+              \omega^{2}       & = 3.25 - \frac{1^{2}}{4} = 3              \\
+              y                & = [c_{1}\cos(\sqrt{3} x)
+              + c_{2}\sin(\sqrt{3} x)] \exp(-x/2)
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'       & = e^{-x/2}\cos(\sqrt{3} x) (\sqrt{3} c_{2} - 0.5c_{1}) + e^{-x/2}\sin(\sqrt{3} x)(-\sqrt{3} c_{1} - 0.5c_{2}) \\
-              y''      & = e^{-x/2}\cos(\sqrt{3} x)(-0.5\sqrt{3} c_{2} + 0.25c_{1} - 3c_{1} - 0.5\sqrt{3} c_{2})                       \\
-                       & + e^{-x/2}\sin(\sqrt{3} x)(0.5\sqrt{3} c_{1} + 0.25c_{2} - 3c_{2} + 0.5\sqrt{3} c_{1})                        \\
-              y'' + y' & = e^{-x/2}\cos(\sqrt{3} x)(-3.25c_{1}) + e^{-x/2}\sin(\sqrt{3}x)(-3.25c_{2})                                  \\
+              y'       & = e^{-x/2}\cos(\sqrt{3} x) (\sqrt{3} c_{2} - 0.5c_{1})
+              + e^{-x/2}\sin(\sqrt{3} x)(-\sqrt{3} c_{1} - 0.5c_{2})               \\
+              y''      & = e^{-x/2}\cos(\sqrt{3} x)(-0.5\sqrt{3} c_{2} + 0.25c_{1}
+              - 3c_{1} - 0.5\sqrt{3} c_{2})                                        \\
+                       & + e^{-x/2}\sin(\sqrt{3} x)(0.5\sqrt{3} c_{1} + 0.25c_{2}
+              - 3c_{2} + 0.5\sqrt{3} c_{1})                                        \\
+              y'' + y' & = e^{-x/2}\cos(\sqrt{3} x)(-3.25c_{1}) + e^{-x/2}
+              \sin(\sqrt{3}x)(-3.25c_{2})                                          \\
                        & = -3.25y
           \end{align}
 
     \item Solving ODE,
           \begin{align}
-              y'' + 1.8y' - 2.08y      & = 0                                                 \\
-              a                        & = 1.8                             & b & = -2.08     \\
-              a^{2} - 4b               & = 1.8^{2} - 4(-2.08) = 11.56 > 0                    \\
-              \lambda_{1}, \lambda_{2} & = \frac{-1.8 \pm \sqrt{11.56}}{2} &   & = -2.6, 0.8 \\
+              y'' + 1.8y' - 2.08y      & = 0                                 \\
+              a                        & = 1.8                             &
+              b                        & = -2.08                             \\
+              a^{2} - 4b               & = 1.8^{2} - 4(-2.08) = 11.56 > 0    \\
+              \lambda_{1}, \lambda_{2} & = \frac{-1.8 \pm \sqrt{11.56}}{2} &
+                                       & = -2.6, 0.8                         \\
               y                        & = c_{1}e^{-2.6x} + c_{2}e^{0.8x}
           \end{align}
           Checking by substitution,
@@ -149,28 +174,37 @@
 
     \item Solving ODE,
           \begin{align}
-              0          & = 100y'' + 240y' + (196 \pi ^{2} + 144)y                                                            \\
-              a          & = 2.40                                                               & b & = (1.96 \pi ^{2} + 1.44) \\
-              a^{2} - 4b & = 2.40^{2} - 4(1.96\pi ^{2} + 1.44) = - \frac{196 \pi^{2}}{25} < 0                                  \\
-              \omega^{2} & = (1.96 \pi ^{2} + 1.44) - \frac{2.4^{2}}{4} = \frac{49 \pi^{2}}{25}                                \\
-              y          & = [c_{1}\cos(1.4\pi x) + c_{2}\sin(1.4\pi x)] \exp(-1.2x)
+              0          & = 100y'' + 240y' + (196 \pi ^{2} + 144)y         \\
+              a          & = 2.40                                         &
+              b          & = (1.96 \pi ^{2} + 1.44)                         \\
+              a^{2} - 4b & = 2.40^{2} - 4(1.96\pi ^{2} + 1.44) =
+              - \frac{196 \pi^{2}}{25} < 0                                  \\
+              \omega^{2} & = (1.96 \pi ^{2} + 1.44) - \frac{2.4^{2}}{4} =
+              \frac{49 \pi^{2}}{25}                                         \\
+              y          & = [c_{1}\cos(1.4\pi x) + c_{2}\sin(1.4\pi x)]
+              \exp(-1.2x)
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'          & = e^{-1.2x}\cos(1.4\pi x) (1.4\pi c_{2} - 1.2c_{1}) + e^{-1.2x}\sin(1.4\pi x)(-1.4\pi c_{1} - 1.2c_{2}) \\
-              y''         & = e^{-1.2x}\cos(1.4\pi x)(-1.68\pi c_{2} + 1.44c_{1} - 1.96\pi^{2} c_{1} - 1.68\pi c_{2})               \\
-                          & + e^{-1.2x}\sin(1.4\pi x)(1.68\pi c_{1} + 1.44c_{2} - 1.96\pi^{2} c_{2} + 1.68 \pi c_{1})               \\
-              y'' + 2.4y' & = c_{1}e^{-1.2x}\cos(1.4\pi x)(-1.44 - 1.96\pi ^{2})                                                    \\
-                          & + c_{2}e^{-1.2x}\sin(1.4x)(-1.44 - 1.96\pi ^{2})                                                        \\
+              y'          & = e^{-1.2x}\cos(1.4\pi x) (1.4\pi c_{2} - 1.2c_{1})
+              + e^{-1.2x}\sin(1.4\pi x)(-1.4\pi c_{1} - 1.2c_{2})                \\
+              y''         & = e^{-1.2x}\cos(1.4\pi x)(-1.68\pi c_{2} + 1.44c_{1}
+              - 1.96\pi^{2} c_{1} - 1.68\pi c_{2})                               \\
+                          & + e^{-1.2x}\sin(1.4\pi x)(1.68\pi c_{1} + 1.44c_{2}
+              - 1.96\pi^{2} c_{2} + 1.68 \pi c_{1})                              \\
+              y'' + 2.4y' & = c_{1}e^{-1.2x}\cos(1.4\pi x)(-1.44 - 1.96\pi ^{2}) \\
+                          & + c_{2}e^{-1.2x}\sin(1.4x)(-1.44 - 1.96\pi ^{2})     \\
                           & = -(1.44 + 1.96\pi ^{2})y
           \end{align}
 
     \item Solving ODE,
           \begin{align}
-              4y'' -4y' - 3y           & = 0                                                \\
-              a                        & = -1                             & b & = -3/4      \\
-              a^{2} - 4b               & = 1^{2} - 4(-3/4) = 4 > 0                          \\
-              \lambda_{1}, \lambda_{2} & = \frac{1 \pm \sqrt{4}}{2}       &   & = -0.5, 1.5 \\
+              4y'' -4y' - 3y           & = 0                                \\
+              a                        & = -1                             &
+              b                        & = -3/4                             \\
+              a^{2} - 4b               & = 1^{2} - 4(-3/4) = 4 > 0          \\
+              \lambda_{1}, \lambda_{2} & = \frac{1 \pm \sqrt{4}}{2}       &
+                                       & = -0.5, 1.5                        \\
               y                        & = c_{1}e^{1.5x} + c_{2}e^{-0.5x}
           \end{align}
           Checking by substitution,
@@ -184,10 +218,12 @@
 
     \item Solving ODE,
           \begin{align}
-              y'' + 9y' + 20y          & = 0                                             \\
-              a                        & = 9                              & b & = 20     \\
-              a^{2} - 4b               & = 9^{2} - 4(20) = 1 > 0                         \\
-              \lambda_{1}, \lambda_{2} & = \frac{-9 \pm \sqrt{1}}{2}      &   & = -5, -4 \\
+              y'' + 9y' + 20y          & = 0                                \\
+              a                        & = 9                              &
+              b                        & = 20                               \\
+              a^{2} - 4b               & = 9^{2} - 4(20) = 1 > 0            \\
+              \lambda_{1}, \lambda_{2} & = \frac{-9 \pm \sqrt{1}}{2}      &
+                                       & = -5, -4                           \\
               y                        & = c_{1}e^{-1.5x} + c_{2}e^{0.5x}
           \end{align}
           Checking by substitution,
@@ -201,52 +237,65 @@
 
     \item Solving ODE,
           \begin{align}
-              9y'' - 30y' + 25y        & = 0                                                 \\
-              a                        & = -30/9                                & b & = 25/9 \\
-              a^{2} - 4b               & = \frac{30}{9}^{2} - \frac{100}{9} = 0              \\
-              \lambda_{1}, \lambda_{2} & = \frac{30/9 \pm 0}{2}                 &   & = 5/3  \\
+              9y'' - 30y' + 25y        & = 0                                      \\
+              a                        & = -30/9                                &
+              b                        & = 25/9                                   \\
+              a^{2} - 4b               & = \frac{30}{9}^{2} - \frac{100}{9} = 0   \\
+              \lambda_{1}, \lambda_{2} & = \frac{30/9 \pm 0}{2}                 &
+                                       & = 5/3                                    \\
               y                        & = (c_{1}+ c_{2}x)e^{5x/3}
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'         & = e^{5x/3}\left( c_{2} + \frac{5}{3} c_{1} + \frac{5}{3} c_{2}x \right)                                 \\
-              y''        & = e^{5x/3}\left( \frac{5}{3} c_{2} + \frac{5}{3} c_{2} + \frac{25}{9}c_{1} + \frac{25}{9}c_{2}x \right) \\
-              9y''- 30y' & = e^{5x/3}(-25c_{1} - 25c_{2}x)                                                                         \\
+              y'         & = e^{5x/3}\left( c_{2} + \frac{5}{3} c_{1}
+              + \frac{5}{3} c_{2}x \right)                                        \\
+              y''        & = e^{5x/3}\left( \frac{5}{3} c_{2} + \frac{5}{3} c_{2}
+              + \frac{25}{9}c_{1} + \frac{25}{9}c_{2}x \right)                    \\
+              9y''- 30y' & = e^{5x/3}(-25c_{1} - 25c_{2}x)                        \\
                          & = -25y
           \end{align}
 
     \item Solving ODE,
           \begin{align}
-              y'' + 2k^{2}y' + k^{4}y  & = 0                                        \\
-              a                        & = 2k^{2}                     & b & = k^{4} \\
-              a^{2} - 4b               & = 0                                        \\
-              \lambda_{1}, \lambda_{2} & = \frac{-2k^{2} \pm 0}{2}    &   & = k^{2} \\
+              y'' + 2k^{2}y' + k^{4}y  & = 0                            \\
+              a                        & = 2k^{2}                     &
+              b                        & = k^{4}                        \\
+              a^{2} - 4b               & = 0                            \\
+              \lambda_{1}, \lambda_{2} & = \frac{-2k^{2} \pm 0}{2}    &
+                                       & = k^{2}                        \\
               y                        & = (c_{1}+ c_{2}x)e^{-k^{2}x}
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'            & = e^{-k^{2}x}( c_{2} - k^{2} c_{1} - k^{2} c_{2}x)                    \\
-              y''           & = e^{-k^{2}x}( -k^{2} c_{2} - k^{2} c_{2} + k^{4}c_{1} + k^{4}c_{2}x) \\
-              y''+ 2k^{2}y' & = e^{-k^{2}x}(-k^{4}c_{1} - k^{4}c_{2}x)                              \\
+              y'            & = e^{-k^{2}x}( c_{2} - k^{2} c_{1} - k^{2} c_{2}x)     \\
+              y''           & = e^{-k^{2}x}( -k^{2} c_{2} - k^{2} c_{2} + k^{4}c_{1}
+              + k^{4}c_{2}x)                                                         \\
+              y''+ 2k^{2}y' & = e^{-k^{2}x}(-k^{4}c_{1} - k^{4}c_{2}x)               \\
                             & = -k^{4}y
           \end{align}
 
     \item Solving ODE,
           \begin{align}
-              0          & = y'' + 0.54y' + (\pi + 0.0729)y                                                          \\
-              a          & = 0.54                                                             & b & = (\pi + 0.0729) \\
-              a^{2} - 4b & = 0.54^{2} - 4(\pi + 0.0729) = -4\pi < 0                                                  \\
-              \omega^{2} & = (\pi + 0.0729) - \frac{0.54^{2}}{4} = \pi                                               \\
-              y          & = [c_{1}\cos(\sqrt{\pi} x) + c_{2}\sin(\sqrt{\pi} x)] \exp(-0.27x)
+              0          & = y'' + 0.54y' + (\pi + 0.0729)y                        \\
+              a          & = 0.54                                                &
+              b          & = (\pi + 0.0729)                                        \\
+              a^{2} - 4b & = 0.54^{2} - 4(\pi + 0.0729) = -4\pi < 0                \\
+              \omega^{2} & = (\pi + 0.0729) - \frac{0.54^{2}}{4} = \pi             \\
+              y          & = [c_{1}\cos(\sqrt{\pi} x) + c_{2}\sin(\sqrt{\pi} x)]
+              \exp(-0.27x)
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'           & = e^{-0.27x}\cos(\sqrt{\pi} x) (\sqrt{\pi} c_{2} - 0.27c_{1})                                          \\
-                           & + e^{-0.27x}\sin(\sqrt{\pi} x)(-\sqrt{\pi} c_{1} - 0.27c_{2})                                          \\
-              y''          & = e^{-0.27x}\cos(\sqrt{\pi} x)(-0.27\sqrt{\pi} c_{2} + 0.0729c_{1} - \pi c_{1} - 0.27\sqrt{\pi} c_{2}) \\
-                           & + e^{-0.27x}\sin(\sqrt{\pi} x)(0.27\sqrt{\pi} c_{1} + 0.0729c_{2} - \pi c_{2} + 0.27\sqrt{\pi} c_{1})  \\
-              y'' + 0.54y' & = c_{1}e^{-0.27x}\cos(\sqrt{\pi} x)(-\pi-0.0729)                                                       \\
-                           & + c_{2}e^{-0.27x}\sin(1.4x)(-\pi-0.0729)                                                               \\
+              y'           & = e^{-0.27x}\cos(\sqrt{\pi} x) (\sqrt{\pi} c_{2}
+              - 0.27c_{1})                                                        \\
+                           & + e^{-0.27x}\sin(\sqrt{\pi} x)(-\sqrt{\pi} c_{1}
+              - 0.27c_{2})                                                        \\
+              y''          & = e^{-0.27x}\cos(\sqrt{\pi} x)(-0.27\sqrt{\pi} c_{2}
+              + 0.0729c_{1} - \pi c_{1} - 0.27\sqrt{\pi} c_{2})                   \\
+                           & + e^{-0.27x}\sin(\sqrt{\pi} x)(0.27\sqrt{\pi} c_{1}
+              + 0.0729c_{2} - \pi c_{2} + 0.27\sqrt{\pi} c_{1})                   \\
+              y'' + 0.54y' & = c_{1}e^{-0.27x}\cos(\sqrt{\pi} x)(-\pi-0.0729)     \\
+                           & + c_{2}e^{-0.27x}\sin(1.4x)(-\pi-0.0729)             \\
                            & = -(\pi + 0.0729) y
           \end{align}
 
@@ -260,9 +309,12 @@
 
     \item Given the basis, characteristic equation has real repeated roots,
           \begin{align}
-              \lambda_{1} & = \exp(-\sqrt{5}x)       & \lambda_{2} & = \exp(-\sqrt{5}x) \\
-              -a/2        & = -\sqrt{5}              & a           & = 2\sqrt{5}        \\
-              a^{2} - 4b  & = 0                      & b           & =   5              \\
+              \lambda_{1} & = \exp(-\sqrt{5}x)       &
+              \lambda_{2} & = \exp(-\sqrt{5}x)         \\
+              -a/2        & = -\sqrt{5}              &
+              a           & = 2\sqrt{5}                \\
+              a^{2} - 4b  & = 0                      &
+              b           & =   5                      \\
               0           & = y'' + 2\sqrt{5}y' + 5y
           \end{align}
 
@@ -276,35 +328,48 @@
 
     \item Given the basis, characteristic equation has imaginary roots,
           \begin{align}
-              \lambda_{1}                   & = \exp[(-2+i)x]    & \lambda_{2} & = \exp[(-2-i)x]     \\
-              \lambda_{1} + \lambda_{2}     & = e^{-2x}(2\cos x) & a           & = -2\cos x\ e^{-2x} \\
-              \lambda_{1} \cdot \lambda_{2} & = e^{-4x}          & b           & =   e^{-4x}         \\
+              \lambda_{1}                   & = \exp[(-2+i)x]     &
+              \lambda_{2}                   & = \exp[(-2-i)x]       \\
+              \lambda_{1} + \lambda_{2}     & = e^{-2x}(2\cos x)  &
+              a                             & = -2\cos x\ e^{-2x}   \\
+              \lambda_{1} \cdot \lambda_{2} & = e^{-4x}           &
+              b                             & =   e^{-4x}
           \end{align}
-          To obtain an ODE with constant coefficients, consider the superposition of these solutions,
+          To obtain an ODE with constant coefficients, consider the superposition of
+          these solutions,
           \begin{align}
-              \lambda_{3} & = \frac{\lambda_{1} + \lambda_{2}}{2}  &   & = e^{-2x}(\cos x) \\
-              \lambda_{4} & = \frac{\lambda_{1} - \lambda_{2}}{2i} &   & = e^{-2x}(\sin x) \\
-              -a/2        & = -2                                   & a & = 4               \\
-              \omega ^{2} & = b - \frac{a^{2}}{4}                  & b & = 5               \\
+              \lambda_{3} & = \frac{\lambda_{1} + \lambda_{2}}{2}  &
+                          & = e^{-2x}(\cos x)                        \\
+              \lambda_{4} & = \frac{\lambda_{1} - \lambda_{2}}{2i} &
+                          & = e^{-2x}(\sin x)                        \\
+              -a/2        & = -2                                   &
+              a           & = 4                                      \\
+              \omega ^{2} & = b - \frac{a^{2}}{4}                  &
+              b           & = 5                                      \\
               0           & = y'' + 4y' + 5y
           \end{align}
 
     \item Given the basis, characteristic equation has imaginary roots,
           \begin{align}
-              \lambda_{1} & = e^{-3.1x}\cos(2.1 x) & \lambda_{2} & = e^{-3.1x}\sin(2.1 x)                    \\
-              -a/2        & = -3.1                 & a           & = 6.2                                     \\
-              b - a^{2}/4 & = \omega ^{2}          & b           & =   \frac{6.2^{2}}{4} + (2.1)^{2} = 14.02 \\
+              \lambda_{1} & = e^{-3.1x}\cos(2.1 x)                    &
+              \lambda_{2} & = e^{-3.1x}\sin(2.1 x)                      \\
+              -a/2        & = -3.1                                    &
+              a           & = 6.2                                       \\
+              b - a^{2}/4 & = \omega ^{2}                             &
+              b           & =   \frac{6.2^{2}}{4} + (2.1)^{2} = 14.02   \\
               0           & = y'' + 6.2y' + 14.02y
           \end{align}
 
     \item Solving ODE, with IC $ y(0) = 4.6, y'(0) = -1.2 $,
           \begin{align}
-              0          & = y'' + 25y                                               \\
-              a          & = 0                             & b     & = 25            \\
-              a^{2} - 4b & = -100  < 0                                               \\
-              \omega^{2} & = 25 - \frac{0^{2}}{4} = 25                               \\
-              y          & = c_{1}\cos(5x) + c_{2}\sin(5x)                           \\
-              y(0)       & = c_{1} = 4.6                   & y'(0) & = 5c_{2} = -1.2 \\
+              0          & = y'' + 25y                       \\
+              a          & = 0                             &
+              b          & = 25                              \\
+              a^{2} - 4b & = -100  < 0                       \\
+              \omega^{2} & = 25 - \frac{0^{2}}{4} = 25       \\
+              y          & = c_{1}\cos(5x) + c_{2}\sin(5x)   \\
+              y(0)       & = c_{1} = 4.6                   &
+              y'(0)      & = 5c_{2} = -1.2                   \\
               y          & = 4.6 \cos(5x) - 0.24 \sin(5x)
           \end{align}
           Checking by substitution,
@@ -317,32 +382,41 @@
 
     \item Solving ODE, with IC $ y(1/2) = 1, y'(1/2) = -2 $,
           \begin{align}
-              y'' + 4y' + (\pi^{2} + 4)y & = 0                                                                         \\
-              a                          & = 4                                               & b     & = (\pi^{2} + 4) \\
-              a^{2} - 4b                 & = -4\pi ^{2} < 0                                                            \\
-              \omega^{2}                 & = (\pi ^{2} + 4) - \frac{4^{2}}{4} = \pi ^{2}                               \\
-              y                          & = [c_{1}\cos(\pi x) + c_{2}\sin(\pi x)] \exp(-2x)                           \\
-              y(0)                       & = \frac{c_{2}}{e} = 1                             & c_{2} & = e             \\
-              y'(0)                      & = \frac{1}{e} (-\pi c_{1} - 2 c_{2}) = -2         & c_{1} & = 0             \\
+              y'' + 4y' + (\pi^{2} + 4)y & = 0                                         \\
+              a                          & = 4                                       &
+              b                          & = (\pi^{2} + 4)                             \\
+              a^{2} - 4b                 & = -4\pi ^{2} < 0                            \\
+              \omega^{2}                 & = (\pi ^{2} + 4) - \frac{4^{2}}{4}
+              = \pi ^{2}                                                               \\
+              y                          & = [c_{1}\cos(\pi x) + c_{2}\sin(\pi x)]
+              \exp(-2x)                                                                \\
+              y(0)                       & = \frac{c_{2}}{e} = 1                     &
+              c_{2}                      & = e                                         \\
+              y'(0)                      & = \frac{1}{e} (-\pi c_{1} - 2 c_{2}) = -2 &
+              c_{1}                      & = 0                                         \\
               y                          & = e^{-2x}\left( e\sin(\pi x) \right)
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'        & = e^{-2x}\cos(\pi x) (\pi e) + e^{-2x}\sin(\pi x)(-2e)                   \\
-              y''       & = e^{-2x}\cos(\pi x)(-2\pi e -2\pi e)                                    \\
-                        & + e^{-2x}\sin(\pi x)(-\pi ^{2}e + 4e)                                    \\
-              y'' + 4y' & = e^{-2x+1}\cos(\pi x)(-4\pi + 4\pi) + e^{-2x+1}\sin(\pi x)(-4-\pi ^{2}) \\
+              y'        & = e^{-2x}\cos(\pi x) (\pi e) + e^{-2x}\sin(\pi x)(-2e) \\
+              y''       & = e^{-2x}\cos(\pi x)(-2\pi e -2\pi e)                  \\
+                        & + e^{-2x}\sin(\pi x)(-\pi ^{2}e + 4e)                  \\
+              y'' + 4y' & = e^{-2x+1}\cos(\pi x)(-4\pi + 4\pi)
+              + e^{-2x+1}\sin(\pi x)(-4-\pi ^{2})                                \\
                         & = -(4 + \pi ^{2})y
           \end{align}
 
     \item Solving ODE, with IC $ y(0) = 10, y'(0) = 0 $,
           \begin{align}
-              y'' + y' - 6y            & = 0                                                           \\
-              a                        & = 1                          & b     & = -6                   \\
-              a^{2} - 4b               & = 25 > 0                                                      \\
-              \lambda_{1}, \lambda_{2} & = \frac{-1 \pm \sqrt{25}}{2} &       & = 2, -3                \\
-              y                        & = c_{1}e^{-3x} + c_{2}e^{2x}                                  \\
-              y(0)                     & = c_{1} + c_{2} = 10         & y'(0) & = -3c_{1} + 2c_{2} = 0 \\
+              y'' + y' - 6y            & = 0                            \\
+              a                        & = 1                          &
+              b                        & = -6                           \\
+              a^{2} - 4b               & = 25 > 0                       \\
+              \lambda_{1}, \lambda_{2} & = \frac{-1 \pm \sqrt{25}}{2} &
+                                       & = 2, -3                        \\
+              y                        & = c_{1}e^{-3x} + c_{2}e^{2x}   \\
+              y(0)                     & = c_{1} + c_{2} = 10         &
+              y'(0)                    & = -3c_{1} + 2c_{2} = 0         \\
               y                        & = 4e^{-3x} + 6e^{2x}
           \end{align}
           Checking by substitution,
@@ -356,12 +430,15 @@
 
     \item Solving ODE, with IC $ y(-2) = e, y'(-2) = -e/2 $,
           \begin{align}
-              4y'' -4y' - 3y           & = 0                                                                             \\
-              a                        & = -1                             & b      & = -3/4                              \\
-              a^{2} - 4b               & = 1^{2} - 4(-3/4) = 4 > 0                                                       \\
-              \lambda_{1}, \lambda_{2} & = \frac{1 \pm \sqrt{4}}{2}       &        & = -0.5, 1.5                         \\
-              y                        & = c_{1}e^{1.5x} + c_{2}e^{-0.5x}                                                \\
-              y(-2)                    & = c_{1}e^{-3} + c_{2}e = e       & y'(-2) & = 1.5c_{1}e^{-3} - 0.5c_{2}e = -e/2 \\
+              4y'' -4y' - 3y           & = 0                                   \\
+              a                        & = -1                                &
+              b                        & = -3/4                                \\
+              a^{2} - 4b               & = 1^{2} - 4(-3/4) = 4 > 0             \\
+              \lambda_{1}, \lambda_{2} & = \frac{1 \pm \sqrt{4}}{2}          &
+                                       & = -0.5, 1.5                           \\
+              y                        & = c_{1}e^{1.5x} + c_{2}e^{-0.5x}      \\
+              y(-2)                    & = c_{1}e^{-3} + c_{2}e = e          &
+              y'(-2)                   & = 1.5c_{1}e^{-3} - 0.5c_{2}e = -e/2   \\
               y                        & = e^{-0.5x}
           \end{align}
           Checking by substitution,
@@ -374,12 +451,15 @@
 
     \item Solving ODE, with IC $ y(0) = 2 , y'(0) = -2$,
           \begin{align}
-              y'' - y                  & = 0                                                       \\
-              a                        & = 0                        & b     & = -1                 \\
-              a^{2} - 4b               & = 4 > 0                                                   \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{4}}{2} &       & = \pm 1              \\
-              y                        & = c_{1}e^{x} + c_{2}e^{-x}                                \\
-              y(0)                     & = c_{1} + c_{2} = 2        & y'(0) & = c_{1} - c_{2} = -2 \\
+              y'' - y                  & = 0                          \\
+              a                        & = 0                        &
+              b                        & = -1                         \\
+              a^{2} - 4b               & = 4 > 0                      \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{4}}{2} &
+                                       & = \pm 1                      \\
+              y                        & = c_{1}e^{x} + c_{2}e^{-x}   \\
+              y(0)                     & = c_{1} + c_{2} = 2        &
+              y'(0)                    & = c_{1} - c_{2} = -2         \\
               y                        & = 2e^{-x}
           \end{align}
           Checking by substitution,
@@ -391,12 +471,15 @@
 
     \item Solving ODE, with IC $ y(0) = 1 , y'(0) = 1$,
           \begin{align}
-              y'' - k^{2}y             & = 0                                                             \\
-              a                        & = 0                             & b     & = -k^{2}              \\
-              a^{2} - 4b               & = 4k^{2} > 0                                                    \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{4k^{2}}}{2} &       & = \pm k               \\
-              y                        & = c_{1}e^{kx} + c_{2}e^{-kx}                                    \\
-              y(0)                     & = c_{1} + c_{2} = 1/k           & y'(0) & = c_{1} - c_{2} = 1/k \\
+              y'' - k^{2}y             & = 0                               \\
+              a                        & = 0                             &
+              b                        & = -k^{2}                          \\
+              a^{2} - 4b               & = 4k^{2} > 0                      \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{4k^{2}}}{2} &
+                                       & = \pm k                           \\
+              y                        & = c_{1}e^{kx} + c_{2}e^{-kx}      \\
+              y(0)                     & = c_{1} + c_{2} = 1/k           &
+              y'(0)                    & = c_{1} - c_{2} = 1/k             \\
               y                        & = \frac{1}{k}e^{kx}
           \end{align}
           Checking by substitution,
@@ -408,12 +491,15 @@
 
     \item Solving ODE, with IC $ y(0) = 4.5, y'(0) = -4.5\pi - 1 $
           \begin{align}
-              y'' + 2\pi y' + \pi ^{2}y & = 0                                                                     \\
-              a                         & = 2\pi                      & b     & = \pi ^{2}                        \\
-              a^{2} - 4b                & = 0                                                                     \\
-              \lambda_{1}, \lambda_{2}  & = \frac{-2\pi \pm 0}{2}     &       & = -\pi                            \\
-              y                         & = (c_{1}+ c_{2}x)e^{-\pi x}                                             \\
-              y(0)                      & = c_{1} = 4.5               & y'(0) & = c_{2} - \pi c_{1} = -4.5\pi - 1 \\
+              y'' + 2\pi y' + \pi ^{2}y & = 0                                 \\
+              a                         & = 2\pi                            &
+              b                         & = \pi ^{2}                          \\
+              a^{2} - 4b                & = 0                                 \\
+              \lambda_{1}, \lambda_{2}  & = \frac{-2\pi \pm 0}{2}           &
+                                        & = -\pi                              \\
+              y                         & = (c_{1}+ c_{2}x)e^{-\pi x}         \\
+              y(0)                      & = c_{1} = 4.5                     &
+              y'(0)                     & = c_{2} - \pi c_{1} = -4.5\pi - 1   \\
               y                         & =(4.5 - x)e^{-\pi x}
           \end{align}
           Checking by substitution,
@@ -426,12 +512,15 @@
 
     \item Solving ODE, with IC $ y(0) = -0.2, y'(0) = -0.325 $,
           \begin{align}
-              8y'' - 2y' - y           & = 0                                                                         \\
-              a                        & = -1/4                            & b     & = -1/8                          \\
-              a^{2} - 4b               & = 9/16 > 0                                                                  \\
-              \lambda_{1}, \lambda_{2} & = \frac{1/4 \pm \sqrt{9/16}}{2}   &       & = 0.5, -0.25                    \\
-              y                        & = c_{1}e^{0.5x} + c_{2}e^{-0.25x}                                           \\
-              y(0)                     & = c_{1} + c_{2} = -0.2            & y'(0) & = 0.5c_{1} - 0.25c_{2} = -0.325 \\
+              8y'' - 2y' - y           & = 0                                 \\
+              a                        & = -1/4                            &
+              b                        & = -1/8                              \\
+              a^{2} - 4b               & = 9/16 > 0                          \\
+              \lambda_{1}, \lambda_{2} & = \frac{1/4 \pm \sqrt{9/16}}{2}   &
+                                       & = 0.5, -0.25                        \\
+              y                        & = c_{1}e^{0.5x} + c_{2}e^{-0.25x}   \\
+              y(0)                     & = c_{1} + c_{2} = -0.2            &
+              y'(0)                    & = 0.5c_{1} - 0.25c_{2} = -0.325     \\
               y                        & = 1.5e^{0.5x} - 1.7e^{-0.25x}
           \end{align}
           Checking by substitution,
@@ -445,106 +534,140 @@
 
     \item Solving ODE, with IC $ y(0) = 0, y'(0) = 1 $,
           \begin{align}
-              0          & = y'' + 0.54y' + (\pi + 0.0729)y                                                          \\
-              a          & = 0.54                                                             & b & = (\pi + 0.0729) \\
-              a^{2} - 4b & = 0.54^{2} - 4(\pi + 0.0729) = -4\pi < 0                                                  \\
-              \omega^{2} & = (\pi + 0.0729) - \frac{0.54^{2}}{4} = \pi                                               \\
-              y          & = [c_{1}\cos(\sqrt{\pi} x) + c_{2}\sin(\sqrt{\pi} x)] \exp(-0.27x)                        \\
-              y(0)       & = c_{1} = 0                                                                               \\
-              y'(0)      & = \sqrt{\pi}c_{2} = 1                                                                     \\
+              0          & = y'' + 0.54y' + (\pi + 0.0729)y                            \\
+              a          & = 0.54                                                    &
+              b          & = (\pi + 0.0729)                                            \\
+              a^{2} - 4b & = 0.54^{2} - 4(\pi + 0.0729) = -4\pi < 0                    \\
+              \omega^{2} & = (\pi + 0.0729) - \frac{0.54^{2}}{4} = \pi                 \\
+              y          & = [c_{1}\cos(\sqrt{\pi} x) + c_{2}\sin(\sqrt{\pi} x)]
+              \exp(-0.27x)                                                             \\
+              y(0)       & = c_{1} = 0                                                 \\
+              y'(0)      & = \sqrt{\pi}c_{2} = 1                                       \\
               y          & = \frac{1}{\sqrt{\pi}}\ \sin(\sqrt{\pi} x)\  \exp(-0.27x)
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'           & = e^{-0.27x}\cos(\sqrt{\pi} x) (1)                                \\
-                           & + e^{-0.27x}\sin(\sqrt{\pi} x)(- 0.27/\sqrt{\pi})                 \\
-              y''          & = e^{-0.27x}\cos(\sqrt{\pi} x)(-0.27 - 0.27)                      \\
-                           & + e^{-0.27x}\sin(\sqrt{\pi} x)(0.27^{2}/\sqrt{\pi} - \sqrt{\pi})  \\
-              y'' + 0.54y' & = e^{-0.27x}\cos(\sqrt{\pi} x)(-0.54 + 0.54)                      \\
-                           & + e^{-0.27x}\sin(\sqrt{\pi} x)(-0.27^{2}/\sqrt{\pi} - \sqrt{\pi}) \\
+              y'           & = e^{-0.27x}\cos(\sqrt{\pi} x) (1) \\
+                           & + e^{-0.27x}\sin(\sqrt{\pi} x)
+              (- 0.27/\sqrt{\pi})                               \\
+              y''          & = e^{-0.27x}\cos(\sqrt{\pi} x)
+              (-0.27 - 0.27)                                    \\
+                           & + e^{-0.27x}\sin(\sqrt{\pi} x)
+              (0.27^{2}/\sqrt{\pi} - \sqrt{\pi})                \\
+              y'' + 0.54y' & = e^{-0.27x}\cos(\sqrt{\pi} x)
+              (-0.54 + 0.54)                                    \\
+                           & + e^{-0.27x}\sin(\sqrt{\pi} x)
+              (-0.27^{2}/\sqrt{\pi} - \sqrt{\pi})               \\
                            & = -(\pi + 0.0729) y
           \end{align}
 
     \item Solving ODE, with IC $ y(0) = 3.3, y'(0) = 10 $,
           \begin{align}
-              9y'' - 30y' + 25y        & = 0                                                                              \\
-              a                        & = -30/9                                & b     & = 25/9                          \\
-              a^{2} - 4b               & = \frac{30}{9}^{2} - \frac{100}{9} = 0                                           \\
-              \lambda_{1}, \lambda_{2} & = \frac{30/9 \pm 0}{2}                 &       & = 5/3                           \\
-              y                        & = (c_{1}+ c_{2}x)e^{5x/3}                                                        \\
-              y(0)                     & = c_{1} = 3.3                          & y'(0) & = c_{2} + \frac{5}{3}c_{1} = 10 \\
+              9y'' - 30y' + 25y        & = 0                                      \\
+              a                        & = -30/9                                &
+              b                        & = 25/9                                   \\
+              a^{2} - 4b               & = \frac{30}{9}^{2} - \frac{100}{9} = 0   \\
+              \lambda_{1}, \lambda_{2} & = \frac{30/9 \pm 0}{2}                 &
+                                       & = 5/3                                    \\
+              y                        & = (c_{1}+ c_{2}x)e^{5x/3}                \\
+              y(0)                     & = c_{1} = 3.3                          &
+              y'(0)                    & = c_{2} + \frac{5}{3}c_{1} = 10          \\
               y                        & = e^{5x/3}(3.3 + 4.5)
           \end{align}
           Checking by substitution,
           \begin{align}
-              y'         & = e^{5x/3}\left( 4.5 + 5.5 + 7.5x \right)                           \\
-              y''        & = e^{5x/3}\left( 15 + \frac{55}{6} + \frac{25}{2}x \right)          \\
-              9y''- 30y' & = 25e^{5x/3}\left( - \frac{165}{50} - \frac{225}{50} c_{2}x \right) \\
+              y'         & = e^{5x/3}\left( 4.5 + 5.5 + 7.5x \right) \\
+              y''        & = e^{5x/3}\left( 15 + \frac{55}{6}
+              + \frac{25}{2}x \right)                                \\
+              9y''- 30y' & = 25e^{5x/3}\left( - \frac{165}{50}
+              - \frac{225}{50} c_{2}x \right)                        \\
                          & = -25\ (3.3 + 4.5x)\ e^{5x/3} = -25y
           \end{align}
 
     \item Using Wronskian to check if functions are L.I.,
           \begin{align}
-              y_{1}           & = e^{kx}                      & y_{2}                   & = xe^{kx}      \\
-              W(y_{1}, y_{2}) & = y_{1}'y_{2} - y_{1}y_{2}'                                              \\
-                              & = kxe^{2kx} - (kx + 1)e^{2kx} &                         & =-e^{2kx}      \\
-              W               & \neq 0                        & \text{for some} \quad I & \in \mathbb{R}
+              y_{1}                   & = e^{kx}                      &
+              y_{2}                   & = xe^{kx}                       \\
+              W(y_{1}, y_{2})         & = y_{1}'y_{2} - y_{1}y_{2}'     \\
+                                      & = kxe^{2kx} - (kx + 1)e^{2kx} &
+                                      & =-e^{2kx}                       \\
+              W                       & \neq 0                        &
+              \text{for some} \quad I & \in \mathbb{R}
           \end{align}
           For $ k \neq 0 $, the functions are L.I.
 
     \item Using Wronskian to check if functions are L.I.,
           \begin{align}
-              y_{1}           & = e^{ax}                    & y_{2}                   & = e^{-ax}          \\
-              W(y_{1}, y_{2}) & = y_{1}'y_{2} - y_{1}y_{2}'                                                \\
-                              & = a + a                     &                         & = 2a               \\
-              W               & \neq 0                      & \text{for some} \quad I & \in \mathbb{R}^{+}
+              y_{1}                   & = e^{ax}                    &
+              y_{2}                   & = e^{-ax}                     \\
+              W(y_{1}, y_{2})         & = y_{1}'y_{2} - y_{1}y_{2}'   \\
+                                      & = a + a                     &
+                                      & = 2a                          \\
+              W                       & \neq 0                      &
+              \text{for some} \quad I & \in \mathbb{R}^{+}
           \end{align}
           For $ a \neq 0 $, the functions are L.I.
 
     \item Using Wronskian to check if functions are L.I.,
           \begin{align}
-              y_{1}           & = x^{2}                           & y_{2}                   & = x^{2}\ln x    \\
-              W(y_{1}, y_{2}) & = y_{1}'y_{2} - y_{1}y_{2}'                                                   \\
-                              & = 2x^{3}\ln x - x^{3}(1 + 2\ln x) &                         & = -x^{3}        \\
-              W               & \neq 0                            & \text{for some} \quad I & \in (1, \infty)
+              y_{1}                   & = x^{2}                           &
+              y_{2}                   & = x^{2}\ln x                        \\
+              W(y_{1}, y_{2})         & = y_{1}'y_{2} - y_{1}y_{2}'         \\
+                                      & = 2x^{3}\ln x - x^{3}(1 + 2\ln x) &
+                                      & = -x^{3}                            \\
+              W                       & \neq 0                            &
+              \text{for some} \quad I & \in (1, \infty)
           \end{align}
           The functions are L.I.
 
     \item Using Wronskian to check if functions are L.I.,
           \begin{align}
-              y_{1}           & = \ln x                               & y_{2}                    & = \ln x^{3}     \\
-              W(y_{1}, y_{2}) & = y_{1}'y_{2} - y_{1}y_{2}'                                                        \\
-                              & = \frac{3\ln x}{x} - \frac{3\ln x}{x} &                          & = 0             \\
-              W               & \equiv 0                              & \text{for every} \quad I & \in (1, \infty)
+              y_{1}                    & = \ln x                               &
+              y_{2}                    & = \ln x^{3}                             \\
+              W(y_{1}, y_{2})          & = y_{1}'y_{2} - y_{1}y_{2}'             \\
+                                       & = \frac{3\ln x}{x} - \frac{3\ln x}{x} &
+                                       & = 0                                     \\
+              W                        & \equiv 0                              &
+              \text{for every} \quad I & \in (1, \infty)
           \end{align}
           The functions are L.D.
 
     \item Using Wronskian to check if functions are L.I.,
           \begin{align}
-              y_{1}           & = \sin (2x)                                                   & y_{2}                    & = \cos x \sin x    \\
-              W(y_{1}, y_{2}) & = y_{1}'y_{2} - y_{1}y_{2}'                                                                                   \\
-                              & = 2\cos(2x)\ \cos x \sin x - \sin(2x)(\cos ^{2} - \sin ^{2}x) &                          & = 0                \\
-              W               & \equiv 0                                                      & \text{for every} \quad I & \in \mathbb{R}^{-}
+              y_{1}                    & = \sin (2x)                           &
+              y_{2}                    & = \cos x \sin x                         \\
+              W(y_{1}, y_{2})          & = y_{1}'y_{2} - y_{1}y_{2}'             \\
+                                       & = 2\cos(2x)\ \cos x \sin x - \sin(2x)
+              (\cos ^{2}
+              - \sin ^{2}x)            &
+                                       & = 0                                     \\
+              W                        & \equiv 0                              &
+              \text{for every} \quad I & \in \mathbb{R}^{-}
           \end{align}
           The functions are L.D.
 
     \item Using Wronskian to check if functions are L.I.,
           \begin{align}
-              y_{1}           & = e^{-x}\cos(x/2)           & y_{2}                    & = 0         \\
-              W(y_{1}, y_{2}) & = y_{1}'y_{2} - y_{1}y_{2}'                                          \\
-                              & = 0                                                                  \\
-              W               & \equiv 0                    & \text{for every} \quad I & \in [-1, 1]
+              y_{1}                    & = e^{-x}\cos(x/2)           &
+              y_{2}                    & = 0                           \\
+              W(y_{1}, y_{2})          & = y_{1}'y_{2} - y_{1}y_{2}'   \\
+                                       & = 0                           \\
+              W                        & \equiv 0                    &
+              \text{for every} \quad I & \in [-1, 1]
           \end{align}
           The functions are L.D.
 
     \item Solving ODE, with IC $ y(0) = m , y'(0) = -n$,
           \begin{align}
-              y'' - y                  & = 0                                                                       \\
-              a                        & = 0                                        & b     & = -1                 \\
-              a^{2} - 4b               & = 4 > 0                                                                   \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{4}}{2}                 &       & = \pm 1              \\
-              y                        & = c_{1}e^{x} + c_{2}e^{-x}                                                \\
-              y(0)                     & = c_{1} + c_{2} = m                        & y'(0) & = c_{1} - c_{2} = -n \\
+              y'' - y                  & = 0                                          \\
+              a                        & = 0                                        &
+              b                        & = -1                                         \\
+              a^{2} - 4b               & = 4 > 0                                      \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{4}}{2}                 &
+                                       & = \pm 1                                      \\
+              y                        & = c_{1}e^{x} + c_{2}e^{-x}                   \\
+              y(0)                     & = c_{1} + c_{2} = m                        &
+              y'(0)                    & = c_{1} - c_{2} = -n                         \\
               y                        & = \frac{m-n}{2}e^{x} + \frac{m+n}{2}e^{-x}
           \end{align}
           Checking by substitution,
@@ -554,27 +677,31 @@
               m & = 1.001               & n & = 0.999 \\
               y & = 0.001e^{x} + e^{-x}
           \end{align}
-          The IC has to be balanced $ m = n $, for the coefficient of $ e^{x} $ to be $ 0 $.
-          Imbalance causes the $ e^{x} $ term to have a nonzero coefficient and the solution
-          to grow exponentially.
+          The IC has to be balanced $ m = n $, for the coefficient of $ e^{x} $ to be
+          $ 0 $. Imbalance causes the $ e^{x} $ term to have a nonzero coefficient
+          and the solution to grow exponentially.
 
     \item
           \begin{enumerate}
               \item Expressing $ a,b $ in terms of $ \lambda_{1}, \lambda_{2} $,
                     \begin{align}
-                        y'' + ay' + by & = 0                            & \lambda^{2} + a\lambda + b & = 0                             \\
-                        a              & = -(\lambda_{1} + \lambda_{2}) & b                          & = \lambda_{1} \cdot \lambda_{2}
+                        y'' + ay' + by             & = 0                             &
+                        \lambda^{2} + a\lambda + b & = 0                               \\
+                        a                          & = -(\lambda_{1} + \lambda_{2})  &
+                        b                          & = \lambda_{1} \cdot \lambda_{2}
                     \end{align}
-                    Working backwards from the solutions to the three different cases for the roots of
-                    the characteristic equation, the above relations can be used to construct the
-                    ODE.
+                    Working backwards from the solutions to the three different cases
+                    for the roots of the characteristic equation,
+                    the above relations can be used to construct the ODE.
 
               \item By present method,
                     \begin{align}
-                        y'' + 4y'                & = 0                                        \\
-                        a                        & = 4                          & b & = 0     \\
-                        a^{2} - 4b               & = 16 > 0                                   \\
-                        \lambda_{1}, \lambda_{2} & = \frac{-4 \pm \sqrt{16}}{2} &   & = 0, -4 \\
+                        y'' + 4y'                & = 0                            \\
+                        a                        & = 4                          &
+                        b                        & = 0                            \\
+                        a^{2} - 4b               & = 16 > 0                       \\
+                        \lambda_{1}, \lambda_{2} & = \frac{-4 \pm \sqrt{16}}{2} &
+                                                 & = 0, -4                        \\
                         y                        & = c_{2} + c_{1}e^{-4x}
                     \end{align}
                     By reduction to first order,
@@ -584,15 +711,16 @@
                         \ln z   & = -4x + c_{1}^{*}      & z  & = c_{1}e^{-4x} \\
                         y       & = c_{1}e^{-4x} + c_{2}
                     \end{align}
-                    Both methods have to match, because the ODE satisfies the conditions for a
-                    unique solution. \par
+                    Both methods have to match, because the ODE satisfies the conditions
+                    for a unique solution. \par
                     For the general case with some $ a \neq 0 $ and $ b = 0 $,
                     By present method,
                     \begin{align}
-                        y'' + ay'                & = 0                                          \\
-                        b                        & = 0                                          \\
-                        a^{2} - 4b               & = a^{2} > 0                                  \\
-                        \lambda_{1}, \lambda_{2} & = \frac{-a \pm \sqrt{a^{2}}}{2} &  & = 0, -a \\
+                        y'' + ay'                & = 0                               \\
+                        b                        & = 0                               \\
+                        a^{2} - 4b               & = a^{2} > 0                       \\
+                        \lambda_{1}, \lambda_{2} & = \frac{-a \pm \sqrt{a^{2}}}{2} &
+                                                 & = 0, -a                           \\
                         y                        & = c_{2} + c_{1}e^{-ax}
                     \end{align}
                     By reduction to first order,
@@ -603,40 +731,54 @@
                         y       & = c_{1}e^{-ax} + c_{2}
                     \end{align}
 
-              \item $ xe^{\lambda x} $ to be verified against the ODE with repeated roots,
+              \item $ xe^{\lambda x} $ to be verified against the ODE with repeated
+                    roots,
                     \begin{align}
-                        y'' + ay' + by                & = 0                                                                                                    \\
-                        y'                            & = e^{\lambda x} (\lambda x + 1)                                                                        \\
-                        y''                           & = e^{\lambda x}(\lambda ^{2}x + 2\lambda)                                                              \\
-                        y'' + ay' + by                & = e^{\lambda x} \left[ (\lambda ^{2} + a\lambda + b)x + 2\lambda + a \right]                           \\
-                        b                             & = a^{2}/4                                                                    & \lambda        & = -a/2 \\
-                        (\lambda ^{2} + a\lambda + b) & = 0                                                                          & y'' + ay' + by & = 0
+                        y'' + ay' + by & = 0                                    \\
+                        y'             & = e^{\lambda x} (\lambda x + 1)        \\
+                        y''            & = e^{\lambda x}(\lambda ^{2}x
+                        + 2\lambda)                                             \\
+                        y'' + ay' + by & = e^{\lambda x} \left[ (\lambda ^{2}
+                        + a\lambda + b)x + 2\lambda + a \right]                 \\
+                        b              & = a^{2}/4                            &
+                        \lambda        & = -a/2                                 \\
+                        (\lambda ^{2} + a\lambda + b)
+                                       & = 0                                  &
+                        y'' + ay' + by & = 0
                     \end{align}
                     The given ODE is,
                     \begin{align}
-                        y'' - y' - 6y            & = 0                                        \\
-                        a                        & = -1                         & b & = -6    \\
-                        a^{2} - 4b               & = 25 > 0                                   \\
-                        \lambda_{1}, \lambda_{2} & = \frac{1 \pm \sqrt{25}}{2}  &   & = 3, -2 \\
+                        y'' - y' - 6y            & = 0                            \\
+                        a                        & = -1                         &
+                        b                        & = -6                           \\
+                        a^{2} - 4b               & = 25 > 0                       \\
+                        \lambda_{1}, \lambda_{2} & = \frac{1 \pm \sqrt{25}}{2}  &
+                                                 & = 3, -2                        \\
                         y                        & = c_{2}e^{3x} + c_{1}e^{-2x}
                     \end{align}
-                    Substituting $y = xe^{\lambda_{1}x}$ into the ODE, shows it is not a solution.
+                    Substituting $y = xe^{\lambda_{1}x}$ into the ODE, shows it is not
+                    a solution.
                     \begin{align}
-                        y'          & = e^{\lambda_{1}x}(1 + \lambda_{1}x)                                                     \\
-                        y''         & = e^{\lambda_{1}x}(2\lambda_{1} + \lambda_{1}^{2}x)                                      \\
-                        y'' -y' -6y & = e^{\lambda_{1}x}\left[ 2\lambda_{1} - 1 + x(\lambda_{1}^{2} - \lambda_{1} - 6) \right] \\
-                                    & = e^{\lambda_{1}x} (2\lambda_{1} - 1) \neq 0
+                        y'          & = e^{\lambda_{1}x}
+                        (1 + \lambda_{1}x)                \\
+                        y''         & = e^{\lambda_{1}x}
+                        (2\lambda_{1} + \lambda_{1}^{2}x) \\
+                        y'' -y' -6y & = e^{\lambda_{1}x}
+                        \left[ 2\lambda_{1} - 1 + x(\lambda_{1}^{2} - \lambda_{1} - 6)
+                        \right]                           \\
+                                    & = e^{\lambda_{1}x}
+                        (2\lambda_{1} - 1) \neq 0
                     \end{align}
                     Explanation. TBC
-              \item Let $ \delta \rightarrow 0 $ with,
+              \item Let $ \delta \to 0 $ with,
                     \begin{align}
-                        \lambda_{2}       & = \lambda_{1} + \delta           \\
-                        e^{\lambda _{2}x} & = e^{\delta x}\ e^{\lambda_{1}x} \\
-                         &= (1 + \delta x)\ e^{\lambda_{1}x} \\
-                         y_{2} &= xe^{\lambda_{1}x}
+                        \lambda_{2}       & = \lambda_{1} + \delta             \\
+                        e^{\lambda _{2}x} & = e^{\delta x}\ e^{\lambda_{1}x}   \\
+                                          & = (1 + \delta x)\ e^{\lambda_{1}x} \\
+                        y_{2}             & = xe^{\lambda_{1}x}
                     \end{align}
-                    Getting rid of the additive component and scalar $ \delta $, leaves the second
-                    solution $ xe^{\lambda_{1}x} $. The series approximation only holds for
-                    $ \delta \rightarrow 0 $.
+                    Getting rid of the additive component and scalar $ \delta $, leaves
+                    the second solution $ xe^{\lambda_{1}x} $.
+                    The series approximation only holds for $ \delta \to 0 $.
           \end{enumerate}
 \end{enumerate}

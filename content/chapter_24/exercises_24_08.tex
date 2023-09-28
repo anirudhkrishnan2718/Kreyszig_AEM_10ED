@@ -1,0 +1,226 @@
+\section{Normal Distribution}
+
+\begin{enumerate}
+    \item Converting to the standard normal,
+          \begin{align}
+              Z             & = \frac{x-10}{2}              \\
+              P(X > 12)     & = P(Z > 1) = 0.1587           \\
+              P(X < 10)     & = P(Z < 0) = 0.5              \\
+              P(X < 11)     & = P(Z < 0.5) = 0.6915         \\
+              P(9 < X < 13) & = P(-0.5 < Z < 1.5) = 0.62465
+          \end{align}
+
+    \item Converting to the standard normal,
+          \begin{align}
+              Z                     & = \frac{x-105}{5}             \\
+              P(X \leq 112.5)       & = P(Z \leq 1.5) = 0.93319     \\
+              P(X > 100)            & = P(Z > -1) = 0.84134         \\
+              P(110.5 < X < 111.25) & = P(1.1 < Z < 1.25) = 0.03002
+          \end{align}
+
+    \item Converting to the standard normal,
+          \begin{align}
+              Z                        & = \frac{x-50}{3}            \\
+              P(X < c_1)               & = P(Z < c^*) = 0.05       &
+              c^* = \frac{c_1-50}{3}   & = -1.64485                  \\
+              c_1                      & = 45.065                    \\
+              P(X > c_2)               & = P(Z > c^*) = 0.01       &
+              c^* = \frac{c_1-50}{3}   & = 2.32635                   \\
+              c_2                      & = 56.979                    \\
+              P(50-c_3 < X < 50 + c_3) & = P(-c^* < Z < c^*) = 0.5 &
+              c^* = \frac{c_3}{3}      & = 0.67449                   \\
+              c_3                      & = 2.0235
+          \end{align}
+
+    \item Converting to the standard normal,
+          \begin{align}
+              Z                         & = \frac{x-3.6}{0.1}           \\
+              P(X \leq c_1)             & = P(Z \leq c^*) = 0.5       &
+              c^* = \frac{c_1-3.6}{0.1} & = 0                           \\
+              c_1                       & = 3.6                         \\
+              P(X > c_2)                & = P(Z > c^*) = 0.1          &
+              c^* = \frac{c_1-3.6}{0.1} & = 1.28155                     \\
+              c_2                       & = 3.728                       \\
+              P(-c_3 < X-3.6 < c_3)     & = P(-c^* < Z < c^*) = 0.999 &
+              c^* = \frac{c_3}{0.1}     & = 3.29053                     \\
+              c_3                       & = 0.3291
+          \end{align}
+
+    \item Using the lookup tables for the standard normal,
+          \begin{align}
+              P(X < 4) & = P\Bigg( \frac{X-5}{1} < -1 \Bigg) = P(Z < -1) = 0.15866
+          \end{align}
+
+    \item If $ \sigma \downarrow $, then the limit $ c \uparrow$ in $ P(Z < c) $, which
+          makes the probability $ \downarrow $.
+
+    \item Using the lookup tables for the standard normal,
+          \begin{align}
+              Z                & = \frac{X - 150}{5}                      \\
+              P(148 < X < 152) & = P\Bigg(-0.4 < Z < 0.4 \Bigg) = 0.31084 \\
+              P(140 < X < 160) & = P\Bigg(-2 < Z < 2 \Bigg) = 0.9545
+          \end{align}
+
+    \item Using the lookup tables for the standard normal,
+          \begin{align}
+              Z        & = \frac{X - 1500}{50}            \\
+              P(X > c) & = P(Z > c^* ) = 0.95             \\
+              c^*      & = -1.64495 = \frac{c - 1500}{50} \\
+              c        & = 1418
+          \end{align}
+
+    \item Using the lookup tables for the standard normal,
+          \begin{align}
+              P(X < 500) & = P\Bigg( \frac{X-480}{100} < 0.2 \Bigg) = P(Z < 0.2)
+              = 0.5793
+          \end{align}
+
+    \item A binomial PDF with $ p = 0.01 $ and $ n = 1000 $ is approximated by a
+          normal PDF with,
+          \begin{align}
+              Z         & = \frac{X - np}{\sqrt{np(1-p)}} = \frac{X - 10}{\sqrt{9.9}}
+              P(X < 10) & = P(Z < 0) = 0.5
+          \end{align}
+          A guess is $ p = 0.5 $ since this is the probability that an RV is less than
+          its mean value.
+
+    \item Using the lookup tables for the standard normal,
+          \begin{align}
+              P(X > t) & = P(Z > t^*) = 0.2             &
+              t^*      & = 0.84162                        \\
+              t^*      & \frac{t - 1000}{100} = 0.84162 &
+              t        & = 1084.16
+          \end{align}
+
+    \item Using the lookup tables for the standard normal,
+          \begin{align}
+              P(X > 15000) & = P\Bigg( \frac{X-12000}{2000} > 1.5 \Bigg) = P(Z > 1.5)
+              = 0.06681
+          \end{align}
+
+    \item Using the lookup tables for the standard normal,
+          \begin{align}
+              P(0.009 < X < 0.011) & = P(-1.0 < Z < 1) = 0.68268 \\
+              np                   & = 1000(68.268) = 683
+          \end{align}
+
+    \item Normal distribution
+          \begin{enumerate}
+              \item Using the loopkup table,
+                    \begin{align}
+                        P (\mu - k\sigma < X \leq \mu + k\sigma)
+                         & = P \left( -k < \frac{X - \mu}{\sigma} < k \right) \\
+                         & = P(-k < Z < k) = \Phi(k) - \Phi(-k)
+                    \end{align}
+                    \begin{table}[H]
+                        \centering
+                        \begin{tblr}{colspec = {r|[dotted]l|[dotted]l|[dotted]l},
+                            colsep = 1.2em}
+                            $ k $ & $\Phi(-k)$ & $ \Phi(k) $ & $ P(-k<Z<k) $        \\
+                            \hline
+                            1     & 0.15866    & 0.84134     & \SI{68.27}{\percent} \\
+                            2     & 0.02275    & 0.97725     & \SI{95.45}{\percent} \\
+                            3     & 0.00135    & 0.99865     & \SI{99.73}{\percent} \\
+                        \end{tblr}
+                    \end{table}
+                    \begin{align}
+                        P (\mu - k\sigma < X \leq \mu + k\sigma)
+                         & = P \left( -k < \frac{X - \mu}{\sigma} < k \right) \\
+                         & = P(-k < Z < k) = \Phi(k) - \Phi(-k)               \\
+                         & = 2\Phi(k) - 1
+                    \end{align}
+                    \begin{table}[H]
+                        \centering
+                        \begin{tblr}{colspec = {r|[dotted]l},
+                            colsep = 1.2em}
+                            $ P(-k<Z<k) $ & $ k $   \\
+                            \hline
+                            0.95          & 1.95996 \\
+                            0.99          & 2.57583 \\
+                            0.999         & 3.29053 \\
+                        \end{tblr}
+                    \end{table}
+
+              \item Proving the relation, using the symmetry of $ f(x) $ about the
+                    y axis, which makes $ f(-x) = f(x) $,
+                    \begin{align}
+                        \Phi(-z) & = \int_{-\infty}^{-z} f(x)\ \dl x
+                        = \int_{\infty}^{z} f(-x)\ (-1)\dl x = \int_{z}^{\infty}
+                        f(x)\ \dl x                                          \\
+                                 & = \intRL f(x)\ \dl x - \int_{-\infty}^{z}
+                        f(x)\ \dl x                                          \\
+                                 & = 1 - \Phi(z)
+                    \end{align}
+
+              \item Equating the second derivative to zero,
+                    \begin{align}
+                        \diff fx    & = \frac{-1}{\sigma^2 \sqrt{2\pi}}\ e^{-u^2/2}
+                        \ \left( \frac{x-\mu}{\sigma} \right)                       \\
+                        \diff[2] fx & = \frac{-1}{\sigma^3 \sqrt{2\pi}}\ e^{-u^2/2}
+                        + \frac{1}{\sigma^3 \sqrt{2\pi}}\ e^{-u^2/2}
+                        \ \left( \frac{x-\mu}{\sigma} \right)^2 = 0                 \\
+                        1           & = \left( \frac{x-\mu}{\sigma} \right)^2       \\
+                        x^*         & = \mu \pm \sigma
+                    \end{align}
+              \item Using polar coordinates,
+                    \begin{align}
+                        \Phi^2(\infty) & = \frac{1}{2\pi}\ \intRL \exp\left(
+                        -\frac{x^2 + y^2}{2} \right)\ \dl x\ \dl y                \\
+                        r^2            & = x^2 + y^2                              \\
+                        \dl x\ \dl y   & = \dl r\ (r)\ \dl \theta                 \\
+                        I              & = \frac{1}{2\pi} \int_{0}^{2\pi} \infint
+                        re^{-r^2/2}\ \dl r\ \dl \theta                            \\
+                                       & = \infint re^{-r^2/2}\ \dl r
+                        = \Bigg[-e^{-r^2/2}\Bigg]_0^\infty = 1                    \\
+                        \Phi(\infty)   & = \sqrt{1} = 1
+                    \end{align}
+
+              \item Using the definition of the variance,
+                    \begin{align}
+                        \ex[(X-\mu)^2]   & = \intRL (v-\mu)^2\ f(v)\ \dl v        \\
+                        z                & = \frac{v - \mu}{\sigma}               \\
+                        \ex[(X - \mu)^2] & = \frac{1}{\sigma\ \sqrt{2\pi}}
+                        \ \intRL \sigma^2 z^2 e^{-z^2/2}\ \sigma\ \dl z           \\
+                                         & = \frac{\sigma^2}{\sqrt{2\pi}}\ \intRL
+                        z^2 e^{-z^2/2}\ \dl z
+                        = \frac{\sigma^2}{\sqrt{2\pi}}
+                        \Bigg[ \sqrt{\pi/2} \erf(z/\sqrt{2}) - xe^{-z^2/2}
+                        \Bigg]_{-\infty}^\infty                                   \\
+                                         & = \sqrt{2\pi} \cdot @ \frac{\sigma^2}
+                        {\sqrt{2\pi}} = \sigma^2
+                    \end{align}
+                    The variance is indeed $ \sigma^2 $, which means that the term
+                    $ \sigma $ appearing in the formula is in fact that standard
+                    deviation.
+
+              \item Proving the relation,
+                    \begin{align}
+                        \Var[X_i]     & = pq                            &
+                        \ex[X_i]      & = p                               \\
+                        \Var[\bar{X}] & = \frac{(pq)^2}{n}              &
+                        \ex[\bar{X}]  & = p                               \\
+                        P\left( \abs{\bar{X} - p}  \geq \epsilon\right)
+                                      & \leq \frac{(pq)^2}{n\epsilon^2}
+                    \end{align}
+                    Since this probability goes to zero as $ n \to \infty $, the
+                    complement probability approaches 1. This uses Chebyshev's
+                    inequality.
+
+              \item Using the transformed variable,
+                    \begin{align}
+                        Y      & = g(x) = c_1X + c_2                                 \\
+                        \ex[Y] & = \ex[g(x)] = \color{y_h} c_1\ex[X] + c_2\ex[1]
+                        = c_1 \mu + c_2                                              \\
+                        \ex[(Y - c_1\mu - c_2)^2]
+                               & = \ex[(c_1X - c_1 \mu)^2] = c_1^2\ \ex[(X - \mu)^2] \\
+                               & = \color{y_p} c_1^2\ \sigma^2
+                    \end{align}
+          \end{enumerate}
+
+    \item Since the tables only show the CDF of the function, they are used as,
+          \begin{align}
+              P(Z < b)     & = \Phi(b)           & P(Z > a) & = 1 - \Phi(a) \\
+              P(a < Z < b) & = \Phi(b) - \Phi(a)
+          \end{align}
+          The inverse normal CDF lookup tables work similarly.
+\end{enumerate}

@@ -1,0 +1,325 @@
+\section{Data Representation, Average, Spread}
+
+\begin{enumerate}
+    \item Representing the data,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_01.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar interval, enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 3, data max = 22}]
+                      table[y index = 0] {\anitableone};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[axis equal, width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0] {\anitableone};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the data,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_02.csv}
+              \anitabletwo
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar interval, enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 8, data max = 8}]
+                      table[y index = 0] {\anitabletwo};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[axis equal, width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0] {\anitabletwo};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the data,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_03.csv}
+              \anitablethree
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar , enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 6, data max = 160}]
+                      table[y index = 0] {\anitablethree};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0]
+                          {\anitablethree};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the data,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_04.csv}
+              \anitablefour
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar , enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 5, data max = 73,
+                                  data min = 68}]
+                      table[y index = 0] {\anitablefour};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0]
+                          {\anitablefour};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the data,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_05.csv}
+              \anitablefive
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar interval, enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 6, data max = 204,
+                                  data min = 198}]
+                      table[y index = 0] {\anitablefive};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0]
+                          {\anitablefive};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the data,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_06.csv}
+              \anitablesix
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar interval, enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 3, data max = 16.0,
+                                  data min = 14.5}]
+                      table[y index = 0] {\anitablesix};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0]
+                          {\anitablesix};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the data, where the box plot shows outliers,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_07.csv}
+              \anitableseven
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar interval, enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 6, data max = 1.7,
+                                  data min = 1.1}]
+                      table[y index = 0] {\anitableseven};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0]
+                          {\anitableseven};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the data, where the box plot shows outliers,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_08.csv}
+              \anitableeight
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar interval, enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 8, data max = 92,
+                                  data min = 76}]
+                      table[y index = 0] {\anitableeight};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0]
+                          {\anitableeight};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the data, where the box plot shows outliers,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_09.csv}
+              \anitablenine
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar, enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 4, data max = 89,
+                                  data min = 93}]
+                      table[y index = 0] {\anitablenine};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0]
+                          {\anitablenine};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the data, where the box plot shows outliers,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_24_01_10.csv}
+              \anitableten
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram},
+                          grid = both,Ani, ybar, enlargelimits = 0.1]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, hist = {bins = 7, data max = -0.75,
+                                  data min = 1}]
+                      table[y index = 0] {\anitableten};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Box plot},
+                          grid = both,Ani, enlargelimits = 0.1]
+                      \addplot[boxplot] table[y index = 0]
+                          {\anitableten};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Looking at the statistics of the dataset,
+    \item Looking at the statistics of the dataset,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {r|[dotted]l},
+                  colsep = 1.2em}
+                  Quantity & Value    \\ \hline
+                  mean     & 19.875   \\
+                  std      & 0.834523 \\
+                  median   & 20       \\
+                  IQR      & 1.25     \\
+              \end{tblr}
+              \hspace{8em}
+              \begin{tblr}{colspec = {r|[dotted]l},
+                  colsep = 1.2em}
+                  Quantity & Value    \\ \hline
+                  mean     & 4.3      \\
+                  std      & 2.540779 \\
+                  median   & 5        \\
+                  IQR      & 3.5      \\
+              \end{tblr}
+          \end{table}
+
+    \item Looking at the statistics of the dataset,
+    \item Looking at the statistics of the dataset,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {r|[dotted]l},
+                  colsep = 1.2em}
+                  Quantity & Value    \\ \hline
+                  mean     & 144.67   \\
+                  std      & 8.973506 \\
+                  median   & 144      \\
+                  IQR      & 14.5     \\
+              \end{tblr}
+              \hspace{8em}
+              \begin{tblr}{colspec = {r|[dotted]l},
+                  colsep = 1.2em}
+                  Quantity & Value    \\ \hline
+                  mean     & 70.48667 \\
+                  std      & 1.046673 \\
+                  median   & 70.5     \\
+                  IQR      & 1.4      \\
+              \end{tblr}
+          \end{table}
+
+    \item Looking at the statistics of the dataset,
+    \item Looking at the statistics of the dataset,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {r|[dotted]l},
+                  colsep = 1.2em}
+                  Quantity & Value    \\ \hline
+                  mean     & 1.355    \\
+                  std      & 0.135627 \\
+                  median   & 1.4      \\
+                  IQR      & 0.125    \\
+              \end{tblr}
+              \hspace{8em}
+              \begin{tblr}{colspec = {r|[dotted]l},
+                  colsep = 1.2em}
+                  Quantity & Value    \\ \hline
+                  mean     & 86.3     \\
+                  std      & 3.628832 \\
+                  median   & 87       \\
+                  IQR      & 4        \\
+              \end{tblr}
+          \end{table}
+
+    \item The standard deviation is much smaller after removing the outlier.
+          \begin{align}
+              s_1 & = 3.54 & s_2 & = 1.29
+          \end{align}
+
+    \item The standard deviation is much smaller after removing the outlier.
+          \begin{align}
+              s_1 & = 3.63 & s_2 & = 2.77
+          \end{align}
+
+    \item Mean is 100 and median is 0,
+          \begin{align}
+              \vec{x} & = \begin{bNiceMatrix}
+                              0 & 0 & 300
+                          \end{bNiceMatrix}
+          \end{align}
+          The mean can be a very bad characterization of data with severe outliers.
+          The median becomes a much better descriptor in such cases.
+
+    \item Let $ \bar{x} > x_n $ in a sorted dataset with $ n $ elements.
+          \begin{align}
+              n\bar{x} & = x_1 + x_2 + \dots + x_n &
+              n\bar{x} & > x_n + x_n + \dots + x_n   \\
+              n\bar{x} & > x_1 + x_2 + \dots + x_n
+          \end{align}
+          This is a contradiction, which means that the initial assumption was wrong.
+          \par By similar logic, the mean cannot be smaller than $ x_1 $
+\end{enumerate}

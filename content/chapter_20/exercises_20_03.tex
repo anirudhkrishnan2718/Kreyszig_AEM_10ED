@@ -1,0 +1,277 @@
+\section{Linear Systems: Solution by Iteration}
+
+\begin{enumerate}
+    \item Gauss-Seidel method coded in \texttt{sympy},
+          \begin{align}
+              \vec{x} & = \begin{bNiceMatrix}[margin]
+                              87.5 \\ 87.5 \\ 62.5 \\ 62.5
+                          \end{bNiceMatrix} &
+              n       & = 14
+          \end{align}
+
+    \item Checking the eigenvalues of the iteration matrix,
+          \begin{align}
+              \vec{I} - \vec{A} & = \begin{bNiceMatrix}[margin]
+                                        0    & -0.5 & -0.5 \\
+                                        -0.5 & 0    & -0.5 \\
+                                        -0.5 & -0.5 & 0    \\
+                                    \end{bNiceMatrix}    &
+              0                 & = -\lambda^3 + 0.75\lambda -0.25 \\
+              \lambda_i         & = \{0.5, 0.5, -1\}
+          \end{align}
+          Not all the eigenvalues have absolute value less than one, which means
+          the Jacobi iteration diverges.
+
+    \item The row and column norms are,
+          \begin{align}
+              \vec{C}                 & =  \begin{bNiceMatrix}[margin]
+                                               0 & -0.5 & -0.5  \\
+                                               0 & 0.25 & -0.25 \\
+                                               0 & 1/8  & 3/8   \\
+                                           \end{bNiceMatrix} &
+              \lVert \vec{C} \rVert_j & = \begin{bNiceMatrix}[margin]
+                                              1 \\ 1/2 \\ 1/2
+                                          \end{bNiceMatrix}  \\
+              \lVert \vec{C} \rVert_k & = \begin{bNiceMatrix}[margin]
+                                              0 & 7/8 & 9/8
+                                          \end{bNiceMatrix}
+          \end{align}
+          Since some terms in the row and column norms are $ \geq 1 $, no determination
+          can be made.
+
+    \item Using $ 5 $ full sweeps starting with the given initial guess.
+          \begin{align}
+              \vec{x} & = \begin{bNiceMatrix}[margin]
+                              2.99969 & -9.00015 & 5.99996
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Using $ 5 $ full sweeps starting with the given initial guess.
+          \begin{align}
+              \vec{x} & = \begin{bNiceMatrix}[margin]
+                              0.5 & 0.5 & 0.5
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Using $ 5 $ full sweeps starting with the given initial guess, after row
+          swaps,
+          \begin{align}
+              \vec{A}^* & = \begin{bNiceMatrix}[margin]
+                                5 & 1 & 0 \\
+                                1 & 6 & 1 \\
+                                0 & 1 & 7
+                            \end{bNiceMatrix} &
+              \vec{b}^* & = \begin{bNiceMatrix}[margin]
+                                0 \\ -10.5 \\ 25.5
+                            \end{bNiceMatrix} \\
+              \vec{x}^* & = \begin{bNiceMatrix}[margin]
+                                0.499977 \\ -2.5 \\ 4
+                            \end{bNiceMatrix} &
+              \vec{x}   & = \begin{bNiceMatrix}[margin]
+                                4 \\ 0.499977 \\ -2.5
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Using $ 5 $ full sweeps starting with the given initial guess.
+          \begin{align}
+              \vec{x} & = \begin{bNiceMatrix}[margin]
+                              1.99951 & -4.00012 & 7.99998
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Using $ 5 $ full sweeps starting with the given initial guess.
+          \begin{align}
+              \vec{x} & = \begin{bNiceMatrix}[margin]
+                              2.05332 & 0.01272 & 0.960209
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Using $ 5 $ full sweeps starting with the given initial guess.
+          \begin{align}
+              \vec{x} & = \begin{bNiceMatrix}[margin]
+                              2.00004 & 0.998059 & 4.00072
+                          \end{bNiceMatrix}
+          \end{align}
+
+    \item Using $ 5 $ full sweeps starting with the given initial guess, after row
+          swaps,
+          \begin{align}
+              \vec{A}^* & = \begin{bNiceMatrix}[margin]
+                                8 & 2 & 1 \\
+                                1 & 6 & 2 \\
+                                4 & 0 & 5
+                            \end{bNiceMatrix}  &
+              \vec{b}^* & = \begin{bNiceMatrix}[margin]
+                                -11.5 \\ 18.5 \\ 12.5
+                            \end{bNiceMatrix}    \\
+              \vec{x}^* & = \begin{bNiceMatrix}[margin]
+                                -2.49475 \\ 1.99809 \\  4.4958
+                            \end{bNiceMatrix} &
+              \vec{x}   & = \begin{bNiceMatrix}[margin]
+                                4.4958 \\ 1.99809 \\  -2.49475
+                            \end{bNiceMatrix}
+          \end{align}
+
+    \item Using $ 3 $ full sweeps starting with the given initial guess.
+          \begin{align}
+              \vec{x}_a & = \begin{bNiceMatrix}[margin]
+                                0.499825 \\ 0.500008 \\ 0.500017
+                            \end{bNiceMatrix}  &
+              \vec{x}_b & = \begin{bNiceMatrix}[margin]
+                                0.5033326 \\ 0.499845 \\ 0.499682
+                            \end{bNiceMatrix}
+          \end{align}
+          The initial guess being closer makes the result at the end of 3 iterations
+          closer to the correct answer.
+
+    \item Computing the iteration matrix $ \vec{C} $,
+          \begin{align}
+              \vec{A}_1               & = \begin{bNiceMatrix}[margin]
+                                              10 & 1  & 1  \\
+                                              1  & 10 & 1  \\
+                                              1  & 1  & 10
+                                          \end{bNiceMatrix}        &
+              \vec{C}_1               & = -(\vec{I} + \vec{L})^{-1}\ \vec{U} \\
+              \vec{C}_1               & = \begin{bNiceMatrix}[margin]
+                                              0 & -0.5 & -0.5  \\
+                                              0 & 0.25 & -0.25 \\
+                                              0 & 1/8  & 3/8   \\
+                                          \end{bNiceMatrix}        &
+              \lVert \vec{C} \rVert_1 & = 0.169 < 1
+          \end{align}
+          Rearranging the rows,
+          \begin{align}
+              \vec{A}_2               & = \begin{bNiceMatrix}[margin]
+                                              1  & 1  & 10 \\
+                                              10 & 1  & 1  \\
+                                              1  & 10 & 1
+                                          \end{bNiceMatrix}        &
+              \vec{C}_2               & = -(\vec{I} + \vec{L})^{-1}\ \vec{U} \\
+              \vec{C}_2               & = \begin{bNiceMatrix}[margin]
+                                              0 & -1  & -10  \\
+                                              0 & 10  & 99   \\
+                                              0 & -99 & -980 \\
+                                          \end{bNiceMatrix}        &
+              \lVert \vec{C} \rVert_2 & = 990.052 > 1
+          \end{align}
+          Clearly, the Gauss-Seidel method only converges when the diagonal elements
+          are the largest in their respective rows.
+
+    \item Gauss-Seidel method
+          \begin{enumerate}
+              \item Code written in \texttt{numpy}
+              \item Finding the number of steps to obtain a $ 6S $ solution.
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{
+                            colspec = {r|[dotted]l|[dotted]l},
+                            colsep = 1em}
+                            value of $ t $ & number of iterations $ n $ &
+                            Spectral Radius                               \\ \hline
+                            0.2            & 7                          &
+                            0.08944                                       \\
+                            0.5            & 14                         &
+                            0.3535                                        \\
+                            0.8            & 57                         &
+                            0.7155                                        \\
+                            0.9            & 100                        &
+                            0.8538                                        \\ \hline
+                        \end{tblr}
+                    \end{table}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[Ani,grid = both, width = 8cm,
+                                    title = {Number of iterations},
+                                    xlabel = {$ t $}, ylabel = {$ n $}]
+                                \addplot[GraphSmooth, color = y_h, only marks]
+                                coordinates {(0.2, 7) (0.5, 14) (0.8, 57) (0.9, 100)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[Ani,grid = both, width = 8cm,
+                                    title = {Spectral radius},
+                                    ylabel = {$ R_\lambda $}, xlabel = {$ t $}]
+                                \addplot[GraphSmooth, color = y_p, only marks]
+                                coordinates {(0.2, 0.089) (0.5, 0.3535)
+                                        (0.8, 0.7155) (0.9, 0.8538)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Starting from the iteration formula
+                    \begin{align}
+                        \vec{x}^{(m+1)} & = \vec{b} - \vec{Lx}^{(m + 1)}
+                        - \vec{Ux}^{(m)}                                 \\
+                                        & = \vec{x}^{(m)} + \vec{b}
+                        - \vec{Lx}^{(m + 1)} - \vec{Ux}^{(m)} - \vec{Ix}^{(m)}
+                    \end{align}
+                    For these two examples, the improvement is minimal.
+          \end{enumerate}
+
+    \item Jacobi method coded in \texttt{numpy}.
+          \begin{align}
+              n_g & = 16 & n_J & = 33
+          \end{align}
+
+    \item Jacobi method coded in \texttt{numpy}.
+          \begin{align}
+              n_g & = 8 & n_J & = 12
+          \end{align}
+
+    \item Jacobi method coded in \texttt{numpy}.
+          \begin{align}
+              n_g & = 10 & n_J & = 20
+          \end{align}
+
+    \item The iteration matrix is,
+          \begin{align}
+              \vec{C}       & = \begin{bNiceMatrix}[margin]
+                                    0   & 1/4 & 1/8 \\
+                                    1/6 & 0   & 1/3 \\
+                                    4/5 & 0   & 0
+                                \end{bNiceMatrix}                         &
+              0             & = -\lambda^3 + \frac{17}{120}\ \lambda + \frac{1}{15} \\
+              \{\lambda_i\} & = 0.519589, -0.259795 \pm \i\ 0.246603
+          \end{align}
+
+    \item Computing the three kinds of norms, after coding in \texttt{numpy}
+          \begin{align}
+              \vec{A}                 & = \begin{bNiceMatrix}[margin]
+                                              8 & 2 & 1 \\
+                                              1 & 6 & 2 \\
+                                              4 & 0 & 5
+                                          \end{bNiceMatrix} &
+              \lVert \vec{A} \rVert_F & = 12.288                        \\
+              \lVert \vec{A} \rVert_j & = 11                          &
+              \lVert \vec{A} \rVert_k & = 13
+          \end{align}
+
+    \item Computing the three kinds of norms, after coding in \texttt{numpy}
+          \begin{align}
+              \vec{A}                 & = \begin{bNiceMatrix}[margin]
+                                              10 & 1  & 1  \\
+                                              1  & 10 & 1  \\
+                                              1  & 1  & 10
+                                          \end{bNiceMatrix} &
+              \lVert \vec{A} \rVert_F & = 17.493                        \\
+              \lVert \vec{A} \rVert_j & = 12                          &
+              \lVert \vec{A} \rVert_k & = 12
+          \end{align}
+          A greater dominance of the diagonal terms means a greater difference between
+          the Frobenius norms and the others.
+
+    \item Computing the three kinds of norms, after coding in \texttt{numpy}
+          \begin{align}
+              \vec{A}                 & = \begin{bNiceMatrix}[margin]
+                                              2k & -k  & -k \\
+                                              k  & -2k & k  \\
+                                              -k & -k  & 2k
+                                          \end{bNiceMatrix} &
+              \lVert \vec{A} \rVert_F & = \sqrt{18} k                   \\
+              \lVert \vec{A} \rVert_j & = 4k                          &
+              \lVert \vec{A} \rVert_k & = 4k
+          \end{align}
+          The differences scale linearly with $ k $.
+\end{enumerate}

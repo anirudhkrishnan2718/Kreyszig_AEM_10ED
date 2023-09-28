@@ -1,0 +1,206 @@
+\section{Fourier Cosine and Sine Transforms}
+
+\begin{enumerate}
+    \item Finding the Fourier cosine transform,
+          \begin{align}
+              f(x)             & = \color{y_h} \begin{dcases}
+                                                   1  & \quad x \in (0, 1) \\
+                                                   -1 & \quad x \in (1, 2) \\
+                                                   0  & \quad x > 2
+                                               \end{dcases}                 \\
+              \widehat{f}_c(w) & = \sqrt{\frac{2}{\pi}}\ \infint f(x)\ \cos(wx)\ \dl x \\
+                               & = \sqrt{\frac{2}{\pi}}\ \Bigg[\int_{0}^{1} (1)
+                  \ \cos(wx)\ \dl x
+              + \int_{1}^{2} (-1)\ \cos(wx) \ \dl x\Bigg]                              \\
+                               & = \sqrt{\frac{2}{\pi}}\ \Bigg[ \frac{\sin(wx)}{w}
+                  \Bigg]_0^1
+              - \sqrt{\frac{2}{\pi}}\ \Bigg[ \frac{\sin(wx)}{w} \Bigg]_1^2
+              = \color{y_p} \sqrt{\frac{2}{\pi}}\ \Bigg[\frac{2\sin(w)
+                      - \sin(2w)}{w}\Bigg]
+          \end{align}
+
+    \item Finding the Fourier cosine transform,
+          \begin{align}
+              \widehat{f}_c(w) & = \color{y_p} \sqrt{\frac{2}{\pi}}\ \Bigg[\frac{2\sin(w)
+              - \sin(2w)}{w}\Bigg]                                                          \\
+              f(x)             & = \sqrt{\frac{2}{\pi}}\ \infint \widehat{f}_c(w)\ \cos(wx)
+              \ \dl w                                                                       \\
+                               & = \frac{2}{\pi} \infint \Bigg[\frac{2\sin(w) - \sin(2w)}
+              {w}\Bigg]\ \cos(wx) \ \dl w                                                   \\
+              I_1              & = \frac{2}{\pi} \infint \Bigg[\frac{\sin[(1+x)w]}{w} +
+              \frac{\sin[(1-x)w]}{w}\Bigg]\ \dl w                                           \\
+                               & = \frac{2}{\pi} \Bigg[ \frac{\pi}{2}\ \sgn(1+x)
+                  + \frac{\pi}{2}\ \sgn(1-x) \Bigg]
+              = \sgn(1+x) + \sgn(1-x)                                                       \\
+              I_2              & = \frac{-1}{\pi} \infint \Bigg[\frac{\sin[(2+x)w]}{w} +
+              \frac{\sin[(2-x)w]}{w}\Bigg]\ \dl w                                           \\
+                               & = \frac{-1}{\pi} \Bigg[ \frac{\pi}{2}\ \sgn(2+x)
+                  + \frac{\pi}{2}\ \sgn(2-x) \Bigg]
+              = \frac{-1}{2}\ \Bigg[\sgn(2+x) + \sgn(2-x)\Bigg]                             \\
+              f(x)             & = \color{y_h} \begin{dcases}
+                                                   1  & \quad x \in (0, 1) \\
+                                                   -1 & \quad x \in (1, 2) \\
+                                                   0  & \quad x > 2        \\
+                                               \end{dcases}
+          \end{align}
+
+    \item Finding the Fourier cosine transform,
+          \begin{align}
+              f(x)             & = \color{y_h} \begin{dcases}
+                                                   x & \quad x \in (0, 2) \\
+                                                   0 & \quad x > 2
+                                               \end{dcases}                  \\
+              \widehat{f}_c(w) & = \sqrt{\frac{2}{\pi}}\ \infint f(x)\ \cos(wx)\ \dl x
+              = \sqrt{\frac{2}{\pi}}\ \Bigg[\int_{0}^{2} (x)
+              \ \cos(wx)\ \dl x\Bigg]                                                  \\
+                               & = \sqrt{\frac{2}{\pi}}\ \Bigg[ \frac{x\ \sin(wx)}{w}
+                  + \frac{\cos(wx)}{w^2} \Bigg]_0^2
+              = \color{y_p} \sqrt{\frac{2}{\pi}}\ \Bigg[\frac{\cos(2w) - 1
+                      + 2w\sin(2w)}{w^2}\Bigg]
+          \end{align}
+
+    \item Finding the Fourier cosine transform,
+          \begin{align}
+              f(x)              & = \color{y_h} e^{-ax} \qquad (a>0)                 \\
+              f''(x)            & = a^2\ f(x)                                        \\
+              \Fou_c\{f''\}     & = -w^2\ \Fou_c\{f\} - \sqrt{\frac{2}{\pi}}\ f'(0)  \\
+              a^2\ \Fou_c \{f\} & = -w^2\ \Fou_c \{f\} - \sqrt{\frac{2}{\pi}} (-a)   \\
+              \Fou_c\{f\}       & = \color{y_p} \sqrt{\frac{2}{\pi}}\ \Bigg[\frac{a}
+                  {a^2 + w^2}\Bigg]
+          \end{align}
+
+    \item Finding the Fourier cosine transform,
+          \begin{align}
+              f(x)             & = \color{y_h} \begin{dcases}
+                                                   x^2 & \quad x \in (0, 1) \\
+                                                   0   & \quad x > 1
+                                               \end{dcases}                \\
+              \widehat{f}_c(w) & = \sqrt{\frac{2}{\pi}}\ \infint f(x)\ \cos(wx)\ \dl x
+              = \sqrt{\frac{2}{\pi}}\ \Bigg[\int_{0}^{1} (x^2)
+              \ \cos(wx)\ \dl x\Bigg]                                                  \\
+                               & = \sqrt{\frac{2}{\pi}}\ \Bigg[ \frac{x^2 \sin(wx)}{w}
+              - \frac{2\sin(wx)}{w^3} + \frac{2x\cos(wx)}{w^2} \Bigg]_0^1              \\
+                               & = \color{y_p} \sqrt{\frac{2}{\pi}}
+              \ \Bigg[ \frac{w^2 - 2}{w^3}\ \sin(w) + \frac{2}{w^2}\ \cos(w) \Bigg]
+          \end{align}
+
+    \item Finding the Fourier cosine transform directly,
+          \begin{align}
+              g(x)             & = \color{y_h} \begin{dcases}
+                                                   2 & \quad x \in (0, 1) \\
+                                                   0 & \quad x > 1
+                                               \end{dcases}                  \\
+              \widehat{f}_c(w) & = \sqrt{\frac{2}{\pi}}\ \infint f(x)\ \cos(wx)\ \dl x
+              = \sqrt{\frac{2}{\pi}}\ \Bigg[\int_{0}^{1} (2)
+              \ \cos(wx)\ \dl x\Bigg]                                                  \\
+                               & = \sqrt{\frac{2}{\pi}}\ \Bigg[ \frac{2\sin(wx)}{w}
+                  \Bigg]_0^1
+              = \color{y_p} \sqrt{\frac{2}{\pi}} \ \Bigg[ \frac{2\sin(w)}{w} \Bigg]
+          \end{align}
+
+          Trying to find it using the double derivative relation,
+          \begin{align}
+              f''(x)        & = g(x)                                               \\
+              \Fou_c\{f''\} & = -w^2\ \Fou_c\{f\} - \sqrt{\frac{2}{\pi}}\ f'(0)    \\
+              \Fou_c \{g\}  & = \sqrt{\frac{2}{\pi}} \Bigg[\left( -w + \frac{2}{w}
+                  \right) \ \sin(w) - 2\cos(w)\Bigg]
+          \end{align}
+          The results do not match since $ f(x) $ is not continuous on the real line.
+          This makes the second method invalid.
+
+    \item Outside of the limit $ x \to 0^+ $, both functions are
+          continuous and eligible. Looking at this limit,
+          \begin{align}
+              \lim_{x \to 0^+} \frac{\sin(x)}{x} & =
+              \lim_{x \to 0^+} \cos(x) = 1
+          \end{align}
+          The limit is an indeterminate form that does exist using L'Hospital rule.
+          \textcolor{y_h}{Yes}
+
+          \begin{align}
+              \lim_{x \to 0^+} \frac{\cos(x)}{x} =\ \text{LDNE}
+          \end{align}
+          The limit does not exist. \textcolor{y_p}{No}
+
+    \item A function is absolutely integrable if the following integral exists
+          and is finite.
+          \begin{align}
+              \intRL \abs{f(x)}\ \dl x = \intRL \abs{k}\ \dl x = \infty
+          \end{align}
+          So, this function does not have Fourier cosine and sine transforms.
+
+    \item Finding the Fourier sine transform directly, using the standard result,
+          \begin{align}
+              f(x)             & = \color{y_h} e^{-ax} \qquad (a>0)                    \\
+              \widehat{f}_s(w) & = \sqrt{\frac{2}{\pi}}\ \infint f(x)\ \sin(wx)\ \dl x
+              = \sqrt{\frac{2}{\pi}}\ \infint (e^{-ax})\ \sin(wx)\ \dl x               \\
+                               & = \sqrt{\frac{2}{\pi}}\ \Bigg[ -e^{-ax}\quad
+              \frac{a \sin(wx) + w \cos(wx)}{a^2 + w^2} \Bigg]_0^\infty
+              = \color{y_p} \sqrt{\frac{2}{\pi}}\ \Bigg[ \frac{w}{a^2 + w^2} \Bigg]
+          \end{align}
+
+    \item Finding it using the double derivative relation,
+          \begin{align}
+              f''(x)        & = a^2\ f(x)                                       \\
+              \Fou_s\{f''\} & = -w^2\ \Fou_s\{f\} + \sqrt{\frac{2}{\pi}}\ wf(0) \\
+              \Fou_s \{g\}  & = \color{y_p}
+              \sqrt{\frac{2}{\pi}}\ \Bigg[\frac{w}{a^2 + w^2}\Bigg]
+          \end{align}
+          The results do not match since $ f(x) $ is not continuous on the real line.
+          This makes the second method invalid.
+
+    \item Finding the Fourier sine transform,
+          \begin{align}
+              f(x)             & = \color{y_h} \begin{dcases}
+                                                   x^2 & \quad x \in (0, 1) \\
+                                                   0   & \quad x > 1
+                                               \end{dcases}                 \\
+              \widehat{f}_s(w) & = \sqrt{\frac{2}{\pi}}\ \infint f(x)\ \sin(wx)\ \dl x
+              = \sqrt{\frac{2}{\pi}}\ \Bigg[\int_{0}^{1} (x^2)
+              \ \sin(wx)\ \dl x\Bigg]                                                   \\
+                               & = \sqrt{\frac{2}{\pi}}\ \Bigg[ \frac{2x \sin(wx)}{w^2}
+              + \frac{2\cos(wx)}{w^3} - \frac{x^2\cos(wx)}{w} \Bigg]_0^1                \\
+                               & = \color{y_p} \sqrt{\frac{2}{\pi}}
+              \ \Bigg[ \frac{2}{w^2}\ \sin(w) + \frac{(2 - w^2)}{w^3}\ \cos(w)
+                  - \frac{2}{w^3} \Bigg]
+          \end{align}
+
+    \item Finding the Fourier sine transform using the derivative relation,
+          \begin{align}
+              g(x)            & = e^{-x^2/2}               &
+              f(x)            & = xe^{-x^2/2} = -g'(x)       \\
+              \Fou_s\{g'(x)\} & = -w\ \Fou_c\{g(x)\}       &
+              \Fou_s\{f\}     & = w\ \Fou_c\{e^{-x^2/2}\}    \\
+              \Fou_s\{f\}     & = \color{y_p} w e^{-w^2/2}
+          \end{align}
+
+    \item Finding the Fourier sine transform using the derivative relation,
+          \begin{align}
+              f(x)              & = e^{-x}                                           &
+              f'(x)             & = -f(x)                                              \\
+              \Fou_c\{f'(x)\}   & = w\ \Fou_s\{f(x)\} - \sqrt{\frac{2}{\pi}}\ f(0)   &
+              -\Fou_c\{e^{-x}\} & = w\ \Fou_s\{f(x)\} - \sqrt{\frac{2}{\pi}}           \\
+              \Fou_s\{f(x)\}    & = \sqrt{\frac{2}{\pi w}} \Bigg[ \frac{-1}{1 + w^2}
+              + 1\Bigg]         &
+                                & = \color{y_p} \sqrt{\frac{2}{\pi}}\
+              \Bigg[\frac{w}{1 + w^2}\Bigg]
+          \end{align}
+
+    \item Using the formulas in the Table,
+          \begin{align}
+              \Fou_s \Bigg\{ \frac{1}{\sqrt{x}} \Bigg\} & = \frac{1}{\sqrt{w}}   &
+              \Fou_s \{x^{a-1}\}                        & = \sqrt{\frac{2}{\pi}}
+              \ \frac{\Gamma(a)}{w^a}\ \sin\left( \frac{a\pi}{2} \right)           \\
+              a                                         & = 1/2                  &
+              \frac{1}{\sqrt{w}}                        & = \frac{\Gamma(1/2)}
+              {\sqrt{\pi w}}                                                       \\
+              \Gamma(1/2)                               & = \sqrt{\pi}
+          \end{align}
+
+    \item TBC. Refer notes.
+          \begin{itemize}
+              \item Direct computation
+              \item Derivative relation
+              \item Second derivative relation
+          \end{itemize}
+\end{enumerate}

@@ -1,0 +1,756 @@
+\section{Derivative, Analytic Function}
+
+\begin{enumerate}
+    \item Plotting the region in the complex plane, with center of circle $ z_0 =
+              1 - 5\i$ and radius of circle $ \rho = 1.5 $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {Disc}, axis equal,
+                          height = 8cm, width = 8cm,
+                          ymin = -7, ymax = -3, xmin = -1, xmax = 3,
+                          grid = both,Ani,]
+                      \path [draw=y_h,fill=y_h, fill opacity = 0.08]
+                      (axis cs:1,-5) circle (1.5);
+                      \draw[thin, black, dashed] (1, -5) -- (2.5, -5)
+                      node[color = y_p, midway, above] {$ \rho$};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the region in the complex plane, with center of circle $ z_0 =
+              0$ and radius of circle $ 1 $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {Disc}, axis equal,
+                          height = 8cm, width = 8cm,
+                          ymin = -1.1, ymax = 1.1, xmin = -1.1, xmax = 1.1,
+                          grid = both,Ani,]
+                      \path [draw=none,fill=y_h, fill opacity = 0.08]
+                      (axis cs:0,0) circle (1);
+                      \draw[thin, black, dashed] (0, 0) -- (1, 0)
+                      node[color = y_p, midway, above] {$ \rho$};
+                      \node[GraphNode, fill = white, draw = black] at (axis cs:0, 0){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the region in the complex plane, with center of circle $ z_0 =
+              4 - 2\i $ and radius of circle in the range $ (\pi, 3\pi) $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {Annulus}, axis equal,
+                          height = 8cm, width = 8cm,
+                          ymin = -13, ymax = 9, xmin = -7, xmax = 15,
+                          grid = both,Ani,
+                          xtick = {4-3*pi, 4-pi, 4, 4+pi, 4+3*pi},
+                          ytick = {-2-3*pi, -2-pi, -2, -2+pi, -2+3*pi}]
+                      \path [draw=none,fill=y_h, fill opacity = 0.08,even odd rule]
+                      (axis cs:4,-2) circle (pi) (axis cs:4,-2) circle (3*pi);
+                      \draw[thin, black, densely dashed] (4, -2) -- (4+pi, -2)
+                      node[color = y_p, midway, above] {$ \rho_1 $};
+                      \draw[thin, black, densely dashed] (4, -2) -- (4, -2+3*pi)
+                      node[color = y_p, midway, left] {$ \rho_2 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the region in the complex plane,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {Horizontal open band}, axis equal,
+                          height = 8cm, width = 8cm,
+                          ymin = -5, ymax = 5, xmin = -5, xmax = 5,
+                          grid = both,Ani,
+                          PiStyleY, ytick distance = pi]
+                      \path[name path  = U] (axis cs:-5, pi) -- (axis cs:5, pi);
+                      \path[name path  = D] (axis cs:-5, -pi) -- (axis cs:5, -pi);
+                      \addplot[y_h, opacity = 0.08] fill between[
+                              of = U and D];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the region in the complex plane,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {Sector of disc}, axis equal,
+                          height = 8cm, width = 8cm,
+                          ymin = -5, ymax = 5, xmin = -5, xmax = 5,
+                          grid = both,Ani,]
+                      \path[name path  = U] (axis cs:0, 0) -- (axis cs:5, 5);
+                      \path[name path  = D] (axis cs:0, 0) -- (axis cs:5, -5);
+                      \addplot[y_h, opacity = 0.08] fill between[
+                              of = U and D];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the region in the complex plane,
+          \begin{align}
+              \Re{\Big( \frac{1}{z} \Big)} & < 1 &
+              \Re{\Big( z \Big)}           & > 1
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {Vertical band of exclusion}, axis equal,
+                          height = 8cm, width = 8cm,
+                          ymin = -5, ymax = 5, xmin = -5, xmax = 5,
+                          grid = both,Ani,]
+                      \path[name path  = A] (axis cs:1, 5) -- (axis cs:5, 5);
+                      \path[name path  = B] (axis cs:1, -5) -- (axis cs:5, -5);
+                      \addplot[y_h, opacity = 0.08] fill between[
+                              of = A and B];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the region in the complex plane,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {Off center horizontal half-plane}, axis equal,
+                          height = 8cm, width = 8cm,
+                          ymin = -5, ymax = 5, xmin = -5, xmax = 5,
+                          grid = both,Ani,]
+                      \path[name path  = A] (axis cs:-1, 5) -- (axis cs:5, 5);
+                      \path[name path  = B] (axis cs:-1, -5) -- (axis cs:5, -5);
+                      \addplot[y_h, thick] coordinates {(-1, -5)
+                              (-1, 5)};
+                      \addplot[y_h, opacity = 0.08] fill between[
+                              of = A and B];
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The distance of $ z $ from $ A = -\i $ is not less than its distance
+          from $ B = \i $. The perpendicular bisector of the line joining these two
+          points happens to be the real axis. \par
+          The region is simply $ \Im{(z)} \geq 0 $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {Vertical half-plane}, axis equal,
+                          height = 8cm, width = 8cm,
+                          ymin = -2, ymax = 2, xmin = -2, xmax = 2,
+                          grid = both,Ani,]
+                      \path[name path  = A] (axis cs:-5, 5) -- (axis cs:5, 5);
+                      \path[name path  = B] (axis cs:-5, 0) -- (axis cs:5, 0);
+                      \addplot[y_h, thick] coordinates {(-5, 0)
+                              (5, 0)};
+                      \addplot[y_h, opacity = 0.08] fill between[
+                              of = A and B];
+                      \node[GraphNode, fill = white, draw = black]
+                      at (axis cs:0, 1){\tiny \textbf{A}};
+                      \node[GraphNode, fill = white, draw = black]
+                      at (axis cs:0, -1){\tiny \textbf{B}};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Refer notes. Use Problems $ 1-8 $ as examples.
+
+    \item Finding the real and imaginary parts of the function.
+          \begin{align}
+              f(z) & = u(x, y) + \i\ v(x, y)                         &
+              f(z) & = 5z^2 - 12z + (3 + 2\i)                          \\
+              u    & = \color{y_h} 5(x^2 - y^2) - 12x + 3            &
+              v    & = \color{y_p} 10xy - 12y + 2                      \\
+              P    & = 4 - 3\ \i                                     &
+              f(P) & = \textcolor{y_h}{10} - \textcolor{y_p}{82}\ \i
+          \end{align}
+
+    \item Finding the real and imaginary parts of the function.
+          \begin{align}
+              f(z) & = u(x, y) + \i\ v(x, y)                       &
+              f(z) & = \frac{1}{1-z}                                 \\
+              f(z) & = \frac{1}{(1-x) - y\ \i}                     &
+              f(z) & = \frac{(1-x) + y\ \i}{(1-x)^2 + y^2}           \\
+              u    & = \color{y_h} \frac{1-x}{(1-x)^2 + y^2}       &
+              v    & = \color{y_p} \frac{y}{(1-x)^2 + y^2}           \\
+              P    & = 1 - \i                                      &
+              f(P) & = \textcolor{y_h}{0} - \textcolor{y_p}{1}\ \i
+          \end{align}
+
+    \item Finding the real and imaginary parts of the function.
+          \begin{align}
+              f(z) & = u(x, y) + v(x, y)\ \i                            &
+              f(z) & = \frac{z-2}{z+2}                                    \\
+              f(z) & = \frac{(x-2) + y\ \i}{(x+2) + y\ \i}              &
+              f(z) & = \frac{(x^2 + y^2 - 4) + (4y)\ \i}{(x+2)^2 + y^2}   \\
+              u    & = \color{y_h} \frac{x^2 + y^2 - 4}{(x+2)^2 + y^2}  &
+              v    & = \color{y_p} \frac{4y}{(x+2)^2 + y^2}               \\
+              P    & = 8\i                                              &
+              f(P) & = \textcolor{y_h}{15/17} + \textcolor{y_p}
+              {8/17}\ \i
+          \end{align}
+
+    \item Plotting the graphs separately to avoid clutter.
+          \begin{enumerate}
+              \item Finding the real and imaginary parts of the function.
+                    \begin{align}
+                        f(z) & = u(x, y) + v(x, y)\ \i         &
+                        f(z) & = z^2 = (x^2 - y^2) + (2xy)\ \i
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \Re{z} $},
+                                    width = 8cm, height = 8cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = -2:2, y domain = -2:2,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.5, samples = 50,
+                                    faceted color = black!50] {x^2 - y^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \Im{z} $},
+                                    width = 8cm, height = 8cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = -2:2, y domain = -2:2,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.5, samples = 50,
+                                    faceted color = black!50] {2*x*y};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \abs{z} $},
+                                    width = 8cm, height = 8cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = -2:2, y domain = -2:2,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.5, samples = 50,
+                                    faceted color = black!50] {(x^2 + y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ \Re{z} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -5:5,
+                                    restrict y to domain = -5:5,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-9,-4,0,4,9},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {x^2 - y^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ \Im{z} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -5:5,
+                                    restrict y to domain = -5:5,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-9,-4,-1, 1,4,9},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {2*x*y};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ \abs{z} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -5:5,
+                                    restrict y to domain = -5:5,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={1,4,9,16,25},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {x^2 + y^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Finding the real and imaginary parts of the function.
+                    \begin{align}
+                        f(z) & = u(x, y) + v(x, y)\ \i                     &
+                        f(z) & = \frac{1}{z} = \frac{x - \i\ y}{x^2 + y^2}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \Re{z} $},
+                                    width = 8cm, height = 8cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = -1:1, y domain = -1:1,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.5, samples = 50,
+                                    faceted color = black!50] {x/(x^2 + y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \Im{z} $},
+                                    width = 8cm, height = 8cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = -1:1, y domain = -1:1,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.5, samples = 50,
+                                    faceted color = black!50] {-y/(x^2 + y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \abs{z} $},
+                                    width = 8cm, height = 8cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = -1:1, y domain = -1:1,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.5, samples = 50,
+                                    faceted color = black!50] {(x^2 + y^2)^(-1/2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ \Re{z} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -1:1,
+                                    restrict y to domain = -1:1,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-9,-4,-1,1,4,9},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {x/ (x^2 + y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ \Im{z} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -1:1,
+                                    restrict y to domain = -1:1,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-9,-4,-1, 1,4,9},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {-y/(x^2 + y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ \abs{z} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -5:5,
+                                    restrict y to domain = -5:5,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={1,2,3,4,5},
+                                            labels=false,
+                                        },
+                                    samples=200
+                                ] {(x^2 + y^2)^(-1/2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Finding the real and imaginary parts of the function.
+                    \begin{align}
+                        f(z) & = u(x, y) + v(x, y)\ \i                              \\
+                        f(z) & = z^4 = (x^4 + y^4 - 6x^2y^2) + (4xy)(x^2 - y^2)\ \i
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \Re{z} $},
+                                    width = 8cm, height = 8cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = -2:2, y domain = -2:2,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.5, samples = 50,
+                                    faceted color = black!50] {x^4 + y^4 - 6*x^2*y^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \Im{z} $},
+                                    width = 8cm, height = 8cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = -2:2, y domain = -2:2,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.5, samples = 50,
+                                    faceted color = black!50] {4*x*y*(x^2 - y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    title = {$ \abs{z} $},
+                                    width = 8cm, height = 8cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = -2:2, y domain = -2:2,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.5, samples = 50,
+                                    faceted color = black!50] {(x^2 + y^2)^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ \Re{z} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -2:2,
+                                    restrict y to domain = -2:2,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-9,-4,0,4,9},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {x^4 + y^4 - 6*x^2*y^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ \Im{z} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -2:2,
+                                    restrict y to domain = -2:2,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={-9,-4,-1, 1,4,9},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {4*x*y*(x^2 - y^2)};
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    enlargelimits = false, title = $ \abs{z} $,
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    domain = -5:5,
+                                    restrict y to domain = -5:5,
+                                    colormap/viridis, colorbar horizontal
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            % number = 10,
+                                            levels={1,4,9,16,25},
+                                            labels=false,
+                                        },
+                                    samples=100
+                                ] {(x^2 + y^2)^2};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+
+    \item Testing the continuity at the origin,
+          \begin{align}
+              f(z)                                 & = \frac{\Re{(z^2)}}{\abs{z}}
+              = \frac{x^2 - y^2}{\sqrt{x^2 + y^2}} &
+              y                                    & = mx                             \\
+              f(z)                                 & = \frac{1 - m^2}{\sqrt{1 + m^2}}
+              \ x                                  &
+              \lim_{x \to 0}f(z)                   & = 0 \quad \forall \quad
+              m\ \in \mathcal{R}
+          \end{align}
+          Thus, the function is continuous.
+
+    \item Testing the continuity at the origin,
+          \begin{align}
+              f(z)                       & = \abs{z}^2 \cdot \Im{(1/z)} &
+              f(z)                       & = -y                           \\
+              \lim_{(x,y) \to (0,0)}f(z) & = 0 \quad \forall \quad
+              m\ \in \mathcal{R}
+          \end{align}
+          Thus, the function is continuous.
+
+    \item Testing the continuity at the origin,
+          \begin{align}
+              f(z)                       & = \frac{\Im{(z^2)}}{\abs{z}^2} &
+              f(z)                       & = \frac{2xy}{x^2 + y^2}          \\
+              y                          & = mx                           &
+              \implies \quad f(z)        & = \frac{2m}{(1 + m^2)}           \\
+              \lim_{(x,y) \to (0,0)}f(z) & = \frac{2m}{1+m^2}
+          \end{align}
+          Thus, the limit at the origin depends on the direction of approach, making
+          $ f(z) $ discontinuous.
+
+    \item Testing the continuity at the origin,
+          \begin{align}
+              f(z)                       & = \frac{\Re{(z)}}{1 - \abs{z}} &
+              f(z)                       & = \frac{x}{1-\sqrt{x^2 + y^2}}   \\
+              \lim_{(x,y) \to (0,0)}f(z) & = \frac{\to 0}
+              {\to 1} = 0
+          \end{align}
+          Thus, the function is continuous.
+
+    \item To find the derivative of the complex function,
+          \begin{align}
+              f(z)   & = \frac{z-\i}{z + \i}                   &
+              f'(z)  & = \frac{(z + \i) - (z- \i)}{(z + \i)^2}   \\
+              f'(z)  & = \frac{2\i}{(z + \i)^2}                &
+              f'(\i) & = \frac{-\i}{2}
+          \end{align}
+
+    \item To find the derivative of the complex function,
+          \begin{align}
+              f(z)        & = (z - 4 \i)^8   &
+              f'(z)       & = 8\ (z - 4\i)^7   \\
+              f'(3 + 4\i) & = 17496
+          \end{align}
+
+    \item To find the derivative of the complex function,
+          \begin{align}
+              f(z)  & = \frac{1.5z + 2\i}{3\i\ z - 4}                          &
+              f'(z) & = \frac{4.5\i\ z - 6 - 4.5\i\ z + 6}{(3\i\ z - 4)^2} = 0
+          \end{align}
+          This is because $ f(z) $ simplifies to $ (1/2\i) $ and is a constant.
+
+    \item To find the derivative of the complex function,
+          \textcolor{y_p}{Typo in question}
+          \begin{align}
+              f(z)  & = \i\ (1-z)^{-n}    &
+              f'(z) & = n\i\ (1-z)^{-n-1}   \\
+              P     & = 0                 &
+              f'(P) & = n\i
+          \end{align}
+
+    \item To find the derivative of the complex function,
+          \begin{align}
+              f(z)  & = (\i z^3 + 3z^2)^3                             &
+              f'(z) & = 3\ (\i z^3 + 3z^2)^2 \cdot (3\i\ z) (z - 2\i)   \\
+              P     & = 2\i                                           &
+              f'(P) & = 0
+          \end{align}
+
+    \item To find the derivative of the complex function,
+          \begin{align}
+              f(z)  & = \frac{z^3}{(z + \i)^3}      &
+              f'(z) & = \frac{3z^2\ \i}{(z + \i)^4}   \\
+              P     & = \i                          &
+              f'(P) & = \frac{-3}{16}\ \i
+          \end{align}
+
+    \item Team Project
+          \begin{enumerate}
+              \item Using the linearity of the limit operator,
+                    \begin{align}
+                        f(z)                      & = \Re f(z)
+                        + \i\ \Im f(z)            &
+                        \lim_{z \to z_0} f(z)     & = l = \Re (l)
+                        + \i\ \Im (l)                               \\
+                        \lim_{z \to z_0} \Re f(z) & = \Re (l)     &
+                        \lim_{z \to z_0} \Im f(z) & = \Im (l)       \\
+                    \end{align}
+
+              \item Suppose the limit is not unique. Let the two possible limits be
+                    $ A, B $ at $ z = z_0 $
+                    \begin{align}
+                        \abs{z - z_0}           & < \delta_1   &
+                        \implies \abs{f(z) - A} & < \epsilon/2   \\
+                        \abs{z - z_0}           & < \delta_2   &
+                        \implies \abs{f(z) - B} & < \epsilon/2
+                    \end{align}
+                    for some fixed value of $ \epsilon $. \par Let $ \delta $ be the
+                    smaller among $ \delta_1 > 0,\ \delta_2 > 0 $.
+                    \begin{align}
+                        \abs{A - B} & = \abs{A - f(z) + f(z) - B}          \\
+                                    & \leq \abs{A - f(z)} + \abs{f(z) - B} \\
+                                    & \leq \epsilon
+                    \end{align}
+                    the distance between the two limits $ \abs{A - B} $ is less than
+                    $ \epsilon $ for any choice of positive real epsilon, however small.
+                    \par This means that $ \abs{A - B} = 0 $ and the limit is unique, if
+                    it exists.
+
+              \item Given a infinite series of complex numbers $ \{z_i\} $ such that
+                    \begin{align}
+                        \lim_{n \to \infty} z_n & = a    &
+                        \lim_{z \to a} f(z)     & = f(a)
+                    \end{align}
+                    Consider some sufficiently large $ n $ such that,
+                    \begin{align}
+                        \abs{z_n - a}                      & < \delta            &
+                                                           & \forall \quad n > N   \\
+                        \implies \quad \abs{f(z_n) - f(a)} & < \epsilon          &
+                        \implies \lim_{n \to
+                        \infty}f(z_n)                      & = f(a)
+                    \end{align}
+
+              \item If $ f(z) $ is differentiable at $ z = z_0 $ then this limit
+                    exists.
+                    \begin{align}
+                        f'(z_0)                              &
+                        = \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0} \\
+                        \lim_{z \to z_0} [f(z) - f(z_0)]     &
+                        = \lim_{z \to z_0} (z - z_0) \cdot f'(z_0) = 0   \\
+                        \implies \quad \lim_{z \to z_0} f(z) & = f(z_0)
+                    \end{align}
+                    This uses the linearity of the limit operator. The last expression
+                    implies that $ f(z) $ is continuous at $ z_0 $.
+
+              \item Checking the differentiability,
+                    \begin{align}
+                        \lim_{z \to z_0} \frac{x - x_0}{z - z_0} & = L
+                    \end{align}
+                    Consider two approaches, one vertical $ z_1 = x_0 + \i\ y $, and
+                    the other horizontal $ z_2 = x + \i\ y_0 $
+                    \begin{align}
+                        L_1 & = \lim_{z_1 \to z_0} \frac{x - x_0}{z - z_0}
+                        = \lim_{y \to y_0} \frac{x_0 - x_0}{y - y_0} =
+                        \color{y_h} 0                                      \\
+                        L_2 & = \lim_{z_2 \to z_0} \frac{x - x_0}{z - z_0}
+                        = \lim_{x \to x_0} \frac{x - x_0}{x - x_0} =
+                        \color{y_p} 1
+                    \end{align}
+                    Since the two limits at the same point $ z_0 $ are different, the
+                    function is not differentiable at $ z_0 $, regardless of where in the
+                    complex plane $ z_0 $ is located. \par
+                    Another such function is $ g(z) = \Im{(z)}$
+
+              \item Checking the differentiability,
+                    \begin{align}
+                        \lim_{\Delta z \to 0} \frac{\abs{z_0 + \Delta z}^2
+                        - \abs{z_0}^2}{\Delta z} & =
+                        \lim_{\Delta z \to 0} \frac{\Delta x^2 + \Delta y^2
+                            + 2x_0 \Delta x + 2y_0 \Delta y}{\Delta x + \i\ \Delta y}
+                    \end{align}
+                    Consider two approaches, one vertical $ z_1 = 0 + \i\ \Delta y $,
+                    and the other horizontal $ z_2 = \Delta x + 0\ \i $
+                    \begin{align}
+                        L_1 & = \lim_{\Delta y \to 0} \frac{\Delta y
+                            (\Delta y + 2y_0)}{\i\ \Delta y} =
+                        \color{y_h} \frac{2y_0}{\i}                            \\
+                        L_2 & = \lim_{\Delta x \to 0} \frac{\Delta x (\Delta x
+                            + 2x_0)}{\Delta x} =
+                        \color{y_p} 2x_0
+                    \end{align}
+                    Since the two limits at the same point $ z_0 $ are different, the
+                    function is not differentiable at $ z_0 $, regardless of where in the
+                    complex plane $ z_0 $ is located except the origin. \par
+                    Even when $ x_0 = y_0 = 0 $, the function is not differentiable
+                    everywhere in the neighbourhood of $ z_0 $. Hence, the function is
+                    nowhere analytic.
+          \end{enumerate}
+
+    \item Refer notes. TBC.
+
+\end{enumerate}

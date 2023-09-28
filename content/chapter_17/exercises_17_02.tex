@@ -1,0 +1,212 @@
+\section{Linear Fractional Transformations (Mobius Transformations)}
+
+\begin{enumerate}
+    \item Proving the theorem,
+          \begin{align}
+              w   & = \frac{az + b}{cz + d}                     &
+              w   & = \frac{bc - ad}{c\ (cz + d)} + \frac{c}{d}   \\
+              w_1 & = cz                                        &
+              w_2 & = w_1 + d                                     \\
+              w_3 & = \frac{1}{w_2}                             &
+              w_4 & = K w_3
+          \end{align}
+          Since $ ad \neq bc $ is a precondition for Mobius transformations,
+          $ K \neq 0 $. A composition of the four basic kinds of linear fractional
+          maps yields the general mapping. \par
+          For the special case of $ c = 0 $,
+          \begin{align}
+              w   & = \frac{az + b}{d} &
+              w_1 & = az                 \\
+              w_2 & = w_1 + b          &
+              w_3 & = \frac{w_2}{d}
+          \end{align}
+
+    \item Substituting $ w $ into $ v(w) $ gives,
+          \begin{align}
+              v & = \frac{a^* w + b^*}{c^* w + d^*}                                   \\
+              w & = \frac{az + b}{cz + d}                                             \\
+              v & = \frac{a^*a z + a^* b + b^*c z + b^* d}{cz + d} \cdot
+              \frac{cz + d}{c^*az + c^*b + d^*cz + d^*d}                              \\
+              v & = \frac{(a^*a + b^*c)z + a^*b + b^*d}{(c^*a + d^*c)z + c^*b + d^*d}
+          \end{align}
+          To check if this satisfies the condition on the determinant,
+          \begin{align}
+              (ad - bc) & \neq 0 \qquad\qquad (a^*d^* - b^*c^*) \neq 0              \\
+              M         & = (a^*a + b^*c)(c^*b + d^*d) - (a^*b + b^*d)(c^*a + d^*c) \\
+                        & = (ad - bc)(a^*d^* - b^*c^*) \neq 0
+          \end{align}
+          Thus, $ g(w) $ is also an L.F.T.
+
+    \item Finding the inverse of the coefficient matrix $ M $,
+          \begin{align}
+              \vec{M}      & = \begin{bNiceMatrix}[margin]
+                                   a & b \\
+                                   c & d
+                               \end{bNiceMatrix}                       &
+              \vec{M}^{-1} & =  \frac{1}{(ad - bc)}\ \begin{bNiceMatrix}[margin]
+                                                         d  & -b \\
+                                                         -c & a
+                                                     \end{bNiceMatrix}
+          \end{align}
+          This matches the coefficient matrix of the inverse mapping. \par
+          \begin{align}
+              w      & = f(v)                        &
+              v      & = g(w) = g[f(v)]                \\
+              M_2M_1 & = \begin{bNiceMatrix}[margin]
+                             aa^* + b^*c & a^*b + b^*d \\
+                             c^*a + d^*c & c^*b + d^*d
+                         \end{bNiceMatrix}
+          \end{align}
+          This result matches the composition of two LFTs from Problem $ 2 $.
+
+    \item Starting with a vertical line,
+          \begin{align}
+              z      & = a + y\i                                                     &
+              f(z)   & = \frac{1}{z}                                                   \\
+              f(z)   & = \frac{a - y\i}{a^2 + y^2}                                     \\
+              z      & = \frac{b}{\cos \theta}\ \exp(\i \theta)                      &
+              \theta & \in (-\pi/2, \pi/2)                                             \\
+              w      & = \frac{\cos \theta}{b}\ \exp(-\i \theta)                     &
+              w      & = \frac{1 + \cos(2\theta)}{2b} - \i\ \frac{\sin(2\theta)}{2b}
+          \end{align}
+          This is the equation of a circle with center $ 1/2b $ and radius $ 1/2b $,
+          which means it passes through the origin. \par
+          Refer to Problem set $ 17.1 $, problem $ 14 $.
+
+    \item Deriving the inverse transform,
+          \begin{align}
+              g(w)                  & = z                          &
+              \frac{ew + f}{gw + h} & = z                            \\
+              w                     & = \frac{az + b}{cz + d}      &
+              z                     & = \frac{eaz + eb + cfz + df}
+              {agz + bg + chz + dh}                                  \\
+              ea + cf               & = 1                          &
+              eb + df               & = 0                            \\
+              ag + ch               & = 0                          &
+              bg + dh               & = 1                            \\
+              f                     & = \frac{-b}{ad - bc}         &
+              e                     & = \frac{d}{ad - bc}            \\
+              h                     & = \frac{a}{ad - bc}          &
+              g                     & = \frac{-c}{ad - bc}
+          \end{align}
+          The reverse proof follows the exact same process, simply exchaning the start
+          and end points.
+
+    \item Finding the fixed points of the special mappings,
+          \begin{align}
+              f_1(z) & = z                      & z_1 & \in \mathcal{C} \\
+              f_2(z) & = \bar{z}                & z_2 & = \mathcal{R}   \\
+              f_3    & = \frac{1}{z}            & z_3 & = \pm 1 + 0\ \i \\
+              f_4    & = az, \qquad \abs{a} = 1 & z_4 & = 0             \\
+              f_5    & = z + b, \qquad b \neq 0 & z_5 & = \phi
+          \end{align}
+
+    \item Finding the inverse transform, using matrix inversion,
+          \begin{align}
+              \vec{M}      & = \begin{bNiceMatrix}[margin]
+                                   0 & \i \\ 2 & -1
+                               \end{bNiceMatrix}                   &
+              \vec{M}^{-1} & = \frac{1}{(-2\i)}\ \begin{bNiceMatrix}[margin]
+                                                     -1 & -\i \\ -2 & 0
+                                                 \end{bNiceMatrix}    \\
+              z            & = \color{y_p} \frac{w + \i}{2w}                 &
+              w            & = \color{y_h} \frac{\i}{2z - 1}
+          \end{align}
+
+    \item Finding the inverse transform, using matrix inversion,
+          \begin{align}
+              \vec{M}      & = \begin{bNiceMatrix}[margin]
+                                   1 & -\i \\ 1 & \i
+                               \end{bNiceMatrix}                  &
+              \vec{M}^{-1} & = \frac{1}{(2\i)}\ \begin{bNiceMatrix}[margin]
+                                                    \i & \i \\ -1 & 1
+                                                \end{bNiceMatrix}    \\
+              z            & = \color{y_p} \frac{\i(w + 1)}{-w + 1}         &
+              w            & = \color{y_h} \frac{z - \i}{z + \i}
+          \end{align}
+
+    \item Finding the inverse transform, using matrix inversion,
+          \begin{align}
+              \vec{M}      & = \begin{bNiceMatrix}[margin]
+                                   1 & -\i \\ 3\i & 4
+                               \end{bNiceMatrix}             &
+              \vec{M}^{-1} & = \begin{bNiceMatrix}[margin]
+                                   4 & \i \\ -3\i & 1
+                               \end{bNiceMatrix}                \\
+              z            & = \color{y_p} \frac{4w + \i}{-3\i\ w + 1} &
+              w            & = \color{y_h} \frac{z - \i}{3\i\ z + 4}
+          \end{align}
+
+    \item Finding the inverse transform, using matrix inversion,
+          \begin{align}
+              \vec{M}      & = \begin{bNiceMatrix}[margin]
+                                   1 & -0.5\i \\ -0.5\i & -1
+                               \end{bNiceMatrix}                 &
+              \vec{M}^{-1} & = -0.75\ \begin{bNiceMatrix}[margin]
+                                          -1 & 0.5\i \\ 0.5\i & 1
+                                      \end{bNiceMatrix}             \\
+              z            & = \color{y_p} \frac{-w + 0.5\i}{0.5\i\ w + 1} &
+              w            & = \color{y_h} \frac{-z + 0.5\i}{0.5\i\ z + 1}
+          \end{align}
+
+    \item Finding the fixed points,
+          \begin{align}
+              w   & = (a + \i b)\ z^2                &
+              z^* & = (a + \i b)\ (z^*)^2              \\
+              z_1 & = \color{y_h} 0                  &
+              z_2 & = \color{y_p} \frac{1}{a + \i b}
+          \end{align}
+
+    \item Finding the fixed points,
+          \begin{align}
+              w   & = z - 3\i   &
+              z^* & = z^* - 3\i
+          \end{align}
+          No fixed points exist.
+
+    \item Finding the fixed points, (not an LFT)
+          \begin{align}
+              w   & = 16\ z^5                                        &
+              z^* & = 16\ (z^*)^5                                      \\
+              z_1 & = \color{y_h} 0                                  &
+              z_2 & = \color{y_p} \pm \frac{1}{2},\ \pm \frac{\i}{2}
+          \end{align}
+
+    \item Finding the fixed points,
+          \begin{align}
+              w   & = az + b                    &
+              z^* & = az^* + b                    \\
+              z_1 & = \color{y_h} \frac{b}{1-a}
+          \end{align}
+
+    \item Finding the fixed points,
+          \begin{align}
+              w                       & = \frac{\i z + 4}{2z - 5\i} &
+              2(z^*)^2 - 6\i\ z^* - 4 & = 0                           \\
+              z_1                     & = \color{y_h} \i            &
+              z_2                     & = \color{y_p} 2\i
+          \end{align}
+
+    \item Finding the fixed points, given $ a \neq 1 $
+          \begin{align}
+              w           & = \frac{a\i\ z - 1}{z + a\i} &
+              (z^*)^2 + 1 & = 0                            \\
+              z_1         & = \color{y_h} \i             &
+              z_2         & = \color{y_p} -\i
+          \end{align}
+
+    \item Rotation about the origin
+
+    \item Reflection about the unit sphere $ w = 1/z $
+
+    \item Brute forcing,
+          \begin{align}
+              \frac{a\i + b}{c\i + d}   & = \i                     &
+              \frac{-a\i + b}{-c\i + d} & = -\i                      \\
+              a\i + b                   & = -c + d\i               &
+              -a\i + b                  & = c - d\i                  \\
+              f(w)                      & = \frac{az + b}{-bz + a}
+          \end{align}
+
+    \item Any translation by a nonzero complex number.
+\end{enumerate}

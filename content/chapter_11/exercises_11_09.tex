@@ -1,0 +1,449 @@
+\section{Fourier Transform, Discrete and Fast Fourier Transforms}
+
+\begin{enumerate}
+    \item Proving the relations using the definition of $ i $,
+          \begin{align}
+              i \cdot i        & = -1                                          &
+              \frac{1}{i}      & = \frac{i}{-1} = -i                             \\
+              e^{-ix}          & = \cos(-x) + i\ \sin(-x)                      &
+                               & = \cos(x) - i\ \sin(x)                          \\
+              e^{ix} + e^{-ix} & = \cos(x) + i\ \sin(x) + \cos(x) - i\ \sin(x) &
+                               & = 2\cos(x)                                      \\
+              e^{ix} - e^{-ix} & = \cos(x) + i\ \sin(x) - \cos(x) + i\ \sin(x) &
+                               & = 2i\ \sin(x)
+          \end{align}
+          Using the Taylor series expansions of $ \cos(kx) $ and $ \sin(kx) $,
+          \begin{align}
+              \sin(kx)               & = kx - \frac{(kx)^3}{3!} + \frac{(kx)^5}{5!}
+              - \dots                                                               \\
+              \cos(kx)               & = 1 - \frac{(kx)^2}{2!} + \frac{(kx)^4}{4!}
+              - \dots                                                               \\
+              \cos(kx) + i\ \sin(kx) & = 1 + (ikx) + \frac{(ikx)^2}{2!}
+              + \frac{(ikx)^3}{3!} + \frac{(ikx)^4}{4!} + \dots                     \\
+                                     & = \exp(ikx)
+          \end{align}
+
+    \item Finding the Fourier transform by integration,
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                e^{2ix} & \quad x \in (-1, 1)    \\
+                                                0       & \quad \text{otherwise}
+                                            \end{dcases}          \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x   \\
+                             & = \frac{1}{\sqrt{2\pi}} \int_{-1}^{1} e^{ix(2-w)}
+              \ \dl x
+              = \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{e^{ix (2-w)}}{i(2-w)}
+              \Bigg]_{-1}^{1}                                                         \\
+                             & = \color{y_p} \frac{1}{\sqrt{2\pi}}\ \frac{2\sin(2-w)}
+              {(2-w)}
+          \end{align}
+
+    \item Finding the Fourier transform by integration, assuming $ a<b $
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                1 & \quad x \in (a, b)     \\
+                                                0 & \quad \text{otherwise}
+                                            \end{dcases}              \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x \\
+                             & = \frac{1}{\sqrt{2\pi}} \int_{a}^{b} e^{-iwx}
+              \ \dl x
+              = \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{e^{-iwx}}{(-iw)} \Bigg]_{a}^{b} \\
+                             & = \color{y_p} \frac{i}{\sqrt{2\pi}}\ \frac{e^{-iwb}
+                  - e^{-iwa}}{w}
+          \end{align}
+
+    \item Finding the Fourier transform by integration, assuming $ k > 0 $
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                e^{kx} & \quad x < 0 \\
+                                                0      & \quad x > 0
+                                            \end{dcases}                      \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x   \\
+                             & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{0} e^{(k-iw)x}
+              \ \dl x
+              = \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{e^{(k-iw)x}}{(k-iw)}
+              \Bigg]_{-\infty}^{0}                                                    \\
+                             & = \frac{1}{\sqrt{2\pi}}\ \frac{1}{k-iw}
+              = \color{y_p} \frac{1}{\sqrt{2\pi}}\ \frac{k + iw}{k^2 + w^2}
+          \end{align}
+
+    \item Finding the Fourier transform by integration, assuming $ a > 0 $
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                e^{x} & \quad x \in (-a, a)    \\
+                                                0     & \quad \text{otherwise}
+                                            \end{dcases}            \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x   \\
+                             & = \frac{1}{\sqrt{2\pi}} \int_{-a}^{a} e^{(1-iw)x}
+              \ \dl x
+              = \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{e^{(1-iw)x}}{(1-iw)}
+              \Bigg]_{-a}^{a}                                                         \\
+                             & = \color{y_p} \frac{1}{\sqrt{2\pi}}\ \frac{e^{(1-iw)a}
+                  - e^{-(1-iw)a}}{1-iw}
+          \end{align}
+
+    \item Finding the Fourier transform by integration, assuming $ a > 0 $
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                e^{x}  & \quad x < 0 \\
+                                                e^{-x} & \quad x > 0
+                                            \end{dcases}                      \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x   \\
+                             & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{0}
+              e^{(1-iw)x} \ \dl x + \infint e^{(-1-iw)x}\ \dl x                       \\
+                             & = \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{e^{(1-iw)x}}
+                  {(1-iw)} \Bigg]_{-\infty}^{0} + \frac{1}{\sqrt{2\pi}}\
+              \Bigg[ \frac{e^{(-1-iw)x}}{(-1-iw)} \Bigg]_{0}^{\infty}                 \\
+                             & = \color{y_p} \frac{1}{\sqrt{2\pi}}\ \frac{2}{1 + w^2}
+          \end{align}
+
+    \item Finding the Fourier transform by integration, assuming $ a > 0 $
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                x & \quad x \in (0, a)     \\
+                                                0 & \quad \text{otherwise}
+                                            \end{dcases}               \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x
+              = \int_{0}^{a} x\ e^{-iwx}\ \dl x                                      \\
+                             & = \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{xe^{-iwx}}{-iw}
+                  \Bigg]_{0}^{a} - \frac{1}{\sqrt{2\pi}}\
+              \int_{0}^{a} \frac{e^{-iwx}}{-iw}\ \dl x                               \\
+                             & = \frac{1}{\sqrt{2\pi}} \Bigg[ \frac{ae^{-iwa}}{-iw}
+                  \Bigg]
+              + \frac{1}{\sqrt{2\pi}} \Bigg[\frac{e^{-iwx}}{w^2}\Bigg]_0^a           \\
+                             & = \color{y_p} \frac{1}{\sqrt{2\pi}} \Bigg[
+                  \frac{(iwa + 1)e^{-iwa} - 1}{w^2} \Bigg]
+          \end{align}
+
+    \item Finding the Fourier transform by integration,
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                xe^{-x} & \quad x \in (-1, 0)    \\
+                                                0       & \quad \text{otherwise}
+                                            \end{dcases}        \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x
+              = \int_{-1}^{0} x\ e^{-(1 + iw)x}\ \dl x                              \\
+                             & = \frac{1}{\sqrt{2\pi}}\ \Bigg[ -\frac{1 + (1+iw)x}
+              {(1+iw)^2}\ e^{-(1+iw)x} \Bigg]_{-1}^{0}                              \\
+                             & = \color{y_p} \frac{1}{\sqrt{2\pi}} \Bigg[
+                  \frac{-iw\ e^{(1+iw)} - 1}{(1+iw)^2} \Bigg]
+          \end{align}
+
+    \item Finding the Fourier transform by integration,
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                \abs{x} & \quad x \in (-1, 1)    \\
+                                                0       & \quad \text{otherwise}
+                                            \end{dcases}        \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x \\
+                             & = \int_{-1}^{0} (-x)\ e^{-iwx}\ \dl x
+              + \int_{0}^{1} (x)\ e^{-iwx}\ \dl x                                   \\
+                             & = \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{1 + iwx}
+                  {-w^2}\ e^{-iwx} \Bigg]_{-1}^{0} + \frac{1}{\sqrt{2\pi}}\ \Bigg[
+              \frac{1 + iwx}{-w^2}\ e^{-iwx} \Bigg]_{1}^{0}                         \\
+                             & = \color{y_p} \frac{2}{\sqrt{2\pi}} \Bigg[
+                  \frac{\cos(w) + w\sin(w) - 1}{w^2} \Bigg]
+          \end{align}
+
+    \item Finding the Fourier transform by integration,
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                x & \quad x \in (-1, 1)    \\
+                                                0 & \quad \text{otherwise}
+                                            \end{dcases}              \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x \\
+                             & = \sqrt{\frac{1}{2\pi}}\int_{-1}^{1} (x)\ e^{-iwx}
+              \ \dl x = \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{1 + iwx}
+              {w^2}\ e^{-iwx} \Bigg]_{-1}^{1}                                       \\
+                             & = \frac{1}{\sqrt{2\pi}} \Bigg[ \frac{(1 + iw)e^{-iw}
+              - (1-iw)e^{iw}}{w^2} \Bigg]                                           \\
+                             & = \color{y_p} \frac{2i}{\sqrt{2\pi}} \Bigg[
+                  \frac{w\ \cos(w) + \sin(w)}{w^2} \Bigg]
+          \end{align}
+
+    \item Finding the Fourier transform by integration,
+          \begin{align}
+              f(x)           & = \color{y_h}\begin{dcases}
+                                                -1 & \quad x \in (-1, 0)    \\
+                                                1  & \quad x \in (0, 1)     \\
+                                                0  & \quad \text{otherwise}
+                                            \end{dcases}             \\
+              \widehat{f}(w) & = \frac{1}{\sqrt{2\pi}} \intRL f(x)\ e^{-iwx}\ \dl x \\
+                             & = \sqrt{\frac{1}{2\pi}}\int_{-1}^{0} (-1)\ e^{-iwx}
+              \ \dl x + \frac{1}{\sqrt{2\pi}} \int_{0}^{1} (1)\ e^{-iwx}\ \dl x     \\
+                             & = \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{e^{-iwx}}{iw}
+                  \Bigg]_{-1}^{0} - \frac{1}{\sqrt{2\pi}}\ \Bigg[ \frac{e^{-iwx}}{iw}
+              \Bigg]_{0}^{1}                                                        \\
+                             & = \frac{1}{\sqrt{2\pi}} \Bigg[ \frac{1 - e^{iw}
+                      - e^{-iw} + 1}{iw} \Bigg]
+              = \color{y_p} \frac{2}{\sqrt{2\pi}} \Bigg[
+                  \frac{1 - \cos(w)}{iw} \Bigg]
+          \end{align}
+
+    \item Using the table,
+          \begin{align}
+              f(x)       & = \color{y_h}\begin{dcases}
+                                            xe^{-x} & \quad x > 0 \\
+                                            0       & \quad x < 0
+                                        \end{dcases}                   &
+              g(x)       & = \color{y_h}\begin{dcases}
+                                            e^{-x} & \quad x > 0 \\
+                                            0      & \quad x < 0
+                                        \end{dcases}               \\
+              \Fou\{g\}  & = \frac{1}{\sqrt{2\pi}}\ \frac{1}{1 + iw}     &
+              f'(x)      & = (1-x)e^{-x} = g(x) - f(x)                     \\
+              \Fou\{f'\} & = iw\ \Fou\{f\} = \Fou\{g - f\}               &
+              \Fou\{f\}  & = \frac{1}{\sqrt{2\pi}}\ \frac{1}{(1 + iw)^2}
+          \end{align}
+
+    \item Using the table,
+          \begin{align}
+              f(x)              & = \color{y_h}e^{-x^2/2}                         &
+              \Fou\{e^{-ax^2}\} & = \frac{1}{\sqrt{2a}}\ e^{-w^2/4a} \qquad (a>0)   \\
+              \Fou\{f(x)\}      & = \color{y_p} e^{-w^2/2}
+          \end{align}
+
+    \item Obtaining formula 7 from formula 8,
+          \begin{align}
+              f(x)      & = \color{y_h}\begin{dcases}
+                                           e^{iax} & \quad x \in (b, c)     \\
+                                           0       & \quad \text{otherwise}
+                                       \end{dcases}                        &
+              g(x)      & = \color{y_h}\begin{dcases}
+                                           e^{iax} & \quad x \in(-b, b)     \\
+                                           0       & \quad \text{otherwise}
+                                       \end{dcases}              \\
+              \Fou\{f\} & = \frac{i}{\sqrt{2\pi}}\ \frac{e^{ib(a-w)} - e^{ic(a-w)}}
+              {a - w}   &
+              b         & \to -c                                                     \\
+              \Fou\{g\} & = \frac{i}{\sqrt{2\pi}}\ \frac{e^{-ic(a-w)} - e^{ic(a-w)}}
+              {a - w}   &
+              \Fou\{g\} & = \frac{2}{\sqrt{2\pi}}\ \frac{\sin[c(w-a)]}{w-a}
+          \end{align}
+          Which mathces the formula in the table with $ b \leftrightarrow c $
+
+    \item Obtaining formula 1 from formula 2,
+          \begin{align}
+              f(x)      & = \color{y_h}\begin{dcases}
+                                           1 & \quad x \in (b, c)     \\
+                                           0 & \quad \text{otherwise}
+                                       \end{dcases}                           &
+              g(x)      & = \color{y_h}\begin{dcases}
+                                           1 & \quad x \in(-b, b)     \\
+                                           0 & \quad \text{otherwise}
+                                       \end{dcases}                   \\
+              \Fou\{f\} & = \frac{1}{\sqrt{2\pi}}\ \frac{e^{-ibw} - e^{-icw}}{iw} &
+              b         & \to -c                                                    \\
+              \Fou\{g\} & = \frac{1}{\sqrt{2\pi}}\ \frac{e^{icw} - e^{-icw}}{iw}  &
+              \Fou\{g\} & = \frac{2}{\sqrt{2\pi}}\ \frac{\sin(cw)}{w}
+          \end{align}
+          Which matches the formula in the table with $ b \leftrightarrow c $
+
+    \item Shifting,
+          \begin{enumerate}
+              \item Shifting in $ x $,
+                    \begin{align}
+                        \Fou\{f(x-a)\} & = \intRL f(x-a)\ e^{-iwx}\ \dl x         \\
+                        y              & = (x-a) \qquad\qquad \dl y = \dl x       \\
+                        \Fou\{f(x-a)\} & = \intRL f(y)\ e^{-iwy}\ e^{-iwa}\ \dl y \\
+                                       & = \color{y_p} e^{-iwa}\ \Fou\{f(x)\}
+                    \end{align}
+
+              \item Obtaining formula $ 1 $ from formula $ 2 $,
+                    \begin{align}
+                        \frac{b+c}{2} & = \alpha \qquad\qquad \frac{c-b}{2} = \beta \\
+                        f(x)          & = \color{y_h}
+                        \begin{dcases}
+                            1 & \quad x \in (\alpha - \beta, \alpha + \beta) \\
+                            0 & \quad \text{otherwise}
+                        \end{dcases}
+                    \end{align}
+                    Using the fourier transform from the table and $ x $ shifting,
+                    \begin{align}
+                        \Fou\{f(x)\} & = \frac{1}{\sqrt{2\pi}}
+                        \ \frac{e^{-iw(\alpha - \beta)} - e^{-iw(\alpha + \beta)}}
+                        {iw}                                                \\
+                                     & =  \frac{e^{-iw\alpha}}{\sqrt{2\pi}}
+                        \ \frac{e^{iw\beta} - e^{-iw\beta}}{iw}
+                        = e^{-iw \alpha} \ \Bigg[ \sqrt{\frac{2}{\pi}}
+                        \ \frac{\sin(\beta w)}{w} \Bigg]                    \\
+                        g(x)         & = \color{y_h}
+                        \begin{dcases}
+                            1 & \quad x \in (-\beta, \beta) \\
+                            0 & \quad \text{otherwise}
+                        \end{dcases}                     \\
+                        f(x)         & = g(x - \alpha)
+                    \end{align}
+                    This proves the relation.
+
+              \item Shifting in $ w $,
+                    \begin{align}
+                        \Fou^{-1}\{\widehat{f}(w-a)\} &
+                        = \intRL \widehat{f}(w-a)\ e^{iwx}\ \dl w        \\
+                        y                             &
+                        = (w-a) \qquad\qquad \dl y = \dl w               \\
+                        \Fou\{f(w-a)\}                &
+                        = \intRL \widehat{f}(y)\ e^{ixy}\ e^{ixa}\ \dl y \\
+                                                      &
+                        =  e^{iax}\ \Fou^{-1}\{\widehat{f}(w)\}
+                        = \color{y_h} e^{iax} \cdot f(x)
+                    \end{align}
+
+              \item Obtaining formula $ 7 $ from formula $ 1 $,
+                    \begin{align}
+                        f(x)      & =  \color{y_h} \begin{dcases}
+                                                       1 & \quad x \in (-b, b)    \\
+                                                       0 & \quad \text{otherwise}
+                                                   \end{dcases}              &
+                        g(x)      & =  \color{y_h} \begin{dcases}
+                                                       e^{iax} & \quad x \in (-b, b) \\
+                                                       0       &
+                                                       \quad \text{otherwise}
+                                                   \end{dcases} \\
+                        \Fou\{f\} & = \sqrt{\frac{2}{\pi}}\ \frac{\sin(bw)}{w} &
+                        \Fou\{g\} & = \Fou\{e^{iax} \cdot f\}                    \\
+                        \Fou\{g\} & = \sqrt{\frac{2}{\pi}}
+                        \ \frac{\sin(bw - ba)}{w-a}
+                    \end{align}
+                    Formula $ 8 $ is similarly derived from formula $ 2 $ by simple
+                    substitution.
+          \end{enumerate}
+
+    \item The derivative relation cannot be used becuase its requirements are not
+          satisfied by Problem $ 9 $
+
+    \item Here, $ n = 4 $
+          \begin{align}
+              w         & = \exp\left( \frac{-2\pi\ i}{N} \right)= -i         \\
+              \vec{F}_4 & = \begin{bNiceMatrix}[r, margin]
+                                w^0 & w^0 & w^0 & w^0 \\
+                                w^0 & w^1 & w^2 & w^3 \\
+                                w^0 & w^2 & w^4 & w^6 \\
+                                w^0 & w^3 & w^6 & w^9 \\
+                            \end{bNiceMatrix} = \begin{bNiceMatrix}[r, margin]
+                                                    1 & 1  & 1  & 1  \\
+                                                    1 & -i & -1 & i  \\
+                                                    1 & -1 & 1  & -1 \\
+                                                    1 & i  & -1 & -i \\
+                                                \end{bNiceMatrix} \\
+              \vec{f}   & = {\color{y_h}\begin{bNiceMatrix}[margin]
+                                            0 \\ 1 \\ 4 \\ 9 \\
+                                        \end{bNiceMatrix}} \qquad\qquad
+              \vec{\widehat{f}}  = \vec{F}_4\ \vec{f} =
+              \color{y_p}\begin{bNiceMatrix}[margin]
+                             14 \\  -4 + 8i \\ -6 \\ -4-8i \\
+                         \end{bNiceMatrix}
+          \end{align}
+
+    \item Here, $ n = 4 $, and the general signal has 4 samples.
+          \begin{align}
+              w                 & = \exp\left( \frac{-2\pi\ i}{N} \right)= -i \\
+              \vec{F}_4         & = \begin{bNiceMatrix}[r, margin]
+                                        w^0 & w^0 & w^0 & w^0 \\
+                                        w^0 & w^1 & w^2 & w^3 \\
+                                        w^0 & w^2 & w^4 & w^6 \\
+                                        w^0 & w^3 & w^6 & w^9 \\
+                                    \end{bNiceMatrix}            &
+                                & =  \begin{bNiceMatrix}[r, margin]
+                                         1 & 1  & 1  & 1  \\
+                                         1 & -i & -1 & i  \\
+                                         1 & -1 & 1  & -1 \\
+                                         1 & i  & -1 & -i \\
+                                     \end{bNiceMatrix}            \\
+              \vec{f}           & = \color{y_h}\begin{bNiceMatrix}[margin]
+                                                   a \\ b \\ c \\ d \\
+                                               \end{bNiceMatrix}    &
+              \vec{\widehat{f}} & = \vec{F}_4\ \vec{f} =
+              \color{y_p}
+              \begin{bNiceMatrix}[margin]
+                  (a+b+c+d) \\  (a-c) - i\ (b-d) \\ (a-b+c-d) \\ (a-c) + i\ (b-d) \\
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Finding the inverse matrix of $ \vec{F}_4 $ in Example 4,
+          \begin{align}
+              \vec{F}_4                                & =
+              \begin{bNiceMatrix}[r, margin]
+                  1 & 1  & 1  & 1  \\
+                  1 & -i & -1 & i  \\
+                  1 & -1 & 1  & -1 \\
+                  1 & i  & -1 & -i \\
+              \end{bNiceMatrix}           &
+              \vec{F}_4^{-1}                           & = \frac{1}{4}\ \vec{F}_4^\dag
+              = \frac{1}{4}\ \begin{bNiceMatrix}[r, margin]
+                                 1 & 1  & 1  & 1  \\
+                                 1 & i  & -1 & -i \\
+                                 1 & -1 & 1  & -1 \\
+                                 1 & -i & -1 & i  \\
+                             \end{bNiceMatrix}                             \\
+              \vec{f}                                  &
+              = \vec{F}_4^{-1}\ \vec{\widehat{f}}
+              = \vec{F}_4^{-1}
+              \ \color{y_p}\begin{bNiceMatrix}[margin]
+                               14 \\  -4 + 8i \\ -6 \\ -4-8i \\
+                           \end{bNiceMatrix} &
+              \vec{f}                                  & = \frac{1}{4}
+              \begin{bNiceMatrix}[margin]
+                  0 \\ 4 \\ 16 \\ 39 \\
+              \end{bNiceMatrix} = \color{y_h}\begin{bNiceMatrix}[margin]
+                                                 0 \\ 1 \\ 4 \\ 9 \\
+                                             \end{bNiceMatrix}
+          \end{align}
+
+    \item Here, $ n = 2 $, and the general signal has 4 samples.
+          \begin{align}
+              w                 & = \exp\left( \frac{-2\pi\ i}{N} \right)= -1 &
+              \vec{F}_2         & = \bmattt{w^0}{w^0}{w^0}{w^1}
+              = \bmattt{1}{1}{1}{-1}                                            \\
+              \vec{f}           & = \color{y_h} \bmatcol{a}{b}                &
+              \vec{\widehat{f}} & = \vec{F}_2\ \vec{f} =
+              \color{y_p} \bmatcol{a+b}{a-b}
+          \end{align}
+
+    \item Finding the inverse matrix of $ \vec{F}_2 $ ,
+          \begin{align}
+              \vec{F}_2                       & = \frac{1}{2}\ \bmattt{1}{1}{1}{-1} &
+              \vec{F}_2^{-1}                  & = \frac{1}{2}\ \vec{F}_2^\dag
+              = \frac{1}{2}\ \bmattt{1}{1}{1}{-1}                                     \\
+              \vec{f}                         &
+              = \vec{F}_2^{-1}\ \vec{\widehat{f}}
+              = \vec{F}_2^{-1}
+              \ \color{y_p}\bmatcol{a+b}{a-b} &
+              \vec{f}                         & = \frac{1}{2}
+              \bmatcol{2a}{2b} = \color{y_h}\bmatcol{a}{b}
+          \end{align}
+
+    \item For $ N = 8 $,
+          \begin{align}
+              z   & = \exp\left( \frac{-2\pi\ i}{8} \right)                 &
+                  & = \cos(\pi/4) - i\ \sin(\pi/4) = \frac{1 - i}{\sqrt{2}}   \\
+              z^2 & = \frac{(1-i)^2}{2} = \frac{1 + (-1) - 2i}{2} = -i      &
+              z^2 & = w_4 \implies z = w_8
+          \end{align}
+
+    \item For $ w = 8 $, the DFT matrix is,
+          \begin{align}
+              \vec{F}_8 & =
+              \begin{bNiceMatrix}[r, margin]
+                  w^0 & w^0 & w^0    & w^0    & w^0    & w^0    & w^0    & w^0    \\
+                  w^0 & w^1 & w^2    & w^3    & w^4    & w^5    & w^6    & w^7    \\
+                  w^0 & w^2 & w^4    & w^6    & w^8    & w^{10} & w^{12} & w^{14} \\
+                  w^0 & w^3 & w^6    & w^9    & w^{12} & w^{15} & w^{18} & w^{21} \\
+                  w^0 & w^4 & w^8    & w^{12} & w^{16} & w^{20} & w^{24} & w^{28} \\
+                  w^0 & w^5 & w^{10} & w^{15} & w^{20} & w^{25} & w^{30} & w^{35} \\
+                  w^0 & w^6 & w^{12} & w^{18} & w^{24} & w^{30} & w^{36} & w^{42} \\
+                  w^0 & w^7 & w^{14} & w^{21} & w^{28} & w^{35} & w^{42} & w^{49} \\
+              \end{bNiceMatrix}
+          \end{align}
+          \begin{align}
+              z^0     & = 1   & z   & = \frac{1-i}{\sqrt{2}}  &
+              z^2     & = -i  & z^3 & = \frac{-1-i}{\sqrt{2}}   \\
+              z^4     & = -1  & z^5 & = \frac{-1+i}{\sqrt{2}} &
+              z^6     & = i   & z^7 & = \frac{1+i}{\sqrt{2}}    \\
+              z^{r+8} & = z^r
+          \end{align}
+
+    \item TBC. Performed using CAS. Coded in \texttt{sympy}
+
+
+\end{enumerate}

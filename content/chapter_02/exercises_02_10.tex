@@ -3,212 +3,273 @@
 \begin{enumerate}
     \item Solving the h-ODE,
           \begin{align}
-              y'' + 9y                 & = 0                                           & a & = 0 \qquad b = 9 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{36}}{2}                  &   & = 0 \pm 3i       \\
-              y_{h}                    & = {\color{y_h} c_{1}\cos(3x) + c_{2}\sin(3x)}
+              y'' + 9y                 & = 0                          &
+              a                        & = 0 \qquad b = 9               \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{36}}{2} &
+                                       & = 0 \pm 3i                     \\
+              y_{h}                    & = {\color{y_h} c_{1}\cos(3x)
+              + c_{2}\sin(3x)}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = \sec(3x)                                                                                                     \\
-              W(y_{1}, y_{2}) & = 3\cos^{2}(3x) + 3\sin^{2}(3x) = 3                                                                            \\
-              f'              & = \frac{-y_{2}r}{W} = \frac{-\tan(3x)}{3}                              & g' & = \frac{y_{1}r}{W} = \frac{1}{3} \\
-              f               & = \frac{1}{9}\ln|\cos(3x)|                                             & g  & = \frac{x}{3}                    \\
-              y_{p}           & = {\color{y_p} \frac{\ln|\cos(3x)|}{9} \cos(3x) + \frac{x}{3}\sin(3x)}                                         \\
+              r(x)            & = \sec(3x)                                        \\
+              W(y_{1}, y_{2}) & = 3\cos^{2}(3x) + 3\sin^{2}(3x) = 3               \\
+              f'              & = \frac{-y_{2}r}{W} = \frac{-\tan(3x)}{3}       &
+              g'              & = \frac{y_{1}r}{W} = \frac{1}{3}                  \\
+              f               & = \frac{1}{9}\ln|\cos(3x)|                      &
+              g               & = \frac{x}{3}                                     \\
+              y_{p}           & = {\color{y_p} \frac{\ln|\cos(3x)|}{9} \cos(3x)
+              + \frac{x}{3}\sin(3x)}                                              \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              y'' + 9y                 & = 0                                           & a & = 0 \qquad b = 9 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{36}}{2}                  &   & = 0 \pm 3i       \\
-              y_{h}                    & = {\color{y_h} c_{1}\cos(3x) + c_{2}\sin(3x)}
+              y'' + 9y                 & = 0                          &
+              a                        & = 0 \qquad b = 9               \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{36}}{2} &
+                                       & = 0 \pm 3i                     \\
+              y_{h}                    & = {\color{y_h} c_{1}\cos(3x)
+              + c_{2}\sin(3x)}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = \csc(3x)                                                                                                             \\
-              W(y_{1}, y_{2}) & = 3\cos^{2}(3x) + 3\sin^{2}(3x) = 3                                                                                    \\
-              f'              & = \frac{-y_{2}r}{W} = \frac{-1}{3}                                      & g' & = \frac{y_{1}r}{W} = \frac{\cot(3x)}{3} \\
-              f               & = \frac{-x}{3}                                                          & g  & = \frac{\ln|\sin(3x)|}{9}               \\
-              y_{p}           & = {\color{y_p} \frac{-x}{3} \cos(3x) + \frac{\ln|\sin(3x)|}{9}\sin(3x)}                                                \\
+              r(x)            & = \csc(3x)                                    \\
+              W(y_{1}, y_{2}) & = 3\cos^{2}(3x) + 3\sin^{2}(3x) = 3           \\
+              f'              & = \frac{-y_{2}r}{W} = \frac{-1}{3}          &
+              g'              & = \frac{y_{1}r}{W} = \frac{\cot(3x)}{3}       \\
+              f               & = \frac{-x}{3}                              &
+              g               & = \frac{\ln|\sin(3x)|}{9}                     \\
+              y_{p}           & = {\color{y_p} \frac{-x}{3} \cos(3x)
+              + \frac{\ln|\sin(3x)|}{9}\sin(3x)}                              \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              x^{2}y'' - 2xy' + 2y     & = 0                                 & a - 1 & = -3 \qquad b = 2 \\
-              \lambda_{1}, \lambda_{2} & = \frac{3 \pm \sqrt{1}}{2}          &       & = 2, 1            \\
+              x^{2}y'' - 2xy' + 2y     & = 0                                 &
+              a - 1                    & = -3 \qquad b = 2                     \\
+              \lambda_{1}, \lambda_{2} & = \frac{3 \pm \sqrt{1}}{2}          &
+                                       & = 2, 1                                \\
               y_{h}                    & = {\color{y_h} c_{1}x + c_{2}x^{2}}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = x\sin(x)                                                                      \\
-              W(y_{1}, y_{2}) & = 2x^{2} - x^{2} = x^{2}                                                        \\
-              f'              & = \frac{-y_{2}r}{W} = -x\sin(x)             & g' & = \frac{y_{1}r}{W} = \sin(x) \\
-              f               & = x\cos(x) - \sin(x)                        & g  & = -\cos(x)                   \\
-              y_{p}           & = {\color{y_p} -x\sin(x)}                                                       \\
+              r(x)            & = x\sin(x)                                    \\
+              W(y_{1}, y_{2}) & = 2x^{2} - x^{2} = x^{2}                      \\
+              f'              & = \frac{-y_{2}r}{W} = -x\sin(x)             &
+              g'              & = \frac{y_{1}r}{W} = \sin(x)                  \\
+              f               & = x\cos(x) - \sin(x)                        &
+              g               & = -\cos(x)                                    \\
+              y_{p}           & = {\color{y_p} -x\sin(x)}                     \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              y'' - 4y' + 5y           & = 0                                                 & a & = -4 \qquad b = 5 \\
-              \lambda_{1}, \lambda_{2} & = \frac{4 \pm i\sqrt{4}}{2}                         &   & = 2 \pm i         \\
-              y_{h}                    & = {\color{y_h} [c_{1}\cos(x) + c_{2}\sin(x)]e^{2x}}
+              y'' - 4y' + 5y           & = 0                          &
+              a                        & = -4 \qquad b = 5              \\
+              \lambda_{1}, \lambda_{2} & = \frac{4 \pm i\sqrt{4}}{2}  &
+                                       & = 2 \pm i                      \\
+              y_{h}                    & = {\color{y_h} [c_{1}\cos(x)
+                  + c_{2}\sin(x)]e^{2x}}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = e^{2x}\csc x                                                                                          \\
-              W(y_{1}, y_{2}) & = e^{4x}\cos(x)[\cos x + 2\sin x]                                                                       \\
-                              & - e^{4x}\sin x[-\sin x + 2\cos x]                                                                       \\
-                              & = e^{4x}                                                                                                \\
-              f'              & = \frac{-y_{2}r}{W} = -1                                             & g' & = \frac{y_{1}r}{W} = \cot x \\
-              f               & = -x                                                                 & g  & = \ln|\sin(x)|              \\
-              y_{p}           & = {\color{y_p} e^{2x}[-x\cos x + \ln\left( |\sin x| \right) \sin x]}                                    \\
+              r(x)            & = e^{2x}\csc x                                \\
+              W(y_{1}, y_{2}) & = e^{4x}\cos(x)[\cos x + 2\sin x]             \\
+                              & - e^{4x}\sin x[-\sin x + 2\cos x]             \\
+                              & = e^{4x}                                      \\
+              f'              & = \frac{-y_{2}r}{W} = -1                    &
+              g'              & = \frac{y_{1}r}{W} = \cot x                   \\
+              f               & = -x                                        &
+              g               & = \ln|\sin(x)|                                \\
+              y_{p}           & = {\color{y_p} e^{2x}[-x\cos x
+              + \ln\left( |\sin x| \right) \sin x]}                           \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              y'' + y                  & = 0                                         & a & = 0 \qquad b = 1 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}                 &   & = 0 \pm i        \\
+              y'' + y                  & = 0                                         &
+              a                        & = 0 \qquad b = 1                              \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4}}{2}                 &
+                                       & = 0 \pm i                                     \\
               y_{h}                    & = {\color{y_h} c_{1}\cos(x) + c_{2}\sin(x)}
           \end{align}
           Solving the nh-ODE by undetermined coefficients,
           \begin{align}
-              y'' + y & = \cos x - \sin x                                                      \\
-              y_{p}   & = Kx\cos x + Mx\sin x                                                  \\
-              y_{p}'  & = \cos x [K + Mx] + \sin x [M - Kx]                                    \\
-              y_{p}'' & = \cos x [2M - Kx] + \sin x [-2K - Mx]                                 \\
-              1       & = 2M                                         & \cdots\cdots & [\cos x] \\
-              -1      & =  -2K                                       & \cdots\cdots & [\sin x] \\
-              y_{p}   & = {\color{y_p} \frac{x}{2}[\cos x + \sin x]}                           \\
-              y       & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
+              y'' + y      & = \cos x - \sin x                              \\
+              y_{p}        & = Kx\cos x + Mx\sin x                          \\
+              y_{p}'       & = \cos x [K + Mx] + \sin x [M - Kx]            \\
+              y_{p}''      & = \cos x [2M - Kx] + \sin x [-2K - Mx]         \\
+              1            & = 2M                                         &
+              \cdots\cdots & [\cos x]                                       \\
+              -1           & =  -2K                                       &
+              \cdots\cdots & [\sin x]                                       \\
+              y_{p}        & = {\color{y_p} \frac{x}{2}[\cos x + \sin x]}   \\
+              y            & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              y'' + 6y' + 9y           & = 0                                     & a & = 6 \qquad b = 9 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-6 \pm i\sqrt{0}}{2}            &   & = -3, -3         \\
+              y'' + 6y' + 9y           & = 0                                     &
+              a                        & = 6 \qquad b = 9                          \\
+              \lambda_{1}, \lambda_{2} & = \frac{-6 \pm i\sqrt{0}}{2}            &
+                                       & = -3, -3                                  \\
               y_{h}                    & = {\color{y_h} (c_{1} + c_{2}x)e^{-3x}}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = \frac{16}{x^{2} + 1}\ e^{-3x}                                                                            \\
-              W(y_{1}, y_{2}) & = e^{-6x}                                                                                                  \\
-              f'              & = \frac{-y_{2}r}{W} = \frac{-16x}{1 + x^{2}}              & g' & = \frac{y_{1}r}{W} = \frac{16}{1 + x^{2}} \\
-              f               & = -8\ln(1 + x^{2})                                        & g  & = 16\arctan x                             \\
-              y_{p}           & = {\color{y_p} e^{-3x}[-8\ln(1 + x^{2}) + 16x \arctan x]}                                                  \\
+              r(x)            & = \frac{16}{x^{2} + 1}\ e^{-3x}                \\
+              W(y_{1}, y_{2}) & = e^{-6x}                                      \\
+              f'              & = \frac{-y_{2}r}{W} = \frac{-16x}{1 + x^{2}} &
+              g'              & = \frac{y_{1}r}{W} = \frac{16}{1 + x^{2}}      \\
+              f               & = -8\ln(1 + x^{2})                           &
+              g               & = 16\arctan x                                  \\
+              y_{p}           & = {\color{y_p} e^{-3x}[-8\ln(1 + x^{2})
+              + 16x \arctan x]}                                                \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              y'' - 4y' + 4y           & = 0                                    & a & = -4 \qquad b = 4 \\
-              \lambda_{1}, \lambda_{2} & = \frac{4 \pm i\sqrt{0}}{2}            &   & = 2, 2            \\
+              y'' - 4y' + 4y           & = 0                                    &
+              a                        & = -4 \qquad b = 4                        \\
+              \lambda_{1}, \lambda_{2} & = \frac{4 \pm i\sqrt{0}}{2}            &
+                                       & = 2, 2                                   \\
               y_{h}                    & = {\color{y_h} (c_{1} + c_{2}x)e^{2x}}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = 6e^{2x}x^{-4}                                                                 \\
-              W(y_{1}, y_{2}) & = e^{4x}                                                                        \\
-              f'              & = \frac{-y_{2}r}{W} = -6x^{-3}              & g' & = \frac{y_{1}r}{W} = 6x^{-4} \\
-              f               & = 3x^{-2}                                   & g  & = -2x^{-3}                   \\
-              y_{p}           & = {\color{y_p} e^{2x}[x^{-2}]}                                                  \\
+              r(x)            & = 6e^{2x}x^{-4}                               \\
+              W(y_{1}, y_{2}) & = e^{4x}                                      \\
+              f'              & = \frac{-y_{2}r}{W} = -6x^{-3}              &
+              g'              & = \frac{y_{1}r}{W} = 6x^{-4}                  \\
+              f               & = 3x^{-2}                                   &
+              g               & = -2x^{-3}                                    \\
+              y_{p}           & = {\color{y_p} e^{2x}[x^{-2}]}                \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              y'' + 4y                 & = 0                                           & a & = 0 \qquad b = 4 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{16}}{2}                  &   & = 0 \pm 2i       \\
-              y_{h}                    & = {\color{y_h} c_{1}\cos(2x) + c_{2}\sin(2x)}
+              y'' + 4y                 & = 0                          &
+              a                        & = 0 \qquad b = 4               \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{16}}{2} &
+                                       & = 0 \pm 2i                     \\
+              y_{h}                    & = {\color{y_h} c_{1}\cos(2x)
+              + c_{2}\sin(2x)}
           \end{align}
           Solving the nh-ODE by undetermined coefficients,
           \begin{align}
-              y'' + 4y & = \cosh(2x) = 0.5e^{2x} + 0.5e^{-2x}                                     \\
-              y_{p}    & = K\cosh(2x)                                                             \\
-              1        & =  4K + 4K                                  & \cdots\cdots & [\cosh(2x)] \\
-              y_{p}    & = {\color{y_p} \frac{1}{8}\cosh(2x)}                                     \\
-              y        & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
+              y'' + 4y     & = \cosh(2x) = 0.5e^{2x} + 0.5e^{-2x}          \\
+              y_{p}        & = K\cosh(2x)                                  \\
+              1            & =  4K + 4K                                  &
+              \cdots\cdots & [\cosh(2x)]                                   \\
+              y_{p}        & = {\color{y_p} \frac{1}{8}\cosh(2x)}          \\
+              y            & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              y'' - 2y' + 1y           & = 0                                   & a & = -2 \qquad b = 1 \\
-              \lambda_{1}, \lambda_{2} & = \frac{2 \pm i\sqrt{0}}{2}           &   & = 1, 1            \\
+              y'' - 2y' + 1y           & = 0                                   &
+              a                        & = -2 \qquad b = 1                       \\
+              \lambda_{1}, \lambda_{2} & = \frac{2 \pm i\sqrt{0}}{2}           &
+                                       & = 1, 1                                  \\
               y_{h}                    & = {\color{y_h} (c_{1} + c_{2}x)e^{x}}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = 35e^{x}x^{1.5}                                                                  \\
-              W(y_{1}, y_{2}) & = e^{2x}                                                                          \\
-              f'              & = \frac{-y_{2}r}{W} = -35x^{2.5}            & g' & = \frac{y_{1}r}{W} = 35x^{1.5} \\
-              f               & = -10x^{3.5}                                & g  & = 14x^{2.5}                    \\
-              y_{p}           & = {\color{y_p} 4e^{x}x^{3.5}}                                                     \\
+              r(x)            & = 35e^{x}x^{1.5}                              \\
+              W(y_{1}, y_{2}) & = e^{2x}                                      \\
+              f'              & = \frac{-y_{2}r}{W} = -35x^{2.5}            &
+              g'              & = \frac{y_{1}r}{W} = 35x^{1.5}                \\
+              f               & = -10x^{3.5}                                &
+              g               & = 14x^{2.5}                                   \\
+              y_{p}           & = {\color{y_p} 4e^{x}x^{3.5}}                 \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              y''  + 2y' + 2y          & = 0                                               & a & = 2 \qquad b = 2 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-2 \pm i\sqrt{4}}{2}                      &   & = -1 \pm i       \\
-              y_{h}                    & = {\color{y_h} [c_{1}\cos x + c_{2}\sin x]e^{-x}}
+              y''  + 2y' + 2y          & = 0                          &
+              a                        & = 2 \qquad b = 2               \\
+              \lambda_{1}, \lambda_{2} & = \frac{-2 \pm i\sqrt{4}}{2} &
+                                       & = -1 \pm i                     \\
+              y_{h}                    & = {\color{y_h} [c_{1}\cos x
+                  + c_{2}\sin x]e^{-x}}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = 4e^{-x}\sec ^{3}x                                                                 \\
-              W(y_{1}, y_{2}) & = e^{-2x}                                                                           \\
-              f'              & = \frac{-y_{2}r}{W} = -4\tan x \sec^{2}x    & g' & = \frac{y_{1}r}{W} = 4 \sec^{2}x \\
-              f               & = -2\tan^{2}x                               & g  & = 4\tan x                        \\
-              y_{p}           & = {\color{y_p} e^{-x}\sin x\ [2\tan x]}                                             \\
+              r(x)            & = 4e^{-x}\sec ^{3}x                           \\
+              W(y_{1}, y_{2}) & = e^{-2x}                                     \\
+              f'              & = \frac{-y_{2}r}{W} = -4\tan x \sec^{2}x    &
+              g'              & = \frac{y_{1}r}{W} = 4 \sec^{2}x              \\
+              f               & = -2\tan^{2}x                               &
+              g               & = 4\tan x                                     \\
+              y_{p}           & = {\color{y_p} e^{-x}\sin x\ [2\tan x]}       \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              x^{2}y'' - 4xy' + 6y     & = 0                                     & a - 1 & = -5 \qquad b = 6 \\
-              \lambda_{1}, \lambda_{2} & = \frac{5 \pm \sqrt{1}}{2}              &       & = 2, 3            \\
+              x^{2}y'' - 4xy' + 6y     & = 0                                     &
+              a - 1                    & = -5 \qquad b = 6                         \\
+              \lambda_{1}, \lambda_{2} & = \frac{5 \pm \sqrt{1}}{2}              &
+                                       & = 2, 3                                    \\
               y_{h}                    & = {\color{y_h} c_{1}x^{2} + c_{2}x^{3}}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = 21x^{-6}                                                                       \\
-              W(y_{1}, y_{2}) & = x^{4}                                                                          \\
-              f'              & = \frac{-y_{2}r}{W} = -21x^{-7}             & g' & = \frac{y_{1}r}{W} = 21x^{-8} \\
-              f               & = \frac{21}{6}x^{-6}                        & g  & = -3x^{-7}                    \\
-              y_{p}           & = {\color{y_p} 0.5x^{-4}}                                                        \\
+              r(x)            & = 21x^{-6}                                    \\
+              W(y_{1}, y_{2}) & = x^{4}                                       \\
+              f'              & = \frac{-y_{2}r}{W} = -21x^{-7}             &
+              g'              & = \frac{y_{1}r}{W} = 21x^{-8}                 \\
+              f               & = \frac{21}{6}x^{-6}                        &
+              g               & = -3x^{-7}                                    \\
+              y_{p}           & = {\color{y_p} 0.5x^{-4}}                     \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              y'' - y                  & = 0                                      & a & = 0 \qquad b = -1 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{4}}{2}               &   & = -1, 1           \\
+              y'' - y                  & = 0                                      &
+              a                        & = 0 \qquad b = -1                          \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{4}}{2}               &
+                                       & = -1, 1                                    \\
               y_{h}                    & = {\color{y_h} c_{1}e^{-x} + c_{2}e^{x}}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = \frac{1}{\cosh x}                                                                                                         \\
-              W(y_{1}, y_{2}) & = 2                                                                                                                         \\
-              f'              & = \frac{-y_{2}r}{W} = \frac{-e^{2x}}{1 + e^{2x}}                    & g' & = \frac{y_{1}r}{W} = \frac{e^{-2x}}{e^{-2x} + 1} \\
-              f               & = -0.5\ln (1 + e^{2x})                                              & g  & = -0.5\ln(1 + e^{-2x})                           \\
-              y_{p}           & = {\color{y_p} -0.5[e^{-x}\ln(1 + e^{2x}) + e^{x}\ln(1 + e^{-2x})]}                                                         \\
+              r(x)            & = \frac{1}{\cosh x}                                \\
+              W(y_{1}, y_{2}) & = 2                                                \\
+              f'              & = \frac{-y_{2}r}{W} = \frac{-e^{2x}}{1 + e^{2x}} &
+              g'              & = \frac{y_{1}r}{W} = \frac{e^{-2x}}{e^{-2x} + 1}   \\
+              f               & = -0.5\ln (1 + e^{2x})                           &
+              g               & = -0.5\ln(1 + e^{-2x})                             \\
+              y_{p}           & = {\color{y_p} -0.5[e^{-x}\ln(1 + e^{2x})
+              + e^{x}\ln(1 + e^{-2x})]}                                            \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
     \item Solving the h-ODE,
           \begin{align}
-              x^{2}y'' + xy' - 9y      & = 0                                      & a - 1 & = 0 \qquad b = -9 \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{36}}{2}              &       & = -3, 3           \\
+              x^{2}y'' + xy' - 9y      & = 0                                      &
+              a - 1                    & = 0 \qquad b = -9                          \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm \sqrt{36}}{2}              &
+                                       & = -3, 3                                    \\
               y_{h}                    & = {\color{y_h} c_{1}x^{-3} + c_{2}x^{3}}
           \end{align}
           Solving the nh-ODE by variation of parameters,
           \begin{align}
-              r(x)            & = 48x^{3}                                                                  \\
-              W(y_{1}, y_{2}) & = 6x^{-1}                                                                  \\
-              f'              & = \frac{-y_{2}r}{W} = -8x^{7}               & g' & = \frac{y_{1}r}{W} = 8x \\
-              f               & = -x^{8}                                    & g  & = 4x^{2}                \\
-              y_{p}           & = {\color{y_p} 3x^{5}}                                                     \\
+              r(x)            & = 48x^{3}                                     \\
+              W(y_{1}, y_{2}) & = 6x^{-1}                                     \\
+              f'              & = \frac{-y_{2}r}{W} = -8x^{7}               &
+              g'              & = \frac{y_{1}r}{W} = 8x                       \\
+              f               & = -x^{8}                                    &
+              g               & = 4x^{2}                                      \\
+              y_{p}           & = {\color{y_p} 3x^{5}}                        \\
               y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
           \end{align}
 
@@ -216,59 +277,79 @@
           \begin{enumerate}
               \item Solving the h-ODE,
                     \begin{align}
-                        y''  + 4y' + 3y          & = 0                                        & a & = 4 \qquad b = 3 \\
-                        \lambda_{1}, \lambda_{2} & = \frac{-4 \pm \sqrt{4}}{2}                &   & = -3, -1         \\
-                        y_{h}                    & = {\color{y_h} c_{1}e^{-3x} + c_{2}e^{-x}}
+                        y''  + 4y' + 3y          & = 0                         &
+                        a                        & = 4 \qquad b = 3              \\
+                        \lambda_{1}, \lambda_{2} & = \frac{-4 \pm \sqrt{4}}{2} &
+                                                 & = -3, -1                      \\
+                        y_{h}                    & = {\color{y_h} c_{1}e^{-3x}
+                        + c_{2}e^{-x}}
                     \end{align}
                     Solving the nh-ODE by variation of parameters,
                     \begin{align}
-                        r(x)            & = 65\cos(2x)                                                                                            \\
-                        W(y_{1}, y_{2}) & = 2e^{-4x}                                                                                              \\
-                        f'              & = \frac{-y_{2}r}{W} = \frac{-65\cos(2x)e^{3x}}{2} & g' & = \frac{y_{1}r}{W} = \frac{65\cos(2x)e^{x}}{2} \\
-                        f               & = \frac{-5e^{3x}}{2}\ [3\cos(2x) + 2\sin(2x)]     & g  & = \frac{13e^{x}}{2} [\cos(2x) + 2\sin(2x)]     \\
-                        y_{p}           & = {\color{y_p} -\cos(2x) + 8\sin(2x)}                                                                   \\
+                        r(x)            & = 65\cos(2x)                                \\
+                        W(y_{1}, y_{2}) & = 2e^{-4x}                                  \\
+                        f'              & = \frac{-y_{2}r}{W} = \frac{-65\cos(2x)
+                        e^{3x}}{2}      &
+                        g'              & = \frac{y_{1}r}{W} = \frac{65\cos(2x)
+                        e^{x}}{2}                                                     \\
+                        f               & = \frac{-5e^{3x}}{2}\ [3\cos(2x)
+                        + 2\sin(2x)]    &
+                        g               & = \frac{13e^{x}}{2} [\cos(2x) + 2\sin(2x)]  \\
+                        y_{p}           & = {\color{y_p} -\cos(2x) + 8\sin(2x)}       \\
                         y               & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
                     \end{align}
 
                     Solving the nh-ODE by undetermined coefficients,
                     \begin{align}
-                        y'' + 4y' + 3y & = 65\cos(2x)                                                            \\
-                        y_{p}          & = K\cos(2x) + M\sin(2x)                                                 \\
-                        65             & =  -4K + 8M + 3K                            & \cdots\cdots & [\cos(2x)] \\
-                        0              & =  -4M - 8K + 3M                            & \cdots\cdots & [\sin(2x)] \\
-                        y_{p}          & = {\color{y_p} -\cos(2x) + 8\sin(2x)}                                   \\
+                        y'' + 4y' + 3y & = 65\cos(2x)                                  \\
+                        y_{p}          & = K\cos(2x) + M\sin(2x)                       \\
+                        65             & =  -4K + 8M + 3K                            &
+                        \cdots\cdots   & [\cos(2x)]                                    \\
+                        0              & =  -4M - 8K + 3M                            &
+                        \cdots\cdots   & [\sin(2x)]                                    \\
+                        y_{p}          & = {\color{y_p} -\cos(2x) + 8\sin(2x)}         \\
                         y              & = {\color{y_h} y_{h}} + {\color{y_p} y_{p}}
                     \end{align}
                     Both methods match, but method 2 is simpler.
 
               \item Solving the h-ODE,
                     \begin{align}
-                        y''  - 2y' + y           & = 0                                   & a & = -2 \qquad b = 1 \\
-                        \lambda_{1}, \lambda_{2} & = \frac{2 \pm \sqrt{0}}{2}            &   & = 1, 1            \\
-                        y_{h}                    & = {\color{y_h} [c_{1} + c_{2}x]e^{x}}
+                        y''  - 2y' + y           & = 0                        &
+                        a                        & = -2 \qquad b = 1            \\
+                        \lambda_{1}, \lambda_{2} & = \frac{2 \pm \sqrt{0}}{2} &
+                                                 & = 1, 1                       \\
+                        y_{h}                    & = {\color{y_h} [c_{1}
+                            + c_{2}x]e^{x}}
                     \end{align}
                     Solving the nh-ODE by variation of parameters,
                     \begin{align}
-                        r_{1}(x)        & = 35e^{x}x^{1.5}                                                       \\
-                        W(y_{1}, y_{2}) & = e^{2x}                                                               \\
-                        f'              & = \frac{-y_{2}r}{W} = -35x^{2.5} & g' & = \frac{y_{1}r}{W} = 35x^{1.5} \\
-                        f               & = -10x^{3.5}                     & g  & = 14x^{2.5}                    \\
+                        r_{1}(x)        & = 35e^{x}x^{1.5}                   \\
+                        W(y_{1}, y_{2}) & = e^{2x}                           \\
+                        f'              & = \frac{-y_{2}r}{W} = -35x^{2.5} &
+                        g'              & = \frac{y_{1}r}{W} = 35x^{1.5}     \\
+                        f               & = -10x^{3.5}                     &
+                        g               & = 14x^{2.5}                        \\
                         y_{p1}          & = {\color{y_p} 4e^{x}x^{3.5}}
                     \end{align}
 
                     Solving the nh-ODE by undetermined coefficients,
                     \begin{align}
-                        y'' - 2y' + y & = x^{2}                                                                                                       \\
-                        y_{p2}        & = K_{2}x^{2} + K_{1}x + K_{0}                                                                                 \\
-                        1             & =  K_{2}                                                                             & \cdots\cdots & [x^{2}] \\
-                        0             & =  -4K_{2} + K_{1}                                                                   & \cdots\cdots & [x]     \\
-                        0             & =  2K_{2}  - 2K_{1} + K_{0}                                                          & \cdots\cdots & [1]     \\
-                        y_{p2}        & = {\color{y_p} x^{2} + 4x + 6}                                                                                \\
-                        y             & = {\color{y_h} [c_{1} + c_{2}x]e^{x}} + {\color{y_p} 4e^{x}x^{3.5} + x^{2} + 4x + 6}
+                        y'' - 2y' + y & = x^{2}                                 \\
+                        y_{p2}        & = K_{2}x^{2} + K_{1}x + K_{0}           \\
+                        1             & =  K_{2}                              &
+                        \cdots\cdots  & [x^{2}]                                 \\
+                        0             & =  -4K_{2} + K_{1}                    &
+                        \cdots\cdots  & [x]                                     \\
+                        0             & =  2K_{2}  - 2K_{1} + K_{0}           &
+                        \cdots\cdots  & [1]                                     \\
+                        y_{p2}        & = {\color{y_p} x^{2} + 4x + 6}          \\
+                        y             & = {\color{y_h} [c_{1} + c_{2}x]e^{x}}
+                        + {\color{y_p} 4e^{x}x^{3.5} + x^{2} + 4x + 6}
                     \end{align}
-                    Each of the terms in $ r(x) $ are more amenable to one of the methods.
+                    Each of the terms in $ r(x) $ are more amenable to one of the
+                    methods.
 
-              \item Refer Problem set 2.7, Question 20 for the method of undetermined coefficients
-              applied to Euler-Cauchy ODEs.
+              \item Refer Problem set 2.7, Question 20 for the method of undetermined
+                    coefficients applied to Euler-Cauchy ODEs.
           \end{enumerate}
 \end{enumerate}

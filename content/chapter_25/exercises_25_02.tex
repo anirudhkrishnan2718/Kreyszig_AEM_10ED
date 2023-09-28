@@ -1,0 +1,217 @@
+\section{Point Estimation of Parameters}
+
+\begin{enumerate}
+    \item The normal distribution with $ \mu = 0 $, is
+          \begin{align}
+              f(x)      & = \frac{1}{\theta\ \sqrt{2\pi}}\ \exp\Bigg[ -\frac{x^2}
+              {2\theta^2} \Bigg]                                                     \\
+              l(\theta) & = \left( \frac{1}{\theta\ \sqrt{2\pi}} \right)^n
+              \exp \Bigg[-\frac{1}{2\theta^2}\ \sum_j x_j^2\Bigg]                    \\
+              \ln(l)    & = -n\ln(\theta \sqrt{2\pi}) - \frac{1}{2\theta^2}
+              \ \sum_j x_j^2                                                         \\
+              \diff*{\ln(l)}{\theta}
+                        & = -\frac{n}{\theta} + \frac{1}{\theta^3}\ \sum_j x_j^2 = 0 \\
+              \theta^*  & = \sqrt{\frac{\sum_j x_j^2}{n}} = \wt{\sigma}
+          \end{align}
+          The other parameter is the sample standard deviation with a change in the
+          pre-factor from $ (n-1) $ to $ (n) $.
+
+    \item Known variance is $ \sigma^2 = 16 $.
+          \begin{align}
+              f(x)      & = \frac{1}{4\ \sqrt{2\pi}}\ \exp\Bigg[ -
+              \frac{(x - \theta)^2}{32} \Bigg]                        \\
+              l(\theta) & = \left( \frac{1}{4\ \sqrt{2\pi}} \right)^n
+              \exp \Bigg[-\frac{1}{32}\ \sum_j (x_j - \theta)^2\Bigg] \\
+              \ln(l)    & = -n\ln(4\sqrt{2\pi}) - \frac{1}{32}
+              \ \sum_j (x_j - \theta)^2                               \\
+              \diff*{\ln(l)}{\theta}
+                        & = \frac{1}{16}\ \sum_j (x_j - \theta) = 0   \\
+              \theta^*  & = \frac{1}{n}\ \sum_{j=1}^{n} x_j = \bar{x}
+          \end{align}
+          The MLE estimator is the sample mean.
+
+    \item For a Poisson distribution with parameter $ \theta $,
+          \begin{align}
+              l        & = \prod_{j=1}^{n}\ e^{-\theta}\ \frac{\theta^{x_j}}{x_j!}
+              = e^{-n\theta}\ \frac{\theta^{x_1 + \dots + x_n}}
+              {x_1!\ x_2!\ \cdots x_n!}                                            \\
+              \ln(l)   & = -n\theta + \Bigg[\sum_j x_j\Bigg]\ \ln(\theta) -
+              \ln(x_1!\ x_2!\ \cdots\ x_n!)                                        \\
+              \diffp* {\ln(l)}{\theta}
+                       & = -n + \frac{1}{\theta}\ \sum_j x_j = 0                   \\
+              \theta^* & = \frac{1}{n}\ \sum_j x_j = \bar{x}
+          \end{align}
+          The MLE estimate of the Poisson parameter is the sample mean.
+
+    \item For the uniform distribution with parameters $ a,b $,
+          \begin{align}
+              f(x)               & = \frac{1}{(b-a)} \quad \forall \quad x \in [a,b] \\
+              l                  & = (b-a)^{-n}, \qquad\qquad \ln(l) = -n\ln(b-a)    \\
+              \diff* {\ln(l)}{a} & = \frac{n}{(b-a)} = 0
+          \end{align}
+          This has no solution for nonzero $ n $. This means the MLE does not exist for
+          the parameters $ a,b $.
+          \par Instead, look at the smallest and largest sample value $ x_1, x_n $. These
+          are intuitively, the estimates of the smallest and largest possible values of
+          $ x $ in the population.
+          \begin{align}
+              \wt{a} & = \min_j{x_j} & \wt{b} & = \max_j {x_j}
+          \end{align}
+          As the sample size approaches the population size, it is more and more
+          probable that $ x_1 \to a $ and $ x_n \to b $ asymptotically.
+
+    \item Using the MLE method for a sample of size $ n $ drawn from a Bernoulli PDF,
+          of which $ x $ are successes,
+          \begin{align}
+              l = P(X = x)         & = p^x\ q^{n-x}               &
+              \ln(l)               & = x\ \ln(p) + (n-x)\ \ln(q)    \\
+              \diffp{l}{\theta}    & = \frac{x}{\theta} -
+              \frac{n-x}{1-\theta} &
+              0                    & = x(1- \theta) + (x-n)\theta   \\
+              \theta^*             & = \frac{x}{n}
+          \end{align}
+          The MLE estimator of the binomial parameter $ p $ is the fraction of successes
+          in the sample, $ x/n $
+
+    \item Extending the experiment to $ m $ times the earlier experiment,
+          \begin{align}
+              l        & = p^{x_1 + \dots + x_m} \cdot q^{n-x_1 + n-x_2 + \dots
+              + n-x_m}                                                               \\
+              \ln(l)   & = \sum_j x_j \cdot \ln(p) + \Big(nm - \sum_j x_j\Big) \cdot
+              \ln(q)                                                                 \\
+              \diffp*{\ \ln(l)}{\theta}
+                       & = \frac{m\bar{x}}{\theta} - \frac{m(n-\bar{x})}{1-\theta}
+              = 0                                                                    \\
+              \theta^* & = \frac{1}{mn}\ \sum_{j=1}^{m} x_j
+          \end{align}
+
+    \item Using the result from Problem 6,
+          \begin{align}
+              \theta^* & = \frac{7}{12}
+          \end{align}
+
+    \item The event $ A^\complement $ occurs $ (x-1) $ times and then the event $ A $
+          occurs for a trial to have $ X = x $,
+          \begin{align}
+              P(X = x) & = f(x)                                  &
+              f(x)     & = (1-p)^{x-1} \cdot p = q^{x-1} \cdot p
+          \end{align}
+          for some positive integer $ x $. \par
+          For a sample of size $ n $ and with observed values $ \{x_1,\dots,x_n\} $,
+          \begin{align}
+              P(\{x_j\}) & = q^{x_1-1 + x_2-1 + \dots x_n-1} \cdot p^n = l          \\
+              \ln(l)     & = n\ln(p) + \Bigg[\sum_{j=1}^{n} x_j - n\Bigg] \ln(1-p)  \\
+              \diffp*{\ \ln(l)}{\theta}
+                         & = \frac{n}{\theta} - \frac{(\sum x_j - n)}{1-\theta} = 0 \\
+              \theta^*   & = \frac{n}{\sum_j x_j} = \frac{1}{\bar{x}}
+          \end{align}
+          The reciprocal of the sample mean is the MLE of the parameter.
+
+    \item Using the sum of a geometric progression,
+          \begin{align}
+              \sum_{j=1}^{\infty} f(X=j) & = p + qp + q^2p + \dots                  \\
+                                         & = p(1 + q + q^2 + \dots) = \frac{p}{1-q}
+              = 1
+          \end{align}
+          Thus, the normalization condition holds. \par
+          Using the MLE method on a single observed value $ X = x$,
+          \begin{align}
+              l                       & = q^{x-1}p                                &
+              \ln(l)                  & = (x-1) \ln(q) + \ln(p)                     \\
+              \diffp*{\ln(l)}{\theta} & = \frac{1-x}{1-\theta} + \frac{1}{\theta} &
+              \theta^*                & = \frac{1}{x}
+          \end{align}
+
+    \item Using the result from Problem 8,
+          \begin{align}
+              \theta_1 & = \frac{1}{6.5} = \frac{2}{13}
+          \end{align}
+
+    \item Using the MLE method, for a sample of size $ n $,
+          \begin{align}
+              P(\{x_j\})              & = l = \theta^n\ e^{-\theta \sum x_j}     &
+              \ln(l)                  & = n\ln(\theta) - \theta \sum x_j           \\
+              \diffp*{\ln(l)}{\theta} & = \frac{n}{\theta} - \sum x_j = 0        &
+              \theta^*                & = \frac{n}{\sum x_j} = \frac{1}{\bar{x}}
+          \end{align}
+          The reciprocal of the sample mean is the MLE of the parameter.
+
+    \item Finding the mean directly,
+          \begin{align}
+              \ex[X] & = \infint x\theta\ e^{-\theta x}\ \dl x             &
+                     & = \Bigg[-(x+1/\theta)\ e^{-\theta x}\Bigg]_0^\infty   \\
+                     & = \frac{1}{\theta}
+          \end{align}
+          Substituting into the original PDF,
+          \begin{align}
+              f(x) & = \frac{e^{-x/\mu}}{\mu} \quad \forall \quad x \geq 0
+          \end{align}
+          Using the same procedure as in Problem $ 11 $,
+          \begin{align}
+              \hat{\mu} & = \bar{x} & \hat{\theta} & = \frac{1}{\bar{x}}
+          \end{align}
+
+    \item Computing the sample statistic,
+          \begin{align}
+              \hat{\theta} & = \frac{1}{\bar{x}}
+              = \frac{5}{1.9 + 0.4 + 0.7 + 0.6 + 1.4} = 1            \\
+              F(x)         & = \int_{0}^{x} e^{-x}\ \dl x = 1-e^{-x}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Discrete vs Continuous CDF}, Ani,
+                          grid = both, xmin = -0.5, xmax = 2.1, ymin = -0.1,ymax = 1.1]
+                      \addplot+[const plot, mark options={black, mark size = 1.5pt},
+                          y_p] coordinates {(-1,0) (0.4,0.2) (0.6,0.4) ( 0.7,0.6)
+                              (1.4,0.8) (1.9,1) (2.5,1)};
+                      \addplot[GraphSmooth, y_h, dashed, domain = 0:3]{1 - e^(-x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Even this small sample is a good approximation of the underlying CDF,
+
+    \item Computing the sample statistic,
+          \begin{align}
+              \hat{\theta} & = \frac{1}{\bar{x}}
+              = \frac{5}{0.4 + 0.7 + 0.2 + 1.1 + 0.1} = 2               \\
+              F(x)         & = \int_{0}^{x} 2e^{-2x}\ \dl x = 1-e^{-2x}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Discrete vs Continuous CDF}, Ani,
+                          grid = both, xmin = -0.5, xmax = 1.5, ymin = -0.1,ymax = 1.1]
+                      \addplot+[const plot, mark options={black, mark size = 1.5pt},
+                          y_p] coordinates {(-1,0) (0.1,0.2) (0.2,0.4) ( 0.4,0.6)
+                              (0.7,0.8) (1.1,1) (2,1)};
+                      \addplot[GraphSmooth, y_h, dashed, domain = 0:3]{1 - e^(-2*x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Looking at the sample mean and variance as a function of the size of
+          each sample, keeping the number of samples $ m $ fixed.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {l|[dotted]l|[dotted]l|l|[dotted]l},
+                  colsep = 1.2em}
+                  $ n $     & \SetCell[c=2]{c} Sample Mean     &
+                            & \SetCell[c=2]{c} Sample Variance &          \\
+                  \hline[dotted]
+                            & Mean                             &
+                  Variance  & Mean                             & Variance \\ \hline
+                  10        & 0.005                            &
+                  0.096     & 0.881                            & 0.166    \\
+                  100       & 0.00234                          &
+                  0.0100    & 0.9873                           & 0.0210   \\
+                  1000      & 0.00138                          &
+                  0.0009297 & 1.0005                           & 0.002    \\
+                  10000     & -0.000197                        &
+                  0.0000103 & 0.9997                           & 0.0002   \\
+              \end{tblr}
+          \end{table}
+          As the sample size increases, the MLE estimators of the population mean and
+          variance become better point estimates, as evidenced by each of these
+          point estimates getting more tightly distributed about their true values.
+\end{enumerate}

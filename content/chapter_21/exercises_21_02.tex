@@ -1,0 +1,404 @@
+\section{Multistep Methods}
+
+\begin{enumerate}
+    \item Solving analytically,
+          \begin{align}
+              y'   & = y & y & = ce^x \\
+              y(0) & = 1 & y & = e^x
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}      & \text{Error AM} \\ \hline
+                  5   & \num{1.648721} & \num{5.854d-7}  \\
+                  10  & \num{2.718282} & \num{7.615d-7}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving analytically,
+          \begin{align}
+              y'   & = 2xy & \ln y & = x^2 + c   \\
+              y(0) & = 1   & y     & = \exp(x^2)
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}      & \text{Error AM} \\ \hline
+                  5   & \num{1.284044} & \num{1.893d-5}  \\
+                  10  & \num{2.718486} & \num{2.046d-4}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving analytically,
+          \begin{align}
+              y'   & = 1 + y^2 & \arctan y & = x + c  \\
+              y(0) & = 0       & y         & = \tan x
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}      & \text{Error AM} \\ \hline
+                  5   & \num{0.546315} & \num{1.2369d-5} \\
+                  10  & \num{1.557625} & \num{2.1773d-4} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the RK and AM methods in Problem 2
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $x_n$ & \text{Error RK} & \text{Error AM} \\ \hline
+                  0.2   & \num{1.07d-7}   & \num{4.423d-9}  \\
+                  0.4   & \num{1.34d-6}   & \num{7.559d-6}  \\
+                  0.6   & \num{8.00d-6}   & \num{3.520d-5}  \\
+                  0.8   & \num{3.96d-5}   & \num{9.169d-5}  \\
+                  1.0   & \num{1.75d-4}   & \num{2.045d-4}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the RK and AM methods in Problem 3
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $x_n$ & \text{Error RK} & \text{Error AM} \\ \hline
+                  0.2   & \num{2.63d-6}   & \num{1.57d-7}   \\
+                  0.4   & \num{4.22d-6}   & \num{4.86d-6}   \\
+                  0.6   & \num{3.41d-6}   & \num{2.42d-5}   \\
+                  0.8   & \num{1.93d-5}   & \num{7.56d-5}   \\
+                  1.0   & \num{5.60d-5}   & \num{2.18d-4}   \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving analytically,
+          \begin{align}
+              y' & = (y-x-1)^2 + 2     & u         & = y-x-1 \quad u' = y' - 1 \\
+              u' & = u^2 + 1           & \arctan u & = x + c                   \\
+              y  & = 1 + x + \tan(x+c) & y(0)      & = 1                       \\
+              y  & = 1 + x + \tan x
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}    & \text{Error AM} \\ \hline
+                  5   & \num{2.0463} & \num{1.242d-5}  \\
+                  10  & \num{3.5576} & \num{2.178d-4}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving analytically,
+          \begin{align}
+              y'                      & = 3y - 12y^2            &
+              \frac{\dl y}{y(1 - 4y)} & = 3\ \dl x                \\
+              \ln y - \ln(y - 0.25)   & = 3x + c                &
+              \frac{y}{y - 0.25}      & = ce^{3x}                 \\
+              y(0)                    & = 0.2                   &
+              y                       & = \frac{1}{4 + e^{-3x}}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}      & \text{Error AM} \\ \hline
+                  5   & \num{0.236787} & \num{4.43d-6}   \\
+                  10  & \num{0.246926} & \num{8.94d-7}   \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving analytically,
+          \begin{align}
+              y'                       & = 1 - 4y^2                &
+              \frac{\dl y}{1 - 4y^2}   & = \dl x                     \\
+              \frac{\tanh^{-1}(2y)}{2} & = x + c                   &
+              y                        & = \frac{\tanh(2x + c)}{2}   \\
+              y(0)                     & = 0                       &
+              y                        & = \frac{\tanh(2x)}{2}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}      & \text{Error AM} \\ \hline
+                  5   & \num{0.380726} & \num{7.1d-5}    \\
+                  10  & \num{0.481949} & \num{6.5d-5}    \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving analytically,
+          \begin{align}
+              y'                  & = 3x^2(1 + y)    &
+              \frac{\dl y}{1 + y} & = 3x^2\ \dl x      \\
+              \ln(1+y)            & = x^3 + c        &
+              y                   & = c\exp(x^3) - 1   \\
+              y(0)                & = 0              &
+              y                   & = \exp(x^3) - 1
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}      & \text{Error AM} \\ \hline
+                  5   & \num{0.015749} & \num{9.607d-7}  \\
+                  10  & \num{0.133156} & \num{7.454d-6}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Solving analytically,
+          \begin{align}
+              y'       & = x/y       &
+              y\ \dl y & = x\ \dl x    \\
+              y^2/2    & = x^2/2 + c   \\
+              y(1)     & = 3         &
+              y^2      & = x^2 + 8
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}   & \text{Error AM} \\ \hline
+                  5   & \num{3.464} & \num{1.274d-6}  \\
+                  10  & \num{4.123} & \num{1.481d-6}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Starting with the Newton backward difference formula,
+          \begin{align}
+              p_3(x)       & = f_n + r\ \nabla f_n + \frac{r(r+1)}{2}\ \nabla^2 f_n
+              + \frac{r(r+1)(r+2)}{6}\ \nabla^3 f_n                                 \\
+              \nabla f_n   & = f_{n} - f_{n-1}                                      \\
+              \nabla^2 f_n & = \nabla f_n - \nabla f_{n-1} =
+              f_n - 2 f_{n-1} + f_{n-2}                                             \\
+              \nabla^3 f_n & = \nabla^2 f_n - \nabla^2 f_{n-1} =
+              f_n - 3 f_{n-1} + 3 f_{n-2} - f_{n-3}
+          \end{align}
+          Deriving the iterative method,
+          \begin{align}
+              \int_{0}^{1} \frac{r(r+1)}{2}\ \dl r          & =
+              \Bigg[ \frac{r^3/3 + r^2/2}{2} \Bigg]_0^1     &
+                                                            & = \frac{5}{12} \\
+              \int_{0}^{1} \frac{r(r+1)(r+2)}{6}\ \dl r     & =
+              \Bigg[ \frac{r^4/4 + r^3 + r^2}{6} \Bigg]_0^1 &
+                                                            & = \frac{3}{8}  \\
+              \int_{x_n}^{x_{n+1}}p_3(x)\ \dl x             & =
+              h\int_{0}^{1} p_3(r)\ \dl r                                    \\
+                                                            &
+              = h\ \Bigg[ f_n + \frac{\nabla f_n}{2} + \frac{5\nabla^2 f_n}{12}
+                  + \frac{3\nabla^3 f_n}{8} \Bigg]
+          \end{align}
+          Substituting into the expansion
+          \begin{align}
+              y^*_{n+1} & = y_n + \frac{h}{24}
+              \ \Bigg[ 55f_n - 59f_{n-1} + 37f_{n-2} - 9f_{n-3} \Bigg]
+          \end{align}
+          Starting with the Newton backward difference formula,
+          \begin{align}
+              \wt{p_3}(x)      & = f_{n+1} + r\ \nabla f_{n+1} + \frac{r(r+1)}{2}
+              \ \nabla^2 f_{n+1}
+              + \frac{r(r+1)(r+2)}{6}\ \nabla^3 f_{n+1}                           \\
+              \nabla f_{n+1}   & = f_{n+1} - f_{n}                                \\
+              \nabla^2 f_{n+1} & = \nabla f_{n+1} - \nabla f_{n} =
+              f_{n+1} - 2 f_{n} + f_{n-1}                                         \\
+              \nabla^3 f_{n+1} & = \nabla^2 f_{n+1} - \nabla^2 f_{n} =
+              f_{n+1} - 3 f_{n} + 3 f_{n-1} - f_{n-2}
+          \end{align}
+          Deriving the iterative method,
+          \begin{align}
+              \int_{-1}^{0} \frac{r(r+1)}{2}\ \dl r            & =
+              \Bigg[ \frac{r^3/3 + r^2/2}{2} \Bigg]_{-1}^0     &
+                                                               & = \frac{-1}{12} \\
+              \int_{-1}^{0} \frac{r(r+1)(r+2)}{6}\ \dl r       & =
+              \Bigg[ \frac{r^4/4 + r^3 + r^2}{6} \Bigg]_{-1}^0 &
+                                                               & = \frac{-1}{24} \\
+              \int_{x_n}^{x_{n+1}}\wt{p_3}(x)\ \dl x           & =
+              h\int_{-1}^{0} \wt{p_3}(r)\ \dl r                                  \\
+                                                               &
+              = h\ \Bigg[ f_{n+1} - \frac{\nabla f_{n+1}}{2}
+                  - \frac{\nabla^2 f_{n+1}}{12} - \frac{\nabla^3 f_{n+1}}{24} \Bigg]
+          \end{align}
+          Substituting into the expansion
+          \begin{align}
+              y_{n+1} & = y_n + \frac{h}{24}
+              \ \Bigg[ 9f_{n+1} + 19f_n - 5f_{n-1} + f_{n-2}\Bigg]
+          \end{align}
+
+    \item Starting with the Newton backward difference formula,
+          \begin{align}
+              p_2(x)       & = f_n + r\ \nabla f_n + \frac{r(r+1)}{2}\ \nabla^2 f_n \\
+              \nabla f_n   & = f_{n} - f_{n-1}                                      \\
+              \nabla^2 f_n & = \nabla f_n - \nabla f_{n-1} =
+              f_n - 2 f_{n-1} + f_{n-2}
+          \end{align}
+          Deriving the iterative method,
+          \begin{align}
+              \int_{0}^{1} \frac{r(r+1)}{2}\ \dl r      & =
+              \Bigg[ \frac{r^3/3 + r^2/2}{2} \Bigg]_0^1 &
+                                                        & = \frac{5}{12} \\
+              \int_{x_n}^{x_{n+1}}p_2(x)\ \dl x         & =
+              h\int_{0}^{1} p_3(r)\ \dl r                                \\
+                                                        &
+              = h\ \Bigg[ f_n + \frac{\nabla f_n}{2} + \frac{5\nabla^2 f_n}{12}
+                  \Bigg]
+          \end{align}
+          Substituting into the expansion
+          \begin{align}
+              y^*_{n+1} & = y_n + \frac{h}{12}
+              \ \Bigg[ 23f_n - 16f_{n-1} + 5f_{n-2} \Bigg]
+          \end{align}
+          Starting with the Newton backward difference formula,
+          \begin{align}
+              \wt{p_2}(x)      & = f_{n+1} + r\ \nabla f_{n+1} + \frac{r(r+1)}{2}
+              \ \nabla^2 f_{n+1}                                                  \\
+              \nabla f_{n+1}   & = f_{n+1} - f_{n}                                \\
+              \nabla^2 f_{n+1} & = \nabla f_{n+1} - \nabla f_{n} =
+              f_{n+1} - 2 f_{n} + f_{n-1}
+          \end{align}
+          Deriving the iterative method,
+          \begin{align}
+              \int_{-1}^{0} \frac{r(r+1)}{2}\ \dl r        & =
+              \Bigg[ \frac{r^3/3 + r^2/2}{2} \Bigg]_{-1}^0 &
+                                                           & = \frac{-1}{12} \\
+              \int_{x_n}^{x_{n+1}} \wt{p_2}(x)\ \dl x      & =
+              h\int_{-1}^{0} \wt{p_2}(r)\ \dl r                              \\
+                                                           &
+              = h\ \Bigg[ f_{n+1} - \frac{\nabla f_{n+1}}{2}
+                  - \frac{\nabla^2 f_{n+1}}{12} \Bigg]
+          \end{align}
+          Substituting into the expansion
+          \begin{align}
+              y_{n+1} & = y_n + \frac{h}{12}
+              \ \Bigg[ 5f_{n+1} + 8f_n - f_{n-1} \Bigg]
+          \end{align}
+
+    \item Solving analytically,
+          \begin{align}
+              y'              & = 2xy       &
+              \frac{\dl y}{y} & = 2x\ \dl x   \\
+              \ln y           & = x^2 + c   &
+              y(0)            & = 1           \\
+              y               & = \exp(x^2)
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}    & \text{Error AM} \\ \hline
+                  5   & \num{1.284}  & \num{1.937d-4}  \\
+                  10  & \num{2.7198} & \num{1.503d-3}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Error is proportional to $ h^3 $, which means the error should go down
+          by a factor of $1/2^3$ when halving $ h $
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}   & \text{Error AM} \\ \hline
+                  5   & \num{3.826} & \num{3.826d-5}  \\
+                  10  & \num{2.968} & \num{2.968d-4}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Error is proportional to $ h^3 $, which means the error should go down
+          by a factor of $1/2^3$ when halving $ h $
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{AM}   & \text{Error AM} \\ \hline
+                  5   & \num{3.826} & \num{3.826d-5}  \\
+                  10  & \num{2.968} & \num{2.968d-4}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Adams$-$Moulton method
+          \begin{enumerate}
+              \item Starting with Improved Euler method instead of RK method,
+                    \begin{align}
+                        y'   & = f(x, y) = x + y &
+                        y(0) & = 0                 \\
+                        y    & = e^x - x - 1
+                    \end{align}
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{
+                            colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                            colsep = 1em}
+                            $x_n$ & \text{Error AM (Euler)} & \text{Error AM (RK)}
+                            \\ \hline
+                            1     & \num{9.395d-3}          & \num{1.2d-5}
+                            \\
+                            2     & \num{2.552d-2}          & \num{6.0d-6}
+                            \\ \hline
+                        \end{tblr}
+                    \end{table}
+
+              \item Using exact starting values instead of RK values did not provide
+                    a significant decrease in error.
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{
+                            colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                            colsep = 1em}
+                            $n$ & \text{Error AM (Exact)} & \text{Error AM (RK)}
+                            \\ \hline
+                            5   & \num{1.218d-6}          & \num{1.274d-6}
+                            \\
+                            10  & \num{1.434d-6}          & \num{1.481d-6}
+                            \\ \hline
+                        \end{tblr}
+                    \end{table}
+
+              \item TBC. Check stiffness of ODE.
+
+              \item Comparing the RK method with step size $ 2h $ and the Adams$-$
+                    Moulton method with step size $ h $,
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{
+                            colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                            colsep = 1em}
+                            $x_n$ & \text{Error RK with}\ 2h & \text{Error AM with}\ h
+                            \\ \hline
+                            1     & \num{2.09d-4}            & \num{7.1d-5}
+                            \\
+                            2     & \num{1.29d-5}            & \num{6.5d-5}
+                            \\ \hline
+                        \end{tblr}
+                    \end{table}
+          \end{enumerate}
+\end{enumerate}

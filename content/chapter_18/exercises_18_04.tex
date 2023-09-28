@@ -1,0 +1,660 @@
+\section{Fluid Flow}
+
+\begin{enumerate}
+    \item The velocity must be continuous and have continuous first partial derivatives.
+          Then, it can satisfy the incompressible and irrotational conditions.
+
+    \item The speed in Example $ 1 $ is given by
+          \begin{align}
+              F(z)    & = z^2               & V & = \overline{F'(z)} = 2(x - \i y) \\
+              \abs{V} & = 2\sqrt{x^2 + y^2} & C & : x^2 + y^2 = k
+          \end{align}
+          The contours of constant speed are circles in the first quadrant centered on
+          the origin.
+
+    \item The speed is,
+          \begin{align}
+              F'(z) & = 1 - \frac{1}{z^2}                    &
+              V     & = \overline{F'(z)} = 1 + \frac{1}{y^2}
+          \end{align}
+          The speed is greatest at $ y = \pm 1 $ and therefore at $ z = \pm \i $
+
+    \item The speed along the cylinder wall is,
+          \begin{align}
+              F'(z)   & = 1 - \frac{1}{z^2}                                 &
+              z       & = r e^{\i \theta}                                     \\
+              F'(z)   & = 1 - \frac{e^{-2\i \theta}}{r^2}                   &
+              V       & =  \overline{F'(z)} = 1 - \frac{e^{2\i\theta}}{r^2}   \\
+              \abs{r} & = 1                                                 &
+              \implies \quad V(\theta)
+                      & = \sqrt{2 - 2\cos(2\theta)} = 2\abs{\sin\theta}
+          \end{align}
+          The speed is greatest at $ \theta = \pm\pi/2 $ and therefore at $ z = \pm\i $
+
+    \item Starting from the complex potential,
+          \begin{align}
+              F'(z) & = 1 - \frac{1}{z^2}                               &
+              F'(z) & = 1 - \frac{x^2 - y^2 - (2xy)\ \i}{(x^2 + y^2)^2}   \\
+              V_1   & = 1 + \frac{y^2 - x^2}{(x^2 + y^2)^2}             &
+              V_2   & = \frac{-2xy}{(x^2 + y^2)^2}                        \\
+              \diffp{V_1}{y}
+                    & = \frac{2y\ (3x^2 - y^2)}{(x^2 + y^2)^3}          &
+              \diffp{V_2}{x}
+                    & = \frac{(3x^2 - y^2)\ 2y}{(x^2 + y^2)^3}
+          \end{align}
+          Since these expressions are equal, the curl in two dimensions is zero, making
+          the flow irrotational.
+
+    \item Plotting the entire upper half plane,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90},
+                          domain = -10:10]
+                      \addplot3 [ contour/draw color={y_h},
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {x^2 - y^2};
+                      \addplot3 [ contour/draw color={y_p},
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {2*x*y};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the flow,
+          \begin{align}
+              F(z)            & = z         & V & = \overline{F'(z)} = 1 \\
+              \Phi + \i\ \Psi & = x + \i\ y
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90},
+                          domain = -10:10]
+                      \addplot3 [ contour/draw color={y_h},
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {x};
+                      \addplot3 [ contour/draw color={y_p},
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {y};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Given the velocity vector field,
+          \begin{align}
+              \abs{V} & = K > 0                                          &
+              \Arg{V} & = \pi/4                                            \\
+              V       & = K \cdot \frac{1 + \i}{\sqrt{2}}                &
+              F'(z)   & = K \cdot \frac{1 - \i}{\sqrt{2}}                  \\
+              F(z)    & = K \cdot \frac{(x + y) + \i\ (y - x)}{\sqrt{2}}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90},
+                          domain = -1:1, restrict y to domain = -1:1]
+                      \addplot3 [ contour/draw color={y_h},
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {x+y};
+                      \addplot3 [ contour/draw color={y_p},
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {y-x};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item An initial guess could be $ F(z) = z^4 $ instead of $ z^2 $,
+          \begin{align}
+              F(z) & = z^4 = (x^4 + y^4 - 6x^2y^2) + \i\ 4xy(x^2 - y^2)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, grid = both,
+                          axis equal, view = {0}{90},
+                          domain = -2:2, restrict y to domain = -2:2,
+                          xmin = 0, xmax = 2, ymin = 0, ymax = 2]
+                      \addplot3 [ contour/draw color={y_h},dashed,
+                          contour gnuplot={
+                                  levels = {1/4,1/2,1,2,4},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {x^4 + y^4 - 6*x^2*y^2};
+                      \addplot3 [ contour/draw color={y_p},
+                          contour gnuplot={
+                                  levels = {1, 2, 4},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {4*x*y*(x^2 - y^2)};
+                      \addplot3 [ contour/draw color={black}, thick,
+                          contour gnuplot={
+                                  levels = {0, 8},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {4*x*y*(x^2 - y^2)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item An initial guess could be $ F(z) = \i z^2 $ instead of $ z^2 $,
+          \begin{align}
+              F(z)  & = \i z^2 = -2xy + \i\ (x^2 - y^2) &
+              F'(z) & = 2z\ \i = -2y + 2x\ \i             \\
+              V     & = -2y - 2x\ \i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, grid = both,
+                          axis equal, view = {0}{90},
+                          domain = -6:6, restrict y to domain = -6:6,
+                          xmin = 0, xmax = 6, ymin = -3, ymax = 3]
+                      \addplot3 [ contour/draw color={y_h},dashed,
+                          contour gnuplot={
+                                  levels = {1,2,4,-4,-2,1,0},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {-2*x*y};
+                      \addplot3 [ contour/draw color={y_p},
+                          contour gnuplot={
+                                  levels = {1, 2, 4},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {(x^2 - y^2)};
+                      \addplot3 [ contour/draw color={black}, thick,
+                          contour gnuplot={
+                                  levels = {0, 8},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {(x^2 - y^2)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item For some positive real $ K $
+          \begin{align}
+              F(z) & = -\i\ Kz                &
+              F(z) & = Ky - Kx\ \i              \\
+              V    & = \overline{F'(z)} = K\i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, grid = both,
+                          axis equal, view = {0}{90},
+                          domain = -4:4, restrict y to domain = -4:4,]
+                      \addplot3 [ contour/draw color={y_h},
+                          contour gnuplot={
+                                  number = 9,
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {y};
+                      \addplot3 [ contour/draw color={y_p},
+                          contour gnuplot={
+                                  number = 9,
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {-x};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Starting from Problem $ 11 $,
+          \begin{align}
+              F(z) & = -Kz\ \i = w            &
+              G(w) & = \frac{w^2}{-K^2} = z^2
+          \end{align}
+
+    \item An initial guess could be $ F(z) = z^3 $ instead of $ z^2 $,
+          \begin{align}
+              F(z) & = z^4 = x(x^2 - 3y^2) + \i\ y(3x^2 - y^2)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, grid = both,
+                          axis equal, view = {0}{90},
+                          domain = -4:4, restrict y to domain = -4:4,
+                          xmin = 0, xmax = 3, ymin = 0, ymax = 3]
+                      \addplot3 [ contour/draw color={y_h},dashed,
+                          contour gnuplot={
+                                  levels = {1,2,4,-4,-2,-1},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {x*(x^2 - 3*y^2)};
+                      \addplot3 [ contour/draw color={y_p},
+                          contour gnuplot={
+                                  levels = {1, 2, 4},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {y*(3*x^2 - y^2)};
+                      \addplot3 [ contour/draw color={black}, thick, samples = 400,
+                          contour gnuplot={
+                                  levels = {0, 8},
+                                  labels = false,
+                              },
+                      ] {y*(3*x^2 - y^2)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Starting with $ F(z) = \i z^3 $,
+          \begin{align}
+              F(z)  & = \i z^3 = y(y^2 - 3x^2) + \i\ x(x^2 - 3y^2) &
+              F'(z) & = 3\i\ z^2 = -6xy + 3\i\ (x^2 - y^2)           \\
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani, grid = both,
+                          axis equal, view = {0}{90},
+                          domain = -4:4, restrict y to domain = -4:4,
+                          xmin = 0, xmax = 4, ymin = -2, ymax = 2]
+                      \addplot3 [ contour/draw color={y_h},dashed,
+                          contour gnuplot={
+                                  levels = {1,2,4,-4,-2,-1},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {y*(y^2 - 3*x^2)};
+                      \addplot3 [ contour/draw color={y_p},
+                          contour gnuplot={
+                                  levels = {1, 2, 4},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {x*(x^2 - 3*y^2)};
+                      \addplot3 [ contour/draw color={black}, thick, samples = 100,
+                          contour gnuplot={
+                                  levels = {0, 8},
+                                  labels = false,
+                              },
+                      ] {x*(x^2 - 3*y^2)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Scaling Example $ 2 $, to a cylinder of radius $ r_0 $,
+          \begin{align}
+              F(z)  & = \frac{z}{r_0} + \frac{r_0}{z}   &
+              F'(z) & = \frac{1}{r_0} - \frac{r_0}{z^2}
+          \end{align}
+          The stagnation points are now at $ z = \pm r_0 $, and this model reduces to
+          Example $ 2 $, when $ r_0 \to 1 $. \par
+          Alternatively, scaling the $ x $ and $ y $ axes by a factor $ r_0 $ leads to
+          the cylinder having radius $ r_0 $ in the new coordinate system.
+
+    \item Replacing $ z $ with $ z^2 $ in Example $ 2 $,
+          \begin{align}
+              F(z)  & = z^2 + z^{-2} & F'(z)              & = 2z - \frac{2}{z^3} \\
+              F'(z) & = 0            & \implies \quad z^4 & = 1
+          \end{align}
+          The stagnation points are $ z = \pm 1, \pm \i $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90},
+                          domain = -3:3]
+                      \addplot3 [ contour/draw color={y_h}, dashed,
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {x^2 - y^2};
+                      \addplot3 [ contour/draw color={y_p},
+                          contour gnuplot={
+                                  levels = {-4,-2,-1,0,1,2,4},
+                                  labels = false,
+                              },
+                          samples=100,
+                      ] {2*x*y};
+                      \draw [semithick, y_p, fill = white] (0, 0) circle (1);
+                      \draw [thick, black, fill = white] (0, 0) circle (0.96);
+                      \node[GraphNode, fill = y_t, draw = black] at (axis cs:1,0) {};
+                      \node[GraphNode, fill = y_t, draw = black] at (axis cs:-1,0) {};
+                      \node[GraphNode, fill = y_t, draw = black] at (axis cs:0,1) {};
+                      \node[GraphNode, fill = y_t, draw = black] at (axis cs:0,-1) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Since the fluid cannot cross the cylinder border (the unit disk), it is forced
+          to follow the border of the cylinder for that duration.
+
+    \item Using the velocity potential
+          \begin{align}
+              F(z)                       & = \arccos z = \arccos \beta - \i\ \sgn(y)
+              \ \ln\Big[\alpha + \sqrt{\alpha^2 - 1} \Big]                             \\
+              \Psi(x, y)      = c \quad  & \implies \quad \alpha + \sqrt{\alpha^2 - 1}
+              = c                                                                      \\
+              c^2 - 2c\alpha  = -1 \quad & \implies \quad \alpha = \frac{c^2 + 1}{2c}  \\
+              \alpha                     & = \frac{\sqrt{(x + 1)^2 + y^2}
+              + \sqrt{(x-1)^2 + y^2}}{2} = b                                           \\
+              2b^2                       & = y^2 + x^2 + 1 + \sqrt{y^4 + y^2(2x^2 + 2)
+              + (x^2 - 1)^2}                                                           \\
+              x^2(b^2 - 1) + b^2y^2      & = b^4 - b^2                                 \\
+              \frac{x^2}{b^2} + \frac{y^2}{b^2 - 1}
+                                         & = 1
+          \end{align}
+          This is a family of confocal ellipses with major axis being the $ x $ axis and
+          foci $ \pm 1 $.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function={
+                              alpha(\x,\y) = 0.5*((\x+1)^2 + \y^2)^(1/2)
+                              - 0.5*((\x-1)^2 + \y^2)^(1/2);
+                              beta(\x,\y) = 0.5*((\x+1)^2 + \y^2)^(1/2)
+                              + 0.5*((\x-1)^2 + \y^2)^(1/2);
+                          }]
+                  \begin{axis}[title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = -3:3, restrict y to domain = -3:3]
+                      \addplot3 [contour/draw color = {y_h}, dashed,
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false}, samples = 100]
+                      {acos(alpha(x, y))};
+                      \addplot3 [contour/draw color = {y_p},
+                          contour gnuplot={
+                                  levels = {1,1.5,2,-1,-1.5,-2},
+                                  labels = false}, samples = 100]
+                      {-sign(y) * ln(beta(x, y)
+                          + sqrt((beta(x, y))^2 - 1))};
+                      \addplot[GraphSmooth, domain = -1:1, very thick,
+                          color = black] {0};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item This is a rotation by $ -\pi/2 $ of Problem 17, as shown by the relation,
+          \begin{align}
+              F(z) & = \cosh^{-1}z = -\i \cos^{-1} z
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function={
+                              alpha(\x,\y) = 0.5*((\x+1)^2 + \y^2)^(1/2)
+                              - 0.5*((\x-1)^2 + \y^2)^(1/2);
+                              beta(\x,\y) = 0.5*((\x+1)^2 + \y^2)^(1/2)
+                              + 0.5*((\x-1)^2 + \y^2)^(1/2);
+                          }]
+                  \begin{axis}[title = {\textcolor{y_h}{Equipotential lines} and
+                                  \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = -3:3, restrict y to domain = -3:3]
+                      \addplot3 [contour/draw color = {y_p},
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false}, samples = 100]
+                      {-acos(alpha(x, y))};
+                      \addplot3 [contour/draw color = {y_h}, dashed,
+                          contour gnuplot={
+                                  number = 15,
+                                  labels = false}, samples = 100]
+                      {-sign(y) * ln(beta(x, y)
+                          + sqrt((beta(x, y))^2 - 1))};
+                      \addplot[GraphSmooth, domain = -3:-1, very thick,
+                          color = black] {0};
+                      \addplot[GraphSmooth, domain = 1:3, very thick,
+                          color = black] {0};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Starting from the velocity potential,
+          \begin{align}
+              F(z)              & = \frac{1}{z}  = \Phi + \i\ \Psi     &
+              F(z)              & = \frac{\bar{z}}{\abs{z}^2}            \\
+              \Psi(x, y)        & = \frac{-y}{x^2 + y^2} = \frac{1}{c} &
+              \implies 0        & = x^2 + y^2 + cy                       \\
+              x^2 + (y + c/2)^2 & = (c/2)^2
+          \end{align}
+          This is a family of circles with center on the $ y $ axis that pass through
+          the origin.
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {a = 0.75;}]
+                  \begin{axis}[title =
+                              {\textcolor{y_h}{Equipotential lines}
+                                  and \textcolor{y_p}{Streamlines}},
+                          xlabel = $ x $, ylabel = $ y $,
+                          width = 8cm,Ani,
+                          axis equal, view = {0}{90}, grid = both,
+                          domain = -1:1, restrict y to domain = -1:1]
+                      \addplot3 [contour/draw color = {y_h}, dashed,
+                          contour gnuplot={
+                                  levels = {1,2,3,4,-1,-2,-3,-4,0},
+                                  labels = false}, samples = 100]
+                      {x/(x^2 + y^2)};
+                      \addplot3 [contour/draw color = {y_p},
+                          contour gnuplot={
+                                  levels = {1,2,3,4,-1,-2,-3,-4,0},
+                                  labels = false}, samples = 100]
+                      {(-y)/(x^2 + y^2)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The complex logarithm,
+          \begin{enumerate}
+              \item Looking at the function,
+                    \begin{align}
+                        F(z)                & = \frac{c}{2\pi}\ \Ln z                &
+                                            & = \frac{c}{2\pi}\ (\ln r + \i\ \Arg z)   \\
+                        c > 0 \implies \Psi & = \frac{c}{2\pi}\ \arctan(y/x)
+                        = \theta            &
+                        y                   & = \tan\Bigg[\frac{2\pi \theta}{c}
+                            \Bigg]\ x
+                    \end{align}
+                    This is a straight line. Looking at the velocity,
+                    \begin{align}
+                        F'(z) & = \frac{c}{2\pi} \cdot \frac{1}{z}                 &
+                        V     & = \frac{c}{2\pi} \cdot \frac{x + \i\ y}{x^2 + y^2}
+                    \end{align}
+                    If $ c > 0 $, then the velocity is pointed away from the origin and
+                    vice versa.
+
+              \item The function is,
+                    \begin{align}
+                        F(z)            & = \frac{-\i K}{2\pi}\ \ln{z}           &
+                        \Phi + \i\ \Psi & = \frac{K}{2\pi}\ \Big[ \theta
+                        - \i \ln r\Big]                                            \\
+                        V               & = \frac{K}{2\pi} \cdot \frac{y - \i x}
+                        {x^2 + y^2}
+                    \end{align}
+                    The streamlines correspond to constant modulus $ r $, circles
+                    centered on the origin. From the complex velocity, it is ccl
+                    as can be checked at $ \pm r_0, \pm r_0\i $.
+
+              \item The complex conjugate and derivative operation are distributive
+                    under addition.
+                    \begin{align}
+                        F_3                & = F_1 + F_2                         &
+                        \overline{F_3'}    & = \overline{F_1'} + \overline{F_2'}   \\
+                        \implies V_3 \quad & = V_1 + V_2
+                    \end{align}
+
+
+              \item Using the superposition principle on the velocity potential,
+                    \begin{align}
+                        F(z)       & = \frac{1}{2\pi}\ \ln\Bigg( \frac{z+a}{z-a}
+                        \Bigg)     &
+                        \Phi(x, y) & = \frac{1}{4\pi}\ \ln\frac{(x+a)^2 + y^2}
+                        {(x-a)^2 + y^2}                                            \\
+                        \Psi(x, y) & = \Arg(z+a) - \Arg(z-a)                     &
+                        0          & = x^2 + y^2 - a^2 + 2ayc                      \\
+                    \end{align}
+                    The family of circles is,
+                    \begin{align}
+                        x^2 + (y - ac)^2 & = a^2 (1 + c^2)
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {a = 0.75;}]
+                            \begin{axis}[title =
+                                        {$ a = 0.75 $ showing
+                                            \textcolor{y_p}{Streamlines}},
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,Ani,
+                                    axis equal, view = {0}{90}, grid = both,
+                                    domain = -1:1, restrict y to domain = -1:1,
+                                    xmin = -1, xmax = 1, ymin = -1, ymax = 1]
+                                \addplot3 [contour/draw color = {y_h}, dashed,
+                                    contour gnuplot={
+                                            levels = {2,3,4,0.5,0.25,0.333,1},
+                                            labels = false}, samples = 100]
+                                {((x+a)^2 + y^2)/((x-a)^2 + y^2)};
+                                \foreach \k in {0,1,-1,2,-2}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot[GraphSmooth,
+                                                domain = -pi:pi, thin, color = y_p]
+                                            ({a*sqrt(1+\k^2) * cos(x)},
+                                            {a*sqrt(1+\k^2) * sin(x)} + a*\k);
+                                            \noexpand \addplot[GraphSmooth,
+                                                domain = -pi:pi, thin, color = y_p]
+                                            ({a*sqrt(1+\k^2) * cos(x)},
+                                            {-a*sqrt(1+\k^2) * sin(x)} - a*\k);
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}[declare function = {a = 0.1;}]
+                            \begin{axis}[title =
+                                        {$ a = 0.1 $ showing
+                                            \textcolor{y_p}{Streamlines}},
+                                    xlabel = $ x $, ylabel = $ y $,
+                                    width = 8cm,Ani,
+                                    axis equal, view = {0}{90}, grid = both,
+                                    domain = -1:1, restrict y to domain = -1:1]
+                                \addplot3 [contour/draw color = {y_h}, dashed,
+                                    contour gnuplot={
+                                            levels = {2,3,4,0.5,0.25,0.333,1,0},
+                                            labels = false}, samples = 100]
+                                {((x+a)^2 + y^2)/((x-a)^2 + y^2)};
+                                \foreach \k in {0,2,-2,4,-4,6,-6,8,-8}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot[GraphSmooth,
+                                                domain = -pi:pi, thin, color = y_p]
+                                            ({a*sqrt(1+\k^2) * cos(x)},
+                                            {a*sqrt(1+\k^2) * sin(x)} + a*\k);
+                                            \noexpand \addplot[GraphSmooth,
+                                                domain = -pi:pi, thin, color = y_p]
+                                            ({a*sqrt(1+\k^2) * cos(x)},
+                                            {-a*sqrt(1+\k^2) * sin(x)} - a*\k);
+                                        }\temp
+                                    }
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Adding the two potentials,
+                    \begin{align}
+                        F(z)       & = \frac{-K\i}{2\pi}\ \ln z + z + \frac{1}{z} &
+                        V          & = 1 - \frac{1}{\bar{z}^2} + \frac{K\i}{2\pi
+                        \ \bar{z}}                                                  \\
+                        V          & = 0                                          &
+                        \implies 0 & = \bar{z}^2 - 1 + \frac{K\i}{2\pi}\ \bar{z}
+                    \end{align}
+                    This is a quadratic in $ \bar{z} $, with stagnation points,
+                    \begin{align}
+                        \bar{z}^*                           & = -\frac{K\i}{4\pi}
+                        \pm \sqrt{\frac{-K^2}{16\pi^2} + 1} &
+                        z^*                                 & = \frac{K\i}{4\pi}
+                        \pm \sqrt{\frac{-K^2}{16\pi^2} + 1}                         \\
+                        K                                   & = 0                 &
+                        \implies z^*                        & = \pm 1               \\
+                        K                                   & = 4\pi              &
+                        \implies z^*                        & = \i, \i              \\
+                        K                                   & = 4\pi c,
+                        \qquad c>1                          &
+                        z^*                                 & = \i\ \Big[c \pm
+                            \sqrt{c^2 - 1}\Big]
+                    \end{align}
+                    For all $ c > 1 $, $ z_a^* < \i $ while $ z_b^* > \i $.
+                    Only the stagnation point outside the cylinder is  physically
+                    meaningful.
+          \end{enumerate}
+
+\end{enumerate}

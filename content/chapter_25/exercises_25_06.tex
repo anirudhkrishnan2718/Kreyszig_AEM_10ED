@@ -1,0 +1,330 @@
+\section{Acceptance Sampling}
+
+\begin{enumerate}
+    \item The specific values are,
+          \begin{align}
+              \theta & = 0.01 & P(A\ ;\ \theta) & = 0.9825 \\
+              \theta & = 0.02 & P(A\ ;\ \theta) & = 0.9384 \\
+              \theta & = 0.1  & P(A\ ;\ \theta) & = 0.4060
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_01.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[title = {OC Curve}, xlabel = $ \theta $,
+                          ylabel = $ P(\theta) $, grid = both,Ani]
+                      \addplot[GraphSmooth, y_h, mark=*, mark options =
+                              {mark size = 1pt, color = black}]
+                      table[x index = 0, y index = 1] {\anitableone};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Changing the sample size to $ n = 50 $,
+          \begin{align}
+              \theta & = 0.01 & P(A\ ;\ \theta) & = 0.9098 \\
+              \theta & = 0.02 & P(A\ ;\ \theta) & = 0.7357 \\
+              \theta & = 0.1  & P(A\ ;\ \theta) & = 0.0404
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_02.csv}
+              \anitabletwo
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_01.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[title = {OC Curve}, xlabel = $ \theta $,
+                          ylabel = $ P(\theta) $, grid = both,Ani, xmax = 0.5]
+                      \addplot[GraphSmooth, y_p]
+                      table[x index = 0, y index = 1] {\anitabletwo};
+                      \addplot[GraphSmooth, y_h]
+                      table[x index = 0, y index = 1] {\anitableone};
+                      \addlegendentry{n = 50}
+                      \addlegendentry{n = 20}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The effect is to make the OC curve decay to zero much faster. This is
+          reasonable, since it is much more probable that a sample contains a defective
+          item, with larger $ n $, keeping $ \theta $ constant.
+
+    \item Changing the acceptance limit to $ c = 0 $,
+          \begin{align}
+              \theta & = 0.01 & P(A\ ;\ \theta) & = 0.8187 \\
+              \theta & = 0.02 & P(A\ ;\ \theta) & = 0.6703 \\
+              \theta & = 0.1  & P(A\ ;\ \theta) & = 0.1353
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_03.csv}
+              \anitablethree
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_01.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[title = {OC Curve}, xlabel = $ \theta $,
+                          ylabel = $ P(\theta) $, grid = both,Ani, xmax = 0.5]
+                      \addplot[GraphSmooth, y_p]
+                      table[x index = 0, y index = 1] {\anitablethree};
+                      \addplot[GraphSmooth, y_h]
+                      table[x index = 0, y index = 1] {\anitableone};
+                      \addlegendentry{c = 0}
+                      \addlegendentry{c = 1}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The effect is to make the OC curve decay to zero much faster. This is
+          reasonable, since it is much more probable that a sample contains one defective
+          item than zero, keeping $ \theta $ constant.
+
+    \item From the definition of AQL and RQL, the given defective fractions are
+          $ \theta_0 $ and $ \theta_1 $ respectively.
+          \begin{align}
+              \text{Risk}_p & = 1 - P(A\ ;\ \theta_0) = 0.0616 \\
+              \text{Risk}_c & = P(A\ ;\ \theta_1) = 0.1991
+          \end{align}
+
+    \item Given $ n = 25 $ and $ c = 1 $,
+          \begin{align}
+              \text{Risk}_p & = 1 - P(A\ ;\ \texttt{AQL}) &
+                            & = 0.055
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_05.csv}
+              \anitablefive
+              \begin{tikzpicture}
+                  \begin{axis}[title = {OC Curve}, xlabel = $ \theta $,
+                          ylabel = $ P(\theta) $, grid = both,Ani]
+                      \addplot[GraphSmooth, y_h, mark=*, mark options =
+                              {mark size = 1pt, color = black}]
+                      table[x index = 0, y index = 1] {\anitablefive};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Given $ n = 25 $ and $ c = 1 $,
+          \begin{align}
+              \text{Risk}_p & = 1 - P(A\ ;\ \texttt{AQL}) &
+                            & = 0.055
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_06.csv}
+              \anitablesix
+              \begin{tikzpicture}
+                  \begin{axis}[title = {AOQ Curve}, xlabel = $ \theta $,
+                          ylabel = $ \text{AOQ}(\theta) $, grid = both,Ani,
+                          xmax = 0.5]
+                      \addplot[only marks, mark=*, mark options =
+                              {mark size = 1.5pt, color = y_h}]
+                      table[x index = 0, y index = 2] {\anitablesix};
+                      \addplot[GraphSmooth, black, thin, domain = 0:1] {x*e^(-25*x)
+                          *(1 + 25*x)};
+                      \node[GraphNode, fill = y_p] at (axis cs:0.0647, 0.0336){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Since $ c $ is small, the analytical maximum can be found using differentiation
+          \begin{align}
+              f(x) & = (25x) \cdot e^{-25x} (1 + 25x)                                  \\
+              x^*  & = 0.0647                         & f_{\text{max}} & = \text{AOQL}
+              = 0.0336
+          \end{align}
+
+    \item From the definition of AQL and RQL, the given defective fractions are
+          $ \theta_0 $ and $ \theta_1 $ respectively.
+          \begin{align}
+              \text{Risk}_p & = 1 - P(A\ ;\ \texttt{AQL}) = 1 - \frac{\binom{2}{0}
+              \ \binom{18}{2}}{\binom{20}{2}} = 0.1947                             \\
+              \text{Risk}_c & = P(A\ ;\ \texttt{RQL}) = \frac{\binom{12}{0}
+                  \ \binom{8}{2}}{\binom{20}{2}} = 0.1474
+          \end{align}
+
+    \item Comparing $ c = 3 $ and $ c = 2 $, the probabilties go down as the number of
+          objects being sampled goes up, for the same $ \theta $.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {l|Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  $ \theta $ & c=2    & c=3    \\ \hline
+                  0.1        & 0.8053 & 0.7158 \\
+                  0.2        & 0.6316 & 0.4912 \\
+              \end{tblr}
+          \end{table}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_08_a.csv}
+              \anitableeighta
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_08_b.csv}
+              \anitableeightb
+              \begin{tikzpicture}
+                  \begin{axis}[title = {OC Curve}, xlabel = $ \theta $,
+                          ylabel = $ \text{P}(\theta) $, grid = both,Ani]
+                      \addplot[GraphSmooth, y_h]
+                      table[x index = 0, y index = 1] {\anitableeighta};
+                      \addplot[GraphSmooth, y_p]
+                      table[x index = 0, y index = 1] {\anitableeightb};
+                      \addlegendentry{$ n=2 $};
+                      \addlegendentry{$ n=3 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the binomial distribution with the defective probability being
+          $ \theta $,
+          \begin{align}
+              P(A\ ;\ \theta) & = \sum_{x=0}^{1} \binom{n}{x}\ (1-\theta)^{n-x}
+              \cdot \theta^x                                                    \\
+                              & = (1-\theta)^n + n\theta\ (1-\theta)^{n-1}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {OC curve using binomial distribution},
+                          grid = both, Ani, xlabel = {$ \theta $},
+                          ylabel = {$ P(\theta) $}, colormap/jet, colorbar,
+                          cycle list = {[samples of colormap = 4]}]
+                      \foreach \k in {2,...,5}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[very thick, samples = 100,
+                                      domain = 0:1, point meta = \k]
+                                  {(1-x)^(\k) + \k*x*(1-x)^(\k-1)};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the formula in Problem 9, with $ n=2 $
+          \begin{align}
+              P(A\ ;\ \theta) & = \sum_{x=0}^{0} \binom{n}{x}\ (1-\theta)^{n-x}
+              \cdot \theta^x  &
+                              & = (1-\theta)^2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_08_a.csv}
+              \anitableeighta
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_10.csv}
+              \anitableten
+              \begin{tikzpicture}
+                  \begin{axis}[title = {OC Curve}, xlabel = $ \theta $,
+                          ylabel = $ \text{P}(\theta) $, grid = both,Ani]
+                      \addplot[GraphSmooth, y_h]
+                      table[x index = 0, y index = 1] {\anitableeighta};
+                      \addplot[GraphSmooth, y_s]
+                      table[x index = 0, y index = 1] {\anitableten};
+                      \addlegendentry{Hypergeometric};
+                      \addlegendentry{Binomial};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The approximation is very close to the accurate values from the hypergeometric
+          PDF.
+
+    \item Given $ c = 1,\ n = 3$ and using the binomial distribution,
+          \begin{align}
+              P(A\ ;\ 0.5) & = \binom{3}{0} \cdot (1-0.5)^3 \cdot 0.5^0
+              + \binom{3}{1} \cdot (1-0.5)^2 \cdot 0.5^1 = \frac{1}{2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_11.csv}
+              \anitableeleven
+              \begin{tikzpicture}
+                  \begin{axis}[title = {OC Curve}, xlabel = $ \theta $,
+                          ylabel = $ \text{P}(\theta) $, grid = both,Ani]
+                      \addplot[GraphSmooth, y_h]
+                      table[x index = 0, y index = 1] {\anitableeleven};
+                      \node[GraphNode, fill = y_p] at (axis cs:0.5, 0.5){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the binomial distribution, with $ n = 100,\ p = 0.05 $
+          \begin{align}
+              \text{Risk}_p & = 1 - P(A\ ;\ \texttt{AQL}) = 1 -
+              \sum_{x=0}^{c} \binom{n}{x} q^{n-x}\ p^x                       \\
+              1 - 0.02      & = \sum_{x=0}^{c} \binom{100}{x} (0.95)^{100-x}
+              \ (0.05)^x = 0.98
+          \end{align}
+          Using the normal approximation to the binomial distribution,
+          \begin{align}
+              Z & \sim \frac{X - np}{\sqrt{npq}}
+          \end{align}
+          Since the producer's risk has to be $ 2\% $ or larger, the smallest
+          possible value of $ c $ is 9
+
+    \item The consumer's risk formula for the data in Problem $ 12 $  with
+          $ \texttt{RQL}  = 0.12 $ is,
+          \begin{align}
+              \text{Risk}_c & = P(A\ ;\ \texttt{RQL}) = \sum_{x=0}^{9} \binom{100}{x}
+              (0.12)^x\ (0.88)^{100-x}                                                \\
+                            & = 0.2256
+          \end{align}
+
+    \item Given $ c = 1,\ n = 20$ and using the Poisson distribution,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_14.csv}
+              \anitablefourteen
+              \begin{tikzpicture}
+                  \begin{axis}[title = {OC Curve}, xlabel = $ \theta $,
+                          ylabel = $ \text{P}(\theta) $, grid = both,Ani,
+                          xmax = 0.5, width = 8cm]
+                      \addplot[only marks, mark=*, mark options =
+                              {mark size = 1.5pt, color = y_h}]
+                      table[x index = 0, y index = 1] {\anitablefourteen};
+                      \addplot[GraphSmooth, black, thin, domain = 0:1] {e^(-20*x)
+                          *(1 + 20*x)};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[title = {AOQ Curve}, xlabel = $ \theta $,
+                          ylabel = $ \text{AOQ}(\theta) $, grid = both,Ani,
+                          xmax = 0.5, width = 8cm, ymax = 0.05]
+                      \addplot[only marks, mark=*, mark options =
+                              {mark size = 1.5pt, color = y_p}]
+                      table[x index = 0, y index = 2] {\anitablefourteen};
+                      \addplot[GraphSmooth, black, thin, domain = 0:1] {x*e^(-20*x)
+                          *(1 + 20*x)};
+                      \node[GraphNode, fill = black,
+                      label={45:{$ \texttt{AOQL} = 0.042 $}}]
+                      at (axis cs:0.081, 0.042){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Given $ c = 0,\ n = 5$ and using the Poisson distribution,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_06_15.csv}
+              \anitablefifteen
+              \begin{tikzpicture}
+                  \begin{axis}[title = {OC Curve}, xlabel = $ \theta $,
+                          ylabel = $ \text{P}(\theta) $, grid = both,Ani
+                          , width = 8cm]
+                      \addplot[only marks, mark=*, mark options =
+                              {mark size = 1.5pt, color = y_h}]
+                      table[x index = 0, y index = 1] {\anitablefifteen};
+                      \addplot[GraphSmooth, black, thin, domain = 0:1] {e^(-5*x)};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[title = {AOQ Curve}, xlabel = $ \theta $,
+                          ylabel = $ \text{AOQ}(\theta) $, grid = both,Ani
+                          , width = 8cm, ymax = 0.085]
+                      \addplot[only marks, mark=*, mark options =
+                              {mark size = 1.5pt, color = y_p}]
+                      table[x index = 0, y index = 2] {\anitablefifteen};
+                      \addplot[GraphSmooth, black, thin, domain = 0:1] {x*e^(-5*x)};
+                      \node[GraphNode, fill = black!0,
+                      label={45:{$ \texttt{AOQL} = 0.073 $}}]
+                      at (axis cs:0.2, 0.073){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+\end{enumerate}

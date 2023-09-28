@@ -1,0 +1,197 @@
+\chapter{Complex Analysis and Potential Theory}
+
+\section{Electrostatic Fields}
+
+\begin{description}
+    \item[Laplace equation] The electrostatic potential in a region free of charges is
+        given by Laplace's equation
+        \begin{align}
+            \nabla^2 \Phi & = 0
+        \end{align}
+        The surfaces $ \Phi = c $ are called equipotential surfaces.
+
+    \item[Complex potential] Consider a harmonic function $ \Phi(x, y) $ whose
+        harmonic conjugate is $ \Psi(x, y) $.
+        \begin{align}
+            F(z) & = \Phi + \i\ \Psi
+        \end{align}
+        is now an analytic function of $ z $, and is called the complex potential
+        corresponding to the real potential $ \Phi $.
+
+    \item[Conformality] Since equipotential lines have to intersect electromagnetic
+        lines of force at right angles, the complex potential is a prepackaged conformal
+        map of $ z $ that yields both $ \Phi $ and $ \Psi $.
+
+    \item[Superposition] Potantials due to more than one source at a given point can
+        be superposed to yield the net potential. For complex potentials, this happens to
+        be simple scalar addition of the real and imaginary parts separately.
+\end{description}
+
+\section{Use of Conformal Mapping}
+
+\begin{description}
+    \item[Dirichlet problem] A type of boundary value problem where the value of the
+        potential is specified everywhere on the boundary surface.
+
+    \item[Conformal mapping of harmonic functions] Let a function $ \Phi^* $ be
+        harmonic in a domain $ D^* $ in the $ w $ plane.
+        Suppose $ w = f(z) $ is analytic in a domain $ D $ in the $ z $ plane, and maps
+        $ D $ conformally onto $ D^* $. Then,
+        \begin{align}
+            \Phi(x, y) & = \Phi^*\Big[u(x, y),\ v(x, y) \Big]
+        \end{align}
+        is also harmonic in $ D $. If $ D^* $ is simply connected, then the harmonic
+        conjugate $ \Psi^* $ exists.
+
+    \item[Strategy] Use a conformal mapping to convert the complicated BVP into a
+        standard BVP for which the result is known. Then, reverse transform
+        $ w \to z $ to get the compmlex potential in $ z $ space.
+
+\end{description}
+
+\section{Heat Problems}
+
+\begin{description}
+    \item[Heat equation] A steady state heat flow, which means that temperature is
+        independent of time reduces to,
+        \begin{align}
+            \nabla^2 T & = 0
+        \end{align}
+        which is the Laplace equation in temperature (a scalar like electrostatic
+        potential)
+
+    \item[Isotherms] The contours of constant temperature. The orthogonal family of
+        curves is called the lines of heat flow.
+
+    \item[Mixed BVP] Sometimes, the potential is specified on some portion of the
+        boundary and its normal derivative is specified over the rest. This becomes a
+        mixed boundary value problem.
+\end{description}
+
+\section{Fluid Flow}
+
+\begin{description}
+    \item[Complex potential] A conplex function of the form,
+        \begin{align}
+            F(z) & = \Phi(x, y) + \i\ \Psi(x, y)
+        \end{align}
+        where $ \Phi $ is called the velocity potential and $ \Psi $ is the stream
+        function. This function is analytic and therefore $ \Phi, \Psi $ are
+        harmonic functions.
+
+    \item[Streamlines] Curves of $ \Phi(x, y) = c $ are still called equipotential lines,
+        and the trajectories of fluid flow are $ \Psi(x, y) = c $. \par
+        The boundaries across which fluid cannot flow must be streamlines.
+
+    \item[Velocity] Anoalogous to the two-dimensional vector for the velocity of a fluid,
+        \begin{align}
+            V & = V_1 + \i\ V_2 = \overline{F'{z}}
+        \end{align}
+        is the complex velocity.
+
+    \item[Stagnation points] Points along a fluid flow vector field, where the
+        velocity is zero. This requires the flow to be steady (independent of time).
+
+    \item[Assumptions] If a simply connected domain $ D $ has an incompressible
+        and irrotational fluid flow at steady state, then the flow has a complex
+        potential $ F(z) $ which is an analytic function.
+
+    \item[Circulation] The line integral of the tangential component of the velocity
+        along a curve.
+        \begin{align}
+            C & = \int_{C} V_t\ \dl t
+        \end{align}
+
+    \item[Rotation] In two dimensions, it is the curl of the velocity vector.
+        \begin{align}
+            \omega(x, y) & = \frac{1}{2}\ \Bigg[\diffp{V_2}{x} - \diffp{V_1}{y}\Bigg]
+        \end{align}
+        A special case where $ \nabla \times \vec{V} = 0 $ is called an irrotational
+        vector field. \par
+        Without the $ 1/2 $ factor, this expression is called the vorticity.
+
+    \item[Incompressible] This refers to the fact that there are no sources or sinks
+        of fluid anywhere in the domain. In vector calculus, this is denoted by
+        $ \nabla \dotp \vec{V} = 0 $. \par
+        The fluid inflow per second into a fixed volume must equal the fluid outflow, at
+        all points in the domain.
+
+    \item[Complex velocity potential]  If the above conditions are met, then the line
+        integral of the tangential velocity over any closed loop vanishes by Green's
+        theorem. \par
+        The path independence of this integral establishes the complex velocity
+        potential (which is a scalar).
+        \begin{align}
+            \Phi(x, y) & = \int_{z_0}^{z} (V_1\ \dl x + V_2\ \dl y)
+        \end{align}
+\end{description}
+
+\section{Poisson's Integral Formula for Potentials}
+
+\begin{description}
+    \item[Poisson's Integral formula] Applying Cauchy's integral formula on a closed
+        line integral on a circle of radius $ R > 1 $,
+        \begin{align}
+            \Phi(r, \theta) & = \frac{1}{2\pi}\ \int_{0}^{2\pi} \Phi(R, \alpha)
+            \ \frac{R^2 - r^2}{R^2 + r^2 - 2Rr\cos(\theta - \alpha)}\ \dl \theta
+        \end{align}
+        This is the potential at all points inside the disk $ \abs{z} \leq R $ in terms
+        of the potential on the disk's boundary $ \Phi(R, \alpha) $. \par
+        If the boundary is only piecewise continuous, then the formula is valid at all
+        points on the open disk $ \abs{z} < R $, and all points on the boundary except
+        these discontinuities.
+
+    \item[Series solution] The potential can be expanded into an infinite series using
+        the geometric series,
+        \begin{align}
+            \Phi(r, \theta) & = a_0 + \iser[n]{1} \Big( \frac{r}{R} \Big)^n\
+            \Big[ a_n \cos(n\theta) + b_n \sin(n\theta) \Big]                  \\
+            a_0             & = \frac{1}{2\pi} \int_{0}^{2\pi} \Phi(R, \alpha)
+            \ \dl \alpha                                                       \\
+            a_n             & = \frac{1}{\pi} \int_{0}^{2\pi} \Phi(R, \alpha)
+            \ \cos(n\alpha)\ \dl \alpha                                        \\
+            b_n             & = \frac{1}{\pi} \int_{0}^{2\pi} \Phi(R, \alpha)
+            \ \sin(n\alpha)\ \dl \alpha
+        \end{align}
+        The derivation uses the Fourier series expansion of the integrand in the Poisson
+        integral formula. \par
+        At the boundary, $ r = R $ and this series reduces to the fourier series of
+        $ \Phi(R, \alpha) $. This method is valid whenever $ \Phi $ has a Fourier series
+        expansion.
+\end{description}
+
+\section{General Properties of Harmonic Functions}
+
+\begin{description}
+    \item[Mean Value Property] Let $ F(z) $ be analytic in a simply connected domain
+        $ D $. Then, the value of $ F(z) $ at any point $ z_0 $ in $ D $ is equal to its
+        mean value on any circle in $ D $ with center $ z_0 $
+
+    \item[Mean value of harmonic functions] Relacing $ F(z) $ above with a harmonic
+        function $ \Phi(x,y) $, the relation holds. \par
+        Additionally, this value is equal to the mean value of $ \Phi $ over any disk
+        in $ D $ centered on $ z_0 $.
+
+    \item[Maximum modulus theorem] Let $ F(z) $ be analytic and non-constant in a domain
+        containing a bounded region $ R $ and its boundary. \par
+        The absolute value of $ F(z) $ cannot have its maximum at an interior point of
+        $ R $, only on its boundary. \par
+        If $ F(z) \neq 0 \quad \forall \quad z \in R $, this relation also holds for the
+        minimum value of $ \abs{F(z)} $.
+
+    \item[Properties of Harmonic functions] Using $ \Phi(x,y), R, C $ as defined
+        above,
+        \begin{itemize}
+            \item If $ \Phi(x, y) $ is not constant, it has neither a maximum nor a
+                  minimum in $ R $. If they exist, they have to be on the boundary $ C $.
+            \item If $ \Phi(x,y) $ is constant on $ C $, then it is constant in
+                  the entire region $ R $ bounded by $ C $.
+            \item If $ h(x, y) $ is harmonic in $ R $ and on $ C $, and if
+                  $ h = \Phi $ on $ C $, then this also holds everywhere in $ R $.
+        \end{itemize}
+
+    \item[Uniqueness theorem for Dirichlet BVP] If a BVP for the Laplace equation in
+        two variables has a solution, it must be unique. \par
+        This follows from the above properties of harmonic functions, which are uniquely
+        determined in $ R $, by their value on the boundary $ C $.
+\end{description}

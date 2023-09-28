@@ -1,0 +1,446 @@
+\section{Methods for First-Order ODEs}
+
+\begin{enumerate}
+    \item Comparing the analytical solution to Euler's method
+          \begin{align}
+              y' & = f(x, y) = \color{y_p} -0.2y & y(0) & = 5 \\
+              y  & = \color{y_h} 5e^{-0.2x}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_n     & \text{Error} \\ \hline
+                  1   & 4.8     & 0.003947     \\
+                  5   & 4.07686 & 0.01679      \\
+                  10  & 3.32416 & 0.02344      \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the analytical solution to Euler's method
+          \begin{align}
+              y'         & = f(x, y) = \color{y_p} \frac{\pi}{2}\ \sqrt{1 - y^2} &
+              y(0)       & = 0                                                     \\
+              \arcsin(y) & = \frac{\pi x}{2} + c                                 &
+              y          & = \color{y_h} \sin(\pi x/2)
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_n    & \text{Error} \\ \hline
+                  1   & 0.1571 & 0.000064     \\
+                  5   & 0.7264 & 0.01926      \\
+                  10  & 1.0117 & 0.0117       \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the analytical solution to Euler's method
+          \begin{align}
+              y'                    & = f(x, y) = \color{y_p} (y - x)^2 &
+              u                     & = y - x \qquad u' = y' - 1          \\
+              u' + 1                & = u^2                             &
+              \frac{\dl u}{u^2 - 1} & = \dl x                             \\
+              \tanh^{-1} u          & = -x + c                          &
+              y                     & = x - \tanh(x + c)                  \\
+              y(0)                  & = 0                               &
+              y                     & = \color{y_h} x - \tanh(x)
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_n     & \text{Error} \\ \hline
+                  1   & 0       & -0.000332    \\
+                  5   & 0.02859 & -0.009292    \\
+                  10  & 0.21956 & -0.18846     \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the analytical solution to Euler's method
+          \begin{align}
+              y'                    & = f(x, y) = \color{y_p} (y + x)^2 &
+              u                     & = y + x \qquad u' = y' + 1          \\
+              u' - 1                & = u^2                             &
+              \frac{\dl u}{u^2 + 1} & = \dl x                             \\
+              \tan^{-1} u           & = x + c                           &
+              y                     & = -x + \tan(x + c)                  \\
+              y(0)                  & = 0                               &
+              y                     & = \color{y_h} -x + \tan(x)
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_n     & \text{Error} \\ \hline
+                  1   & 0       & -0.000335    \\
+                  5   & 0.03151 & -0.01479     \\
+                  10  & 0.3964  & -0.16101     \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the analytical solution to improved Euler's method
+          \begin{align}
+              y'   & = f(x, y) = \color{y_p} y &
+              y    & = ce^x                      \\
+              y(0) & = 1                       &
+              y    & = \color{y_h} e^x
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_n    & \text{Error} \\ \hline
+                  1   & 1.105  & -0.000171    \\
+                  5   & 1.6474 & -0.001274    \\
+                  10  & 2.7141 & -0.004201    \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the analytical solution to improved Euler's method
+          \begin{align}
+              y'          & = f(x, y) = \color{y_p} 2(1 + y^2) &
+              \tan^{-1} y & = 2x + c                             \\
+              y(0)        & = 0                                &
+              y           & = \color{y_h} \tan(2x)
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_n     & \text{Error} \\ \hline
+                  1   & 0.1005  & -0.0001653   \\
+                  5   & 0.54702 & -0.0007218   \\
+                  10  & 1.55379 & -0.003618    \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the analytical solution to improved Euler's method
+          \begin{align}
+              y'           & = f(x, y) = \color{y_p} xy^2      &
+              \frac{-1}{y} & = \frac{x^2}{2} + c                 \\
+              y(0)         & = 1                               &
+              y            & = \color{y_h} \frac{1}{1 - x^2/2}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_n      & \text{Error} \\ \hline
+                  1   & 1.005    & -0.000025    \\
+                  5   & 1.142568 & -0.0002889   \\
+                  10  & 1.98812  & -0.01187     \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the analytical solution to improved Euler's method
+          \begin{align}
+              y'                           & = f(x, y) = \color{y_p} y(1-y)    &
+              \frac{\dl y}{y(1-y)}         & = \dl x                             \\
+              \ln\Bigg[\frac{y}{y-1}\Bigg] & = x + c                           &
+              y                            & = \frac{ce^x}{ce^x - 1}             \\
+              y(0)                         & = 0.2                             &
+              y                            & = \color{y_h} \frac{e^x}{e^x + 4}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & y_n      & \text{Error} \\ \hline
+                  1   & 0.216467 & -0.0000135   \\
+                  5   & 0.291802 & -0.0000732   \\
+                  10  & 0.404462 & -0.0001477   \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the two methods, the simple Euler method has much greater errors
+          for the same number of iterations.
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{Error simple} & \text{Error improved} \\ \hline
+                  1   & -0.005025           & -0.000025             \\
+                  5   & -0.03547            & -0.0002889            \\
+                  10  & -0.28715            & -0.01187              \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the two interval sizes, the smaller $ h $ gives better errors
+          when reaching the same $ x_n $ value.
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $x_n$ & \epsilon_{h/2} & \epsilon_h \\ \hline
+                  0.5   & -0.00005221    & -0.0002889 \\
+                  1.0   & -0.003053      & -0.01187   \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the two methods, the simple Euler method has much greater errors
+          for the same number of iterations.
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{Error simple} & \text{Error RK}  \\ \hline
+                  1   & -0.005025           & \num{1.0311d-8}  \\
+                  5   & -0.03547            & \num{3.773d-7}   \\
+                  10  & -0.28715            & \num{-8.8024d-6} \\ \hline
+              \end{tblr}
+          \end{table}
+          The error using $ y^{(h)} $ and $ y^{(2h)} $ is,
+          \begin{align}
+              \epsilon_h & = \frac{y^{(h)} - y^{(2h)}}{15} = \frac{204 - 8}{15}
+              \cdot \num{d-6} = \num{1.3d-5}
+          \end{align}
+
+    \item Comparing the RK method to improved Euler's method
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{Error RK} & \text{Error Improved Euler} \\ \hline
+                  1   & \num{-4.232d-9} & -\num{1.35d-5}              \\
+                  5   & \num{-2.096d-8} & -\num{7.32d-5}              \\
+                  10  & \num{-3.721d-8} & -\num{1.477d-4}             \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the RK method to the analytical solution
+          \begin{align}
+              y'                    & = f(x, y) = \color{y_p} 1 + y^2 &
+              \frac{\dl y}{1 + y^2} & = \dl x                           \\
+              \arctan x             & = x + c                         &
+              y                     & = \tan(x + c)                     \\
+              y(0)                  & = 0                             &
+              y                     & = \color{y_h} \tan x
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{RK Classic} & \text{Error}    \\ \hline
+                  1   & 0.10033           & -\num{8.301d-8} \\
+                  5   & 0.54631           & -\num{1.823d-7} \\
+                  10  & 1.5574            & -\num{1.282d-6} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the RK method to the analytical solution
+          \begin{align}
+              y'              & = f(x, y) = \color{y_p} (1 - x^{-1})y &
+              \frac{\dl y}{y} & = (1 - x^{-1})\ \dl x                   \\
+              \ln y           & = x - \ln x + c                       &
+              y               & = \frac{c\ e^x}{x}                      \\
+              y(1)            & = 1                                   &
+              y               & = \color{y_h} \frac{e^{x-1}}{x}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{RK Classic} & \text{Error}    \\ \hline
+                  1   & 1.0047            & -\num{6.845d-8} \\
+                  5   & 1.0991            & -\num{1.904d-7} \\
+                  10  & 1.3591            & -\num{2.849d-7} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the RK method to the analytical solution
+          \begin{align}
+              y'        & = f(x, y) = \color{y_p} \sin(2x) - y\tan x    &
+              I         & = \exp\Bigg[\int \tan x\ \dl x\Bigg] = \sec x   \\
+              \sec x\ y & = \int \sin(2x) \sec x\ \dl x                 &
+              y         & = -2\cos^2 x + c\ \cos x                        \\
+              y(0)      & = 1                                           &
+              y         & = \color{y_h} 3\cos x - 2 \cos^2 x
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{RK Classic} & \text{Error}    \\ \hline
+                  1   & 0.00994           & -\num{1.812d-8} \\
+                  5   & 0.21486           & -\num{5.584d-7} \\
+                  10  & 0.49674           & -\num{6.143d-6} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Doubling the step size, approximately boosts the error by a factor of 16.
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $x_n$ & \epsilon_h    & \epsilon_{2h} \\ \hline
+                  1.00  & \num{6.14d-6} & \num{1.02d-4} \\
+                  2.00  & \num{9.77d-1} & \num{2.75d-0} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the RK method to the analytical solution
+          \begin{align}
+              y'                & = f(x, y) = \color{y_p} 4x^3y^2 &
+              \frac{\dl y}{y^2} & = 4x^3\ \dl x                     \\
+              \frac{-1}{y}      & = x^4 + c                         \\
+              y(0)              & = 0.5                           &
+              y                 & = \color{y_h} \frac{1}{2 - x^4}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $n$ & \text{RK Classic} & \text{Error}     \\ \hline
+                  1   & 0.50002           & -\num{3.125d-10} \\
+                  5   & 0.51613           & -\num{2.846d-8}  \\
+                  10  & 0.99992           & -\num{8.044d-5}  \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Comparing the fourth and third order RK methods,
+          \begin{align}
+              y'   & = f(x, y) = \color{y_p} y + x &
+              y    & = e^x - x + c                   \\
+              y(0) & = 0                           &
+              y    & = \color{y_h} e^x - x - 1
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $x_n$ & \text{Error RK}_3 & \text{Error RK}_4 \\ \hline
+                  0.2   & \num{6.942d-5}    & \num{2.758d-6}    \\
+                  0.4   & \num{1.696d-4}    & \num{6.738d-6}    \\
+                  0.6   & \num{3.107d-4}    & \num{1.234d-5}    \\
+                  0.8   & \num{5.06d-4}     & \num{2.0103d-5}   \\
+                  1.0   & \num{7.724d-4}    & \num{3.0692d-5}   \\ \hline
+              \end{tblr}
+          \end{table}
+          The third order RK method is worse.
+
+    \item Comparing methods,
+          \begin{enumerate}
+              \item Looking at the errors in the three methods,
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{
+                            colspec = {
+                            Q[r, $$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                            colsep = 1em}
+                            \text{Position}       & \SetCell[c=3]{c}
+                            \textbf{Error}        &
+                                                  &                    \\ \hline[dotted]
+                            x_n                   & \text{Euler}     &
+                            \text{Improved Euler} & \text{RK}          \\ \hline
+                            1                     & \num{2.002d-2}   &
+                            \num{4.553d-4}        & \num{1.12d-6}      \\
+                            3                     & \num{6.285d-2}   &
+                            \num{1.208d-2}        & \num{1.63d-5}      \\
+                            5                     & \num{5.074d-2}   &
+                            \num{9.601d-3}        & \num{5.363d-4}     \\ \hline
+                        \end{tblr}
+                    \end{table}
+
+              \item Plotting the function curves for different initial conditions
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_01_15_b.csv}
+                        \anitableeleven
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 8cm,
+                                    grid = both,Ani, domain = 0:5]
+                                \addplot[GraphSmooth, y_h] table[x = 0, y = 1]
+                                    {\anitableeleven};
+                                \addplot[GraphSmooth, y_p] table[x = 0, y = 3]
+                                    {\anitableeleven};
+                                \addplot[GraphSmooth, y_s] table[x = 0, y = 5]
+                                    {\anitableeleven};
+                                \addplot[GraphSmooth, y_t] table[x = 0, y = 6]
+                                    {\anitableeleven};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Comparing the three methods for a monotonically increasing
+                    function $ y = e^x $, the RK method is far better than the other two
+                    methods.
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{
+                            colspec = {
+                            Q[r, $$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                            colsep = 1em}
+                            \text{Position}       & \SetCell[c=3]{c}
+                            \textbf{Error}        &
+                                                  &                    \\ \hline[dotted]
+                            x_n                   & \text{Euler}     &
+                            \text{Improved Euler} & \text{RK}          \\ \hline
+                            1                     & \num{2.299d-1}   &
+                            \num{1.557d-2}        & \num{3.069d-5}     \\
+                            3                     & \num{4.678d0}    &
+                            \num{3.432d-1}        & \num{6.803d-4}     \\
+                            5                     & \num{5.302d1}    &
+                            \num{4.203d0}         & \num{8.378d-3}     \\ \hline
+                        \end{tblr}
+                    \end{table}
+          \end{enumerate}
+
+    \item RKF 45 method
+          \begin{enumerate}
+              \item Algorithm coded in \texttt{numpy}
+              \item Tablulating the error in Example $ 3 $,
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{
+                            colspec = {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                            colsep = 1em}
+                            $n$ & \text{RKF}_{45}   & \text{Error RKF}_{45} \\ \hline
+                            1   & \num{1.200334673} & \num{3.0396d-9}       \\
+                            5   & \num{2.046302512} & \num{3.5223d-8}       \\
+                            10  & \num{3.557408538} & \num{8.7516d-7}       \\ \hline
+                        \end{tblr}
+                    \end{table}
+
+              \item TBC
+          \end{enumerate}
+\end{enumerate}

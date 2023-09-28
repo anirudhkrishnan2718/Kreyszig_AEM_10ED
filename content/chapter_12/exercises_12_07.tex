@@ -1,0 +1,301 @@
+\section{Heat Equation: Modeling Very Long Bars, Solution using Fourier transforms}
+
+\begin{enumerate}
+    \item Plotting the error function using \texttt{gnuplot},
+          \begin{enumerate}
+              \item Refer part $ b $
+              \item USing a sequence of plots to visualize time advancing,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        mode(\n,\t,\x) = sin(\n *\x) * exp(-\n^2 * \t);
+                                    }]
+                            \begin{axis}[
+                                    legend pos = outer north east, title = {$u(x, t)$},
+                                    grid = both,Ani,xlabel = $ x $,
+                                    colormap/jet, colorbar, domain = -3:3,
+                                    cycle list = {[samples of colormap = 5]},
+                                    samples = 300]
+                                \foreach \k in {-3, -1, 0, 1, 3}
+                                    {
+                                        \edef\temp{%
+                                            \noexpand \addplot+ [thick, point meta = \k]
+                                            gnuplot
+                                                {(100 / 2) * (erf((1-x)/(2*sqrt(2^\k))) -
+                                                    erf((-1-x)/(2*sqrt(2^\k))))};
+                                        }\temp
+                                    }
+                                \addplot[thick, samples = 200,black, dashed]
+                                {ifthenelse(abs(x) < 1, 100, 0)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+              \item Since $ u(x, t) $ is independent of $ y $ the surface plot
+                    is simply the same plot from part $ b $ extended in the $ y $
+                    direction. \par
+                    It would resemble a sheet which flattens over time to the $ xy $
+                    plane.
+          \end{enumerate}
+
+    \item The solution in integral form is,
+          \begin{align}
+              f(x) & = \color{y_h} \begin{dcases}
+                                       1 & \quad \abs{x} < a      \\
+                                       0 & \quad \text{otherwise}
+                                   \end{dcases}    \\
+              A(p) & = \frac{1}{\pi} \intRL f(v) \cos(pv)\ \dl v
+              = \frac{2}{\pi} \int_{0}^{a} \cos(pv)\ \dl v       \\
+                   & = \frac{2}{p\pi} \Bigg[ \sin(px) \Bigg]_0^a
+              = \color{y_p} \frac{2\sin(pa)}{p\pi}               \\
+              B(p) & = \frac{1}{\pi} \intRL f(v) \sin(pv)\ \dl v
+              = \frac{1}{\pi} \int_{-a}^{a} \sin(pv)\ \dl v
+              = \color{y_p} 0
+          \end{align}
+          Using the Fourier integrals, the general solution is,
+          \begin{align}
+              u(x, t) = \infint \frac{2\sin(pa)\cos(px)}{p\pi}\ \exp(-c^2p^2 t)\ \dl p
+          \end{align}
+
+    \item The solution in integral form is,
+          \begin{align}
+              f(x) & = \color{y_h} \frac{1}{1 + x^2}                       \\
+              A(p) & = \frac{1}{\pi} \intRL f(v) \cos(pv)\ \dl v
+              = \frac{2}{\pi} \int_{0}^{a} \frac{\cos(pv)}{1 + v^2}\ \dl v \\
+                   & = \color{y_p} e^{-p}                                  \\
+              B(p) & = \frac{1}{\pi} \intRL f(v) \sin(pv)\ \dl v
+              = \frac{1}{\pi} \int_{-a}^{a} \sin(pv)\ \dl v
+              = \color{y_p} 0
+          \end{align}
+          Using the Fourier integrals, the general solution is,
+          \begin{align}
+              u(x, t) = \infint\ e^{-p}\cos(px)\ \exp(-c^2p^2 t)\ \dl p
+          \end{align}
+
+    \item The solution in integral form is,
+          \begin{align}
+              f(x) & = \color{y_h} \exp(-\abs{x})                               \\
+              A(p) & = \frac{1}{\pi} \intRL f(v) \cos(pv)\ \dl v
+              = \frac{2}{\pi} \infint e^{-v}\ \cos(pv)\ \dl v                   \\
+                   & = \frac{2}{\pi} \Bigg[\frac{e^{-v}}{1 + p^2}\ [-\cos(pv) +
+              p\sin(pv)]\Bigg]_0^\infty
+              = \color{y_p} \frac{2}{\pi} \cdot \frac{1}{1 + p^2}               \\
+              B(p) & = \frac{1}{\pi} \intRL f(v) \sin(pv)\ \dl v
+              = \color{y_p} 0
+          \end{align}
+          Using the Fourier integrals, the general solution is,
+          \begin{align}
+              u(x, t) = \infint\ \frac{2}{\pi (1 + p^2)}\cos(px)
+              \ \exp(-c^2p^2 t)\ \dl p
+          \end{align}
+
+    \item The solution in integral form is,
+          \begin{align}
+              f(x) & = \color{y_h} \begin{dcases}
+                                       \abs{x} & \quad \abs{x} < 1      \\
+                                       0       & \quad \text{otherwise}
+                                   \end{dcases}          \\
+              A(p) & = \frac{1}{\pi} \intRL f(v) \cos(pv)\ \dl v
+              = \frac{2}{\pi} \int_{0}^{1} v\ \cos(pv)\ \dl v                \\
+                   & = \frac{2}{\pi} \Bigg[\frac{pv\sin(pv) + \cos(pv)}{p^2}
+                  \Bigg]_0^1
+              = \color{y_p} \frac{2}{\pi} \cdot \frac{p\sin(p) + \cos(p) - 1}
+              {p^2}                                                          \\
+              B(p) & = \frac{1}{\pi} \intRL f(v) \sin(pv)\ \dl v
+              = \color{y_p} 0
+          \end{align}
+          Using the Fourier integrals, the general solution is,
+          \begin{align}
+              u(x, t) = \infint\ \frac{2(p\sin p + \cos p - 1)}{\pi p^2}
+              \ \cos(px)\ \exp(-c^2p^2 t)\ \dl p
+          \end{align}
+
+    \item The solution in integral form is,
+          \begin{align}
+              f(x) & = \color{y_h} \begin{dcases}
+                                       x & \quad \abs{x} < 1      \\
+                                       0 & \quad \text{otherwise}
+                                   \end{dcases}                \\
+              B(p) & = \frac{1}{\pi} \intRL f(v) \sin(pv)\ \dl v
+              = \frac{2}{\pi} \int_{0}^{1} v\ \sin(pv)\ \dl v                \\
+                   & = \frac{2}{\pi} \Bigg[\frac{\sin(pv) - pv\cos(pv)}{p^2}
+                  \Bigg]_0^1
+              = \color{y_p} \frac{2}{\pi} \cdot \frac{\sin p- p\cos p}
+              {p^2}                                                          \\
+              A(p) & = \frac{1}{\pi} \intRL f(v) \cos(pv)\ \dl v
+              = \color{y_p} 0
+          \end{align}
+          Using the Fourier integrals, the general solution is,
+          \begin{align}
+              u(x, t) = \infint\ \frac{2(\sin p - p\cos p)}{\pi p^2} \sin(px)
+              \ \exp(-c^2p^2 t)\ \dl p
+          \end{align}
+
+    \item The solution in integral form is,
+          \begin{align}
+              f(x) & = \color{y_h} \frac{\sin(x)}{x}                                  \\
+              A(p) & = \frac{1}{\pi} \intRL f(v) \cos(pv)\ \dl v
+              = \frac{2}{\pi} \infint \frac{\sin v}{v}\ \cos(pv)\ \dl v               \\
+                   & = \frac{-2}{\pi} \infint \frac{1 - \cos(pv) - 1}{v}\ \sin(v)
+              \ \dl v                                                                 \\
+                   & = \frac{2}{\pi} \infint \frac{\sin(v)}{v}\ \dl v - \frac{2}{\pi}
+              \infint  \frac{1 - \cos(pv)}{v}\ \sin(v)\ \dl v                         \\
+              w    & = \frac{p v}{\pi} \qquad\qquad \dl w = \frac{p}{\pi}\ \dl v      \\
+              A(p) & = 1 - \frac{2}{\pi} \infint \frac{1 - \cos(\pi w)}{w}
+              \ \sin\Bigg( \frac{\pi w}{p} \Bigg)\ \dl w                              \\
+                   & = \color{y_p} \begin{dcases}
+                                       0 & \quad p > 1     \\
+                                       1 & \quad 0 < p < 1
+                                   \end{dcases}                                \\
+              B(p) & = \frac{1}{\pi} \intRL f(v) \sin(pv)\ \dl v
+              = \color{y_p} 0
+          \end{align}
+          Using the Fourier integrals, the general solution is,
+          \begin{align}
+              u(x, t) = \int_{0}^{1}\ \cos(px)\ \exp(-c^2p^2 t)\ \dl p
+          \end{align}
+
+    \item Checking the solution of Problem $ 7 $ against the initial conditions,
+          \begin{align}
+              u(x, 0) & = \int_{0}^{1} \cos(px)\ \dl p                             \\
+                      & = \Bigg[ \frac{\sin(px)}{x} \Bigg]_0^1 = \frac{\sin(x)}{x}
+          \end{align}
+
+    \item Graphing the integrand of the error function,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n *\x) * exp(-\n^2 * \t);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title ={  $ e^{-x^2} $},
+                          grid = both,Ani,xlabel = $ x $,domain = -3:3,]
+                      \addplot[GraphSmooth, black]{e^(-x^2)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Checking if the error function is odd, using the fact that the integrand
+          is even,
+          \begin{align}
+              \erf(-x) & = \frac{2}{\sqrt{\pi}}\ \int_{0}^{-x} e^{-w^2}\ \dl w
+              = -\frac{2}{\sqrt{\pi}}\ \int_{-x}^{0} e^{-w^2}\ \dl w           \\
+                       & = -\frac{2}{\sqrt{\pi}}\ \int_{0}^{x} e^{-w^2}\ \dl w
+              = -\erf(x)
+          \end{align}
+          Proving the relations,
+          \begin{align}
+              \int_{a}^{b} e^{-w^2}\ \dl w & = \int_{0}^{b} e^{-w^2}\ \dl w
+              - \int_{0}^{a} e^{-w^2}\ \dl w                                          \\
+                                           & = \frac{\sqrt{\pi}}{2} (\erf b - \erf a)
+          \end{align}
+          Using $ a = -b $ in the above result, and the odd nature of $ \erf(x) $,
+          \begin{align}
+              \int_{-b}^{b} e^{-w^2}\ \dl w & = \frac{\sqrt{\pi}}{2}
+              [\erf(b) - \erf(-b)] = \sqrt{\pi} \erf(b)
+          \end{align}
+
+    \item From the Maclaurin series of the integrand,
+          \begin{align}
+              e^{-w^2} & = 1 - \frac{w^2}{1!} + \frac{w^4}{2!} - \frac{w^6}{3!}
+              + \dots                                                                  \\
+              \int_{0}^{x} e^{-w^2}
+              \ \dl w  & = x - \frac{x^3}{3} + \frac{x^5}{10} - \frac{x^7}{42} + \dots \\
+              \erf(x)  & = \frac{2}{\sqrt{\pi}} \Bigg[ x - \frac{x^3}{3}
+                  + \frac{x^5}{10} - \frac{x^7}{42} + \dots \Bigg]
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_12_07_10.csv}
+              \anitablefour
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = south east, title ={Polynomial approximation
+                                  of error function},
+                          grid = both,Ani,xlabel = $ x $,]
+                      \addplot[GraphSmooth, y_h, domain = 0:3, samples = 601]
+                      gnuplot{erf(x)};
+                      \addplot[GraphSmooth, color = y_p]
+                      table[x index=0,y index=1, col sep=comma, ]{\anitablefour};
+                      \addlegendentry{Exact}
+                      \addlegendentry{Polynomial $ n = 20 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using \texttt{sympy} as a CAS to perform the integration yields much more
+          accurate results.
+          \begin{align}
+              \erf x & = \frac{2}{\sqrt{\pi}} \int_{0}^{x} e^{-w^2}\ \dl w
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_12_07_11.csv}
+              \anitablefive
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = south east, title ={Polynomial approximation
+                                  of error function},
+                          grid = both,Ani,xlabel = $ x $,]
+                      \addplot[GraphSmooth, y_h, domain = 0:3, samples = 601]
+                      gnuplot{erf(x)};
+                      \addplot[GraphSmooth, color = y_p]
+                      table[x index=0,y index=1, col sep=comma, ]{\anitablefive};
+                      \addlegendentry{Exact}
+                      \addlegendentry{Integration using CAS}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using \texttt{sympy} as a CAS to perform the integration for large values of
+          $ x $.
+
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_12_07_12.csv}
+              \anitablesix
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = south east,
+                          grid = both,Ani,xlabel = $ \log_{10} x $,]
+                      \addplot[mark options={mark size = 1pt}, only marks,
+                          color = black] table[x index=0,y index=1, col sep=comma, ]
+                          {\anitablesix};
+                      \addlegendentry{Integration using CAS}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the result from Problem $ 12 $,
+          \begin{align}
+              u(x, t) & = \frac{1}{2c\sqrt{\pi t}} \infint \exp\Bigg[
+              -\frac{(x - w)^2}{4c^2 t} \Bigg]\ \dl w                              \\
+              z       & = \frac{w - x}{2c\sqrt{t}}                                 \\
+              z^-     & = \frac{-x}{2c\sqrt{t}} \qquad\qquad
+              z^+ = \infty                                                         \\
+              u(x, t) & = \frac{1}{\sqrt{\pi}} \int_{z^-}^{z^+} e^{-z^2}\ \dl z
+              = \frac{1}{2}\ \Big[ \erf(z^+) - \erf(z^-) \Big]                     \\
+                      & = \frac{1}{2} \Bigg[ 1 - \erf \Bigg( \frac{-x}{2c\sqrt{t}}
+                  \Bigg) \Bigg]
+          \end{align}
+
+    \item Using the limits of integration $ z^+ $ and $ z^- $ as in the text,
+          \begin{align}
+              u(x, t) & = \frac{U_0}{2}\ \Big[ \erf(z^+) - \erf(z^-) \Big] \\
+              z^+     & = \frac{1-x}{2c\sqrt{t}} \qquad\qquad
+              z^- = \frac{-1-x}{2c\sqrt{t}}
+          \end{align}
+
+    \item Expressing the given function in terms of the error function,
+          \begin{align}
+              \Phi(x)           & = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x}
+              e^{-s^2/2}\ \dl s &
+              w                 & = \frac{s}{\sqrt{2}} \qquad
+              \dl w = \frac{\dl s}{\sqrt{2}}                                           \\
+              \Phi(x)           & = \frac{1}{\sqrt{\pi}} \int_{-\infty}^{x/\sqrt{2}}
+              e^{-w^2}\ \dl w   &
+                                & = \frac{\erf(x/\sqrt{2}) - \erf(-\infty)}{2}         \\
+                                & = \frac{\erf(x/\sqrt{2}) + \erf(\infty)}{2}        &
+                                & = \frac{\erf(x/\sqrt{2}) + 1}{2}
+          \end{align}
+\end{enumerate}

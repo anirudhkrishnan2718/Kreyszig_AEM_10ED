@@ -1,0 +1,274 @@
+\section{Confidence Intervals}
+
+\begin{enumerate}
+    \item Point estimates offer no indication of their relation to the true value,
+          which confidence intervals are able to provide through their confidence value
+          $ \gamma $.
+
+    \item The known variance is $ \sigma^2 = 16 $. When increasing the confidence value
+          to $ 0.99 $, the interval is $ 1.3 $ times larger.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \bar{x}            & 49.67        \\
+                  \gamma             & 0.95         \\
+                  c                  & 1.96         \\
+                  k                  & 3.20         \\
+                  \text{Lower limit} & 46.47        \\
+                  \text{Upper limit} & 52.87        \\
+              \end{tblr}
+              \hspace{6em}
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \bar{x}            & 49.67        \\
+                  \gamma             & 0.99         \\
+                  c                  & 2.58         \\
+                  k                  & 4.21         \\
+                  \text{Lower limit} & 45.46        \\
+                  \text{Upper limit} & 53.87        \\
+              \end{tblr}
+          \end{table}
+
+    \item Using the relation,
+          \begin{align}
+              k        & \propto \frac{1}{\sqrt{n}}        &
+              n \to 2n & \implies k \to \frac{k}{\sqrt{2}}
+          \end{align}
+
+
+    \item The known variance is $ \sigma^2 = 16 $.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \bar{x}            & 74.81        \\
+                  \gamma             & 0.95         \\
+                  c                  & 1.96         \\
+                  k                  & 0.55         \\
+                  \text{Lower limit} & 74.26        \\
+                  \text{Upper limit} & 75.36        \\
+              \end{tblr}
+          \end{table}
+
+    \item Using the formula for the confidence interval length,
+          \begin{align}
+              k   & = \frac{c \sigma}{\sqrt{n}} = \sigma           &
+              n   & = c^2 = 1.96^2                                   \\
+              n_1 & = 4                                              \\
+              k   & = \frac{c \sigma}{\sqrt{n}} = \frac{\sigma}{2} &
+              n   & = c^2 = 4 \cdot 1.96^2                           \\
+              n_2 & = 16
+          \end{align}
+
+    \item By direct calculation,
+          \begin{align}
+              k   & = \frac{c \sigma}{\sqrt{n}}      &
+              1   & = \frac{2.576 \cdot 5}{\sqrt{n}}   \\
+              n   & = 165.89                         &
+              n^* & = 166
+          \end{align}
+          From the figure, this number should lie in the range $ 150 - 170 $, which
+          matches the true value of $ n^* $.
+
+    \item Since this is a binomial distribution, with
+          \begin{align}
+              \bar{p} & = \frac{126}{800}            & \bar{x} & = n\bar{p} \\
+              s       & = \sqrt{n\bar{p}(1-\bar{p})}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}       & \text{Value}         \\ \hline
+                  \bar{p}               & 0.1575               \\
+                  \gamma                & 0.95                 \\
+                  c                     & 1.9629               \\
+                  k                     & 0.71504              \\
+                  \text{Lower limit}\ p & \SI{15.66}{\percent} \\
+                  \text{Upper limit}\ p & \SI{15.84}{\percent} \\
+              \end{tblr}
+          \end{table}
+
+    \item Since this is a binomial distribution, with
+          \begin{align}
+              \bar{p} & = \frac{12012}{24000}        & \bar{x} & = n\bar{p} \\
+              s       & = \sqrt{n\bar{p}(1-\bar{p})}
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}       & \text{Value}          \\ \hline
+                  \bar{p}               & 0.5005                \\
+                  \gamma                & 0.99                  \\
+                  c                     & 2.576                 \\
+                  k                     & 1.288                 \\
+                  \text{Lower limit}\ p & \SI{50.045}{\percent} \\
+                  \text{Upper limit}\ p & \SI{50.055}{\percent} \\
+              \end{tblr}
+          \end{table}
+
+    \item Using the student's $ t $ distribution since the variance is unknown,
+    \item Using the student's $ t $ distribution since the variance is unknown,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \bar{x}            & 65.0000      \\
+                  \gamma             & 0.9900       \\
+                  c                  & 3.2498       \\
+                  k                  & 1.2818       \\
+                  \text{Lower limit} & 63.7182      \\
+                  \text{Upper limit} & 66.2818      \\
+              \end{tblr}
+              \hspace{6em}
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \bar{x}            & 661.2000     \\
+                  \gamma             & 0.9900       \\
+                  c                  & 4.6041       \\
+                  k                  & 9.8101       \\
+                  \text{Lower limit} & 651.3899     \\
+                  \text{Upper limit} & 671.0101     \\
+              \end{tblr}
+          \end{table}
+
+
+    \item Using the student's $ t $ distribution since the variance is unknown,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \bar{x}            & 9533.3333    \\
+                  \gamma             & 0.9900       \\
+                  c                  & 4.0321       \\
+                  k                  & 366.8536     \\
+                  \text{Lower limit} & 9166.4797    \\
+                  \text{Upper limit} & 9900.1870    \\
+              \end{tblr}
+          \end{table}
+
+    \item Using the student's $ \chi^2 $ distribution for the variance,
+    \item Using the student's $ \chi^2 $ distribution for the variance,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.9500       \\
+                  c_1                & 8.9065       \\
+                  c_2                & 32.8523      \\
+                  \text{Lower limit} & 0.0231       \\
+                  s                  & 0.0400       \\
+                  \text{Upper limit} & 0.0853       \\
+              \end{tblr}
+              \hspace{6em}
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.9500       \\
+                  c_1                & 1.6899       \\
+                  c_2                & 16.0128      \\
+                  \text{Lower limit} & 0.0461       \\
+                  s                  & 0.1055       \\
+                  \text{Upper limit} & 0.4372       \\
+              \end{tblr}
+          \end{table}
+
+
+    \item Using the student's $ \chi^2 $ distribution for the variance,
+    \item Using the student's $ \chi^2 $ distribution for the variance,
+          \par textbook uses $ n-1 = 100 $ instead of $ n = 100 $.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.9500       \\
+                  c_1                & 1.6899       \\
+                  c_2                & 16.0128      \\
+                  \text{Lower limit} & 0.0461       \\
+                  s                  & 0.1055       \\
+                  \text{Upper limit} & 0.4372       \\
+              \end{tblr}
+              \hspace{6em}
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.9500       \\
+                  c_1                & 73.3611      \\
+                  c_2                & 128.4220     \\
+                  \text{Lower limit} & 7.1693       \\
+                  s                  & 9.3000       \\
+                  \text{Upper limit} & 12.5503      \\
+              \end{tblr}
+          \end{table}
+
+
+
+    \item Using the student's $ \chi^2 $ distribution for the variance,
+
+    \item Using the student's $ \chi^2 $ distribution for the variance, with data from
+          Problem 9,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.9500       \\
+                  c_1                & 2.7004       \\
+                  c_2                & 19.0228      \\
+                  \text{Lower limit} & 2.8650       \\
+                  s                  & 6.0556       \\
+                  \text{Upper limit} & 20.1823      \\
+              \end{tblr}
+              \hspace{6em}
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.9500       \\
+                  c_1                & 2.7004       \\
+                  c_2                & 19.0228      \\
+                  \text{Lower limit} & 0.7360       \\
+                  s                  & 1.5556       \\
+                  \text{Upper limit} & 5.1844       \\
+              \end{tblr}
+          \end{table}
+
+    \item The difference of two normal RVs is,
+          \begin{align}
+              Y          & = 3X_1 - X_2                      &
+              \mu_Y      & = 3^2\mu_1 - \mu_2 = 34             \\
+              \sigma^2_y & = 3^2\sigma^2_1 + \sigma^2_2 = 23
+          \end{align}
+
+    \item Using the sum of normal RVs,
+          \begin{align}
+              \mu                        & = 100 + 5 = 105                           &
+              \sigma                     & = \sqrt{1^2 + 0.5^2} = \frac{\sqrt{5}}{2}   \\
+              P(104 < Y < 106)           & = P\left( \frac{-2}{\sqrt{5}} < Z <
+              \frac{2}{\sqrt{5}} \right) &
+                                         & = 0.6289
+          \end{align}
+
+    \item Using the sum of normal RVs, $Y = nX$,
+          \begin{align}
+              \mu         & = 40n                                      &
+              \sigma      & = \sqrt{4n}                                  \\
+              P(Y > 2000) & = P\left( Z > \frac{2000 - 40n}{2\sqrt{n}}
+              \right)     &
+                          & = 0.05                                       \\
+              \frac{1000}{\sqrt{n}} - 20\sqrt{n}
+                          & = 1.64485                                  &
+              n           & = (7.03)^2 = 49.421                          \\
+              n^*         & \geq 50
+          \end{align}
+
+\end{enumerate}

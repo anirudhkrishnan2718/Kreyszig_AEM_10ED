@@ -18,7 +18,7 @@
         $ \{s_n(x_1)\} $ approaches some finite limit $ s(x_1) $, then the series is
         considered convergent at $ x = x_1 $
         \begin{align}
-            \lim_{n \rightarrow \infty}
+            \lim_{n \to \infty}
             s_n(x_1) & = s(x_1)                                  \\
                      & = \sum_{m = 0}^{\infty}a_m\ (x - x_0)^{m}
         \end{align}
@@ -36,11 +36,11 @@
     \item[Radius of convergence] The half-width of the interval of convergence. Denoted
         $ R $ (from complex notation where the zone of convergence becomes a disk).
         \begin{align}
-            s(x) \quad \text{converges} \quad & \forall \quad |x - x_0| < R   \\
-            \text{and diverges} \quad         & \forall \quad |x - x_0| > R   \\
-            \frac{1}{R}                       & = \lim_{m \rightarrow \infty}
-            \Big| \frac{a_{m+1}}{a_m}\Big|                                    \\
-            \frac{1}{R}                       & = \lim_{m \rightarrow \infty}
+            s(x) \quad \text{converges} \quad & \forall \quad |x - x_0| < R \\
+            \text{and diverges} \quad         & \forall \quad |x - x_0| > R \\
+            \frac{1}{R}                       & = \lim_{m \to \infty}
+            \Big| \frac{a_{m+1}}{a_m}\Big|                                  \\
+            \frac{1}{R}                       & = \lim_{m \to \infty}
             (|a_m|)^{1/m}
         \end{align}
         The above formulas require the limits to exist and be nonzero. If the limits
@@ -189,7 +189,7 @@
             \qquad \forall\ m=\{1,2,3,\dots\}
         \end{align}
     \item[Integer parameter] For the special case of $ \nu \in \mathcal{I^+} \cup 0 $,
-        assign $ \nu \rightarrow n $,
+        assign $ \nu \to n $,
         \begin{align}
             a_0    & = \frac{1}{2^n\ n!}                          \\
             a_{2m} & = \frac{(-1)^m}{2^{2m+n}\ m!\ (n+m)!} \qquad
@@ -205,11 +205,11 @@
         with gradually decaying amplitudes and zeros not being evenly spaced. This is
         also evident from the similarity in their series expansions,
         \begin{align}
-            J_0                               & = 1 - \frac{x^2}{2^2\ (1!)^2}
-            + \frac{x^4}{2^4\ (2!)^2} - \frac{x^6}{2^6\ (3!)^2} + \dots                 \\
-            J_1                               & = \frac{x}{2} - \frac{x^3}{2^3\ 1!\ 2!}
-            + \frac{x^5}{2^5\ 2!\ 3!} - \frac{x^7}{2^7\ 3!\ 4!} + \dots                 \\
-            \lim_{x \rightarrow \infty}J_n(x) & \approxeq \frac{2}{\pi x}
+            J_0                       & = 1 - \frac{x^2}{2^2\ (1!)^2}
+            + \frac{x^4}{2^4\ (2!)^2} - \frac{x^6}{2^6\ (3!)^2} + \dots         \\
+            J_1                       & = \frac{x}{2} - \frac{x^3}{2^3\ 1!\ 2!}
+            + \frac{x^5}{2^5\ 2!\ 3!} - \frac{x^7}{2^7\ 3!\ 4!} + \dots         \\
+            \lim_{x \to \infty}J_n(x) & \approxeq \frac{2}{\pi x}
             \cos \Bigg( x - \frac{n\pi}{2} - \frac{\pi}{4} \Bigg)
         \end{align}
     \item[Gamma function] The generalization of the factorial to non-integer indices.
@@ -272,10 +272,10 @@
 
     \item[Neumann function of order 0] Bessel function of order zero, using the constants
         \begin{align}
-            a      & = \frac{2}{\pi}                                              \\
-            b      & = \lim_{s \rightarrow \infty} \left[ 1 + \frac{1}{2} + \dots
-            + \frac{1}{s} - \ln(s) \right] = \gamma - \ln(2)                      \\
-            Y_0(x) & = a(y_2 + bJ_0)                                              \\
+            a      & = \frac{2}{\pi}                                      \\
+            b      & = \lim_{s \to \infty} \left[ 1 + \frac{1}{2} + \dots
+            + \frac{1}{s} - \ln(s) \right] = \gamma - \ln(2)              \\
+            Y_0(x) & = a(y_2 + bJ_0)                                      \\
                    & = \frac{2}{\pi} \left[ J_0 \{\ln(x/2) + \gamma\}
                 + \iser{1} \frac{(-1)^{m-1}\ h_m}{2^{2m}\ (m!)^2}\ x^{2m} \right]
         \end{align}
@@ -284,7 +284,7 @@
     \item[Integer parameter] When the parameter is an integer $ n $, another special case
         is given by
         \begin{align}
-            Y_n   & = \lim_{\nu \rightarrow n}Y_\nu (x)                    \\
+            Y_n   & = \lim_{\nu \to n}Y_\nu (x)                            \\
             Y_\nu & = \frac{J_\nu \cos(\nu \pi) - J_{-\nu}}{\sin(\nu \pi)}
         \end{align}
         For non-integer $ \nu $, the two functions $ J_\nu $ and $ J_{-\nu} $ are

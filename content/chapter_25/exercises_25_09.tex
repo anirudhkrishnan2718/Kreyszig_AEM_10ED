@@ -1,0 +1,293 @@
+\section{Regression. Fitting Straight Lines. Correlation}
+
+\begin{enumerate}
+    \item Graphing the regression line,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_01.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = 0.98, \quad k_1 = 0.495 $}]
+                      \addplot[GraphSmooth, y_h, domain = 0:8] {0.98+0.495*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing the regression line,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_02.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = 2.745, \quad k_1 =-0.454 $}]
+                      \addplot[GraphSmooth, y_h, domain = -2:5] {2.745-0.454*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing the regression line,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_03.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = -11458, \quad k_1 = 43.18 $}]
+                      \addplot[GraphSmooth, y_h, domain = 400:750] {-11458+43.18*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing the regression line,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_04.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = 75.72, \quad k_1 =-1.32 $}]
+                      \addplot[GraphSmooth, y_h, domain = 6:35] {75.72-1.32*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing the regression line,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_05.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = -10, \quad k_1 = 0.55 $}]
+                      \addplot[GraphSmooth, y_h, domain = 200:500] {-10+0.55*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing the regression line,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_06.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = -9.632, \quad k_1 = 34.45 $}]
+                      \addplot[GraphSmooth, y_h, domain = 1.1:5.6] {-9.632+34.45*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing the regression line, and all 6 points, instead of just 3 of the points
+          as used in the textbook solutions. $ R = 1/k_1 = \SI{9.34}{\ohm} $
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_07.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = -0.555, \quad k_1 = 0.107 $}]
+                      \addplot[GraphSmooth, y_h, domain = 40:110] {-0.555+0.107*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The spring modulus is $ M = 1/k_1 = 0.505 $
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_08.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = 0.1, \quad k_1 = 1.98 $}]
+                      \addplot[GraphSmooth, y_h, domain = 2:8] {0.1+1.98*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item At room temperature, $ x = 66 \implies y = 0.351 $
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_09.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = 0.33, \quad k_1 = 0.000323 $}]
+                      \addplot[GraphSmooth, y_h, domain = 32:212] {0.33+0.000323*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item At room temperature, $ x = 35 \implies y = 199.75 $
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_10.csv}
+              \anitableone
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {$ k_0 = -120.5, \quad k_1 = 9.15 $}]
+                      \addplot[GraphSmooth, y_h, domain = 30:60] {-120.5+9.15*x};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table {\anitableone};
+                      \addlegendentry{Least Squares Fit};
+                      \addlegendentry{$ (x_i,y_i) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item  Looking at the effect of perturbations,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_25_09_11.csv}
+              \anitableeleven
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {Perturbed $ y_1 $}]
+                      \addplot[GraphSmooth, y_h, dotted, domain = 1:5] {0+1*x};
+                      \addplot[GraphSmooth, y_h, domain = 1:5] {0.6+0.85*x};
+                      \addplot [only marks, color = black, mark size = 1.5pt]
+                      table[x index = 0, y index = 2] {\anitableeleven};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table[x index = 0, y index = 1] {\anitableeleven};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {Perturbed $ y_2 $}]
+                      \addplot[GraphSmooth, y_h, dotted, domain = 1:5] {0+1*x};
+                      \addplot[GraphSmooth, y_h, domain = 1:5] {0.375+0.925*x};
+                      \addplot [only marks, color = black, mark size = 1.5pt]
+                      table[x index = 0, y index = 3] {\anitableeleven};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table[x index = 0, y index = 1] {\anitableeleven};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos=outer north east, Ani,
+                          width = 8cm, grid = both,
+                          title = {Perturbed $ y_3 $}]
+                      \addplot[GraphSmooth, y_h, dotted, domain = 1:5] {0+1*x};
+                      \addplot[GraphSmooth, y_h, domain = 1:5] {0.15+1*x};
+                      \addplot [only marks, color = black, mark size = 1.5pt]
+                      table[x index = 0, y index = 4] {\anitableeleven};
+                      \addplot [only marks, color = y_p, mark size = 1.5pt]
+                      table[x index = 0, y index = 1] {\anitableeleven};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The perturbation with the greatest effect is at the edges of the domain
+          spanned by the sample.
+
+    \item Using the data in Problem 2,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.95         \\
+                  k_1                & -0.4542      \\
+                  q_0                & 0.1314       \\
+                  n                  & 4            \\
+                  c                  & 4.3027       \\
+                  \text{Lower Limit} & -0.6674      \\
+                  \text{Upper Limit} & -0.2410      \\
+              \end{tblr}
+          \end{table}
+
+    \item Using the data in Problem 3,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.95         \\
+                  k_1                & 43.1829      \\
+                  q_0                & 97256.0976   \\
+                  n                  & 5            \\
+                  c                  & 3.1824       \\
+                  \text{Lower Limit} & 41.1819      \\
+                  \text{Upper Limit} & 45.1839      \\
+              \end{tblr}
+          \end{table}
+
+    \item Using the data in Problem 4,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.95         \\
+                  k_1                & -1.3196      \\
+                  q_0                & 77.1543      \\
+                  n                  & 9            \\
+                  c                  & 2.3646       \\
+                  \text{Lower Limit} & -1.5751      \\
+                  \text{Upper Limit} & -1.0641      \\
+              \end{tblr}
+          \end{table}
+
+    \item Using the given data,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \gamma             & 0.95         \\
+                  k_1                & 0.0670       \\
+                  q_0                & 0.0230       \\
+                  n                  & 4            \\
+                  c                  & 4.3027       \\
+                  \text{Lower Limit} & 0.0464       \\
+                  \text{Upper Limit} & 0.0876       \\
+              \end{tblr}
+          \end{table}
+\end{enumerate}

@@ -1,0 +1,757 @@
+\section{Linear Systems: LU-Factorization, Matrix Inversion}
+
+\begin{enumerate}
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{A}  & = \bmattt{4}{5}{12}{14}                     &
+              \vec{LU} & = \bmattt{1}{0}{3}{1}\ \bmattt{4}{5}{0}{-1}   \\
+              \vec{Ly} & = \vec{b} = \bmatcol{14}{36}                &
+              \vec{y}  & = \bmatcol{14}{-6}                            \\
+              \vec{Ux} & = \vec{y}                                   &
+              \vec{x}  & = \bmatcol{-4}{6}
+          \end{align}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{A}  & = \bmattt{2}{9}{3}{-5}                           &
+              \vec{LU} & = \bmattt{1}{0}{1.5}{1}\ \bmattt{2}{9}{0}{-18.5}   \\
+              \vec{Ly} & = \vec{b} = \bmatcol{82}{-62}                    &
+              \vec{y}  & = \bmatcol{82}{-185}                               \\
+              \vec{Ux} & = \vec{y}                                        &
+              \vec{x}  & = \bmatcol{-4}{10}
+          \end{align}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{\tilde{A}}
+                                                    & =
+              \begin{bNiceArray}{rrr|r}[margin]
+                  \CodeBefore
+                  \columncolor[opacity=0.05]{black}{4}
+                  \Body
+                  5  & 4  & 1  & 6.8  \\
+                  10 & 9  & 4  & 17.6 \\
+                  10 & 13 & 15 & 38.4 \\
+              \end{bNiceArray}  &
+              \vec{LU}                              & =
+              \begin{bNiceMatrix}[margin]
+                  1 & 0 & 0 \\
+                  2 & 1 & 0 \\
+                  2 & 5 & 1
+              \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                     5 & 4 & 1 \\
+                                     0 & 1 & 2 \\
+                                     0 & 0 & 3
+                                 \end{bNiceMatrix} \\
+              \vec{Ly}                              & =
+              \vec{b} \quad \implies \quad
+              \vec{y} = \begin{bNiceMatrix}[margin]
+                            6.8 \\ 4 \\ 4.8
+                        \end{bNiceMatrix} &
+              \vec{Ux}                              & =
+              \vec{y} \quad \implies \quad
+              \vec{x} = \begin{bNiceMatrix}[margin]
+                            0.4 \\ 0.8 \\ 1.6
+                        \end{bNiceMatrix}
+          \end{align}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{\tilde{A}}
+                                                    & =
+              \begin{bNiceArray}{rrr|r}[margin]
+                  \CodeBefore
+                  \columncolor[opacity=0.05]{black}{4}
+                  \Body
+                  2  & 0 & 2  & 0  \\
+                  -2 & 2 & 1  & 0  \\
+                  1  & 2 & -2 & 18 \\
+              \end{bNiceArray}  &
+              \vec{LU}                              & =
+              \begin{bNiceMatrix}[margin]
+                  1   & 0   & 0 \\
+                  -1  & 1   & 0 \\
+                  0.5 & 0.5 & 1
+              \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                     2 & 1 & 2    \\
+                                     0 & 3 & 3    \\
+                                     0 & 0 & -4.5
+                                 \end{bNiceMatrix} \\
+              \vec{Ly}                              & =
+              \vec{b} \quad \implies \quad
+              \vec{y} = \begin{bNiceMatrix}[margin]
+                            0 \\ 0 \\ 18
+                        \end{bNiceMatrix} &
+              \vec{Ux}                              & =
+              \vec{y} \quad \implies \quad
+              \vec{x} = \begin{bNiceMatrix}[margin]
+                            2 \\ 4 \\ -4
+                        \end{bNiceMatrix}
+          \end{align}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{\tilde{A}}
+                                                    & =
+              \begin{bNiceArray}{rrr|r}[margin]
+                  \CodeBefore
+                  \columncolor[opacity=0.05]{black}{4}
+                  \Body
+                  3  & 9   & 6  & 4.6  \\
+                  18 & 48  & 39 & 27.2 \\
+                  9  & -27 & 42 & 9    \\
+              \end{bNiceArray}  &
+              \vec{LU}                              & =
+              \begin{bNiceMatrix}[margin]
+                  1 & 0 & 0 \\
+                  6 & 1 & 0 \\
+                  3 & 9 & 1
+              \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                     3 & 9  & 6  \\
+                                     0 & -6 & 3  \\
+                                     0 & 0  & -3
+                                 \end{bNiceMatrix} \\
+              \vec{Ly}                              & =
+              \vec{b} \quad \implies \quad
+              \vec{y} = \begin{bNiceMatrix}[margin]
+                            4.6 \\ -0.4 \\ -1.2
+                        \end{bNiceMatrix} &
+              \vec{Ux}                              & =
+              \vec{y} \quad \implies \quad
+              \vec{x} = \begin{bNiceMatrix}[margin]
+                            -\frac{1}{15} \\ \frac{4}{15} \\ \frac{2}{5}
+                        \end{bNiceMatrix}
+          \end{align}
+
+    \item Crout's factorization
+          \begin{enumerate}
+              \item Perform Doolittle factorization to obtain
+                    \begin{align}
+                        \vec{A}   & = \vec{L}_d\ \vec{U}_d &
+                        \vec{U}_d & = \vec{DU}               \\
+                        \vec{L}   & = \vec{L}_d\ \vec{D}   &
+                        \vec{A}   & = \vec{LU}
+                    \end{align}
+                    Here, $ D $ is a diagonal matrix of $ \vec{U}_d $
+
+              \item Solving Problem $ 5 $ by Crout's factorization
+                    \begin{align}
+                        \vec{\tilde{A}}
+                                                              & =
+                        \begin{bNiceArray}{rrr|r}[margin]
+                            \CodeBefore
+                            \columncolor[opacity=0.05]{black}{4}
+                            \Body
+                            3  & 9   & 6  & 4.6  \\
+                            18 & 48  & 39 & 27.2 \\
+                            9  & -27 & 42 & 9    \\
+                        \end{bNiceArray}  &
+                        \vec{LU}                              & =
+                        \begin{bNiceMatrix}[margin]
+                            3  & 0   & 0  \\
+                            18 & -6  & 0  \\
+                            9  & -54 & -3
+                        \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                               1 & 3 & 2    \\
+                                               0 & 1 & -0.5 \\
+                                               0 & 0 & 1
+                                           \end{bNiceMatrix} \\
+                        \vec{Ly}                              & =
+                        \vec{b} \quad \implies \quad
+                        \vec{y} = \begin{bNiceMatrix}[margin]
+                                      4.6 \\ -0.4 \\ -1.2
+                                  \end{bNiceMatrix} &
+                        \vec{Ux}                              & =
+                        \vec{y} \quad \implies \quad
+                        \vec{x} = \begin{bNiceMatrix}[margin]
+                                      -\frac{1}{15} \\ \frac{4}{15} \\ \frac{2}{5}
+                                  \end{bNiceMatrix}
+                    \end{align}
+
+              \item Factorizing Problem $ 5 $ by all three methods
+                    \begin{align}
+                        \vec{A}
+                                             & =
+                        \begin{bNiceMatrix}[margin]
+                            1  & -4 & 2  \\
+                            -4 & 25 & 4  \\
+                            2  & 4  & 24
+                        \end{bNiceMatrix}                   \\
+                        \vec{L}_d\ \vec{U}_d & =
+                        \begin{bNiceMatrix}[margin]
+                            1  & 0   & 0 \\
+                            -4 & 1   & 0 \\
+                            2  & 4/3 & 1
+                        \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                              1 & -4 & 2  \\
+                                              0 & 9  & 12 \\
+                                              0 & 0  & 4
+                                          \end{bNiceMatrix} \\
+                        \vec{L}_c\ \vec{U}_c & =
+                        \begin{bNiceMatrix}[margin]
+                            1  & 0  & 0 \\
+                            -4 & 9  & 0 \\
+                            2  & 12 & 4
+                        \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                              1 & -4 & 2   \\
+                                              0 & 1  & 4/3 \\
+                                              0 & 0  & 1
+                                          \end{bNiceMatrix} \\
+                        \vec{L}_y\ \vec{U}_y & =
+                        \begin{bNiceMatrix}[margin]
+                            1  & 0 & 0 \\
+                            -4 & 3 & 0 \\
+                            2  & 4 & 2
+                        \end{bNiceMatrix} \begin{bNiceMatrix}[margin]
+                                              1 & -4 & 2 \\
+                                              0 & 3  & 4 \\
+                                              0 & 0  & 2
+                                          \end{bNiceMatrix}
+                    \end{align}
+
+              \item Perform Doolittle factorization and then divide each row
+                    of $ \vec{U}_d $ by the square root of the diagonal term. Then,
+                    its transpose is $ \vec{L} $
+
+              \item When the original matrix $ A $ is symmetric,
+                    \begin{align}
+                        \vec{A}              & = \vec{L}_d\ \vec{U}_d     &
+                        \vec{A}^T            & = \vec{U}_d^T\ \vec{L}_d^T   \\
+                        \vec{U}_d^T          & = \vec{L}_c                &
+                        \vec{L}_d^T          & = \vec{U}_c                  \\
+                        \vec{L}_c\ \vec{U}_c & = \vec{A}^T = \vec{A}
+                    \end{align}
+                    Thus, the Doolittle and Crout's factorizationa re inter-convertible
+                    directly, when $ \vec{A} $ is symmetric.
+          \end{enumerate}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{\tilde{A}}
+                                                    & =
+              \begin{bNiceArray}{rrr|r}[margin]
+                  \CodeBefore
+                  \columncolor[opacity=0.05]{black}{4}
+                  \Body
+                  9  & 6  & 12 & 17.4 \\
+                  6  & 13 & 11 & 23.6 \\
+                  12 & 11 & 26 & 30.8 \\
+              \end{bNiceArray}  &
+              \vec{LU}                              & =
+              \begin{bNiceMatrix}[margin]
+                  3 & 0 & 0 \\
+                  2 & 3 & 0 \\
+                  4 & 1 & 3
+              \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                     3 & 2 & 4 \\
+                                     0 & 3 & 1 \\
+                                     0 & 0 & 3
+                                 \end{bNiceMatrix} \\
+              \vec{Ly}                              & =
+              \vec{b} \quad \implies \quad
+              \vec{y} = \begin{bNiceMatrix}[margin]
+                            17.4 \\ 12 \\ 3.6
+                        \end{bNiceMatrix} &
+              \vec{Ux}                              & =
+              \vec{y} \quad \implies \quad
+              \vec{x} = \begin{bNiceMatrix}[margin]
+                            0.6 \\ 1.2 \\ 0.4
+                        \end{bNiceMatrix}
+          \end{align}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{\tilde{A}}
+                                                    & =
+              \begin{bNiceArray}{rrr|r}[margin]
+                  \CodeBefore
+                  \columncolor[opacity=0.05]{black}{4}
+                  \Body
+                  4 & 6  & 8   & 0    \\
+                  6 & 34 & 52  & -160 \\
+                  8 & 52 & 129 & -452 \\
+              \end{bNiceArray}  &
+              \vec{LU}                              & =
+              \begin{bNiceMatrix}[margin]
+                  2 & 0 & 0 \\
+                  3 & 5 & 0 \\
+                  4 & 8 & 7
+              \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                     2 & 3 & 4 \\
+                                     0 & 5 & 8 \\
+                                     0 & 0 & 7
+                                 \end{bNiceMatrix} \\
+              \vec{Ly}                              & =
+              \vec{b} \quad \implies \quad
+              \vec{y} = \begin{bNiceMatrix}[margin]
+                            0 \\ -160 \\ -196
+                        \end{bNiceMatrix} &
+              \vec{Ux}                              & =
+              \vec{y} \quad \implies \quad
+              \vec{x} = \begin{bNiceMatrix}[margin]
+                            8 \\ 0 \\ -4
+                        \end{bNiceMatrix}
+          \end{align}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{\tilde{A}}
+                                                    & =
+              \begin{bNiceArray}{rrr|r}[margin]
+                  \CodeBefore
+                  \columncolor[opacity=0.05]{black}{4}
+                  \Body
+                  1 & 0 & 3  & 14 \\
+                  0 & 2 & 1  & 2  \\
+                  3 & 8 & 14 & 54 \\
+              \end{bNiceArray}  &
+              \vec{LU}                              & =
+              \begin{bNiceMatrix}[margin]
+                  1 & 0          & 0 \\
+                  0 & \sqrt{2}   & 0 \\
+                  3 & 1/\sqrt{2} & 1
+              \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                     1 & 0        & 3          \\
+                                     0 & \sqrt{2} & 1/\sqrt{2} \\
+                                     0 & 0        & 1
+                                 \end{bNiceMatrix} \\
+              \vec{Ly}                              & =
+              \vec{b} \quad \implies \quad
+              \vec{y} = \begin{bNiceMatrix}[margin]
+                            14 \\ 2 \\ 4
+                        \end{bNiceMatrix} &
+              \vec{Ux}                              & =
+              \vec{y} \quad \implies \quad
+              \vec{x} = \begin{bNiceMatrix}[margin]
+                            2 \\ -1 \\ 4
+                        \end{bNiceMatrix}
+          \end{align}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{\tilde{A}}
+                                                    & =
+              \begin{bNiceArray}{rrr|r}[margin]
+                  \CodeBefore
+                  \columncolor[opacity=0.05]{black}{4}
+                  \Body
+                  4 & 0 & 2 & 1.5 \\
+                  0 & 4 & 1 & 4   \\
+                  2 & 1 & 2 & 2.5 \\
+              \end{bNiceArray}  &
+              \vec{LU}                              & =
+              \begin{bNiceMatrix}[margin]
+                  2 & 0   & 0          \\
+                  0 & 2   & 0          \\
+                  1 & 0.5 & \sqrt{3/4}
+              \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                     2 & 0 & 1          \\
+                                     0 & 2 & 0.5        \\
+                                     0 & 0 & \sqrt{3/4}
+                                 \end{bNiceMatrix} \\
+              \vec{Ly}                              & =
+              \vec{b} \quad \implies \quad
+              \vec{y} = \begin{bNiceMatrix}[margin]
+                            1.5 \\ 4 \\ 3/4
+                        \end{bNiceMatrix} &
+              \vec{Ux}                              & =
+              \vec{y} \quad \implies \quad
+              \vec{x} = \begin{bNiceMatrix}[margin]
+                            -1/8 \\ 3/4 \\ 1
+                        \end{bNiceMatrix}
+          \end{align}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{\tilde{A}}
+                                                    & =
+              \begin{bNiceArray}{rrrr|r}[margin]
+                  \CodeBefore
+                  \columncolor[opacity=0.05]{black}{5}
+                  \Body
+                  1  & -1 & 3  & 2  & 15  \\
+                  -1 & 5  & -5 & -2 & -35 \\
+                  3  & -5 & 19 & 3  & 94  \\
+                  2  & -2 & 3  & 21 & 1
+              \end{bNiceArray}  &
+              \vec{LU}                              & =
+              \begin{bNiceMatrix}[margin]
+                  1  & 0  & 0  & 0 \\
+                  -1 & 2  & 0  & 0 \\
+                  3  & -1 & 3  & 0 \\
+                  2  & 0  & -1 & 4
+              \end{bNiceMatrix}\begin{bNiceMatrix}[margin]
+                                   1 & -1 & 3  & 2  \\
+                                   0 & 2  & -1 & 0  \\
+                                   0 & 0  & 3  & -1 \\
+                                   0 & 0  & 0  & 4
+                               \end{bNiceMatrix} \\
+              \vec{Ly}                              & =
+              \vec{b} \quad \implies \quad
+              \vec{y} = \begin{bNiceMatrix}[margin]
+                            15 \\ -20 \\ 39 \\ -16
+                        \end{bNiceMatrix} &
+              \vec{Ux}                              & =
+              \vec{y} \quad \implies \quad
+              \vec{x} = \begin{bNiceMatrix}[margin]
+                            2 \\ -3 \\ 4 \\ -1
+                        \end{bNiceMatrix}
+          \end{align}
+
+    \item LU factorization coded in \texttt{numpy}
+          \begin{align}
+              \vec{\tilde{A}}
+                                                    & =
+              \begin{bNiceArray}{rrrr|r}[margin]
+                  \CodeBefore
+                  \columncolor[opacity=0.05]{black}{5}
+                  \Body
+                  4 & 2 & 4 & 0 & 20  \\
+                  2 & 2 & 3 & 2 & 36  \\
+                  4 & 3 & 6 & 3 & 60  \\
+                  0 & 2 & 3 & 9 & 122
+              \end{bNiceArray}  &
+              \vec{LU}                              & =
+              \begin{bNiceMatrix}[margin]
+                  2 & 0 & 0 & 0 \\
+                  1 & 1 & 0 & 0 \\
+                  2 & 1 & 1 & 0 \\
+                  0 & 2 & 1 & 2
+              \end{bNiceMatrix}\begin{bNiceMatrix}[margin]
+                                   2 & 1 & 2 & 0 \\
+                                   0 & 1 & 1 & 2 \\
+                                   0 & 0 & 1 & 1 \\
+                                   0 & 0 & 0 & 2
+                               \end{bNiceMatrix} \\
+              \vec{Ly}                              & =
+              \vec{b} \quad \implies \quad
+              \vec{y} = \begin{bNiceMatrix}[margin]
+                            20 \\ 26 \\ 14 \\ 56
+                        \end{bNiceMatrix} &
+              \vec{Ux}                              & =
+              \vec{y} \quad \implies \quad
+              \vec{x} = \begin{bNiceMatrix}[margin]
+                            6 \\ -2 \\ 0 \\ 14
+                        \end{bNiceMatrix}
+          \end{align}
+
+    \item Given $ \vec{A} $ and $ \vec{B} $ are positive definite,
+          \begin{align}
+              \vec{x}^T (-\vec{A})\ \vec{x}         & < 0                           \\
+              \vec{x}^T \vec{A}^T \vec{x}           & = (\vec{x}^T \vec{A x})^T > 0 \\
+              \vec{x}^T (\vec{A} + \vec{B}) \vec{x} & = \vec{x}^T \vec{A} \vec{x}
+              + \vec{x}^T \vec{B} \vec{x} > 0
+          \end{align}
+          No such claim can be made for $ \vec{A} - \vec{B} $ since the end result of
+          subtracting one positive number from another need not be positive.
+
+    \item Cholesky method coded in \texttt{numpy}
+          \begin{enumerate}
+              \item Using Cholesky method on Example $ 2 $,
+                    \begin{align}
+                        \vec{A}                               &
+                        = \begin{bNiceArray}{rrr|r}[margin]
+                              \CodeBefore
+                              \columncolor[opacity=0.05]{black}{4}
+                              \Body
+                              4  & 2  & 14 & 14   \\
+                              2  & 17 & -5 & -101 \\
+                              14 & -5 & 83 & 155  \\
+                          \end{bNiceArray}  &
+                        \vec{LU}                              & =
+                        \begin{bNiceMatrix}[margin]
+                            2 & 0  & 0 \\
+                            1 & 4  & 0 \\
+                            7 & -3 & 5
+                        \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                               2 & 1 & 7  \\
+                                               0 & 4 & -3 \\
+                                               0 & 0 & 5
+                                           \end{bNiceMatrix} \\
+                        \vec{Ly}                              & =
+                        \vec{b} \quad \implies \quad
+                        \vec{y} = \begin{bNiceMatrix}[margin]
+                                      14 \\ -108 \\ 25
+                                  \end{bNiceMatrix} &
+                        \vec{Ux}                              & =
+                        \vec{y} \quad \implies \quad
+                        \vec{x} = \begin{bNiceMatrix}[margin]
+                                      3 \\ -6 \\ 1
+                                  \end{bNiceMatrix}
+                    \end{align}
+                    The code was already used in solving Problems $ 7,8,9 $
+
+              \item Applying Cholesky factorization to the spline matrices
+                    \begin{align}
+                        \vec{A}  & = \begin{bNiceMatrix}[margin]
+                                         2 & 1 & 0 \\
+                                         1 & 4 & 1 \\
+                                         0 & 1 & 2
+                                     \end{bNiceMatrix} \\
+                        \vec{LU} & =
+                        \begin{bNiceMatrix}[margin]
+                            \sqrt{2}   & 0          & 0           \\
+                            1/\sqrt{2} & \sqrt{7/2} & 0           \\
+                            0          & \sqrt{2/7} & \sqrt{12/7}
+                        \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                               \sqrt{2} & 1/\sqrt{2} & 0           \\
+                                               0        & \sqrt{7/2} & \sqrt{2/7}  \\
+                                               0        & 0          & \sqrt{12/7}
+                                           \end{bNiceMatrix}
+                    \end{align}
+                    For the $ 4 \times 4 $ matrix,
+                    \begin{align}
+                        \vec{A}  & = \begin{bNiceMatrix}[margin]
+                                         2 & 1 & 0 & 0 \\
+                                         1 & 4 & 1 & 0 \\
+                                         0 & 1 & 4 & 1 \\
+                                         0 & 0 & 1 & 2
+                                     \end{bNiceMatrix} \\
+                        \vec{LU} & =
+                        \begin{bNiceMatrix}[margin]
+                            \sqrt{2}   & 0          & 0           & 0            \\
+                            1/\sqrt{2} & \sqrt{7/2} & 0           & 0            \\
+                            0          & \sqrt{2/7} & \sqrt{26/7} & 0            \\
+                            0          & 0          & \sqrt{7/26} & \sqrt{45/26}
+                        \end{bNiceMatrix}
+                        \ \begin{bNiceMatrix}[margin]
+                              \sqrt{2} & 1/\sqrt{2} & 0           & 0            \\
+                              0        & \sqrt{7/2} & \sqrt{2/7}  & 0            \\
+                              0        & 0          & \sqrt{26/7} & \sqrt{7/26}  \\
+                              0        & 0          & 0           & \sqrt{45/26} \\
+                          \end{bNiceMatrix}
+                    \end{align}
+          \end{enumerate}
+
+    \item Finding inverse using Gauss-Jordan elimination
+          \begin{align}
+               & \begin{bNiceArray}{rr|rr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_h}{1-2}
+                     \Body
+                     4  & 5  & 1 & 0 \\
+                     12 & 14 & 0 & 1
+                 \end{bNiceArray} &
+               & \begin{bNiceArray}{rr|rr}[margin]
+                     4 & 5  & 1  & 0 \\
+                     0 & -1 & -3 & 1
+                 \end{bNiceArray}    \\
+               & \begin{bNiceArray}{rr|rr}[margin]
+                     4 & 0  & -14 & 5 \\
+                     0 & -1 & -3  & 1
+                 \end{bNiceArray}    &
+               & \begin{bNiceArray}{rr|rr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_p}{3-4}
+                     \Body
+                     1 & 0 & -7/2 & 5/4 \\
+                     0 & 1 & 3    & -1  \\
+                 \end{bNiceArray}
+          \end{align}
+
+    \item Finding inverse using Gauss-Jordan elimination
+          \begin{align}
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_h}{1-3}
+                     \Body
+                     2  & 1 & 2  & 1 & 0 & 0 \\
+                     -2 & 2 & 1  & 0 & 1 & 0 \\
+                     1  & 2 & -2 & 0 & 0 & 1
+                 \end{bNiceArray} &
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     2 & 1   & 2  & 1    & 0 & 0 \\
+                     0 & 3   & 3  & 1    & 1 & 0 \\
+                     0 & 1.5 & -3 & -0.5 & 0 & 1
+                 \end{bNiceArray}  \\
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     2 & 1 & 2    & 1  & 0    & 0 \\
+                     0 & 3 & 3    & 1  & 1    & 0 \\
+                     0 & 0 & -4.5 & -1 & -0.5 & 1
+                 \end{bNiceArray}  &
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     2 & 0 & 1    & 2/3 & -1/3 & 0 \\
+                     0 & 3 & 3    & 1   & 1    & 0 \\
+                     0 & 0 & -4.5 & -1  & -0.5 & 1
+                 \end{bNiceArray}  \\
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     2 & 0 & 0    & 4/9 & -4/9 & 2/9 \\
+                     0 & 3 & 0    & 1/3 & 2/3  & 2/3 \\
+                     0 & 0 & -4.5 & -1  & -0.5 & 1
+                 \end{bNiceArray}  &
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_p}{4-6}
+                     \Body
+                     1 & 0 & 0 & 2/9 & -2/9 & 1/9  \\
+                     0 & 1 & 0 & 1/9 & 2/9  & 2/9  \\
+                     0 & 0 & 1 & 2/9 & 1/9  & -2/9
+                 \end{bNiceArray}
+          \end{align}
+
+    \item Finding inverse using Gauss-Jordan elimination
+          \begin{align}
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_h}{1-3}
+                     \Body
+                     1  & -4 & 2  & 1 & 0 & 0 \\
+                     -4 & 25 & 4  & 0 & 1 & 0 \\
+                     2  & 4  & 24 & 0 & 0 & 1
+                 \end{bNiceArray}                        &
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     1 & -4 & 2  & 1  & 0 & 0 \\
+                     0 & 9  & 12 & 4  & 1 & 0 \\
+                     0 & 12 & 20 & -2 & 0 & 1
+                 \end{bNiceArray}                       \\
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     1 & -4 & 2  & 1             & 0            & 0 \\
+                     0 & 9  & 12 & 4             & 1            & 0 \\
+                     0 & 0  & 4  & -\frac{22}{3} & -\frac{4}{3} & 1
+                 \end{bNiceArray}           &
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     1 & 0 & \frac{22}{3} & \frac{25}{9}  & \frac{4}{9}  & 0 \\
+                     0 & 9 & 12           & 4             & 1            & 0 \\
+                     0 & 0 & 4            & -\frac{22}{3} & -\frac{4}{3} & 1
+                 \end{bNiceArray}  \\
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     1 & 0 & 0 & \frac{146}{9} & \frac{26}{9} & -\frac{11}{6} \\
+                     0 & 9 & 0 & 26            & 17           & -3            \\
+                     0 & 0 & 4 & -\frac{22}{3} & -\frac{4}{3} & 1
+                 \end{bNiceArray} &
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_p}{4-6}
+                     \Body
+                     1 & 0 & 0 & \frac{146}{9} & \frac{26}{9} & -\frac{11}{6} \\
+                     0 & 1 & 0 & \frac{26}{9}  & \frac{17}{9} & -\frac{1}{3}  \\
+                     0 & 0 & 1 & -\frac{11}{6} & -\frac{1}{3} & \frac{1}{4}
+                 \end{bNiceArray}
+          \end{align}
+
+    \item Finding inverse using Gauss-Jordan elimination
+          \begin{align}
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_h}{1-3}
+                     \Body
+                     0.01 & 0    & 0.03 & 1 & 0 & 0 \\
+                     0    & 0.16 & 0.08 & 0 & 1 & 0 \\
+                     0.03 & 0.08 & 0.14 & 0 & 0 & 1
+                 \end{bNiceArray}   &
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     0.01 & 0    & 0.03 & 1  & 0 & 0 \\
+                     0    & 0.16 & 0.08 & 0  & 1 & 0 \\
+                     0    & 0.08 & 0.05 & -3 & 0 & 1
+                 \end{bNiceArray}  \\
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     0.01 & 0    & 0.03 & 1  & 0    & 0 \\
+                     0    & 0.16 & 0.08 & 0  & 1    & 0 \\
+                     0    & 0    & 0.01 & -3 & -0.5 & 1
+                 \end{bNiceArray}  &
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     0.01 & 0    & 0    & 10 & 1.5  & -3 \\
+                     0    & 0.16 & 0.08 & 0  & 1    & 0  \\
+                     0    & 0    & 0.01 & -3 & -0.5 & 1
+                 \end{bNiceArray} \\
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     0.01 & 0    & 0    & 10 & 1.5  & -3 \\
+                     0    & 0.16 & 0    & 24 & 5    & -8 \\
+                     0    & 0    & 0.01 & -3 & -0.5 & 1
+                 \end{bNiceArray} &
+               & \begin{bNiceArray}{rrr|rrr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_p}{4-6}
+                     \Body
+                     1 & 0 & 0 & 1000 & 150   & -300 \\
+                     0 & 1 & 0 & 150  & 31.25 & -50  \\
+                     0 & 0 & 1 & -300 & -50   & 100
+                 \end{bNiceArray}
+          \end{align}
+
+    \item Finding inverse using Gauss-Jordan elimination
+          \begin{align}
+               & \begin{bNiceArray}{rrrr|rrrr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_h}{1-4}
+                     \Body
+                     4 & 2 & 4 & 0 & 1 & 0 & 0 & 0 \\
+                     2 & 2 & 3 & 2 & 0 & 1 & 0 & 0 \\
+                     4 & 3 & 6 & 3 & 0 & 0 & 1 & 0 \\
+                     0 & 2 & 3 & 9 & 0 & 0 & 0 & 1 \\
+                 \end{bNiceArray}                            &
+               & \begin{bNiceArray}{rrrr|rrrr}[margin]
+                     4 & 2 & 4 & 0 & 1    & 0 & 0 & 0 \\
+                     0 & 1 & 1 & 2 & -0.5 & 1 & 0 & 0 \\
+                     0 & 1 & 2 & 3 & -1   & 0 & 1 & 0 \\
+                     0 & 2 & 3 & 9 & 0    & 0 & 0 & 1 \\
+                 \end{bNiceArray}                          \\
+               & \begin{bNiceArray}{rrrr|rrrr}[margin]
+                     4 & 2 & 4 & 0 & 1    & 0  & 0 & 0 \\
+                     0 & 1 & 1 & 2 & -0.5 & 1  & 0 & 0 \\
+                     0 & 0 & 1 & 1 & -0.5 & -1 & 1 & 0 \\
+                     0 & 0 & 1 & 5 & 1    & -2 & 0 & 1 \\
+                 \end{bNiceArray}                            &
+               & \begin{bNiceArray}{rrrr|rrrr}[margin]
+                     4 & 2 & 4 & 0 & 1    & 0  & 0  & 0 \\
+                     0 & 1 & 1 & 2 & -0.5 & 1  & 0  & 0 \\
+                     0 & 0 & 1 & 1 & -0.5 & -1 & 1  & 0 \\
+                     0 & 0 & 0 & 4 & 1.5  & -1 & -1 & 1 \\
+                 \end{bNiceArray}                          \\
+               & \begin{bNiceArray}{rrrr|rrrr}[margin]
+                     4 & 0 & 2 & -4 & 2    & -2 & 0  & 0 \\
+                     0 & 1 & 1 & 2  & -0.5 & 1  & 0  & 0 \\
+                     0 & 0 & 1 & 1  & -0.5 & -1 & 1  & 0 \\
+                     0 & 0 & 0 & 4  & 1.5  & -1 & -1 & 1 \\
+                 \end{bNiceArray}                           &
+               & \begin{bNiceArray}{rrrr|rrrr}[margin]
+                     4 & 0 & 0 & -6 & 3    & 0  & -2 & 0 \\
+                     0 & 1 & 0 & 1  & 0    & 2  & -1 & 0 \\
+                     0 & 0 & 1 & 1  & -0.5 & -1 & 1  & 0 \\
+                     0 & 0 & 0 & 4  & 1.5  & -1 & -1 & 1 \\
+                 \end{bNiceArray}                          \\
+               & \begin{bNiceArray}{rrrr|rrrr}[margin]
+                     4             & 0            & 0             & 0            &
+                     \frac{21}{4}  & -\frac{3}{2} & - \frac{7}{2} & \frac{3}{2}    \\
+                     0             & 1            & 0             & 0            &
+                     - \frac{3}{8} & \frac{9}{4}  & -\frac{3}{4}  & -\frac{1}{4}   \\
+                     0             & 0            & 1             & 0            &
+                     - \frac{7}{8} & -\frac{3}{4} & \frac{5}{4}   & -\frac{1}{4}   \\
+                     0             & 0            & 0             & 4            &
+                     1.5           & -1           & -1            & 1              \\
+                 \end{bNiceArray} &
+               & \begin{bNiceArray}{rrrr|rrrr}[margin]
+                     \CodeBefore
+                     \columncolor[opacity=0.05]{y_p}{5-8}
+                     \Body
+                     1             & 0            & 0            & 0            &
+                     \frac{21}{16} & -\frac{3}{8} & \frac{-7}{8} & \frac{3}{8}    \\
+                     0             & 1            & 0            & 0            &
+                     - \frac{3}{8} & \frac{9}{4}  & -\frac{3}{4} & -\frac{1}{4}   \\
+                     0             & 0            & 1            & 0            &
+                     - \frac{7}{8} & -\frac{3}{4} & \frac{5}{4}  & -\frac{1}{4}   \\
+                     0             & 0            & 0            & 1            &
+                     \frac{3}{8}   & -\frac{1}{4} & -\frac{1}{4} & \frac{1}{4}    \\
+                 \end{bNiceArray}
+          \end{align}
+
+    \item Finding the determinant
+          \begin{align}
+              \vec{A}       & = \begin{bNiceMatrix}[margin]
+                                    1/3  & 1/4   & 2     \\
+                                    -1/9 & 1     & 1/7   \\
+                                    4/63 & -3/28 & 13/49
+                                \end{bNiceMatrix}               \\
+              \det{\vec{A}} & = (1/3) [13/49 + (1/7)(3/28)]    \nonumber \\
+                            & + (1/9)[(1/4)(13/49)+ (2)(3/28)] \nonumber \\
+                            & + (4/63)[(1/4)(1/7) - 2] = 0
+          \end{align}
+          Using increasingly many significant digits,
+          \begin{align}
+              \det{\vec{A_2}} & = 0.089 + 0.031 + 0.063 = 0.18                     \\
+              \det{\vec{A_3}} & = 0.0932 + 0.0311 - 0.124 = 0.0003                 \\
+              \det{\vec{A_4}} & = 0.09352 + 0.03116 - 0.12469436 = -\num{1.436d-5} \\
+              \det{\vec{A_5}} & = 0.093539 + 0.031178  - 0.12471 = \num{7d-6}
+          \end{align}
+          The determinant gets closer to the real value with more significant digits.
+\end{enumerate}

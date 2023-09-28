@@ -4,9 +4,9 @@
     \item Using the substitution $v = 2 \pi x$
 
           \begin{align}
-              y' & = -2 \sin(2 \pi x)                     \\
-              dy & = -2 \int \sin(2 \pi x) \quad dx       \\
-              dy & = \frac{-1}{\pi} \int \sin(v) \quad dv \\
+              y' & = -2 \sin(2 \pi x)                     &
+              dy & = -2 \int \sin(2 \pi x) \quad dx         \\
+              dy & = \frac{-1}{\pi} \int \sin(v) \quad dv &
               y  & = \frac{\cos(2\pi x)}{\pi} + c
           \end{align}
 
@@ -14,9 +14,9 @@
     \item Using the substitution $v = -x^{2} / 2$
 
           \begin{align}
-              y' & = -x \exp(-x^{2} / 2)                \\
-              dy & = - \int x \exp(-x^{2} / 2) \quad dx \\
-              dy & = \int \exp(v) \quad dv              \\
+              y' & = -x \exp(-x^{2} / 2)                &
+              dy & = - \int x \exp(-x^{2} / 2) \quad dx   \\
+              dy & = \int \exp(v) \quad dv              &
               y  & = \exp(-x^{2} / 2) + c
           \end{align}
 
@@ -24,9 +24,9 @@
     \item Using the integration over $y$
 
           \begin{align}
-              y' & = y                         \\
-              dx & = \int \frac{1}{y} \quad dy \\
-              x  & = \ln(y) + c                \\
+              y' & = y                         &
+              dx & = \int \frac{1}{y} \quad dy   \\
+              x  & = \ln(y) + c                &
               y  & = C\exp(x)
           \end{align}
 
@@ -34,9 +34,9 @@
     \item Using the integration over $y$
 
           \begin{align}
-              y' & = -1.5 y                      \\
-              dx & = \int \frac{-2}{3y} \quad dy \\
-              x  & = \frac{-2 \ln(y)}{3} + c     \\
+              y' & = -1.5 y                      &
+              dx & = \int \frac{-2}{3y} \quad dy   \\
+              x  & = \frac{-2 \ln(y)}{3} + c     &
               y  & = C\exp(-1.5x)
           \end{align}
 
@@ -44,19 +44,22 @@
     \item Using the substitution $v = 2 \pi x$
 
           \begin{align}
-              y'            & = 4 e^{-x} \cos(x)                                                      \\
-              \int \quad dy & = 4 \int e^{-x} \cos(x) \quad dx                                        \\
-              y             & = 4 e^{-x} \sin(x)  + 4 \int e^{-x} \sin(x) \quad dx                    \\
-              y             & = 4 e^{-x} \sin(x)  - 4 e^{-x} \cos(x) - 4 \int e^{-x} \cos(x) \quad dx \\
-              y             & = 2 e^{-x} (\sin(x) - \cos(x))                                          \\
-              y             & = -2 \sqrt{2} e^{-x} \cos\left(x + \frac{\pi}{4}\right) + c
+              y'            & = 4 e^{-x} \cos(x)                                      \\
+              \int \quad dy & = 4 \int e^{-x} \cos(x) \quad dx                        \\
+              y             & = 4 e^{-x} \sin(x)  + 4 \int e^{-x} \sin(x) \quad dx    \\
+              y             & = 4 e^{-x} \sin(x)  - 4 e^{-x} \cos(x) - 4 \int e^{-x}
+              \cos(x) \quad dx                                                        \\
+              y             & = 2 e^{-x} (\sin(x) - \cos(x))                          \\
+              y             & = -2 \sqrt{2} e^{-x} \cos\left(x + \frac{\pi}{4}\right)
+              + c
           \end{align}
 
 
-    \item Using the standard result for trigonometric ODEs, (second order ODE will result in two arbitrary constants)
+    \item Using the standard result for trigonometric ODEs, (second order ODE will result
+          in two arbitrary constants)
 
           \begin{align}
-              y'' & = -y                            \\
+              y'' & = -y                            &
               y   & = c_{1} \cos(x) + c_{2} \sin(x)
           \end{align}
 
@@ -64,17 +67,18 @@
     \item Using the substitution $a  = 5.13$
 
           \begin{align}
-              y'            & = \cosh(5.13 x)                             \\
-              \int \quad dy & = \int \cosh(a x)  \quad dx                 \\
-              y             & = \int \frac{e^{ax} + e^{-ax}}{2}  \quad dx \\
+              y'            & = \cosh(5.13 x)                             &
+              \int \quad dy & = \int \cosh(a x)  \quad dx                   \\
+              y             & = \int \frac{e^{ax} + e^{-ax}}{2}  \quad dx &
               y             & = \frac{\sinh(ax)}{a} + c
           \end{align}
 
 
-    \item Using the substitution $a  = -0.2$ (Third order ODE results in 3 arbitrary constants)
+    \item Using the substitution $a  = -0.2$ (Third order ODE results in 3 arbitrary
+          constants)
 
           \begin{align}
-              y''' & = \exp(-0.2x)                              \\
+              y''' & = \exp(-0.2x)                              &
               y    & = \frac{\exp(ax)}{a^{3}} + bx^{2} + cx + d
           \end{align}
 
@@ -82,10 +86,10 @@
     \item IC is $y(0) = 2$
 
           \begin{align}
-              4y      & = 4c\exp(-4x) + 1.4 \\
-              y'      & =-4c \exp(-4x)      \\
-              y' + 4y & = 1.4               \\
-              y(0)    & = c + 0.35 = 2      \\
+              4y      & = 4c\exp(-4x) + 1.4 &
+              y'      & =-4c \exp(-4x)        \\
+              y' + 4y & = 1.4               &
+              y(0)    & = c + 0.35 = 2        \\
               c       & = 1.65
           \end{align}
 
@@ -93,7 +97,7 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[Ani, grid=both]
-                      \addplot [GraphSmooth, domain=-0.5:0.5]
+                      \addplot [GraphSmooth, y_h, domain=-0.5:0.5]
                       {0.35 + 1.65*e^(-4*x)};
                       \node[GraphNode, label={45:{(0,2)}}]
                       at (axis cs:0,2) {};
@@ -105,9 +109,9 @@
     \item IC is $y(0) = \pi$
 
           \begin{align}
-              5xy      & = (5x) \ ce^{-2.5 x^{2}} \\
-              y'       & = (-5x)\ ce^{-2.5 x^{2}} \\
-              y' + 5xy & = 0                      \\
+              5xy      & = (5x) \ ce^{-2.5 x^{2}} &
+              y'       & = (-5x)\ ce^{-2.5 x^{2}}   \\
+              y' + 5xy & = 0                      &
               y(0)     & = c  = \pi
           \end{align}
 
@@ -115,7 +119,7 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[Ani, grid=both]
-                      \addplot [GraphSmooth, domain=-2:2]
+                      \addplot [GraphSmooth, y_h, domain=-2:2]
                       {pi * e^(-2.5 * x^(2))};
                       \node[GraphNode, label={0:{(0,$\pi$)}}]
                       at (axis cs:0,pi) {};
@@ -127,8 +131,8 @@
     \item IC is $y(0) = 1/2$
 
           \begin{align}
-              y'     & = (1 + x + c)\ e^{x} \\
-              y' - y & = e^{x}              \\
+              y'     & = (1 + x + c)\ e^{x} &
+              y' - y & = e^{x}                \\
               y(0)   & = c  = 1/2
           \end{align}
 
@@ -136,7 +140,7 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[Ani, grid=both, legend pos = north west]
-                      \addplot [GraphSmooth, domain=-2:2]
+                      \addplot [GraphSmooth, y_h, domain=-2:2]
                       {(x + 0.5) * e^(x))};
                       \node[GraphNode, label={135:{(0,1/2)}}]
                       at (axis cs:0,1/2) {};
@@ -158,7 +162,7 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[Ani, grid=both, legend pos = south west]
-                      \addplot [GraphSmooth, domain=-3:3]
+                      \addplot [GraphSmooth, y_h, domain=-3:3]
                       {(4*x^(2) + 12)^(1/2)};
                       \node[GraphNode, label={135:{(1, 4)}}]
                       at (axis cs:1, 4) {};
@@ -170,10 +174,10 @@
     \item IC is $y(0) = 1/4$
 
           \begin{align}
-              y'        & = \frac{ce^{-x}}{(1 + ce^{-x})^{2}}         \\
-              y - y^{2} & = \frac{1 + ce^{-x} - 1}{(1 + ce^{-x})^{2}} \\
-              y'        & = y - y^{2}                                 \\
-              y(0)      & = \frac{1}{(1+c)}  = 1/4                    \\
+              y'        & = \frac{ce^{-x}}{(1 + ce^{-x})^{2}}         &
+              y - y^{2} & = \frac{1 + ce^{-x} - 1}{(1 + ce^{-x})^{2}}   \\
+              y'        & = y - y^{2}                                 &
+              y(0)      & = \frac{1}{(1+c)}  = 1/4                      \\
               c         & = 3
           \end{align}
 
@@ -181,7 +185,7 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[Ani, grid=both, legend pos = north west]
-                      \addplot [GraphSmooth, domain=-5:5]
+                      \addplot [GraphSmooth, y_h, domain=-5:5]
                       {1 / (1 + 3 * e^(-x))};
                       \node[GraphNode, label={135:{(0, 1/4)}}]
                       at (axis cs:0,1/4) {};
@@ -193,10 +197,10 @@
     \item IC is $y(\pi / 2) = 0$
 
           \begin{align}
-              2y - 8     & = 2c\ \sin^{2} x              \\
-              y' \tan x  & = 2c\ \sin x \ \cos x\ \tan x \\
-              y' \tan x  & = 2y -  8                     \\
-              y(\pi / 2) & = c + 4  = 0                  \\
+              2y - 8     & = 2c\ \sin^{2} x              &
+              y' \tan x  & = 2c\ \sin x \ \cos x\ \tan x   \\
+              y' \tan x  & = 2y -  8                     &
+              y(\pi / 2) & = c + 4  = 0                    \\
               c          & = -4
           \end{align}
 
@@ -204,7 +208,7 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[Ani, grid=both, legend pos = north east, PiStyleX]
-                      \addplot [GraphSmooth, domain=-pi:pi]
+                      \addplot [GraphSmooth, y_h, domain=-pi:pi]
                       {4 - 4*(sin(deg(x)))^(2)};
                       \node[GraphNode, label={0:{($\pi / 2$, 0)}}]
                       at (axis cs:pi/2, 0) {};
@@ -216,7 +220,7 @@
     \item By Inspection , the ODE in Problem 13 has the constant solutions
 
           \begin{align}
-              y & = 1 \\
+              y & = 1 &
               y & = 0
           \end{align}
 
@@ -224,47 +228,52 @@
     \item Verifying the general solution by substitution
 
           \begin{align}
-              xy'    & = cx           \\
-              y'^{2} & = c^{2}        \\
-              y      & = cx - c^{2}   \\
+              xy'    & = cx           &
+              y'^{2} & = c^{2}          \\
+              y      & = cx - c^{2}   &
               y      & = xy' - y'^{2}
           \end{align}
 
           Verifying the singular solution by substitution
 
           \begin{align}
-              xy'    & = \frac{x^{2}}{2} \\
-              y'^{2} & = \frac{x^{2}}{4} \\
-              y      & = \frac{x^{2}}{4} \\
+              xy'    & = \frac{x^{2}}{2} &
+              y'^{2} & = \frac{x^{2}}{4}   \\
+              y      & = \frac{x^{2}}{4} &
               y      & = xy' - y'^{2}
           \end{align}
 
-          The parabola happens to have the same derivative for all $x$ as the member of the family of straight lines tangent to it. This makes the parabola a singular solution to the ODE.
+          The parabola happens to have the same derivative for all $x$ as the member of
+          the family of straight lines tangent to it. This makes the parabola a
+          singular solution to the ODE.
 
-    \item Given a starting mass of $1$ gm, find the time taken to reach a mass of $0.5$ gm. This is equal to half-life.
+    \item Given a starting mass of $1$ gm, find the time taken to reach a mass of $0.5$
+          gm. This is equal to half-life.
 
           \begin{align}
-              \frac{dy}{dt} & = -ky                                                                           \\
-              \ln y         & = -kt + c                                                                       \\
-              y             & = c \ e^{-kt}                                                                   \\
-              y_{T}         & = \frac{y_{0}}{2}                                                               \\
-              e^{-kT}       & = 1/2                                                                           \\
-              T             & = \frac{\ln 2}{k} = \frac{ln 2}{1.4 \times 10^{-11}} = 1568.89\  \mathrm{years}
+              \frac{dy}{dt} & = -ky                                                &
+              \ln y         & = -kt + c                                              \\
+              y             & = c \ e^{-kt}                                        &
+              y_{T}         & = \frac{y_{0}}{2}                                      \\
+              e^{-kT}       & = 1/2                                                  \\
+              T             & = \frac{\ln 2}{k} = \frac{ln 2}{1.4 \times 10^{-11}}
+              = 1568.89\  \mathrm{years}
           \end{align}
 
 
     \item Given the half life $ T = 3.6 $ days, in 1 day,
 
           \begin{align}
-              y        & = c\ e^{-kt}                                               \\
-              y(t = 1) & = c\ e^{-k} = y_{0} e ^{-k}                                \\
-              y(t = 1) & = 1\ \mathrm{g} \times \exp \left(\frac{- \ln 2}{T}\right) \\
+              y        & = c\ e^{-kt}                                               &
+              y(t = 1) & = c\ e^{-k} = y_{0} e ^{-k}                                  \\
+              y(t = 1) & = 1\ \mathrm{g} \times \exp \left(\frac{- \ln 2}{T}\right) &
               y(t = 1) & = 0.825\ \mathrm{g}
           \end{align}
           and for 1 year,
           \begin{align}
-              y(t = 365) & = c\ e^{-k} = y_{0} e ^{-365\ k}                                      \\
-              y(t = 365) & = 1\ \mathrm{g} \times \exp \left(\frac{- \ln 2 \times 365}{T}\right) \\
+              y(t = 365) & = c\ e^{-k} = y_{0} e ^{-365\ k}                            \\
+              y(t = 365) & = 1\ \mathrm{g} \times \exp \left(\frac{- \ln 2 \times 365}
+              {T}\right)                                                               \\
               y(t = 365) & = 0\ \mathrm{g}
           \end{align}
 
@@ -272,10 +281,12 @@
     \item Given IC is $y(0) = 0$ and $y'(0) = 0$,
 
           \begin{align}
-              \frac{d^{2}y}{dt^{2}} & = g                                            \\
-              y                     & = a + bt + \frac{gt^{2}}{2}                    \\
-              y(0)                  & = 0                         & \implies a & = 0 \\
-              y'(0)                 & = 0                         & \implies b & = 0 \\
+              \frac{d^{2}y}{dt^{2}} & = g                         &
+              y                     & = a + bt + \frac{gt^{2}}{2}   \\
+              y(0)                  & = 0                         &
+              \implies a            & = 0                           \\
+              y'(0)                 & = 0                         &
+              \implies b            & = 0                           \\
               y                     & = \frac{gt^{2}}{2}
           \end{align}
 
@@ -283,13 +294,14 @@
     \item Given IC is $y(18,000) = 1/2 \times y(0)$ and height $t$
 
           \begin{align}
-              \frac{dy}{dt} & = -ky                                                     \\
-              \ln y         & = -kt + c                                                 \\
-              y             & = c \ e^{-kt}                                             \\
-              y_{T}         & = \frac{y_{0}}{2}                                         \\
-              e^{-kT}       & = 1/2                                                     \\
-              k             & = \frac{\ln 2}{T} = \frac{ln 2}{18000}\  \mathrm{ft}^{-1} \\
-              y(35,000)     & = y(0) \times 2^{-35/18}                                  \\
+              \frac{dy}{dt} & = -ky                                  &
+              \ln y         & = -kt + c                                \\
+              y             & = c \ e^{-kt}                          &
+              y_{T}         & = \frac{y_{0}}{2}                        \\
+              e^{-kT}       & = 1/2                                  &
+              k             & = \frac{\ln 2}{T} = \frac{ln 2}{18000}
+              \  \mathrm{ft}^{-1}                                      \\
+              y(35,000)     & = y(0) \times 2^{-35/18}               &
               y(35,000)     & = y(0) \times 0.259
           \end{align}
 

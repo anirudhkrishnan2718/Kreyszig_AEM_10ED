@@ -1,0 +1,620 @@
+\section{Rectangular Membrane. Double Fourier Series}
+
+\begin{enumerate}
+    \item Frequency of the eigenfunction $ u_{mn} $ is given by
+          \begin{align}
+              f_{mn}       & = \frac{\lambda_{mn}}{2\pi}        &
+              \lambda_{mn} & = \sqrt{\frac{T\pi^2}{\rho}} \cdot
+              \sqrt{\frac{m^2}{a^2} + \frac{n^2}{b^2}}            \\
+              T            & \to 2T                             &
+              \implies f   & \to \sqrt{2} f                       \\
+              \rho         & \to \rho/2                         &
+              \implies f   & \to \sqrt{2} f                       \\
+              a,b          & \to 2a, 2b                         &
+              \implies f   & \to  f/2
+          \end{align}
+
+    \item The small angle assumption enables the following approximation,
+          \begin{align}
+              \sin(\theta) \approxeq \theta \approxeq \tan(\theta)
+          \end{align}
+          The assumption that the tension in the membrane is constant at all points
+          in space and through time is unrealistic.
+
+    \item Nodal lines are points on the membrane that do not move. Since one half of
+          the nodal lines are the same as the other half with $ x, y $ interchanged,
+          only the nodal lines for $ n \geq m $ are depicted here.
+          \begin{align}
+              F_{mn} & = \sin(m\pi x)\ \sin(n\pi y) &
+              a      & = b = 1
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{11}$}, width = 8cm,
+                          xtick distance = 0.25, ytick distance = 0.25,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_p] (axis cs:0.005, 0.005) -- (axis cs:0.995, 0.005)
+                      -- (axis cs:0.995, 0.995) -- (axis cs:0.005, 0.995) -- cycle;
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{12}$}, width = 8cm,
+                          xtick distance = 0.25, ytick distance = 0.25,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_p] (axis cs:0, 0.5) -- (axis cs:1, 0.5);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{13}$}, width = 8cm,
+                          xtick distance = 0.25, ytick distance = 0.3333,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_p] (axis cs:0, 0.3333) -- (axis cs:1, 0.3333);
+                      \draw[thick, y_p] (axis cs:0, 0.6666) -- (axis cs:1, 0.6666);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{14}$}, width = 8cm,
+                          xtick distance = 0.25, ytick distance = 0.25,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_p] (axis cs:0, 0.25) -- (axis cs:1, 0.25);
+                      \draw[thick, y_p] (axis cs:0, 0.5) -- (axis cs:1, 0.5);
+                      \draw[thick, y_p] (axis cs:0, 0.75) -- (axis cs:1, 0.75);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{22}$}, width = 8cm,
+                          xtick distance = 0.25, ytick distance = 0.25,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_h] (axis cs:0, 0.5) -- (axis cs:1, 0.5);
+                      \draw[thick, y_h] (axis cs:0.5, 0) -- (axis cs:0.5, 1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{23}$}, width = 8cm,
+                          xtick distance = 0.25, ytick distance = 0.3333,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_h] (axis cs:0, 0.3333) -- (axis cs:1, 0.3333);
+                      \draw[thick, y_h] (axis cs:0, 0.6666) -- (axis cs:1, 0.6666);
+                      \draw[thick, y_h] (axis cs:0.5, 0) -- (axis cs:0.5, 1);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{24}$}, width = 8cm,
+                          xtick distance = 0.25, ytick distance = 0.25,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_h] (axis cs:0, 0.25) -- (axis cs:1, 0.25);
+                      \draw[thick, y_h] (axis cs:0, 0.5) -- (axis cs:1, 0.5);
+                      \draw[thick, y_h] (axis cs:0, 0.75) -- (axis cs:1, 0.75);
+                      \draw[thick, y_h] (axis cs:0.5, 0) -- (axis cs:0.5, 1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{33}$}, width = 8cm,
+                          xtick distance = 0.3333, ytick distance = 0.3333,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_t] (axis cs:0, 0.3333) -- (axis cs:1, 0.3333);
+                      \draw[thick, y_t] (axis cs:0, 0.6666) -- (axis cs:1, 0.6666);
+                      \draw[thick, y_t] (axis cs:0.3333, 0) -- (axis cs:0.3333, 1);
+                      \draw[thick, y_t] (axis cs:0.6666, 0) -- (axis cs:0.6666, 1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{34}$}, width = 8cm,
+                          xtick distance = 0.3333, ytick distance = 0.25,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_t] (axis cs:0, 0.25) -- (axis cs:1, 0.25);
+                      \draw[thick, y_t] (axis cs:0, 0.5) -- (axis cs:1, 0.5);
+                      \draw[thick, y_t] (axis cs:0, 0.75) -- (axis cs:1, 0.75);
+                      \draw[thick, y_t] (axis cs:0.3333, 0) -- (axis cs:0.3333, 1);
+                      \draw[thick, y_t] (axis cs:0.6666, 0) -- (axis cs:0.6666, 1);
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,
+                          title = {$F_{44}$}, width = 8cm,
+                          xtick distance = 0.25, ytick distance = 0.25,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, azure4] (axis cs:0, 0.25) -- (axis cs:1, 0.25);
+                      \draw[thick, azure4] (axis cs:0, 0.5) -- (axis cs:1, 0.5);
+                      \draw[thick, azure4] (axis cs:0, 0.75) -- (axis cs:1, 0.75);
+                      \draw[thick, azure4] (axis cs:0.25, 0) -- (axis cs:0.25, 1);
+                      \draw[thick, azure4] (axis cs:0.5, 0) -- (axis cs:0.5, 1);
+                      \draw[thick, azure4] (axis cs:0.75, 0) -- (axis cs:0.75, 1);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Representing the given initial displacement as a double Fourier series,
+          \begin{align}
+              f(x, y) & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin(m\pi x)\ \sin(n \pi y) \\
+              K_m(y)  & = 2 \int_{0}^{1} f(x, y)\ \sin(m\pi x)\ \dl x                 \\
+                      & = \Bigg[ \frac{2}{m\pi}\ \cos(m\pi x) \Bigg]_1^0
+              = \color{y_h} \frac{2[1 - \cos(m\pi)]}{m\pi}                            \\
+              B_{mn}  & = 2 \int_{0}^{1} K_m(y)\ \sin(n\pi y)\ \dl y                  \\
+                      & = \color{y_p} \frac{4}{mn\pi^2}
+              \ [1 - \cos(m\pi)][1 - \cos(n\pi)]
+          \end{align}
+
+    \item Representing the given initial displacement as a double Fourier series,
+          \begin{align}
+              f(x, y) & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin(m\pi x)\ \sin(n \pi y)  \\
+              K_m(y)  & = 2 \int_{0}^{1} (y)\ \sin(m\pi x)\ \dl x                      \\
+                      & = \Bigg[ \frac{2y}{m\pi}\ \cos(m\pi x) \Bigg]_1^0
+              = \color{y_h} \frac{2y}{m\pi}\ [1 - \cos(m\pi)]                          \\
+              B_{mn}  & = 2 \int_{0}^{1} K_m(y)\ \sin(n\pi y)\ \dl y                   \\
+                      & = \frac{4[1 - \cos(m\pi)]}{m\pi}
+              \int_{0}^{1} (y)\ \sin(n\pi y)\ \dl y                                    \\
+                      & = \frac{4[1 - \cos(m\pi)]}{m\pi}
+              \ \Bigg[ \frac{\sin(n\pi y) - n\pi y \cos(n\pi y)}{n^2 \pi^2} \Bigg]_0^1 \\
+                      & = \color{y_p} \frac{-4}{mn\pi^2}
+              \ [1 - \cos(m\pi)][\cos(n\pi)]
+          \end{align}
+
+    \item Representing the given initial displacement as a double Fourier series,
+          \begin{align}
+              f(x, y) & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin(m\pi x)
+              \ \sin(n \pi y)                                               \\
+              K_m(y)  & = 2 \int_{0}^{1} (x)\ \sin(m\pi x)\ \dl x           \\
+                      & = 2\Bigg[ \frac{\sin(m\pi x) - m\pi x \cos(m\pi x)}
+                  {m^2 \pi^2} \Bigg]_0^1
+              = \color{y_h} \frac{-2\cos(m\pi)}{m\pi}                       \\
+              B_{mn}  & = 2 \int_{0}^{1} K_m(y)\ \sin(n\pi y)\ \dl y        \\
+                      & = \frac{-4\cos(m\pi)}{m\pi}
+              \int_{0}^{1} \sin(n\pi y)\ \dl y                              \\
+                      & = \frac{-4\cos(m\pi)}{m\pi}
+              \ \Bigg[ \frac{\cos(n\pi y)}{n\pi} \Bigg]_1^0                 \\
+                      & = \color{y_p} \frac{-4}{mn\pi^2}
+              \ [1 - \cos(n\pi)][\cos(m\pi)]
+          \end{align}
+
+    \item Representing the given initial displacement as a double Fourier series,
+          \begin{align}
+              f(x, y) & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin\Big( \frac{m\pi x }{a}
+              \Big)\ \sin\Big( \frac{n\pi y }{b}\Big)                                 \\
+              K_m(y)  & = \frac{2}{a} \int_{0}^{a} (xy)\ \sin\Big( \frac{m\pi x }{a}
+              \Big)\ \dl x                                                            \\
+                      & = \frac{2y}{m^2 \pi^2}\ \Bigg[ a\ \sin\Big( \frac{m\pi x }{a}
+                  \Big) + (m\pi x) \cos\Big( \frac{m\pi x }{a} \Big) \Bigg]_0^a
+              = \color{y_h} \frac{2ay\cos(m\pi)}{m\pi}                                \\
+              B_{mn}  & = \frac{2}{b} \int_{0}^{b} K_m(y)\ \sin\Big(\frac{n\pi y }{b}
+              \Big)\ \dl y                                                            \\
+                      & = \frac{4a\cos(m\pi)}{bm\pi}
+              \int_{0}^{b} (y)\ \sin\Big( \frac{n\pi y }{b}\Big)\ \dl y               \\
+                      & = \frac{4a\cos(m\pi)}{m\pi\ (n^2\pi^2)}
+              \ \Bigg[ b\ \sin\Big( \frac{n\pi y }{b}
+              \Big) + (n\pi y) \cos\Big( \frac{n\pi y }{b} \Big) \Bigg]_0^b           \\
+                      & = \color{y_p} \frac{4ab}{mn\pi^2}
+              \ [\cos(n\pi)\ \cos(m\pi)]
+          \end{align}
+
+    \item Representing the given initial displacement as a double Fourier series,
+          \begin{align}
+              f(x, y) & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin\Big( \frac{m\pi x }{a}
+              \Big)\ \sin\Big( \frac{n\pi y }{b}\Big)                                 \\
+              K_m(y)  & = \frac{2}{a} \int_{0}^{a} (xy)(a-x)(b-y)\ \sin\Big(
+              \frac{m\pi x }{a}\Big)\ \dl x                                           \\
+                      & = \frac{2y(b-y)}{a m^3 \pi^3}\ \Bigg[ h(x)
+              \ \sin\Big( \frac{m\pi x }{a} \Big)
+              + [(m^2\pi^2 x)(x-a) - 2a^2]\ \cos\Big( \frac{m\pi x }{a} \Big)
+              \Bigg]_0^a                                                              \\
+                      & = \color{y_h} \frac{4ay(b-y)}{m^3\pi^3}
+              \ [1 - \cos(m\pi)]                                                      \\
+              B_{mn}  & = \frac{2}{b} \int_{0}^{b} K_m(y)\ \sin\Big(\frac{n\pi y }{b}
+              \Big)\ \dl y                                                            \\
+                      & = \frac{8a[1 - \cos(m\pi)]}{bm^3\pi^3}
+              \int_{0}^{b} (y)(b-y)\ \sin\Big( \frac{n\pi y }{b}\Big)\ \dl y          \\
+                      & = \frac{8a[1 - \cos(m\pi)]}{bm^3n^3\pi^6}
+              \ \Bigg[ h(y)\ \sin\Big( \frac{n\pi y }{b} \Big)
+              + [(n^2\pi^2 y)(y-b) - 2b^2]\ \cos\Big( \frac{n\pi y }{b} \Big)
+              \Bigg]_0^b                                                              \\
+                      & = \color{y_p} \frac{16ab}{m^3n^3\pi^6}
+              \ [1 - \cos(n\pi)]\ [1 - \cos(m\pi)]
+          \end{align}
+
+    \item Using \texttt{gnuplot} to plot the series sum,
+          \begin{enumerate}
+              \item For problem $ 5 $,
+                    \begin{align}
+                        f(x, y) & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin(m\pi x)
+                        \ \sin(n\pi y) = y                                       \\
+                        B_{mn}  & = \frac{-4}{mn\pi^2}
+                        \ [1 - \cos(m\pi)][\cos(n\pi)]
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        Fou(\m,\n,\x,\y) = sin(\m * pi * \x)
+                                        * sin(\n * pi * y) * cos(\n * pi)
+                                        * ((-8) / (\m * \n * pi^2));
+                                    }]
+                            \begin{axis}[
+                                    title = {$ S_{5,5} $ partial sum},
+                                    width = 14cm, height = 14cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = 0:0.5, y domain = 0:0.5,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$u$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.75, samples = 50,
+                                    faceted color = black] {Fou(1,1,x,y) + Fou(1,2,x,y)
+                                    + Fou(1,3,x,y) + Fou(1,4,x,y) + Fou(1,5,x,y) +
+                                    Fou(3,1,x,y) + Fou(3,2,x,y)
+                                    + Fou(3,3,x,y) + Fou(3,4,x,y) + Fou(3,5,x,y) +
+                                    Fou(5,1,x,y) + Fou(5,2,x,y)
+                                    + Fou(5,3,x,y) + Fou(5,4,x,y) + Fou(5,5,x,y)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+                    For problem $ 6 $,
+                    \begin{align}
+                        f(x, y) & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin(m\pi x)
+                        \ \sin(n\pi y) = y                                       \\
+                        B_{mn}  & = \frac{-4}{mn\pi^2}
+                        \ [1 - \cos(n\pi)][\cos(m\pi)]
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        Fou(\m,\n,\x,\y) = sin(\m * pi * \x)
+                                        * sin(\n * pi * y) * cos(\m * pi)
+                                        * ((-8) / (\m * \n * pi^2));
+                                    }]
+                            \begin{axis}[
+                                    title = {$ S_{5,5} $ partial sum},
+                                    width = 14cm, height = 14cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = 0:0.5, y domain = 0:0.5,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$u$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.75, samples = 50,
+                                    faceted color = black] {Fou(1,1,x,y) + Fou(2,1,x,y)
+                                    + Fou(3,1,x,y) + Fou(4,1,x,y) + Fou(5,1,x,y) +
+                                    Fou(1,3,x,y) + Fou(2,3,x,y)
+                                    + Fou(3,3,x,y) + Fou(4,3,x,y) + Fou(5,3,x,y) +
+                                    Fou(1,5,x,y) + Fou(2,5,x,y)
+                                    + Fou(3,5,x,y) + Fou(4,5,x,y) + Fou(5,5,x,y)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item For problem $ 4 $,
+                    \begin{align}
+                        f(x, y) & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin(m\pi x)
+                        \ \sin(n\pi y) = y                                       \\
+                        B_{mn}  & = \frac{-4}{mn\pi^2}
+                        \ [1 - \cos(n\pi)][\cos(m\pi)]
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        Fou(\m,\n,\x,\y) = sin(\m * pi * \x)
+                                        * sin(\n * pi * y)
+                                        * ((16) / (\m * \n * pi^2));
+                                    }]
+                            \begin{axis}[
+                                    title = {$ S_{9,9} $ partial sum},
+                                    width = 14cm, height = 14cm,
+                                    grid = none,
+                                    ticks = none,
+                                    view={30}{30},domain = 0:0.5, y domain = 0:0.5,
+                                    xlabel=$x$,ylabel=$y$,zlabel=$u$,
+                                    colormap/jet,
+                                    Ani]
+                                \addplot3 [surf, opacity= 0.75, samples = 50,
+                                    faceted color = black] {Fou(1,1,x,y) + Fou(3,1,x,y)
+                                    + Fou(5,1,x,y) + Fou(7,1,x,y) + Fou(9,1,x,y) +
+                                    Fou(1,3,x,y) + Fou(3,3,x,y)
+                                    + Fou(5,3,x,y) + Fou(7,3,x,y) + Fou(9,3,x,y) +
+                                    Fou(1,5,x,y) + Fou(3,5,x,y)
+                                    + Fou(5,5,x,y) + Fou(7,5,x,y) + Fou(9,5,x,y) +
+                                    Fou(1,7,x,y) + Fou(3,7,x,y)
+                                    + Fou(5,7,x,y) + Fou(7,7,x,y) + Fou(9,7,x,y) +
+                                    Fou(1,9,x,y) + Fou(3,9,x,y)
+                                    + Fou(5,9,x,y) + Fou(7,9,x,y) + Fou(9,9,x,y)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item TBC.
+          \end{enumerate}
+
+    \item The same number has to be decomposed into the sums of squares of integers
+          in two different ways. This is achieved using the Brahmagupta-Fibonacci
+          identity. Using \texttt{python},
+          \begin{align}
+              (a^2 + b^2)(c^2 + d^2)      & = \color{y_h}(ac - bd)^2 + (ad + bc)^2 \\
+                                          & = \color{y_p}(ac + bd)^2 + (ad - bc)^2 \\
+              65 = (1^2 + 2^2)(2^2 + 3^2) & = \color{y_h}(4)^2 + (7)^2             \\
+                                          & = \color{y_p}(8)^2 + (1)^2
+          \end{align}
+          Brute force algorithm which fits integers $ a,b,c,d $ into the above formula
+          such that the right hand side does not have zero terms. \par
+          Further, impose the constraint $ (ad + bc) \neq (ac + bd) $. Nodal lines TBC.
+
+    \item Given the side length $ a = b = \pi $ and $ c^2 = 1 $, and zero initial
+          velocity,
+          \begin{align}
+              f(x, y)    & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin(mx)
+              \ \sin(ny)                                                          \\
+              K_m(y)     & = \frac{2}{\pi} \int_{0}^{\pi} (0.1\sin(2x)\sin(4y))
+              \ \sin(mx)\ \dl x                                                   \\
+                         & = \color{y_h} \begin{cases}
+                                             0.1\sin(4y) & \quad m = 2            \\
+                                             0           & \quad \text{otherwise} \\
+                                         \end{cases}     \\
+              B_{mn}     & = \frac{2}{\pi} \int_{0}^{\pi} K_m(y)\ \sin(ny)\ \dl y \\
+                         & = \frac{2}{\pi} \int_{0}^{\pi} (0.1\sin 4y)\ \sin(ny)
+              \ \dl y                                                             \\
+                         & = \color{y_p} \begin{cases}
+                                             0.1 & \quad m = 2, n = 4     \\
+                                             0   & \quad \text{otherwise} \\
+                                         \end{cases}             \\
+              u(x, y, t) & = 0.1 \cos(\sqrt{20}t)\ \sin(2x)\ \sin(4y)
+          \end{align}
+
+    \item Using the fact that $ f(x) $ is already a term in the double Fourier
+          series,
+          \begin{align}
+              u(x, y, t) & = 0.01 \cos(\sqrt{2}t)\ \sin(x)\ \sin(y)
+          \end{align}
+
+    \item Using the result from Problem $ 8 $,
+          \begin{align}
+              f(x, y)    & = \iser[m]{1} \iser[n]{1} B_{mn}\ \sin(mx)\ \sin(ny)  \\
+              K_m(y)     & = \frac{2}{\pi} \int_{0}^{\pi} (xy)(\pi - x)(\pi - y)
+              \ \sin(mx)\ \dl x                                                  \\
+                         & = \frac{2y(\pi-y)}{m^3 \pi}\ \Bigg[ h(x)
+              \ \sin(mx) + [(m^2x)(x-\pi) - 2]\ \cos(mx)\Bigg]_0^\pi             \\
+                         & = \color{y_h} \frac{4y(\pi-y)}{m^3\pi}
+              \ [1 - \cos(m\pi)]                                                 \\
+              B_{mn}     & = \frac{2}{b} \int_{0}^{b} K_m(y)
+              \ \sin\Big(\frac{n\pi y }{b} \Big)\ \dl y                          \\
+                         & = \frac{8[1 - \cos(m\pi)]}{m^3\pi^2}
+              \int_{0}^{b} (y)(b-y)\ \sin(ny)\ \dl y                             \\
+                         & = \color{y_p} \frac{16}{m^3n^3\pi^2}
+              \ [1 - \cos(n\pi)]\ [1 - \cos(m\pi)]                               \\
+              u(x, y, t) & = 0.1B_{mn}\ \sin(mx)\ \sin(ny)
+          \end{align}
+
+    \item The nodal lines are located when,
+          \begin{align}
+              \sin\Big( \frac{m\pi x}{4} \Big)                & = 0 &
+              \text{or}\quad \sin\Big( \frac{n\pi y}{2} \Big) & = 0   \\
+          \end{align}
+          The amplitude of each term varies as $ (mn)^{-3} $. Clearly, this decays very
+          quickly in $ m,n $, which means that the first term dominates the series sum.
+
+    \item Nodal lines are points on the membrane that do not move. Since one half of
+          the nodal lines are the same as the other half with $ x, y $ interchanged,
+          only the nodal lines for $ n \geq m $ are depicted here.
+          \begin{align}
+              F_{mn} & = \sin(m\pi x)\ \sin(n\pi y) &
+              a      & = 4 \qquad\qquad b = 2
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{11}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 1, ytick distance = 1,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_p] (axis cs:0.005, 0.005) -- (axis cs:3.995, 0.005)
+                      -- (axis cs:3.995, 1.995) -- (axis cs:0.005, 1.995) -- cycle;
+                  \end{axis}
+              \end{tikzpicture}
+              \vspace{1em}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{12}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 1, ytick distance = 1,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_p] (axis cs:0, 1) -- (axis cs:4, 1);
+                  \end{axis}
+              \end{tikzpicture}
+              \vspace{1em}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{13}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 1, ytick distance = 2*0.3333,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_p] (axis cs:0, 2*0.3333) -- (axis cs:4, 2*0.3333);
+                      \draw[thick, y_p] (axis cs:0, 2*0.6666) -- (axis cs:4, 2*0.6666);
+                  \end{axis}
+              \end{tikzpicture}
+              \vspace{1em}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{14}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 1, ytick distance = 0.5,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_p] (axis cs:0, 0.5) -- (axis cs:4, 0.5);
+                      \draw[thick, y_p] (axis cs:0, 1) -- (axis cs:4, 1);
+                      \draw[thick, y_p] (axis cs:0, 1.5) -- (axis cs:4, 1.5);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{22}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 1, ytick distance = 0.5,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_h] (axis cs:0, 1) -- (axis cs:4, 1);
+                      \draw[thick, y_h] (axis cs:2, 0) -- (axis cs:2, 2);
+                  \end{axis}
+              \end{tikzpicture}
+              \vspace{1em}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{23}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 1, ytick distance = 2*0.3333,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_h] (axis cs:0, 2*0.3333) -- (axis cs:4, 2*0.3333);
+                      \draw[thick, y_h] (axis cs:0, 2*0.6666) -- (axis cs:4, 2*0.6666);
+                      \draw[thick, y_h] (axis cs:2, 0) -- (axis cs:2, 2);
+                  \end{axis}
+              \end{tikzpicture}
+              \vspace{1em}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{24}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 1, ytick distance = 0.5,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_h] (axis cs:0, 0.5) -- (axis cs:4, 0.5);
+                      \draw[thick, y_h] (axis cs:0, 1) -- (axis cs:4, 1);
+                      \draw[thick, y_h] (axis cs:0, 1.5) -- (axis cs:4, 1.5);
+                      \draw[thick, y_h] (axis cs:2, 0) -- (axis cs:2, 2);
+                  \end{axis}
+              \end{tikzpicture}
+              \vspace{1em}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{33}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 2*0.3333, ytick distance = 1.3333,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_t] (axis cs:0, 2*0.3333) -- (axis cs:4, 2*0.3333);
+                      \draw[thick, y_t] (axis cs:0, 2*0.6666) -- (axis cs:4, 2*0.6666);
+                      \draw[thick, y_t] (axis cs:4*0.3333, 0) -- (axis cs:4*0.3333, 4);
+                      \draw[thick, y_t] (axis cs:4*0.6666, 0) -- (axis cs:4*0.6666, 4);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{34}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 4*0.3333, ytick distance = 0.5,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, y_t] (axis cs:0, 0.5) -- (axis cs:4, 0.5);
+                      \draw[thick, y_t] (axis cs:0, 1) -- (axis cs:4, 1);
+                      \draw[thick, y_t] (axis cs:0, 1.5) -- (axis cs:4, 1.5);
+                      \draw[thick, y_t] (axis cs:4*0.3333, 0) -- (axis cs:4*0.3333, 2);
+                      \draw[thick, y_t] (axis cs:4*0.6666, 0) -- (axis cs:4*0.6666, 2);
+                  \end{axis}
+              \end{tikzpicture}
+              \vspace{1em}
+              \begin{tikzpicture}
+                  \begin{axis}[xmin=0,xmax=4,ymin=0,ymax=2, axis equal,
+                          title = {$F_{44}$}, width = 10.45cm, height = 6cm,
+                          xtick distance = 1, ytick distance = 0.5,
+                          grid = both,Ani,
+                          enlargelimits = false]
+                      \draw[thick, azure4] (axis cs:0, 0.5) -- (axis cs:4, 0.5);
+                      \draw[thick, azure4] (axis cs:0, 1) -- (axis cs:4, 1);
+                      \draw[thick, azure4] (axis cs:0, 1.5) -- (axis cs:4, 1.5);
+                      \draw[thick, azure4] (axis cs:1, 0) -- (axis cs:1, 2);
+                      \draw[thick, azure4] (axis cs:2, 0) -- (axis cs:2, 2);
+                      \draw[thick, azure4] (axis cs:3, 0) -- (axis cs:3, 2);
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using integration by parts,
+          \begin{align}
+              I_1 & = \int_{0}^{4} (4x - x^2) \sin \Big( \frac{m\pi x}{4} \Big)\ \dl x \\
+                  & = \Bigg[\frac{4(x^2 - 4x)}{m\pi}\ \cos \Big( \frac{m\pi x}{4}
+                  \Big)\Bigg]_0^4 + \int_{0}^{4} \frac{4(4 - 2x)}{m\pi}\ \cos \Big(
+              \frac{m\pi x}{4} \Big) \ \dl x                                           \\
+                  & = \Bigg[ \frac{16(4 - 2x)}{m^2\pi^2}
+                  \sin \Big( \frac{m\pi x}{4} \Big) \Bigg]_0^4 + \int_{0}^{4}
+              \frac{32}{m^2\pi^2}\ \sin\Big( \frac{m\pi x}{4} \Big)\ \dl x             \\
+                  & = \Bigg[ \frac{128}{m^3\pi^3}\ \cos\Big( \frac{m\pi x}{4}
+                  \Big)\Bigg]_4^0 = \color{y_h} \frac{128}{m^3\pi^3}\ [1 - \cos(m\pi)]
+          \end{align}
+          For the integral in $ y $,
+          \begin{align}
+              I_2 & = \int_{0}^{2} (2y - y^2) \sin \Big( \frac{n\pi y}{2} \Big)\ \dl y \\
+                  & = \Bigg[\frac{2(y^2 - 2y)}{n\pi}\ \cos \Big( \frac{n\pi y}{2}
+                  \Big)\Bigg]_0^2 + \int_{0}^{2} \frac{2(2 - 2y)}{n\pi}\ \cos \Big(
+              \frac{n\pi y}{2} \Big) \ \dl y                                           \\
+                  & = \Bigg[ \frac{4(2 - 2y)}{n^2\pi^2}
+                  \sin \Big( \frac{n\pi y}{2} \Big) \Bigg]_0^2 + \int_{0}^{2}
+              \frac{8}{n^2\pi^2}\ \sin\Big( \frac{n\pi y}{2} \Big)\ \dl y              \\
+                  & = \Bigg[ \frac{16}{n^3\pi^3}\ \cos\Big( \frac{n\pi y}{2}
+                  \Big)\Bigg]_2^0 = \color{y_p} \frac{16}{n^3\pi^3}\ [1 - \cos(n\pi)]
+          \end{align}
+
+    \item Using the code form Problem $ 10 $, and taking a simple example,
+          \begin{align}
+              145      & = \color{y_h} 8^2 + 9^2               &
+                       & = \Bigl(\frac{m_1}{2}\Bigr)^2 + n_1^2   \\
+                       & = \color{y_p} 12^2 + 1^2              &
+                       & = \Bigl(\frac{m_2}{2}\Bigr)^2 + n_2^2   \\
+              m_1, n_1 & = 16, 3                               &
+              m_2, n_2 & = 24, 1
+          \end{align}
+
+    \item Minimizing the frequency with respect to the ratio of the sides of the
+          rectangle,
+          \begin{align}
+              \lambda_{11}                  & = c\pi
+              \sqrt{\left(\frac{1}{a}\right)^2 +
+              \left( \frac{1}{b} \right)^2} &
+              b                             & = \frac{K}{a}                 \\
+              \diff {\lambda_{11}}{a}       & = 0                         &
+              \implies 0                    & = -2a^{-3} + \frac{2a}{K^2}   \\
+              K^2                           & = a^4                       &
+              a                             & = \sqrt{K} = b
+          \end{align}
+          Since both sides are equal, the minimum is achieved for a square membrane.
+
+    \item Using the standard result, and the fact that the initial deflection is already
+          a term in the double Fourier series,
+          \begin{align}
+              B_{mn}   & = \begin{dcases}
+                               1 & \quad m=6, n=2         \\
+                               0 & \quad \text{otherwise}
+                           \end{dcases}                   \\
+              u(x,y,t) & = \cos\Bigg( \sqrt{\Big( \frac{6}{a} \Big)^2 +
+                  \Big( \frac{2}{b} \Big)^2}\ \pi t \Bigg)\ \sin \Big( \frac{6\pi x}{a}
+              \Big)\ \sin\Big( \frac{2\pi y}{b} \Big)
+          \end{align}
+
+    \item Using Newton's second law,
+          \begin{align}
+              u_{tt}                                 & = \frac{T}{\rho}\ \nabla^2 u
+              + \frac{F_{\text{ext}}}{\rho \Delta A} &
+              P                                      & = \frac{F}{\Delta A}         \\
+              u_{tt}                                 & = c^2\ \nabla^2 u
+              + \frac{P}{\rho}
+          \end{align}
+\end{enumerate}

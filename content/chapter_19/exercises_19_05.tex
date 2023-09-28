@@ -1,0 +1,404 @@
+\section{Numeric Integration and Differentiation}
+
+\begin{enumerate}
+    \item Coded in \texttt{sympy}
+          \begin{align}
+              J_r & = 0.747131 & \epsilon_r & = -\num{3.07d-4}
+          \end{align}
+          Since the function is monotonically decreasing in the domain $ [0,1] $,
+          $ J_r $ is larger than $ J_t $
+
+    \item For a single subinterval, whose midpoint is $ c = x_0 + h/2 = (x_0 + x_1)/2 $,
+
+          Using the Taylor expansion of $ (x - c_0) $ about $ c $,
+          \begin{align}
+              f(x) & = f(c) + (x-c)\ f'(c) + (x-c)^2\ \frac{f''\{t(x)\}}{2!}       \\
+              \int_{x_0}^{x_0+h} [f(x) - f(c)]\ \dl x
+                   & = \int_{c-h/2}^{c+h/2} (x-c)\ f'(c)\ \dl x                    \\
+                   & + \int_{c-h/2}^{c+h/2} (x-c)^2\ \frac{f''\{t(x)\}}{2!}\ \dl x
+          \end{align}
+          Here, $ t^* \in [x_0, x_0 + h] $ in accordance with the Mean value theorem for
+          integration.
+          \begin{align}
+              \epsilon_{M,j}         & = 0 + \Bigg[\frac{(x-c)^3}{6}\ f''(t_j^*)
+              \Bigg]_{c-h/2}^{c+h/2} &
+              \epsilon_{M,j}         & = \frac{h^3}{24}\ f''(t_j)                \\
+              \epsilon_M             & = \frac{(b-a)}{24}\ h^2f''(t^*)
+          \end{align}
+          Here, $ t^* $ is some suitable value in $ [a, b] $, whereas $ t_j $ is a
+          value between $ x_j, x_{j+1} $. \par
+          Applying this error formula to Problem $ 1 $,
+          \begin{align}
+              h        & = 0.1
+                       & (b-a)                      & = 1 \\
+              \epsilon & = \frac{0.001}{24}\ f''(t) &
+              f''(t)   & = e^{-x^2} [-2 + 4x^2]           \\
+              f'''(t)  & = e^{-x^2} [12x - 8x^3]
+          \end{align}
+          Since $ f'''(t) > 0 $ in the entire interval of integration, the second
+          derivative is monotonically increasing
+          \begin{align}
+              \epsilon_{\text{min}} & = -0.0008333             &
+              \epsilon_{\text{max}} & = 0.0003066                \\
+              J_M                   & = [0.7462977, 0.7474376]
+          \end{align}
+
+    \item Tabulating the results and the corresponding errors,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ h $ & Value   & Error     \\\hline
+                  1     & 0.5     & -0.166667 \\
+                  0.5   & 0.375   & -0.04167  \\
+                  0.25  & 0.34375 & -0.010412 \\
+                  0.1   & 0.335   & -0.001667 \\
+                  \hline
+              \end{tblr}
+          \end{table}
+          The relation $ \epsilon \propto h^2 $ seems to hold.
+
+    \item Using the practical error estimate, for $ f(x) = x^4 $
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ h $ & $ J_h $  & $ J_{h/2} $ & Practical Error & True Error \\\hline
+                  1     & 0.5      & 0.28125     & -0.0729167      & -0.3       \\
+                  0.5   & 0.28125  & 0.220703    & -0.020182       & -0.08125   \\
+                  0.25  & 0.220703 & 0.205200    & -0.00516767     & -0.020703  \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Using the practical error estimate, for $ f(x) = \sin(\pi x/2) $
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ h $ & $ J_h $  & $ J_{h/2} $ & Practical Error & True Error \\\hline
+                  1     & 0.5      & 0.603553    & 0.0345178       & 0.033066   \\
+                  0.5   & 0.603553 & 0.628417    & 0.008288        & 0.008202   \\
+                  0.25  & 0.628417 & 0.634573    & 0.002052        & 0.002047   \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Let the individual roundoff errors be $ \delta_j $
+          \begin{align}
+              \epsilon       & = \frac{h}{2}\ \abs{\delta_0 + 2\delta_1
+                  + \dots + 2\delta_{n-1} + \delta_n}
+                             &
+              \abs{\delta_j} & \leq u                                     \\
+              \epsilon       & \leq \frac{(b-a)}{2n}\ (2nu)             &
+              \epsilon       & \leq (b-a)u
+          \end{align}
+          Since the error bound is independent of the number of subintervals $ n $, the
+          algorithm is numerically stable.
+
+    \item Using Simpson's rule coded in \texttt{numpy}
+          \begin{align}
+              J          & = \int_{1}^{2} \frac{1}{x}\ \dl x &
+              2m         & = 4                                 \\
+              J_S        & = 0.693254                        &
+              \epsilon_S & = -0.000107
+          \end{align}
+
+    \item Using Simpson's rule coded in \texttt{numpy}
+          \begin{align}
+              J          & = \int_{1}^{2} \frac{1}{x}\ \dl x &
+              2m         & = 10                                \\
+              J_S        & = 0.693150                        &
+              \epsilon_S & = -0.000003
+          \end{align}
+
+    \item Using Simpson's rule coded in \texttt{numpy}
+          \begin{align}
+              J          & = \int_{0}^{0.4} xe^{-x^2}\ \dl x &
+              2m         & = 4                                 \\
+              J_S        & = 0.0739303                       &
+              \epsilon_S & = -\num{2.2494d-6}
+          \end{align}
+
+    \item Using Simpson's rule coded in \texttt{numpy}
+          \begin{align}
+              J          & = \int_{0}^{0.4} xe^{-x^2}\ \dl x &
+              2m         & = 10                                \\
+              J_S        & = 0.0739282                       &
+              \epsilon_S & = -\num{5.6817d-8}
+          \end{align}
+
+    \item Using Simpson's rule coded in \texttt{numpy}
+          \begin{align}
+              J          & = \int_{0}^{1} \frac{1}{1 + x^2}\ \dl x &
+              2m         & = 4                                       \\
+              J_S        & = 0.785392                              &
+              \epsilon_S & = \num{6.0065d-6}
+          \end{align}
+
+    \item Using Simpson's rule coded in \texttt{numpy}
+          \begin{align}
+              J          & = \int_{0}^{1} \frac{1}{1 + x^2}\ \dl x &
+              2m         & = 10                                      \\
+              J_S        & = 0.785398                              &
+              \epsilon_S & = \num{9.9126d-9}
+          \end{align}
+
+    \item For the practical error estimate,
+          \begin{align}
+              J            & = \int_{0}^{1} \frac{1}{1 + x^2}\ \dl x          &
+              2m           & = 8                                                \\
+              J_8          & = 0.785398125                                    &
+              J_4          & = 0.785392157                                      \\
+              \epsilon_8   & \approxeq \frac{J_8 - J_4}{15} = \num{3.9786d-7} &
+              \epsilon^*_8 & = \num{3.778d-8}
+          \end{align}
+
+    \item Using Simpson's rule coded in \texttt{numpy}
+          \begin{align}
+              J            & = \int_{0}^{2} e^{-x}\ \dl x                        \\
+              J_2          & = 0.868951                                        &
+              \epsilon_2   & = \num{4.2862d-3}                                   \\
+              J_4          & = 0.864956                                        &
+              \epsilon_4   & = -\num{2.9152d-4}                                  \\
+              \epsilon^*_4 & \approxeq \frac{J_4 - J_2}{15} = -\num{2.6633d-4}
+          \end{align}
+
+    \item Checking the number of subintervals needed,
+          \begin{enumerate}
+              \item Using the trapezoidal rule,
+                    \begin{align}
+                        A                & = \int_{1}^{2} \frac{1}{x}\ \dl x = \ln 2 &
+                        \epsilon_T       & = -\frac{(2-1)^3}{12n^2}\ \frac{2}{t^3}     \\
+                        \epsilon_T       & = \frac{1}{6n^2} < \num{0.5d-5}           &
+                        \implies \quad n & \geq 183
+                    \end{align}
+              \item Using the simpson rule,
+                    \begin{align}
+                        A                & = \int_{1}^{2} \frac{1}{x}\ \dl x = \ln 2 &
+                        \epsilon_S       & = -\frac{(2-1)^5}{180n^4}\ \frac{24}{t^5}   \\
+                        \epsilon_S       & = \frac{2}{15n^4} < \num{0.5d-5}          &
+                        \implies \quad n & \geq 13
+                    \end{align}
+                    However, since $ n $ has to be even, the answer is $ n = 14 $
+          \end{enumerate}
+
+    \item Using the practical error estimate, for $ f(x) = \sin(x) / x $
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ h $ & $ J_h $   & $ J_{h/2} $ & Practical Error & True Error  \\
+                  \hline
+                  0.2   & 0.9450787 & 0.9458321   & 0.0644415       & 0.0010043   \\
+                  0.1   & 0.9458321 & 0.9460203   & 0.0002511       & 0.000250998 \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Using the practical error estimate, for $ f(x) = \sin(x) / x $
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ 2m $ & $ J_h $    & $ J_{h/2} $ & Practical Error & True Error     \\
+                  \hline
+                  2      & 0.94614588 & 0.94608693  & -0.015244       & -\num{6.28d-5} \\
+                  4      & 0.94608693 & 0.94608331  & -\num{3.929d-6} & -\num{2.86d-6} \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Using the tabulated data in Problem $ 17 $,
+          \begin{align}
+              J_4          & \approxeq 0.94608693 - 3.929*10^{-6} &
+              J_4          & \approxeq 0.946083001                  \\
+              \epsilon_4^* & =\num{6.9d-8}
+          \end{align}
+          This is 2 orders of magnitude a smaller error than the $ J_4 $ calculation on
+          its own.
+
+    \item Using the practical error estimate, for $ f(x) = \sin(x) / x $
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ 2m $ & $ J_h $       & True Error      \\ \hline
+                  10     & 0.94608316883 & -\num{9.847d-8} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Using the practical error estimate, for $ f(x) = \sin(x^2) $
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ 2m $ & $ J_h $    & True Error       \\ \hline
+                  10     & 0.54594097 & \num{2.21314d-5} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Using the practical error estimate, for $ f(x) = \cos(x^2) $
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ 2m $ & $ J_h $    & True Error       \\ \hline
+                  10     & 0.97745853 & \num{2.08592d-5} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Transforming from $ x \to t $,
+          \begin{align}
+              x   & = \frac{a(1-t) + b(1+t)}{2} = \frac{\pi}{4}\ (1 + t)        &
+              J   & = \int_{0}^{\pi/2} \cos(x)\ \dl x                             \\
+              J^* & = \pi/4\ \int_{-1}^{1} \cos\Bigg[ \frac{\pi(t+1)}{4} \Bigg]
+              \ \dl t
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ n $ & Approximation  & True Error       \\ \hline
+                  5     & 1 + $ \delta $ & \num{-3.956d-11} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Transforming from $ x \to t $,
+          \begin{align}
+              x   & = \frac{a(1-t) + b(1+t)}{2} = \frac{1}{2}\ (1 + t)                &
+              J   & = \int_{0}^{1} xe^{-x}\ \dl x                                       \\
+              J^* & = \frac{1}{2}\ \int_{-1}^{1} \cos\Bigg[ \frac{\pi(t+1)}{4} \Bigg]
+              \ \dl t
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ n $ & Approximation & True Error        \\ \hline
+                  5     & 0.26424111766 & \num{-2.2874d-12} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Transforming from $ x \to t $,
+          \begin{align}
+              x   & = \frac{a(1-t) + b(1+t)}{2} = \frac{5}{8}\ (1 + t)       &
+              J   & = \int_{0}^{1.25} \sin(x^2)\ \dl x                         \\
+              J^* & = \frac{5}{8}\ \int_{-1}^{1} \sin\Bigg[ \frac{5(t+1)}{8}
+                  \Bigg]^2 \ \dl t
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ n $ & Approximation & True Error       \\ \hline
+                  5     & 0.545962669   & \num{-3.8273d-7} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item Transforming from $ x \to t $,
+          \begin{align}
+              x   & = \frac{a(1-t) + b(1+t)}{2} = \frac{1}{2}\ (1 + t)        &
+              J   & = \int_{0}^{1} e^{-x^2}\ \dl x                              \\
+              J^* & = \frac{1}{2}\ \int_{-1}^{1} \exp\Bigg[-\frac{(1+t)^2}{4}
+                  \Bigg] \ \dl t
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ n $ & Approximation & True Error       \\ \hline
+                  5     & 0.74682412676 & \num{6.04617d-9} \\ \hline
+              \end{tblr}
+          \end{table}
+
+    \item TBC
+
+    \item Using the three formulas,
+          \begin{align}
+              f(x)              & = x^4                                            &
+              f'(x)             & = 4x^3                                             \\
+              f'(0.4)           & = \frac{-3(0.4)^4 + 4(0.6)^4 - 1(0.8)^4}{2(0.2)}
+              = 0.08            &
+              \epsilon_a        & = 0.176                                            \\
+              f'(0.4)           & = \frac{-(0.2)^4 + (0.6)^4}{2(0.2)} = 0.32       &
+              \epsilon_b        & = -0.064                                           \\
+              f'(0.4)           & = \frac{1(0)^4 - 4(0.2)^4 + 3(0.4)^4}{2(0.2)}
+              = 0.176           &
+              \epsilon_c        & = 0.08                                             \\
+              f'(0.4)           & = \frac{1(0)^4 - 8(0.2)^4 + 8(0.6)^4 - (0.8)^4}
+              {12(0.2)} = 0.256 &
+              \epsilon_d        & = 0
+          \end{align}
+          The central difference formula using nearest neighbours is more accurate than
+          the forward and backward three point formulas. \par
+          Since the last formula used a fourth degree Lagrange polynomial as interpolant,
+          it was able to replicate the function $ f(x) $ exactly.
+
+    \item Using the three formulas,
+          \begin{align}
+              f(x)            & = x^4                                               &
+              f'(x)           & = 4x^3                                                \\
+              f'(0.4)         & = \frac{-2(0.2)^4 - 3(0.4)^4 + 6(0.6)^4  - (0.8)^4}
+              {6(0.2)} = 0.24 &
+              \epsilon^*      & = 0.016
+          \end{align}
+          This is worse than the three point centered difference formula, but better
+          than the three point backward and forward formulas. \par
+          Since this interpolant is only a third degree polynomial (four nodes in the
+          formula), it cannot exactly match a fourth degree polynomial.
+
+    \item Using the point $ x = 0.4 $ and the next 4 forward points,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{
+                  colspec = {r|[dotted]r|[dotted]r},
+                  colsep = 1em}
+                  $ n $ & Approximation & True Error \\ \hline
+                  2     & 0.52          & -0.264     \\
+                  3     & 0.08          & 0.176      \\
+                  4     & 0.304         & -0.048     \\
+                  5     & 0.256         & 0          \\ \hline
+              \end{tblr}
+          \end{table}
+          Once again, incorporating 4 forward points, enables an exact computation of
+          the derivative, since this polynomial can be of degree 4.
+
+    \item Differentiating Equation $ 14 $ from Section $ 19.3 $ on both sides,
+          \begin{align}
+              f'(x)   & = \Delta f_0 + \frac{r + (r-1)}{2!}\ \Delta^2 f_0
+              + \frac{(r-1)(r-2) + r(r-2) + r(r-1)}{3!}\ \Delta^3 f_0 + \dots       \\
+              f'(x_0) & = \Bigg[\Delta f_0 - \frac{1}{2!}\ \Delta^2 f_0 + \dots +
+              \frac{(-1)^{n-1}\ (n-1)!}{n!}\ \Delta^n f_0\Bigg] \cdot \diff rx      \\
+              f'(x_0) & = \frac{1}{h} \cdot \Bigg[\Delta f_0 - \frac{1}{2} \Delta^2
+                  f_0 + \dots + \frac{(-1)^{n-1}}{n}\ \Delta^n f_0\Bigg]
+          \end{align}
+          This is because $ x = x_0 \implies r = 0 $ and all but the first term in the
+          sum of each numerator reduce to zero.
+
+\end{enumerate}

@@ -58,14 +58,14 @@
     \item[Functions with arbitrary period] Instead of the standard period $ p = 2\pi $,
         generalizing to $ p = 2L $ simply involves a change of variable
         \begin{align}
-            2\pi \rightarrow 2L & \implies x \rightarrow \frac{\pi x}{L}    \\
-            f(x)                & \rightarrow a_0 + \iser[n]{0} \Bigg[
+            2\pi \to 2L & \implies x \to \frac{\pi x}{L}            \\
+            f(x)        & \to a_0 + \iser[n]{0} \Bigg[
                 a_n\ \cos\left( \frac{n\pi x}{L} \right) +
-            b_n\ \sin\left( \frac{n\pi x}{L} \right) \Bigg]                 \\
-            a_0                 & = \frac{1}{2L}\ \int_{-L}^{L} f(x)\ \dl x \\
-            a_n                 & = \frac{1}{L}\ \int_{-L}^{L}
-            f(x)\ \cos\left( \frac{n\pi x}{L} \right) \dl x                 \\
-            b_n                 & = \frac{1}{L}\ \int_{-L}^{L}
+            b_n\ \sin\left( \frac{n\pi x}{L} \right) \Bigg]         \\
+            a_0         & = \frac{1}{2L}\ \int_{-L}^{L} f(x)\ \dl x \\
+            a_n         & = \frac{1}{L}\ \int_{-L}^{L}
+            f(x)\ \cos\left( \frac{n\pi x}{L} \right) \dl x         \\
+            b_n         & = \frac{1}{L}\ \int_{-L}^{L}
             f(x)\ \sin\left( \frac{n\pi x}{L} \right) \dl x
         \end{align}
 
@@ -79,8 +79,8 @@
     \item[Lineraity] The Fourier series is linear under addition and scalar
         multiplication.
         \begin{align}
-            f(x) + g(x) & \rightarrow F(x) + G(x) \\
-            c\ f(x)     & \rightarrow c\ F(x)
+            f(x) + g(x) & \to F(x) + G(x) \\
+            c\ f(x)     & \to c\ F(x)
         \end{align}
         Where the uppercase is the fourier series expansion of the lowercase function.
 
@@ -206,6 +206,367 @@
     \item[Orthogonal system] Many real world systems can be cast into Sturm-Liouville
         form leading to a set of orthonormal basis functions. Examples include the Bessel
         functions, Legendre polynomials and Fourier series expansions.
+\end{description}
 
+\section{Orthogonal Series, Generalized Fourier Series}
 
+\begin{description}
+    \item[Orthogonal series] A convergent (infinite) series that can be used to
+        represent a function,
+        \begin{align}
+            y(x) & = \iser{0} a_m\ y_m(x) = a_0 y_0(x) + a_1 y_1(x) + \dots
+        \end{align}
+        This is also called an eigenfunction expansion if the functions $ \{y_m\} $
+        are the eigenfunctions of a Sturm-Liouville problem.
+
+    \item[Fourier coefficients] Similar to the Fourier series expansion, this family
+        of functions is also orthogonal and thus,
+        \begin{align}
+            a_m & = \frac{(f, y_m)}{\lVert y_m \rVert^2}
+            = \frac{1}{\lVert y_m \rVert^2}\ \int_{a}^{b} r(x)\ f(x)\ y_m(x)\ \dl x
+        \end{align}
+        Common families of polynomials used are Legendre polynomials, Bessel functions
+        etc.
+
+    \item[Orthogonality of Bessel functions] The set of Bessel functions of the first
+        kind $ J_n (k_{n, i}x) $ are orthogonal on the interval $ x \in [0, R] $ with
+        weight function $ r(x) = x $.
+        \begin{align}
+            J_n(kR) & = 0                        &
+            k_{n,m} & =  \frac{\alpha_{n, m}}{R}   \\
+            \int_{0}^{R} x\ J_n(k_{n,m}x)\ J_n(k_{n, j}x)
+            \ \dl x & = 0                        &
+            j       & \neq m
+        \end{align}
+        This assumes $ n $ is some fixed nonnegative integer. The Fourier-Bessel
+        coefficients are found using
+        \begin{align}
+            \lVert J_n(k_{n,m}x) \rVert^2 & = \frac{R^2}{2}\ J^2_{n+1}(k_{n,m}R)   \\
+            a_m                           & = \frac{2}{R^2J^2_{n+1}(\alpha_{n,m})}
+            \int_{0}^{R} x\ f(x)\ J_n(k_{n,m}x)\ \dl x
+        \end{align}
+
+    \item[Mean squared convergence] A sequence of functions $ \{f_k\} $ is called
+        convergent with the limit $ f $ if,
+        \begin{align}
+            \lim_{k \to \infty} \lVert f_k - f \rVert & = 0              &
+            s_k(x)                                    & = \sum_{m=0}^{k}
+            a_m\ y_m(x)                                                    \\
+            \lim_{k \to \infty} \int_{a}^{b} r(x)\
+            \Big[ s_k(x) - f(x) \Big]^2\ \dl x        & = 0
+        \end{align}
+
+    \item[Completeness] An orthonormal set $ \{y_i\} $ on the domain $ x \in [a, b] $
+        is complete (or total) for a set of functions $ S $ defined on the same domain if,
+        some linear combination can be found such that for any given $ \epsilon $,
+        \begin{align}
+            \lVert f - (a_0y_0 + a_1y_1 + \dots + a_ky_k) \rVert < \epsilon
+        \end{align}
+        for some large enough $ k $.
+
+    \item[Inequalities] Using the above definition of convergence, the generalized form
+        of Bessel's inequality is,
+        \begin{align}
+            \lVert f \rVert^2    & = \int_{a}^{b} r(x)\ f^2(x)\ \dl x &
+            \sum_{m=0}^{k} a^2_m & \leq \lVert f \rVert^2
+        \end{align}
+        Using the fact that the left side of the above inequality is monotonically
+        increasing and if the set $ \{y_m\} $ is complete for a set of functions $ S $
+        in the same domain, gives the generalized Parseval's identity.
+        \begin{align}
+            \iser{0} a^2_m & = \lVert f \rVert^2
+        \end{align}
+        Additionally, a function in $ S $ that is orthogonal to every member of
+        $ \{y_m\} $ then it has to have zero norm. If continuous, it is identically
+        zero in the domain.
+
+\end{description}
+
+\section{Fourier Integral}
+
+\begin{description}
+    \item[Amplitude spectrum] The sequence of Fourier coefficients, each of which
+        represent the maximum value of that term in the Fourier series expansion of a
+        function.
+
+    \item[Absolutely integrable] Consider a function $ f_L(x) $ that is periodic with
+        period $ 2L $. It is absolutely integrable if the limit
+        \begin{align}
+            \lim_{a \to -\infty} \int_{a}^{0} \abs{f(x)}\ \dl x +
+            \lim_{b \to \infty} \int_{0}^{b} \abs{f(x)}\ \dl x
+        \end{align}
+        exists and is finite.
+
+    \item[Fourier integral] In the limit of the above function having period infinity,
+        \begin{align}
+            f(x) & = \lim_{L \to \infty } f_L(x)                              \\
+            f(x) & = \infint \Big[A(w)\ \cos(wx) + B(w)\ \sin(wx)\Big]\ \dl x
+        \end{align}
+        Where the coefficients themselves are the Fourier coefficients of $ f(x) $
+        integrated over the entire real line.
+        \begin{align}
+            A(w) & = \frac{1}{\pi}\ \intRL f(u)\ \cos(wu)\ \dl u \\
+            B(w) & = \frac{1}{\pi}\ \intRL f(u)\ \sin(wu)\ \dl u
+        \end{align}
+
+    \item[Existence of Fourier integral] The Fourier integral formulation exists if
+        $ f(x) $ in every finite interval is
+        \begin{itemize}
+            \item absolutely integrable.
+            \item is piecewise continuous.
+            \item has both left and right handed derivatives at every point.
+        \end{itemize}
+        Similar to the Fourier expansion, the value of the Fourier integral at a point
+        of discontinuity of $ f(x) $ is the average of the left and right-handed limits
+        of the function at that point.
+
+    \item[Dirichlet discontinuous factor] The infinite integral that often shows up
+        when calculating Fourier integrals given by,
+        \begin{align}
+            \infint \frac{\cos(wx)\ \sin(w)}{w}\ \dl w =
+            \begin{dcases}
+                \pi/2 & \qquad x \in [0, 1) \\
+                \pi/4 & \qquad x = 1        \\
+                0     & \qquad x > 1        \\
+            \end{dcases}
+        \end{align}
+
+    \item[Sine integral] A special case of the above Dirichlet discontinuous factor
+        for $ x = 0 $
+        \begin{align}
+            \text{Si}(u)                     & = \int_{0}^{u}
+            \frac{\sin(w)}{w}\ \dl w                                       \\
+            \lim_{u \to \infty} \text{Si}(u) & = \infint \frac{\sin(w)}{w}
+            \ \dl w = \frac{\pi}{2}
+        \end{align}
+
+    \item[Gibbs phenomenon] The persistent large oscillations in the Fourier series
+        approximations of $ f(x) $ at points of discontinuity.
+
+    \item[Odd and even fourier integrals] Similar to Fourier series expansions,
+        odd functions make $ B(w) = 0 $ and vice versa for even functions.
+
+    \item[Laplace integrals] In the process of deriving the Fourier sine and cosine
+        integrals of $ e^{-kx} $, useful results are found,
+        \begin{align}
+            f(x)                                         & = e^{-kx} \qquad
+            \forall \qquad x > 0, \quad k > 0                                        \\
+            \infint \frac{\cos(wx)}{k^2 + w^2}\ \dl w    & = \frac{\pi}{2k}\ e^{-kx} \\
+            \infint \frac{w\ \sin(wx)}{k^2 + w^2}\ \dl w & = \frac{\pi}{2}\ e^{-kx}
+        \end{align}
+        This is a means of arriving at these integral working backwards.
+\end{description}
+
+\section{Fourier Cosine and Sine Transforms}
+
+\begin{description}
+    \item[Integral Transforms] An integral used to transform a function of one variable
+        into another function of a different variable using a bridge function of both
+        variables.
+        \begin{align}
+            F(s) = \int_{x_1}^{x_2} f(x)\ B(x, s)\ \dl x
+        \end{align}
+        The two most important integral transforms are the Laplace and Fourier transforms.
+
+    \item[Fourier Cosine transform] For an even function $ f(x) $, the Fourier cosine
+        integral can be used to introduce,
+        \begin{align}
+            \widehat{f}_c(w) & = \sqrt{\frac{2}{\pi}}\ \infint f(x)\ \cos(wx)\ \dl x          \\
+            f(x)             & = \sqrt{\frac{2}{\pi}}\ \infint \widehat{f}_c\ \cos(wx)\ \dl w
+        \end{align}
+        Here, the bridge function $ \cos(wx) $ is used to transform a function in the
+        $ x $ space into another function in the $ w $ space (and vice versa).
+
+    \item[Fourier Sine transform] For an odd function $ f(x) $, the Fourier sine
+        integral can be used to introduce,
+        \begin{align}
+            \widehat{f}_s(w) & = \sqrt{\frac{2}{\pi}}\ \infint f(x)\ \sin(wx)\ \dl x          \\
+            f(x)             & = \sqrt{\frac{2}{\pi}}\ \infint \widehat{f}_s\ \sin(wx)\ \dl w
+        \end{align}
+        Here, the bridge function $ \sin(wx) $ is used to transform a function in the
+        $ x $ space into another function in the $ w $ space (and vice versa). \par
+        The shorthand notation for the forward transforms is
+        \begin{align}
+            \Fou_c(f)                  & = \widehat{f}_c &
+            \Fou_s(f)                  & = \widehat{f}_s   \\
+            \Fou_c^{-1}(\widehat{f}_c) & = f             &
+            \Fou_s^{-1}(\widehat{f}_s) & = f
+        \end{align}
+
+    \item[Existence conditions] If $ f(x) $ is absolutely integrable on
+        $ \mathcal{R}^+$, and is piecewise continuous on every finite interval, then its
+        Fourier cosine and sine transforms exist.
+
+    \item[Linearity] The Fourier cosine and sine transforms are linear operations.
+        \begin{align}
+            \Fou_c(af + bg) & = a\ \Fou_c(f) + b\ \Fou_c(g) \\
+            \Fou_s(af + bg) & = a\ \Fou_s(f) + b\ \Fou_s(g)
+        \end{align}
+        for some scalars $ a, b $
+
+    \item[Transforms of derivatives] Let $ f(x) $ be continuous and absolutely integrable
+        on $ \mathcal{R} $, and let its derivative be piecewise continuous on every
+        finite interval. \par
+        Further, let $ f(x) \to 0 $ as $ x \to \infty $.
+        \begin{align}
+            \Fou_c \{f'(x)\} & = w\ \Fou_s \{f(x)\} - \sqrt{\frac{2}{\pi}} f(0) \\
+            \Fou_s \{f'(x)\} & = -w\ \Fou_c \{f(x)\}
+        \end{align}
+        The condition on the infinite limit of $ f(x) $ allows the usage of integration
+        by parts to derive the above relations. \par
+        Using two I.B.P. steps, the relations for second derivatives are,
+        \begin{align}
+            \Fou_c \{f''(x)\} & = -w^2\ \Fou_c \{f(x)\} - \sqrt{\frac{2}{\pi}}\ f'(0) \\
+            \Fou_s \{f''(x)\} & = -w^2\ \Fou_s \{f(x)\} + \sqrt{\frac{2}{\pi}}\ wf(0)
+        \end{align}
+\end{description}
+
+\section{Fourier Transform, Discrete and Fast Fourier Transforms}
+
+\begin{description}
+    \item[Complex Fourier integral] Using the Euler formula on the Fourier sine and
+        cosine integrals defined earlier,
+        \begin{align}
+            e^{ix} & = \cos(x) + i\ \sin(x)                                             \\
+            f(x)   & = \frac{1}{2\pi} \intRL \intRL \Bigg[ f(u)\ e^{iw\ (x - u)} \Bigg]
+            \ \dl u\ \dl w
+        \end{align}
+
+    \item[Fourier transform] Recognising the inner part of the above integral is
+        a function of $ w $,
+        \begin{align}
+            \widehat{f}(w)   & = \sqrt{\frac{1}{2\pi}}\ \intRL f(x)\ e^{-iwx}
+            \ \dl x          &
+            \widehat{f}(w)   & = \Fou \{f\}                                   \\
+            f(x)             & = \sqrt{\frac{1}{2\pi}}\ \intRL \widehat{f}(w)
+            \ e^{iwx}\ \dl w &
+            f(x)             & = \Fou^{-1}\{\widehat{f}(w)\}
+        \end{align}
+        The complex Fourier integral is thus mapping $ f(x) $ onto itself after
+        performing both the Fourier transform and its inverse.
+
+    \item[Existence of Fourier transform] Similar to the cosine and sine transforms,
+        if $ f(x) $ is absolutely integrable on the real line and piecewise continuous on
+        every finite interval, then its Fourier transform $ \widehat{f}(w) $ exists.
+
+    \item[Spectrum] Physically, the Fourier transform can be considered a superposition
+        of sinusoidal oscillations of all possible frequencies, which is then called
+        the frequency spectrum. \par
+
+    \item[Spectral density] The intensity of $ f(x) $ in the frequency interval
+        $ (w, w + \Delta w) $. \par
+        The total energy of the physical system, if $ w $ is the vibrational frequency
+        is
+        \begin{align}
+            E & = \intRL \abs{\widehat{f}(w)}^2 \dl w
+        \end{align}
+
+    \item[Linearity of Fourier transform] Similar to the Fourier sine and cosine
+        transforms, the complex Fourier transform is also linear.
+        \begin{align}
+            \Fou\{af + bg\} & = a\ \Fou\{f\} + b\ \Fou\{g\}
+        \end{align}
+        This is derived from the linearity of integration.
+
+    \item[Fourier transform of derivative] Using integration by parts,
+        \begin{align}
+            \Fou\{f'(x)\}  & = iw\ \Fou\{f(x)\}   \\
+            \Fou\{f''(x)\} & = -w^2\ \Fou\{f(x)\}
+        \end{align}
+        This requires $ f(x) \to 0 $ as $ \abs{x} \to \infty $ and for
+        $ f'(x) $ to be absolutely integrable on the real line.
+
+    \item[Fourier transform of Convolutions] Similar to Laplace transforms, the
+        convolution of $ f(x) $ and $ g(x) $ has the property that its Fourier transform
+        is the product of the individual transforms.
+        \begin{align}
+            \Fou\{f * g\} & = \sqrt{2\pi}\ \Fou\{f\} \cdot \Fou\{g\} \\
+            (f * g)(x)    & = \intRL f(p)\ g(x-p)\ \dl p
+            = \intRL f(x-p)\ g(p)\ \dl p
+        \end{align}
+        This relation requires $ f, g $ to be piecewise continuous, bounded and
+        absolutely integrable on the real line. \par
+        When applied to the inverse Fourier transform,
+        \begin{align}
+            (f * g)(x) & = \intRL \widehat{f}(w)\ \widehat{g}(w)\ e^{iwx}\ \dl w
+        \end{align}
+
+    \item[Discrete Fourier transform] Most real world experimental data is only sampled
+        at finitely many (equally spaced) points in time. The function $ f(x) $ is now
+        represented as a time series. \par
+
+        Let $ f(x) $ be a periodic function of period $ 2\pi $ being sampled $ N $ times
+        within one period.
+        \begin{align}
+            x_k & = \frac{2\pi}{N}\ k & k \in \{0, 1, \dots, N-1\}
+        \end{align}
+        Defining a complex trigonometric polynomial $ q(x) $ that interpolates $ f(x) $
+        at the sampling points,
+        \begin{align}
+            q(x) & = \sum_{n=0}^{N-1} c_n\ e^{i nx} & f(x_k) & = q(x_k)
+        \end{align}
+        Using the orthogonality principle of complex numbers,
+        \begin{align}
+            c_n & = \frac{1}{N}\ \sum_{n=0}^{N-1} f(x_k)\ e^{-in x_k} &
+            n   & =  \{0,1,2,\dots, N-1\}
+        \end{align}
+        The DFT of a signal sampled at $ N $ points becomes another vector with $ N $
+        components representing discrete frequencies.
+        \begin{align}
+            f           & = \begin{bNiceMatrix}[margin]
+                                f(x_0) \\ f(x_1) \\ \vdots \\ f(x_{N-1})
+                            \end{bNiceMatrix}   &
+            \widehat{f} & = \begin{bNiceMatrix}[margin]
+                                \widehat{f}_0 \\ \widehat{f}_1\\ \vdots \\
+                                \widehat{f}_{N-1}
+                            \end{bNiceMatrix}
+        \end{align}
+        Here, the frequency spectrum of the signal is given by,
+        \begin{align}
+            \widehat{f}_n & = Nc_n = \sum_{n=0}^{N-1} f(x_k)\ e^{-in x_k}
+        \end{align}
+
+    \item[Fourier matrix] The above relation can be expressed in matrix notation as
+        \begin{align}
+            \vec{\widehat{f}}    & = \vec{F}_N\ \vec{f}                   &
+            \vec{F}_N = [e_{nk}] & = e^{-in x_k} = w^{nk}                   \\
+            w                    & = \exp\left( \frac{-2\pi i}{N} \right) &
+            n,k                  & = \{0, 1, 2, \dots, (N-1)\}
+        \end{align}
+        $ w $ is a complex number with unit modulus. \par
+        The inverse fourier transform requires the complex conjugate of $ \vec{F}_N $,
+        \begin{align}
+            \vec{F}_N^\dag \ \vec{F}_N = \vec{F}_N\ \vec{F}_N^\dag & = N \vec{I}   &
+            \vec{F}_N^{-1}                                         & = \frac{1}{N}
+            \ \vec{F}_N^\dag
+        \end{align}
+
+    \item[Fast Fourier Transform] Since the DFT procedure is of order $ N^2 $, a
+        computationally tractable method of order $ N \log_2(N) $ is used instead. \par
+        This involves starting with $ 2^p $ samples and splitting this problem into
+        two halves recursively. Consider a vector $ \vec{f} $ sampled at $ N = 2M $
+        points, \par
+
+        This vector is split into odd and even components,
+        \begin{align}
+            \vec{f}_\text{ev}             & = \begin{bNiceMatrix}[margin]
+                                                  f_0 \\ f_2 \\ \vdots \\ f_{N-2}
+                                              \end{bNiceMatrix}   &
+            \vec{f}_\text{od}             & = \begin{bNiceMatrix}[margin]
+                                                  f_1 \\ f_3 \\ \vdots \\ f_{N-1}
+                                              \end{bNiceMatrix}    \\
+            \vec{\widehat{f}}_{\text{ev}} & = \vec{F}_M \ \vec{f}_{\text{ev}} &
+            \vec{\widehat{f}}_{\text{od}} & = \vec{F}_M \ \vec{f}_{\text{od}}
+        \end{align}
+        Here, $ \vec{F}_M $ is the DFT matrix of half the size acting on the two halves
+        of the input signal individually. \par
+        Finally, the full DFT is obtained by superpositions of the above partial DFTs,
+        \begin{align}
+            \vec{\widehat{f}}_n     & = \vec{\widehat{f}}_{\text{ev}, n} + (w_N)^n
+            \ \ \vec{\widehat{f}}_{\text{od}, n}                                   \\
+            \vec{\widehat{f}}_{n+M} & = \vec{\widehat{f}}_{\text{ev}, n} - (w_N)^n
+            \ \ \vec{\widehat{f}}_{\text{od}, n}
+        \end{align}
+        These are the first and second half of the complete DFT respectively, since
+        $ n \in \{0,1,2,\dots,M - 1\} $
 \end{description}

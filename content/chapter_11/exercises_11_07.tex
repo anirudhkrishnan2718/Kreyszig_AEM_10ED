@@ -1,0 +1,474 @@
+\section{Fourier Integral}
+
+\begin{enumerate}
+    \item Calculating the Fourier cosine integral of $ f(x) $,
+          \begin{align}
+              f(x) & = \pi e^{-x} \qquad\qquad \forall\ x > 0                \\
+              A(w) & = \frac{1}{\pi} \intRL f(u)\ \cos(wu)\ \dl u
+              = \infint e^{-u}\ \cos(wu)\ \dl u                              \\
+                   & = \Bigg[e^{-u}\ \frac{\sin(wu)}{w} \Bigg]_{0}^{\infty}
+              + \infint e^{-u}\ \frac{\sin(wu)}{w}\ \dl u                    \\
+                   & = 0 - \Bigg[e^{-u}\ \frac{\cos(wu)}{w^2}\Bigg]_0^\infty
+              - \infint e^{-u}\ \frac{\cos(wu)}{w^2}\ \dl u
+              = \frac{1 - A(w)}{w^2}                                         \\
+              A(w) & = \color{y_h} \frac{1}{1 + w^2}
+          \end{align}
+          Calculating the Fourier sine integral of $ f(x) $,
+          \begin{align}
+              B(w) & = \frac{1}{\pi} \intRL f(u)\ \sin(wu)\ \dl u
+              = \infint e^{-u}\ \sin(wu)\ \dl u                              \\
+                   & = \Bigg[e^{-u}\ \frac{-\cos(wu)}{w} \Bigg]_{0}^{\infty}
+              - \infint e^{-u}\ \frac{\cos(wu)}{w}\ \dl u                    \\
+                   & = \frac{1}{w} - \Bigg[e^{-u}\ \frac{\sin(wu)}{w^2}
+                  \Bigg]_0^\infty
+              - \infint e^{-u}\ \frac{\sin(wu)}{w^2}\ \dl u
+              = \frac{w - B(w)}{w^2}                                         \\
+              B(w) & = \color{y_p} \frac{w}{1 + w^2}
+          \end{align}
+          Writing out the fourier integral of $ f(x) $,
+          \begin{align}
+              f(x) & = \infint \Bigg[ \frac{\cos(x w)}{1 + w^2} \Bigg]
+              + \Bigg[ \frac{w\ \sin(x w)}{1 + w^2} \Bigg]\ \dl w
+          \end{align}
+          The value of $ f(x) $ at the jump discontinuity $ x = 0 $ is equal to the
+          average of the left-handed limit $ (0) $ and right-handed limit $ \pi $.
+
+    \item Calculating the Fourier sine integral of $ f(x) $, since a cosine term is
+          absent from the expression,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           \frac{\pi}{2}\ \sin(x) & \quad x \in [0, \pi] \\
+                           0                      & \quad x > \pi        \\
+                       \end{dcases}               \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \sin(wu)\ \dl u
+              = \int_{0}^{\pi} \sin(u)\ \sin(wu)\ \dl u                            \\
+                   & = \int_{0}^{\pi} \frac{\cos[(1-w)u] - \cos[(1+w)u]}{4}\ \dl u \\
+                   & = \frac{1}{2} \Bigg[ \frac{\sin[(1-w)u]}{1-w}
+                  - \frac{\sin[(1+w)u]}{1+w} \Bigg]_0^\pi
+              = \color{y_p} \frac{\sin(w\pi)}{(1-w^2)}
+          \end{align}
+          Writing out the fourier integral of $ f(x) $,
+          \begin{align}
+              f(x) & = \infint \Bigg[ \frac{\sin(\pi w)}{1 - w^2}\ \sin(xw)
+                  \Bigg]\ \dl w
+          \end{align}
+
+    \item Calculating the Fourier sine integral of $ f(x) $, since a cosine term is
+          absent from the expression,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           \frac{\pi}{2} & \quad x \in (0, \pi) \\
+                           0             & \quad x > \pi        \\
+                       \end{dcases}                        \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \sin(wu)\ \dl u
+              = \int_{0}^{\pi} \sin(wu)\ \dl u                                     \\
+                   & = \int_{0}^{\pi} \frac{\cos[(1-w)u] - \cos[(1+w)u]}{4}\ \dl u \\
+                   & = \Bigg[  \frac{-\cos(wu)}{w} \Bigg]_0^\pi
+              = \color{y_p} \frac{1 - \cos(w\pi)}{w}
+          \end{align}
+          Writing out the fourier integral of $ f(x) $,
+          \begin{align}
+              f(x) & = \infint \Bigg[ \frac{1 - \cos(\pi w)}{w}\ \sin(xw)
+                  \Bigg]\ \dl w
+          \end{align}
+
+    \item Calculating the Fourier cosine integral of $ f(x) $, since a sine term is
+          absent from the expression,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           \frac{\pi}{2}\ \cos(x) & \quad \abs{x} \in (0, \pi/2) \\
+                           0                      & \quad \abs{x} \geq \pi/2     \\
+                       \end{dcases}  \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \cos(wu)\ \dl u
+              = \int_{0}^{\pi/2} \cos(u)\ \cos(wu)\ \dl u                     \\
+                   & = \int_{0}^{\pi/2} \frac{\cos[(1-w)u] + \cos[(1+w)u]}{2}
+              \ \dl u                                                         \\
+                   & = \frac{1}{2}\Bigg[ \frac{\sin[(1-w)u]}{(1-w)}
+                  + \frac{\sin[(1+w)u]}{(1 + w)}  \Bigg]_0^{\pi/2}
+              = \color{y_h} \frac{\cos(w\pi/2)}{1 - w^2}
+          \end{align}
+          Writing out the fourier integral of $ f(x) $,
+          \begin{align}
+              f(x) & = \infint \Bigg[ \frac{\cos(w\pi/2)}{1 - w^2}\ \cos(xw)
+                  \Bigg]\ \dl w
+          \end{align}
+
+    \item Calculating the Fourier sine integral of $ f(x) $, since a cosine term is
+          absent from the expression,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           \frac{\pi x}{2} & \quad x \in (0, 1) \\
+                           \frac{\pi}{4}   & \quad x = 1        \\
+                           0               & \quad x > 1
+                       \end{dcases}                           \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \sin(wu)\ \dl u
+              = \int_{0}^{1} (u)\ \sin(wu)\ \dl u                                     \\
+                   & = \Bigg[ \frac{\sin(wu)}{w^2} - \frac{u\ \cos(wu)}{w} \Bigg]_0^1
+              = \color{y_p} \frac{\sin(w) - w\ \cos(w)}{w^2}
+          \end{align}
+          Writing out the fourier integral of $ f(x) $,
+          \begin{align}
+              f(x) & = \infint \Bigg[ \frac{\sin(w) - w\ \cos(w)}{w^2}\ \sin(xw)
+                  \Bigg]\ \dl w
+          \end{align}
+          The value of $ f(x) $ at the jump discontinuity $ x = 1 $ is equal to the
+          average of the left-handed limit $ (\pi/2) $ and right-handed limit $ (0) $.
+
+    \item Calculating the Fourier sine integral of $ f(x) $, since a cosine term is
+          absent from the expression, using the result from Problem $ 1 $,
+          \begin{align}
+              f(x) & = \frac{\pi e^{-x}}{2}\ \cos(x) \qquad \forall\  x > 0 \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \sin(wu)\ \dl u
+              = \infint (e^{-u})\ \cos(u)\ \sin(wu)\ \dl u                  \\
+                   & = \frac{1}{2}\infint e^{-u}\ \Big[ \sin[(1+w)u]
+              - \sin[(1-w)u]\Big]\ \dl u                                    \\
+                   & = \frac{1}{2} \Bigg[ \frac{1+w}{1 + (1+w)^2}
+                  - \frac{1-w}{1 + (1-w)^2} \Bigg]
+              = \color{y_p} \frac{w^3}{w^4 + 4}
+          \end{align}
+
+    \item Calculating the Fourier cosine integral,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           1 & \quad x \in (0, 1) \\
+                           0 & \quad x > 1        \\
+                       \end{dcases}                             \\
+              A(w) & = \frac{2}{\pi} \infint f(u)\ \cos(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{1} (1)\ \cos(wu)\ \dl u           \\
+                   & = \frac{2}{\pi}\Bigg[ \frac{\sin(wu)}{w}  \Bigg]_0^1
+              = \color{y_h} \frac{2}{\pi} \cdot \frac{\sin(w)}{w}
+          \end{align}
+
+    \item Calculating the Fourier cosine integral,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           x^2 & \quad x \in (0, 1) \\
+                           0   & \quad x > 1        \\
+                       \end{dcases}                             \\
+              A(w) & = \frac{2}{\pi} \infint f(u)\ \cos(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{1} (u^2)\ \cos(wu)\ \dl u           \\
+                   & = \frac{2}{\pi}\Bigg[ \frac{w^2u^2 - 2}{w^3}\ \sin(wu)
+              + \frac{2u}{w^2}\ \cos(wu)  \Bigg]_0^1                        \\
+                   & = \color{y_h} \frac{2}{\pi}\Bigg[ \frac{w^2 - 2}{w^3}
+                  \ \sin(w) + \frac{2}{w^2}\ \cos(w)  \Bigg]
+          \end{align}
+
+    \item Calculating the Fourier cosine integral, using the Laplace integral
+          ($ k = 1 $),
+          \begin{align}
+              f(x) & = \frac{1}{1 + x^2} \qquad \forall\ x > 0           \\
+              A(w) & = \frac{2}{\pi} \infint f(u)\ \cos(wu)\ \dl u
+              = \frac{2}{\pi} \infint \frac{1}{1 + u^2}\ \cos(wu)\ \dl u \\
+                   & = \color{y_h} e^{-w} \qquad (w>0)
+          \end{align}
+
+    \item Calculating the Fourier cosine integral,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           a^2 - x^2 & \quad x \in (0, a) \\
+                           0         & \quad x > a        \\
+                       \end{dcases}                          \\
+              A(w) & = \frac{2}{\pi} \infint f(u)\ \cos(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{a} (a^2 - u^2)\ \cos(wu)\ \dl u        \\
+                   & = \frac{2}{\pi}\Bigg[\frac{2 + a^2w^2 - w^2u^2}{w^3}
+                  \ \sin(wu)
+              - \frac{2u}{w^2}\ \cos(wu)  \Bigg]_0^a                           \\
+                   & = \color{y_h} \frac{2}{\pi}\Bigg[ \frac{2}{w^3}\ \sin(wa)
+                  - \frac{2a}{w^2}\ \cos(wa)  \Bigg]
+          \end{align}
+
+    \item Calculating the Fourier cosine integral,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           \sin(x) & \quad x \in (0, \pi) \\
+                           0       & \quad x > \pi        \\
+                       \end{dcases}                 \\
+              A(w) & = \frac{2}{\pi} \infint f(u)\ \cos(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{\pi} \sin(u)\ \cos(wu)\ \dl u \\
+                   & = \frac{-1}{\pi}\Bigg[\frac{\cos[(1+w)u]}{1+w}
+              + \frac{\cos[(1-w)u]}{1-w}\Bigg]_0^\pi                  \\
+                   & =  \color{y_h}
+              \frac{2}{\pi} \Bigg[ \frac{1 + \cos(\pi w)}{1 - w^2} \Bigg]
+          \end{align}
+
+    \item Calculating the Fourier cosine integral, using the recursive nature of
+          integration by parts,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           e^{-x} & \quad x \in (0, a) \\
+                           0      & \quad x > a        \\
+                       \end{dcases}                                \\
+              A(w) & = \frac{2}{\pi} \infint f(u)\ \cos(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{a} (e^{-u})\ \cos(wu)\ \dl u              \\
+                   & = \frac{2}{\pi} \Bigg[ e^{-u}\ \frac{\sin(wu)}{w} \Bigg]_0^a
+              + \frac{2}{\pi}\int_{0}^{a} e^{-u}\ \frac{\sin(wu)}{w}\ \dl u       \\
+                   & = \frac{2e^{-a}}{\pi w}\ \sin(wa)
+              + \Bigg[ \frac{-2e^{-u}}{\pi w^2}\ \cos(wu) \Bigg]_0^a
+              - \frac{2}{\pi}\int_{0}^{a} e^{-u}\ \frac{\cos(wu)}{w^2}\ \dl u     \\
+                   & = \frac{2}{\pi}\Bigg[\frac{we^{-a}\ \sin(wa)
+              - e^{-a}\ \cos(wa) + 1}{w^2}\Bigg] - \frac{B(w)}{w^2}               \\
+              A(w) & = \color{y_h} \frac{2}{\pi}\Bigg[\frac{we^{-a}\ \sin(wa)
+                      - e^{-a}\ \cos(wa) + 1}{1 + w^2}\Bigg]
+          \end{align}
+
+    \item Graphing the integral function in Problem 7 using a CAS,
+          \begin{align}
+              f(x) & = \infint \frac{2}{\pi} \cdot \frac{\sin(w)}{w}\ \cos(xw)\ \dl w
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_11_07_07.csv}\anitable
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          Ani]
+                      \addplot[GraphSmooth, black, forget plot, domain = -2:-1] {0};
+                      \addplot[GraphSmooth, black, forget plot, domain = 1:2] {0};
+                      \addplot[GraphSmooth, black, forget plot, domain = -1:1] {1};
+                      \addplot[GraphSmooth, color = y_h] table[x index=0,y index=1,
+                              col sep=comma, ]{\anitable};
+                      \addplot[GraphSmooth, color = y_p] table[x index=0,y index=2,
+                              col sep=comma, ]{\anitable};
+                      \addlegendentry{$a = 16$}
+                      \addlegendentry{$a = 64$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Graphing the integral function in Problem 9 using a CAS,
+          \begin{align}
+              f(x) & = \infint e^{-w} \cos(xw)\ \dl w
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_11_07_09.csv}
+              \anitabletwo
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both,
+                          Ani]
+                      \addplot[GraphSmooth, black, dashed, very thick, forget plot
+                          , domain = -2:2] {(1 + x^2)^(-1)};
+                      \addplot[GraphSmooth, color = y_h] table[x index=0,y index=1,
+                              col sep=comma, ]{\anitabletwo};
+                      \addplot[GraphSmooth, color = y_p] table[x index=0,y index=2,
+                              col sep=comma, ]{\anitabletwo};
+                      \addlegendentry{$a = 16$}
+                      \addlegendentry{$a = 64$}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          Fig 11 TBC. \texttt{Sympy} getting stuck on function definition.
+
+    \item Properties of Fourier cosine and sine integrals
+          \begin{enumerate}
+              \item Using the fourier cosine integral,
+                    \begin{align}
+                        f(ax) & = \infint A(u)\ \cos(u\ ax)\ \dl u       &
+                        a     & > 0                                        \\
+                        w     & = au                                     &
+                        \dl w & = a\ \dl u                                 \\
+                        f(ax) & = \frac{1}{a}\infint A\left( \frac{w}{a}
+                        \right)\ \cos(wx)\ \dl w
+                    \end{align}
+                    Using the fact that an odd function times an even function is odd,
+                    \begin{align}
+                        A(w)      & = \frac{2}{\pi} \infint f(u)\ \cos(wu)
+                        \ \dl u                                                  \\
+                        -\diff Aw & = \color{y_h}\frac{2}{\pi} \infint u\ f(u)
+                        \ \sin(wu) \ \dl u                                       \\
+                        g(x)      & = x \cdot f(x) = \infint  \Bigg[{\color{y_h}
+                                    \frac{2}{\pi} \infint g(u)\ \sin(wu)\ \dl u}
+                        \Bigg]\ \sin(wx)\ \dl w                                  \\
+                                  & = \infint \Bigg[ -\diff Aw \Bigg]
+                        \ \sin(wx)\ \dl w
+                    \end{align}
+                    Performing the differentiation twice,
+                    \begin{align}
+                        A(w)         & = \frac{2}{\pi} \infint f(u)\ \cos(wu)
+                        \ \dl u                                                       \\
+                        -\diff Aw    & = \frac{2}{\pi} \infint u\ f(u)
+                        \ \sin(wu) \ \dl u                                            \\
+                        -\diff[2] Aw & = \color{y_p}\frac{2}{\pi} \infint u^2\ f(u)
+                        \ \cos(wu) \ \dl u                                            \\
+                        g(x)         & = x^2 \cdot f(x) = \infint  \Bigg[{\color{y_p}
+                                    \frac{2}{\pi} \infint g(u)\ \cos(wu)\ \dl u}
+                        \Bigg]\ \cos(wx)\ \dl w                                       \\
+                                     & = \infint \Bigg[ -\diff[2] Aw \Bigg]
+                        \ \cos(wx)\ \dl w
+                    \end{align}
+              \item Using the above results to solve Problem $ 8 $,
+                    \begin{align}
+                        A(w)         & = \frac{2}{\pi}\cdot \frac{\sin(w)}{w} \\
+                        -\diff[2] Aw & = \frac{2}{\pi} \cdot\Bigg[
+                            \frac{w^2 - 2}{w^3}\ \sin(w) + \frac{2}{w^2}\ \cos(w) \Bigg]
+                    \end{align}
+                    which agrees with the earlier solution.
+
+              \item Verifying the relation,
+                    \begin{align}
+                        f(x)       & = \begin{dcases}
+                                           1 & \quad x \in (0, a) \\
+                                           0 & \quad x > a        \\
+                                       \end{dcases}                       &
+                        A(w)       & = \frac{2a}{\pi} \cdot \frac{\sin(w)}{w}        \\
+                        \diff Aw   & = \frac{2a}{\pi} \cdot \Bigg[ \frac{\cos(w)}{w}
+                        - \frac{\sin(w)}{w^2} \Bigg]                                 \\
+                        g(x)       & = \begin{dcases}
+                                           x & \quad x \in (0, a) \\
+                                           0 & \quad x > a        \\
+                                       \end{dcases}                       &
+                        B(w)       & = \frac{2}{\pi} \int_0^1 u\ \sin(wu)\ \dl u     \\
+                                   & = \frac{2}{\pi} \Bigg[ \frac{\sin(wu)}{w^2}
+                            - \frac{u\cos(wu)}{w}
+                        \Bigg]_0^1 &
+                        B(w)       & =  -\diff Aw
+                    \end{align}
+
+              \item Finding similar formulas for Fourier sine integrals,
+                    \begin{align}
+                        f(ax) & = \infint B(u)\ \sin(u\ ax)\ \dl u       &
+                        a     & > 0                                        \\
+                        w     & = au                                     &
+                        \dl w & = a\ \dl u                                 \\
+                        f(ax) & = \frac{1}{a}\infint B\left( \frac{w}{a}
+                        \right)\ \sin(wx)\ \dl w
+                    \end{align}
+                    Using the fact that an odd function times an odd function is even,
+                    \begin{align}
+                        B(w)     & = \frac{2}{\pi} \infint f(u)\ \sin(wu)
+                        \ \dl u                                                 \\
+                        \diff Bw & = \color{y_h}\frac{2}{\pi} \infint u\ f(u)
+                        \ \cos(wu) \ \dl u                                      \\
+                        g(x)     & = x \cdot f(x) = \infint  \Bigg[{\color{y_h}
+                                    \frac{2}{\pi} \infint g(u)\ \cos(wu)\ \dl u}
+                        \Bigg]\ \cos(wx)\ \dl w                                 \\
+                                 & = \infint \Bigg[ \diff Bw \Bigg]
+                        \ \cos(wx)\ \dl w
+                    \end{align}
+                    Performing the differentiation twice,
+                    \begin{align}
+                        B(w)         & = \frac{2}{\pi} \infint f(u)\ \sin(wu)
+                        \ \dl u                                                       \\
+                        \diff Bw     & = \frac{2}{\pi} \infint u\ f(u)
+                        \ \cos(wu) \ \dl u                                            \\
+                        -\diff[2] Bw & = \color{y_p}\frac{2}{\pi} \infint u^2\ f(u)
+                        \ \sin(wu) \ \dl u                                            \\
+                        g(x)         & = x^2 \cdot f(x) = \infint  \Bigg[{\color{y_p}
+                                    \frac{2}{\pi} \infint g(u)\ \sin(wu)\ \dl u}
+                        \Bigg]\ \sin(wx)\ \dl w                                       \\
+                                     & = \infint \Bigg[ -\diff[2] Bw \Bigg]
+                        \ \cos(wx)\ \dl w
+                    \end{align}
+          \end{enumerate}
+
+    \item Plotting the sine integral and seeing the convergence of the extrema to
+          $ y = \pi/2 $,
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_11_07_15.csv}
+              \anitablethree
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = south east,
+                          grid = both, PiStyleX, xtick distance = 2*pi,
+                          PiStyleY, ytick distance = pi/2,
+                          Ani]
+                      \addplot[GraphSmooth, black, thin, forget plot
+                          , domain = 0:21*pi] {pi/2};
+                      \addplot[GraphSmooth, color = y_h]
+                      table[x index=0,y index=1, col sep=comma]{\anitablethree};
+                      \addlegendentry{$ \text{Si}(x) $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The Gibbs phenomenon at $ x = 0 $ moves closer and closer to the $ y-axis $
+          as the approximation improves.
+
+    \item Calculating the Fourier sine integral
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           x & \quad x \in (0, a) \\
+                           0 & \quad x > a        \\
+                       \end{dcases}                                   \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \sin(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{a} (u)\ \sin(wu)\ \dl u                 \\
+                   & = \frac{2}{\pi} \Bigg[ \frac{\sin(wu) - wu\ \cos(wu)}{w^2}
+                  \Bigg]_0^a
+              = \color{y_p} \frac{2}{\pi}\Bigg[ \frac{\sin(wa) -
+                      wa\ \cos(wa)}{w^2} \Bigg]
+          \end{align}
+
+    \item Calculating the Fourier sine integral
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           1 & \quad x \in (0, 1) \\
+                           0 & \quad x > 1        \\
+                       \end{dcases}                              \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \sin(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{1} (1)\ \sin(wu)\ \dl u            \\
+                   & = \frac{2}{\pi} \Bigg[ \frac{-\cos(wu)}{w} \Bigg]_0^1
+              = \color{y_p} \frac{2}{\pi}\Bigg[ \frac{1 - \cos(w)}{w} \Bigg]
+          \end{align}
+
+    \item Calculating the Fourier sine integral,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           \cos(x) & \quad x \in (0, \pi) \\
+                           0       & \quad x > \pi        \\
+                       \end{dcases}                       \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \sin(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{\pi} \cos(u)\ \sin(wu)\ \dl u       \\
+                   & = \frac{1}{\pi}\Bigg[-\frac{\cos[(1+w)u]}{1+w}
+              + \frac{\cos[(1-w)u]}{1-w}\Bigg]_0^\pi                        \\
+                   & = \frac{-\cos(wu) - 1}{1-w} + \frac{1 + \cos(wu)}{1+w}
+              =  \color{y_p}
+              \frac{2}{\pi} \Bigg[ \frac{w}{w^2 - 1}\ [1 + \cos(\pi w)] \Bigg]
+          \end{align}
+
+    \item Calculating the Fourier sine integral, using the recursive nature of
+          integration by parts,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           e^{x} & \quad x \in (0, 1) \\
+                           0     & \quad x > 1        \\
+                       \end{dcases}                                 \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \sin(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{1} (e^{u})\ \sin(wu)\ \dl u               \\
+                   & = \frac{-2}{\pi} \Bigg[ e^{u}\ \frac{\cos(wu)}{w} \Bigg]_0^1
+              + \frac{2}{\pi}\int_{0}^{1} e^{u}\ \frac{\cos(wu)}{w}\ \dl u        \\
+                   & = \frac{2}{\pi w}\ [1 - e \cos(w)]
+              + \Bigg[ \frac{2e^{u}}{\pi w^2}\ \sin(wu) \Bigg]_0^1
+              - \frac{2}{\pi}\int_{0}^{1} e^{u}\ \frac{\sin(wu)}{w^2}\ \dl u      \\
+                   & = \frac{2}{\pi}\Bigg[\frac{w - we\ \cos(w)
+              + e\ \sin(w)}{w^2}\Bigg] - \frac{B(w)}{w^2}                         \\
+              B(w) & = \color{y_p} \frac{2}{\pi}\Bigg[\frac{w - we\ \cos(w)
+                      + e\ \sin(w)}{1 + w^2}\Bigg]
+          \end{align}
+
+    \item Calculating the Fourier sine integral, using the recursive nature of
+          integration by parts,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           e^{-x} & \quad x \in (0, 1) \\
+                           0      & \quad x > 1        \\
+                       \end{dcases}                                 \\
+              B(w) & = \frac{2}{\pi} \infint f(u)\ \sin(wu)\ \dl u
+              = \frac{2}{\pi} \int_{0}^{1} (e^{-u})\ \sin(wu)\ \dl u               \\
+                   & = \frac{-2}{\pi} \Bigg[ e^{-u}\ \frac{\cos(wu)}{w} \Bigg]_0^1
+              - \frac{2}{\pi}\int_{0}^{1} e^{-u}\ \frac{\cos(wu)}{w}\ \dl u        \\
+                   & = \frac{2}{\pi w}\ [1 - e^{-1} \cos(w)]
+              - \Bigg[ \frac{2e^{-u}}{\pi w^2}\ \sin(wu) \Bigg]_0^1
+              - \frac{2}{\pi}\int_{0}^{1} e^{-u}\ \frac{\sin(wu)}{w^2}\ \dl u      \\
+                   & = \frac{2}{\pi}\Bigg[\frac{w - we^{-1}\ \cos(w)
+              - e^{-1}\ \sin(w)}{w^2}\Bigg] - \frac{B(w)}{w^2}                     \\
+              B(w) & = \color{y_p} \frac{2}{\pi}\Bigg[\frac{w - we^{-1}\ \cos(w)
+                      - e^{-1}\ \sin(w)}{1 + w^2}\Bigg]
+          \end{align}
+
+
+
+
+\end{enumerate}

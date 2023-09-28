@@ -1,0 +1,748 @@
+\section{Heat Equation: Solution by Fourier Series, Dirichlet Problem}
+
+\begin{enumerate}
+    \item The rate of decay is,
+          \begin{align}
+              G(t)      & =  \exp(-\lambda_n^2 t) &
+              \lambda^2 & \propto c^2               \\
+              c^2       & = \frac{K}{\rho \sigma}
+          \end{align}
+          $ K $ is the thermal conductivity, $ \sigma $ is the specific heat and $ \rho $
+          is the density.
+
+    \item For the first eigenfunction, $ n = 1 $. This gives,
+          \begin{align}
+              \exp(-\lambda_1^2\ T) & = 0.5                                      &
+              \lambda_1^2\ T        & = \ln(2)                                     \\
+              \lambda_1^2           & = \frac{\ln(2)}{T}                         &
+              \lambda_1             & = \frac{c\pi}{L}                             \\
+              c^2                   & = \frac{L^2}{\pi^2} \cdot \frac{\ln(2)}{T}
+          \end{align}
+
+    \item The eigenfunctions are,
+          \begin{align}
+              u_n(x, t) & = B_n\ \sin\Bigg( \frac{n\pi x}{L} \Bigg)
+              \ \exp(-\lambda_n^2\ t)                                 \\
+              \lambda_n & = n                                       &
+              B_n       & = 1                                         \\
+              u_n(x, t) & = \sin(nx)\ \exp(-n^2t)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n *\x) * exp(-\n^2 * \t);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ for $ n=1 $},
+                          grid = both, domain = 0:pi,
+                          PiStyleX, xtick distance = 0.25 * pi,Ani,
+                          colormap/jet, colorbar,
+                          cycle list = {[samples of colormap = 11]},
+                          samples = 100]
+                      \foreach \k in {0, 0.1,...,1}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+ [thick] {mode(1, \k, x)};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n *\x) * exp(-\n^2 * \t);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ for $ n=2 $},
+                          grid = both, domain = 0:pi,
+                          PiStyleX, xtick distance = 0.25 * pi,Ani,
+                          colormap/jet, colorbar,
+                          cycle list = {[samples of colormap = 11]},
+                          samples = 100]
+                      \foreach \k in {0, 0.1,...,1}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+ [thick] {mode(2, \k, x)};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              mode(\n,\t,\x) = sin(\n *\x) * exp(-\n^2 * \t);
+                          }]
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(x, t)$ for $ n=3 $},
+                          grid = both, domain = 0:pi,
+                          PiStyleX, xtick distance = 0.25 * pi,Ani,
+                          colormap/jet, colorbar,
+                          cycle list = {[samples of colormap = 11]},
+                          samples = 100]
+                      \foreach \k in {0, 0.1,...,1}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+ [thick] {mode(3, \k, x)};
+                              }\temp
+                          }
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item TBC. Refer notes. The important difference is in the time component of
+          the solution, which happens to be an exponential term in the heat equation,
+          instead of the sinusoidal term in the wave equation.
+
+    \item Using the constants given, the thermal diffusivity is,
+          \begin{align}
+              c^2       & = 1.75                                      &
+              c         & = 1.32                                        \\
+              \lambda_n & = \frac{c n\pi}{L} = 0.4156 n                 \\
+              F_n(x)    & = \sin\Bigg( \frac{n\pi x}{L} \Bigg)        &
+              G_n(t)    & = B_n \exp(-\lambda_n^2 t)                    \\
+              B_n       & = \frac{2}{L} \int_{0}^{L} f(x)\ \sin\Bigg(
+              \frac{n\pi x}{L} \Bigg)\ \dl x
+          \end{align}
+          Using the given function to find $ B_n $,
+          \begin{align}
+              f(x)    & = \sin(0.1 \pi x)                                  &
+              B_1     & = 1                                                  \\
+              B_n     & = 0\ \forall\ n > 1                                  \\
+              u(x, t) & = \color{y_h} \sin\Bigg( \frac{\pi x}{10} \Bigg)\
+              \exp(- 0.173 t)
+          \end{align}
+
+    \item From Problem $ 5 $, and using the given function $ B_n $,
+          \begin{align}
+              f(x)      & = 4 - 0.8 \abs{x-5} = \begin{dcases}
+                                                    0.8x      & \quad x \in[0, 5]  \\
+                                                    -0.8x + 8 & \quad x \in[5, 10]
+                                                \end{dcases}       \\
+              B_n       & = \frac{2}{10} \int_{0}^{10} f(x)\ \sin(0.1\pi\ nx)\ \dl x \\
+                        & = \frac{4}{25}\int_{0}^{5} (x) \sin(0.1\pi\ nx)\ \dl x
+              + \frac{4}{25}\int_{5}^{10} (-x + 10) \sin(0.1\pi\ nx)\ \dl x          \\
+                        & = 0.16\Bigg[ \frac{\sin(0.1\pi\ nx) - (0.1\pi\ nx)
+              \cos(0.1\pi\ nx)}{(0.1n\pi)^2} \Bigg]_0^5                              \\
+                        & + 0.16\Bigg[ \frac{\sin(0.1\pi\ nx) + (0.1\pi\ n)(10-x)
+              \cos(0.1\pi\ nx)}{(0.1n\pi)^2} \Bigg]_{10}^5                           \\
+              B_n       & = \color{y_p}\frac{32}{n^2 \pi^2}\ \sin\Bigg(
+              \frac{n\pi}{2} \Bigg)                                                  \\
+              u_n(x, t) & = B_n\ \sin\Bigg( \frac{n\pi x}{L} \Bigg)
+              \exp(-0.173n^2\ t)
+          \end{align}
+
+    \item From Problem $ 5 $, and using the given function $ B_n $,
+          \begin{align}
+              f(x)      & = 4 - 0.8 \abs{x-5}                                        \\
+              B_n       & = \frac{2}{10} \int_{0}^{10} f(x)\ \sin(0.1\pi\ nx)\ \dl x \\
+                        & = 0.2\int_{0}^{5} (x)(10-x) \sin(0.1\pi\ nx)\ \dl x        \\
+                        & = 0.2\Bigg[ \frac{(10-2x)}{(0.1n\pi)^2}\ \sin(
+                  0.1\pi\ nx) + \frac{(0.1n\pi)^2(x)(x-10) - 2}{(0.1n\pi)^3}
+              \ \cos(0.1\pi\ nx) \Bigg]_0^{10}                                       \\
+              B_n       & = \color{y_p} \frac{400}{n^3 \pi^3}\ [1 - \cos(n\pi)]      \\
+              u_n(x, t) & = B_n\ \sin\Bigg( \frac{n\pi x}{L} \Bigg)
+              \exp(-0.173n^2\ t)
+          \end{align}
+
+    \item Guess: The temperature is a linear gradient in the bar from $ U_1 $ to
+          $ U_2 $ in the $ x $ direction. After a very long time, the bar does not lose
+          any heat.
+          \begin{align}
+              \diffp Ht    & = 0                                                  &
+              \diffp[2] ux & = 0                                                    \\
+              u(x)         & = \color{y_h} c_1x + c_2                               \\
+              u(0)         & = U_1 \implies \color{y_p} c_2 = U_1                 &
+              u(L)         & = U_2 \implies \color{y_p} c_1 = \frac{U_2 - U_1}{L}
+          \end{align}
+          Since the problem is time independent, it reduces to Laplace's equation in
+          $ 1d $ with Dirichlet B.C.
+
+    \item For the transient solution, using the result from Problem $ 8 $.
+          \begin{align}
+              g(x)    & = U_1 + \frac{U_2 - U_1}{L}\ x    &
+              g(0)    & = U_1 = 100 \qquad g(L) = U_2 = 0   \\
+              u(x, t) & = F(x) \cdot G(t)                 &
+              u(0, t) & = U_1 \qquad u(L, t) = U_2          \\
+              v(x, t) & = \color{y_h} u(x, t) - g(x)      &
+              v(0, t) & = 0 \qquad v(L, t) = 0
+          \end{align}
+          Now, $ v(t) $ satisfies the Dirichlet conditions solved in the text, where
+          both ends are kept at zero temperature.
+          \begin{align}
+              \difcp vt & = \difcp ut \qquad
+              \difcp[2] vt = \difcp[2] ut \qquad
+              \difcp vt = c^2\ \difcp[2] vx                                     \\
+              v_n(x, t) & = \color{y_p} B_n\ \sin\Bigg( \frac{n\pi x}{L} \Bigg)
+              \ \exp(-\lambda_n^2 t)                                            \\
+              B_n       & = \color{y_t} \frac{2}{L} \int_{0}^{L}
+              \big[f(x) - g(x)\big] \sin\Bigg(\frac{n\pi x}{L} \Bigg) \dl x
+          \end{align}
+
+    \item After a long time, the entire bar is at the same temperature. Using the
+          result from Problem $ 9 $,
+          \begin{align}
+              f(x)    & = 100   \qquad\qquad g(x) = \color{y_h} 100 - 10x \\
+              u(0, t) & = 0 \qquad u(L, t) = 100                          \\
+              B_n     & = 2 \int_{0}^{10} (x)\ \sin\Biggl(
+              \frac{n\pi x}{10}\Biggr)\ \dl x                             \\
+                      & = 2\Bigg[ \frac{\sin(0.1n\pi\ x) -
+              (0.1n\pi)x\cos(0.1n\pi\ x)}{(0.1n\pi)^2} \Bigg]_0^{10}      \\
+              B_n     & = \color{y_p} \frac{-200}{n\pi}\ \cos(n\pi)
+          \end{align}
+          From Problem $ 5 $,
+          \begin{align}
+              \lambda_n & = \color{y_t} 0.4156n                                      \\
+              u(x, t)   & = [100 - 10x] + B_n \sin(0.1n\pi\ x) \exp(-\lambda_n^2 t)  \\
+              u_n(5, t) & = 50 - \iser[n]{1}\ \frac{200\cos(n\pi)\sin(n\pi/2)}{n\pi}
+              \ \exp(-0.173n^2\ t)                                                   \\
+              u(5, 1)   & = 99.2 \qquad\qquad u(5, 2) = 94.1                         \\
+              u(5, 3)   & = 87.68 \qquad\qquad u(5, 10) = 61.28                      \\
+              u(5, 50)  & = 50.01
+          \end{align}
+
+    \item Heat flux is proportional to $ \difcp ux $. Since adiabatic means that
+          heat cannot flow from the ends to the environment, and there are no sources
+          or sinks of heat anywhere in the bar,
+          \begin{align}
+              u_x(0, t) & = u_x(L, t) = 0
+          \end{align}
+          Using the general solution to the heat equation in the text,
+          \begin{align}
+              F(x)              & = a\ \cos(px) + b\ \sin(px)                  &
+              F'(x)             & = -pa\ \sin(px) + pb\ \cos(px)                 \\
+              F'(x = 0)         & = 0                                          &
+              \implies b        & = 0                                            \\
+              F'(x = L)         & = 0                                          &
+              \implies \sin(pL) & = 0, \qquad \color{y_h} p_n = \frac{n\pi}{L}   \\
+          \end{align}
+          The time dependent part of $ u(x, t) $ is,
+          \begin{align}
+              G_n(t)    & = A_n \exp(-c^2p^2\ t)                     &
+              \lambda_n & = cp_n = \frac{cn\pi}{L}                     \\
+              u_n(x, t) & = A_n\ \cos(p_n\ x)\ \exp(-\lambda_n^2\ t)
+          \end{align}
+          Using the initial condition $ u(x, 0) = f(x)$, and its Fourier cosine series
+          expansion,
+          \begin{align}
+              u(x, t) = f(x) & = A_0 + \iser[n]{1} A_n \cos(px)\ \exp(-\lambda_n^2 t) \\
+              A_0            & = \color{y_t} \frac{1}{L} \int_{0}^{L} f(x)\ \dl x     \\
+              A_n            & = \color{y_t} \frac{2}{L} \int_{0}^{L} f(x) \cos(px)
+              \ \dl x
+          \end{align}
+
+    \item Using the general solution from Problem $ 11 $, with $ L = \pi, c = 1 $
+          \begin{align}
+              f(x)    & = x                                                       &
+              p       & = n,\qquad \lambda_n = n                                    \\
+              A_0     & = \frac{1}{L} \int_{0}^{L} f(x)\ \dl x                    &
+                      & = \frac{1}{\pi} \Bigg[ \frac{x^2}{2} \Bigg]_0^\pi
+              = \color{y_h} \frac{\pi}{2}                                           \\
+              A_n     & = \frac{2}{L} \int_{0}^{L} f(x)\ \cos(px)\ \dl x          &
+                      & = \frac{2}{\pi} \Bigg[ \frac{nx\sin(nx) + \cos(nx)}{n^2}
+              \Bigg]_0^\pi                                                          \\
+                      & = \color{y_h} \frac{2}{\pi n^2}\ [\cos(n\pi) - 1]           \\
+              u(x, t) & = \color{y_p} A_0 + \iser[n]{1} A_n \cos(nx) \exp(-n^2 t)
+          \end{align}
+
+    \item Using the general solution from Problem $ 11 $, with $ L = \pi, c = 1 $
+          \begin{align}
+              f(x)    & = 1                                                    &
+              p       & = n,\qquad \lambda_n = n                                 \\
+              A_0     & = \frac{1}{L} \int_{0}^{L} f(x)\ \dl x                 &
+                      & = \frac{1}{\pi} \Bigg[ x \Bigg]_0^\pi
+              = \color{y_h} 1                                                    \\
+              A_n     & = \frac{2}{L} \int_{0}^{L} f(x)\ \cos(px)\ \dl x       &
+                      & = \frac{2}{\pi} \Bigg[ \frac{\sin(nx)}{n} \Bigg]_0^\pi
+              = \color{y_h} 0                                                    \\
+              u(x, t) & = \color{y_p} 1
+          \end{align}
+
+    \item Using the general solution from Problem $ 11 $, with $ L = \pi, c = 1 $
+          \begin{align}
+              f(x)    & = x                                                    &
+              p       & = n,\qquad \lambda_n = n                                 \\
+              A_0     & = \frac{1}{L} \int_{0}^{L} f(x)\ \dl x                 &
+                      & = \frac{1}{\pi} \Bigg[ \frac{\sin(2x)}{2} \Bigg]_0^\pi
+              = \color{y_h} 0                                                    \\
+              A_n     & = \color{y_h} 0 \qquad \forall\ n \neq 1               &
+              A_1     & = \color{y_h} 1                                          \\
+              u(x, t) & = \color{y_p} \cos(2x)\ \exp(-4t)
+          \end{align}
+
+    \item Using the general solution from Problem $ 11 $, with $ L = \pi, c = 1 $
+          \begin{align}
+              f(x)         & = 1 - \frac{x}{\pi}                                    &
+              p            & = n,\qquad \lambda_n = n                                 \\
+              A_0          & = \frac{1}{L} \int_{0}^{L} f(x)\ \dl x                 &
+                           & = \frac{1}{\pi} \Bigg[ x - \frac{x^2}{2\pi}
+                  \Bigg]_0^\pi
+              = \color{y_h} \frac{1}{2}                                               \\
+              A_n          & = \frac{2}{L} \int_{0}^{L} f(x)\ \cos(px)\ \dl x       &
+                           & = \frac{2}{\pi} \int_{0}^{\pi} \Bigg[1 - \frac{x}{\pi}
+                  \Bigg]
+              \cos(n x)\ \dl x                                                        \\
+                           & = \frac{2}{\pi} \Bigg[ \frac{n(\pi - x)\sin(nx)
+                      - \cos(nx)}{\pi n^2}
+              \Bigg]_0^\pi &
+                           & = \color{y_h} \frac{-2}{n^2 \pi^2}\ [\cos(n\pi) - 1]     \\
+              u(x, t)      & = \color{y_p} \frac{1}{2} + \iser[n]{1}
+              \frac{2[1 - \cos(n\pi)]}{n^2 \pi^2} \cos(nx) e^{-n^2t}
+          \end{align}
+
+    \item Heat is generated in the rod at constant rate $ H > 0 $,
+          \begin{align}
+              \difcp ut   & = \difcp[2] ux + H                                \\
+              c^2\ v_{xx} & = c^2\ u_{xx} + H                               &
+              c^2\ v_{x}  & = c^2\ u_{x} + Hx + c_1                           \\
+              v           & = u + \frac{1}{c^2} \Bigg[\frac{Hx^2}{2} + b_1x
+                  + b_2\Bigg]
+          \end{align}
+          Ensuring that $ v(x, t) $ satisfies the Dirichlet zero boundary conditions,
+          \begin{align}
+              v(0, t)       & = u(0, t) + b_2                                 &
+              b_2           & = 0                                               \\
+              v(\pi, t)     & = u(\pi, t) + \frac{H\pi^2}{2}
+              + b_1 \pi = 0 &
+              b_1           & = -\frac{H\pi}{2}                                 \\
+              v(x, t)       & = \color{y_p}u(x, t) + \frac{Hx(x - \pi)}{2c^2}
+          \end{align}
+          By construction, $ v(x, t) $ has the solution from the text,
+          \begin{align}
+              \color{y_h}\difcp vt & = \color{y_h}c^2\ \difcp[2] vx                   \\
+              v(0, t) = v(\pi, t)  & = 0                                              \\
+              v(x, t)              & = \color{y_t}\iser[n]{1} B_n\ \sin(nx)
+              \ e^{-c^2n^2\ t}                                                        \\
+              B_n                  & = \color{y_t}\frac{2}{\pi} \int_{0}^{\pi} \Bigg[
+                  f(x) + \frac{Hx(x-\pi)}{2c^2}\Bigg]\ \sin(nx) \dl x
+          \end{align}
+
+    \item From equation $ 9 $ in the text,
+          \begin{align}
+              u_x(x, t) & = \iser[n]{1} pB_n\ \cos(px)
+              \ \exp(-c^2p^2\ t)                                                    \\
+              \phi(t)   & = -Ku_x(0, t) = -K\ \iser[n]{1} B_n\ \frac{n\pi}{L}
+              \exp(-\lambda_n^2 t)                                                  \\
+              p         & = \frac{n\pi}{L} \qquad\qquad \lambda_n = \frac{cn\pi}{L} \\
+              \phi(t)   & = \color{y_h} -\frac{K\pi}{L}\ \iser[n]{1} nB_n
+              \exp(-\lambda_n^2 t)
+          \end{align}
+
+    \item Solving the two dimensional Laplace equation given, $ x \in [0, 20] $ and
+          $ y \in [0, 40] $
+          \begin{align}
+              u(x, 40)                   & = 110             &
+              u(x, 0)                    & = 0                 \\
+              u(0, y)                    & = 0               &
+              u(20, y)                   & = 0                 \\
+              \diffp[2] ux +\diffp[2] uy & = 0               &
+              u(x, y)                    & = F(x) \cdot G(y)
+          \end{align}
+          Separating variables and solving the ODE in $ x $
+          \begin{align}
+              \frac{1}{F} \cdot \diff[2] Fx & = -k                                  &
+              F(x)                          & = A\cos(\sqrt{k}x) + B\sin(\sqrt{k}x)   \\
+              F(0)                          & = 0                                   &
+              \implies B                    & = 0                                     \\
+              F(20)                         & = 0                                   &
+              \implies \sqrt{k}             & = \frac{n\pi}{20}                       \\
+              F(x)                          & = \color{y_h} A\sin\Bigg(
+              \frac{n\pi x}{20} \Bigg)
+          \end{align}
+          Separating variables and solving the ODE in $ y $
+          \begin{align}
+              \frac{1}{G} \cdot \diff[2] Gy & = k                           &
+              G(y)                          & = c_1 \cosh(\sqrt{k}y)
+              + c_2\sinh(\sqrt{k}y)                                           \\
+              G(0)                          & = 0                           &
+              \implies c_1                  & = 0                             \\
+              G(y)                          & = \color{y_p} c_2 \sinh\Bigg(
+              \frac{n\pi y}{20}\Bigg)
+          \end{align}
+          Satifsying the nonzero boundary condition $ u(x, 40) $,
+          \begin{align}
+              u(x, 40)           & = 110 = \iser[n]{1} A_n^* \sin\Bigg(
+              \frac{n\pi x}{20} \Bigg)
+              \sinh(2n\pi)                                                      \\
+              A_n^* \sinh(2n\pi) & = \frac{2}{20} \int_{0}^{20} 110 \sin\Bigg(
+              \frac{n\pi x}{20}\Bigg)\ \dl x                                    \\
+                                 & = \frac{220}{n\pi} \Bigg[ \cos\Bigg(
+              \frac{n\pi x}{20} \Bigg) \Bigg]_{20}^{0}                          \\
+              A_n^*              & = \color{y_t} \frac{220}{n\pi\ \sinh(2n\pi)}
+              \ [1 - \cos(n\pi)]                                                \\
+              u(x, y)            & = \frac{220}{\pi} \iser[n]{1} \Bigg[\frac{1
+                      - \cos(n\pi)}{n\ \sinh(2n\pi)}\Bigg]\ \sin\Bigg( \frac{n\pi x}
+              {20}\Bigg)\ \sinh\Bigg( \frac{n\pi y}{20} \Bigg)
+          \end{align}
+
+    \item Solving the two dimensional Laplace equation given, $ x \in [0, 2] $ and
+          $ y \in [0, 2] $
+          \begin{align}
+              u(x, 2)                    & = 1000 \sin\Bigg( \frac{\pi x}{2} \Bigg) &
+              u(x, 0)                    & = 0                                        \\
+              u(0, y)                    & = 0                                      &
+              u(2, y)                    & = 0                                        \\
+              \diffp[2] ux +\diffp[2] uy & = 0                                      &
+              u(x, y)                    & = F(x) \cdot G(y)
+          \end{align}
+          Separating variables and solving the ODE in $ x $
+          \begin{align}
+              \frac{1}{F} \cdot \diff[2] Fx & = -k                                  &
+              F(x)                          & = A\cos(\sqrt{k}x) + B\sin(\sqrt{k}x)   \\
+              F(0)                          & = 0                                   &
+              \implies B                    & = 0                                     \\
+              F(2)                          & = 0                                   &
+              \implies \sqrt{k}             & = \frac{n\pi}{2}                        \\
+              F(x)                          & = \color{y_h} A\sin\Bigg(
+              \frac{n\pi x}{2} \Bigg)
+          \end{align}
+          Separating variables and solving the ODE in $ y $
+          \begin{align}
+              \frac{1}{G} \cdot \diff[2] Gy & = k                           &
+              G(y)                          & = c_1 \cosh(\sqrt{k}y)
+              + c_2\sinh(\sqrt{k}y)                                           \\
+              G(0)                          & = 0                           &
+              \implies c_1                  & = 0                             \\
+              G(y)                          & = \color{y_p} c_2 \sinh\Bigg(
+              \frac{n\pi y}{2}\Bigg)
+          \end{align}
+          Satifsying the nonzero boundary condition $ u(x, 2) $,
+          \begin{align}
+              u(x, 2)           & = \iser[n]{1} A_n^* \sin\Bigg(
+              \frac{n\pi x}{2} \Bigg)
+              \sinh(n\pi)                                                            \\
+              A_n^* \sinh(n\pi) & = \frac{2}{2} \int_{0}^{2} 1000 \sin\Bigg(
+              \frac{n\pi x}{2}\Bigg) \sin \Bigg( \frac{\pi x}{2} \Bigg)\ \dl x       \\
+              A_n^*             & = \color{y_t}
+              \begin{dcases}
+                  \frac{1000}{\sinh(n\pi)} & \quad n = 1            \\
+                  0                        & \quad \text{otherwise}
+              \end{dcases}                      \\
+              u(x, y)           & = \frac{1000}{\sinh(\pi)}\ \sin\Bigg( \frac{\pi x}
+              {2}\Bigg)\ \sinh\Bigg( \frac{\pi y}{2} \Bigg)
+          \end{align}
+
+    \item Graphing the isotherms,
+          \begin{enumerate}
+              \item Satifsying the nonzero boundary condition $ u(x, 2) $,
+                    \begin{align}
+                        u(x, 2)           & = \iser[n]{1} A_n^* \sin\Bigg(
+                        \frac{n\pi x}{2} \Bigg)
+                        \sinh(n\pi)                                        \\
+                        A_n^* \sinh(n\pi) & = \frac{2}{2} \int_{0}^{2} 80
+                        \sin(\pi x) \sin \Bigg( \frac{n\pi x}{2}
+                        \Bigg)\ \dl x                                      \\
+                        A_n^*             & = \color{y_t}
+                        \begin{dcases}
+                            \frac{80}{\sinh(n\pi)} & \quad n = 2            \\
+                            0                      & \quad \text{otherwise}
+                        \end{dcases}    \\
+                        u(x, y)           & = \frac{80}{\sinh(2\pi)}
+                        \ \sin(\pi x)\ \sinh(\pi y)
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    width = 8cm,
+                                    xmin = 0, xmax = 2, ymin = 0, ymax = 2,
+                                    Ani,
+                                    axis equal,
+                                    view     = {0}{90}, % for a view 'from above'
+                                    colormap/jet, colorbar
+                                ]
+                                \addplot3 [
+                                    contour gnuplot={
+                                            levels = {0.1*pi, pi, 2*pi, 3*pi, 4*pi},
+                                            labels=false,
+                                        },
+                                    samples=100, domain = 0:2,
+                                ] {80 * sin(pi * x) * sinh(pi * y) / (sinh(2 * pi))};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Mixed boundary conditions are
+                    \begin{align}
+                        u_y(x, 2)     & = 0               &
+                        u_y(x, 0)     & = 0                 \\
+                        u(0, y)       & = 0               &
+                        u(2, y)       & = 0                 \\
+                        \diffp[2] ux
+                        +\diffp[2] uy & = 0               &
+                        u(x, y)       & = F(x) \cdot G(y)
+                    \end{align}
+                    Separating variables and solving the ODE in $ x $
+                    \begin{align}
+                        \frac{1}{F} \cdot \diff[2] Fx & = -k                      &
+                        F(x)                          & = A\cos(\sqrt{k}x)
+                        + B\sin(\sqrt{k}x)                                          \\
+                        F(0)                          & = 0                       &
+                        \implies B                    & = 0                         \\
+                        F(2)                          & = 0                       &
+                        \implies \sqrt{k}             & = \frac{n\pi}{2}            \\
+                        F(x)                          & = \color{y_h} A\sin\Bigg(
+                        \frac{n\pi x}{2} \Bigg)
+                    \end{align}
+                    Separating variables and solving the ODE in $ y $
+                    \begin{align}
+                        \frac{1}{G} \cdot \diff[2] Gy & = k                    &
+                        G(y)                          & = c_1 \cosh(\sqrt{k}y)
+                        + c_2\sinh(\sqrt{k}y)                                    \\
+                        G_y(0)                        & = 0                    &
+                        \implies c_2                  & = 0                      \\
+                        G_y(2)                        & = 0                    &
+                        \implies c_2                  & = 0                      \\
+                        G(y)                          & = \color{y_p} 0        &
+                        u(x, y)                       & = 0
+                    \end{align}
+                    The isotherm is the entire surface since the temperature is
+                    identically zero.
+
+              \item TBC.
+          \end{enumerate}
+
+    \item Solving the two dimensional Laplace equation given, $ x \in [0, 24] $ and
+          $ y \in [0, 24] $
+          \begin{align}
+              u(x, 24)                   & = 25              &
+              u(x, 0)                    & = 0                 \\
+              u(0, y)                    & = 0               &
+              u(24, y)                   & = 0                 \\
+              \diffp[2] ux +\diffp[2] uy & = 0               &
+              u(x, y)                    & = F(x) \cdot G(y)
+          \end{align}
+          Separating variables and solving the ODE in $ x $
+          \begin{align}
+              \frac{1}{F} \cdot \diff[2] Fx & = -k                                  &
+              F(x)                          & = A\cos(\sqrt{k}x) + B\sin(\sqrt{k}x)   \\
+              F(0)                          & = 0                                   &
+              \implies B                    & = 0                                     \\
+              F(24)                         & = 0                                   &
+              \implies \sqrt{k}             & = \frac{n\pi}{24}                       \\
+              F(x)                          & = \color{y_h} A\sin\Bigg(
+              \frac{n\pi x}{24} \Bigg)
+          \end{align}
+          Separating variables and solving the ODE in $ y $
+          \begin{align}
+              \frac{1}{G} \cdot \diff[2] Gy & = k                           &
+              G(y)                          & = c_1 \cosh(\sqrt{k}y)
+              + c_2\sinh(\sqrt{k}y)                                           \\
+              G(0)                          & = 0                           &
+              \implies c_1                  & = 0                             \\
+              G(y)                          & = \color{y_p} c_2 \sinh\Bigg(
+              \frac{n\pi y}{24}\Bigg)
+          \end{align}
+          Satifsying the nonzero boundary condition $ u(x, 24) $,
+          \begin{align}
+              u(x, 24)          & = \iser[n]{1} A_n^* \sin\Bigg(
+              \frac{n\pi x}{2} \Bigg) \sinh(n\pi)                                   \\
+              A_n^* \sinh(n\pi) & = \frac{2}{24} \int_{0}^{24} 25\sin\Bigg(
+              \frac{n\pi x}{24}\Bigg)\ \dl x                                        \\
+                                & = \frac{50}{n\pi} \Bigg[ \cos\Bigg( \frac{n\pi x}
+              {24}\Bigg) \Bigg]_{24}^0                                              \\
+              A_n^*             & = \color{y_t} \frac{[1 - \cos(n\pi)]\ 50}
+              {n\pi \sinh(n\pi)}                                                    \\
+              u(x, y)           & = \frac{50}{\pi}\ \iser[n]{1} \Bigg[
+                  \frac{1 - \cos(n\pi)}{n\sinh(n\pi)}\Bigg] \sin\Bigg( \frac{n\pi x}
+              {24}\Bigg)\ \sinh\Bigg( \frac{n\pi y}{24} \Bigg)
+          \end{align}
+
+    \item Using the result from Problem $ 21 $,
+          \begin{align}
+              v(x, 0)  & = v(0, y) = v(24, y) = 0 &
+              v(x, 24) & = U_2                      \\
+              w(x, 24) & = w(0, y) = w(24, y) = 0 &
+              w(x, 0)  & = U_1
+          \end{align}
+          Separating variables and solving the ODE in $ y $ for the first half $ v $
+          \begin{align}
+              \frac{1}{G} \cdot \diff[2] Gy & = k                           &
+              G(y)                          & = c_1 \cosh(\sqrt{k}y)
+              + c_2\sinh(\sqrt{k}y)                                           \\
+              G(0)                          & = 0                           &
+              \implies c_1                  & = 0                             \\
+              G(y)                          & = \color{y_p} c_2 \sinh\Bigg(
+              \frac{n\pi y}{24}\Bigg)
+          \end{align}
+          Satifsying the nonzero boundary condition $ v(x, 24) $,
+          \begin{align}
+              v(x, 24)          & = \iser[n]{1} A_n^* \sin\Bigg(
+              \frac{n\pi x}{24} \Bigg) \sinh(n\pi)                                    \\
+              A_n^* \sinh(n\pi) & = \frac{2}{24} \int_{0}^{24} (U_2)\sin\Bigg(
+              \frac{n\pi x}{24}\Bigg)\ \dl x                                          \\
+                                & = \frac{2U_2}{n\pi} \Bigg[ \cos\Bigg( \frac{n\pi x}
+              {24}\Bigg) \Bigg]_{24}^0                                                \\
+              A_n^*             & = \color{y_t} \frac{[1 - \cos(n\pi)]\ 2U_2}
+              {n\pi \sinh(n\pi)}                                                      \\
+              u(x, y)           & = \frac{2U_2}{\pi}\ \iser[n]{1} \Bigg[
+                  \frac{1 - \cos(n\pi)}{n\sinh(n\pi)}\Bigg] \sin\Bigg( \frac{n\pi x}
+              {24}\Bigg)\ \sinh\Bigg( \frac{n\pi y}{24} \Bigg)
+          \end{align}
+          Separating variables and solving the ODE in $ y $ for the second half $ w $
+          \begin{align}
+              \frac{1}{G} \cdot \diff[2] Gy & = k                               &
+              G(y)                          & = c_1 \cosh(\sqrt{k}y)
+              + c_2\sinh(\sqrt{k}y)                                               \\
+              G(24)                         & = 0                               &
+              \implies 0                    & = c_1\cosh(n\pi) + c_2\sinh(n\pi)   \\
+              G(0)                          & = U_1                             &
+              \implies c_1                  & = U_1                               \\
+              c_2                           & = -U_1 \coth(n\pi)
+          \end{align}
+          Satifsying the nonzero boundary condition $ w(x, 0) $,
+          \begin{align}
+              w(x, 0) & = \iser[n]{1} A_n^*\ U_1\ \sin\Bigg(
+              \frac{n\pi x}{24} \Bigg)                                   \\
+              A_n^*   & = \frac{2}{24} \int_{0}^{24} \sin\Bigg(
+              \frac{n\pi x}{24}\Bigg)\ \dl x                             \\
+                      & = \frac{2}{n\pi} \Bigg[ \cos\Bigg( \frac{n\pi x}
+              {24}\Bigg) \Bigg]_{24}^0                                   \\
+              A_n^*   & = \color{y_t} \frac{[1 - \cos(n\pi)]\ 2}
+              {n\pi}                                                     \\
+              w(x, y) & = \frac{2U_1}{\pi}\ \iser[n]{1} \Bigg[
+                  \frac{1 - \cos(n\pi)}{n}\Bigg] \sin\Bigg( \frac{n\pi x}
+              {24}\Bigg) \cdot G_n(y)                                    \\
+              G_n(y)  & =  \cosh\Bigg( \frac{n\pi y}{24} \Bigg)
+              - \coth(n\pi) \sinh\Bigg( \frac{n\pi y}{24} \Bigg)
+          \end{align}
+
+    \item Mixed boundary conditions are,
+          \begin{align}
+              u(0, y)                    & = 0               &
+              u(24, y)                   & = h(y)              \\
+              u_y(x, 0)                  & = 0               &
+              u_y(x, 24)                 & = 0                 \\
+              \diffp[2] ux +\diffp[2] uy & = 0               &
+              u(x, y)                    & = F(x) \cdot G(y)
+          \end{align}
+          Separating variables and solving the ODE in $ y $
+          \begin{align}
+              \frac{1}{G} \cdot \diff[2] Gy & = -k                                &
+              G_y(y)                        & = \sqrt{k}\ \Big[ -A\sin(\sqrt{k}y)
+              + B\cos(\sqrt{k}y) \Big]                                              \\
+              G_y(0)                        & = 0                                 &
+              \implies B                    & = 0                                   \\
+              G_y(24)                       & = 0                                 &
+              \implies \sqrt{k}             & = \frac{n\pi}{24}                     \\
+              G(y)                          & = \color{y_h} A\cos\Bigg(
+              \frac{n\pi y}{24} \Bigg)
+          \end{align}
+          Separating variables and solving the ODE in $ x $ with $ n > 0 $,
+          \begin{align}
+              \frac{1}{F} \cdot \diff[2] Fx & = k                                 &
+              F(x)                          & = c_1 \cosh(\sqrt{k}x)
+              + c_2\sinh(\sqrt{k}x)                                                 \\
+              F(0)                          & = 0                                 &
+              \implies c_1                  & = 0                                   \\
+              F(24)                         & = 1                                 &
+              \implies c_2                  & = \frac{1}{\sinh(n\pi)}               \\
+              F(x)                          & = \color{y_p} \frac{1}{\sinh{n\pi}}
+              \sinh\Bigg(
+              \frac{n\pi x}{24}\Bigg)
+          \end{align}
+
+          Using the Fourier cosine series to find the full result,
+          \begin{align}
+              u(x, y)  & = \iser[n]{1} A_n^*\ \frac{1}{\sinh(n\pi)}
+              \ \sinh\Bigg( \frac{n\pi x}{24} \Bigg) \cos\Bigg( \frac{n\pi y}{24}
+              \Bigg)                                                       \\
+              u(24, y) & = \iser[n]{1} A_n^*\ \cos\Bigg( \frac{n\pi y}{24}
+              \Bigg) = h(y)                                                \\
+              A_n^*    & = \frac{2}{24} \int_{0}^{24} h(y)\ \cos\Bigg(
+              \frac{n\pi y}{24} \Bigg)\ \dl y
+          \end{align}
+          For the special case when the temperature is independent of $ y $, and
+          \begin{align}
+              \diffp uy  & = 0                                                  &
+              u(x, y)    & = u_0(x)                                               \\
+              u_0(0, y)  & = 0                                                  &
+              u_0(24, y) & = h(y)                                                 \\
+              u_0(x)     & = \Bigg[\frac{1}{24} \int_{0}^{24} h(y)\ \dl y\Bigg]
+              \ \frac{x}{24}
+          \end{align}
+
+    \item For radiation, mixed boundary conditions are,
+          \begin{align}
+              u_x(0, y)                  & = 0               &
+              u_y(x, b)                  & = 0                 \\
+              u(x, 0)                    & = v(x)            &
+              u_x(a, y)                  & = -hu(a, y)         \\
+              \diffp[2] ux +\diffp[2] uy & = 0               &
+              u(x, y)                    & = F(x) \cdot G(y)
+          \end{align}
+          Separating variables and solving the ODE in $ x $
+          \begin{align}
+              \frac{1}{F} \cdot \diff[2] Fx & = -k                                  &
+              F(x)                          & = A\cos(\sqrt{k}x) + B\sin(\sqrt{k}x)   \\
+              F_x(0)                        & = 0                                   &
+              \implies B                    & = 0                                     \\
+              F_x(a)                        & = -hF(a)                              &
+              \implies \sqrt{k}             & = h\cot(\sqrt{k}a)
+          \end{align}
+          This is a transcendental equation with an infinite set of increasing solutions.
+          The solution is now,
+          \begin{align}
+              F_n(x)                 & = \color{y_h} A \cos\Big(\sqrt{k_n} x\Big) &
+              \color{y_t} \sqrt{k_n} & = \color{y_t} h \cot\Big(\sqrt{k_n}a\Big)
+          \end{align}
+          Separating variables and solving the ODE in $ y $
+          \begin{align}
+              \frac{1}{G} \cdot \diff[2] Gy & = k                       &
+              G(y)                          & = c_1 \cosh(\sqrt{k}y)
+              + c_2\sinh(\sqrt{k}y)                                       \\
+              G_y(b)                        & = 0                       &
+              \implies c_2                  & = -c_1 \tanh(\sqrt{k_n}b)   \\
+              G(0)                          & = v(x)                    &
+              \implies c_1                  & = v(x)
+          \end{align}
+          The general solution in $ y $ is now,
+          \begin{align}
+              G_n(y) & = \color{y_p} \Bigg[\cosh\Big(\sqrt{k_n}y\Big)
+                  - \tanh\Big(\sqrt{k_n}b\Big) \sinh\Big(\sqrt{k_n}y\Big)\Bigg] v(x)
+          \end{align}
+
+    \item Similar to the example in the text, the boundary conditions are,
+          \begin{align}
+              u(0, y)                    & = 0               &
+              u(a, y)                    & = 0                 \\
+              u(x, 0)                    & = f(x)            &
+              u(x, b)                    & = 0                 \\
+              \diffp[2] ux +\diffp[2] uy & = 0               &
+              u(x, y)                    & = F(x) \cdot G(y)
+          \end{align}
+          Separating variables and solving the ODE in $ x $
+          \begin{align}
+              \frac{1}{F} \cdot \diff[2] Fx & = -k                                  &
+              F(x)                          & = A\sin(\sqrt{k}x) + B\cos(\sqrt{k}x)   \\
+              F(0)                          & = 0                                   &
+              \implies B                    & = 0                                     \\
+              F(a)                          & = 0                                   &
+              \implies \sqrt{k}             & = \frac{n\pi}{a}                        \\
+              F(x)                          & = \color{y_h} A\sin\Bigg(
+              \frac{n\pi x}{a} \Bigg)
+          \end{align}
+          Separating variables and solving the ODE in $ y $,
+          \begin{align}
+              \frac{1}{F} \cdot \diff[2] Gy & = k                        \\
+              G(y)                          & = c_1 \cosh(\sqrt{k}y)
+              + c_2\sinh(\sqrt{k}y)                                      \\
+              G(b)                          & = 0                        \\
+              c_2                           & = -c_1 \coth(\sqrt{k}b)    \\
+              G(y)                          & = c_1 \Big[
+              \cosh(\sqrt{k}y) - \coth(\sqrt{k}b) \sinh(\sqrt{k}y) \Big] \\
+                                            & = \color{y_p} c_1
+              \ \frac{\sinh(\sqrt{k}b-\sqrt{k}y)}{\sinh(\sqrt{k}b)}
+          \end{align}
+          Solving the nonzero boundary condition $ u(x, 0) $,
+          \begin{align}
+              u(x, y) & = \iser[n]{1} A_n^*\ \frac{\sinh[\sqrt{k}(b-y)]}
+              {\sinh(\sqrt{k}b)}\ \sin\Bigg( \frac{n\pi x}{a} \Bigg)                   \\
+              u(x, 0) & = \iser[n]{1} A_n^*\ \sin\Bigg( \frac{n\pi x}{a} \Bigg) = f(x) \\
+              A_n^*   & = \frac{2}{a} \int_{0}^{a} f(x) \sin\Bigg( \frac{n\pi x}{a}
+              \Bigg)\ \dl x
+          \end{align}
+          In the text, the factor $ \sinh(\sqrt{k}b) $ in the denominator is folded into
+          the parameter $ A_n^* $
+\end{enumerate}

@@ -1,2 +1,5 @@
 Parseval
 Sturm-Liouville
+piecewise
+Cauchy-Hadamard
+Maclaurin

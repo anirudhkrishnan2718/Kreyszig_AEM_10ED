@@ -1,0 +1,317 @@
+\section{Methods for Parabolic PDEs}
+
+\begin{enumerate}
+    \item Deriving the non-dimensional version,
+          \begin{align}
+              u_t       & = c^2\ u_{xx}                             \\
+              v         & = \frac{x}{L}                           &
+              u_{x}     & = u_v \cdot v_x = \frac{u_v}{L}           \\
+              u_{xx}    & = \diffp*{\ \frac{u_v}{L}}{x} = \diffp*
+              {\ \frac{u_{vv}}{L}}{x}
+              \ v_x     &
+              u_{xx}    & = \frac{u_{vv}}{L^2}                      \\
+              q         & = \frac{c^2\ t}{L^2}                    &
+              \diffp ut & = u_q\ q_t = u_q\ \frac{c^2}{L^2}         \\
+              u_q       & = u_{vv}
+          \end{align}
+          Now, $ q $ and $ v $ are the dimensionless version of time and position.
+
+    \item The difference approximation is,
+          \begin{align}
+              u_{xx} & = \frac{1}{h}\ \Bigg[ \frac{u_{i+1}- u_i}{h}
+                  - \frac{u_i - u_{i-1}}{h} \Bigg]
+                     &
+                     & = \frac{u_{i+1} -  2u_i + u_{i-1}}{h^2}
+          \end{align}
+          Using a forward difference for the time derivative, since information is not
+          available for negative time,
+          \begin{align}
+              u_t & = \frac{u_{j+1} - u_j}{k}
+          \end{align}
+          The subscripts corresponding to the other coordinate are omitted for clarity.
+
+    \item Deriving the relation,
+          \begin{align}
+              u_{i,j+1}         & = u_{ij} + \frac{k}{h^2}\ \Bigg[u_{i+1,j} - 2u_{ij}
+              + u_{i-1,j}\Bigg] &
+              r                 & = \frac{k}{h^2}                                     \\
+              u_{i,j+1}         & = (1-2r)\ u_{ij} + r\ (u_{i+1,j} + u_{i-1,j})
+          \end{align}
+
+    \item Comparison of methods
+          \begin{enumerate}
+              \item Code written in \texttt{numpy}
+
+              \item Comparing the explicit method and the CN method,
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{
+                            colspec =
+                            {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]|Q[l,$$]|[dotted]Q[l,$$]},
+                            colsep = 1em}
+                            $t$               & \SetCell[c=2]{c}
+                            \textbf{Explicit} &                  &
+                            \SetCell[c=2]{c}
+                            \textbf{Crank-Nicholson}
+                                              &                                   \\
+                            \hline[dotted]
+                                              & x=0.2            & x=0.4
+                                              & x=0.2            & x=0.4          \\
+                            \hline
+                            0.04              & \num{0.393432}   & \num{0.636586}
+                                              & \num{0.399274}   & \num{0.646039} \\
+                            0.08              & \num{0.263342}   & \num{0.426096}
+                                              & \num{0.271221}   & \num{0.438844} \\
+                            0.12              & \num{0.176267}   & \num{0.285206}
+                                              & \num{0.184236}   & \num{0.298100} \\
+                            0.16              & \num{0.117983}   & \num{0.190901}
+                                              & \num{0.125149}   & \num{0.202495} \\
+                            0.20              & \num{0.078972}   & \num{0.127779}
+                                              & \num{0.085012}   & \num{0.137552} \\
+                            \hline
+                        \end{tblr}
+                    \end{table}
+                    The maximum error at each time step for both methods is,
+                    \begin{table}[H]
+                        \centering
+                        \begin{tblr}{
+                            colspec =
+                            {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                            colsep = 1em}
+                            $t$  & \epsilon_{\text{explicit}} & \epsilon_{\text{CN}} \\
+                            \hline
+                            0.04 & \num{4.26d-3}              & \num{5.19d-3}        \\
+                            0.08 & \num{5.72d-3}              & \num{7.02d-3}        \\
+                            0.12 & \num{5.76d-3}              & \num{7.13d-3}        \\
+                            0.16 & \num{5.16d-3}              & \num{6.43d-3}        \\
+                            0.20 & \num{4.33d-3}              & \num{5.43d-3}        \\
+                            \hline
+                        \end{tblr}
+                    \end{table}
+                    The accuracies are similar, in spite of the explicit method requiring
+                    4 times as many time steps.
+
+              \item Plotting the two approximations,
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_06_04_a.csv}
+                        \anitablefoura
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 12cm, xlabel = $ x $, ylabel = $ u $,
+                                    legend pos = north west,
+                                    title = {$ u(x,t) $ Explicit},
+                                    grid = both,Ani,
+                                    colormap/jet,
+                                    cycle list = {[samples of colormap = 6]},
+                                    colorbar,
+                                    colorbar style={
+                                            title=Time,
+                                            ytick={0,0.2,...,1},
+                                            yticklabels={0,0.04,0.08,0.12,0.16,0.20}}]
+                                \addplot+ table[x = 0, y = 1] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 2] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 3] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 4] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 5] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 6] {\anitablefoura};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \pgfplotstableread[col sep=comma]{./tables/table_21_06_04_b.csv}
+                        \anitablefoura
+                        \begin{tikzpicture}
+                            \begin{axis}[ width = 12cm, xlabel = $ x $, ylabel = $ u $,
+                                    legend pos = north west,
+                                    title = {$ u(x,t) $ Crank-Nicholson},
+                                    grid = both,Ani,
+                                    colormap/jet,
+                                    cycle list = {[samples of colormap = 6]},
+                                    colorbar,
+                                    colorbar style={
+                                            title=Time,
+                                            ytick={0,0.2,...,1},
+                                            yticklabels={0,0.04,0.08,0.12,0.16,0.20}}]
+                                \addplot+ table[x = 0, y = 1] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 2] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 3] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 4] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 5] {\anitablefoura};
+                                \addplot+ table[x = 0, y = 6] {\anitablefoura};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Keeping $ h $ constant, and looking at the error as a function
+                    of $ r $,
+                    \begin{table}[H]
+                        \centering
+                        \begin{tblr}{
+                            colspec =
+                            {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]
+                            |Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                            colsep = 1em}
+                            $r$   & \epsilon_{\text{explicit}} & \epsilon_{\text{CN}} &
+                            $ r $ & \epsilon_{\text{explicit}} & \epsilon_{\text{CN}}   \\
+                            \hline
+                            0.01  & \num{2.21d-3}              & \num{5.98d-4}        &
+                            1.5   & \num{1.2d-1}               & \num{1.59d-3}          \\
+                            0.1   & \num{4.63d-3}              & \num{5.00d-3}        &
+                            2     & \num{2.07d-1}              & \num{6.49d-3}          \\
+                            0.5   & \num{1.05d-2}              & \num{2.49d-2}        &
+                            2.5   & \num{25.79}                & \num{1.81d-2}          \\
+                            1     & \num{7.13d-3}              & \num{6.85d-2}        &
+                            3     & \num{2432}                 & \num{3.27d-2}          \\
+                            \hline
+                        \end{tblr}
+                    \end{table}
+                    The explicit method is unstable for $ r > 1/2 $
+          \end{enumerate}
+
+    \item Using the explicit method with
+          \begin{align}
+              h & = 1, \quad k = 0.5    &
+              r & = \frac{k}{h^2} = 0.5
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|Q[r]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $r$ & u(2,t)       & $ r $ & u(2,t)         \\
+                  \hline
+                  0   & \num{1.6}    & 3     & \num{1.125}    \\
+                  0.5 & \num{1.5}    & 3.5   & \num{1.070312} \\
+                  1   & \num{1.4}    & 4     & \num{1.015625} \\
+                  1.5 & \num{1.325}  & 4.5   & \num{0.966797} \\
+                  2   & \num{1.25}   & 5     & \num{0.917969} \\
+                  2.5 & \num{1.1875} &                        \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Using the explicit method with
+          \begin{align}
+              h & = 0.2, \quad k = 0.01  &
+              r & = \frac{k}{h^2} = 0.25
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|Q[r]|[dotted]Q[l,$$]|Q[r]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $t$                      & \SetCell[c=2]{c} x = 0.2 &              &
+                  \SetCell[c=2]{c} x = 0.4 &                                           \\
+                  \hline
+                                           & Explicit                 & \text{Exact} &
+                  Explicit                 & \text{Exact}                              \\
+                  0.08                     & \num{0.105}              & \num{0.108}  &
+                  \num{0.170}              & \num{0.175}                               \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Using the explicit method with
+          \begin{align}
+              h & = 0.2, \quad k = 0.01  &
+              r & = \frac{k}{h^2} = 0.25
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|Q[r,$$]|[dotted]Q[l,$$]|Q[r,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $t$                      & \SetCell[c=2]{c} x = 0.2 &             &
+                  \SetCell[c=2]{c} x = 0.4 &                                          \\
+                  \hline[dotted]
+                                           & r=0.25                   & r=0.5       &
+                  r=0.25                   & r=0.5                                    \\
+                  \hline
+                  0.04                     & \num{0.156}              & \num{0.15}  &
+                  \num{0.254}              & \num{0.25}                               \\
+                  0.08                     & \num{0.105}              & \num{0.100} &
+                  \num{0.170}              & \num{0.162}                              \\
+                  \hline
+              \end{tblr}
+          \end{table}
+          The larger $ r $ gives much worse approximations compared to Problem $ 6 $.
+
+    \item Using the explicit method with
+          \begin{align}
+              h & = 0.2, \quad k = 0.01  &
+              r & = \frac{k}{h^2} = 0.25
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{
+                  colspec =
+                  {Q[r]|[dotted]Q[l,$$]|[dotted]Q[l,$$]},
+                  colsep = 1em}
+                  $t$  & x = 0.2        & x = 0.4        \\ \hline
+                  0.01 & \num{0.2}      & \num{0.35}     \\
+                  0.02 & \num{0.1875}   & \num{0.3125}   \\
+                  0.03 & \num{0.171875} & \num{0.28125}  \\
+                  0.04 & \num{0.15625}  & \num{0.253906} \\
+                  0.05 & \num{0.141602} & \num{0.229492} \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item At the end of 5 time steps,
+          \begin{align}
+              \begin{bNiceMatrix}
+                  0 & 0.062793 & 0.093359 & 0.083643 & 0.04707 & 0
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item TBC
+
+    \item At the end of 2 time steps, with $ h = 0.2 $ and $ r = 1 $
+          \begin{align}
+              \begin{bNiceMatrix}
+                  0 & 0.045333 & 0.067218 & 0.06708 & 0.039378 & 0
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item Using the CN method for $ x = 0.2, 0.4 $ due to symmetry at $t = 0.2$
+          \begin{align}
+              h                   & = 0.2, \quad k = 0.04 &
+              r                   & = \frac{k}{h^2} = 1     \\
+              \vec{\wt{u}}        & = \begin{bNiceMatrix}
+                                          0.033869 & 0.054798
+                                      \end{bNiceMatrix} &
+              \vec{u}_{\text{Ex}} & = \begin{bNiceMatrix}
+                                          0.033091 & 0.053543
+                                      \end{bNiceMatrix}
+          \end{align}
+
+    \item At the end of 5 time steps, with $ h = 0.2 $ and $ r = 1 $
+          \begin{align}
+              \begin{bNiceMatrix}
+                  0 & 0.065375 & 0.106034 & 0.105646 & 0.06543 & 0
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item At the end of 20 time steps, with $ h = 0.1 $ and $ r = 1 $ giving $ t = 0.2 $.
+          \par For comparison, only the points $ x = 0.2,0.4,0.6,0.8 $ are noted as in
+          Problem $ 15 $.
+          \begin{align}
+              \begin{bNiceMatrix}
+                  0 & 0.021376 & 0.034587 & 0.0.034587 & 0.021376 & 0
+              \end{bNiceMatrix}
+          \end{align}
+
+    \item At the end of 5 time steps, with $ h = 0.2 $ and $ r = 1 $ giving $ t = 0.2 $
+          \begin{align}
+              \begin{bNiceMatrix}
+                  0 & 0.021919 & 0.035467 & 0.035467 & 0.021919 & 0
+              \end{bNiceMatrix}
+          \end{align}
+          The differences are larger at points farther from the boundary.
+
+\end{enumerate}

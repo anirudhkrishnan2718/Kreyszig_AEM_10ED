@@ -1,5 +1,494 @@
 \section{Sturm-Liouville Problems, Orthogonal Functions}
 
 \begin{enumerate}
-    \item
+    \item \begin{enumerate}
+              \item For Case III, where $ p(a) = 0 ,\ p(b) \neq 0$,
+                    \begin{align}
+                        (\lambda_m - \lambda_n) \int_{a}^{b} (r\ y_m\ y_n)\ \dl x
+                             & = p(b) \ z(b) - p(a)\ z(a)          \\
+                        z(x) & = y_n'(x)\ y_m(x) - y_m'(x)\ y_n(x)
+                    \end{align}
+                    From the boundary conditions,
+                    \begin{align}
+                        k_1\ y_n(b) + k_2\ y_n'(b) & = 0        \\
+                        k_1\ y_m(b) + k_2\ y_m'(b) & = 0        \\
+                        k_2\ z(b)                  & = 0 \qquad
+                        \text{Eliminating}\ k_1
+                    \end{align}
+                    Here, assume $ k_2 \neq 0 $, since at least one of $ k_1, k_2 $ has
+                    to be nonzero. The argument for the opposite case is identical
+                    \begin{align}
+                        k_2 \neq 0          & \implies z(b) = 0  \\
+                        p(a) = 0,\ z(b) = 0 & \implies y_m,\ y_n
+                        \ \text{are orthogonal}
+                    \end{align}
+
+              \item For Case IV, where $ p(a) \neq 0 ,\ p(b) \neq 0$,
+                    \begin{align}
+                        (\lambda_m - \lambda_n) \int_{a}^{b} (r\ y_m\ y_n)\ \dl x
+                             & = p(b) \ z(b) - p(a)\ z(a)          \\
+                        z(x) & = y_n'(x)\ y_m(x) - y_m'(x)\ y_n(x)
+                    \end{align}
+                    From the boundary conditions,
+                    \begin{align}
+                        k_1\ y_n(b) + k_2\ y_n'(b) & = 0        \\
+                        k_1\ y_m(b) + k_2\ y_m'(b) & = 0        \\
+                        k_2\ z(b)                  & = 0 \qquad
+                        \text{Eliminating}\ k_1
+                    \end{align}
+                    Here, assume $ k_2 \neq 0 $, since at least one of $ k_1, k_2 $ has
+                    to be nonzero. The argument for the opposite case is identical. \par
+                    Additionally, the same process leads to
+                    \begin{align}
+                        k_2\ z(a)           & = 0                       \\
+                        k_2 \neq 0          & \implies z(b) = z(a) =  0 \\
+                        z(a) = 0,\ z(b) = 0 & \implies y_m,\ y_n
+                        \ \text{are orthogonal}
+                    \end{align}
+          \end{enumerate}
+
+    \item Proving that a scalar multiple of an eigenfunctino is also an
+          eigenfunction,
+          \begin{align}
+              z_m                                           & = c\ y_m \qquad\qquad
+              c \neq 0                                                              \\
+              \Big[p y_m'\Big]' + \Big[q + \lambda r\Big] y & = 0                   \\
+              \color{y_p}\Big[p z_m'\Big]'
+              + \Big[q + \lambda r\Big] z                   & =
+              p'z_m' + p\ z_m'' + \Big[ q + \lambda r \Big] z_m                     \\
+                                                            & =
+              c\ (p' y_m') + c\ (p\ y_m'')
+              + c\ \Big[q + \lambda r\Big]y_m                                       \\
+                                                            & = \color{y_p}0
+          \end{align}
+          By the linearity of differentiation, it is trivial to see that $ z_m $ also
+          satisfies the boundary conditions of the Sturm-Liouville problem.
+
+    \item Given that $ \{y_m\} $ is an orthogonal set under the weight function $ r(x)
+              = 1 $ in the interval $ x \in [a,b] $,
+          \begin{align}
+              \int_{a}^{b} r(x)\ y_m(x)\ y_n(x)\ \dl x & =
+              0 \qquad\qquad \forall\ m \neq n
+          \end{align}
+          Making the substitution $ x = ct + k $ for some $ c > 0 $ and constants
+          $ c, k $,
+          \begin{align}
+              x = a                   & \implies t_a = \frac{a-k}{c}       \\
+              x = b                   & \implies t_b = \frac{b-k}{c}       \\
+              \dl x                   & = c\ \dl t                         \\
+              \int_{t_a}^{t_b} y_m(ct+ k)
+              \ y_n(ct + k)\ c\ \dl t & = 0 \qquad\qquad \forall\ m \neq n
+          \end{align}
+
+    \item Using Problem $ 3 $, and setting $ c = \pi,\ k = 0 $,
+          \begin{align}
+              \int_{-1}^{1} (1)\ \cos(m\pi t)\ \cos(n\pi t)\ \pi\ \dl t & = 0 \\
+              \int_{-1}^{1} (1)\ \cos(m\pi t)\ \sin(n\pi t)\ \pi\ \dl t & = 0 \\
+              \int_{-1}^{1} (1)\ \sin(m\pi t)\ \sin(n\pi t)\ \pi\ \dl t & = 0
+          \end{align}
+          For all $ m \neq n $, which proves their orthogonality in the domain
+          $ t \in [-1, 1] $
+
+    \item Legendre polynomials in $ \cos \theta $, using the substitution
+          $ \cos \theta = x $,
+          \begin{align}
+              r(\theta)                & = \sin \theta \qquad\qquad
+              \theta \in [0, \pi]                                   \\
+              \cos \theta              & = x \qquad\qquad
+              \dl x = -\sin \theta\ \dl \theta                      \\
+              \int_{0}^{\pi} P_n(\cos \theta)\ P_m(\cos \theta)\
+              \sin(\theta)\ \dl \theta &
+              = \int_{-1}^{1} P_n(x)\ P_m(x)\ \dl x
+          \end{align}
+          Looking at the Legendre ODE which yields Legendre polynomials as
+          eigenfunctions,
+          \begin{align}
+              (1 - x^2)\ y'' - 2x\ y' + n(n+1)\ y   & = 0       &
+              \Big[(1 - x^2)\ y'\Big]' + \lambda\ y & = 0         \\
+              \lambda                               & = n(n+1)  &
+              p(x)                                  & = 1 - x^2   \\
+              q(x)                                  & = 0       &
+              r(x)                                  & = 1
+          \end{align}
+          Since the Legendre polynomials for integer $ n $ are solutions to the ODE,
+          they are eigenfunctions of the Sturm-Lioville equation and the orthogonality
+          relation holds.
+
+    \item Transforming variables,
+          \begin{align}
+              0  & = y'' + fy' + (g + \lambda h)y                  &
+              q  & = gp \qquad r = hp                                \\
+              p  & = \exp\left( \int f\ \dl x \right)              &
+              p' & = f \cdot \exp\left( \int f\ \dl x \right) = fp   \\
+              0  & = py'' + (fp)y' + (gp + \lambda\ hp)y           &
+              0  & = \Big[py'\Big]' + (q + \lambda\ r) y
+          \end{align}
+          The advantage of reframing the original ODE as a Sturm-Liouville ODE is that
+          a set of orthogonal solutions are guaranteed to exist.
+
+    \item Reframing as a Sturm-Lioville problem,
+          \begin{align}
+              y'' + \lambda y & = 0                                             &
+              y(0)            & = 0 \qquad y(10) = 0                              \\
+              f               & = 0                                             &
+              p               & = \exp\left( \int_{0}^{10} f\ \dl x \right) = 1   \\
+              g               & = 0                                             &
+              q               & = gp = 0                                          \\
+              h               & = 1                                             &
+              r               & = hp = 1
+          \end{align}
+
+          Solving the ODE for negative eigenvalues,
+          \begin{align}
+              0         & = \Big[ py' \Big]' + \Big[ q + \lambda\ r \Big] y &
+              \lambda   & = -\nu^2                                            \\
+              y(x)      & = c_1 e^{\nu x} + c_2 e^{-\nu x}                  &
+              y(0)= 0   & = c_1 + c_2                                         \\
+              y(10) = 0 & = c_1 e^{10\nu} + c_2e^{-10\nu}                   &
+              c_1 = c_2 & = 0
+          \end{align}
+
+          Solving the ODE for positive eigenvalues,
+          \begin{align}
+              0         & = \Big[ py' \Big]' + \Big[ q + \lambda\ r \Big] y &
+              \lambda   & = \nu^2                                             \\
+              y(x)      & = c_1 \cos(\nu x) + c_2 \sin(\nu x)               &
+              y(0)= 0   & = c_1                                               \\
+              y(10) = 0 & = c_1 \cos(10\nu) + c_2 \sin(10\nu)               &
+              10\nu     & = n\pi
+          \end{align}
+
+          For $ \lambda = 0 $, only the trivial solution exists. The eigenfunctions and
+          corresponding eigenvalues are,
+          \begin{align}
+              y_n(x)    & = \color{y_h} \sin\Bigg( \frac{n\pi}{10}\ x \Bigg) &
+              \lambda_n & = \color{y_p} \Bigg( \frac{n\pi}{10} \Bigg)^2
+          \end{align}
+
+    \item Solving the ODE for negative eigenvalues, using Problem $ 7 $,
+          \begin{align}
+              0         & = \Big[ py' \Big]' + \Big[ q + \lambda\ r \Big] y &
+              \lambda   & = -\nu^2                                            \\
+              y(x)      & = c_1 e^{\nu x} + c_2 e^{-\nu x}                  &
+              y(0)= 0   & = c_1 + c_2                                         \\
+              y(L) = 0  & = c_1 e^{L\nu} + c_2e^{-L\nu}                     &
+              c_1 = c_2 & = 0
+          \end{align}
+
+          Solving the ODE for positive eigenvalues,
+          \begin{align}
+              0        & = \Big[ py' \Big]' + \Big[ q + \lambda\ r \Big] y &
+              \lambda  & = \nu^2                                             \\
+              y(x)     & = c_1 \cos(\nu x) + c_2 \sin(\nu x)               &
+              y(0)= 0  & = c_1                                               \\
+              y(L) = 0 & = c_1 \cos(L\nu) + c_2 \sin(L\nu)                 &
+              L\nu     & = n\pi
+          \end{align}
+
+          For $ \lambda = 0 $, only the trivial solution exists. The eigenfunctions and
+          corresponding eigenvalues are,
+          \begin{align}
+              y_n(x)    & = \color{y_h} \sin\Bigg( \frac{n\pi}{L}\ x \Bigg) &
+              \lambda_n & = \color{y_p} \Bigg( \frac{n\pi}{L} \Bigg)^2
+          \end{align}
+
+    \item Solving the ODE for negative eigenvalues, using Problem $ 7 $,
+          \begin{align}
+              0         & = \Big[ py' \Big]' + \Big[ q + \lambda\ r \Big] y &
+              \lambda   & = -\nu^2                                            \\
+              y(x)      & = c_1 e^{\nu x} + c_2 e^{-\nu x}                  &
+              y(0)= 0   & = c_1 + c_2                                         \\
+              y'(L) = 0 & = \nu c_1 e^{\nu L} - \nu c_2 e^{-\nu L}          &
+              c_1 = c_2 & = 0
+          \end{align}
+
+          Solving the ODE for positive eigenvalues,
+          \begin{align}
+              0         & = \Big[ py' \Big]' + \Big[ q + \lambda\ r \Big] y &
+              \lambda   & = \nu^2                                             \\
+              y(x)      & = c_1 \cos(\nu x) + c_2 \sin(\nu x)               &
+              y(0)= 0   & = c_1                                               \\
+              y'(L) = 0 & = \nu c_2 \cos(L\nu) - \nu c_1 \sin(L\nu)         &
+              L\nu      & = \frac{(2n-1)\pi}{2}
+          \end{align}
+
+          For $ \lambda = 0 $, only the trivial solution exists. The eigenfunctions and
+          corresponding eigenvalues are,
+          \begin{align}
+              y_n(x)    & = \color{y_h} \sin\Bigg( \frac{(2n-1)\pi}{2L}\ x \Bigg) &
+              \lambda_n & = \color{y_p} \Bigg( \frac{(2n-1)\pi}{2L} \Bigg)^2
+          \end{align}
+          for integers $ n = \{1,2,3,\dots\} $
+
+    \item Solving the ODE for negative eigenvalues, using Problem $ 7 $,
+          \begin{align}
+              0               & = \Big[ py' \Big]' + \Big[ q + \lambda\ r \Big] y &
+              \lambda         & = -\nu^2                                            \\
+              y(x)            & = c_1 e^{\nu x} + c_2 e^{-\nu x}                    \\
+              y(0)            & = y(1)                                            &
+              c_1 + c_2       & = c_1 e^{\nu} + c_2 e^{-\nu}                        \\
+              y'(0)           & = y'(1)                                           &
+              \nu (c_1 - c_2) & = \nu (c_1 e^{\nu} - c_2 e^{-\nu})                  \\
+              c_1             & = 0                                               &
+              c_2             & = 0
+          \end{align}
+
+          Solving the ODE for positive eigenvalues,
+          \begin{align}
+              0       & = \Big[ py' \Big]' + \Big[ q + \lambda\ r \Big] y     &
+              \lambda & = \nu^2                                                 \\
+              y(x)    & = c_1 \cos(\nu x) + c_2 \sin(\nu x)                     \\
+              y(0)    & = y(1)                                                &
+              c_1     & = c_1 \cos(\nu) + c_2 \sin(\nu )                        \\
+              y'(0)   & = y'(1)                                               &
+              \nu c_2 & = -\nu c_1 \sin(\nu) + \nu c_2 \cos(\nu )               \\
+              c_2     & = c_1\ \frac{1 - \cos(\nu)}{\sin(\nu)}                &
+              0       & = c_1 \left( 1 + \left( \frac{1 - \cos \nu}{\sin \nu}
+              \right)^2 \right)                                                 \\
+              c_1     & = 0                                                   &
+              c_2     & = 0
+          \end{align}
+          The above case requires $ \sin(\nu) \neq 0 $. Looking at this special case,
+          \begin{align}
+              \nu        & = n\pi              &
+              c_1        & = c_1 \cos(n\pi)      \\
+              c_2        & = c_2 \cos(n\pi)    &
+              \cos(n\pi) & = 1 \implies n = 2k
+          \end{align}
+          A nontrivial solution is now
+          \begin{align}
+              y_k(x)    & = \color{y_h} c_1 \cos(2k\pi\ x) + c_2 \sin(2k\pi\ x) &
+              \lambda_k & = \color{y_p} (2k\pi)^2
+          \end{align}
+          To prove orthogonality use the result from Problem $ 4 $
+          \begin{align}
+              \int_{-1}^{1} (1)\ y_m\ y_n\ \dl x = 0
+          \end{align}
+
+    \item Reframing as a Sturm-Lioville problem,
+          \begin{align}
+              0                             & = \left( \frac{y'}{x} \right)'
+              + \frac{\lambda + 1}{x^3} \ y &
+              x                             & = e^t                                    \\
+              \diff xt                      & = e^t = x                              &
+              y'                            & = \dot{y}\ \diff tx = \dot{y}\ e^{-t}    \\
+              y''                           & = \diff*{[\dot{y}\ e^{-t}]}{t}
+              \ \diff tx                    &
+              y''                           & = \ddot{y} e^{-2t} - \dot{y}e^{-2t}      \\
+              0                             & = \frac{y''}{x} - \frac{y'}{x^2}
+              + \frac{\lambda + 1}{x^3}\ y  &
+              0                             & = \ddot{y} - 2\dot{y} + (\lambda + 1)y
+          \end{align}
+          This is an second order linear ODE with constant coefficients.
+          \begin{align}
+              \mu           & = \frac{2 \pm \sqrt{4 - 4(\lambda + 1)}}{2} &
+              \mu_1,\ \mu_2 & = 1 \pm \sqrt{-\lambda}
+          \end{align}
+          For the case where $ \lambda = -\nu^2 $,
+          \begin{align}
+              y      & = c_1 e^{(1+\nu)t} + c_2 e^{(1-\nu)t}    &
+              y(t=0) & = y(t=\pi) = 0                             \\
+              0      & = c_1 + c_2                              &
+              0      & = c_1e^{(1+\nu)\pi} + c_2 e^{(1-\nu)\pi}   \\
+              c_1    & = 0                                      &
+              c_2    & = 0
+          \end{align}
+          This leads to the trivial solution.
+
+          For the case where $ \lambda = \nu^2 $,
+          \begin{align}
+              y      & = e^t\ \Big[ c_1 \cos(\nu t) + c_2 \sin(\nu t) \Big] &
+              y(t=0) & = y(t=\pi) = 0                                         \\
+              0      & = c_1                                                &
+              0      & = c_2\ \sin(\nu \pi)                                   \\
+              c_1    & = 0                                                  &
+              \nu    & = n                                                    \\
+              y_n(x) & = e^t\ \sin(nt)
+          \end{align}
+
+          For $ \lambda = 0 $,
+          \begin{align}
+              y      & = (c_1 + c_2t)\ e^t &
+              y(t=0) & = y(t=\pi) = 0        \\
+              0      & = c_1               &
+              0      & = c_1 + c_2\pi
+          \end{align}
+          This also leads to the trivial solution. \par
+          Reverting to the original variable $ x $,
+          \begin{align}
+              y_n(x)    & = \color{y_h} x\ \sin(n\ \ln x) &
+              \lambda_n & = \color{y_p} n^2
+          \end{align}
+          Checking for orthogonality,
+          \begin{align}
+              I      & = \int_{1}^{e^\pi} x^2\ \sin(n \ln x) \sin(m \ln x)
+              \ (x^{-3})\ \dl x                                            \\
+              \ln(x) & = u \qquad\qquad \frac{1}{x}\ \dl x = \dl u         \\
+              I      & = \int_{0}^{\pi} \sin(nu)\ \sin(mu)\ \dl u
+          \end{align}
+          This is proven orthogonal already.
+
+    \item Using the result from Problem $ 11 $,
+          \begin{align}
+              0             & = y'' - 2y' + (\lambda + 1)y                  \\
+              \mu           & = \frac{2 \pm \sqrt{4 - 4(\lambda + 1)}}{2} &
+              \mu_1,\ \mu_2 & = 1 \pm \sqrt{-\lambda}
+          \end{align}
+          For the case where $ \lambda = -\nu^2 $,
+          \begin{align}
+              y    & = c_1 e^{(1+\nu)x} + c_2 e^{(1-\nu)x} &
+              y(0) & = y(1) = 0                              \\
+              0    & = c_1 + c_2                           &
+              0    & = c_1e^{(1+\nu)} + c_2 e^{(1-\nu)}      \\
+              c_1  & = 0                                   &
+              c_2  & = 0
+          \end{align}
+          This leads to the trivial solution.
+
+          For the case where $ \lambda = \nu^2 $,
+          \begin{align}
+              y         & = e^x\ \Big[ c_1 \cos(\nu x) + c_2 \sin(\nu x) \Big] &
+              y(0)      & = y(1) = 0                                             \\
+              0         & = c_1                                                &
+              0         & = c_2\ \sin(\nu)                                       \\
+              c_1       & = 0                                                  &
+              \nu       & = n\pi                                                 \\
+              y_n(x)    & = \color{y_h} e^x\ \sin(n\pi\ x)                     &
+              \lambda_n & = \color{y_p} (n\pi)^2
+          \end{align}
+
+          For $ \lambda = 0 $,
+          \begin{align}
+              y    & = (c_1 + c_2x)\ e^x &
+              y(0) & = y(1) = 0            \\
+              0    & = c_1               &
+              0    & = c_1 + c_2
+          \end{align}
+          This also leads to the trivial solution.
+
+    \item Using the result from Problem $ 11 $,
+          \begin{align}
+              0             & = y'' + 8y' + (\lambda + 16)y                    \\
+              \mu           & = \frac{-8 \pm \sqrt{64 - 4(\lambda + 16)}}{2} &
+              \mu_1,\ \mu_2 & = -4 \pm \sqrt{-\lambda}
+          \end{align}
+          For the case where $ \lambda = -\nu^2 $,
+          \begin{align}
+              y    & = c_1 e^{(-4+\nu)x} + c_2 e^{(-4-\nu)x}    &
+              y(0) & = y(\pi) = 0                                 \\
+              0    & = c_1 + c_2                                &
+              0    & = c_1e^{(-4+\nu)\pi} + c_2 e^{(-4-\nu)\pi}   \\
+              c_1  & = 0                                        &
+              c_2  & = 0
+          \end{align}
+          This leads to the trivial solution.
+
+          For the case where $ \lambda = \nu^2 $,
+          \begin{align}
+              y         & = e^{-4x}\ \Big[ c_1 \cos(\nu x) + c_2 \sin(\nu x) \Big] &
+              y(0)      & = y(\pi) = 0                                               \\
+              0         & = c_1                                                    &
+              0         & = c_2\ \sin(\nu \pi)                                       \\
+              c_1       & = 0                                                      &
+              \nu       & = n                                                        \\
+              y_n(x)    & = \color{y_h} e^{-4x}\ \sin(nx)                          &
+              \lambda_n & = \color{y_p} n^2
+          \end{align}
+
+          For $ \lambda = 0 $,
+          \begin{align}
+              y    & = (c_1 + c_2x)\ e^{-4x} &
+              y(0) & = y(\pi) = 0              \\
+              0    & = c_1                   &
+              0    & = c_1 + c_2
+          \end{align}
+          This also leads to the trivial solution.
+
+    \item Special families of orthogonal polynomials,
+          \begin{enumerate}
+              \item Chebyshev polynomials of the first kind, with
+                    $ \arccos(x) = \theta $
+                    \begin{align}
+                        T_n(x) & = \cos (n\ \arccos(x)) = \cos(n\theta)             \\
+                        T_0(x) & = \cos(0) = \color{y_h} 1                          \\
+                        T_1(x) & = \cos(\arccos(x)) = \color{y_p} x                 \\
+                        T_2(x) & = \cos(2\ \arccos(x)) = 2 \cos^2(\theta) - 1
+                        = \color{y_t} 2x^2 - 1                                      \\
+                        T_3(x) & = \cos(3 \theta) = 4\cos^3(\theta) - 3\cos(\theta)
+                        = \color{azure4} 4x^3 - 3x
+                    \end{align}
+
+                    Chebyshev polynomials of the second kind, with
+                    $ \arccos(x) = \theta $
+                    \begin{align}
+                        U_n(x) & = \frac{\sin[(n+1)\arccos(x)]}{\sqrt{1 - x^2}}
+                        = \frac{\sin[(n+1)\theta]}{\sin(\theta)}                \\
+                        U_0(x) & = \cos(0) = \color{y_h} 1                      \\
+                        U_1(x) & = \frac{\sin(2\theta)}{\sin \theta}
+                        = 2\cos \theta = \color{y_p} 2x                         \\
+                        U_2(x) & = \frac{\sin(3\theta)}{\sin\theta} =
+                        3\cos^2(\theta) - \sin^2(\theta)
+                        = \color{y_t} 4x^2 - 1                                  \\
+                        U_3(x) & = \frac{\sin(4\theta)}{\sin(\theta)}
+                        = 4\cos^3(\theta) - 4\cos(\theta) \sin^2(\theta)
+                        = \color{azure4} 8x^3 - 4x
+                    \end{align}
+
+                    Checking the orthogonality of the polynomials $ T_n(x) $,
+                    \begin{align}
+                        \arccos(x)                       & = \theta               &
+                        \frac{-1}{\sqrt{1 - x^2}}\ \dl x & = \dl \theta             \\
+                        r(x)                             & = \frac{1}
+                        {\sqrt{1 - x^2}}                 &
+                        I                                & = \int_{-1}^{1} T_n(x)
+                        \ T_m(x)\ \frac{\dl x}{\sqrt{1 - x^2}}                      \\
+                        I                                & = \int_{0}^{\pi}
+                        \cos(n\theta)\ \cos(m\theta)\ \dl \theta
+                    \end{align}
+                    This is known to be orthogonal which proves the relation. \par
+                    Verifying the set $ \{T_n\} $ satisfy the Chebyshev ODE,
+                    \begin{align}
+                        (1 - x^2)y'' - xy' + n^2y                       & = 0 \\
+                        n = 0 \implies (1-x^2)(0) - x(0) + 0(1)         & = 0 \\
+                        n = 1 \implies (1-x^2)(0) - x(1) + 1(x)         & = 0 \\
+                        n = 2 \implies (1-x^2)(4) - x(4x) + 4(2x^2 - 1) & = 0 \\
+                        n = 3 \implies (1-x^2)(24x) - x(12x^2 - 3) +
+                        9(4x^3 - 3x)                                    & = 0
+                    \end{align}
+
+              \item LaGuerre polynomials,
+                    \begin{align}
+                        L_n(x) & = \frac{e^x}{n!}\ \diff*[n]{(x^ne^{-x})}{x}          \\
+                        L_1(x) & = \frac{e^x}{1!}\ \diff*{[xe^{-x}]}{x}
+                        = \color{y_h} 1 - x                                           \\
+                        L_2(x) & = \frac{e^x}{2!}\ \diff*[2]{[x^2e^{-x}]}{x}
+                        = \frac{2 - 4x + x^2}{2} = \color{y_p} 1 - 2x + \frac{x^2}{2} \\
+                        L_3(x) & = \frac{e^x}{3!}\ \diff*[3]{[x^3e^{-x}]}{x}
+                        = \frac{6 - 18x + 9x^2 - x^3}{6}
+                        = \color{y_t}1 - 3x + \frac{3x^2}{2} - \frac{x^3}{6}
+                    \end{align}
+
+                    To prove orthogonality, consider $ L_n,\ L_k $ with $ k < n $,
+                    without loss of generality. Now, since integration is linear, the
+                    polynomial $ L_k $ is a linear combination of powers of $ x $.
+                    \begin{align}
+                        I & =  \infint e^{-x}\ x^k\ L_n(x)\ \dl x              \\
+                          & = \infint e^{-x}\ x^k\
+                        \frac{e^x}{n!}\ \diff*[n]{(x^ne^{-x})}{x}\ \dl x       \\
+                        I & = \Bigg[\frac{x^k}{n!} \diff*[n-1]{(x^ne^{-x})}{x}
+                        \Bigg]_{0}^{\infty} - \int_{0}^{\infty}
+                        \frac{kx^{k-1}}{n!}\ \diff*[n-1]{(x^ne^{-x})}{x}\ \dl x
+                    \end{align}
+                    The first term above is always zero for all positive $ (n-k) $,
+                    since the polynomial $ e^{-\infty} = 0 $ and $ 0^k = 0 $
+                    \begin{align}
+                        \diff*[n-k]{(x^ne^{-x})}{x} = e^{-x} \cdot Q(x)
+                    \end{align}
+                    After $ k $ such integrations by part,
+                    \begin{align}
+                        I & = \Bigg[(-1)^k\ \frac{k!}{n!}
+                        \ \diff*[n-k-1]{(x^ne^{-x})}{x}\Bigg]_{0}^{\infty} = 0
+                    \end{align}
+          \end{enumerate}
 \end{enumerate}
+

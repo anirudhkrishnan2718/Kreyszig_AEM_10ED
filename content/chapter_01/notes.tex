@@ -6,8 +6,8 @@
     \item[Ordinary Differential Equation] An equation that contains one or several derivatives of an unknown function (which only contains a single variable). Shorthand notation for higher order derivatives is:
 
         \begin{align}
-            y'      & \coloneq \diff yx    &
-            y''     & \coloneq \diff[2] yx &
+            y'      & \coloneq \diff yx                    &
+            y''     & \coloneq \diff[2] yx                 &
             y^{(n)} & \coloneq \difoverride{n} \diff[n] yx
         \end{align}
 
@@ -22,7 +22,7 @@
     \item[Particular Solution] The outcome of fixing the arbitrary constant $c$ in a General solution. This no longer contains any arbitrary constants.
     \item[Initial Condition] A constraint on $c$ creating a particular solution.
     \item[Initial Value Problem] An ODE along with an initial condition
-    \item[Autonomous ODE] An ODE not showing the independent variable explicitly $f(x, y) \rightarrow f(y)$
+    \item[Autonomous ODE] An ODE not showing the independent variable explicitly $f(x, y) \to f(y)$
         \begin{align}
             y'       & = f(x, y) &
             y(x_{0}) & = y_{0}
@@ -180,7 +180,7 @@ depending only on $ y $
         \end{align}
         An example is the logistic equation above.
     \item[Critical points] In an autonomous ODE, zeros of the expression $ f(y) $. Also known
-    as equilibrium points (either stable or unstable).
+        as equilibrium points (either stable or unstable).
 \end{description}
 
 \section{Orthogonal Trajectories}
@@ -231,7 +231,7 @@ General strategy for finding an orthogonal family:
         The points $ (x, y_{1}) $ and $ (x, y_{2}) $ are in the rectangle $ \mathcal{R} $ as
         defined above. Now, the condition on $ \difs fy $ can be replaced by the weaker relation,
         \begin{align}
-            \left| \diffp{f(x, y)}{y} \right|        & \leq M               & \forall     (x, y) & \in \mathcal{R} \\
+            \left| \diffp{f(x, y)}{y} \right|        & \leq M                   & \forall     (x, y) & \in \mathcal{R} \\
             \left| f(x, y_{2}) - f(x, y_{1}) \right| & \leq M |(y_{2} - y_{1})|
         \end{align}
 

@@ -1,0 +1,332 @@
+\chapter{Power Series, Taylor Series}
+
+\section{Sequences, Series, Convergence Tests}
+
+\begin{description}
+    \item[Sequence] An infinite set obtained by mapping a term to each positive integer,
+        represented as $ \{z_n\} $. \par
+        A convergent sequence has a limit given by,
+        \begin{align}
+            \lim_{n \to \infty} z_n & = c   &
+            z_n                     & \to c
+        \end{align}
+        Unlike a convergent real sequence, for every $ \epsilon > 0 $ however small,
+        there exists an integer $ N $ satisfying,
+        \begin{align}
+            \abs{z_n - c}    & < \epsilon &
+            \forall \qquad n & > N
+        \end{align}
+        This is an open disk in $ \mathcal{C} $ unlike the line segment for the real case.
+
+    \item[Series] The sum of the first $ n $ terms of a sequence is called the
+        $ n^{\text{th}} $ partial sum. As $ n \to \infty $, this is called the
+        series
+        \begin{align}
+            [z_m] & \equiv \iser{1} z_m = z_1 + z_2 + z_3 + \dots
+        \end{align}
+        If the sequence of partial sums of a series converges, then the series is
+        called convergent.
+        \begin{align}
+            \lim_{n \to \infty}s_n & = s            &
+            s                      & = \iser{0} z_m
+        \end{align}
+
+    \item[Remiander] The difference between the value of an infinite series and one
+        of its partial sums. For a convergent series,
+        \begin{align}
+            R_n & \equiv s - s_n = \iser{n+1} z_m
+        \end{align}
+
+    \item[Convergence] A complex sequence $ \{z_n\} = \{x_n + \i\ y_n\} $ converges to
+        the limit $ c = a + \i\ b $ if and only if the real and complex parts of
+        $ \{z_n\} $ converge to $ a, b $ respectively. \par
+        The analogous result for infinite series also holds.
+
+    \item[Convergence tests] If the terms of a series do not approach zero for large
+        $ m $, then the series is divergent. \par
+        This is a necessary condition, but not sufficient. For example $ z_m = 1/m $
+        diverges in spite of satisfying this condition.
+
+    \item[Cauchy's convergence principle for series] A series is convergent if and only if
+        for every $ \epsilon > 0 $ however small, there exists an $ N $ such that
+        \begin{align}
+            \abs{z_{n+1} + z_{n+2} + \dots + z_{n+p}} & < \epsilon &
+            \forall \qquad n                          & > N
+        \end{align}
+        and $ p $ being some positive integer.
+
+    \item[Absolutely convergent] A series whose terms are convergent even after taking
+        the absolute value. Else, the series is only conditionally convergent. \par
+        It is fairly common that $ [\abs{z_m}] $ diverges but $ [z_m] $ converges.
+
+    \item[Comparison test] Given a series, if there exists a different convergent series
+        with nonnegative real terms such that
+        \begin{align}
+            \abs{z_1} \leq b_1,\ \abs{z_2} \leq b_2 \dots
+        \end{align}
+        then the series converges, even absolutely.
+
+    \item[Ratio test] If a series whose terms are nonzero has the property
+        \begin{align}
+            \abs{\frac{z_{n+1}}{z_n}} \leq q < 1
+        \end{align}
+        for some fixed $ q $ and for all $ n > N $, then the series converges
+        absolutely.
+
+    \item[Limit of ratios] If the limit of ratios of successive terms (which
+        itself is an infinite sequence) exists,
+        \begin{align}
+            L & \equiv \lim_{n \to \infty} \abs{\frac{z_{n+1}}{z_n}}
+        \end{align}
+        then, depending on the value of $ L $,
+        \begin{itemize}
+            \item $ L < 1 $ means the series converges absolutely
+            \item $ L > 1 $ means the series diverges
+            \item $ L = 1 $ means the test is inconclusive.
+        \end{itemize}
+
+        The limit of ratios need not exist for the parent sequence itself to be
+        convergent.
+
+    \item[Root test] If for a series, $[z_n]$,
+        \begin{align}
+            \abs{z_n}^{1/n}  & \leq q < 1 &
+            \forall \qquad n & > N
+        \end{align}
+        for some fixed $ q $, this series converges absolutely. Also,
+        if for arbitrarily large $ n $,
+        \begin{align}
+            \abs{z_n}^{1/n} & \geq 1
+        \end{align}
+        the series diverges.
+
+    \item[Limit of root test] If the limit of ratios of successive terms (which itself is an infinite
+        sequence) exists,
+        \begin{align}
+            L & \equiv \lim_{n \to \infty} \abs{z_n}^{1/n}
+        \end{align}
+        then, depending on the value of $ L $,
+        \begin{itemize}
+            \item $ L < 1 $ means the series converges absolutely
+            \item $ L > 1 $ means the series diverges
+            \item $ L = 1 $ means the test is inconclusive.
+        \end{itemize}
+\end{description}
+
+\section{Power Series}
+
+\begin{description}
+    \item[Power series] For some complex numbers $ \{a_n\} $, $ z_0 $, a power series is
+        defined as,
+        \begin{align}
+            \iser[n]{0} a_n(z - z_0)^n & = a_0 + a_1 (z - z_0) + a_2
+            (z - z_0)^2 + \dots
+        \end{align}
+        Here, $ z_0 $ is called the center of the series.
+
+    \item[Convergence behavior] A power series
+        \begin{itemize}
+            \item converges at the center $ z_0 $.
+            \item converges at all points closer to $ z_0 $ than $ z_1 $, provided it
+                  converges at $ z_1 \neq z_0 $.
+            \item does not converge at all points farther from $ z_0 $ than $ z_2 $
+                  , provided it does not converge at $ z_2 \neq z_0 $.
+        \end{itemize}
+        As a result, a power series converges either only on $ z_0 $, on the entire
+        complex plane, or in a disk centered at $ z_0 $
+
+    \item[Radius of convergence] The radius of the smallest circle around $ z_0 $ that
+        includes all the points at which a power series centered on $ z_0 $ converges.
+        \begin{align}
+            \abs{z - z_0} & < R & \implies & \text{convergence}   \\
+            \abs{z - z_0} & > R & \implies & \text{divergence}    \\
+            \abs{z - z_0} & = R & \implies & \text{no conclusion}
+        \end{align}
+
+    \item[Cauchy-Hadamard formula] A relation between the infinite limit of the
+        absolute ratio of coefficients of a power series and its radius of convergence.
+        \begin{align}
+            R & = \frac{1}{L^*} = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}
+        \end{align}
+        By convention, $ R = \infty $ is used to refer to convergence on the entire
+        complex plane. \par
+        This formula is only useful if the limit exists.
+\end{description}
+
+\section{Functions Given by Power Series}
+
+\begin{description}
+    \item[Power series representation] A function $ f(z) $ is said to be represented
+        (or \emph{developed}) by a power series if that series has $ R > 0 $, such that
+        \begin{align}
+            f(z) & = \iser[n]{0} a_n z^n = a_0 + a_1 z + a_2 z^2 + \dots
+        \end{align}
+        The proof uses the $ \epsilon-\delta $ method applied to $ \abs{f(z) - f(z_0)} $.
+
+    \item[Continuity of series sum] If a function can be represented by a power series
+        centered at $ z_0 $, with $ R > 0 $, then the function is continuous at $ z_0 $.
+
+    \item[Uniqueness of power series expansion] Let two different power series
+        $ a_n, b_n $ around the origin be convergent for $ \abs{z} < R $.  \par
+        Also, let both power series have the same infinite sum for all these $ z $ values.
+        Then, the series are identical.
+
+    \item[Term-wise addition] The resulting power series has a radius of convergence
+        given by $ R = \min(R_1, R_2) $. \par
+        The proof uses the linearity of the limit operation.
+
+    \item[Cauchy product] Term-wise multiplication of two power series results in,
+        \begin{align}
+            f(z) & = \iser[n]{0} a_n z^n                                     &
+            g(z) & = \iser[n]{0} b_n z^n                                       \\
+            s(z) & = \iser[n]{0} (a_0b_n + a_1b_{n-1} + \dots + a_nb_0)\ z^n
+        \end{align}
+        This new series also converges absolutely for all $ \abs{z} < \min(R_1, R_2) $.
+        Also, its sum $ s(z) $ is
+        \begin{align}
+            s(z) & = f(z) \cdot g(z)
+        \end{align}
+
+    \item[Term-wise differentiation] The resulting power series also has the same $ R $.
+        \begin{align}
+            f'(z) & = \iser[n]{1} na_n\ z^{n-1}
+        \end{align}
+
+    \item[Term-wise integration] The resulting power series also has the same $ R $.
+        \begin{align}
+            \int f(z)\ \dl z & = \iser[n]{0} a_n\ \frac{z^{n+1}}{n+1}
+        \end{align}
+
+    \item[Analytic functions] A power series with $ R > 0 $ represents an analytic
+        function within its disk of convergence. Term-wise differentiation results in
+        derived power series (with the same $ R $) which are also analytic functions.
+\end{description}
+
+\section{Taylor and Maclaurin Series}
+
+\begin{description}
+    \item[Taylor series] A power series whose coefficients are given by,
+        \begin{align}
+            f(z) & = a_n\ (z - z_0)^n           &
+            a_n  & = \frac{1}{n!}\ f^{(n)}(z_0)
+        \end{align}
+        Using Cauchy's integral formula for derivatives of $ f(z) $, integrating
+        around a simple closed path centered on $ z_0 $, such that $ f(z) $ is
+        analytic on the contour and everywhere inside it,
+        \begin{align}
+            a_n & = \frac{1}{2\pi\i} \oint_C \frac{f(w)}{(w - z_0)^{n+1}}\ \dl w
+        \end{align}
+
+    \item[Maclaurin series] A Taylor series centered on the origin,
+
+    \item[Remainder] The $ n^{\text{th}} $ remainder of the Taylor series is,
+        \begin{align}
+            R_n  & = f(z) - s_n = \frac{(z - z_0)^{n+1}}{2\pi\i} \oint_C
+            \frac{f(w)}{(w - z_0)^{n+1} (w - z)}\ \dl w                           \\
+            f(z) & = f(z_0) + \frac{f'(z_0)}{1!}\ (z - z_0) + \frac{f''(z_0)}{2!}
+            \ (z - z_0)^2 + \dots                                                 \\
+                 & + \frac{f^{(n)}(z_0)}{n!}\ (z - z_0)^n + R_n(z)
+        \end{align}
+        This expression is called Taylor formula to order $ n $.
+
+    \item[Taylor's theorem] If $ f(z) $ is analytic in domain $ D $ and $ z_0 $ is some
+        point in $ D $, then there exists a unique Taylor series centered on $ z_0 $ that
+        represents $ f(z) $. \par
+
+        The Taylor series representation is valid in the largest open disk centered on
+        $ z_0 $ within which $ f(z) $ is analytic.
+
+    \item[Coefficient bound] The coefficients of a Taylor series are bounded by
+        \begin{align}
+            \abs{a_n} & \leq \frac{M}{r^n}                                       &
+            M         & = \max(\abs{f(z)}) \quad \forall \quad \abs{z - z_0} = r
+        \end{align}
+        This circle and its interior have to be inside the domain $ D $ where $ f(z) $
+        is analytic.
+
+    \item[Singularity] On the circle of convergence $ \abs{z - z_0} = R $, there is
+        at least one point at which $ f(z) $ is not analytic. \par
+        This means that the radius of convergence is usually the distance to the
+        nearest singularity of $ f(z) $.
+
+    \item[Relation to power series] A power series with $ R > 0 $ is the Taylor
+        series of its sum. \par
+        The proof uses the uniqueness of power series representation of an analytic
+        function.
+
+    \item[Finding Taylor series] Some shortcuts to finding the Taylor series
+        representation include
+        \begin{itemize}
+            \item Modifying the function into another form whose Taylor series is known
+            \item Integrating the function, finding the Taylor series and then
+                  differentiating this series term-wise. (or vice-versa)
+            \item Using the following ``change of center'' transform to express
+                  $ f(z) $ as a Taylor series with center $ z_1 \neq z_0 $.
+            \item Using partial fractions, or the binomial formula.
+        \end{itemize}
+\end{description}
+
+\section{Uniform Convergence}
+
+\begin{description}
+    \item[Uniformly convergent series] A series is called uniformly convergent in a
+        region $ G $, if for every $ \epsilon > 0 $, there exists an $ N(\epsilon) $, which
+        is independent of $ z $, such that
+        \begin{align}
+            \abs{s(z) - s_n(z)} & < \epsilon & \forall \quad n & > N(\epsilon)
+        \end{align}
+        Here, $ s $ is the infinite series sum and $ s_n $ is the $n^{\text{th}}$
+        partial sum of a series with general complex terms. \par
+        Uniform convergence only applies to infinite sets in $ \mathcal{C} $.
+
+    \item[Power Series] A power series with nonzero $ R $, is uniformly convergent in
+        every circular disk $ \abs{z - z_0} \leq r $ of radius $ r < R $. \par
+        Thus, a power series might not be uniformly convergent only at its boundary of
+        convergence.
+
+    \item[Continuity of sums of series] Let the series given by
+        \begin{align}
+            \iser{0} f_m(z) & = f_0(z) + f_1(z) + \dots
+        \end{align}
+        be uniformly convergent in a region $ G $. Let its infinite sum be $ F(z) $.\par
+        If each term $ f_m(z) $ is continuous at $ z = z_1 $ in $ G $, then $ F(z) $
+        is also continuous at $ z_1 $ \par
+        The sum of absolutely convergent terms which are continuous is also continuous
+        only when summing a \emph{finite} number of terms. This is not a sufficient
+        condition when summing an infinite series.
+
+    \item[Term-wise integration] Let $ F(z) = \sum f_m(z) $ be as defined above. Then,
+        term-wise integration yields
+        \begin{align}
+            \iser{0} \int_C f_m(z)\ \dl z & = \int_C f_0(z)\ \dl z + \int_C f_1(z)
+            \ \dl z + \dots                                                        \\
+                                          & = \int_C F(z)\ \dl z
+        \end{align}
+        is convergent and is equal to the integral of the infinite sum $ F(z) $. \par
+        Here, $ C $ is any closed path in the region $ G $ as defined above.
+
+    \item[Term-wise differentiation] Let the series,
+        \begin{align}
+            F(z) & = f_0(z) + f_1(z) + f_2(z) + \dots
+        \end{align}
+        be convergent in a region $ G $, Suppose the term-wise derivative converges
+        uniformly and has continuous terms, Then
+        \begin{align}
+            F'(z)           & = f'_0(z) + f'_1(z) + f'_2(z) + \dots &
+            \forall \quad z & \in G
+        \end{align}
+
+    \item[Weierstrass M-test] To test for uniform convergence, check if series of the
+        form
+        \begin{align}
+            \iser[n]{0} f_n(z) & = f_0(z) + f_1(z) + f_2(z) + \dots &
+            \iser[n]{0} M_n    & = M_0 + M_1 + M_2 + \dots            \\
+            \abs{f_n(z)}       & \leq M_n                           &
+            \forall \quad z    & \in G
+        \end{align}
+        is term-wise bounded by another convergent series with constant terms.
+
+    \item[Relation to absolute convergence] There is no relation. A series can
+        be one absolutely convergent but not uniformly convergent and vice versa.
+
+\end{description}

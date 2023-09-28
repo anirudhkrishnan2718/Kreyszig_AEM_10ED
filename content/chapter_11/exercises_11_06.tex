@@ -1,0 +1,472 @@
+\section{Orthogonal Series, Generalized Fourier Series}
+
+\begin{enumerate}
+    \item Expanding into a Fourier-Legendre series, neglecting the integrals of odd
+          functions in $ [-1, 1] $
+          \begin{align}
+              f(x)                              & = 63x^5  - 90x^3 + 35x          \\
+              a_m                               & = \frac{1}{\lVert P_m \rVert^2}
+              \int_{-1}^{1} f(x)\ P_m(x)\ \dl x &
+              \lVert P_m \rVert                 & = \sqrt{\frac{2}{2m + 1}}       \\
+              a_1                               & = \frac{3}{2} \int_{-1}^{1}
+              (63x^5 - 90x^3 + 35x)(x)\ \dl x   &
+                                                & = \color{y_h} 8                 \\
+              a_3                               & = \frac{3}{2} \int_{-1}^{1}
+              (63x^5 - 90x^3 + 35x)(2.5x^3 - 1.5x)
+              \ \dl x                           &
+                                                & =  \color{y_p} -8               \\
+              a_5                               & = \frac{11}{16} \int_{-1}^{1}
+              (63x^5 - 90x^3 + 35x)(63x^5 - 70x^3 + 15x)
+              \ \dl x                           &
+                                                & =  \color{y_t} 8                \\
+              f(x)                              & = 8P_1 - 8P_3 + 8P_5
+          \end{align}
+
+    \item Expanding into a Fourier-Legendre series, neglecting the integrals of odd
+          functions in $ [-1, 1] $
+          \begin{align}
+              f(x)                              & = (x+1)^2                       \\
+              a_m                               & = \frac{1}{\lVert P_m \rVert^2}
+              \int_{-1}^{1} f(x)\ P_m(x)\ \dl x &
+              \lVert P_m \rVert                 & = \sqrt{\frac{2}{2m + 1}}       \\
+              a_0                               & = \frac{1}{2} \int_{-1}^{1}
+              (x+1)^2 (1)\ \dl x                &
+                                                & = \color{y_h} \frac{4}{3}       \\
+              a_1                               & = \frac{3}{2} \int_{-1}^{1}
+              (x^3 + 2x^2 + x)\ \dl x           &
+                                                & =  \color{y_p} 2                \\
+              a_5                               & = \frac{5}{4} \int_{-1}^{1}
+              (x+1)^2 (3x^2 - 1)\ \dl x         &
+                                                & =  \color{y_t} \frac{2}{3}      \\
+              f(x)                              & = \frac{4P_0 + 6P_1 + 2P_2}{3}
+          \end{align}
+
+    \item Expanding into a Fourier-Legendre series, neglecting the integrals of odd
+          functions in $ [-1, 1] $
+          \begin{align}
+              f(x)                               & = 1 - x^4                         \\
+              a_m                                & = \frac{1}{\lVert P_m \rVert^2}
+              \int_{-1}^{1} f(x)\ P_m(x)\ \dl x  &
+              \lVert P_m \rVert                  & = \sqrt{\frac{2}{2m + 1}}         \\
+              a_0                                & = \frac{1}{2} \int_{-1}^{1}
+              (1 - x^4)\ \dl x                   &
+                                                 & = \color{y_h} \frac{4}{5}         \\
+              a_2                                & = \frac{5}{4} \int_{-1}^{1}
+              (1-x^4)(3x^2 - 1)\ \dl x           &
+                                                 & =  \color{y_p} \frac{-4}{7}       \\
+              a_4                                & = \frac{9}{16} \int_{-1}^{1}
+              (1-x^4) (35x^4 - 30x^2 + 3)\ \dl x &
+                                                 & =  \color{y_t} \frac{-8}{35}      \\
+              f(x)                               & = \frac{28P_0 - 20P_2 - 8P_4}{35}
+          \end{align}
+
+    \item By observation,
+          \begin{align}
+              1   & = P_0                            &
+              x   & = P_1                              \\
+              x^2 & = \frac{2P_2 + P_0}{3}           &
+              x^3 & = \frac{2P_3 + 3P_1}{5}            \\
+              x^4 & = \frac{8P_4 + 20P_2 + 7P_0}{35}
+          \end{align}
+
+    \item Assume $ f(x) $ is odd. Then $ f(x)P_n(x) $ is also odd for even $ n $.
+          Further, the integral of an odd function in a region symmetric about the origin
+          is zero. This means that the coefficients of odd Legendre polynomials is zero.
+          \par
+          This means that the Fourier-Legendre expansion will only contain odd
+          $ n $ terms.
+          \par
+          The proof for odd functions $ g(x) $ is the exact same. Examples are problems
+          $ 1,2,3,4 $ above.
+
+    \item Suppose $ f $ is not a constant function and its MacLaurin series only contains
+          terms of the form $ x^{4m} $. Its Fourier-Legendre polynomials cannot contain
+          odd terms by observation. \par
+          Further, even Legendre polynomials contain terms of the form $ x^{4m + 2} $,
+          which can be made to cancel out when expanding $ f(x) $ in terms of the even
+          Legendre polynomials.
+
+    \item Changing the coefficient of $ x^m $ inside $ f(x) $, changes the
+          coefficients of all the Legendre polynomials $ P_m, P_{m-2}, P_{m-4} $
+          and so on.
+
+    \item Finding the Fourier-Legendre expansion,
+          \begin{align}
+              f(x)                              & = \sin(\pi x)                   \\
+              a_m                               & = \frac{1}{\lVert P_m \rVert^2}
+              \int_{-1}^{1} f(x)\ P_m(x)\ \dl x &
+              \lVert P_m \rVert                 & = \sqrt{\frac{2}{2m + 1}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_1 = 0.9549; a_3 = -1.1582; a_5 = 0.2193;
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {$ y = \sin(\pi x) $},
+                          domain = -1:1, legend pos = south east]
+                      \addplot[GraphSmooth, black, dashed, very thick]
+                      {sin(pi * x)};
+                      \addplot[GraphSmooth, y_h] {a_1 * leg_P_1(x) + a_3 * leg_P_3(x)};
+                      \addplot[GraphSmooth, y_p!50] {a_1 * leg_P_1(x) + a_3 * leg_P_3(x)
+                          + a_5 * leg_P_5(x)};
+                      \addlegendentry{$ f(x) $}
+                      \addlegendentry{$ s_3 $}
+                      \addlegendentry{$ s_5 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier-Legendre expansion,
+          \begin{align}
+              f(x)                              & = \sin(2\pi x)                  \\
+              a_m                               & = \frac{1}{\lVert P_m \rVert^2}
+              \int_{-1}^{1} f(x)\ P_m(x)\ \dl x &
+              \lVert P_m \rVert                 & = \sqrt{\frac{2}{2m + 1}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_1 = -0.4775; a_3 = -0.6908; a_5 = 1.8441;
+                              a_7 = -0.8236; a_9 = 0.1657;
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {$ y = \sin(2\pi x) $},
+                          domain = -1:1, legend pos = north east]
+                      \addplot[GraphSmooth, black, dashed, very thick]
+                      {sin(2* pi * x)};
+                      \addplot[GraphSmooth, y_h] {a_1 * leg_P_1(x) + a_3 * leg_P_3(x)
+                          + a_5 * leg_P_5(x)};
+                      \addplot[GraphSmooth, y_p!50] {a_1 * leg_P_1(x) + a_3 * leg_P_3(x)
+                          + a_5 * leg_P_5(x) + a_7 * leg_P_7(x) + a_9 * leg_P_9(x)};
+                      \addlegendentry{$ f(x) $}
+                      \addlegendentry{$ s_5 $}
+                      \addlegendentry{$ s_9 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier-Legendre expansion,
+          \begin{align}
+              f(x)                              & = \exp(-x^2)                    \\
+              a_m                               & = \frac{1}{\lVert P_m \rVert^2}
+              \int_{-1}^{1} f(x)\ P_m(x)\ \dl x &
+              \lVert P_m \rVert                 & = \sqrt{\frac{2}{2m + 1}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = 0.7468; a_2 = -0.4460; a_4 = 0.0739;
+                              a_6 = -0.007345; a_8 = 0.000522;
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {$ y = e^{-x^2} $},
+                          domain = -1:1, legend pos = north east]
+                      \addplot[GraphSmooth, black, dashed, very thick]
+                      {e^(-x^2)};
+                      \addplot[GraphSmooth, y_h] {a_0 * leg_P_0(x) + a_2 * leg_P_2(x)};
+                      \addplot[GraphSmooth, y_p!50] {a_0 * leg_P_0(x) + a_2 * leg_P_2(x)
+                          + a_4 * leg_P_4(x) + a_6 * leg_P_6(x)};
+                      \addlegendentry{$ f(x) $}
+                      \addlegendentry{$ s_2 $}
+                      \addlegendentry{$ s_6 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier-Legendre expansion,
+          \begin{align}
+              f(x)                              & = \frac{1}{1+x^2}               \\
+              a_m                               & = \frac{1}{\lVert P_m \rVert^2}
+              \int_{-1}^{1} f(x)\ P_m(x)\ \dl x &
+              \lVert P_m \rVert                 & = \sqrt{\frac{2}{2m + 1}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = 0.7854; a_2 = -0.35398; a_4 = 0.08295;
+                              a_6 = -0.0172; a_8 = 0.00339;
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {$ y = \frac{1}{1+x^2} $},
+                          domain = -1:1, legend pos = north east]
+                      \addplot[GraphSmooth, black, dashed, very thick]
+                      {1/(1+x^2)};
+                      \addplot[GraphSmooth, y_h] {a_0 * leg_P_0(x) + a_2 * leg_P_2(x)};
+                      \addplot[GraphSmooth, y_p!50] {a_0 * leg_P_0(x) + a_2 * leg_P_2(x)
+                          + a_4 * leg_P_4(x) + a_6 * leg_P_6(x)};
+                      \addlegendentry{$ f(x) $}
+                      \addlegendentry{$ s_2 $}
+                      \addlegendentry{$ s_6 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier-Legendre expansion, with $ \alpha = \alpha_{0,1} $
+          \begin{align}
+              f(x)                              & = \frac{1}{1+x^2}               \\
+              a_m                               & = \frac{1}{\lVert P_m \rVert^2}
+              \int_{-1}^{1} f(x)\ P_m(x)\ \dl x &
+              \lVert P_m \rVert                 & = \sqrt{\frac{2}{2m + 1}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = 0.6114; a_2 = -0.7023; a_4 = 0.09569;
+                              a_6 = -0.0049; a_8 = 0.0001314;
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {$ y = J_0(\alpha x) $},
+                          domain = -1:1, legend pos = north east]
+                      \addplot[GraphSmooth, black, dashed, very thick]
+                      gnuplot{besj0(2.4048 * x)};
+                      \addplot[GraphSmooth, y_h] {a_0 * leg_P_0(x) + a_2 * leg_P_2(x)};
+                      \addplot[GraphSmooth, y_p!50] {a_0 * leg_P_0(x) + a_2 * leg_P_2(x)
+                          + a_4 * leg_P_4(x) + a_6 * leg_P_6(x)};
+                      \addlegendentry{$ f(x) $}
+                      \addlegendentry{$ s_2 $}
+                      \addlegendentry{$ s_6 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the Fourier-Legendre expansion, with $ \beta = \alpha_{0,2} $
+          \begin{align}
+              f(x)                              & = \frac{1}{1+x^2}               \\
+              a_m                               & = \frac{1}{\lVert P_m \rVert^2}
+              \int_{-1}^{1} f(x)\ P_m(x)\ \dl x &
+              \lVert P_m \rVert                 & = \sqrt{\frac{2}{2m + 1}}
+          \end{align}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_0 = 0.1211; a_2 = -0.7950; a_4 = 0.9595;
+                              a_6 = -0.3359; a_8 = 0.0553;
+                          }]
+                  \begin{axis}[
+                          grid = both, Ani,
+                          title = {$ y = J_0(\beta x) $},
+                          domain = -1:1, legend pos = north east]
+                      \addplot[GraphSmooth, black, dashed, very thick]
+                      gnuplot{besj0(5.52 * x)};
+                      \addplot[GraphSmooth, y_h] {a_0 * leg_P_0(x) + a_2 * leg_P_2(x)
+                          + a_4 * leg_P_4(x)};
+                      \addplot[GraphSmooth, y_p!50] {a_0 * leg_P_0(x) + a_2 * leg_P_2(x)
+                          + a_4 * leg_P_4(x) + a_6 * leg_P_6(x) + a_8 * leg_P_8(x)};
+                      \addlegendentry{$ f(x) $}
+                      \addlegendentry{$ s_4 $}
+                      \addlegendentry{$ s_8 $}
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Hermite's polynomials
+          \begin{enumerate}
+              \item For small values of $ n $,
+                    \begin{align}
+                        H_n(x) & = (-1)^n e^{x^2/2}\ \diff*[n]{(e^{-x^2/2})}{x} \\
+                        H_1(x) & = -e^{x^2/2}\ \diff*{(e^{-x^2/2})}{x}
+                        = \color{y_h} x                                         \\
+                        H_2(x) & = e^{x^2/2}\ \diff*[2]{(e^{-x^2/2})}{x}
+                        = \color{y_p} -1 + x^2                                  \\
+                        H_3(x) & = -e^{x^2/2}\ \diff*[3]{(e^{-x^2/2})}{x}
+                        = \color{y_t} x^3 - 3x                                  \\
+                        H_4(x) & = e^{x^2/2}\ \diff*[4]{(e^{-x^2/2})}{x}
+                        = \color{azure4} x^4 - 6x^2 + 3
+                    \end{align}
+
+              \item The Maclaurin series is given by,
+                    \begin{align}
+                        f(t = 0)                 & = \iser[n]{0}
+                        \frac{f^{(n)}(t=0)}{n!}\ t^n                               \\
+                        f(t)                     & = \exp\left( tx - \frac{t^2}{2}
+                        \right)
+                        = \exp \Bigg[\frac{x^2}{2} - \frac{(x-t)^2}{2}\Bigg]       \\
+                        \diff[n] ft              & = e^{x^2/2}\ \diff*[n]
+                        {\exp\Bigg[\frac{-(x-t)^2}{2}\Bigg]}{t}                    \\
+                        z                        & = (x-t)   \qquad\qquad
+                        t = 0 \to z = x                                            \\
+                        \diff[n]{}{t}            & = (-1)^n\ \diff[n]{}{z}         \\
+                        \diff[n] ft              & = (-1)^n\ e^{x^2/2}
+                        \ \diff*[n]{(e^{-z^2/2})}{z}                               \\
+                        \diff[n] ft \Bigg|_{t=0} & = \Bigg[(-1)^n\ e^{x^2/2}
+                        \ \diff*[n]{(e^{-z^2/2})}{z}\Bigg]_{z=x}                   \\
+                                                 & = (-1)^n\ e^{x^2/2}
+                        \ \diff*[n]{(e^{-x^2/2})}{x} = H_n(x)
+                    \end{align}
+                    Thus, the given function $ f $ is a generating function of the
+                    Hermite polynomials.
+
+              \item Differentiating with respect to $ x $ gives,
+                    \begin{align}
+                        \exp\left( tx - \frac{t^2}{2} \right)    & = \iser[n]{0}
+                        H_n(x)\ \frac{t^n}{n!}                                   \\
+                        t\ \exp\left( tx - \frac{t^2}{2} \right) & = \iser[n]{0}
+                        H_n'(x)\ \frac{t^n}{n!}                                  \\
+                        \iser[n]{0} H_n'(x)\ \frac{t^{n}}{n!}    & = \iser[n]{0}
+                        (n+1)H_n(x)\ \frac{t^{n+1}}{(n+1)!}
+                    \end{align}
+                    Equating coefficients of $ t^n $, gives,
+                    \begin{align}
+                        H_n' & = n \cdot H_{n-1}
+                    \end{align}
+
+              \item Checking orthogonality on the real line, assuming $ n < m $
+                    \begin{align}
+                        r(x) & = e^{-x^2/2}                                      \\
+                        I    & = \intRL e^{-x^2/2}\ H_n(x)\ H_m(x)
+                        \ \dl x                                                  \\
+                             & = \intRL (-1)^m\ H_n
+                        \ \diff*[m]{(e^{-x^2/2})}{x}\ \dl x                      \\
+                             & = (-1)^m \Bigg[ H_n\ \diff*[m-1]{(e^{-x^2/2})}{x}
+                        \Bigg]_{-\infty}^{\infty}                                \\
+                             & - (-1)^m \intRL
+                        (n H_{n-1})\ \diff*[m-1]{(e^{-x^2/2})}{x}\ \dl x
+                    \end{align}
+
+                    Since $ \exp(-x^2/2) $ is always dominant over any polynomial in
+                    in $ x $, the first term in the integration by parts is always zero.
+                    Repetitive integration by parts yields,
+                    \begin{align}
+                        I & = (-1)^{m+n}\ (n!)\ \intRL
+                        (H_{0})\ \diff*[m-n]{(e^{-x^2/2})}{x}\ \dl x    \\
+                          & = (-1)^{m+n}\ n!\ H_0\ \Bigg[ \diff*[m-n-1]
+                            {(e^{-x^2/2})}{x} \Bigg]_{-\infty}^{\infty} = 0
+                    \end{align}
+
+              \item Differentiating with respect to $ t $,
+                    \begin{align}
+                        H_n(x)   & = (-1)^n\ e^{x^2/2} \ \diff*[n]{(e^{-x^2/2})}{x}  \\
+                        H_n' (x) & = (-1)^n\ xe^{x^2/2} \ \diff*[n]{(e^{-x^2/2})}{x}
+                        + (-1)^n\ e^{x^2/2} \diff*[n+1]{(e^{-x^2/2})}{x}             \\
+                        H_n'     & = x \cdot H_n - H_{n+1}
+                    \end{align}
+                    Rewriting with $ (n-1) $ instead of $ n $,
+                    \begin{align}
+                        H_{n}'  & = x \cdot H_{n} - H_{n+1}      \\
+                        H_{n}'' & = H_{n} + xH_{n}' - H_{n+1}'   \\
+                                & = H_{n} + xH_{n}' - (n+1)H_{n} \\
+                                & = xH_{n}' - n\ H_{n}           \\
+                        y''     & = xy' - ny
+                    \end{align}
+                    Checking if $ w = e^{-x^2/4}\ y $ solves Weber's equation,
+                    \begin{align}
+                        w'  & = e^{-x^2/4}\ y' - \frac{x}{2}\ e^{-x^2/4}\ y       \\
+                        w'' & = e^{-x^2/4}\ y'' - x\ e^{-x^2/4}\ y' +
+                        \left( \frac{x^2}{4} - \frac{1}{2} \right)e^{-x^2/4}\ y   \\
+                        w'' & = e^{-x^2/4}\ (-ny) +
+                        \left( \frac{x^2}{4} - \frac{1}{2} \right)e^{-x^2/4}\ y   \\
+                        w'' & = -w\ \Bigg[ n + \frac{1}{2} - \frac{x^2}{4} \Bigg]
+                    \end{align}
+          \end{enumerate}
+
+    \item Using a CAS to plot Fourier-Bessel expansions,
+          \begin{enumerate}
+              \item Plotting the first 10 functions in the family
+                    $ \{J_0(\alpha_{0, k}\ x)\} $
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    grid = both, Ani,
+                                    title = {$ y = J_0(\alpha x),\ \alpha \in [1,5] $},
+                                    domain = 0:1, legend pos = north east]
+                                \addplot[GraphSmooth, y_h]
+                                gnuplot{besj0(2.4048 * x)};
+                                \addplot[GraphSmooth, y_p]
+                                gnuplot{besj0(5.52 * x)};
+                                \addplot[GraphSmooth, y_t]
+                                gnuplot{besj0(8.65 * x)};
+                                \addplot[GraphSmooth, azure4]
+                                gnuplot{besj0(11.79 * x)};
+                                \addplot[GraphSmooth, violet4]
+                                gnuplot{besj0(14.93 * x)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    grid = both, Ani,
+                                    title = {$ y = J_0(\alpha x),\ \alpha \in [6,10] $},
+                                    domain = 0:1, legend pos = north east]
+                                \addplot[GraphSmooth, y_h]
+                                gnuplot{besj0(18.071 * x)};
+                                \addplot[GraphSmooth, y_p]
+                                gnuplot{besj0(21.21 * x)};
+                                \addplot[GraphSmooth, y_t]
+                                gnuplot{besj0(24.35 * x)};
+                                \addplot[GraphSmooth, azure4]
+                                gnuplot{besj0(27.49 * x)};
+                                \addplot[GraphSmooth, violet4]
+                                gnuplot{besj0(30.63 * x)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Since $ J_0(x) $ is an even function, the program can only
+                    handle even functions. Program written in \texttt{sympy}.
+                    Trial runs TBC.
+
+              \item Let $ f(x) = 1 $. This is an even function and thus can be
+                    expanded in terms of $ J_0(\alpha\ x) $.
+                    \begin{align}
+                        [x^\nu\ J_\nu(x)]' & = x^\nu\ J_{\nu-1}(x)                  \\
+                        a_m                & = \frac{2}{J_1^2(\lambda)}
+                        \int_{0}^{1} x\ J_0(\lambda x) \ \dl x                      \\
+                                           & = \Bigg[\frac{2}{J_1^2(\lambda)} \cdot
+                        \frac{xJ_1(\lambda x)}{\lambda}\Bigg]_0^1                   \\
+                                           & = \frac{2}{\lambda \cdot J_1(\lambda)}
+                    \end{align}
+                    Here, $ \lambda $ is shorthand for $ \alpha_{0, m} $, the
+                    $m^{\text{th}}$ root of $ J_0 $
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    grid = both, Ani,
+                                    title = {$ y(x) = 1 $},
+                                    domain = 0:1, legend pos = south west]
+                                \addplot[GraphSmooth, black, very thick, dashed]{1};
+                                \addplot[GraphSmooth, y_h]
+                                gnuplot{1.602 * besj0(2.4048 * x)
+                                        - 1.065 * besj0(5.52 * x)
+                                        + 0.8514 * besj0(8.6537 * x)
+                                        - 0.7296 * besj0(11.79215 * x)
+                                        + 0.6485 * besj0(14.93 * x)
+                                    };
+                                \addplot[GraphSmooth, y_p]
+                                gnuplot{1.602 * besj0(2.4048 * x)
+                                        - 1.065 * besj0(5.52 * x)
+                                        + 0.8514 * besj0(8.6537 * x)
+                                        - 0.7296 * besj0(11.79215 * x)
+                                        + 0.6485 * besj0(14.93 * x)
+                                        -0.5895 * besj0(18.07 * x)
+                                        + 0.5442 * besj0(21.21 * x)
+                                        -0.5079 * besj0(24.35 * x)
+                                        + 0.4780 * besj0(27.49 * x)
+                                        - 0.4529 * besj0(30.63 * x)
+                                    };
+                                \addlegendentry{$ f(x) $}
+                                \addlegendentry{$ s_5 $}
+                                \addlegendentry{$ s_10 $}
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    The convergence of the series is very slow because it is very
+                    dissimilar to a sinusoidal function.
+          \end{enumerate}
+
+\end{enumerate}

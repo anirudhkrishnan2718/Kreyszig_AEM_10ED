@@ -1,0 +1,427 @@
+\section{Introduction}
+
+\begin{enumerate}
+    \item In floating point form, rounding to $ 5S $,
+          \begin{align}
+              \num{84.175}      & \to \num{0.84175d2}  &
+              \num{-528.685}    & \to \num{-0.52868d3}   \\
+              \num{0.000924138} & \to \num{0.92414d-3} &
+              \num{-362005}     & \to \num{-0.36201d6}
+          \end{align}
+
+    \item Rounding to $ 4S $,
+          \begin{align}
+              \num{-76.437125} & \to \num{-0.7644d2}  &
+              \num{60100}      & \to \num{0.6010d5}     \\
+              \num{-0.00001}   & \to \num{-1.0000d-5}
+          \end{align}
+
+    \item Using $ 5S $,
+          \begin{align}
+              A & = \frac{0.81534}{35.724 - 35.596} = \frac{0.81534}{0.128}
+              = 6.3698                                                      \\
+              B & = \frac{0.8153}{35.72 - 35.60} = \frac{0.8153}{0.12}
+              = 6.794                                                       \\
+              C & = \frac{0.815}{35.7 - 35.6} = \frac{0.815}{0.1}
+              = 8.15                                                        \\
+              D & = \frac{0.82}{36 - 36} = \text{undefined}
+          \end{align}
+
+    \item Add the smallest pair of numbers together first, and then recursively
+          repeat. This leads to the least rounding error in the final answer.
+          \begin{align}
+              S            & = A + \epsilon + \epsilon + \dots + \epsilon &
+              \epsilon     & < u                                            \\
+              A + \epsilon & \to A
+          \end{align}
+          Clearly, adding left to right will lead to $ S = A $, whereas the number of
+          small terms could be significant.
+
+    \item Rounding first before adding leads to a much greater error in the final answer
+          than adding before rounding.
+
+    \item Direct evaluation using $ 3S $, and then using the nested method,
+          \begin{align}
+              f(x) & = x^3 - 7.5x^2 + 11.2 x + 2.8               &
+                   & = 61.2 - 116 + 44.1 + 2.8 = \color{y_h}-7.9   \\
+              g(x) & = [(x-7.5)x + 11.2]x + 2.8                  &
+                   & = [(-3.56)x + 11.2]x + 2.8                    \\
+                   & = (-14.0 + 11.2)x + 2.8                     &
+                   & = -11.0 + 2.8 = \color{y_p}-8.2
+          \end{align}
+          Clearly the nested method is closer to the correct answer, $ \num{-8.336016} $
+
+    \item Solving using the quadratic formula, with $ 6S $
+          \begin{align}
+              0   & = x^2 - 30x + 1             &
+              x   & = 15 \pm 4 \sqrt{14}          \\
+              x_1 & = 15 - 4\sqrt{14} = 0.03335 &
+              x_2 & = 15 + 4\sqrt{14} = 29.9666
+          \end{align}
+          Solving using the product of roots formula,
+          \begin{align}
+              x_1 & = 29.9666 & x_2 & = \frac{c}{ax_1} = 0.0333705
+          \end{align}
+          The second method produces a more accurate result for the smaller root.
+
+    \item Solving the quadratic equation using $ 4S $,
+          \begin{align}
+              0   & = x^2 - 40x + 2                      &
+              x   & = \frac{40 \pm \sqrt{1600 - 8}}{2}     \\
+              x_1 & = \frac{40 - \sqrt{1592}}{2} = 0.05  &
+              x_2 & = \frac{40 + \sqrt{1592}}{2} = 39.95
+          \end{align}
+          Solving using the product of roots formula,
+          \begin{align}
+              x_1 & = 39.95 & x_2 & = \frac{c}{ax_1} = 0.05006
+          \end{align}
+          The second method produces a more accurate result for the smaller root.
+
+    \item Repeating Problem $ 7 $,
+          \begin{enumerate}
+              \item  Solving using the quadratic formula, with $ 4S $
+                    \begin{align}
+                        0   & = x^2 - 30x + 1                     &
+                        x   & = 15 \pm 4 \sqrt{14}                  \\
+                        x_1 & = \frac{30 - \sqrt{896}}{2} = 0.035 &
+                        x_2 & = 15 + 14.97 = 29.97
+                    \end{align}
+                    Solving using the product of roots formula,
+                    \begin{align}
+                        x_1 & = 29.97 & x_2 & = \frac{c}{ax_1} = 0.03337
+                    \end{align}
+
+              \item  Solving using the quadratic formula, with $ 2S $
+                    \begin{align}
+                        0   & = x^2 - 30x + 1                 &
+                        x   & = 15 \pm 4 \sqrt{14}              \\
+                        x_1 & = \frac{30 - \sqrt{896}}{2} = 0 &
+                        x_2 & = 15 + 15 = 30
+                    \end{align}
+                    Solving using the product of roots formula,
+                    \begin{align}
+                        x_1 & = 30 & x_2 & = \frac{c}{ax_1} = 0.033
+                    \end{align}
+          \end{enumerate}
+          The smaller the number of significant digits, the more problematic subtraction
+          becomes.
+
+    \item Looking at the quadratic equation,
+          \begin{align}
+              (x-k)^2 & = a^2 & x_1, x_2 & = k \pm a
+          \end{align}
+          As $ a^2 \to 0 $, $ a \gg a^2 $ and a slight change in $ a^2 $ produces a
+          large change in the roots. This qualifies as instability.
+
+    \item Let the two individual values and errors be,
+          \begin{align}
+              x                & = \wt{x} + \epsilon_x           &
+              y                & = \wt{y} + \epsilon_y             \\
+              \abs{\epsilon_x} & \leq \beta_x                    &
+              \abs{\epsilon_y} & \leq \beta_y                      \\
+              \abs{\epsilon}   & = \abs{x + y - \wt{x} - \wt{y}} &
+                               & = \abs{\epsilon_x + \epsilon_y}
+              \leq \abs{\epsilon_x} + \abs{\epsilon_y}             \\
+              \abs{\epsilon}   & \leq \beta_x + \beta_y
+          \end{align}
+
+    \item Let $ x^2 $ be so large that it causes overflow, and $ y^2 \leq x^2 $
+          \begin{align}
+              f(x)    & = x^2 + y^2 & \lambda & = \Big(\frac{y}{x}\Big)^2 \\
+              \lambda & \in [0,1]   & f(x)    & = x \sqrt{1 + \lambda}
+          \end{align}
+          Now, the computation never involves numbers too large to cause overflow.
+          \par Other examples might use easily factorized polynomial expressions.
+
+    \item For division, with the relative erorrs in $ x,y $ being,
+          \begin{align}
+              \abs{\epsilon_{rx}}  & = \abs{1 - \frac{\wt{x}}{x}}                   &
+              \abs{\epsilon_{ry}}  & = \abs{1 - \frac{\wt{y}}{y}}                     \\
+              \abs{\epsilon_r}     & = \abs{1 - \frac{\wt{x}}{\wt{y}}
+              \cdot \frac{y}{x}}   &
+              \abs{\epsilon_r}     & = \abs{1 - \frac{(x - \epsilon_x)}
+              {(y - \epsilon_y)} \cdot \frac{y}{x}}                                   \\
+                                   & = \abs{\frac{-x\epsilon_y + y\epsilon_x}
+              {x(y - \epsilon_y)}} &
+                                   & \approxeq \abs{\frac{-x\epsilon_y
+              + y\epsilon_x}{xy}}                                                     \\
+                                   & = \abs{-\epsilon_{ry} + \epsilon_{rx}}         &
+              \abs{\epsilon_r}     & \leq \abs{\epsilon_{ry}} + \abs{\epsilon_{rx}}   \\
+              \abs{\epsilon_r}     & \leq \beta_{ry} + \beta_{rx}
+          \end{align}
+
+    \item By direct computation with $ 6S $,
+          \begin{align}
+              f(x) & = \sqrt{x^2 + 4} - 2                      &
+              x    & = 0.001                                     \\
+              f(x) & = \sqrt{4 + 0.000001} - 2 = \color{y_h} 0
+          \end{align}
+          By using the product of roots shortcut,
+          \begin{align}
+              0   & = z^2  - 2 (\sqrt{x^2 + 4})\ z + x^2 &
+              z   & = \sqrt{x^2 + 4} \pm 2                 \\
+              z_2 & = \frac{x^2}{z_1}                    &
+              z_2 & = \frac{x^2}{\sqrt{x^2 + 4} + 2}       \\
+              z_2 & = \frac{0.001^2}{4}
+              = \color{y_p} \num{2.5d-7}
+          \end{align}
+
+    \item Computing using $ 6S $,
+          \begin{align}
+              \ln(a) - \ln(b) & = \ln(4) - \ln(3.99900)         &
+                              & = 1.38629 - 1.38604               \\
+                              & = \color{y_h} \num{0.25d-3}       \\
+              \ln(a/b)        & = \ln(1.00025)                  &
+                              & = \color{y_p} \num{0.249969d-3}
+          \end{align}
+          The cruder method happens to be closer to the exact value.
+
+    \item By direct computation, with $ 6S $,
+          \begin{align}
+              1 - \cos(0.02) = 1 - 0.999800 = \color{y_h} \num{2d-4}
+          \end{align}
+          By using the trigonometric identity,
+          \begin{align}
+              \cos(2\theta) & = \cos^2\theta - \sin^2\theta = 1 - 2\sin^2\theta &
+              1 - \cos x    & = 2\sin^2(x/2)                                      \\
+              2\sin^2(0.01) & = \color{y_p} \num{1.99993d-4}
+          \end{align}
+          The newer method is a closer approximation to the real value.
+
+    \item The problem $ \cos(u) - \cos(v) $ when $ u \approxeq v $. The straight method
+          is problematic because it involves subtraction of close numbers.
+          \begin{align}
+              \cos a - \cos b & = 2\sin \Big( \frac{a + b}{2}\Big)
+              \ \sin\Big( \frac{a-b}{2} \Big)
+          \end{align}
+          This is a nice computation.
+
+    \item By direct computation, using $ 6S $
+          \begin{align}
+              \frac{1 - \cos x}{\sin x} & = \frac{\num{1.3d-5}}{\num{4.99998d-3}} &
+                                        & = \color{y_h} \num{2.600010d-3}
+          \end{align}
+          Using the formula in Problem $ 16 $,
+          \begin{align}
+              \frac{1 - \cos x}{\sin x} & = \frac{2\sin^2(x/2)}{2\sin(x/2)\cos(x/2)} &
+              f(x)                      & = \tan(x/2)                                  \\
+                                        & = \color{y_p} \num{2.50000d-3}
+          \end{align}
+          The better method matches the first 6 digits exactly.
+
+    \item Using the Maclaurin series, with $ 6S $,
+          \begin{align}
+              e^{-x} & = 1 - x + \frac{x^2}{2!} - \frac{x^3}{3!} + \frac{x^4}{4!}
+              - \frac{x^5}{5!}                                                    \\
+              e^{-1} & = 1 - 1 + \frac{1}{2} - \frac{1}{6} + \frac{1}{24}
+              - \frac{1}{120}                                                     \\
+                     & = 0.5 - 0.166667 + 0.0416667 - 0.00833333
+              = \color{y_h} 0.366666
+          \end{align}
+          Using the alternative approach that avoids any subtractions.
+          \begin{align}
+              e^{1}  & = 1 + 1 + \frac{1}{2} + \frac{1}{6} + \frac{1}{24}
+              + \frac{1}{120}                                              \\
+                     & = 2.5 + 0.166667 + 0.0416667 + 0.00833333 = 2.71667 \\
+              e^{-1} & = \frac{1}{2.71667} = \color{y_p} 0.368098
+          \end{align}
+          The second method is much closer to the accurate value
+          \begin{align}
+              \epsilon_2 & = \num{-2.19d-4} & \epsilon_1 & = \num{1.213d-3}
+          \end{align}
+
+    \item Using the Maclaurin series, with $ 6S $,
+          \begin{align}
+              e^{-x}  & = 1 - x + \frac{x^2}{2!} - \frac{x^3}{3!} + \frac{x^4}{4!}
+              - \frac{x^5}{5!}                                                       \\
+              e^{-10} & = 1 - 10 + \frac{10^2}{2} - \frac{10^3}{6} + \frac{10^4}{24}
+              - \frac{10^5}{120}                                                     \\
+                      & = -9 + 50 - 166.667 + 416.667 - 833.333
+              = \color{y_h} -542.333
+          \end{align}
+          Using the alternative approach that avoids any subtractions.
+          \begin{align}
+              e^{10}  & = 1 + 10 + \frac{10^2}{2} + \frac{10^3}{6} + \frac{10^4}{24}
+              + \frac{10^5}{120}                                                     \\
+                      & = 11 + 50 + 166.667 + 416.667 + 833.333 = 147.767            \\
+              e^{-10} & = \frac{1}{147.767} = \color{y_p} \num{6.76741d-3}
+          \end{align}
+          Since the Maclaurin series diverges for large $ x $, the first method is bad.
+          The second method converges to the true value.
+
+    \item Using the division algorithm to convert decimal to binary,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{colspec = {Q[l, $$]|[dotted]Q[r, $$]
+                      |Q[l, $$]|[dotted]Q[r, $$]
+                  }, colsep = 1em}
+                  \text{Dividend} & \text{Divisor}   &
+                  \text{Quotient} & \text{Remainder}          \\
+                  \hline[dotted]
+                  23              & 2                & 11 & 1 \\
+                  11              & 2                & 5  & 1 \\
+                  5               & 2                & 2  & 1 \\
+                  2               & 2                & 1  & 0 \\
+                  1               & 2                & 0  & 1 \\
+                  \hline
+              \end{tblr}
+          \end{table}
+          The algorithm ends when the quotient is $ 0 $.
+
+    \item Using the multiplication algorithm to convert decimal to binary,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{colspec = {Q[l, $$]|[dotted]Q[r, $$]
+                      |Q[l, $$]|[dotted]Q[r, $$]
+                  }, colsep = 1em}
+                  \text{Current value} & \text{Base}         &
+                  \text{Product}       & \text{Integer part}              \\
+                  \hline[dotted]
+                  0.59375              & 2                   & 1.1875 & 1 \\
+                  0.1875               & 2                   & 0.375  & 0 \\
+                  0.375                & 2                   & 0.75   & 0 \\
+                  0.75                 & 2                   & 1.5    & 1 \\
+                  0.5                  & 2                   & 1      & 1 \\
+                  \hline
+              \end{tblr}
+          \end{table}
+          The algorithm ends when the product itself is $ 1 $.
+
+    \item To check if $ x = 0.1 $ can be represented as a machine number,
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{colspec = {Q[l, $$]|[dotted]Q[r, $$]
+                      |Q[l, $$]|[dotted]Q[r, $$]
+                  }, colsep = 1em}
+                  \text{Current value} & \text{Base}         &
+                  \text{Product}       & \text{Integer part}           \\
+                  \hline[dotted]
+                  0.1                  & 2                   & 0.2 & 0 \\
+                  0.2                  & 2                   & 0.4 & 0 \\
+                  0.4                  & 2                   & 0.8 & 0 \\
+                  0.8                  & 2                   & 1.6 & 1 \\
+                  0.6                  & 2                   & 1.2 & 1 \\
+                  0.2                  & 2                   & 0.4 & 0 \\
+                  0.4                  & 2                   & 0.8 & 0 \\
+                  \hline
+              \end{tblr}
+          \end{table}
+          Notice that this process never ends becuase it gets stuck in an infinite loop
+          of $ 0.2 \to 0.4 \to 0.8 \to 0.6 \to 0.2 \to \dots $. \par
+          Thus, the binary representation is non-terminating.
+
+    \item All machine numbers are sums of integer powers of $ 2 $ as well as sums of
+          fractions of the form $ 1/2^p $.
+
+          \begin{align}
+              \frac{1}{2}   & = 0.5 = \frac{5}{10}          &
+              \frac{1}{2^p} & = (0.5)^p  = \frac{5^p}{10^p}
+          \end{align}
+          Since the denominator in this rational number is always a power of 10 and the
+          numerator is an integer, the result has terminating decimals in the base 10
+          system.
+
+          \par The converse is not true, as seen by the counterexample in Problem $ 23 $.
+
+    \item Looking at the infinite series,
+          \begin{align}
+              S & = \frac{3}{2}\ \iser{1} \Big( \frac{1}{16} \Big)^m    &
+              S & = \frac{3}{2} \cdot \frac{1/16}{15/16} = \frac{1}{10}
+          \end{align}
+          Parital sums of this series using $ 26 $ terms gives
+          \begin{align}
+              0.1 - 1.5\iser{1} \frac{1}{16^m} = \num{7.8883d-32}
+          \end{align}
+          This is the least number of terms for the error to be smaller than
+          $ \num{1d-30} $.
+
+    \item Integrating by parts,
+          \begin{align}
+              I_n & =\int_{0}^{1} e^x\ x^n\ \dl x                                &
+              I_n & = \Big[x^n e^x\Big]_0^1 - n\ \int_{0}^{1} e^x x^{n-1}\ \dl x   \\
+              I_n & = e - nI_{n-1}                                               &
+              I_0 & = \int_{0}^{1} e^x\ \dl x = e-1
+          \end{align}
+          \begin{enumerate}
+              \item \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{colspec = {Q[l, $$]|[dotted]Q[l, $$]|
+                                Q[l, $$]|[dotted]Q[l, $$]}, colsep = 1em}
+                            \text{Iteration} & \text{Value} &
+                            \text{Iteration} & \text{Value}                \\
+                            \hline[dotted]
+                            1                & 1.000        & 6  & 0.3365  \\
+                            2                & 0.7183       & 7  & 0.3631  \\
+                            3                & 0.5635       & 8  & -0.1865 \\
+                            4                & 0.4643       & 9  & 4.397   \\
+                            5                & 0.3970       & 10 & -41.25  \\
+                            \hline
+                        \end{tblr}
+                    \end{table}
+                    Since the integrand is always positive in the interval $ [0,1] $, the
+                    end result cannot be negative. \par
+                    The large error is a result of subtraction of close numbers, in
+                    addition to the error propagating in the recursive formula.
+
+              \item Using \texttt{sympy} to investigate the relationship between $ N $
+                    and $ k $,
+                    \begin{align}
+                        N   & = p_0 + p_1 k               &
+                        p_0 & = 0.7128, \quad p_1 = 7.740
+                    \end{align}
+          \end{enumerate}
+
+    \item Using backward recursion, and setting $ I_{15} \approxeq 0 $
+          \begin{align}
+              \int_{0}^{1} e^x\ x^n\ \dl x  & \leq \int_{0}^{1} e\ x^n\ \dl x &
+              \abs{I_n}                     & \leq \frac{e}{n+1}                \\
+              \lim_{n \to \infty} \abs{I_n} & = 0
+          \end{align}
+          \begin{table}[H]
+              \centering
+              \SetTblrInner{rowsep=0.4em}
+              \begin{tblr}{colspec = {Q[l, $$]|[dotted]Q[l, $$]|
+                      Q[l, $$]|[dotted]Q[l, $$]}, colsep = 1em}
+                  n  & I_n    & n & I_n    \\
+                  \hline[dotted]
+                  15 & 0.000  & 7 & 0.3055 \\
+                  14 & 0.1812 & 6 & 0.3447 \\
+                  13 & 0.1812 & 5 & 0.3956 \\
+                  12 & 0.1952 & 4 & 0.4645 \\
+                  11 & 0.2103 & 3 & 0.5634 \\
+                  10 & 0.2280 & 2 & 0.7183 \\
+                  9  & 0.2490 & 1 & 1.000  \\
+                  8  & 0.2744 & 0 & 1.719  \\
+                  \hline
+              \end{tblr}
+          \end{table}
+
+    \item Looking at the harmonic series of computer numbers, let
+          \begin{align}
+              \frac{1}{n} & < \epsilon & \forall \quad n & > M
+          \end{align}
+          Here, $ \epsilon $ is the smallest possible computer number. Underflow causes
+          all further terms of this infinite series to be set to zero, making it a
+          finite series. \par
+          Thus, the harmonic series of computer numbers truncates at a certain number of
+          terms and converges to $ S_{M} $.
+
+    \item For the approximation $ a  = 22/7, b = 355/113 $, using $ 3S $
+          \begin{align}
+              \epsilon_1    & = \pi - a = \num{-1.26d-3}                &
+              \epsilon_2    & = \pi - b = \num{-2.67d-7}                  \\
+              \epsilon_{1r} & = \abs{1 - \frac{a}{\pi}} = \num{4.02d-4} &
+              \epsilon_{2r} & = \abs{1 - \frac{b}{\pi}} = \num{8.49d-8}
+          \end{align}
+
+    \item Computing the approximation to $ \pi $ using $ 10S $,
+          \begin{align}
+              a & = 16 \arctan(1/5) - 4 \arctan(1/239) &
+              a & = 3.141592653
+          \end{align}
+          This is correct to 10 significant digits.
+\end{enumerate}

@@ -6,7 +6,7 @@
               f(x)                         & = x + \pi \qquad\qquad x \in [-\pi, \pi] \\
               a_0                          & = \color{y_h} \pi                        \\
               a_n                          & = \color{y_p} 0                          \\
-              b_n                          & = \color{brown6} \frac{-2\cos(n\pi)}{n}  \\
+              b_n                          & = \color{y_t} \frac{-2\cos(n\pi)}{n}     \\
               \int_{-\pi}^{\pi} f^2\ \dl x & = \int_{-\pi}^{\pi} (x + \pi)^2\ \dl x
               = \Bigg[ \frac{(x + \pi)^3}{3} \Bigg]_{-\pi}^{\pi}
               = \frac{8\pi^3}{3}                                                      \\
@@ -60,7 +60,7 @@
               x \in [-\pi, \pi]                                                       \\
               a_0                                  & = \color{y_h} 0                  \\
               a_n                                  & = \color{y_p} 0                  \\
-              b_n                                  & = \color{brown6}
+              b_n                                  & = \color{y_t}
               \frac{-2\cos(n\pi)}{n}                                                  \\
               \int_{-\pi}^{\pi} f^2\ \dl x         & = \int_{-\pi}^{\pi} (x)^2\ \dl x
               = \Bigg[ \frac{x^3}{3} \Bigg]_{-\pi}^{\pi}
@@ -125,7 +125,7 @@
                    & = \frac{2}{\pi}\Bigg[ \frac{x\sin(nx)}{n} + \frac{\cos(nx)}{n^2}
                   \Bigg]_0^{\pi}
               = \color{y_p} \frac{2}{\pi n^2}\ [\cos(n\pi - 1)]                       \\
-              b_n  & = \color{brown6} 0
+              b_n  & = \color{y_t} 0
           \end{align}
           Calculating the error function,
           \begin{align}
@@ -192,7 +192,7 @@
                   - \frac{2\sin(nx)}{n^3} + \frac{2x\cos(nx)}{n^2}
                   \Bigg]_0^{\pi}
               = \color{y_p} \frac{4\cos(n\pi)}{n^2}              \\
-              b_n  & = \color{brown6} 0
+              b_n  & = \color{y_t} 0
           \end{align}
           Calculating the error function,
           \begin{align}
@@ -256,7 +256,7 @@
               b_n  & = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin(nx)\ \dl x
               = \frac{2}{\pi}\int_{0}^{\pi} \sin(nx)\ \dl x                 \\
                    & = \Bigg[ -\frac{\cos(nx)}{n} \Bigg]_0^{\pi}
-              = \color{brown6} \frac{2}{n\pi}\ [1 - \cos(n\pi)]
+              = \color{y_t} \frac{2}{n\pi}\ [1 - \cos(n\pi)]
           \end{align}
           Calculating the error function,
           \begin{align}
@@ -318,17 +318,17 @@
     \item Evaluating the Fourier coefficients,
           \begin{align}
               f(x) & = x^3 \qquad\qquad
-              x \in [-\pi, \pi]                                        \\
-              a_0  & = \color{y_h} 0                                   \\
-              a_n  & = \color{y_p} 0                                   \\
+              x \in [-\pi, \pi]                                     \\
+              a_0  & = \color{y_h} 0                                \\
+              a_n  & = \color{y_p} 0                                \\
               b_n  & = \frac{1}{\pi}
               \int_{-\pi}^{\pi} f(x) \sin(nx)\ \dl x
-              = \frac{2}{\pi}\int_{0}^{\pi} x^3\ \sin(nx)\ \dl x       \\
+              = \frac{2}{\pi}\int_{0}^{\pi} x^3\ \sin(nx)\ \dl x    \\
                    & = \frac{2}{\pi}\ \Bigg[
                   \sin(nx)\ \Biggl( \frac{3x^2}{n^2} - \frac{6}{n^4} \Biggr)
                   + \cos(nx) \Biggl( \frac{-x^3}{n} + \frac{6x}{n^3} \Biggr)
-              \Bigg]_0^{\pi}                                           \\
-                   & = \color{brown6} \cos(n\pi) \Bigg[ \frac{12}{n^3}
+              \Bigg]_0^{\pi}                                        \\
+                   & = \color{y_t} \cos(n\pi) \Bigg[ \frac{12}{n^3}
                   - \frac{2\pi^2}{n} \Bigg]
           \end{align}
           Calculating the error function,
@@ -401,7 +401,7 @@
               a_1  & = \frac{1}{\pi}\int_{0}^{\pi} \sin(2x)\ \dl x
               = \Bigg[\frac{-\cos(2x)}{2\pi}\Bigg]_0^{\pi}
               = \color{y_p} 0                                                \\
-              b_n  & = \color{brown6} 0
+              b_n  & = \color{y_t} 0
           \end{align}
           Calculating the error function,
           \begin{align}

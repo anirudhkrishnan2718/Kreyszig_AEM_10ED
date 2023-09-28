@@ -1,0 +1,605 @@
+\section{Circular Membrane, Fourier-Bessel Series}
+
+\begin{enumerate}
+    \item Polar coordinates are necessary to simplify the analysis of circular membranes
+          , especially when the displacement is radially symmetric.
+
+    \item Using radial symmetry from the very beginning, which makes $ u_\theta  = 0$,
+          \begin{align}
+              x      & = r\cos \theta                                   &
+              y      & = r \sin \theta                                    \\
+              r      & = \sqrt{x^2 + y^2}                               &
+              \theta & = \arctan(y/x)                                     \\
+              u_x    & = u_r\ r_x + u_\theta\ \theta_x                  &
+              u_x    & = u_r\ \frac{x}{\sqrt{x^2 + y^2}}                  \\
+              u_{xx} & = (u_r\ r_x)_x = (u_r)_x\ r_x + u_r\ r_{xx}      &
+                     & = u_{rr}\ (r_x)^2 + u_r\ r_{xx}                    \\
+              u_{xx} & = u_{rr}\ \frac{x^2}{r^2} + u_r\ \frac{y^2}{r^3}
+          \end{align}
+          Since the result for $ u_{yy} $ is similar, the Laplacian becomes,
+          \begin{align}
+              \nabla^2 u & = u_{xx} + u_{yy} = u_{rr} + \frac{1}{r}\ u_r
+          \end{align}
+
+    \item Rewriting the Laplacian using the chain rule,
+          \begin{align}
+              \nabla^2 u                         & = u_{rr} + \frac{1}{r}\ u_r
+              + \frac{1}{r^2} \ u_{\theta\theta} &
+              (r\ u_r)_r                         & = r\ u_{rr} + u_r           \\
+              \nabla^2 u                         & = \frac{1}{r}\ (r\ u_r)_r
+              + \frac{1}{r^2}\ u_{\theta\theta}  &
+          \end{align}
+
+    \item Looking at the given functions,
+          \begin{enumerate}
+              \item Checking if the given functions satisfy Laplace's equation in polar
+                    coordinates,
+                    \begin{align}
+                        u                & = r^n \cos(n\theta)           &
+                        u_r              & = n(r^{n-1}) \cos(n\theta)      \\
+                        u_{rr}           & = n(n-1)r^{n-2} \cos(n\theta) &
+                        u_{\theta\theta} & = -n^2r^n \cos(n\theta)
+                    \end{align}
+                    Substituting into the equation,
+                    \begin{align}
+                        u_{rr} + \frac{1}{r}\ u_r + \frac{1}{r^2}\ u_{\theta\theta}
+                        = [n(n-1) + n - n^2]\ r^{n-2} \cos(n\theta) = 0
+                    \end{align}
+                    $ v_n = r^n \sin(\theta) $ also satisfies this equation similarly.
+                    \par
+                    For small values of $ n $,
+                    \begin{align}
+                        u_0 & = 1           & v_0 & = 0           \\
+                        u_1 & = x           & v_1 & = y           \\
+                        u_2 & = x^2 - y^2   & v_2 & = 2xy         \\
+                        u_3 & = x^3 - 3xy^2 & v_3 & = 3x^2y - y^3
+                    \end{align}
+
+              \item Checking if the given function satisfies Laplace's equation,
+                    \begin{align}
+                        u_r              & = \iser[n]{1} \frac{na_n}{R}
+                        \ \Big( \frac{r}{R} \Big)^{n-1} \cos(n\theta)
+                        + \frac{nb_n}{R}\ \Big( \frac{r}{R} \Big)^{n-1} \sin(n\theta) \\
+                        u_{rr}           & = \iser[n]{1} \frac{n(n-1)a_n}{R^2}
+                        \ \Big( \frac{r}{R} \Big)^{n-2} \cos(n\theta)
+                        + \frac{n(n-1)b_n}{R^2}
+                        \ \Big( \frac{r}{R} \Big)^{n-2} \sin(n\theta)                 \\
+                        u_{\theta\theta} & = \iser[n]{1} -n^2a_n
+                        \ \Big( \frac{r}{R} \Big)^{n} \cos(n\theta)
+                        - n^2b_n\ \Big( \frac{r}{R} \Big)^{n} \sin(n\theta)
+                    \end{align}
+                    Substituting into Laplace's equation,
+                    \begin{align}
+                        u_{rr} + \frac{1}{r}\ u_r + \frac{1}{r^2}\ u_{\theta\theta}
+                         & = \Big( \frac{r}{R} \Big)^{n-2} \cos(n\theta)\ \Bigg[
+                        \frac{a_n}{R^2}\ [n^2 - n + n - n^2]\Bigg]               \\
+                         & + \Big( \frac{r}{R} \Big)^{n-2} \sin(n\theta)\ \Bigg[
+                        \frac{b_n}{R^2}\ [n^2 - n + n - n^2]\Bigg]               \\
+                         & = 0 + 0
+                    \end{align}
+                    Satisfying the boundary conditions,
+                    \begin{align}
+                        u(R, \theta) & = f(\theta) = a_0 + \iser[n]{1} a_n\ \cos(n\theta)
+                        + b_n \sin(n\theta)
+                    \end{align}
+                    This form of series expansion is satisfied by the set of coefficients
+                    being the Fourier coefficients of $ f(\theta) $.
+
+              \item Given the boundary condition, the Fourier coefficients are,
+                    \begin{align}
+                        f(\theta) & = \color{y_h}
+                        \begin{dcases}
+                            -100 & \quad \theta \in [-\pi, 0] \\
+                            100  & \quad \theta \in [0, \pi]
+                        \end{dcases}                              \\
+                        a_0       & = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(\theta)
+                        \ \dl \theta
+                        = \frac{1}{2\pi} \Bigg[ -100\theta \Bigg]_{-\pi}^0
+                        + \frac{1}{2\pi} \Bigg[ 100\theta \Bigg]_0^\pi = \color{y_p} 0 \\
+                        a_n       & = \color{y_p} 0                                    \\
+                        b_n       & = \frac{2}{\pi} \int_{0}^{\pi} (100)
+                        \ \sin(n\theta)\ \dl \theta
+                        = \color{y_p} \frac{200}{n\pi}\ [1 - \cos(n\pi)]
+                    \end{align}
+                    The general solution using part $ b $ is,
+                    \begin{align}
+                        u(r, \theta) & = \iser[n]{1} b_n\ r^n\ \sin(n\theta)
+                    \end{align}
+
+              \item For the Neumann boundary conditions,
+                    \begin{align}
+                        u(r, \theta)   & = a_0 + \iser[n]{1} a_n\ r^n  \cos(n\theta)
+                        + b_n\ r^n \sin(n\theta)                                     \\
+                        u_r(R, \theta) & = g(\theta) = \iser[n]{1} na_nR^{n-1}
+                        \cos(n\theta) + nb_nR^{n-1} \sin(n\theta)                    \\
+                        na_nR^{n-1}    & = \frac{1}{\pi} \int_{-\pi}^{\pi}
+                        g(\theta)\ \cos(n\theta)\ \dl \theta                         \\
+                        nb_nR^{n-1}    & = \frac{1}{\pi} \int_{-\pi}^{\pi}
+                        g(\theta)\ \sin(n\theta)\ \dl \theta
+                    \end{align}
+                    There is no condition on $ a_0 $ since it gets deleted in the
+                    differentiation.
+
+              \item From Section $ 10.4 $,
+                    \begin{align}
+                        \iint_R \nabla^2 u\ \dl x \dl y &
+                        = \oint_C u_r(R, \theta)\ R\ \dl \theta            \\
+                        \nabla^2 u                      &
+                        = 0 \quad \forall \quad  r < R                     \\
+                        g(\theta)                       & = u_r(R, \theta)
+                    \end{align}
+                    The fact that $ u $ solves Laplace's equation makes the LHS zero.
+                    Thus, the RHS is also zero.
+                    \begin{align}
+                        \oint_C u_r(R, \theta)\ \dl \theta & = \int_{-\pi}^{\pi}
+                        g(\theta)\ \dl \theta = 0
+                    \end{align}
+
+              \item Solving Laplace's equation in polar coordinates,
+                    \begin{align}
+                        u(r, \theta)                    & = F(r) \cdot G(\theta)      \\
+                        0                               & = G \cdot \diffp[2] Fr
+                        + \frac{G}{r}\ \diffp Fr
+                        + \frac{F}{r^2} \cdot \diffp[2] G\theta                       \\
+                        -\frac{1}{G}\ \diffp[2] G\theta & = \frac{1}{F}\ \Big[ r^2F''
+                            + rF' \Big] = k
+                    \end{align}
+                    For $ k = 0 $, Solving the ODE in $ \theta $
+                    \begin{align}
+                        (F')'     & = \frac{-F'}{r}    & \ln(F') & = -\ln(r) + a_1   \\
+                        F'        & = \frac{a_1}{r}    & F(r)    & = a_1\ln(r) + a_2 \\
+                        G(\theta) & = b_1 \theta + b_2 & G(-\pi) & = G(\pi)          \\
+                        b_1       & = 0 \quad b_2 = 1
+                    \end{align}
+                    For $ k < 0 $, no periodic solutions exist for $ G(\theta) $, which
+                    means this case can be ignored. \par
+                    For $ k = m^2 > 0 $,
+                    \begin{align}
+                        G(\theta)                 & = h_m\cos(m \theta)
+                        + j_m\sin(m\theta)                                 \\
+                        r^2\ F'' + r\ F' - m^2\ F & = 0                    \\
+                        F(r)                      & = p_m r^m + q_m r^{-m}
+                    \end{align}
+                    Using the periodic nature of $ G(\theta) $,
+                    \begin{align}
+                        G(-\pi)             & = G(\pi)           &
+                        \implies \sin(m\pi) & = 0                  \\
+                        m                   & = (\text{integer})
+                    \end{align}
+                    Since there are infinite solutions (one for each integer,) the
+                    series sum is the full solution,
+                    \begin{align}
+                        u(r, \theta) & = F_0 \cdot G_0 + \iser{1} F_m \cdot G_m \\
+                                     & = a_1 \ln(r) + a_2 + \iser{1}
+                        (p_m r^m + q_m r^{-m}) \cdot \Big[h_m \cos(m\theta)
+                            + j_m \sin(m\theta)\Big]
+                    \end{align}
+                    Applying the boundary conditions at either edge of the annulus,
+                    and absorbing the coefficients $ h_m, j_m $ into $ p_m, q_m $,
+                    \begin{align}
+                        u_r(1, \theta) & = \sin \theta = a_1 + \iser{1} m(p_m - q_m)
+                        \ G(\theta)                                                    \\
+                        u_r(3, \theta) & = 0 =  \frac{a_1}{3} + \iser{1} (mp_m 3^{m-1}
+                        - mq_m 3^{-m-1}) \cdot G(\theta)
+                    \end{align}
+                    Since $ \sin \theta $ is already a term in the Fourier expansion,
+                    all terms $ m \neq 1 $ are zero.
+                    \begin{align}
+                        p_1 - q_1           & = 1                     &
+                        p_1 - \frac{q_1}{9} & = 0                       \\
+                        a_1                 & = 0                     &
+                        p_1, q_1            & = -\frac{1}{8},
+                        \ -\frac{9}{8}                                  \\
+                        u(r, \theta)        & = -\frac{\sin\theta}{8}
+                        \Bigg[r + \frac{9}{r} \Bigg]
+                    \end{align}
+          \end{enumerate}
+
+    \item Finding the potential using equation $ 20 $,
+          \begin{align}
+              u(1, \theta) & = a_0 + \iser{1} a_m \cos(m\theta) + b_m \sin(m\theta)  \\
+              u(1, \theta) & = f(\theta) = \color{y_h}
+              \begin{cases}
+                  220 & \quad \theta \in (-\pi/2, \pi/2) \\
+                  0   & \quad \text{otherwise}
+              \end{cases}                                 \\
+              b_m          & = \color{y_p} 0                                         \\
+              a_m          & = \frac{2}{\pi} \int_{0}^{\pi/2} 220 \cos(m\theta)
+              \ \dl \theta                                                           \\
+                           & = \frac{440}{m\pi}\ \Big[\sin(m\theta)\Big]_{0}^{\pi/2}
+              = \color{y_p} \frac{440}{m\pi}\ \sin(m\pi/2)                           \\
+              a_0          & = \frac{1}{\pi} \int_{0}^{\pi/2} 220\ \dl \theta
+              = \color{y_p} 110                                                      \\
+              u(r, \theta) & = 110 + \frac{440}{\pi} \iser{1} \frac{\sin(m\pi/2)}{m}
+              \ r^m\ \cos(m\theta)
+          \end{align}
+
+    \item Finding the potential using equation $ 20 $,
+          \begin{align}
+              u(1, \theta) & = a_0 + \iser{1} a_m \cos(m\theta) + b_m \sin(m\theta) \\
+              u(1, \theta) & = f(\theta) = \color{y_h} 400 \cos^3 \theta
+              = 100\ [\cos(3\theta) + 3\cos(\theta)]                                \\
+              b_m          & = \color{y_p} 0                                        \\
+              a_m          & =  \color{y_p} 0 \quad \forall\ m \neq 1,3             \\
+              a_1, a_3     & = \color{y_p}100, 300                                  \\
+              a_0          & = \frac{1}{\pi} \int_{0}^{\pi/2} 220\ \dl \theta
+              = \color{y_p} 110                                                     \\
+              u(r, \theta) & = 300\ r\cos(\theta) + 100\ r^3 \cos(3\theta)
+          \end{align}
+
+    \item Finding the potential using equation $ 20 $,
+          \begin{align}
+              u(1, \theta) & = a_0 + \iser{1} a_m \cos(m\theta) + b_m \sin(m\theta)   \\
+              u(1, \theta) & = f(\theta) = \color{y_h} 110\abs{\theta}                \\
+              b_m          & = \color{y_p} 0                                          \\
+              a_m          & = \frac{2}{\pi} \int_{0}^{\pi} 110 \theta \cos(m\theta)
+              \ \dl \theta                                                            \\
+                           & = \frac{220}{\pi}\ \Bigg[ \frac{m\theta \sin(m\theta)
+                      + \cos(m\theta)}{m^2} \Bigg]_{0}^{\pi}
+              = \color{y_p} \frac{-220}{\pi m^2}\ [1 - \cos(m\pi)]                    \\
+              a_0          & = \frac{1}{\pi} \int_{0}^{\pi} 110\ \theta \dl \theta
+              = \color{y_p} 55 \pi                                                    \\
+              u(r, \theta) & = 55\pi - \frac{220}{\pi} \iser{1} \frac{1 - \cos(m\pi)}
+              {m^2}\ r^m\ cos(m\theta)
+          \end{align}
+
+    \item Finding the potential using equation $ 20 $,
+          \begin{align}
+              u(1, \theta) & = a_0 + \iser{1} a_m \cos(m\theta) + b_m \sin(m\theta) \\
+              u(1, \theta) & = f(\theta) = \color{y_h}
+              \begin{dcases}
+                  \theta & \quad \theta \in (-\pi/2, \pi/2) \\
+                  0      & \quad \text{otherwise}
+              \end{dcases}                             \\
+              a_m = a_0    & = \color{y_p} 0                                        \\
+              b_m          & = \frac{2}{\pi} \int_{0}^{\pi/2} \theta \sin(m\theta)
+              \ \dl \theta                                                          \\
+                           & = \frac{2}{\pi}\ \Bigg[ \frac{\sin(m\theta) -
+              m\theta \cos(m\theta)}{m^2} \Bigg]_{0}^{\pi/2}                        \\
+                           & = \color{y_p} \frac{2}{m^2\pi}\ \sin(m\pi/2)
+              - \frac{1}{m}\ \cos(m\pi/2)
+          \end{align}
+
+    \item TBC
+
+    \item Finding the potential using equation $ 20 $,
+          \begin{align}
+              u(1, \theta)  & = a_0 + \iser{1} a_m \cos(m\theta) + b_m \sin(m\theta) \\
+              u(r, 0) = 0   & = a_0 + \iser{1} a_m\ r^m                              \\
+              u(r, \pi) = 0 & = a_0 + \iser{1} a_m\ r^m\ \cos(m\pi)                  \\
+              u(1, \theta)  & = f(\theta) = \color{y_h}
+              \begin{dcases}
+                  110\ \theta(\pi - \theta) & \quad \theta \in (0, \pi) \\
+                  0                         & \quad \text{otherwise}
+              \end{dcases}                  \\
+              a_m = a_0     & = \color{y_p} 0                                        \\
+              b_m           & = \frac{220}{\pi} \int_{0}^{\pi} \theta(\pi - \theta)
+              \sin(m\theta) \ \dl \theta                                             \\
+                            & = \frac{220}{\pi}\ \Bigg[ h(\theta)\ \sin(m\theta) +
+              \frac{m^2\theta(\theta - \pi)- 2}{m^3}\ \cos(m\theta) \Bigg]_{0}^{\pi} \\
+                            & = \color{y_p} \frac{440}{m^3\pi}\ \Big[
+                  1 - \cos(m\pi) \Big]
+          \end{align}
+
+    \item Finding the potential using equation $ 20 $,
+          \begin{align}
+              u(1, \theta)  & = a_0 + \iser{1} a_m \cos(m\theta) + b_m \sin(m\theta) \\
+              u(r, 0) = 0   & = a_0 + \iser{1} a_m\ r^m                              \\
+              u(r, \pi) = 0 & = a_0 + \iser{1} a_m\ r^m\ \cos(m\pi)                  \\
+              u(1, \theta)  & = f(\theta) = \color{y_h}
+              \begin{dcases}
+                  u_0 & \quad \theta \in (0, \pi) \\
+                  0   & \quad \text{otherwise}
+              \end{dcases}                                        \\
+              a_m = a_0     & = \color{y_p} 0                                        \\
+              b_m           & = \frac{2}{\pi} \int_{0}^{\pi} u_0 \sin(m\theta)
+              \ \dl \theta                                                           \\
+                            & = \color{y_p} \frac{2u_0}{m \pi}\ \Big[
+              1 - \cos(m\pi) \Big]                                                   \\
+              u(r, \theta)  & = \frac{2u_0}{\pi}\ \iser{1} \frac{1 - \cos(m\pi)}
+              {m}\ \frac{r^m}{a^m}\ \sin(m\theta)
+          \end{align}
+
+    \item Graphing normal modes,
+          \begin{enumerate}
+              \item Typo in question. Referring to Figure $ 309 $ in the text,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        a_1 = 2.40483 ; a_2 = 5.52008 ; a_3 = 8.65373 ;
+                                        a_4 = 11.79153 ; a_5 = 14.93092 ; a_6 = 18.07106 ;
+                                    }]
+                            \begin{axis}[
+                                    legend pos = south east, ymin = -1, ymax = 1,
+                                    grid = both, enlargelimits = false,
+                                    width = 16cm, xmin = -1, xmax = 1,
+                                    height = 6cm, Ani,
+                                    domain = -1:1,
+                                ]
+                                \addplot[GraphSmooth, color = y_h]
+                                gnuplot[id=besj0] {besj0(11.79153 * x)};
+                                \addlegendentry{$ J_0(\alpha_4\ x) $};
+                                \node[GraphNode, draw = white] at (axis cs:a_1/a_4,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:a_2/a_4,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:a_3/a_4,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_1/a_4,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_2/a_4,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_3/a_4,0) {};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        a_1 = 2.40483 ; a_2 = 5.52008 ; a_3 = 8.65373 ;
+                                        a_4 = 11.79153 ; a_5 = 14.93092 ; a_6 = 18.07106 ;
+                                    }]
+                            \begin{axis}[
+                                    legend pos = south east, ymin = -1, ymax = 1,
+                                    grid = both, enlargelimits = false,
+                                    width = 16cm, xmin = -1, xmax = 1,
+                                    height = 6cm, Ani,
+                                    domain = -1:1,
+                                ]
+                                \addplot[GraphSmooth, color = y_p]
+                                gnuplot[id=besj0] {besj0(14.93092 * x)};
+                                \addlegendentry{$ J_0(\alpha_5\ x) $};
+                                \node[GraphNode, draw = white] at (axis cs:a_1/a_5,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:a_2/a_5,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:a_3/a_5,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:a_4/a_5,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_1/a_5,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_2/a_5,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_3/a_5,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_4/a_5,0) {};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        a_1 = 2.40483 ; a_2 = 5.52008 ; a_3 = 8.65373 ;
+                                        a_4 = 11.79153 ; a_5 = 14.93092 ; a_6 = 18.07106 ;
+                                    }]
+                            \begin{axis}[
+                                    legend pos = south east, ymin = -1, ymax = 1,
+                                    grid = both, enlargelimits = false,
+                                    width = 16cm, xmin = -1, xmax = 1,
+                                    height = 6cm, Ani,
+                                    domain = -1:1,
+                                ]
+                                \addplot[GraphSmooth, color = y_t]
+                                gnuplot[id=besj0] {besj0(18.07106 * x)};
+                                \addlegendentry{$ J_0(\alpha_6\ x) $};
+                                \node[GraphNode, draw = white] at (axis cs:a_1/a_6,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:a_2/a_6,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:a_3/a_6,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:a_4/a_6,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:a_5/a_6,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_1/a_6,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_2/a_6,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_3/a_6,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_4/a_6,0) {};
+                                \node[GraphNode, draw = white] at (axis cs:-a_5/a_6,0) {};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Tabulating the requisite items,
+                    \begin{table}[H]
+                        \centering
+                        \SetTblrInner{rowsep=0.4em}
+                        \begin{tblr}{colspec = {Q[l]|[dotted]Q[l]|[dotted]Q[l]|[dotted]
+                            Q[l]|[dotted]Q[l]}, colsep = 1em}
+                            $\vec{m}$           & $\vec{\alpha_{m}}$ & $\vec{A_{m}}$ &
+                            $\vec{(m-0.25)\pi}$ & \textbf{Error}                       \\
+                            \hline[dotted]
+                            1                   & 2.40483            & 1.1080        &
+                            2.3562              & -0.048631                            \\
+                            2                   & 5.52008            & -0.13978      &
+                            5.4978              & -0.022291                            \\
+                            3                   & 8.65373            & 0.045476      &
+                            8.6394              & -0.014348                            \\
+                            4                   & 11.79153           & -0.020991     &
+                            11.781              & -0.010562                            \\
+                            5                   & 14.93092           & 0.011636      &
+                            14.923              & -0.0083526                           \\
+                            6                   & 18.07106           & -0.0072212    &
+                            18.064              & -0.0069062                           \\
+                            7                   & 21.21164           & 0.0048379     &
+                            21.206              & -0.0058862                           \\
+                            8                   & 24.35247           & -0.0034257    &
+                            24.347              & -0.0051285                           \\
+                            9                   & 27.49348           & 0.0025295     &
+                            27.489              & -0.0045434                           \\
+                            10                  & 30.63461           & -0.0019301    &
+                            30.631              & -0.0040781                           \\
+                            11                  & 33.77582           & 0.0015122     &
+                            33.772              & -0.0036992                           \\
+                            12                  & 36.9171            & -0.0012108    &
+                            36.914              & -0.0033847                           \\
+                            13                  & 40.05843           & 0.00098719    &
+                            40.055              & -0.0031194                           \\
+                            14                  & 43.19979           & -0.00081739   &
+                            43.197              & -0.0028927                           \\
+                            15                  & 46.34119           & 0.00068583    &
+                            46.339              & -0.0026967                           \\
+                            \hline
+                        \end{tblr}
+                    \end{table}
+
+              \item Plotting the first few partial sums,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[
+                                    legend pos = outer north east,
+                                    grid = both, Ani,
+                                    domain = -1:1,
+                                ]
+                                \addplot[GraphSmooth, black, dashed, very thick]
+                                {1 - x^2};
+                                \addplot[GraphSmooth, y_h]
+                                gnuplot[id=besj0] {1.10801 * besj0(2.40483 * x)};
+                                \addplot[GraphSmooth, y_p]
+                                gnuplot[id=besj0] {1.10801 * besj0(2.40483 * x)
+                                        - 0.13978 * besj0(5.52008 * x)
+                                        + 0.04548 * besj0(8.65373 * x)
+                                        - 0.02099 * besj0(11.79153 * x)
+                                        + 0.01164 * besj0(14.93092 * x)};
+                                \addlegendentry{$ f(x) $};
+                                \addlegendentry{$ S_1 $};
+                                \addlegendentry{$ S_5 $};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+                    The convergence is very fast since $ f(x) $ is already shaped like
+                    a Bessel function.
+
+              \item The ratio of the nodal lines is a simple fraction of the
+                    form $ x = r/n $ where $ n $ is the order of the normal mode and
+                    $ r $ is every positive integer less than $ n $ \par
+                    Since the zeros of Bessel function are not evenly spaced, this no
+                    longer holds true for the nodal lines of a circular membrane. \par
+                    The raadius of each nodal line of the $ m^{\text{th}} $ normal
+                    mode is simply $ \alpha_r / \alpha_m $ for all positive integers
+                    $ r < m $.
+          \end{enumerate}
+
+    \item Doubling the tension,
+          \begin{align}
+              c^2 & = \frac{T}{\rho} & \lambda    & \propto c     \\
+              F   & \to 2T           & \implies f & \to \sqrt{2}F
+          \end{align}
+
+    \item Looking at the fundamental frequency $ f_1 $,
+          \begin{align}
+              f_1                     & = \frac{\lambda_1}{2\pi}         &
+              \lambda_1               & = \frac{c\alpha_1}{R}              \\
+              R \color{y_p}\downarrow & \implies f_1 \color{y_h}\uparrow
+          \end{align}
+
+    \item Targeting a fundamental frequency, using tension as the variable,
+          \begin{align}
+              f_1 & = c\ \frac{\alpha_1}{2\pi R}                            &
+              f_1 & = \sqrt{T}\ \frac{\alpha_1}{\sqrt{\rho}\ 2\pi R}          \\
+              T   & = \rho R^2 f_1^2 \left( \frac{2\pi}{\alpha_1} \right)^2 &
+              T   & = 6.826 \cdot \rho R^2 f_1^2
+          \end{align}
+
+    \item Using $1 r = 0 $ in Example $ 1 $, all the coefficients have to sum to $ 1 $.
+          \begin{align}
+              J_0(0)   & = 1                                   \\
+              f(0) = 1 & = \iser{1} A_m\ J_0(0) = \iser{1} A_m
+          \end{align}
+          The larger the number of terms needed to achieve high accuracy, the larger the
+          problem of overtones polluting the pure fundamental frequency in a musical
+          instrument.
+
+    \item The eigenvalues and eigenfunctions are,
+          \begin{align}
+              \lambda_m & = \frac{c}{R}\ \alpha_m                                   \\
+              u_m       & = \Big[A_m \cos(\lambda_m t) + B_m \sin(\lambda_m t)\Big]
+              \cdot \Big[J_0(\lambda_m R/c)\Big]
+          \end{align}
+          Clearly, there is a one to one correspondence. \textcolor{y_p}{No}, two or more
+          $ u_m $ cannot correspond to the same $ \lambda_m $
+
+    \item Given an initial veclocity $ g(r) $,
+          \begin{align}
+              u_t(r, 0) & = \iser{1} (\lambda_m B_m)
+              \ J_0\left( \frac{\alpha_mr}{R} \right)                              \\
+              B_m       & = \frac{2}{(c\alpha_m R)\ J_1^2(\alpha_m)} \int_{0}^{R}r
+              \ g(r)\ J_0 \left( \frac{\alpha_m r}{R} \right)\ \dl r
+          \end{align}
+
+    \item Using separation of variables,
+          \begin{align}
+              u_{tt}           & = c^2\ \nabla^2 u                        &
+              u                & = F(r, \theta) \cdot G(t)                  \\
+              F \cdot \ddot{G} & = G \cdot c^2  \Bigg[ F'' + \frac{F'}{r}
+                  + \frac{1}{r^2}\ \diffp[2] F\theta \Bigg]
+          \end{align}
+          Equating both sides to the same constant $ -k^2 $ and with $ \lambda = ck $,
+          \begin{align}
+              \ddot{G} + \lambda^2G                                        & = 0 \\
+              F'' + \frac{F'}{r} + \frac{1}{r^2}\ \diffp[2] F\theta + k^2F & = 0
+          \end{align}
+          Further separating $ F(r, \theta) = W(r) \cdot Q(\theta) $,
+          \begin{align}
+              Q \Bigg[W'' + \frac{W'}{r} + k^2W\Bigg]         &
+              = -\frac{W}{r^2}\ \diffp[2] Q\theta               \\
+              \frac{1}{W}\ \Bigg[r^2W'' + rW' + r^2k^2W\Bigg] &
+              = -\frac{1}{Q}\ \diffp[2] Q\theta                 \\
+          \end{align}
+          Equating both sides of the above to $ n^2 $,
+          \begin{align}
+              \diffp[2] Q\theta + n^2Q       & = 0 \\
+              r^2W'' + rW' + (r^2k^2 - n^2)W & = 0
+          \end{align}
+
+    \item Since the circular membrane has domain $ \theta \in [-\pi, \pi] $,
+          \begin{align}
+              u(r, \theta)     & = u(r, \theta + 2\pi)                 &
+              \implies \quad P & = 2\pi                                  \\
+              Q''              & = -n^2 Q                              &
+              Q                & = A_n\cos(n\theta) + B_n\sin(n\theta)
+          \end{align}
+          Imposing the periodicity condition on $ Q(\theta) $,
+          \begin{align}
+              Q(\theta + 2\pi) & = A_n \cos(n\theta + 2n\pi)
+              + B_n \sin(n\theta + 2n\pi)
+          \end{align}
+          This means that $ n $ is the set of non-negative integers. Substituting this
+          set of values of $ n $ into the ODE for $ W $, yields bessel functions in
+          $ kr $ as the result.
+          \begin{align}
+              W_n & = J_n(kr) & n & \in \{0,1,2,\dots\}
+          \end{align}
+
+    \item The boundary condition yields,
+          \begin{align}
+              u_{mn}(R, \theta, t)            & = 0                     &
+              W(R) \cdot Q(\theta) \cdot G(t) & = 0                       \\
+              J_n(kR)                         & = 0                     &
+              \implies \quad k_{mn}           & = \frac{\alpha_{mn}}{R}
+          \end{align}
+
+    \item Consolidating $ G, W, Q $ into the full solution $ u(r, \theta, t) $,
+          \begin{align}
+              \lambda_{mn} & = ck_{mn}                                        \\
+              u_{mn}       & = J_n(k_{mn}\ r) \cdot \cos(n\theta) \cdot \Big[
+              A_{mn} \cos(\lambda_{mn}t) + B_{mn} \sin(\lambda_{mn}t) \Big]   \\
+              u^*_{mn}     & = J_n(k_{mn}\ r) \cdot \sin(n\theta) \cdot \Big[
+                  A^*_{mn} \cos(\lambda_{mn}t) + B^*_{mn} \sin(\lambda_{mn}t) \Big]
+          \end{align}
+
+    \item The initial condition on the velocity gives,
+          \begin{align}
+              u_t               & = F(r, \theta) \cdot \lambda_{mn}
+              \ \Big[-A_{mn}\sin(\lambda_{mn}t) + B_{mn}\cos(\lambda_{mn}t)\Big] \\
+              u_t(r, \theta, 0) & = 0 \quad \implies B_{mn} = 0
+          \end{align}
+          This includes $ B^*_{mn} = 0 $ as well, since $ G(\theta) $ includes both
+          sine and cosine terms in $ \theta $.
+
+    \item $ n=0 $ makes the $ \sin(n\theta) $ term zero for all $ m $. \par
+          The other kind of solution reduces to,
+          \begin{align}
+              u_{m0} & = J_0(k_m\ r) \cdot \Big[ A_m \cos(\lambda_m t) +
+                  B_m \sin(\lambda_m t) \Big]
+          \end{align}
+          This is the same as equation $ 16 $ in the text.
+
+    \item Setting $ R = c^2 = 1 $, and extending the semicircular membrane to be a
+          full circle, the nodal line has to be the diameter separating the two halves.
+          \begin{align}
+              \cos(\theta)          & = 0         &
+              \implies \quad \theta & = \pm \pi/2
+          \end{align}
+          This fixes $ n = 1 $ and thus the order of the Bessel function. \par
+          Now, looking at the fact that the number of nodal circles is zero, the value
+          of $ m = 1 $ is also determined. \par
+          The fact that $ u_{mn} $ solves the given PDE and the given boundary
+          conditions has already been established.
+\end{enumerate}

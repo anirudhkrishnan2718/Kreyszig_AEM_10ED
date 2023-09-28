@@ -14,8 +14,8 @@
               y'(0) & = B\omega_{0} = v_{0}
           \end{align}
 
-          Graphing solutions for $ \omega_{0} = \pi, y_{0} = 1$, with the different time series
-          intersecting at $ t = n $
+          Graphing solutions for $ \omega_{0} = \pi, y_{0} = 1$, with the different
+          time series intersecting at $ t = n $
           \begin{figure}[H]
               \centering
               \begin{tikzpicture}
@@ -30,15 +30,14 @@
                           width = 12cm,
                           height = 8cm,
                           Ani,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 3]},
                       ]
-                      \foreach [evaluate=\i as \n using (\i + 4)*100/(8)] \i in {-4, 0,...,4} {%
+                      \foreach [evaluate=\i as \n using (\i + 4)*100/(8)]
+                      \i in {-4, 0,...,4} {%
                               \edef\temp{%
                                   \noexpand
-                                  \addplot[
-                                      samples = 200,
-                                      domain=0:4,
-                                      color=blue!\n!red,
-                                  ]
+                                  \addplot+[thick, samples = 200, domain=0:4]
                                   {cos(pi*x) + (\i/pi)*sin(pi*x)};
                                   \noexpand \addlegendentry{$ v_{0} = \i$};
                               }\temp
@@ -49,11 +48,14 @@
 
     \item Given $ m = \SI{20}{\newton} $ and $ y_{0} = \SI{2}{\cm} $,
           \begin{align}
-              mg         & = ky_{0}                                &  & \text{Hooke's law} \\
-              k          & = \frac{20}{0.02} = \SI{1000}{\N\per\m}                         \\
-              \omega_{0} & = \sqrt{\frac{k}{m}} = \sqrt{500}                               \\
-              f_{0}      & = \frac{\omega_{0}}{2\pi}               &  & = \SI{3.56}{\Hz}   \\
-              T          & = \frac{1}{f_{0}}                       &  & = \SI{0.281}{\s}
+              mg         & = ky_{0}                                &
+                         & \text{Hooke's law}                        \\
+              k          & = \frac{20}{0.02} = \SI{1000}{\N\per\m}   \\
+              \omega_{0} & = \sqrt{\frac{k}{m}} = \sqrt{500}         \\
+              f_{0}      & = \frac{\omega_{0}}{2\pi}               &
+                         & = \SI{3.56}{\Hz}                          \\
+              T          & = \frac{1}{f_{0}}                       &
+                         & = \SI{0.281}{\s}
           \end{align}
 
     \item Doubling the mass increases inertia, which decreases natural frequency
@@ -65,35 +67,41 @@
               f_{2} = 2\pi \sqrt{\frac{2k}{m}} = \sqrt{2}f_{0}
           \end{align}
 
-    \item No, because the frequency $ f_{0} $ does not depend on the initial velocity $ v_{0} $.
-          The initial velocity only increases the maximum amplitude of the oscillations, not the time
-          period of the motion.
+    \item No, because the frequency $ f_{0} $ does not depend on the initial velocity
+          $ v_{0} $. \par
+          The initial velocity only increases the maximum amplitude of the oscillations
+          , not the time period of the motion.
 
     \item Springs in parallel, with $ m = 5 $, $ k_{1} = 20 $, $ k_{2} = 45$,
           \begin{align}
-              mg                    & = k_{1}y & \omega_{1} & = \sqrt{\frac{k_{1}}{m}} = \SI{2}{\N\per\m}    \\
-              mg                    & = k_{2}y & \omega_{2} & = \sqrt{\frac{k_{2}}{m}} = \SI{3}{\N\per\m}    \\
-              mg = (k_{1} + k_{2})y & = k_{3}y & \omega_{2} & = \sqrt{\frac{k_{3}}{m}} = \SI{3.61}{\N\per\m}
+              mg                    & = k_{1}y                                       &
+              \omega_{1}            & = \sqrt{\frac{k_{1}}{m}} = \SI{2}{\N\per\m}      \\
+              mg                    & = k_{2}y                                       &
+              \omega_{2}            & = \sqrt{\frac{k_{2}}{m}} = \SI{3}{\N\per\m}      \\
+              mg = (k_{1} + k_{2})y & = k_{3}y                                       &
+              \omega_{2}            & = \sqrt{\frac{k_{3}}{m}} = \SI{3.61}{\N\per\m}
           \end{align}
           Springs in parallel have an effective spring constant given by,
           \begin{align}
               k_{\text{par}} & = \sum_{i=1}^{n}k_{i}
           \end{align}
 
-    \item Springs in series, with $ k_{1} = 8 $, $ k_{2} = 12$. Consider a point in between the two
-          springs. At static equilibrium,
+    \item Springs in series, with $ k_{1} = 8 $, $ k_{2} = 12$. Consider a point in
+          between the two springs. At static equilibrium,
           \begin{align}
               k_{1}y_{1} = k_{2}y_{2}
           \end{align}
-          When replacing the springs by an effective spring with constant $ k_{3} $, and looking
-          at a point between the mass and the bottom-most spring at static equilibrium,
+          When replacing the springs by an effective spring with constant $ k_{3} $,
+          and looking at a point between the mass and the bottom-most spring at
+          static equilibrium,
           \begin{align}
               k_{1}y_{1}      & = k_{2}y_{2} = k_{3}y_{3} = mg      \\
               y_{3}           & = y_{1} + y_{2}                     \\
               \frac{1}{k_{3}} & = \frac{1}{k_{1}} + \frac{1}{k_{2}}
           \end{align}
-          The above relation follows from the fact that the total extension of the system of
-          springs in series is equal to the sum of the extension in each individual spring.
+          The above relation follows from the fact that the total extension of the
+          system of springs in series is equal to the sum of the extension in each
+          individual spring.
           Springs in parallel have an effective spring constant given by,
           \begin{align}
               k_{3} & = \frac{k_{1}k_{2}}{(k_{1} + k_{2})} \\
@@ -116,37 +124,49 @@
                   \draw[force] (O) -- (FT) node[midway,above right=-2] {$T$};
                   \draw[force] (O) -- (FG) node[right=0] {$mg$};
                   \draw[force,acol] (O) -- (MA) node[left=0] {$ma$};
-                  \draw pic[thin,"$\theta$",black,draw=black,angle radius=14,angle eccentricity=1.45] {angle=FG--O--FGx};
+                  \draw pic[thin,"$\theta$",black,draw=black,angle radius=14,
+                          angle eccentricity=1.45] {angle=FG--O--FGx};
               \end{tikzpicture}
           \end{figure}
           For small displacement $ x $,
           \begin{align}
-              mg\cos \theta                     & = T                  &       & \text{along string}                 \\
-              mg\sin \theta                     & = ma                 &       & \text{along tangent}                \\
-              mg\sin \theta \approxeq mg \theta & = ma                 & a     & = g\theta = \frac{gx}{l}            \\
-              \omega_{0}                        & = \sqrt{\frac{g}{l}} & f_{0} & = \frac{1}{2\pi} \sqrt{\frac{g}{l}}
+              mg\cos \theta                     & = T                      &
+                                                & \text{along string}        \\
+              mg\sin \theta                     & = ma                     &
+                                                & \text{along tangent}       \\
+              mg\sin \theta \approxeq mg \theta & = ma                     &
+              a                                 & = g\theta = \frac{gx}{l}   \\
+              \omega_{0}                        & = \sqrt{\frac{g}{l}}     &
+              f_{0}                             & = \frac{1}{2\pi}
+              \sqrt{\frac{g}{l}}
           \end{align}
 
-    \item Let the equilibrium depth of cylinder bottom be $ y_{0} $, with density of water $ \rho $. Now the entire
-          mass of water is acted upon by the gravitational force on the water above the equal line.
+    \item Let the equilibrium depth of cylinder bottom be $ y_{0} $, with density of
+          water $ \rho $.
+          Now the entire mass of water is acted upon by the gravitational force on the
+          water above the equal line.
           \begin{align}
               (\rho V)g = mg & = \rho\ (\pi R^{2} y_{0})g
           \end{align}
           When a small downward displacement y happens, the restoring force is,
           \begin{align}
-              ma     & = -mg + (\rho\pi g R^{2})\ (y_{0} + y)                                                                  \\
-                     & = \rho\ (\pi R^{2} g y)                                                                                 \\
-              \omega & =\sqrt{\frac{\rho\pi R^{2}g}{m}}       & T & = \frac{2\pi}{\omega} = \sqrt{\frac{4\pi m}{\rho R^{2} g}} \\
-              m      & =\frac{\rho R^{2}g}{4\pi}\ T^{2}       &   & = \frac{9.8 \cdot 997 \cdot 0.09}{\pi}                     \\
+              ma     & = -mg + (\rho\pi g R^{2})\ (y_{0} + y)                       \\
+                     & = \rho\ (\pi R^{2} g y)                                      \\
+              \omega & =\sqrt{\frac{\rho\pi R^{2}g}{m}}                           &
+              T      & = \frac{2\pi}{\omega} = \sqrt{\frac{4\pi m}{\rho R^{2} g}}   \\
+              m      & =\frac{\rho R^{2}g}{4\pi}\ T^{2}                           &
+                     & = \frac{9.8 \cdot 997 \cdot 0.09}{\pi}                       \\
                      & = \SI{279.9}{\kg}
           \end{align}
 
     \item $ 1 L $ of water vibrating in a U-shaped tube, displaced by $ y $ upwards,
           \begin{align}
               ma & = \rho (\pi R^{2})(2y)g
-                 & \omega^{2}                                                        & = \frac{2\rho g \pi R^{2}}{m}                       \\
+                 & \omega^{2}                                                        &
+              = \frac{2\rho g \pi R^{2}}{m}                                            \\
               f  & = \frac{\omega}{2\pi} = \sqrt{\frac{\rho g R^{2}}{2\pi (\rho V)}}
-                 &                                                                   & = \sqrt{\frac{9.8 \cdot (0.01)^{2}}{2 \pi (0.001)}} \\
+                 &                                                                   &
+              = \sqrt{\frac{9.8 \cdot (0.01)^{2}}{2 \pi (0.001)}}                      \\
                  & = \SI{0.395}{\Hz}
           \end{align}
 
@@ -154,54 +174,67 @@
           \begin{enumerate}
               \item A pendulum's simple harmonic oscillation is governed by the relation,
                     \begin{align}
-                        ma         & = mg \sin \theta \approxeq mg \theta                                                       \\
-                                   & = mg \frac{x}{l}                                                                           \\
-                        \omega_{2} & = \frac{g}{l}                        & T & = \frac{2\pi}{\omega} = 2\pi \sqrt{\frac{l}{g}} \\
+                        ma         & = mg \sin \theta \approxeq mg \theta              \\
+                                   & = mg \frac{x}{l}                                  \\
+                        \omega_{2} & = \frac{g}{l}                                   &
+                        T          & = \frac{2\pi}{\omega} = 2\pi \sqrt{\frac{l}{g}}   \\
                         T          & = \SI{2}{\s}
                     \end{align}
                     In 1 minute, the pendulum has completed 30 ticks.
 
               \item Given $ y_{0} = 0.01,\ m = 8,\ v_{0} = 0.1 $,
                     \begin{align}
-                        mg & = ky_{0}                                                  &        & \text{static equilibrium}                  \\
-                        ma & = -mg + k(y + y_{0}) = ky                                                                                       \\
-                        a  & = \frac{k}{m}y = \frac{gy}{y_{0}}                         & \omega & = \sqrt{\frac{g}{y_{0}}} = \SI{31.305}{Hz} \\
-                        y  & = y_{0}\cos \omega t + \frac{v_{0}}{\omega} \sin \omega t                                                       \\
+                        mg     & = ky_{0}                                    &
+                               & \text{static equilibrium}                     \\
+                        ma     & = -mg + k(y + y_{0}) = ky                     \\
+                        a      & = \frac{k}{m}y = \frac{gy}{y_{0}}           &
+                        \omega & = \sqrt{\frac{g}{y_{0}}} = \SI{31.305}{Hz}    \\
+                        y      & = y_{0}\cos \omega t + \frac{v_{0}}{\omega}
+                        \sin \omega t                                          \\
                     \end{align}
 
-              \item Torsional spring, with $ \theta' (0) = v_{0} = $ and $ \theta(0) = \theta_{0} $,
+              \item Torsional spring, with $ \theta' (0) = v_{0} = $ and
+                    $ \theta(0) = \theta_{0} $,
                     \begin{align}
-                        \theta '' & = \frac{-K}{I_{0}}\ \theta                                        & \omega^{2} & = \frac{K}{I_{0}} \\
-                        \theta    & = \theta_{0} \cos(\omega t) + \frac{v_{0}}{\omega} \sin(\omega t)                                  \\
-                                  & = [0.5325] \cos(3.7 t) + [0.0943] \sin(3.7 t)
+                        \theta ''  & = \frac{-K}{I_{0}}\ \theta                    &
+                        \omega^{2} & = \frac{K}{I_{0}}                               \\
+                        \theta     & = \theta_{0} \cos(\omega t)
+                        + \frac{v_{0}}{\omega} \sin(\omega t)                        \\
+                                   & = [0.5325] \cos(3.7 t) + [0.0943] \sin(3.7 t)
                     \end{align}
           \end{enumerate}
 
     \item Consider the standard solution for a damped oscillation,
           \begin{align}
-              y(t)  & = c_{1}\exp\left[ -(\alpha - \beta)t \right] + c_{2}\exp\left[ -(\alpha + \beta)t \right] \\
-              y'(0) & = -c_{1}(\alpha - \beta) - c_{2}(\alpha + \beta) = v_{0}                                  \\
-              y(0)  & = c_{1} + c_{2} = y_{0}                                                                   \\
-              v_{0} & = -c_{1}(\alpha - \beta) - (y_{0} - c_{1})(\alpha + \beta)                                \\
-              c_{1} & =\frac{v_{0} + y_{0}(\alpha + \beta)}{2\beta}                                             \\
+              y(t)  & = c_{1}\exp\left[ -(\alpha - \beta)t \right]
+              + c_{2}\exp\left[ -(\alpha + \beta)t \right]                       \\
+              y'(0) & = -c_{1}(\alpha - \beta) - c_{2}(\alpha + \beta) = v_{0}   \\
+              y(0)  & = c_{1} + c_{2} = y_{0}                                    \\
+              v_{0} & = -c_{1}(\alpha - \beta) - (y_{0} - c_{1})(\alpha + \beta) \\
+              c_{1} & =\frac{v_{0} + y_{0}(\alpha + \beta)}{2\beta}              \\
               c_{2} & = -\frac{v_{0} + y_{0}(\alpha - \beta)}{2\beta}
           \end{align}
 
     \item Checking the zero crossings of overdamped motion, $ \alpha > \beta > 0 $,
           \begin{align}
-              y(t)                                    & = c_{1}\exp\left[ -(\alpha - \beta)t \right] + c_{2}\exp\left[ -(\alpha + \beta)t \right] \\
-              y(t^{*})                                & = 0 \implies \frac{-c_{1}}{c_{2}} = \exp(-2\beta t^{*})                                   \\
-              \ln \left( \frac{-c_{1}}{c_{2}} \right) & = -2\beta t^{*}                                                                           \\
-              t^{*}                                   & =\frac{-1}{2\beta} \ln \left( \frac{-c_{1}}{c_{2}} \right)                                \\
-              t^{*} > 0                               & \implies \frac{-c_{1}}{c_{2}} \in (0, 1)
+              y(t)      & = c_{1}\exp\left[ -(\alpha - \beta)t \right]
+              + c_{2}\exp\left[ -(\alpha + \beta)t \right]                           \\
+              y(t^{*})  & = 0 \implies \frac{-c_{1}}{c_{2}} = \exp(-2\beta t^{*})    \\
+              \ln \left( \frac{-c_{1}}{c_{2}} \right)
+                        & = -2\beta t^{*}                                            \\
+              t^{*}     & =\frac{-1}{2\beta} \ln \left( \frac{-c_{1}}{c_{2}} \right) \\
+              t^{*} > 0 & \implies \frac{-c_{1}}{c_{2}} \in (0, 1)
           \end{align}
-          $ t^{*} > 0 $, which means that the body crosses mean position at some real time, has at most one solution
-          given by $ c_{1}c_{2} < 0 $ and $ |c_{2}| > |c_{1}| $.
+          $ t^{*} > 0 $, which means that the body crosses mean position at some real
+          time, has at most one solution given by
+          $ c_{1}c_{2} < 0 $ and $ |c_{2}| > |c_{1}| $.
 
     \item For critically damped motion,
           \begin{align}
-              y(t)  & = (c_{1} + c_{2}t)e^{-\alpha t} & y'(t) & = (c_{2} - \alpha c_{1} - \alpha c_{2}t)e^{-\alpha t} \\
-              y_{0} & = c_{1}                         & v_{0} & = c_{2} - \alpha c_{1}                                \\
+              y(t)  & = (c_{1} + c_{2}t)e^{-\alpha t}                       &
+              y'(t) & = (c_{2} - \alpha c_{1} - \alpha c_{2}t)e^{-\alpha t}   \\
+              y_{0} & = c_{1}                                               &
+              v_{0} & = c_{2} - \alpha c_{1}                                  \\
               c_{2} & =v_{0} + \alpha y_{0}
           \end{align}
           Plotting graphs for $ \alpha = 1,\ y_{0} = 1 $,
@@ -213,34 +246,24 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[
-                          %   ymode = log,
-                          %   axis equal,
-                          %   restrict y to domain = -5:20,
                           xlabel = Time ($ t $),
                           ylabel = Position ($ y $),
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
+                          colormap/jet,
+                          cycle list = {[samples of colormap = 6]},
                       ]
-                      \foreach [evaluate=\i as \n using (\i - 1)*100/(4)] \i in {1,...,5} {%
+                      \foreach [evaluate=\i as \n using (\i - 1)*100/(4)]
+                      \i in {1,...,5} {%
                               \edef\temp{%
                                   \noexpand
-                                  \addplot[
-                                      samples = 200,
-                                      domain=0:6,
-                                      color=blue!\n!red,
-                                  ]
+                                  \addplot+[samples = 200,domain=0:6, thick]
                                   {(1 + (-1/\i)*x)*e^(-x)};
                                   \noexpand \addlegendentry{$ t^{*} = \i$};
                               }\temp
                           }
-                      \addplot[
-                          samples = 200,
-                          domain=0:6,
-                          color= black,
-                      ]
+                      \addplot+[samples = 200, thick, domain=0:6]
                       {(1 + (1 + 0)*x)*e^(-x)};
                       \addlegendentry{$ t^{*} = \infty$};
                   \end{axis}
@@ -256,11 +279,16 @@
 
     \item Applying binomial approximation,
           \begin{align}
-              \omega^{*}           & = \sqrt{\frac{k}{m} - \frac{c^{2}}{4m^{2}}} = \omega\sqrt{1 - \frac{c^{2}}{4mk}} \\
-              (1 - x)^{n}          & =  \left[ 1 - nx + \frac{n(n-1)}{2}x^{2} \right]                                 \\
-              (1 - x)^{1/2}        & =  \left[ 1 - \frac{x}{2} - \frac{x^{2}}{8}  \right]                             \\
-              x                    & = \frac{c^{2}}{4mk} = \frac{100}{4 \cdot 10 \cdot 90} = 1/36                     \\
-              \omega^{*}           & = 0.986 \cdot \omega = 0.986 \cdot \sqrt{\frac{90}{10}} = \SI{2.95804398}{\Hz}   \\
+              \omega^{*}           & = \sqrt{\frac{k}{m} - \frac{c^{2}}{4m^{2}}}
+              = \omega\sqrt{1 - \frac{c^{2}}{4mk}}                               \\
+              (1 - x)^{n}          & =  \left[ 1 - nx + \frac{n(n-1)}{2}x^{2}
+              \right]                                                            \\
+              (1 - x)^{1/2}        & =  \left[ 1 - \frac{x}{2} - \frac{x^{2}}{8}
+              \right]                                                            \\
+              x                    & = \frac{c^{2}}{4mk} = \frac{100}
+              {4 \cdot 10 \cdot 90} = 1/36                                       \\
+              \omega^{*}           & = 0.986 \cdot \omega = 0.986 \cdot
+              \sqrt{\frac{90}{10}} = \SI{2.95804398}{\Hz}                        \\
               \omega_{\text{true}} & = \SI{2.95803989}{\Hz}
           \end{align}
           The binomial approximation using 2 terms provides an answer
@@ -268,14 +296,18 @@
 
     \item For the maxima of underdamped motion, with $ \alpha > 0 $ and $ \omega > 0 $,
           \begin{align}
-              y(t)      & = [A \cos(\omega t) + B\sin(\omega t)]e^{-\alpha t}                                    \\
-              y'(t)     & = e^{-\alpha t}[(B\omega - A\alpha)\cos(\omega t) - (A\omega + B\alpha)\sin(\omega t)] \\
-              y'(t) = 0 & \implies \tan(\omega t) = \frac{B\omega - A\alpha}{A\omega + B\alpha}
+              y(t)      & = [A \cos(\omega t) + B\sin(\omega t)]e^{-\alpha t} \\
+              y'(t)     & = e^{-\alpha t}[(B\omega - A\alpha)\cos(\omega t)
+              - (A\omega + B\alpha)\sin(\omega t)]                            \\
+              y'(t) = 0 & \implies \tan(\omega t) = \frac{B\omega - A\alpha}{
+                  A\omega + B\alpha}
           \end{align}
-          The times at which extrema are reached are equally spaced, as seen by the expression for
-          $ y'(t) = 0 $ involving only constants. The period of oscillations is,
+          The times at which extrema are reached are equally spaced, as seen by the
+          expression for $ y'(t) = 0 $ involving only constants.
+          The period of oscillations is,
           \begin{align}
-              \Delta t & = \frac{2\pi}{\omega } & \omega & = \sqrt{\frac{k}{m} - \frac{c^{2}}{4m^{2}}}
+              \Delta t & = \frac{2\pi}{\omega } & \omega & = \sqrt{\frac{k}{m}
+                  - \frac{c^{2}}{4m^{2}}}
           \end{align}
 
     \item To find the maxima of the function,
@@ -294,66 +326,82 @@
               \centering
               \begin{tikzpicture}
                   \begin{axis}[
-                          PiStyleX,
+                          PiStyleX, xtick distance = 0.5*pi,
                           xlabel = Time $ (t) $,
                           ylabel = Position $ (y) $,
                           legend pos = north west,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           Ani,
                           domain = 0:6,
                           %   restrict y to domain = -10:10
                       ]
-                      \addplot[GraphSmooth, color = red!0!blue, dotted]
+                      \addplot[GraphSmooth, y_h, dotted, very thick]
                       {-e^(-x)} node[pos = 0.5,below]
                       {$ -e^{-t}$};
-                      \addplot[GraphSmooth, color = red!100!blue, dotted]
+                      \addplot[GraphSmooth, y_p, dotted, very thick]
                       {e^(-x)} node[pos = 0.5,above]
                       {$ e^{-t}$};
-                      \addplot[GraphSmooth, color = red!50!blue]
+                      \addplot[GraphSmooth, y_t]
                       {e^(-x)*sin(x)};
-                      \node[GraphNode, label={90:$ t = \pi/4 $}] at (axis cs:pi/4, 0.322) {};
-                      \node[GraphNode, label={-90:$ t = 5\pi/4 $}] at (axis cs:5*pi/4, -0.014) {};
+                      \node[GraphNode, label={90:$ t = \pi/4 $}]
+                      at (axis cs:pi/4, 0.322) {};
+                      \node[GraphNode, label={-90:$ t = 5\pi/4 $}]
+                      at (axis cs:5*pi/4, -0.014) {};
                   \end{axis}
               \end{tikzpicture}
           \end{figure}
 
     \item For underdamped oscillations at successive maxima,
           \begin{align}
-              y_{1}                                 & = Ce^{-\alpha t_{1}} \cos(\omega t_{1} + \delta)                                              \\
-              y_{2}                                 & = Ce^{-\alpha t_{2}} \cos(\omega t_{2} + \delta)                                              \\
-              \frac{y_{2}}{y_{1}}                   & = \exp[-\alpha(t_{2} - t_{1})]                   & t_{2} - t_{1} & = \frac{2\pi}{\omega}      \\
-              \ln\left( \frac{y_{2}}{y_{1}} \right) & = \frac{2\pi \alpha}{\omega}                                                                  \\
-              y'' + 2y' + 5y                        & = 0                                                                                           \\
-              \lambda_{1}, \lambda_{2}              & = -1 \pm 2i                                      & y             & = Ce^{-t}\cos(2t + \delta) \\
-              \Delta                                & = \frac{2\pi \cdot (1)}{2}                       &               & = \pi
+              y_{1}                                 & = Ce^{-\alpha t_{1}}
+              \cos(\omega t_{1} + \delta)                                              \\
+              y_{2}                                 & = Ce^{-\alpha t_{2}}
+              \cos(\omega t_{2} + \delta)                                              \\
+              \frac{y_{2}}{y_{1}}                   & = \exp[-\alpha(t_{2} - t_{1})] &
+              t_{2} - t_{1}                         & = \frac{2\pi}{\omega}            \\
+              \ln\left( \frac{y_{2}}{y_{1}} \right) & = \frac{2\pi \alpha}{\omega}     \\
+              y'' + 2y' + 5y                        & = 0                              \\
+              \lambda_{1}, \lambda_{2}              & = -1 \pm 2i                    &
+              y                                     & = Ce^{-t}\cos(2t + \delta)       \\
+              \Delta                                & = \frac{2\pi \cdot (1)}{2}     &
+                                                    & = \pi
           \end{align}
 
     \item Time between consecutive maxima is $ \SI{3}{\s} $, mass $ m = \SI{0.5}{\kg} $,
           \begin{align}
-              \frac{y(30)}{y(0)} & = \exp\left[ -\alpha(t_{2} - t_{1}) \right] &        & = \exp(-30\alpha) = 0.5  \\
-              \alpha             & = \frac{\ln 2}{30}                                                              \\
-              T                  & = \frac{2\pi}{\omega} = \SI{3}{\s}          & \omega & = \frac{2\pi}{3}         \\
-              \alpha             & = \frac{c}{2m}                              & c      & = \SI{0.0231}{\kg\per\s}
+              \frac{y(30)}{y(0)} & = \exp\left[ -\alpha(t_{2} - t_{1}) \right] &
+                                 & = \exp(-30\alpha) = 0.5                       \\
+              \alpha             & = \frac{\ln 2}{30}                            \\
+              T                  & = \frac{2\pi}{\omega} = \SI{3}{\s}          &
+              \omega             & = \frac{2\pi}{3}                              \\
+              \alpha             & = \frac{c}{2m}                              &
+              c                  & = \SI{0.0231}{\kg\per\s}
           \end{align}
 
     \item
           \begin{enumerate}
               \item Solving the general ODE with $ y(0) = 1,\ y'(0) = 0 $,
                     \begin{align}
-                        y'' + cy' + y            & = 0                                                                                                                                       \\
-                        \lambda_{1}, \lambda_{2} & = \frac{-c}{2} \pm \frac{\sqrt{c^{2} - 4}}{2} = -\alpha \pm \beta                                                                         \\
-                        y                        & = \begin{dcases}
-                                                         c_{1}e^{-(\alpha - \beta)t} + c_{2}e^{-(\alpha + \beta) t}  & c > 2 \\
-                                                         (c_{1} + c_{2}t)e^{-\alpha t}                               & c = 2 \\
-                                                         e^{-\alpha t}[c_{1}\cos(-i\beta t) + c_{2} \sin(-i\beta t)] & c < 2
-                                                     \end{dcases}
+                        y'' + cy' + y            & = 0                     \\
+                        \lambda_{1}, \lambda_{2} & = \frac{-c}{2}
+                        \pm \frac{\sqrt{c^{2} - 4}}{2} = -\alpha \pm \beta \\
+                        y                        & =
+                        \begin{dcases}
+                            c_{1}e^{-(\alpha - \beta)t} + c_{2}e^{-(\alpha + \beta) t}
+                             & c > 2 \\
+                            (c_{1} + c_{2}t)e^{-\alpha t}
+                             & c = 2 \\
+                            e^{-\alpha t}[c_{1}\cos(-i\beta t) + c_{2} \sin(-i\beta t)]
+                             & c < 2
+                        \end{dcases}
                     \end{align}
                     Applying the IC to each case individually, overdamped motion gives,
                     \begin{align}
-                        c_{1} + c_{2} & = 1                             & -c_{1}(\alpha - \beta) - c_{2}(\alpha + \beta) & = 0                             \\
-                        c_{1}         & = \frac{\alpha + \beta}{2\beta} & c_{2}                                          & = \frac{\beta - \alpha}{2\beta}
+                        c_{1} + c_{2} & = 1                             &
+                        -c_{1}(\alpha - \beta) - c_{2}(\alpha + \beta)
+                                      & = 0                               \\
+                        c_{1}         & = \frac{\alpha + \beta}{2\beta} &
+                        c_{2}         & = \frac{\beta - \alpha}{2\beta}
                     \end{align}
                     critically damped motion gives,
                     \begin{align}
@@ -362,15 +410,19 @@
                     \end{align}
                     underdamped motion gives,
                     \begin{align}
-                        c_{1} & = 1                     & -\alpha c_{1} - i\beta c_{2} & = 0 \\
-                        c_{2} & = \frac{i\alpha}{\beta}
+                        c_{1}                        & = 1                     &
+                        -\alpha c_{1} - i\beta c_{2} & = 0                       \\
+                        c_{2}                        & = \frac{i\alpha}{\beta}
                     \end{align}
 
-                    For the alternative IC, $ y(0) = 1,\ y'(0) = -2 $, \newline
+                    For the alternative IC, $ y(0) = 1,\ y'(0) = -2 $, \par
                     Applying the IC to each case individually, overdamped motion gives,
                     \begin{align}
-                        c_{1} + c_{2} & = 1                                 & -c_{1}(\alpha - \beta) - c_{2}(\alpha + \beta) & = -2                                \\
-                        c_{1}         & = \frac{\alpha + \beta - 2}{2\beta} & c_{2}                                          & = \frac{\beta - \alpha + 2}{2\beta}
+                        c_{1} + c_{2} & = 1                                 &
+                        -c_{1}(\alpha - \beta) - c_{2}(\alpha + \beta)
+                                      & = -2                                  \\
+                        c_{1}         & = \frac{\alpha + \beta - 2}{2\beta} &
+                        c_{2}         & = \frac{\beta - \alpha + 2}{2\beta}
                     \end{align}
                     critically damped motion gives,
                     \begin{align}
@@ -379,8 +431,9 @@
                     \end{align}
                     underdamped motion gives,
                     \begin{align}
-                        c_{1} & = 1                           & -\alpha c_{1} - i\beta c_{2} & = -2 \\
-                        c_{2} & = \frac{i(\alpha - 2)}{\beta}
+                        c_{1}                        & = 1                           &
+                        -\alpha c_{1} - i\beta c_{2} & = -2                            \\
+                        c_{2}                        & = \frac{i(\alpha - 2)}{\beta}
                     \end{align}
 
                     \begin{figure}[H]
@@ -391,18 +444,16 @@
                                     ylabel = Position ($ y $),
                                     legend pos = north east,
                                     grid = both,
-                                    width = 12cm,
-                                    height = 8cm,
                                     Ani,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 3]},
                                 ]
-                                \foreach [evaluate=\i as \n using (\i + 2)*100/(4)] \i in {-2,0,2} {%
+                                \foreach [evaluate=\i as \n using (\i + 2)*100/(4)]
+                                \i in {-2,0,2} {%
                                         \edef\temp{%
                                             \noexpand
-                                            \addplot[
-                                                samples = 200,
-                                                domain=0:6,
-                                                color=blue!\n!red,
-                                            ]
+                                            \addplot+[samples = 200, thick,
+                                                domain=0:6]
                                             {(1 + (1 + \i)*x)*e^(-x)};
                                             \noexpand \addlegendentry{$ v_{0} = \i$};
                                         }\temp
@@ -419,20 +470,21 @@
                                     ylabel = Position ($ y $),
                                     legend pos = north east,
                                     grid = both,
-                                    width = 12cm,
-                                    height = 8cm,
                                     Ani,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 3]},
                                 ]
-                                \foreach [evaluate=\i as \n using (\i + 4)*100/(8)] \i in {-4,0,4} {%
+                                \foreach [evaluate=\i as \n using (\i + 4)*100/(8)]
+                                \i in {-4,0,4} {%
                                         \edef\temp{%
                                             \noexpand
-                                            \addplot[
+                                            \addplot+[thick,
                                                 samples = 200,
-                                                domain=0:8,
-                                                color=blue!\n!red,
-                                            ]
-                                            {((sqrt(2) + 1 + \i)/(2))*e^((1 - sqrt(2))*x) +
-                                                ((-sqrt(2) + 1 - \i)/(2))*e^((-1 - sqrt(2))*x)};
+                                                domain=0:8]
+                                            {((sqrt(2) + 1 + \i)/(2))
+                                                *e^((1 - sqrt(2))*x) +
+                                                ((-sqrt(2) + 1 - \i)/(2))
+                                                *e^((-1 - sqrt(2))*x)};
                                             \noexpand \addlegendentry{$ v_{0} = \i$};
                                         }\temp
                                     }
@@ -448,20 +500,20 @@
                                     ylabel = Position ($ y $),
                                     legend pos = north east,
                                     grid = both,
-                                    width = 12cm,
-                                    height = 8cm,
                                     Ani,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 3]},
                                 ]
-                                \foreach [evaluate=\i as \n using (\i + 2)*100/(4)] \i in {-2,0,2} {%
+                                \foreach [evaluate=\i as \n using (\i + 2)*100/(4)]
+                                \i in {-2,0,2} {%
                                         \edef\temp{%
                                             \noexpand
-                                            \addplot[
+                                            \addplot+[thick,
                                                 samples = 200,
-                                                domain=0:20,
-                                                color=blue!\n!red,
-                                            ]
+                                                domain=0:20]
                                             {e^(-x*0.2)*cos(x*0.9797) +
-                                                e^(-x*0.2)*sin(x*0.9797)*((0.2 + \i)/ 0.9797)};
+                                                e^(-x*0.2)*sin(x*0.9797)
+                                                *((0.2 + \i)/ 0.9797)};
                                             \noexpand \addlegendentry{$ v_{0} = \i$};
                                         }\temp
                                     }
@@ -482,50 +534,49 @@
                                     Ani,
                                     domain = 0:40,
                                 ]
-                                \addplot[
-                                    samples = 200,
-                                    color=blue,
-                                ]
+                                \addplot[GraphSmooth, y_h]
                                 {e^(-x*0.05)*cos(x*0.9987) +
                                     e^(-x*0.05)*sin(x*0.9987)*((0.1)/ 0.9987)};
                                 \addlegendentry{$ c = 0.1$};
-                                \addplot[
-                                    samples = 200,
-                                    color=blue!50!red,
-                                ]
+                                \addplot[GraphSmooth, y_p]
                                 {(1 + x)*e^(-x)};
                                 \addlegendentry{$ c = 2$};
-                                \addplot[
-                                    samples = 200,
-                                    color=red,
-                                ]
-                                {(1.00689687752485)*e^(-0.0827625302982197*x) +
-                                    (-0.00689687752485164)*e^(-12.0827625302982*x)};
+                                \addplot[GraphSmooth, y_t]
+                                {(1)*e^(-0.0827*x) +
+                                    (-0.0069)*e^(-12.08*x)};
                                 \addlegendentry{$ c = \sqrt{148}$};
                             \end{axis}
                         \end{tikzpicture}
                     \end{figure}
 
-              \item Amplitude decaying to 0.1\% of its initial value at $ t^{*} $, \newline
+              \item Amplitude decaying to 0.1\% of its initial value at $ t^{*} $,
+                    \par
                     For critically damped motion,
                     \begin{align}
                         [y_{0} + ((c/2) y_{0} + v_{0})t]e^{- ct/2} = 0.001 \cdot y_{0}
                     \end{align}
-                    This cannot yield an explicit relation, but provides an implicit relation between
-                    $ c $ and $ t^{*} $. Similar implicit relations can be established for underdamped and
-                    overdamped motion.
+                    This cannot yield an explicit relation, but provides an implicit
+                    relation between $ c $ and $ t^{*} $. Similar implicit relations
+                    can be established for underdamped and overdamped motion.
 
               \item Solving analytically, TBC
                     \begin{align}
-                        0      & = y'' + cy' + y                                                                                                                                       \\
-                        \alpha & = c/2 \qquad \beta = \frac{\sqrt{c^{2} - 4}}{2}                                                                                                       \\
-                        y      & = \begin{dcases}
-                                       \left( \frac{\beta + \alpha}{2\beta} \right)e^{-(\alpha - \beta)t} + \left( \frac{\beta - \alpha}{2\beta} \right)e^{-(\alpha + \beta) t} & c > 2 \\
-                                       (1 + \alpha t)e^{-\alpha t}                                                                                                              & c = 2 \\
-                                       e^{-\alpha t}\left[\cos(-i\beta t) + \left( \frac{i\alpha}{\beta} \right) \sin(-i\beta t)\right]                                         & c < 2
-                                   \end{dcases}
+                        0      & = y'' + cy' + y                                 \\
+                        \alpha & = c/2 \qquad \beta = \frac{\sqrt{c^{2} - 4}}{2} \\
+                        y      & =
+                        \begin{dcases}
+                            \left( \frac{\beta + \alpha}{2\beta}
+                            \right)e^{-(\alpha - \beta)t}
+                            + \left( \frac{\beta - \alpha}{2\beta} \right)
+                            e^{-(\alpha + \beta) t}     & c > 2 \\
+                            (1 + \alpha t)e^{-\alpha t} & c = 2 \\
+                            e^{-\alpha t}\left[\cos(-i\beta t)
+                                + \left( \frac{i\alpha}{\beta} \right)
+                            \sin(-i\beta t)\right]      & c < 2
+                        \end{dcases}
                     \end{align}
 
-              \item The difference is that in B, the system has a zero crossing and in A it does not.
+              \item The difference is that in $B$, the system has a zero crossing and
+                    in $A $ it does not.
           \end{enumerate}
 \end{enumerate}

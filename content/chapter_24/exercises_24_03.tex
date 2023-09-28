@@ -1,0 +1,182 @@
+\section{Probability}
+
+\begin{enumerate}
+    \item Three fair dice, each of which rolls a number from 1 to 6. The unwanted
+          outcomes are,
+          \begin{align}
+              A                & = \{(6,6,6), (6,6,5), (5,6,6), (6,5,6)\} \\
+              P(A^\complement) & = 1 - P(A) = 1 - \frac{4}{6^3}
+              = \frac{53}{54}
+          \end{align}
+
+    \item Two fair dice, each of which rolls a number from 1 to 6. The required
+          outcomes are,
+          \begin{align}
+              A                & = \{(2,2), (3,1), (1,3), (2,3), (3,2), (4,1), (1,4)
+              , (1,5), (2,4), (3,3), (4,2), (5,1)\}                                  \\
+              P(A^\complement) & = \frac{12}{6^2} = \frac{1}{3}
+          \end{align}
+
+    \item Drawing with replacement, $ P(D) = 0.1 $
+          \begin{align}
+              P(A) & = (0.9)^3 = \color{y_h}0.729
+          \end{align}
+          Drawing without replacement results in a slightly smaller probability,
+          \begin{align}
+              P(B) & = \frac{90}{100} \cdot \frac{89}{99} \cdot \frac{88}{98}
+              = \color{y_p}0.7265
+          \end{align}
+
+    \item \begin{enumerate}
+              \item Drawing with replacement, $ P(D) = 0.1 $ the direct method is,
+                    \begin{align}
+                        P(E_1) & = 3 \cdot 0.1 \cdot 0.9^2 + 3 \cdot (0.1)^2 \cdot 0.9
+                        + 0.1^3
+                        = \color{y_h}0.271
+                    \end{align}
+                    whereas the complement method gives,
+                    \begin{align}
+                        P(E_2) & = 1 - (0.9)^3 = \color{y_p} 0.271
+                    \end{align}
+              \item Drawing without replacement, $ P(D) = 0.1 $ the direct method is,
+                    \begin{align}
+                        P(E_1) & = \frac{10}{100} \cdot \frac{90}{99} \cdot
+                        \frac{89}{98}
+                        + \frac{90}{100} \cdot \frac{10}{99} \cdot \frac{89}{98}
+                        + \frac{90}{100} \cdot \frac{89}{99} \cdot \frac{10}{98} \\
+                               & + \frac{10}{100} \cdot \frac{9}{99} \cdot
+                        \frac{90}{98}
+                        + \frac{10}{100} \cdot \frac{90}{99} \cdot \frac{9}{98}
+                        + \frac{90}{100} \cdot \frac{10}{99} \cdot \frac{9}{98}  \\
+                               & + \frac{10}{100} \cdot \frac{9}{99}
+                        \cdot \frac{8}{98} = \color{y_h} \frac{67}{245}
+                    \end{align}
+                    whereas the complement method gives,
+                    \begin{align}
+                        P(E_2) & = 1 - \frac{90}{100} \cdot \frac{89}{99}
+                        \cdot \frac{88}{98} = \color{y_p} \frac{67}{245}
+                    \end{align}
+          \end{enumerate}
+
+    \item $ P(L) = 1/3 $ and $ P(R) = 2/3 $
+          \begin{align}
+              P(E) & = 1 - \frac{1}{3} \cdot \frac{1}{3} = \frac{8}{9}
+          \end{align}
+
+    \item $ P(L) = 1/3 $ and $ P(R) = 2/3 $ when sampling without replacement,
+          \begin{align}
+              P(E) & = 1 - \frac{10}{30} \cdot \frac{9}{29} = \frac{26}{29}
+          \end{align}
+          The probability of the complement goes down, so the probability of the event
+          should increase.
+
+    \item When sampling from a large population and when each kind of item
+          that can be drawn is present in much larger numbers than the number of draws.
+
+    \item $ P(F) = 0.1 $ and $ P(S) = 0.9 $
+          \begin{align}
+              P(E) = 0.9^4 = 0.6561
+          \end{align}
+
+    \item 2 out of 500 sheets contain spots. In order to draw 5 clean sheets,
+          \begin{align}
+              P(E) & = \frac{498}{500} \cdot \frac{497}{499} \cdot \frac{496}{498} \cdot
+              \frac{495}{497} \cdot \frac{494}{496} = \SI{98.008}{\percent}
+          \end{align}
+          The slight increase above $ \SI{98}{\percent} $ comes from the
+          non-replacement.
+
+    \item $ P(F) = P(M) = 0.5 $, when drawing with replacement,
+          \begin{align}
+              E & = \{FF, MFF, FMF, MMFF, FMMF, MMFF\}                        \\
+                & =  \frac{1}{4} + \frac{1}{4} + \frac{3}{16} = \frac{11}{16}
+          \end{align}
+
+    \item $ N_U = N_O = 50 $ and $ N_D = 100 $
+          \begin{enumerate}
+              \item Two rods of desired length, drawing without replacement
+                    \begin{align}
+                        P(A) & = \frac{100}{200} \cdot \frac{99}{199} = \frac{99}{398}
+                    \end{align}
+              \item Exactly one of desired length, drawing without replacement
+                    \begin{align}
+                        P(B) & = 2 \cdot \frac{100}{200} \cdot \frac{100}{199}
+                        = \frac{100}{199}
+                    \end{align}
+              \item Zero of desired length, drawing without replacement
+                    \begin{align}
+                        P(C) & = \frac{100}{200} \cdot \frac{99}{199} = \frac{99}{398}
+                    \end{align}
+          \end{enumerate}
+
+    \item Let the probability of failure per switch be $ p $,
+          \begin{align}
+              P(A) & = 0.99 = (1-p)^4 & p & = \SI{0.251}{\percent}
+          \end{align}
+
+    \item Let the probability of failure per switch be $ p $,
+          \begin{align}
+              P(E) & = (1-p)^4 & = 1 - (1-0.04)^3 = \SI{11.53}{\percent}
+          \end{align}
+
+    \item For $k$ defective out of two drawn,
+          \begin{align}
+              P(E_0)                & = (0.98)^2 = 0.9604                &
+              P(E_1)                & = 2 \cdot 0.02 \cdot 0.98 = 0.0392   \\
+              P(E_2)                & = (0.02)^2 = 0.0004                &
+              \sum_{j=0}^{2} P(E_j) & = 0.9604 + 0.0392 + 0.0004 = 1
+          \end{align}
+          Since these events together cover the entire sample space of drawing two
+          plugs, their probabilities sum to unity.
+
+    \item Looking at the probabilites using the complement method,
+          \begin{enumerate}
+              \item Firing one shot,
+                    \begin{align}
+                        P(A) & = 1 - \frac{1}{2} = 0.5
+                    \end{align}
+              \item Firing two shot,
+                    \begin{align}
+                        P(A) & = 1 - \frac{3^2}{4^2} = 0.4375
+                    \end{align}
+              \item Firing four shot,
+                    \begin{align}
+                        P(A) & = 1 - \frac{7^4}{8^4} = 0.4138
+                    \end{align}
+          \end{enumerate}
+
+    \item Looking at the probabilites for the events,
+          \begin{align}
+              P(A) & = \frac{1}{2} & P(B) & = \frac{1}{2} \\
+              P(C) & = \frac{1}{2}
+          \end{align}
+          Looking at the four relations,
+          \begin{align}
+              P(A \cup B) & = \frac{1}{4} & P(B \cup C)        & = \frac{1}{4} \\
+              P(A \cup C) & = \frac{1}{4} & P(A \cup B \cup C) & = 0
+          \end{align}
+          the first three hold, but the fourth does not.
+
+    \item $ B $ is a subset of $ A $,
+          \begin{align}
+              A    & = B + (A-B) & P(A) & = P(B) + P(A-B) \\
+              P(A) & \geq P(B)
+          \end{align}
+          where the equality only holds if the two sets are identical.
+
+    \item Let $ A \cap B = D $,
+          \begin{align}
+              P(D \cap C) & = P(D|C) \cdot P(C) = P(D) \cdot P(C|D)  \\
+                          & = P(C| A \cap B) \cdot P(A \cap B)       \\
+                          & = P(C| A \cap B) \cdot P(B|A) \cdot P(A)
+          \end{align}
+
+    \item Divisibility of a number by $ 2,3,5 $ is the same as the corresponding digit
+          on the coin being 1.
+          \begin{align}
+              S = \{7, 15, 10, 6\}
+          \end{align}
+          Clearly, no number in this set is divisible by all three of the divisors, even
+          though there exist 2 out of 4 numbers that are divisible by two of them.
+\end{enumerate}
+

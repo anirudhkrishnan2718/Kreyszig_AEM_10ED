@@ -1,0 +1,313 @@
+\section{Inclusion of Matrix Eigenvalues}
+
+\begin{enumerate}
+    \item Plotting the Gerschgorin disks, and using a CAS to plot the eigenvalues,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 8cm,
+                          xmin = -5, xmax = 15, ymin = -10, ymax = 10,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          ylabel = \normalsize $ \Im{z} $,
+                          axis equal,
+                          Ani]
+                      \draw [draw = y_h, thick] (5,0) circle (6);
+                      \draw [draw = y_p, thick] (0,0) circle (4);
+                      \draw [draw = y_t, thick] (7,0) circle (6);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:-1, 0) {};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:4, 0) {};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:9, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the Gerschgorin disks, and using a CAS to plot the eigenvalues,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 5.5cm, height = 5.5cm,
+                          xmin = 4.98, xmax = 5.02, ymax = 0.02, ymin = -0.02,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          ylabel = \normalsize $ \Im{z} $,
+                          axis equal,Ani]
+                      \draw [draw = y_h, thick] (5,0) circle (0.02);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:4.99994, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 5.5cm, height = 5.5cm,
+                          xmin = 7.98, xmax = 8.02, ymax = 0.02, ymin = -0.02,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          axis equal,Ani]
+                      \draw [draw = y_p, thick] (8,0) circle (0.02);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:8, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 5.5cm, height = 5.5cm,
+                          xmin = 8.98, xmax = 9.02, ymax = 0.02, ymin = -0.02,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          axis equal,Ani]
+                      \draw [draw = y_t, thick] (9,0) circle (0.02);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:9, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the Gerschgorin disks, and using a CAS to plot the eigenvalues,
+    \item Plotting the Gerschgorin disks, and using a CAS to plot the eigenvalues,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 8cm,
+                          xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          ylabel = \normalsize $ \Im{z} $,
+                          axis equal,
+                          Ani]
+                      \draw [draw = y_h, thick] (0,0) circle (0.5);
+                      \draw [draw = y_p, thick] (0,0) circle (0.7);
+                      \draw [draw = y_t, thick] (0,0) circle (0.4);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:0, 0) {};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:0, 0.51) {};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:0, -0.51) {};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 8cm,
+                          xmin = -1, xmax = 17, ymin = -9, ymax = 9,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          ylabel = \normalsize $ \Im{z} $,
+                          axis equal,
+                          Ani]
+                      \draw [draw = y_h, thick] (1,0) circle (1);
+                      \draw [draw = y_p, thick] (4,0) circle (3);
+                      \draw [draw = y_t, thick] (12,0) circle (4);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:13.07, 0) {};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:0.878, 0) {};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:3.05, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the Gerschgorin disks, and using a CAS to plot the eigenvalues,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 8cm,
+                          xmin = -2, xmax = 10, ymin = -6, ymax = 6,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          ylabel = \normalsize $ \Im{z} $,
+                          axis equal,
+                          Ani]
+                      \draw [draw = y_h, thick] (2,0) circle (2.414);
+                      \draw [draw = y_p, thick] (3,0) circle (1);
+                      \draw [draw = y_t, thick] (8,0) circle (1.414);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:8.825, 0) {};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:1.16, 0) {};
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:3.51, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting the Gerschgorin disks, and using a CAS to plot the eigenvalues,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 5.5cm, height = 5.5cm,
+                          xmin = 9.7, xmax = 10.3, ymin = -0.3, ymax = 0.3,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          ylabel = \normalsize $ \Im{z} $,
+                          axis equal,Ani]
+                      \draw [draw = y_h, thick] (10,0) circle (0.3);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:10, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 5.5cm, height = 5.5cm,
+                          xmin = 5.7, xmax = 6.3, ymin = -0.3, ymax = 0.3,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          axis equal,Ani]
+                      \draw [draw = y_p, thick] (6,0) circle (0.1);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:6, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[set layers, width = 5.5cm, height = 5.5cm,
+                          xmin = 2.7, xmax = 3.3, ymin = -0.3, ymax = 0.3,
+                          grid = both,
+                          xlabel = \normalsize $ \Re{z} $,
+                          axis equal,Ani]
+                      \draw [draw = y_t, thick] (3,0) circle (0.2);
+                      \node[GraphNode, inner sep = 1pt] at (axis cs:3, 0) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using a similarity transformation,
+          \begin{align}
+              \vec{T}               & = \begin{bNiceMatrix}[margin]
+                                            100 & 0 & 0 \\
+                                            0   & 1 & 0 \\
+                                            0   & 0 & 1
+                                        \end{bNiceMatrix} &
+              \vec{T}^{-1} \vec{AT} & = \begin{bNiceMatrix}[margin]
+                                            5 & \num{d-4} & \num{d-4} \\
+                                            1 & 8         & \num{d-2} \\
+                                            1 & \num{d-2} & 9
+                                        \end{bNiceMatrix} \\
+              r_5                   & = \num{2d-4}
+          \end{align}
+
+    \item Using a similarity transformation,
+          \begin{align}
+              \vec{T}               & = \begin{bNiceMatrix}[margin]
+                                            1 & 0 & 0 \\
+                                            0 & 1 & 0 \\
+                                            0 & 0 & k
+                                        \end{bNiceMatrix} &
+              \vec{A}               & = \begin{bNiceMatrix}[margin]
+                                            10   & 0.1 & 0.2 \\
+                                            0.1  & 6   & 0   \\
+                                            -0.2 & 0   & 3
+                                        \end{bNiceMatrix} \\
+              \vec{T}^{-1} \vec{AT} & = \begin{bNiceMatrix}[margin]
+                                            10     & 0.1 & -0.2k \\
+                                            0.1    & 6   & 0     \\
+                                            -0.2/k & 0   & 3
+                                        \end{bNiceMatrix}
+          \end{align}
+          Using Gerschgorin's extension, the disk for the third row has to remain
+          disjoint from the other disks.
+          \begin{align}
+              10 - 0.1 - 0.2k     & > 3 + \frac{0.2}{k} &
+              0.2k^2 - 6.9k + 0.2 & < 0                                \\
+              k_1                 & = 34.37             & k_2 & = 0.03
+          \end{align}
+          This means the largest possible integer is $ k^* = 34 $.
+
+    \item The eigenvalues are located at the diagonal entries with an error
+          which is a disk of radius $ (n-1)\cdot\num{d-5} $. \par
+          Since the matrix has $ n $ rows, the other $ (n-1) $ entries can at most have
+          size $ \num{d-5} $, which makes the maximum radius of the Gerschgorin disk
+          proportional to $ (n-1) $
+
+    \item From Problem $ 1 $, the eigenvalue $ \lambda = 4 $ lies on the disk
+          $ \abs{z - 0} \leq \abs{-2} + \abs{2} $
+
+    \item Looking at the sum of aboslute values of elements within a row,
+          \begin{align}
+              \abs{a_{j1}} + \dots + \abs{a_{jn}} & \geq
+              \abs{\lambda - a_{jj}} + \abs{a_{jj}} \geq \abs{\lambda}
+          \end{align}
+          using the triangle inqeuality. Maximizing the left side over all columns,
+          \begin{align}
+              \max_j{\sum_{k=1}^{n} \abs{a_{jk}}} & \geq \abs{\lambda} \\
+              \lVert \vec{A} \rVert_\infty        & \geq \rho(\vec{A})
+          \end{align}
+          Since this is true for all the eigenvalues of the matrix, the quantity on the
+          right is the spectral radius.
+
+    \item Using Schur's inequality to find an upper bound on the spectral radius,
+          \begin{align}
+              \sum_{k=1}^{n} \sum_{j=1}^{n} \abs{a_{jk}}^2 & = 181           &
+              \abs{\lambda}                                & \leq \sqrt{181}
+          \end{align}
+
+    \item Using Schur's inequality to find an upper bound on the spectral radius,
+          \begin{align}
+              \sum_{k=1}^{n} \sum_{j=1}^{n} \abs{a_{jk}}^2 & = 122           &
+              \abs{\lambda}                                & \leq \sqrt{122}
+          \end{align}
+
+    \item Using Schur's inequality to find an upper bound on the spectral radius,
+          \begin{align}
+              \sum_{k=1}^{n} \sum_{j=1}^{n} \abs{a_{jk}}^2 & = 145.1           &
+              \abs{\lambda}                                & \leq \sqrt{145.1}
+          \end{align}
+
+    \item Using Schur's inequality to find an upper bound on the spectral radius,
+          \begin{align}
+              \sum_{k=1}^{n} \sum_{j=1}^{n} \abs{a_{jk}}^2 & = 0.52           &
+              \abs{\lambda}                                & \leq \sqrt{0.52}
+          \end{align}
+
+    \item Using Schur's inequality to find an upper bound on the spectral radius,
+          \begin{align}
+              \sum_{k=1}^{n} \sum_{j=1}^{n} \abs{a_{jk}}^2 & = 83           &
+              \abs{\lambda}                                & \leq \sqrt{83}
+          \end{align}
+
+    \item Verifying that the matrix is normal,
+          \begin{align}
+              \vec{A}              & = \begin{bNiceMatrix}[margin]
+                                           2    & \i & 1 + \i \\
+                                           -\i  & 3  & 0      \\
+                                           1-\i & 0  & 8
+                                       \end{bNiceMatrix} &
+              \vec{A}^\dag         & = \begin{bNiceMatrix}[margin]
+                                           2    & \i & 1 + \i \\
+                                           -\i  & 3  & 0      \\
+                                           1-\i & 0  & 8
+                                       \end{bNiceMatrix}    \\
+              \vec{A}^\dag         & = \vec{A}                     &
+              \vec{A}^\dag \vec{A} & = \vec{A} \vec{A}^\dag
+          \end{align}
+
+    \item For Hermitian matrices,
+          \begin{align}
+              \vec{A}^\dag         & = \vec{A}                         &
+              \vec{A}^\dag \vec{A} & = \vec{A}^2 = \vec{A}\vec{A}^\dag
+          \end{align}
+          For skew-Hermitian matrices,
+          \begin{align}
+              \vec{A}^\dag         & = -\vec{A}                         &
+              \vec{A}^\dag \vec{A} & = -\vec{A}^2 = \vec{A}\vec{A}^\dag
+          \end{align}
+          For unitary matrices,
+          \begin{align}
+              \vec{A}^\dag         & = \vec{A}^{-1}                  &
+              \vec{A}^\dag \vec{A} & = \vec{I} = \vec{A}\vec{A}^\dag
+          \end{align}
+
+    \item From Gerschgorin's theorem and given the matrix is diagonally dominant,
+          \begin{align}
+              \abs{\lambda - a_{jj}}       & \leq \sum_{k \neq j} \abs{a_{jk}} &
+              \sum_{k \neq j} \abs{a_{jk}} & \leq \abs{a_{jj}}                   \\
+              \abs{\lambda - a_{jj}}       & \leq \abs{a_{jj}}
+          \end{align}
+          The eigenvalue is located inside a disk that excludes the origin. This means
+          that zero is never one of the eigenvalues.
+          \begin{align}
+              \lambda_i       & \neq 0                             &
+              \forall \quad i & \in \{1,2,\dots,n\}                  \\
+              \det(\vec{A})   & = \prod_{i=1}^{n} \lambda_i \neq 0
+          \end{align}
+          Since the determinant is nonzero, the matrix is singular.
+
+    \item Split $ \vec{A} $ into a diagonal matrix and the remainder, for some real
+          scalar $ t $,
+          \begin{align}
+              \vec{A}                      & = \vec{B} + \vec{C}                   &
+              \vec{A}_t                    & = \vec{B} + t\vec{C}                    \\
+              \abs{\lambda - a_{jj}}       & \leq t\  \sum_{k \neq j} \abs{a_{jk}}   \\
+              t                            & = 0                                   &
+              \implies \quad \{\lambda_i\} & = \{a_{ii}\}
+          \end{align}
+          Starting from the $ t = 1 $ case, where $ \vec{A}_1 = \vec{A} $, assume that
+          one of the disks does not contain an eigenvalue. \par
+          As $ t $ decreases to zero, the radii of these disks also decrease to zero
+          continuously. At the other extreme, at $ t = 0 $, the disks reduce to a
+          set of points that are the eigenvalues themselves. \par
+          This contradicts the initial assumption that the disk did not initially contain
+          an eigenvalue, which proves the theorem.
+\end{enumerate}

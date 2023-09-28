@@ -300,9 +300,10 @@
           computations are required for a determinant of order $ n $.
 
     \item Multiplying a matrix by a scalar imvolves scaling every element by the scalar.
-          However, dividing a determinant by a scalar only involves dividing one column by
-          that scalar. \par
-          Since $ n $ such divisions have to be performed to convert $ \det(\vec{kA}) $ into
+          However, dividing a determinant by a scalar only involves dividing one column
+          by that scalar. \par
+          Since $ n $ such divisions have to be performed to convert
+          $ \det(\vec{kA}) $ into
           $ \det(\vec{A}) $, the pre-factor is $ k^n $
 
     \item Making a list of all 9 majors possible,
@@ -717,7 +718,7 @@
                         \end{vNiceMatrix}
                     \end{align}
                     Using the determinant to find the circle passing through the
-                    three given points $ (2,6),\ (6,4),\ (7,1) $,
+                    three given points \par $ (2,6),\ (6,4),\ (7,1) $,
                     \begin{align}
                         \det(\vec{M}) & = \begin{vNiceMatrix}[r,margin]
                                               x^2 + y^2 - (40) & x - 2 & y - 6 \\
@@ -828,19 +829,19 @@
           \end{align}
 
           Solving by Gauss elimination,
-          \begin{align}
-              \vec{M} & = \begin{bNiceArray}{rr|r}
-                              3 & -5 & 15.5 \\
-                              6 & 16 & 5    \\
-                          \end{bNiceArray}        &
-                      & = \begin{bNiceArray}{rr|r}
-                              3 & -5 & 15.5 \\
-                              0 & 26 & -26  \\
-                          \end{bNiceArray}        \\
-              \vec{u} & = \color{y_p} \begin{bNiceMatrix}
-                                          3.5 \\ -1
-                                      \end{bNiceMatrix}
-          \end{align}
+          %   \begin{align}
+          %       \vec{M} & = \begin{bNiceArray}{rr|r}
+          %                       3 & -5 & 15.5 \\
+          %                       6 & 16 & 5    \\
+          %                   \end{bNiceArray}        &
+          %               & = \begin{bNiceArray}{rr|r}
+          %                       3 & -5 & 15.5 \\
+          %                       0 & 26 & -26  \\
+          %                   \end{bNiceArray}        \\
+          %       \vec{u} & = \color{y_p} \begin{bNiceMatrix}
+          %                                   3.5 \\ -1
+          %                               \end{bNiceMatrix}
+          %   \end{align}
 
     \item Solving by Cramer's rule,
           \begin{align}

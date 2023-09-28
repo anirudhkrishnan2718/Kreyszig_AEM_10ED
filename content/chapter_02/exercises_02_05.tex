@@ -3,105 +3,137 @@
 \begin{enumerate}
     \item Auxiliary equation has a double root,
           \begin{align}
-              (1-a)^{2}       & = 4b                                                                     \\
-              y_{2}           & = x^{(1-a)/2}\ln x                                                       \\
-              0               & =               x^{2}y'' + axy' + \left[ \frac{(1-a)^{2}}{4} \right]y    \\
-              y_{2}'          & = x^{(-1-a)/2} \left[ 1 + \left( \frac{1-a}{2} \right)\ln x  \right]     \\
-              y_{2}''         & = x^{(-3-a)/2}\left[ -a +\ln x \left( \frac{a^{2}-1}{4} \right) \right]  \\
-              x^{2}y'' + axy' & = x^{(1-a)/2}\left[\ln x \left( \frac{-a^{2}-1 + 2a}{4} \right)  \right] \\
-                              & = x^{(1-a)/2}\ \ln x\left[ \frac{-(1-a)^{2}}{4} \right]                  \\
+              (1-a)^{2}       & = 4b                                             \\
+              y_{2}           & = x^{(1-a)/2}\ln x                               \\
+              0               & =               x^{2}y'' +
+              axy' + \left[ \frac{(1-a)^{2}}{4} \right]y                         \\
+              y_{2}'          & = x^{(-1-a)/2} \left[ 1 +
+              \left( \frac{1-a}{2} \right)\ln x  \right]                         \\
+              y_{2}''         & = x^{(-3-a)/2}\left[ -a +
+              \ln x \left( \frac{a^{2}-1}{4} \right) \right]                     \\
+              x^{2}y'' + axy' & = x^{(1-a)/2}\left[\ln x \left( \frac{-a^{2}-1 +
+              2a}{4} \right)  \right]                                            \\
+                              & = x^{(1-a)/2}\ \ln x\left[ \frac{-(1-a)^{2}}{4}
+              \right]                                                            \\
                               & = \left[ \frac{-(1-a)^{2}}{4} \right] y
           \end{align}
           Now, if the roots are distinct,
           \begin{align}
-              (1-a)^{2}            & > 4b                                                            \\
-              y                    & = x^{m_{1}}\ln x                                                \\
-              y'                   & = x^{m_{1}-1}(1 + m_{1}\ln x)                                   \\
-              y''                  & = x^{m_{1} - 2}(2m_{1}-1 + m_{1}(m_{1} - 1)\ln x)               \\
-              x^{2}y'' + axy' + by & = x^{m_{1}} \Big[ 2m_{1} - 1 + a                                \\
-                                   & + \{m_{1}^{2} + (a-1)m_{1} + b\}\ln x \Big]                     \\
-                                   & = 2x^{m_{1}}\left[ m_{1} - \left( \frac{1-a}{2} \right) \right]
+              (1-a)^{2}            & > 4b                                              \\
+              y                    & = x^{m_{1}}\ln x                                  \\
+              y'                   & = x^{m_{1}-1}(1 + m_{1}\ln x)                     \\
+              y''                  & = x^{m_{1} - 2}(2m_{1}-1 + m_{1}(m_{1} - 1)\ln x) \\
+              x^{2}y'' + axy' + by & = x^{m_{1}} \Big[ 2m_{1} - 1 + a                  \\
+                                   & + \{m_{1}^{2} + (a-1)m_{1} + b\}\ln x \Big]       \\
+                                   & = 2x^{m_{1}}\left[ m_{1} - \left( \frac{1-a}{2}
+                  \right) \right]
           \end{align}
-          Thus, the fact that the roots are distinct makes this not satisfy the ODE. If instead,
-          the roots were repeated, $ m = (1-a)/2 $ holds and the ODE is satisfied.
+          Thus, the fact that the roots are distinct makes this not satisfy the ODE.
+          If instead, the roots were repeated, $ m = (1-a)/2 $ holds and the ODE
+          is satisfied.
 
     \item Finding the general solution
           \begin{align}
-              x^{2}y'' -20y & = 0                        & a            & = 0, \quad b= -20 \\
-              (a-1)^{2}-4b  & = 81 > 0                   & m_{1}, m_{2} & = -4, 5           \\
+              x^{2}y'' -20y & = 0                        &
+              a             & = 0, \quad b= -20            \\
+              (a-1)^{2}-4b  & = 81 > 0                   &
+              m_{1}, m_{2}  & = -4, 5                      \\
               y             & = c_{1}x^{-4} + c_{2}x^{5}
           \end{align}
 
     \item Finding the general solution
           \begin{align}
-              5x^{2}y'' + 23xy' + 16.2y & = 0                             & a            & = 4.6, \quad b= 3.24 \\
-              (a-1)^{2}-4b              & = 0                             & m_{1}, m_{2} & = -1.8               \\
+              5x^{2}y'' + 23xy' + 16.2y & = 0                             &
+              a                         & = 4.6, \quad b= 3.24              \\
+              (a-1)^{2}-4b              & = 0                             &
+              m_{1}, m_{2}              & = -1.8                            \\
               y                         & = (c_{1} + c_{2}\ln x )x^{-1.8}
           \end{align}
 
     \item Finding the general solution
           \begin{align}
-              x^{2}y'' + 2xy' & = 0                   & a            & = 2, \quad b= 0 \\
-              (a-1)^{2}-4b    & = 1 > 0               & m_{1}, m_{2} & = -1, 0         \\
+              x^{2}y'' + 2xy' & = 0                   &
+              a               & = 2, \quad b= 0         \\
+              (a-1)^{2}-4b    & = 1 > 0               &
+              m_{1}, m_{2}    & = -1, 0                 \\
               y               & = c_{1} + c_{2}x^{-1}
           \end{align}
 
     \item Finding the general solution
           \begin{align}
-              4x^{2}y'' + 5y & = 0                                     & a            & = 0, \quad b= 5/4 \\
-              (a-1)^{2}-4b   & = -4 < 0                                & m_{1}, m_{2} & = 0.5 \pm i       \\
+              4x^{2}y'' + 5y & = 0                                     &
+              a              & = 0, \quad b= 5/4                         \\
+              (a-1)^{2}-4b   & = -4 < 0                                &
+              m_{1}, m_{2}   & = 0.5 \pm i                               \\
               y              & = e^{0.5x}[A\cos(\ln x) + B\sin(\ln x)]
           \end{align}
 
     \item Finding the general solution
           \begin{align}
-              x^{2}y'' + 0.7xy' - 0.1y & = 0                            & a            & = 0.7, \quad b= -0.1 \\
-              (a-1)^{2}-4b             & = 0.49 > 0                     & m_{1}, m_{2} & =  0.5, -0.2         \\
+              x^{2}y'' + 0.7xy' - 0.1y & = 0                            &
+              a                        & = 0.7, \quad b= -0.1             \\
+              (a-1)^{2}-4b             & = 0.49 > 0                     &
+              m_{1}, m_{2}             & =  0.5, -0.2                     \\
               y                        & = c_{1}x^{0.5} + c_{2}x^{-0.2}
           \end{align}
 
     \item Finding the general solution
           \begin{align}
-              (x^{2}D^{2} - 4xD + 6I)y & = 0                       & a            & = -4, \quad b= 6 \\
-              (a-1)^{2}-4b             & = 1 > 0                   & m_{1}, m_{2} & =  3, 2          \\
+              (x^{2}D^{2} - 4xD + 6I)y & = 0                       &
+              a                        & = -4, \quad b= 6            \\
+              (a-1)^{2}-4b             & = 1 > 0                   &
+              m_{1}, m_{2}             & =  3, 2                     \\
               y                        & = c_{1}x^{3} + c_{2}x^{2}
           \end{align}
 
     \item Finding the general solution
           \begin{align}
-              (x^{2}D^{2} - 3xD + 4I)y & = 0                           & a            & = -3, \quad b= 4 \\
-              (a-1)^{2}-4b             & = 0                           & m_{1}, m_{2} & =  2             \\
+              (x^{2}D^{2} - 3xD + 4I)y & = 0                           &
+              a                        & = -3, \quad b= 4                \\
+              (a-1)^{2}-4b             & = 0                           &
+              m_{1}, m_{2}             & =  2                            \\
               y                        & = [ c_{1} + c_{2}\ln x ]x^{2}
           \end{align}
 
     \item Finding the general solution
           \begin{align}
-              (x^{2}D^{2} - 0.2xD + 0.36I)y & = 0                              & a            & = -0.2, \quad b= 0.36 \\
-              (a-1)^{2}-4b                  & = 0                              & m_{1}, m_{2} & =  0.6                \\
+              (x^{2}D^{2} - 0.2xD + 0.36I)y & = 0                              &
+              a                             & = -0.2, \quad b= 0.36              \\
+              (a-1)^{2}-4b                  & = 0                              &
+              m_{1}, m_{2}                  & =  0.6                             \\
               y                             & = [ c_{1} + c_{2} \ln x ]x^{0.6}
           \end{align}
 
     \item Finding the general solution
           \begin{align}
-              (x^{2}D^{2} - xD + 5I)y & = 0                                      & a            & = -1, \quad b= 5 \\
-              (a-1)^{2}-4b            & = -16 < 0                                & m_{1}, m_{2} & =  1 \pm 2i      \\
+              (x^{2}D^{2} - xD + 5I)y & = 0                                      &
+              a                       & = -1, \quad b= 5                           \\
+              (a-1)^{2}-4b            & = -16 < 0                                &
+              m_{1}, m_{2}            & =  1 \pm 2i                                \\
               y                       & = e^{x}[A\cos(2 \ln x) + B\sin(2 \ln x)]
           \end{align}
 
     \item Finding the general solution
           \begin{align}
-              (x^{2}D^{2} - 3xD + 10I)y & = 0                                                   & a            & = -3, \quad b= 10  \\
-              (a-1)^{2}-4b              & = -24 < 0                                             & m_{1}, m_{2} & =  2 \pm \sqrt{6}i \\
-              y                         & = x^{2} [A\cos(\sqrt{6}\ln x) + B\sin(\sqrt{6}\ln x)]
+              (x^{2}D^{2} - 3xD + 10I)y & = 0                             &
+              a                         & = -3, \quad b= 10                 \\
+              (a-1)^{2}-4b              & = -24 < 0                       &
+              m_{1}, m_{2}              & =  2 \pm \sqrt{6}i                \\
+              y                         & = x^{2} [A\cos(\sqrt{6}\ln x) +
+                      B\sin(\sqrt{6}\ln x)]
           \end{align}
 
     \item Solving the IVP $ y(1) = 0.4,\ y'(1) = 0 $ and graphing,
           \begin{align}
-              x^{2}y'' - 4xy' + 6y & = 0                       & a            & = -4, \quad b= 6      \\
-              (a-1)^{2}-4b         & = 1 > 0                   & m_{1}, m_{2} & =  3, 2               \\
-              y                    & = c_{1}x^{3} + c_{2}x^{2}                                        \\
-              y(1)                 & = c_{1} + c_{2} = 0.4     & y'(1)        & = 3c_{1} + 2c_{2} = 0 \\
-              c_{1}                & = -0.8                    & c_{2}        & = 1.2
+              x^{2}y'' - 4xy' + 6y & = 0                       &
+              a                    & = -4, \quad b= 6            \\
+              (a-1)^{2}-4b         & = 1 > 0                   &
+              m_{1}, m_{2}         & =  3, 2                     \\
+              y                    & = c_{1}x^{3} + c_{2}x^{2}   \\
+              y(1)                 & = c_{1} + c_{2} = 0.4     &
+              y'(1)                & = 3c_{1} + 2c_{2} = 0       \\
+              c_{1}                & = -0.8                    &
+              c_{2}                & = 1.2
           \end{align}
           \begin{figure}[H]
               \centering
@@ -116,7 +148,7 @@
                           height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth,domain=-4:4,]
+                      \addplot[GraphSmooth, y_h, domain=-4:4,]
                       {-0.8*x^(3) + 1.2*x^(2)};
                       \node[GraphNode, label={45:(1, 0.4)}] at (axis cs:1, 0.4) {};
                       \addlegendentry{$y = -0.8x^{3} + 1.2x^{2}$};
@@ -126,11 +158,15 @@
 
     \item Solving the IVP $ y(1) = 1,\ y'(1) = -1.5 $ and graphing,
           \begin{align}
-              x^{2}y'' + 3xy' + 0.75y & = 0                             & a            & = 3, \quad b= 0.75            \\
-              (a-1)^{2}-4b            & = 1 > 0                         & m_{1}, m_{2} & =  -1.5, -0.5                 \\
-              y                       & = c_{1}x^{-1.5} + c_{2}x^{-0.5}                                                \\
-              y(1)                    & = c_{1} + c_{2} = 1             & y'(1)        & = -1.5c_{1} - 0.5c_{2} = -1.5 \\
-              c_{1}                   & = 1                             & c_{2}        & = 0
+              x^{2}y'' + 3xy' + 0.75y & = 0                             &
+              a                       & = 3, \quad b= 0.75                \\
+              (a-1)^{2}-4b            & = 1 > 0                         &
+              m_{1}, m_{2}            & =  -1.5, -0.5                     \\
+              y                       & = c_{1}x^{-1.5} + c_{2}x^{-0.5}   \\
+              y(1)                    & = c_{1} + c_{2} = 1             &
+              y'(1)                   & = -1.5c_{1} - 0.5c_{2} = -1.5     \\
+              c_{1}                   & = 1                             &
+              c_{2}                   & = 0
           \end{align}
           \begin{figure}[H]
               \centering
@@ -145,7 +181,7 @@
                           height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth,domain=0:2,]
+                      \addplot[GraphSmooth, y_h, domain=0:2,]
                       {*x^(-1.5)};
                       \node[GraphNode, label={45:(1, 1)}] at (axis cs:1, 1) {};
                       \addlegendentry{$y = x^{-1.5}$};
@@ -155,11 +191,14 @@
 
     \item Solving the IVP $ y(1) = 0,\ y'(1) = 2.5 $ and graphing,
           \begin{align}
-              x^{2}y'' + xy' + 9y & = 0                                       & a            & = 1, \quad b= 9 \\
-              (a-1)^{2}-4b        & = -36 < 0                                 & m_{1}, m_{2} & =  0 \pm 3i     \\
-              y                   & = c_{1}\cos(3 \ln x) + c_{2}\sin(3 \ln x)                                  \\
-              y(1)                & = c_{1} = 0                                                                \\
-              y'(1)               & = 3c_{2} = 2.5                            & c_{2}        & = \frac{5}{6}
+              x^{2}y'' + xy' + 9y & = 0                                       &
+              a                   & = 1, \quad b= 9                             \\
+              (a-1)^{2}-4b        & = -36 < 0                                 &
+              m_{1}, m_{2}        & =  0 \pm 3i                                 \\
+              y                   & = c_{1}\cos(3 \ln x) + c_{2}\sin(3 \ln x)   \\
+              y(1)                & = c_{1} = 0                                 \\
+              y'(1)               & = 3c_{2} = 2.5                            &
+              c_{2}               & = \frac{5}{6}
           \end{align}
           \begin{figure}[H]
               \centering
@@ -174,7 +213,7 @@
                           height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth,domain=0.01:10,]
+                      \addplot[GraphSmooth, y_h, domain=0.01:10,]
                       {(5/6)*sin(3*ln(x))};
                       \node[GraphNode, label={135:(1, 0)}] at (axis cs:1, 0) {};
                       \addlegendentry{$y = (5/6)\sin(3\ln x)$};
@@ -184,11 +223,13 @@
 
     \item Solving the IVP $ y(1) = 3.6,\ y'(1) = 0.4 $ and graphing,
           \begin{align}
-              x^{2}y'' + 3xy' + y & = 0                                                                  \\
-              a                   & = 3, \quad b= 1                                                      \\
-              (a-1)^{2}-4b        & = 0                           & m_{1}, m_{2} & =  -1                 \\
-              y                   & = (c_{1} + c_{2} \ln x)x^{-1}                                        \\
-              y(1)                & = c_{1} = 3.6                 & y'(1)        & = c_{2} - c_{1} = 0.4 \\
+              x^{2}y'' + 3xy' + y & = 0                             \\
+              a                   & = 3, \quad b= 1                 \\
+              (a-1)^{2}-4b        & = 0                           &
+              m_{1}, m_{2}        & =  -1                           \\
+              y                   & = (c_{1} + c_{2} \ln x)x^{-1}   \\
+              y(1)                & = c_{1} = 3.6                 &
+              y'(1)               & = c_{2} - c_{1} = 0.4           \\
               c_{2}               & = 4.0
           \end{align}
           \begin{figure}[H]
@@ -202,7 +243,7 @@
                           height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth,domain=0:10,]
+                      \addplot[GraphSmooth, y_h, domain=0:10,]
                       {x^(-1)*(3.6 + 4*ln(x))};
                       \node[GraphNode, label={-85:(1, 3.6)}] at (axis cs:1, 3.6) {};
                       \addlegendentry{$y = x^{-1}(3.6 + 4\ln x)$};
@@ -212,10 +253,13 @@
 
     \item Solving the IVP $ y(1) = -\pi,\ y'(1) =  2\pi $ and graphing,
           \begin{align}
-              (x^{2}D^{2} - 3xD + 4I)y & = 0                           & a            & = -3, \quad b= 4        \\
-              (a-1)^{2}-4b             & = 0                           & m_{1}, m_{2} & =  2                    \\
-              y                        & = [ c_{1} + c_{2}\ln x ]x^{2}                                          \\
-              y(1)                     & = c_{1} = -\pi                & y'(1)        & = c_{2} + 2c_{1} = 2\pi \\
+              (x^{2}D^{2} - 3xD + 4I)y & = 0                           &
+              a                        & = -3, \quad b= 4                \\
+              (a-1)^{2}-4b             & = 0                           &
+              m_{1}, m_{2}             & =  2                            \\
+              y                        & = [ c_{1} + c_{2}\ln x ]x^{2}   \\
+              y(1)                     & = c_{1} = -\pi                &
+              y'(1)                    & = c_{2} + 2c_{1} = 2\pi         \\
               c_{2}                    & = 4\pi
           \end{align}
           \begin{figure}[H]
@@ -229,7 +273,7 @@
                           height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth,domain=0:2,]
+                      \addplot[GraphSmooth, y_h, domain=0:2,]
                       {x^(2)*(-pi + 4*pi*ln(x))};
                       \node[GraphNode, label={90:(1, $-\pi$)}] at (axis cs:1, -pi) {};
                       \addlegendentry{$y = x^{2}(-\pi + 4\pi\ln x)$};
@@ -239,10 +283,13 @@
 
     \item Solving the IVP $ y(1) = 1,\ y'(1) = 1 $ and graphing,
           \begin{align}
-              (x^{2}D^{2} + xD + I)y & = 0                                   & a            & = 1, \quad b= 1 \\
-              (a-1)^{2}-4b           & = -4 < 0                              & m_{1}, m_{2} & =  0 \pm i      \\
-              y                      & = c_{1}\cos(\ln x) + c_{2}\sin(\ln x)                                  \\
-              y(1)                   & = c_{1} = 1                           & y'(1)        & = c_{2} = 1
+              (x^{2}D^{2} + xD + I)y & = 0                                   &
+              a                      & = 1, \quad b= 1                         \\
+              (a-1)^{2}-4b           & = -4 < 0                              &
+              m_{1}, m_{2}           & =  0 \pm i                              \\
+              y                      & = c_{1}\cos(\ln x) + c_{2}\sin(\ln x)   \\
+              y(1)                   & = c_{1} = 1                           &
+              y'(1)                  & = c_{2} = 1
           \end{align}
           \begin{figure}[H]
               \centering
@@ -257,7 +304,7 @@
                           height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth,domain=0.01:10000,]
+                      \addplot[GraphSmooth, y_h, domain=0.01:10000,]
                       {sin(ln(x)) + cos(ln(x))};
                       \node[GraphNode, label={180:(1, 1)}] at (axis cs:1, 1) {};
                       \addlegendentry{$y = \cos(\ln x) + \sin(\ln x)$};
@@ -267,10 +314,13 @@
 
     \item Solving the IVP $ y(1) = 1,\ y'(1) = 0 $ and graphing,
           \begin{align}
-              (9x^{2}D^{2} + 3xD + I)y & = 0                            & a            & = 1/3, \quad b= 1/9           \\
-              (a-1)^{2}-4b             & = 0                            & m_{1}, m_{2} & =  1/3                        \\
-              y                        & = x^{1/3}(c_{1} + c_{2} \ln x)                                                \\
-              y(1)                     & = c_{1} = 1                    & y'(1)        & = \frac{c_{1}}{3} + c_{2} = 0 \\
+              (9x^{2}D^{2} + 3xD + I)y & = 0                            &
+              a                        & = 1/3, \quad b= 1/9              \\
+              (a-1)^{2}-4b             & = 0                            &
+              m_{1}, m_{2}             & =  1/3                           \\
+              y                        & = x^{1/3}(c_{1} + c_{2} \ln x)   \\
+              y(1)                     & = c_{1} = 1                    &
+              y'(1)                    & = \frac{c_{1}}{3} + c_{2} = 0    \\
               c_{2}                    & = -1/3
           \end{align}
           \begin{figure}[H]
@@ -285,7 +335,7 @@
                           height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth,domain=0:1.2,]
+                      \addplot[GraphSmooth, y_h, domain=0:1.2,]
                       {x^(1/3)*(1 + (1/3)*ln(x))};
                       \node[GraphNode, label={135:(1, 1)}] at (axis cs:1, 1) {};
                       \addlegendentry{$y = (1 + 1/3 \ln x)x^{1/3}$};
@@ -295,11 +345,15 @@
 
     \item Solving the IVP $ y(1) = 0.1,\ y'(1) = -4.5 $ and graphing,
           \begin{align}
-              (x^{2}D^{2}  - xD - 15I)y & = 0                        & a            & = -1, \quad b= -15        \\
-              (a-1)^{2}-4b              & = 64 > 0                   & m_{1}, m_{2} & =  -3, 5                  \\
-              y                         & = c_{1}x^{-3} + c_{2}x^{5}                                            \\
-              y(1)                      & = c_{1} + c_{2} = 0.1      & y'(1)        & = -3c_{1} + 5c_{2} = -4.5 \\
-              c_{2}                     & = -0.525                   & c_{1}        & = 0.625
+              (x^{2}D^{2}  - xD - 15I)y & = 0                        &
+              a                         & = -1, \quad b= -15           \\
+              (a-1)^{2}-4b              & = 64 > 0                   &
+              m_{1}, m_{2}              & =  -3, 5                     \\
+              y                         & = c_{1}x^{-3} + c_{2}x^{5}   \\
+              y(1)                      & = c_{1} + c_{2} = 0.1      &
+              y'(1)                     & = -3c_{1} + 5c_{2} = -4.5    \\
+              c_{2}                     & = -0.525                   &
+              c_{1}                     & = 0.625
           \end{align}
           \begin{figure}[H]
               \centering
@@ -313,7 +367,7 @@
                           height = 8cm,
                           Ani,
                       ]
-                      \addplot[GraphSmooth,domain=-4:4,]
+                      \addplot[GraphSmooth, y_h, domain=-4:4,]
                       {0.625*x^(-3) - 0.525*x^(5)};
                       \node[GraphNode, label={45:(1, 0.1)}] at (axis cs:1, 0.1) {};
                       \addlegendentry{$y = 0.625x^{-3} - 0.525x^{5}$};
@@ -322,64 +376,91 @@
           \end{figure}
 
     \item \begin{enumerate}
-              \item By reduction of order with one solution $y_{1} = x^{(1-a)/2}$, and the auxiliary
-                    equation having repeated roots.
+              \item By reduction of order with one solution $y_{1} = x^{(1-a)/2}$, and
+                    the auxiliary equation having repeated roots.
                     \begin{align}
-                        0              & = m^{2} + (a-1)m + by                                                               \\
-                        b              & = \frac{(1-a)^{2}}{4}                                                               \\
-                        0              & = x^{2}y'' + axy' + \frac{(1-a)^{2}}{4}y                                            \\
-                        y_{2} = uy_{1} & = ux^{(1-a)/2}                                                                      \\
-                        y_{2}'         & = u'x^{(1-a)/2} + \frac{u(1-a)}{2}x^{(-1-a)/2}                                      \\
-                        y_{2}''        & = u''x^{(1-a)/2} + u'(1-a)x^{(-1-a)/2} + \frac{u(a^{2} - 1)}{4}x^{(-3-a)/2}         \\
-                        0              & = u''x^{(5-a)/2} + u'(1-a)x^{(3-a)/2} + \frac{u(a^{2} - 1)}{4}x^{(1-a)/2}           \\
-                                       & + au'x^{(3-a)/2} + \frac{au(1-a)}{2}x^{(1-a)/2}  + \frac{u(1-a)^{2}}{4} x^{(1-a)/2} \\
-                        0              & = u'' x^{(5-a)/2} + u' x^{(3-a)/2} = u''x + u'                                      \\
-                        z              & = u' \qquad z' = u''                                                                \\
-                        z'             & = \frac{-z}{x}  \qquad \implies z = \frac{1}{x} \qquad \implies u = \ln x           \\
+                        0              & = m^{2} + (a-1)m + by                     \\
+                        b              & = \frac{(1-a)^{2}}{4}                     \\
+                        0              & = x^{2}y'' + axy' + \frac{(1-a)^{2}}{4}y  \\
+                        y_{2} = uy_{1} & = ux^{(1-a)/2}                            \\
+                        y_{2}'         & = u'x^{(1-a)/2}
+                        + \frac{u(1-a)}{2}x^{(-1-a)/2}                             \\
+                        y_{2}''        & = u''x^{(1-a)/2}
+                        + u'(1-a)x^{(-1-a)/2} + \frac{u(a^{2} - 1)}{4}x^{(-3-a)/2} \\
+                        0              & = u''x^{(5-a)/2}
+                        + u'(1-a)x^{(3-a)/2} + \frac{u(a^{2} - 1)}{4}x^{(1-a)/2}   \\
+                                       & + au'x^{(3-a)/2}
+                        + \frac{au(1-a)}{2}x^{(1-a)/2}  + \frac{u(1-a)^{2}}{4}
+                        x^{(1-a)/2}                                                \\
+                        0              & = u'' x^{(5-a)/2}
+                        + u' x^{(3-a)/2} = u''x + u'                               \\
+                        z              & = u' \qquad z' = u''                      \\
+                        z'             & = \frac{-z}{x}  \qquad \implies z
+                        = \frac{1}{x} \qquad \implies u = \ln x                    \\
                         y_{2}          & = y_{1}\ln x
                     \end{align}
 
               \item Let $ y_{1} = x^{m} $ and $ y_{2} = x^{m+s} $,
                     \begin{align}
-                        0                           & = y'' + (1 -2m - s)y' + (m^{2} + ms)y                                 \\
-                        y_{3}                       & = \frac{x^{m+s} - x^{m}}{(m+s) - s} = \frac{x^{m+s} - x^{m}}{s}       \\
-                        \lim_{s \rightarrow 0}y_{3} & = \lim_{s \rightarrow 0} \diff*{x^{m+s}}{s} \cdot \frac{1}{\difs ss}  \\
-                                                    & = \lim_{s \rightarrow 0} x^{m}\diff*{\exp(s\ \ln x)}{s}               \\
-                                                    & = \lim_{s \rightarrow 0} x^{m}\left( x^{s} \ln x \right) = x^{m}\ln x
+                        0                   & = y'' + (1 -2m - s)y' + (m^{2} + ms)y \\
+                        y_{3}               & = \frac{x^{m+s} - x^{m}}{(m+s) - s}
+                        = \frac{x^{m+s} - x^{m}}{s}                                 \\
+                        \lim_{s \to 0}y_{3} & = \lim_{s \to 0} \diff*{x^{m+s}}{s}
+                        \cdot \frac{1}{\difs ss}                                    \\
+                                            & = \lim_{s \to 0} x^{m}\diff*{\exp(s
+                        \ \ln x)}{s}                                                \\
+                                            & = \lim_{s \to 0} x^{m}\left( x^{s}
+                        \ln x \right) = x^{m}\ln x
                     \end{align}
 
               \item In the critical case, with repeated roots $ b = (1-a)^{2}/4 $,
                     \begin{align}
-                        0                    & = x^{2}y'' + axy' + by                                                            \\
-                        y_{2}                & = x^{(1-a)/2}\ln x                                                                \\
-                        y_{2}'               & = x^{(-1-a)/2} \left[ 1 + \left( \frac{1-a}{2} \right)\ln x \right]               \\
-                        y_{2}''              & = x^{(-3-a)/2} \left[ -a + \left( \frac{a^{2} - 1}{4} \right) \ln x \right]       \\
-                        x^{2}y'' + axy' + by & = x^{(1-a)/2} \left[  \frac{a^{2} - 1 + 2a - 2a^{2} + (1-a)^{2}}{4} \right] \ln x \\
+                        0                    & = x^{2}y'' + axy' + by            \\
+                        y_{2}                & = x^{(1-a)/2}\ln x                \\
+                        y_{2}'               & = x^{(-1-a)/2} \left[ 1
+                        + \left( \frac{1-a}{2} \right)\ln x \right]              \\
+                        y_{2}''              & = x^{(-3-a)/2} \left[ -a
+                        + \left( \frac{a^{2} - 1}{4} \right) \ln x \right]       \\
+                        x^{2}y'' + axy' + by & = x^{(1-a)/2} \left[  \frac{a^{2}
+                        - 1 + 2a - 2a^{2} + (1-a)^{2}}{4} \right] \ln x          \\
                                              & = 0
                     \end{align}
-                    Thus, $ x^{(1-a)/2}\ln x $ is indeed a solution to the ODE when the auxiliary equation has
-                    repeated roots.
+                    Thus, $ x^{(1-a)/2}\ln x $ is indeed a solution to the ODE when
+                    the auxiliary equation has repeated roots.
 
               \item Substitute $ x = e^{t} \qquad (x>0)$,
                     \begin{align}
-                        x^{2}y'' + axy' + by      & = 0                                                                                                         \\
-                        y'                        & = \frac{\difs yt}{\difs xt} = e^{-t}\diff yt                                                                \\
-                        y''                       & = \diff* {\left( e^{-t}\diff yt \right)}{x} = \frac{1}{\difs xt}\ \diff* {\left( e^{-t}\diff yt \right)}{t} \\
-                                                  & = e^{-2t}\left(\diff[2] yt - \diff yt  \right)                                                              \\
+                        x^{2}y'' + axy' + by      & = 0                                \\
+                        y'                        & = \frac{\difs yt}{\difs xt}
+                        = e^{-t}\diff yt                                               \\
+                        y''                       & = \diff* {\left( e^{-t}\diff
+                            yt \right)}{x} = \frac{1}{\difs xt}\ \diff* {\left( e^{-t}
+                        \diff yt \right)}{t}                                           \\
+                                                  & = e^{-2t}\left(\diff[2] yt
+                        - \diff yt  \right)                                            \\
                         e^{2t}y'' + ae^{t}y' + by & = \diff[2] yt + (a-1)\diff yt + by
                     \end{align}
 
-              \item Let $y_{1}, y_{2} = e^{\lambda_{1} t}, e^{\lambda_{2} t}$ be solutions to the
-                    above ODE in $ y, t $, with $ \lambda_{2} = \lambda_{1} + \delta $
+              \item Let $y_{1}, y_{2} = e^{\lambda_{1} t}, e^{\lambda_{2} t}$ be
+                    solutions to the above ODE in $ y, t $, with
+                    $ \lambda_{2} = \lambda_{1} + \delta $
                     \begin{align}
-                        \lambda^{2} + (a-1)\lambda + b      & = 0                                                                                            \\
-                        b                                   & = (a - 1)^{2} / 4                                                                              \\
-                        \text{By superposition} \quad y_{3} & = \frac{e^{\lambda_{2} t} - e^{\lambda_{1} t}}{\lambda_{2} - \lambda_{1}}                      \\
-                        \lim_{\delta \rightarrow 0}y_{3}    & = \lim_{\delta \rightarrow 0} \diff {y_{3}}{\delta}                                            \\
-                                                            & =\lim_{\delta \rightarrow 0} \diff*{\frac{e^{\lambda_{1}t}(e^{\delta t} - 1)}{\delta}}{\delta} \\
-                                                            & = \lim_{\delta \rightarrow 0} t e^{\lambda_{1}t}e^{\delta t} = te^{\lambda_{1}t}
+                        \lambda^{2} + (a-1)\lambda + b
+                                                 & = 0                       \\
+                        b                        & = (a - 1)^{2} / 4         \\
+                        \text{By superposition} \quad y_{3}
+                                                 & = \frac{e^{\lambda_{2} t}
+                        - e^{\lambda_{1} t}}{\lambda_{2} - \lambda_{1}}      \\
+                        \lim_{\delta \to 0}y_{3} & = \lim_{\delta \to 0}
+                        \diff {y_{3}}{\delta}                                \\
+                                                 & =\lim_{\delta \to 0}
+                        \diff*{\frac{e^{\lambda_{1}t}(e^{\delta t} - 1)}{\delta}}
+                        {\delta}                                             \\
+                                                 & = \lim_{\delta \to 0}
+                        t e^{\lambda_{1}t}e^{\delta t} = te^{\lambda_{1}t}
                     \end{align}
-                    The two solutions are $ e^{\lambda t} $ and $ te^{\lambda t} $, which when converted back to
-                    functions of $ x $, become $ x^{\lambda} $ and $ x^{\lambda} \ln x $.
+                    The two solutions are $ e^{\lambda t} $ and $ te^{\lambda t} $,
+                    which when converted back to functions of $ x $, become
+                    $ x^{\lambda} $ and $ x^{\lambda} \ln x $.
           \end{enumerate}
 \end{enumerate}

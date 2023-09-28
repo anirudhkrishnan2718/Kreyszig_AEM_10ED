@@ -1,0 +1,514 @@
+\section{Spline Interpolation}
+
+\begin{enumerate}
+    \item Refer notes. TBC
+
+    \item Starting with the explicit form of the cubic polynomial $ q_j $ expanded in
+          terms of $ (x - x_j) $,
+          \begin{align}
+              \color{y_h} q_j(x_j)     & = f(x_j)\ c_j^2\ (x_j - x_{j+1})^2     &
+                                       & = f(x_j)\ \frac{(x_j - x_{j+1})^2}
+              {(x_{j+1} - x_j)^2} = \color{y_h} f(x_j)                            \\
+              \color{y_p} q_j(x_{j+1}) & = f(x_{j+1})\ c_j^2\ (x_{j+1} - x_j)^2 &
+                                       & = f(x_{j+1})\ \frac{(x_{j+1} - x_j)^2}
+              {(x_{j+1} - x_j)^2} = \color{y_p} f(x_{j+1})                        \\
+          \end{align}
+          Differentiating the full expression for $ q_j $
+          \begin{align}
+              q'_j(x) & = f(x_j)\ c_j^2\ \Big[(x - x_{j+1})^2 \cdot 2c_j
+              + 2(1 + 2c_j x - 2c_jx_j)(x - x_{j+1})\Big]                            \\
+                      & + f(x_{j+1})\ c_j^2\ \Big[ -2c_j \cdot (x - x_j)^2
+              + 2(x - x_j)(1 - 2c_j x + 2c_j x_{j+1})\Big]                           \\
+                      & + k_j\ c_j^2\ \Big[ 2(x-x_j)(x - x_{j+1}) + (x - x_{j+1})^2
+              \Big]                                                                  \\
+                      & + k_{j+1}\ c_j^2\ \Big[2(x - x_j)(x - x_{j+1}) + (x - x_j)^2
+                  \Big]
+          \end{align}
+          Now, checking if this satisfies the interpolation conditions,
+          \begin{align}
+              \color{y_s}q'_j(x_j)      & = f(x_j)\ \Big[ 2c_j - 2c_j \Big]
+              + k_j  = \color{y_s}k_j                                            \\
+              \color{y_t} q'_j(x_{j+1}) & = f(x_{j+1})\ \Big[ -2c_j + 2c_j \Big]
+              + k_{j+1} = \color{y_t} k_{j+1}
+          \end{align}
+
+    \item Using the first derivative from Problem $ 1 $ to find $ q''_j(x) $
+          \begin{align}
+              q''_j(x) & = f(x_j)\ c_j^2\ \Big[ 8c_j\ (x - x_{j+1}) +
+              2[1 +  2c_j\ (x - x_j)] \Big]                                 \\
+                       & + f(x_{j+1})\ c_j^2\ \Big[ -8c_j\ (x - x_j)
+              + 2[1 - 2c_j(x - x_{j+1})] \Big]                              \\
+                       & + k_j\ c_j^2\ \Big[ 6x - 2x_j - 4x_{j+1} \Big]     \\
+                       & + k_{j+1}\ c_j^2\ \Big[ 6x - 4x_j - 2x_{j+1} \Big]
+          \end{align}
+          Substituting the values of $ x $ into the above general expression,
+          \begin{align}
+              q''_j(x_j)     & = -6f(x_j)\ c_j^2 + 6f(x_{j+1})\ c_j^2 - 4k_j\ c_j
+              - 2k_{j+1}\ c_j                                                     \\
+              q''_j(x_{j+1}) & = 6f(x_j)\ c_j^2 - 6f(x_{j+1})\ c_j^2 + 2k_j\ c_j
+              + 4k_{j+1}\ c_j
+          \end{align}
+
+    \item Building upon the results of Problem $ 3 $,
+          \begin{align}
+              q''_j(x_j) & = 6c_{j-1}^2\ f(x_{j-1}) - 6c_{j-1}^2\ f(x_j)
+              + 2c_{j-1}\ k_{j-1} + 4c_{j-1}\ k_j                             \\
+              q''_j(x_j) & = -6f(x_j)\ c_j^2 + 6f(x_{j+1})\ c_j^2 - 4k_j\ c_j
+              - 2k_{j+1}\ c_j
+          \end{align}
+          This yields a set of linear equations each with only three nonzero
+          coefficients.
+          \begin{align}
+              3\ \Big[ c_{j-1}^2\ \nabla f_{j} + c_j^2\ \nabla f_{j+1} \Big]
+               & = [c_{j-1}]\ k_{j-1} + [2c_{j-1} + 2c_j]\ k_j
+              + [c_j]\ k_{j+1}
+          \end{align}
+          Only three diagonals of the coefficient matrix can be nonzero, as seen from
+          the above form of linear equation for $ j \in [1,2,\dots,n-1] $
+
+    \item For the special case where, $ c_j = c\ \forall\ j \in \{1,2,\dots,n-1\} $,
+          \begin{align}
+              3c^2\ \Big[\nabla f_j + \nabla f_{j+1}\Big] & = c\ \Big[k_{j-1}
+              + 4k_j + k_{j+1}\Big]                       &
+              h                                           & = \frac{1}{c}     \\
+              \frac{3}{h}\ \Big[ f_{j+1} - f_{j-1} \Big]  & =
+              k_{j-1} + 4k_j + k_{j+1}
+          \end{align}
+
+    \item Using the results of Problem $ 4 $,
+          \begin{align}
+              q''_j(x_j) & = -6f(x_j)\ c_j^2 + 6f(x_{j+1})\ c_j^2 - 4k_j\ c_j
+              - 2k_{j+1}\ c_j                                                 \\
+              a_{j2}     & = \frac{q''_j(x_j)}{2!} = \frac{3}{h_j^2}\ \Big[
+              f_{j+1} - f_j \Big] - \frac{1}{h_j}\ \Big[ 2k_j + k_{j+1} \Big] \\
+              q_j(x)     & = a_{j0} + a_{j1}\ (x - x_j) + a_{j2}\ (x - x_j)^2
+              + a_{j3}\ (x - x_j)^3                                           \\
+              q_j''(x)   & = 2a_{j2} + 6a_{j3}\ (x - x_j)
+          \end{align}
+          Equating the two expressions for $ q''_j(x_{j+1}) $
+          \begin{align}
+              2a_{j2} + \frac{6a_{j3}}{c_j} & = 6c_j^2\ f(x_j) - 6c_j^2\ f(x_{j+1})
+              + 2c_j\ k_j + 4c_j\ k_{j+1}                                           \\
+              a_{j3}                        & = c_j^3\ [f_j - f_{j+1}]
+              + \frac{c_j^2}{3}\ [k_j + 2k_{j+1}] - c_j^3\ [f_{j+1} - f_j]          \\
+                                            & + \frac{c_j^2}{3}\ [2k_j + k_{j+1}]   \\
+              a_{j3}                        & = \frac{2}{h_j^3}\ (f_j - f_{j+1})
+              + \frac{1}{h_j^2}\ (k_j + k_{j+1})
+          \end{align}
+
+    \item Using Example $ 1 $ to test the \texttt{sympy} code,
+          The output is a set of coefficients for the cubic equations of the form,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 12cm, legend pos = outer north east,
+                          grid = both,Ani, title = {$ f(x) = x^4 $}]
+                      \addplot[GraphSmooth, black, dashed, domain = -1:1] {x^4};
+                      \addplot[GraphSmooth, y_h, domain = -1:0]
+                      {-4*x - 2*(x+1)^3 + 5*(x+1)^2 - 3};
+                      \addplot[GraphSmooth, y_p, domain = 0:1]
+                      {2*x^3 - x^2};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Overlaying the quadratic interpolation polynomial onto the result of
+          Problem $ 7 $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm, legend pos = outer north east,
+                          grid = both,Ani, title = {$ f(x) = x^4 $}]
+                      \addplot[GraphSmooth, black, dashed, domain = -1:1] {x^4};
+                      \addplot[GraphSmooth, y_h, domain = -1:0]
+                      {-4*x - 2*(x+1)^3 + 5*(x+1)^2 - 3};
+                      \addplot[GraphSmooth, y_h, domain = 0:1, forget plot]
+                      {2*x^3 - x^2};
+                      \addplot[GraphSmooth, y_p, domain = -1:1]
+                      {x^2};
+                      \addlegendentry{$ f(x) $};
+                      \addlegendentry{$ g(x) $};
+                      \addlegendentry{$ p_2(x) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          Using differentiation to find the greatest difference between each
+          approximation and the true function.
+          \begin{align}
+              \epsilon_1(x)        & = x^4 - 2x^3 + x^2    &
+              4x^3 - 6x^2 + 2x     & = 0                     \\
+              x^*                  & = 0.5,                &
+              \max{\abs{\Delta_g}} & = 1/16                  \\
+              \epsilon_2(x)        & = x^4 - x^2           &
+              4x^3 - 2x            & = 0                     \\
+              x^*                  & = \frac{1}{\sqrt{2}}, &
+              \max{\abs{\Delta_p}} & = 1/4
+          \end{align}
+          The spline interpolant has a much smaller maximum error over the interval.
+
+    \item Using the edge splines,
+          \begin{align}
+              q_5(x)     & = 1.5 - 1.13\ (x - 5) - 1 .39\ (x - 5)^2 + 0.58\ (x - 5)^3 \\
+              q_5''(5.8) & = -1.39\ (2) + 0.58\ (6)(5.8 - 5) = \frac{1}{250}
+          \end{align}
+          This result is not zero due to roundoff error. Since the function is even, the
+          second derivative is the same value at the other extreme.
+
+    \item Using the \texttt{sympy} code,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm, legend pos = outer north east,
+                          grid = both,Ani]
+                      \addplot[GraphSmooth, y_h, domain = -2:-1]
+                      {0.75*(x+2)^3 - 0.75*(x+2)^2};
+                      \addplot[GraphSmooth, y_p, domain = -1:0]
+                      {-1.25*(x+1)^3 + 1.5*(x+1)^2 + 0.75*(x+1)};
+                      \addplot[GraphSmooth, y_s, domain = 0:1]
+                      {1.25*x^3 - 2.25*x^2 + 1};
+                      \addplot[GraphSmooth, azure4, domain = 1:2]
+                      {-0.75*x - 0.75*(x-1)^3 + 1.5*(x-1)^2 + 0.75};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Overlaying the fourth degree polynomial on top of the cubic spline obtained
+          in Problem $ 10 $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm, legend pos = outer north east,
+                          grid = both,Ani]
+                      \addplot[GraphSmooth, y_h, domain = -2:-1]
+                      {0.75*(x+2)^3 - 0.75*(x+2)^2};
+                      \addplot[GraphSmooth, y_h, domain = -1:0, forget plot]
+                      {-1.25*(x+1)^3 + 1.5*(x+1)^2 + 0.75*(x+1)};
+                      \addplot[GraphSmooth, y_h, domain = 0:1, forget plot]
+                      {1.25*x^3 - 2.25*x^2 + 1};
+                      \addplot[GraphSmooth, y_h, domain = 1:2, forget plot]
+                      {-0.75*x - 0.75*(x-1)^3 + 1.5*(x-1)^2 + 0.75};
+                      \addplot[GraphSmooth, y_p, domain = -2:2]
+                      {0.25*x^4 - 1.25*x^2 + 1};
+                      \addlegendentry{$ g(x) $};
+                      \addlegendentry{$ p_4(x) $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The fourth degree polynomial is a much worse approximation than the cubic
+          spline.
+
+    \item Using the \texttt{sympy} code,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm, legend pos = outer north east,
+                          grid = both,Ani]
+                      \addplot[GraphSmooth, y_h, domain = 0:2]
+                      {x^3 + 1};
+                      \addplot[GraphSmooth, y_p, domain = 2:4]
+                      {12*x - 2*(x-2)^3 + 6*(x-2)^2 - 15};
+                      \addplot[GraphSmooth, y_s, domain = 4:6]
+                      {12*x - 6*(x-4)^2 - 7};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the \texttt{sympy} code,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm, legend pos = outer north east,
+                          grid = both,Ani]
+                      \addplot[GraphSmooth, y_h, domain = 0:1]
+                      {1 - x^2};
+                      \addplot[GraphSmooth, y_p, domain = 1:2]
+                      {-2*x + 2*(x-1)^3 - 1*(x-1)^2 + 2};
+                      \addplot[GraphSmooth, y_s, domain = 2:3]
+                      {2*x - 6*(x-2)^3 + 5*(x-2)^2 - 5};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the \texttt{sympy} code,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm, legend pos = outer north east,
+                          grid = both,Ani]
+                      \addplot[GraphSmooth, y_h, domain = 0:1]
+                      {x^3 + 2};
+                      \addplot[GraphSmooth, y_p, domain = 1:2]
+                      {3*x - (x-1)^3 + 3*(x-1)^2};
+                      \addplot[GraphSmooth, y_s, domain = 2:3]
+                      {6*x - 2*(x-2)^3 - 4};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the \texttt{sympy} code,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm, legend pos = outer north east,
+                          grid = both,Ani]
+                      \addplot[GraphSmooth, y_h, domain = 0:2]
+                      {-x^3 + x^2 + 4};
+                      \addplot[GraphSmooth, y_p, domain = 2:4]
+                      {-8*x + 5*(x-2)^3 - 5*(x-2)^2 + 16};
+                      \addplot[GraphSmooth, y_s, domain = 4:6]
+                      {32*x - 11*(x-4)^3 + 25*(x-4)^2 - 124};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the \texttt{sympy} code, or simply subtracting $ 2 $ from each of the
+          cubic splines in Problem $ 15 $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm, legend pos = outer north east,
+                          grid = both,Ani]
+                      \addplot[GraphSmooth, y_h, domain = 0:2]
+                      {-x^3 + x^2 + 2};
+                      \addplot[GraphSmooth, y_p, domain = 2:4]
+                      {-8*x + 5*(x-2)^3 - 5*(x-2)^2 + 14};
+                      \addplot[GraphSmooth, y_s, domain = 4:6]
+                      {32*x - 11*(x-4)^3 + 25*(x-4)^2 - 126};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The spline $ g(x) $ has continuous derivatives upto order $ 3 $.
+          \begin{align}
+              q'''_j(x_j)                  & = q'''_{j+1}(x_j)  &
+              \implies \quad 6a_{j,3}\ x_j & = 6a_{j+1,3}\ x_j    \\
+              a_{j,3}                      & = a_{j+1,3}          \\
+              q''_j(x_j)                   & = q''_{j+1}(x_j)   &
+              \implies \quad 2a_{j,2}\ x_j & = 2a_{j+1, 2}\ x_j   \\
+              a_{j,2}                      & = a_{j+1,2}          \\
+              q'_j(x_j)                    & = q'_{j+1}(x_j)    &
+              \implies \quad a_{j,1}\ x_j  & = a_{j+1, 1}\ x_j
+          \end{align}
+          Including the fact that the at the nodes, $ q_j $ and $ q_{j+1} $ have to match
+          to ensure continuity, the coefficients of adjacent cubic polynomials are equal.
+
+    \item TBC
+
+    \item The curvature is given by,
+          \begin{align}
+              k                  & = \frac{y''}{(1 + y'^2)^{3/2}} = 0 &
+              \implies \quad y'' & = 0
+          \end{align}
+          In physical systems, this corresponds to a free end of the beam which makes
+          the spline a straight line outside the domain of interpolation.
+
+    \item Bezier curves
+          \begin{enumerate}
+              \item Let the general equation be,
+                    \begin{align}
+                        \vec{r}(t) & = \vec{r}_0 + \vec{v}_0\ t + (a_1 \vec{r}_0
+                        + a_2 \vec{r_1}
+                        + b_1 \vec{v}_0 + b_2\vec{v}_1)\ t^2                          \\
+                                   & + (c_1 \vec{r}_0 + c_2 \vec{r_1} + d_1 \vec{v}_0
+                        + d_2\vec{v}_1)\ t^3
+                    \end{align}
+                    This already satisfies $ \vec{r}(0) = \vec{r}_0 $ and
+                    $ \vec{r'}(0) = \vec{v}_0 $, the two starting boundary conditions.
+                    For the other two boundary conditions,
+                    \begin{align}
+                        \vec{r}(1)  & = (1 + a_1 + c_1)\ \vec{r}_0 + (1 + b_1 + d_1)
+                        \ \vec{v}_0 +
+                        (a_2 + c_2)\ \vec{r}_1 + (b_2 + d_2)\ \vec{v}_1              \\
+                        \vec{r'}(1) & = (2a_1 + 3c_1)\ \vec{r}_0 + (1 + 2b_1 + 3d_1)
+                        \ \vec{v}_0 +
+                        (2a_2 + 3c_2)\ \vec{r}_1 + (2b_2 + 3d_2)\ \vec{v}_1
+                    \end{align}
+                    This is a set of 8 equations in 8 variables, that has the solution,
+                    \begin{align}
+                        \vec{r}(t) & = \vec{r}_0 + \vec{v}_0\ t + (-3\vec{r}_0
+                        + 3\vec{r}_1
+                        - 2\vec{v}_0 - \vec{v}_1)\ t^2
+                        + (2\vec{r}_0 - 2\vec{r}_1 + \vec{v}_0 + \vec{v}_1)\ t^3
+                    \end{align}
+                    In components this decomposes simply into
+                    \begin{align}
+                        \vec{r} & = x\ \vec{\hat{i}} + y\ \vec{\hat{j}}   &
+                        \vec{v} & = x'\ \vec{\hat{i}} + y'\ \vec{\hat{j}}
+                    \end{align}
+
+              \item Plotting the Bezier curve with the given guidepoints,
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        x_0 = 0; x_1 = 1; y_0 = 0; y_1 = 0 ;
+                                        vx_0 = 0.5; vx_1 = -0.5; vy_0 = 0.5;
+                                        vy_1 = -0.433;
+                                        rx(\t) = x_0 + vx_0 * \t + (3*x_1 - 3*x_0
+                                        -2*vx_0 - vx_1)*\t^2 + (2*x_0 - 2*x_1
+                                        +vx_0 + vx_1)*\t^3;
+                                        ry(\t) = y_0 + vy_0 * \t + (3*y_1 - 3*y_0
+                                        -2*vy_0 - vy_1)*\t^2 + (2*y_0 - 2*y_1
+                                        +vy_0 + vy_1)*\t^3;
+                                    }]
+                            \begin{axis}[width = 8cm, legend pos = outer north east,
+                                    grid = both,Ani, axis equal]
+                                \addplot[GraphSmooth, y_h, domain = 0:1, variable = \t]
+                                ({rx(t)}, {ry(t)});
+                                \node[GraphNode, inner sep = 1pt,
+                                label={-90:{\footnotesize $ A $}}]
+                                at (axis cs:0, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={-90:{\footnotesize $ B $}}]
+                                at (axis cs:1, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={0:{\footnotesize $ G_A $}}]
+                                at (axis cs:0.5, 0.5) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={180:{\footnotesize $ G_B $}}]
+                                at (axis cs:0.5, -0.433) {};
+                                \draw[black, dashed] (0, 0) -- (0.5, 0.5);
+                                \draw[black, dashed] (1, 0) -- (0.5, -0.433);
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item The curve conforms to the guidepoints for a larger window in $ t $,
+                    as the magnitude of the velocity vectors increases, keeping their
+                    direction unchanged.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        x_0 = 0; x_1 = 1; y_0 = 0; y_1 = 0 ;
+                                        vx_0 = 1; vx_1 = -1; vy_0 = 1;
+                                        vy_1 = -0.866;
+                                        rx(\t) = x_0 + vx_0 * \t + (3*x_1 - 3*x_0
+                                        -2*vx_0 - vx_1)*\t^2 + (2*x_0 - 2*x_1
+                                        +vx_0 + vx_1)*\t^3;
+                                        ry(\t) = y_0 + vy_0 * \t + (3*y_1 - 3*y_0
+                                        -2*vy_0 - vy_1)*\t^2 + (2*y_0 - 2*y_1
+                                        +vy_0 + vy_1)*\t^3;
+                                    }]
+                            \begin{axis}[width = 8cm, legend pos = outer north east,
+                                    grid = both,Ani, axis equal]
+                                \addplot[GraphSmooth, y_p, domain = 0:1, variable = \t]
+                                ({rx(t)}, {ry(t)});
+                                \node[GraphNode, inner sep = 1pt,
+                                label={-90:{\footnotesize $ A $}}]
+                                at (axis cs:0, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={-90:{\footnotesize $ B $}}]
+                                at (axis cs:1, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={0:{\footnotesize $ G_A $}}]
+                                at (axis cs:0.5, 0.5) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={180:{\footnotesize $ G_B $}}]
+                                at (axis cs:0.5, -0.433) {};
+                                \draw[black, dashed] (0, 0) -- (0.5, 0.5);
+                                \draw[black, dashed] (1, 0) -- (0.5, -0.433);
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Other changes TBC.
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}[declare function = {
+                                        x_0 = 0; x_1 = 1; y_0 = 0; y_1 = 0 ;
+                                        vx_0 = 0; vx_1 = 0; vy_0 = 1;
+                                        vy_1 = -1;
+                                        rx(\t) = x_0 + vx_0 * \t + (3*x_1 - 3*x_0
+                                        -2*vx_0 - vx_1)*\t^2 + (2*x_0 - 2*x_1
+                                        +vx_0 + vx_1)*\t^3;
+                                        ry(\t) = y_0 + vy_0 * \t + (3*y_1 - 3*y_0
+                                        -2*vy_0 - vy_1)*\t^2 + (2*y_0 - 2*y_1
+                                        +vy_0 + vy_1)*\t^3;
+                                    }]
+                            \begin{axis}[width = 8cm, legend pos = outer north east,
+                                    grid = both,Ani, axis equal,
+                                    ymax = 1.1, ymin = -1.1]
+                                \addplot[GraphSmooth, y_s, domain = 0:1, variable = \t]
+                                ({rx(t)}, {ry(t)});
+                                \node[GraphNode, inner sep = 1pt,
+                                label={0:{\footnotesize $ A $}}]
+                                at (axis cs:0, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={180:{\footnotesize $ B $}}]
+                                at (axis cs:1, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={0:{\footnotesize $ G_A $}}]
+                                at (axis cs:0, 1) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={180:{\footnotesize $ G_B $}}]
+                                at (axis cs:1, -1) {};
+                                \draw[black, dashed] (0, 0) -- (0, 1);
+                                \draw[black, dashed] (1, 0) -- (1, -1);
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}[declare function = {
+                                        x_0 = 0; x_1 = 1; y_0 = 0; y_1 = 0 ;
+                                        vx_0 = 0; vx_1 = 0; vy_0 = 0.25;
+                                        vy_1 = -0.25;
+                                        rx(\t) = x_0 + vx_0 * \t + (3*x_1 - 3*x_0
+                                        -2*vx_0 - vx_1)*\t^2 + (2*x_0 - 2*x_1
+                                        +vx_0 + vx_1)*\t^3;
+                                        ry(\t) = y_0 + vy_0 * \t + (3*y_1 - 3*y_0
+                                        -2*vy_0 - vy_1)*\t^2 + (2*y_0 - 2*y_1
+                                        +vy_0 + vy_1)*\t^3;
+                                    }]
+                            \begin{axis}[width = 8cm, legend pos = outer north east,
+                                    grid = both,Ani, axis equal,]
+                                \addplot[GraphSmooth, azure4, domain = 0:1,
+                                    variable = \t]
+                                ({rx(t)}, {ry(t)});
+                                \node[GraphNode, inner sep = 1pt,
+                                label={0:{\footnotesize $ A $}}]
+                                at (axis cs:0, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={180:{\footnotesize $ B $}}]
+                                at (axis cs:1, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={0:{\footnotesize $ G_A $}}]
+                                at (axis cs:0, 0.25) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={180:{\footnotesize $ G_B $}}]
+                                at (axis cs:1, -0.25) {};
+                                \draw[black, dashed] (0, 0) -- (0, 0.25);
+                                \draw[black, dashed] (1, 0) -- (1, -0.25);
+                            \end{axis}
+                        \end{tikzpicture}
+                        \begin{tikzpicture}[declare function = {
+                                        x_0 = 0; x_1 = 1; y_0 = 0; y_1 = 0 ;
+                                        vx_0 = -0.5; vx_1 = -0.5; vy_0 = -0.5;
+                                        vy_1 = -0.433;
+                                        rx(\t) = x_0 + vx_0 * \t + (3*x_1 - 3*x_0
+                                        -2*vx_0 - vx_1)*\t^2 + (2*x_0 - 2*x_1
+                                        +vx_0 + vx_1)*\t^3;
+                                        ry(\t) = y_0 + vy_0 * \t + (3*y_1 - 3*y_0
+                                        -2*vy_0 - vy_1)*\t^2 + (2*y_0 - 2*y_1
+                                        +vy_0 + vy_1)*\t^3;
+                                    }]
+                            \begin{axis}[width = 8cm, legend pos = outer north east,
+                                    grid = both,Ani, axis equal,
+                                    xmax = 1.2, xmin = -0.6]
+                                \addplot[GraphSmooth, y_h, domain = 0:1, variable = \t,]
+                                ({rx(t)}, {ry(t)});
+                                \node[GraphNode, inner sep = 1pt,
+                                label={90:{\footnotesize $ A $}}]
+                                at (axis cs:0, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={-90:{\footnotesize $ B $}}]
+                                at (axis cs:1, 0) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={0:{\footnotesize $ G_A $}}]
+                                at (axis cs:-0.5, -0.5) {};
+                                \node[GraphNode, inner sep = 1pt,
+                                label={180:{\footnotesize $ G_B $}}]
+                                at (axis cs:0.5, -0.433) {};
+                                \draw[black, dashed] (0, 0) -- (-0.5, -0.5);
+                                \draw[black, dashed] (1, 0) -- (0.5, -0.433);
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+          \end{enumerate}
+\end{enumerate}

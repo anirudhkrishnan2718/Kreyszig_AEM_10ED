@@ -1,0 +1,644 @@
+\section{Linear Systems: Gauss Elimination}
+
+\begin{enumerate}
+    \item Solving geometrically,
+    \item Solving geometrically,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_1 = 1; b_1 = -4; c_1 = 20.1;
+                              a_2 = 3; b_2 = 5; c_2 = 5.9;
+                              line_one(\x) = (c_1/b_1) + \x * (-a_1/b_1);
+                              line_two(\x) = (c_2/b_2) + \x * (-a_2/b_2);
+                          }]
+                  \begin{axis}[title =
+                              {Intersection at $ (7.3, -3.2) $},
+                          xlabel = $ x_1 $, ylabel = $ x_2 $, Ani, axis equal,
+                          grid = both, width = 8cm, domain = 6:8]
+                      \addplot[GraphSmooth, color = y_h] {line_one(x)};
+                      \addplot[GraphSmooth, color = y_p] {line_two(x)};
+                      \node[GraphNode, inner sep = 1pt, fill = black]
+                      at (axis cs:7.3, -3.2) {};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}[declare function = {
+                              a_1 = -5; b_1 = 8.4; c_1 = 0;
+                              a_2 = 10.25; b_2 = -17.22; c_2 = 0;
+                              line_one(\x) = (c_1/b_1) + \x * (-a_1/b_1);
+                              line_two(\x) = (c_2/b_2) + \x * (-a_2/b_2);
+                          }]
+                  \begin{axis}[title =
+                              {Lines are coincident},
+                          xlabel = $ x_1 $, ylabel = $ x_2 $, Ani, axis equal,
+                          grid = both, width = 8cm, domain = 1.6:1.8]
+                      \addplot[GraphSmooth, color = y_h] {line_one(x)};
+                      \addplot[GraphSmooth, color = y_p] {line_two(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Solving geometrically,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {
+                              a_1 = 7.2; b_1 = -3.5; c_1 = 16;
+                              a_2 = -14.4; b_2 = 7; c_2 = 31;
+                              line_one(\x) = (c_1/b_1) + \x * (-a_1/b_1);
+                              line_two(\x) = (c_2/b_2) + \x * (-a_2/b_2);
+                          }]
+                  \begin{axis}[title =
+                              {Lines are parallel},
+                          xlabel = $ x_1 $, ylabel = $ x_2 $, Ani, axis equal,
+                          grid = both, width = 8cm, domain = -5:5]
+                      \addplot[GraphSmooth, color = y_h] {line_one(x)};
+                      \addplot[GraphSmooth, color = y_p] {line_two(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \Gausstwo{6}{2}{-3}{4}{-2}{6}    &
+                  & = \Gausstwo{6}{2}{-3}{0}{-10/3}{8}   \\
+              x_2 & = -2.4                             &
+              x_1 & = 0.3
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \Gausstwo{2}{-8}{-4}{3}{1}{7}                       &
+                  & = \Gausstwo{3}{1}{7}{2}{-8}{-4}                         \\
+                  & = \Gausstwo{3}{1}{7}{0}{-\frac{26}{3}}{-\frac{26}{3}}   \\
+              x_2 & = 1                                                   &
+              x_1 & = 2
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \Gausstwo{25.38}{-15.48}{30.60}{-14.10}{8.6}{-17} &
+                  & = \Gausstwo{25.38}{-15.48}{30.60}{0}{0}{0}            \\
+              x_2 & = t                                                 &
+              x_1 & = \frac{30.6 + 15.48 t}{25.38}
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          -3 & 6 & -9 & -46.725 \\
+                          1 & -4 & 3 & 19.571 \\
+                          2 & 5 & -7 & -20.073 \\
+                      \end{bNiceArray} &
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          -3 & 6 & -9 & -46.725 \\
+                          0 & -2 & 0 & 3.996 \\
+                          0 & 9 & -13 & -51.223 \\
+                      \end{bNiceArray}  \\
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          -3 & 6 & -9 & -46.725 \\
+                          0 & -2 & 0 & 3.996 \\
+                          0 & 0 & -13 & -33.241 \\
+                      \end{bNiceArray} &
+              x_3 & = 2.557                                \\
+              x_2 & = -1.998                             &
+              x_1 & = 3.908
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+               & = \begin{bNiceArray}{rrr|r}[margin]
+                       \CodeBefore
+                       \columncolor[opacity=0.05]{black}{4}
+                       \Body
+                       5 & 3 & 1 & 2 \\
+                       0 & -4 & 8 & -3 \\
+                       10 & -6 & 26 & 0 \\
+                   \end{bNiceArray} &
+               & = \begin{bNiceArray}{rrr|r}[margin]
+                       \CodeBefore
+                       \columncolor[opacity=0.05]{black}{4}
+                       \Body
+                       10 & -6 & 26 & 0 \\
+                       5 & 3 & 1 & 2 \\
+                       0 & -4 & 8 & -3 \\
+                   \end{bNiceArray} \\
+               & = \begin{bNiceArray}{rrr|r}[margin]
+                       \CodeBefore
+                       \columncolor[opacity=0.05]{black}{4}
+                       \Body
+                       10 & -6 & 26 & 0 \\
+                       0 & 6 & -12 & 2 \\
+                       0 & -4 & 8 & -3 \\
+                   \end{bNiceArray} &
+               & = \begin{bNiceArray}{rrr|r}[margin]
+                       \CodeBefore
+                       \columncolor[opacity=0.05]{black}{4}
+                       \Body
+                       10 & -6 & 26 & 0 \\
+                       0 & 6 & -12 & 2 \\
+                       0 & 0 & 0 & -5/3 \\
+                   \end{bNiceArray} \\
+               & \text{no solution}
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          0 & 6 & 13 & 137.86 \\
+                          6 & 0 & -8 & -85.88 \\
+                          13 & -8 & 0 & 178.54 \\
+                      \end{bNiceArray} &
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          13 & -8 & 0 & 178.54 \\
+                          0 & 6 & 13 & 137.86 \\
+                          6 & 0 & -8 & -85.88 \\
+                      \end{bNiceArray}  \\
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          13 & -8 & 0 & 178.54 \\
+                          0 & 6 & 13 & 137.86 \\
+                          0 & \frac{48}{13} & -8 & -168.28 \\
+                      \end{bNiceArray} &
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          13 & -8 & 0 & 178.54 \\
+                          0 & 6 & 13 & 137.86 \\
+                          0 & 0 & -16 & -253.12 \\
+                      \end{bNiceArray}  \\
+              x_3 & = 15.82                                \\
+              x_2 & = -11.3                              &
+              x_1 & = 6.78
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          4 & 4 & 2 & 0\\
+                          3 & -1 & 2 & 0 \\
+                          3 & 7 & 1 & 0\\
+                      \end{bNiceArray} &
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          4 & 4 & 2 & 0\\
+                          0 & -4 & 0.5 & 0 \\
+                          0 & 4 & -0.5 & 0\\
+                      \end{bNiceArray}  \\
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          4 & 4 & 2 & 0\\
+                          0 & -4 & 0.5 & 0 \\
+                          0 & 0 & 0 & 0\\
+                      \end{bNiceArray}  \\
+              x_3 & = t                                  &
+              x_2 & = \frac{t}{8}                          \\
+              x_1 & = -\frac{5t}{8}
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          3.4 & -6.12 & -2.72 & 0\\
+                          -1 & 1.8 & 0.8 & 0 \\
+                          2.7 & -4.86 & 2.16 & 0\\
+                      \end{bNiceArray} &
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          3.4 & -6.12 & -2.72 & 0\\
+                          0 & 0 & 0 & 0 \\
+                          0 & 0 & 4.32 & 0\\
+                      \end{bNiceArray}  \\
+              x_3 & = 0                                  &
+              x_2 & = t                                    \\
+              x_1 & = 1.8 t
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+               & = \begin{bNiceArray}{rrr|r}[margin]
+                       \CodeBefore
+                       \columncolor[opacity=0.05]{black}{4}
+                       \Body
+                       5 & 3 & 1 & 2\\
+                       0 & -4 & 8 & -3 \\
+                       10 & -6 & 26 & 0\\
+                   \end{bNiceArray} &
+               & = \begin{bNiceArray}{rrr|r}[margin]
+                       \CodeBefore
+                       \columncolor[opacity=0.05]{black}{4}
+                       \Body
+                       10 & -6 & 26 & 0\\
+                       0 & 6 & -12 & 2\\
+                       0 & -4 & 8 & -3 \\
+                   \end{bNiceArray} \\
+               & = \begin{bNiceArray}{rrr|r}[margin]
+                       \CodeBefore
+                       \columncolor[opacity=0.05]{black}{4}
+                       \Body
+                       10 & -6 & 26 & 0\\
+                       0 & 6 & -12 & 2\\
+                       0 & 0 & 0 & -5/3 \\
+                   \end{bNiceArray} &
+               & \text{no solution}
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          0 & 3 & 5 & 1.20736 \\
+                          3 & -4 & 0 & -2.34066 \\
+                          5 & 0 & 6 & -0.329193 \\
+                      \end{bNiceArray}   &
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          5 & 0 & 6 & -0.329193 \\
+                          3 & -4 & 0 & -2.34066 \\
+                          0 & 3 & 5 & 1.20736 \\
+                      \end{bNiceArray}    \\
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          5 & 0 & 6 & -0.329193 \\
+                          0 & -4 & \frac{-18}{5} & -2.1431442 \\
+                          0 & 3 & 5 & 1.20736 \\
+                      \end{bNiceArray} &
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          5 & 0 & 6 & -0.329193 \\
+                          0 & -4 & \frac{-18}{5} & -2.1431442 \\
+                          0 & 0 & 2.3 & -0.39999815 \\
+                      \end{bNiceArray}    \\
+              x_3 & = -0.173912                            &
+              x_2 & = 0.692307                               \\
+              x_1 & = 0.142856
+          \end{align}
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          -47 & 4 & -7 & -118 \\
+                          19 & -3 & 2 & 43 \\
+                          -15 & 5 & 0 & -25 \\
+                      \end{bNiceArray}                     &
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          -47 & 4 & -7 & -118 \\
+                          0 & -\frac{65}{47} & -\frac{39}{47} & -\frac{221}{47} \\
+                          0 & \frac{175}{47} & \frac{105}{47} & \frac{595}{47} \\
+                      \end{bNiceArray}    \\
+                  & = \begin{bNiceArray}{rrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{4}
+                          \Body
+                          -47 & 4 & -7 & -118 \\
+                          0 & -65 & -39 & -221 \\
+                          0 & 0 & 0 & 0 \\
+                      \end{bNiceArray}                     &
+              x_3 & = t                                                        \\
+              x_2 & = \frac{17}{5} - \frac{3 t}{5}                           &
+              x_1 & = \frac{14}{5} - \frac{t}{5}
+          \end{align}
+          A computer may give a unique solution to this problem because of rounding
+          erorrs arising from converting the rational numbers into machine numbers.
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          0 & 2.2 & 1.5 & -3.3 & -9.3 \\
+                          0.2 & 1.8 & 0 & 4.2 & 9.24 \\
+                          -1 & -3.1 & 2.5 & 0 & -8.7 \\
+                          0.5 & 0 & -3.8 & 1.5 & 11.94 \\
+                      \end{bNiceArray}                       &
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          -1 & -3.1 & 2.5 & 0 & -8.7 \\
+                          0 & 2.2 & 1.5 & -3.3 & -9.3 \\
+                          0.5 & 0 & -3.8 & 1.5 & 11.94 \\
+                          0.2 & 1.8 & 0 & 4.2 & 9.24 \\
+                      \end{bNiceArray}                        \\
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          -1 & -3.1 & 2.5 & 0 & -8.7 \\
+                          0 & 2.2 & 1.5 & -3.3 & -9.3 \\
+                          0 & -1.55 & -2.55 & 1.5 & 7.59 \\
+                          0 & 1.18 & 0.5 & 4.2 & 7.5 \\
+                      \end{bNiceArray}                       &
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          -1 & -3.1 & 2.5 & 0 & -8.7 \\
+                          0 & 2.2 & 1.5 & -3.3 & -9.3 \\
+                          0 & 0 & - \frac{657}{440} &
+                          - \frac{33}{40} & \frac{2283}{2200} \\
+                          0 & 0 & - \frac{67}{220} &
+                          \frac{597}{100} & \frac{13737}{1100} \\
+                      \end{bNiceArray}                       \\
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          -1 & -3.1 & 2.5 & 0 & -8.7 \\
+                          0 & 2.2 & 1.5 & -3.3 & -9.3 \\
+                          0 & 0 & - 657 & - 363 & \frac{2283}{5} \\
+                          0 & 0 & - 67 & \frac{6567}{5} & \frac{13737}{5} \\
+                      \end{bNiceArray}         &
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          -1 & -3.1 & 2.5 & 0 & -8.7 \\
+                          0 & 2.2 & 1.5 & -3.3 & -9.3 \\
+                          0 & 0 & - 657 & - 363 & \frac{2283}{5} \\
+                          0 & 0 & 0 & \frac{1478708}{1095} & \frac{2957416}{1095} \\
+                      \end{bNiceArray}    \\
+              x_4 & = 2                                                        &
+              x_3 & = -\frac{9}{5}                                               \\
+              x_2 & = 0                                                        &
+              x_1 & = \frac{21}{5}
+          \end{align}
+          A computer may give a different solution to this problem because of rounding
+          erorrs arising from converting the rational numbers into machine numbers.
+
+
+    \item Solving by Gauss elimination with pivoting,
+          \begin{align}
+              \vec{\tilde{A}}
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          3.2 & 1.6 & 0 & 0 & -0.8 \\
+                          1.6 & -0.8 & 2.4 & 0 & 16 \\
+                          0 & 2.4 & -4.8 & 3.6 & -39 \\
+                          0 & 0 & 3.6 & 2.4 & 10.2 \\
+                      \end{bNiceArray} &
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          3.2 & 1.6 & 0 & 0 & -0.8 \\
+                          0 & -1.6 & 2.4 & 0 & 16.4 \\
+                          0 & 2.4 & -4.8 & 3.6 & -39 \\
+                          0 & 0 & 3.6 & 2.4 & 10.2 \\
+                      \end{bNiceArray}  \\
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          3.2 & 1.6 & 0 & 0 & -0.8 \\
+                          0 & -1.6 & 2.4 & 0 & 16.4 \\
+                          0 & 0 & -1.2 & 3.6 & -14.4 \\
+                          0 & 0 & 3.6 & 2.4 & 10.2 \\
+                      \end{bNiceArray} &
+                  & = \begin{bNiceArray}{rrrr|r}[margin]
+                          \CodeBefore
+                          \columncolor[opacity=0.05]{black}{5}
+                          \Body
+                          3.2 & 1.6 & 0 & 0 & -0.8 \\
+                          0 & -1.6 & 2.4 & 0 & 16.4 \\
+                          0 & 0 & - 1.2 & 3.6 & - 14.4 \\
+                          0 & 0 & 0 & 13.2 & -33 \\
+                      \end{bNiceArray}  \\
+              x_4 & = -2.5                               &
+              x_3 & = 4.5                                  \\
+              x_2 & = -3.5                               &
+              x_1 & = 1.5
+          \end{align}
+
+    \item Coded in \texttt{numpy}. Only the sorting subroutine was used for
+          partial pivoting. Results for all problems in this set used to verify.
+
+    \item Linear Systems
+          \begin{enumerate}
+              \item The given system is,
+                    \begin{align}
+                        \vec{\tilde{A}} & = \Gausstwo{a}{1}{b}{1}{1}{3}    &
+                        \det{\vec{A}}   & = a-1                              \\
+                        a               & = 1,\  b = 3                     &
+                        \implies        & \text{infinitely many solutions}   \\
+                        a               & = 1,\  b \neq 3                  &
+                        \implies        & \text{no solution}                 \\
+                        a               & \neq 1                           &
+                        \implies        & \text{unique solution}
+                    \end{align}
+
+              \item For the first system,
+                    \begin{align}
+                        \vec{\tilde{A}}
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 1 & 1 & 1 & 3 \\
+                                 4 & 2 & -1 & 5 \\
+                                 9 & 5 & -1 & 13 \\
+                             \end{bNiceArray}                 &
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 9 & 5 & -1 & 13 \\
+                                 1 & 1 & 1 & 3 \\
+                                 4 & 2 & -1 & 5 \\
+                             \end{bNiceArray}               \\
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 9 & 5 & -1 & 13 \\
+                                 0 & \frac{4}{9} & \frac{10}{9} & \frac{14}{9} \\
+                                 0 & - \frac{2}{9} & - \frac{5}{9} & - \frac{7}{9} \\
+                             \end{bNiceArray} &
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 9 & 5 & -1 & 13 \\
+                                 0 & 4 & 10 & 14 \\
+                                 0 & -2 & -5 & -7 \\
+                             \end{bNiceArray}               \\
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 9 & 5 & -1 & 13 \\
+                                 0 & 4 & 10 & 14 \\
+                                 0 & 0 & 0 & 0 \\
+                             \end{bNiceArray}                 &
+                         & \text{infinitely many solutions}
+                    \end{align}
+                    For the second system,
+                    \begin{align}
+                        \vec{\tilde{A}}
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 1 & 1 & 1 & 3 \\
+                                 4 & 2 & -1 & 5 \\
+                                 9 & 5 & -1 & 12 \\
+                             \end{bNiceArray}                 &
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 9 & 5 & -1 & 12 \\
+                                 1 & 1 & 1 & 3 \\
+                                 4 & 2 & -1 & 5 \\
+                             \end{bNiceArray}               \\
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 9 & 5 & -1 & 13 \\
+                                 0 & \frac{4}{9} & \frac{10}{9} & \frac{5}{3} \\
+                                 0 & - \frac{2}{9} & - \frac{5}{9} & - \frac{7}{9} \\
+                             \end{bNiceArray} &
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 9 & 5 & -1 & 13 \\
+                                 0 & 4 & 10 & 15 \\
+                                 0 & -2 & -5 & -7 \\
+                             \end{bNiceArray}               \\
+                         & = \begin{bNiceArray}{rrr|r}[margin]
+                                 \CodeBefore
+                                 \columncolor[opacity=0.05]{black}{4}
+                                 \Body
+                                 9 & 5 & -1 & 13 \\
+                                 0 & 4 & 10 & 14 \\
+                                 0 & 0 & 0 & 0.5 \\
+                             \end{bNiceArray}                 &
+                         & \text{no solution}
+                    \end{align}
+
+              \item Rounding errors might change the computed coefficient determinant
+                    to be nonzero, which makes the trivial solution a possible answer,
+                    when the system is homogeneous.
+
+              \item First solving without pivoting,
+                    \begin{align}
+                        \vec{\hat{A}} & = \Gausstwo{\epsilon}{1}{1}{1}{1}{2} &
+                                      & = \Gausstwo{\epsilon}{1}{1}
+                        {0}{1 - \frac{1}{\epsilon}}{2 - \frac{1}{\epsilon}}    \\
+                        x_2           & = \frac{2\epsilon - 1}{\epsilon - 1} &
+                        \lim_{\epsilon \to 0} x_2
+                                      & = 1                                    \\
+                        x_1           & = \frac{-1}{\epsilon - 1}            &
+                        \lim_{\epsilon \to 0} x_1
+                                      & = 1                                    \\
+                        x_2^*         & = 1                                  &
+                        x_1^*         & = 0
+                    \end{align}
+                    Now, with pivoting,
+                    \begin{align}
+                        \vec{\hat{A}} & = \Gausstwo{1}{1}{2}{\epsilon}{1}{1} &
+                                      & = \Gausstwo{1}{1}{2}
+                        {0}{1 - \epsilon}{1 - 2\epsilon}                       \\
+                        x_2^*         & = 1                                  &
+                        x_1^*         & = 1
+                    \end{align}
+
+              \item First solving without pivoting, and $ 3S $
+                    \begin{align}
+                        \vec{\hat{A}}       & = \Gausstwo{4.03}{2.16}{-4.61}
+                        {6.21}{3.35}{-7.19} &
+                                            & = \Gausstwo{4.03}{2.16}{-4.61}
+                        {0}{0.02}{-0.09}                                       \\
+                        x_2^*               & = \color{y_h} -4.5             &
+                        x_1^*               & = \color{y_h} 1.27
+                    \end{align}
+                    Now, with pivoting,
+                    \begin{align}
+                        \vec{\hat{A}}       & = \Gausstwo{6.21}{3.35}{-7.19}
+                        {4.03}{2.16}{-4.61} &
+                                            & = \Gausstwo{6.21}{3.35}{-7.19}
+                        {0}{-0.01}{0.06}                                       \\
+                        x_2^*               & = \color{y_p} -6               &
+                        x_1^*               & = \color{y_p} 2.08
+                    \end{align}
+
+                    First solving without pivoting, and $ 4S $
+                    \begin{align}
+                        \vec{\hat{A}}       & = \Gausstwo{4.03}{2.16}{-4.61}
+                        {6.21}{3.35}{-7.19} &
+                                            & = \Gausstwo{4.03}{2.16}{-4.61}
+                        {0}{0.022}{-0.086}                                     \\
+                        x_2^*               & = \color{y_h} -3.909           &
+                        x_1^*               & = \color{y_h} 0.9511
+                    \end{align}
+                    Now, with pivoting,
+                    \begin{align}
+                        \vec{\hat{A}}       & = \Gausstwo{6.21}{3.35}{-7.19}
+                        {4.03}{2.16}{-4.61} &
+                                            & = \Gausstwo{6.21}{3.35}{-7.19}
+                        {0}{-0.014}{0.055}                                     \\
+                        x_2^*               & = \color{y_p} -3.928           &
+                        x_1^*               & = \color{y_p} 0.9613
+                    \end{align}
+                    The true solution is $ (-4, 1) $ and an increase in accuracy is
+                    observed when more significant digits are used.
+          \end{enumerate}
+\end{enumerate}

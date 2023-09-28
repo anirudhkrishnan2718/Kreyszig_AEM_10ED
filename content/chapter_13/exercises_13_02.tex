@@ -1,0 +1,967 @@
+\section{Polar Form of Complex Numbers, Powers and Roots}
+
+\begin{enumerate}
+    \item Plotting on the complex plane,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -0.25, xmax = 1.25, ymin = -0.25, ymax = 1.25,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = 1 + \i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:1,1);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, above left]{$ \sqrt{2} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$\pi/4$",
+                      angle eccentricity=1.5, angle radius = 1cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Plotting on the complex plane,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -5, xmax = 2, ymin = -1, ymax = 5,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -4 + 4\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-4,4);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, above right]{$ 4\sqrt{2} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$3\pi/4$",
+                      angle eccentricity=1.5, angle radius = 1cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Plotting on the complex plane,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -2, xmax = 2, ymin = -1, ymax = 3,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = 2\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:0,2);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, right]{$ 2 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$\pi/2$",
+                      angle eccentricity=1.5, angle radius = 1cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -2, xmax = 2, ymin = -3, ymax = 1,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -2\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:0,-2);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, right]{$ 2 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, {Triangle}-, "$-\pi/2$",
+                          angle eccentricity=1.5, angle radius = 1cm] {angle = Z--O--X};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Plotting on the complex plane,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -6, xmax = 3, ymin = -2, ymax = 2,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -5 $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-5,0);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, above]{$ 5 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$\pi$",
+                      angle eccentricity=1.5, angle radius = 1cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Simplifying,
+          \begin{align}
+              z & = \frac{\sqrt{2} + \i/3}{-\sqrt{8} - 2\i/3}
+              = \frac{-4 - 2/9}{8 + 4/9} = \frac{-38}{76} = \frac{-1}{2} + 0\ \i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -0.5 $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-0.5,0);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, above]{$ 0.5 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$\pi$",
+                      angle eccentricity=1.5, angle radius = 0.5cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Simplifying,
+          \begin{align}
+              z & = \frac{\sqrt{3} - 10\i}{-0.5\sqrt{3} + 5\i}
+              = \frac{-51.5}{103/4} = -2 + 0\ \i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -3, xmax = 3, ymin = -1, ymax = 1,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -2 $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-2,0);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, above]{$ 2 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$\pi$",
+                      angle eccentricity=1.5, angle radius = 0.5cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting on the complex plane, with $ \theta = \arctan(\pi/2) $ and
+          $ \abs{z} = \sqrt{1 + \pi^2/4} $
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -1, xmax = 2, ymin = -1, ymax = 3,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = 1 + \frac{\pi}{2}\ \i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:1,pi/2);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, right]{$ \abs{z} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$\theta$",
+                      angle eccentricity=1.25, angle radius = 0.8cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Simplifying,
+          \begin{align}
+              z      & = \frac{-4 + 19\i}{2 + 5\i}
+              = \frac{87 + 58 \i}{29} = 3 + 2 \i   \\
+              \theta & = \arctan(2/3)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -0.5, xmax = 2.5, ymin = -0.5, ymax = 3.5,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = 2 + 3\ \i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:2,3);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, right]{$ \sqrt{13} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$\theta$",
+                      angle eccentricity=1.25, angle radius = 0.8cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting on the complex plane,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -1.5, xmax = 1.5, ymin = -0.5, ymax = 1.5,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -1 + \i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-1,1);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, left=6]{$ \sqrt{2} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$3\pi/4$",
+                      angle eccentricity=1.5, angle radius = 0.8cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Plotting on the complex plane, with
+          \begin{align}
+              \Arg(z_1) & = \pi                 &
+              \Arg(z_2) & = -\pi + \arctan(1/5)   \\
+              \Arg(z_3) & = \pi + \arctan(-1/5)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -6, xmax = 2, ymin = -1, ymax = 1,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -5 $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-5,0);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, above=6]{$ 5 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$\pi$",
+                      angle eccentricity=1.5, angle radius = 0.8cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -6, xmax = 2, ymin = -2, ymax = 2,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -5 - \i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-5,-1);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, below]{$ \sqrt{26} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, {Triangle}-, "$ \theta_2 $",
+                          angle eccentricity=1.5, angle radius = 0.8cm]
+                      {angle = Z--O--X};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -6, xmax = 2, ymin = -2, ymax = 2,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -5 + \i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-5,1);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, above]{$ \sqrt{26} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \theta_3 $",
+                      angle eccentricity=1.5, angle radius = 0.8cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Plotting on the complex plane, with
+          \begin{align}
+              \Arg(z_1) & = \arctan(4/3)  &
+              \Arg(z_2) & = \arctan(-4/3)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -1, xmax = 4, ymin = -0.5, ymax = 4.5,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = 3 + 4\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:3,4);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, right]{$ 5 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \theta_1 $",
+                      angle eccentricity=1.5, angle radius = 0.8cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -1, xmax = 4, ymin = -4.5, ymax = 0.5,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = 3 - 4\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:3,-4);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, right]{$ 5 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, {Triangle}-, "$ \theta_2 $",
+                          angle eccentricity=1.5, angle radius = 0.8cm]
+                      {angle = Z--O--X};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Plotting on the complex plane, with
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -4, xmax = 2, ymin = -4, ymax = 2,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -\pi - \pi\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-pi,-pi);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, below right]{$ \pi\sqrt{2} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, {Triangle}-, "$ -3\pi/4 $",
+                          angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = Z--O--X};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Simplifying,
+          \begin{align}
+              w & = (1 + i) & w^4 & = (1 + i)^4 = [(1 + i)^2]^2 = -4 \\
+              z & = w^{20}  & z   & = (-4)^5 = -1024 + 0\i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -1100, xmax = 400, ymin = -650, ymax = 650,
+                          axis equal, width = 8cm, axis lines = center,
+                          xtick = {-512, -1024}, ytick = {-512, 512},
+                          title = {$ z = -1024 $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-1024,0);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, above=6]{$ 1024 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$\pi$",
+                      angle eccentricity=1.5, angle radius = 0.8cm] {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+    \item Plotting on the complex plane, with
+          \begin{align}
+              \Arg(z_1) & = \pi + \arctan(-1/10) &
+              \Arg(z_2) & = -\pi + \arctan(1/10)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -1.1, xmax = 0.5, ymin = -1, ymax = 1,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -1 + 0.1\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-1,0.1);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, above]{$ \sqrt{1.01} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \theta_1 $",
+                      angle eccentricity=1.5, angle radius = 0.8cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -1.1, xmax = 0.5, ymin = -1, ymax = 1,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -1 - 0.1\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-1,-0.1);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, below = 10]{$ \sqrt{1.01} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, {Triangle}-, "$ \theta_2 $",
+                          angle eccentricity=1.5, angle radius = 0.8cm]
+                      {angle = Z--O--X};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the polar representation, with $ r = 3, \theta = \pi/2 $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -2.5, xmax = 2.5, ymin = -4, ymax = 1,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = 0 - 3\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:0,-3);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, right = 2]{$ 3 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, {Triangle}-, "$ -\pi/2 $",
+                          angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = Z--O--X};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the polar representation, with $ r = 6, \theta = \pi/3 $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -1, xmax = 4, ymin = -1, ymax = 6,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = 3 + 3\sqrt{3}\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:3, 5.196);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, right = 2]{$ 6 $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \pi/3 $",
+                      angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the polar representation, with $ r = \sqrt{8}, \theta = \pi/4 $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -0.5, xmax = 2.5, ymin = -0.5, ymax = 2.5,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = 2 + 2\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:2, 2);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, right = 5]{$ 2\sqrt{2} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \pi/4 $",
+                      angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the polar representation, with $ r = \sqrt{50}, \theta = 3\pi/4 $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          grid = none,Ani,xlabel = $ \Re{} $, ylabel = $ \Im{} $,
+                          xmin = -30, xmax = 10, ymin = -10, ymax = 30,
+                          axis equal, width = 8cm, axis lines = center,
+                          title = {$ z = -25 + 25\i $}]
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-25, 25);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thick, black] (O) -- (Z)
+                      node[color = y_p, midway, above right]{$ 25\sqrt{2} $};
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ 3\pi/4 $",
+                      angle eccentricity=1.5, angle radius = 0.8cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using \texttt{numpy}, to find the zeros of $ -1 $, for
+          the illustrative case $ n = 10$ as illustrative examples. \par
+          For a general complex number $ z \neq -1 $, such that
+          \begin{align}
+              w & = z^{1/n}
+          \end{align}
+          The set of all roots of $ z $ is now $ \{\omega_k \cdot w\} $. Since the roots
+          have equal magnitude and are evenly oriented around the full $ 2\pi $ angle,
+          this is readily visible in a plot.
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_13_01_19.csv}
+              \anitableseven
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ n=10 $}, axis equal,
+                          height = 10cm, width = 10cm,
+                          grid = both,Ani,]
+                      \addplot[GraphSmooth, domain = 0:2*pi, dotted, black]
+                      ({cos(x)}, {sin(x)});
+                      \addplot[mark options={mark size = 2pt}, only marks,
+                          color = y_p] table[x index=0,y index=1, col sep=comma, ]
+                          {\anitableseven};
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:0.809, 0.5878);
+                      \coordinate (X) at (axis cs:1,0);
+                      \draw[thin, y_h] (O) -- (X);
+                      \draw[thin, y_h] (O) -- (Z);
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \pi/5 $",
+                      angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Square roots of complex numbers,
+          \begin{enumerate}
+              \item To find the $ n $ roots of a complex number when $ n=2 $,
+                    \begin{align}
+                        w           & = \sqrt{z}                         &
+                        z           & = r\ [\cos\theta + \i\ \sin\theta]   \\
+                        \abs{w_k}   & = \abs{z}^{1/2}                    &
+                                    & = \sqrt{r}                           \\
+                        \arg{(w_k)} & = \frac{\theta + 2k\pi}{2}         &
+                                    & = \frac{\theta}{2} + k\pi            \\
+                        w_1         & = \sqrt{r}\ [\cos(\theta/2)
+                        + \i\ \sin(\theta/2)]                              \\
+                        w_2         & = \sqrt{r}\ [\cos(\pi + \theta/2)
+                        + \i\ \sin(\pi + \theta/2)]
+                    \end{align}
+                    Using the properties of trigonometric functions, $ w_2 = -w_1 $
+
+              \item Using the half angle formulas,
+                    \begin{align}
+                        \cos^2(\theta/2)   & = \frac{1 + \cos\theta}{2} &
+                        \sin^2(\theta/2)   & = \frac{1 - \cos\theta}{2}   \\
+                        r\cos(\theta/2)    & = \sqrt{r} \cdot
+                        \sqrt{\frac{r
+                        + r\cos\theta}{2}} &
+                        r\sin(\theta/2)    & = \sqrt{r} \cdot
+                        \sqrt{\frac{r
+                        - r\cos\theta}{2}} &
+                    \end{align}
+                    Now, using the polar representation of $ \sqrt{z} $,
+                    \begin{align}
+                        w_1 = \sqrt{z} & = \sqrt{r}\ [\cos(\theta/2)
+                        + \i\ \sin(\theta/2)]                           \\
+                                       & = \sqrt{\frac{\abs{z} + x}{2}}
+                        + \i\ (\sgn{y}) \ \sqrt{\frac{\abs{z} - x}{2}}  \\
+                        w_2            & = -w_1
+                    \end{align}
+                    The signum comes from the fact that the sign of $ y $ determines
+                    whether the positive or negative root of $ \sin^2\theta $ will be
+                    taken in the second step.
+
+              \item Using the new method,
+                    \begin{align}
+                        z_1        & = -14\i                               &
+                        \sqrt{z_1} & = \sqrt{\frac{14 + 0}{2}}
+                        + \i\ (-1) \cdot \sqrt{\frac{14 - 0}{2}}             \\
+                        \sqrt{z_1} & = \color{y_h} \sqrt{7} - \sqrt{7}\ \i   \\
+                        z_2        & = -9 - 40\i                           &
+                        \sqrt{z_2} & = \sqrt{\frac{41 - 9}{2}}
+                        + \i\ (-1) \cdot \sqrt{\frac{41 + 9}{2}}             \\
+                        \sqrt{z_2} & = \color{y_h} 4 - 5\ \i                 \\
+                        z_3        & = 1 + \sqrt{48}\i                     &
+                        \sqrt{z_3} & = \sqrt{\frac{7 + 1}{2}}
+                        + \i\ (1) \cdot \sqrt{\frac{7 - 1}{2}}               \\
+                        \sqrt{z_3} & = \color{y_h} 2 + \sqrt{3}\ \i
+                    \end{align}
+                    Using the old method,
+                    \begin{align}
+                        z_1        & = -14\i                         &
+                        \sqrt{z_1} & = \sqrt{14}\ \Big[ \cos(-\pi/4)
+                        + \i\ \sin(-\pi/4) \Big]                       \\
+                        \sqrt{z_1} & = \color{y_p} \sqrt{7}
+                        - \sqrt{7}\ \i
+                    \end{align}
+                    For $ z_2 $ whose argument is not readily apparent,
+                    \begin{align}
+                        z_2                              & = -9 - 40\i              &
+                        \tan\theta                       & = 40/9                     \\
+                        \frac{40}{9}                     & = \frac{2\tan(\theta/2)}
+                        {1 - \tan^2(\theta/2)}           &
+                        \tan(\theta/2)                   & = \frac{-5}{4}             \\
+                        \sqrt{z_2}                       & = \sqrt{41}
+                        \ \Bigg[ \frac{4}{\sqrt{41}}
+                        - \i\ \frac{5}{\sqrt{41}} \Bigg] &
+                        \sqrt{z_2}                       & = \color{y_p}
+                        4 - 5\ \i
+                    \end{align}
+                    For $ z_3 $ whose argument is not readily apparent,
+                    \begin{align}
+                        z_3                    & = 1 + \sqrt{48}\i        &
+                        \tan\theta             & = \sqrt{48}                \\
+                        \sqrt{48}              & = \frac{2\tan(\theta/2)}
+                        {1 - \tan^2(\theta/2)} &
+                        \tan(\theta/2)         & = \frac{\sqrt{3}}{2}       \\
+                        \sqrt{z_3}             & = \sqrt{7}
+                        \ \Bigg[ \frac{2}{\sqrt{7}}
+                            + \i\ \frac{\sqrt{3}}{\sqrt{7}}
+                        \Bigg]                 &
+                        \sqrt{z_3}             & = \color{y_p}
+                        2 + \sqrt{3}\ \i
+                    \end{align}
+                    The newer method is clearly better.
+
+              \item TBC. Both methods are coded in \texttt{sympy}.
+          \end{enumerate}
+
+    \item Finding the roots of the complex number,
+          \begin{align}
+              w_1 & = (1 + i)^{1/3}                                \\
+              w_1 & = 2^{1/6}\ [\cos(\pi/12) + \i\ \sin(\pi/12)]   \\
+              w_2 & = \omega \cdot w_1 = 2^{1/6}\ [\cos(5\pi/12)
+              + \i\ \sin(5\pi/12)]                                 \\
+              w_3 & = \omega^2 \cdot w_1 = 2^{1/6}\ [\cos(9\pi/12)
+              + \i\ \sin(9\pi/12)]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_13_01_19.csv}
+              \anitableseven
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ n=3 $}, axis equal,
+                          height = 8cm, width = 8cm,
+                          grid = both,Ani,]
+                      \addplot[GraphSmooth, domain = 0:2*pi, dotted, black]
+                      ({2^(1/6) * cos(x)}, {2^(1/6) * sin(x)});
+                      \addplot[mark options={mark size = 2pt}, only marks,
+                          color = y_p] coordinates
+                          {(1.0842, 0.29051) (-0.29051, -1.0842) (-0.7937, 0.7937)};
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:1.0842, 0.29051);
+                      \coordinate (X) at (axis cs:1.122,0);
+                      \draw[thin, y_h] (O) -- (X);
+                      \draw[thin, y_h] (O) -- (Z);
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \pi/12 $",
+                      angle eccentricity=1.4, angle radius = 1.5cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the roots of the complex number,
+          \begin{align}
+              w_1            & = (3 + 4i)^{1/3}                     &
+              \tan(\theta)   & = \frac{4}{3}                          \\
+              w_1            & = 5^{1/6}\ \Bigg[ \frac{2}{\sqrt{5}}
+                  + \i\ \frac{1}{\sqrt{5}}
+              \Bigg]         &
+              \tan(\theta/2) & = \frac{1}{2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_13_01_19.csv}
+              \anitableseven
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ n=3 $}, axis equal,
+                          height = 8cm, width = 8cm,
+                          grid = both,Ani,]
+                      \addplot[GraphSmooth, domain = 0:2*pi, dotted, black]
+                      ({5^(1/3) * cos(x)}, {5^(1/3) * sin(x)});
+                      \addplot[mark options={mark size = 2pt}, only marks,
+                          color = y_p] coordinates
+                          {(1.6289, 0.52017) (-0.36398, -1.6708) (-1.265, 1.1506)};
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:1.6289, 0.52017);
+                      \coordinate (X) at (axis cs:1.71, 0);
+                      \draw[thin, y_h] (O) -- (X);
+                      \draw[thin, y_h] (O) -- (Z);
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \theta/2 $",
+                      angle eccentricity=1.4, angle radius = 1.5cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the roots of the complex number,
+          \begin{align}
+              w_1            & = (216)^{1/3} &
+              \tan(\theta)   & = 0             \\
+              w_1            & = 6 + 0\ \i   &
+              \tan(\theta/2) & = 0
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_13_01_19.csv}
+              \anitableseven
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ n=3 $}, axis equal,
+                          height = 8cm, width = 8cm,
+                          grid = both,Ani,]
+                      \addplot[GraphSmooth, domain = 0:2*pi, dotted, black]
+                      ({6 * cos(x)}, {6 * sin(x)});
+                      \addplot[mark options={mark size = 2pt}, only marks,
+                          color = y_p] coordinates
+                          {(6, 0) (-3, -5.1962) (-3, 5.1962)};
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:-3, +5.1962);
+                      \coordinate (X) at (axis cs:6, 0);
+                      \draw[thin, y_h] (O) -- (X);
+                      \draw[thin, y_h] (O) -- (Z);
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ 2\pi/3 $",
+                      angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the roots of the complex number,
+          \begin{align}
+              w_1          & = (-4)^{1/4}                                &
+              \tan(\theta) & = 0                                           \\
+              w_1          & = \sqrt{2}\ [\cos(\pi/4) + \i\ \sin(\pi/4)] &
+              w_1          & = 1 + \i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_13_01_19.csv}
+              \anitableseven
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ n=4 $}, axis equal,
+                          height = 8cm, width = 8cm,
+                          grid = both,Ani,]
+                      \addplot[GraphSmooth, domain = 0:2*pi, dotted, black]
+                      ({1.414 * cos(x)}, {1.414 * sin(x)});
+                      \addplot[mark options={mark size = 2pt}, only marks,
+                          color = y_p] coordinates
+                          {(1, 1) (-1, 1) (-1, -1) (1, -1)};
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:1, 1);
+                      \coordinate (X) at (axis cs:1.414, 0);
+                      \draw[thin, y_h] (O) -- (X);
+                      \draw[thin, y_h] (O) -- (Z);
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \pi/4 $",
+                      angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the roots of the complex number,
+          \begin{align}
+              w_1          & = (\i)^{1/4}                    &
+              \tan(\theta) & = \frac{\pi}{2}                   \\
+              w_1          & = \cos(\pi/8) + \i\ \sin(\pi/8) &
+              w_1          & = 1 + \i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_13_01_19.csv}
+              \anitableseven
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ n=4 $}, axis equal,
+                          height = 8cm, width = 8cm,
+                          grid = both,Ani,]
+                      \addplot[GraphSmooth, domain = 0:2*pi, dotted, black]
+                      ({cos(x)}, {sin(x)});
+                      \addplot[mark options={mark size = 2pt}, only marks,
+                          color = y_p] coordinates
+                          {(-0.92388, -0.38268) (0.92388, 0.38268)
+                              (0.38268, -0.92388) (-0.38268, 0.92388)};
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:0.92388, 0.38268);
+                      \coordinate (X) at (axis cs:1, 0);
+                      \draw[thin, y_h] (O) -- (X);
+                      \draw[thin, y_h] (O) -- (Z);
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \pi/8 $",
+                      angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the roots of the complex number,
+          \begin{align}
+              w_1          & = (1)^{1/8}                     &
+              \tan(\theta) & = 0                               \\
+              w_1          & = \cos(\pi/4) + \i\ \sin(\pi/4) &
+              w_1          & = \frac{1}{\sqrt{2}}\ [1 + \i]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_13_01_19.csv}
+              \anitableseven
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ n=8 $}, axis equal,
+                          height = 8cm, width = 8cm,
+                          grid = both,Ani,]
+                      \addplot[GraphSmooth, domain = 0:2*pi, dotted, black]
+                      ({cos(x)}, {sin(x)});
+                      \addplot[mark options={mark size = 2pt}, only marks,
+                          color = y_p] coordinates
+                          {(-1, 0) (1, 0) (0, 1) (0, -1)
+                              (0.707, 0.707) (-0.707, 0.707)
+                              (-0.707, -0.707) (0.707, -0.707)};
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:0.707, 0.707);
+                      \coordinate (X) at (axis cs:1, 0);
+                      \draw[thin, y_h] (O) -- (X);
+                      \draw[thin, y_h] (O) -- (Z);
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \pi/4 $",
+                      angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the roots of the complex number,
+          \begin{align}
+              w_1    & = (-1)^{1/5}                    &
+              \theta & = \pi                             \\
+              w_1    & = \cos(\pi/5) + \i\ \sin(\pi/5)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \pgfplotstableread[col sep=comma]{./tables/table_13_01_19.csv}
+              \anitableseven
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ n=5 $}, axis equal,
+                          height = 8cm, width = 8cm,
+                          grid = both,Ani,]
+                      \addplot[GraphSmooth, domain = 0:2*pi, dotted, black]
+                      ({cos(x)}, {sin(x)});
+                      \addplot[mark options={mark size = 2pt}, only marks,
+                          color = y_p] coordinates
+                          {(-0.30902, -0.95106) (-0.30902, 0.95106)
+                              (0.80902, -0.58799) (0.80902, 0.58799)
+                              (-1, 0)};
+                      \coordinate (O) at (axis cs:0,0);
+                      \coordinate (Z) at (axis cs:0.80902, 0.58799);
+                      \coordinate (X) at (axis cs:1, 0);
+                      \draw[thin, y_h] (O) -- (X);
+                      \draw[thin, y_h] (O) -- (Z);
+                      \node[GraphNode, fill = white, draw = black] at (Z){};
+                      \pic [draw, thick, color = y_h, -{Triangle}, "$ \pi/5 $",
+                      angle eccentricity=1.5, angle radius = 1cm]
+                      {angle = X--O--Z};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving the equation,
+          \begin{align}
+              0        & = z^2 - (6 - 2\i)\ z + (17 - 6\i) &
+              D        & = 32 - 24\i - 68 + 24\i = -36       \\
+              \sqrt{D} & = \pm 6\i                         &
+              z        & = \frac{6 - 2\i \pm 6\i}{2}         \\
+              z        & =3 - 4\i,\ 3 + 2\i
+          \end{align}
+
+    \item Solving the equation,
+          \begin{align}
+              0        & = z^2 + z + (1 - \i)     &
+              D        & = 1 - 4 + 4\i = -3 + 4\i   \\
+              \sqrt{D} & = 1 + 2\ \i,\ -1 -2\ \i  &
+              z        & = \i,\ -1 - \i
+          \end{align}
+
+    \item Solving the equation,
+          \begin{align}
+              0             & = z^4 + 324                           &
+              D             & = -1296                                 \\
+              \sqrt{D}      & = \pm 36\ \i                          &
+              z^2           & = \pm 18\ \i                            \\
+              (36\i)^{1/2}  & = 3\ [1 + \i],\ 3\ [-1-\i]            &
+              (-36\i)^{1/2} & = 3\ [1 - \i],\ 3\ [-1+\i]              \\
+              z^4 + 324     & = (z^2 - 6 + 18) \cdot (z^2 + 6 + 18)
+          \end{align}
+          The last step uses pairs of roots which are complex conjugates, which is a
+          necessary condition for quadratic polynomials with real coefficients.
+
+    \item Solving the equation, with $ w = z^2 $
+          \begin{align}
+              0          & = w^2 - 6\i\ w + 16                        &
+              D          & = -36 - 64 = -100                            \\
+              \sqrt{D}   & = \pm 10\ \i                               &
+              w          & = 3\i \pm 5\i = -2\i,\ 8\i                   \\
+              \sqrt{w_1} & = \sqrt{2}\ [1 - \i],\ \sqrt{2}\ [-1 + \i] &
+              \sqrt{w_2} & = 2\ [1 + \i],\ 2\ [-1 - \i]
+          \end{align}
+
+    \item Verifying the triangle inequality,
+          \begin{align}
+              \abs{z_1}       & = \abs{3 + \i} = \sqrt{10}   &
+              \abs{z_2}       & = \abs{-2 + 4\i} = \sqrt{20}   \\
+              z_1 + z_2       & = 1 + 5\i                    &
+              \abs{z_1 + z_2} & = \sqrt{26}                    \\
+              \abs{z_1 + z_2} & \leq \abs{z_1} + \abs{z_2}
+          \end{align}
+
+    \item Proving the triangle inequality,
+          \begin{align}
+              \abs{z_1 + z_2}^2 & = (z_1 + z_2)(\bar{z_1} + \bar{z_2})
+              = z_1\bar{z_1} + z_2\bar{z_2} + z_1\bar{z_2} + \bar{z_1}z_2 \\
+                                & = \abs{z_1}^2 + \abs{z_2}^2 + 2\cdot
+              \Re{(z_1\bar{z_2})}                                         \\
+                                & \leq \abs{z_1}^2 + \abs{z_2}^2
+              + 2 \abs{z_1\ \bar{z_2}}                                    \\
+                                & \leq \abs{z_1}^2 + \abs{z_2}^2
+              + 2 \abs{z_1}\ \abs{z_2}
+          \end{align}
+          Taking the positive square root of both sides proves the inequality.
+          The real part of a complex number is not larger than its modulus.
+          The modulus of a complex number is equal to its conjugate.
+
+    \item Starting with the properties of sine and cosine functions,
+          \begin{align}
+              \Re{z}           & = x = \abs{z}\ \cos\theta &
+              \Im{z}           & = y = \abs{z}\ \sin\theta   \\
+              \cos\theta       & \leq 1                    &
+              \implies \quad x & \leq \abs{z}                \\
+              \sin\theta       & \leq 1                    &
+              \implies \quad y & \leq \abs{z}
+          \end{align}
+
+    \item The name comes from the fact that the left side is each of the diagonals
+          of a parallellogram and the right side is each of its adjacent sides. \par
+          Using the fact that $ \abs{w}^2 = w\bar{w} $,
+          \begin{align}
+              \abs{z_1 + z_2}^2   & = z_1\bar{z_1} + z_2\bar{z_2} + z_1\bar{z_2}
+              + \bar{z_1}z_2                                                           \\
+                                  & = \abs{z_1}^2 + \abs{z_2}^2 + 2\Re{(z_1\bar{z_2})} \\
+              \abs{z_1 - z_2}^2   & = z_1\bar{z_1} + z_2\bar{z_2} - z_1\bar{z_2}
+              - \bar{z_1}z_2                                                           \\
+                                  & = \abs{z_1}^2 + \abs{z_2}^2 - 2\Re{(z_1\bar{z_2})} \\
+              \abs{z_1 + z_2}^2
+              + \abs{z_1 - z_2}^2 & = 2\abs{z_1}^2 + 2\abs{z_2}^2
+          \end{align}
+
+\end{enumerate}

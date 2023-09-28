@@ -1,0 +1,392 @@
+\section{Uniform Convergence}
+
+\begin{enumerate}
+    \item Plotting the graph,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {func(\x,\n)
+                              = 1 + \x^2 - (1 + x^2)^(-\n) ;}]
+                  \begin{axis}[
+                          legend pos = south east,
+                          grid = both, Ani,
+                          width = 12cm, height = 12cm,
+                          domain = -1:1,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 6]},
+                      ]
+                      \foreach \k in {1, 4, 16, 64, 256, 1024}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick, samples = 400]
+                                  {func(x, \k)};
+                                  \noexpand \addlegendentry{k = \k};
+                              }\temp
+                          }
+                      \addplot[GraphSmooth, black, densely dashed,
+                          domain = -1:1] {1 + x^2};
+                      \node[GraphNode, draw = black, fill = white]
+                      at (axis cs:0, 0){};
+                      \node[GraphNode, draw = black, fill = white]
+                      at (axis cs:0, 1){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              a_n      & = \Big( \frac{n+2}{7n-3} \Big)^n                  &
+              R        & = \lim_{n \to \infty} \abs{\frac{a_{n}}{a_{n+1}}}   \\
+              R        & = \lim_{n \to \infty} \frac{7n+4}{n+3}\ \Bigg[
+                  \frac{(n+2)(7n+4)}{(n+3)(7n-3)}
+              \Bigg]^n &
+              R        & = 7                                                 \\
+              \color{y_h}
+              \abs{z}  & \leq r                                            &
+              r        & < \color{y_p} 7
+          \end{align}
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              s^*          & = \frac{1}{3^n}\ (z + \i)^n                           &
+              R^*          & = \lim_{n \to \infty} \abs{\frac{a^*_{n}}{a^*_{n+1}}}   \\
+              R^*          & = \lim_{n \to \infty} 3                               &
+              R            & = \sqrt{R^*} = \sqrt{3}                                 \\
+              \color{y_h}
+              \abs{z + \i} & \leq r                                                &
+              r            & < \color{y_p} \sqrt{3}
+          \end{align}
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              t_n          & = \frac{3^n\ (1-\i)^n}{n!}\ (z - \i)^n                &
+              R            & = \lim_{n \to \infty} \abs{\frac{a_{n}}{a_{n+1}}}       \\
+              R            & = \lim_{n \to \infty} \abs{\frac{(n+1)}{1\ (1 - \i)}} &
+              R            & = \infty                                                \\
+              \color{y_h}
+              \abs{z - \i} & \leq r                                                &
+              r            & < \color{y_p} \infty
+          \end{align}
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              t_n             & = \frac{4^n\ n(n-1)}{2}\ (z + 0.5\i)^n               &
+              R               & = \lim_{n \to \infty} \abs{\frac{a_{n}}{a_{n+1}}}      \\
+              R               & = \lim_{n \to \infty} \abs{\frac{(n-1)}{4\ (n + 1)}} &
+              R               & = \frac{1}{4}                                          \\
+              \color{y_h}
+              \abs{z + 0.5\i} & \leq r                                               &
+              r               & < \color{y_p} \frac{1}{4}
+          \end{align}
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              s^*           & = 2^n \tanh(n^2)\ z^n                        &
+              R^*           & = \lim_{n \to \infty} \abs{\frac{a^*_{n}}
+              {a^*_{n+1}}}                                                   \\
+              R^*           & = \lim_{n \to \infty} \abs{\frac{\tanh(n^2)}
+                  {2\ \tanh(n^2 + 1)}}
+              = \frac{1}{2} &
+              R             & = \sqrt{R^*} = \frac{1}{\sqrt{2}}              \\
+              \color{y_h}
+              \abs{z}       & \leq r                                       &
+              r             & < \color{y_p} \frac{1}{\sqrt{2}}
+          \end{align}
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              t_n & = \frac{n!}{n^2}\ (z + 0.5\i)^n                   &
+              R   & = \lim_{n \to \infty} \abs{\frac{a_{n}}{a_{n+1}}}   \\
+              R   & = \lim_{n \to \infty} \abs{\frac{n+1}{n^2}}       &
+              R   & = 0
+          \end{align}
+          Series has zero radius of convergence and thus, is uniformly convergent
+          nowhere.
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              s^*           & = \frac{3^n}{n(n+1)} \ (z-1)^n               &
+              R^*           & = \lim_{n \to \infty} \abs{\frac{a^*_{n}}
+              {a^*_{n+1}}}                                                   \\
+              R^*           & = \lim_{n \to \infty} \abs{\frac{(n+2)}{3n}}
+              = \frac{1}{3} &
+              R             & = \sqrt{R^*} = \frac{1}{\sqrt{3}}              \\
+              \color{y_h}
+              \abs{z}       & \leq r                                       &
+              r             & < \color{y_p} \frac{1}{\sqrt{3}}
+          \end{align}
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              t_n           & = \frac{(-1)^n}{2^n\ n^2}\ (z - 2\i)^n              &
+              R             & = \lim_{n \to \infty} \abs{\frac{a_{n}}{a_{n+1}}}     \\
+              R             & = \lim_{n \to \infty} \abs{\frac{(-2)(n+1)^2}{n^2}} &
+              R             & = 2                                                   \\
+              \color{y_h}
+              \abs{z - 2\i} & \leq r                                              &
+              r             & < \color{y_p} 2
+          \end{align}
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              t_n^* & = \frac{z^{n}}{(2n)!}                                 &
+              R^*   & = \lim_{n \to \infty} \abs{\frac{a^*_{n}}{a^*_{n+1}}}   \\
+              R^*   & = \lim_{n \to \infty} \abs{\frac{(2n+2)!}{(2n)!}}     &
+              R^*   & = \infty                                                \\
+              R     & = \sqrt{R^*} = \infty
+          \end{align}
+          The series \textcolor{y_h}{is uniformly convergent} in any finite disk.
+
+    \item Using the Weierstrass M-test,
+          \begin{align}
+              t_n       & = \frac{z^{n}}{n^2}     &
+              G         & : \abs{z}  \leq 1         \\
+              \abs{t_n} & = \abs{\frac{z^n}{n^2}} &
+              \abs{t_n} & = \frac{\abs{z}^n}{n^2}   \\
+              \abs{t_n} & \leq \frac{1}{n^2}
+          \end{align}
+          The series \textcolor{y_h}{is uniformly convergent} in the closed disk
+          $ \abs{z} \leq 1 $. \par
+
+    \item Using the Weierstrass M-test,
+          \begin{align}
+              t_n                 & = \frac{z^{n}}{n^3\ \cosh(n\abs{z})}     &
+              G                   & : \abs{z}  \leq 1                          \\
+              \abs{t_n}           & = \abs{\frac{z^n}{n^3\ \cosh(n\abs{z})}} &
+              n^3 \cosh(n\abs{z}) & \geq n^3                                   \\
+              \abs{t_n}           & \leq \frac{1}{n^3}
+          \end{align}
+          The series \textcolor{y_h}{is uniformly convergent} in the closed disk
+          $ \abs{z} \leq 1 $. \par
+          This used the fact that for real $ x \geq 0 $, $ \cosh x \geq 1$,
+
+    \item Using the Weierstrass M-test,
+          \begin{align}
+              t_n       & = \frac{\sin^n (\abs{z})}{n^2}                 &
+              G         & : \text{all of}\ \mathcal{C}                     \\
+              \sin^n x  & \leq 1 \qquad \forall \qquad x \in \mathcal{R} &
+              \abs{t_n} & \leq \frac{1}{n^2}
+          \end{align}
+          The series \textcolor{y_h}{is uniformly convergent} in all of $ \mathcal{C} $.
+          \par This uses the fact that $ n^{-2} $ is a convergent series.
+
+    \item Using the Weierstrass M-test,
+          \begin{align}
+              t_n       & = \frac{z^{n}}{\abs{z}^{2n} + 1}            &
+              G         & : 2 \leq  \abs{z} \leq 10                     \\
+              \abs{t_n} & = \frac{\abs{z}^n}{\abs{z}^{2n} + 1}        &
+              \abs{t_n} & \leq \frac{1}{\abs{z}^n} \leq \frac{1}{2^n}
+          \end{align}
+          The series \textcolor{y_h}{is uniformly convergent} in the closed annulus
+          $ 2 \leq \abs{z} \leq 10 $. \par
+          This used the fact that for the geometric series converges for $ q = 0.5 $.
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              t_n & = \frac{(n!)^2}{(2n)!}\ z^n                              &
+              G   & : \abs{z} \leq 3                                           \\
+              R   & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}          &
+              R   & = \lim_{n \to \infty} \abs{\frac{(2n+1)(2n+2)}{(n+1)^2}}   \\
+              R   & = 4
+          \end{align}
+          The series \textcolor{y_h}{is uniformly convergent} in $ G $ since
+          $ G $ lies completely inside the zone of convergence.
+
+    \item Using the Weierstrass M-test,
+          \begin{align}
+              t_n        & = \frac{\tanh^n (\abs{z})}{n(n+1)}                &
+              G          & : \text{all of}\ \mathcal{C}                        \\
+              \tanh(x)   & \in (-1, 1) \quad \forall \quad x \in \mathcal{R} &
+              \tanh^n(x) & \in (-1, 1)                                         \\
+              \abs{t_n}  & \leq \frac{1}{n(n+1)}                             &
+              \abs{t_n}  & \leq \frac{1}{n^2}
+          \end{align}
+          The series \textcolor{y_h}{is uniformly convergent} in all of $ \mathcal{C} $.
+          \par
+          This used the fact that $ 1/n^2 $ converges.
+
+    \item Finding the radius of convergence,
+          \begin{align}
+              t_n^* & = \frac{\pi^n}{n^4}\ z^n                              &
+              R^*   & = \lim_{n \to \infty} \abs{\frac{a^*_{n}}{a^*_{n+1}}}   \\
+              R^*   & = \lim_{n \to \infty} \abs{\frac{(n+1)^4}{\pi\ n^4}}  &
+              R^*   & = \frac{1}{\pi}                                         \\
+              R     & = \sqrt{R^*} = \frac{1}{\sqrt{\pi}} = 0.56419
+          \end{align}
+          The series \textcolor{y_h}{is uniformly convergent} in the given closed disk
+          $ \abs{z} \leq 0.56 $.
+
+    \item Weierstrass M-test,
+          \begin{enumerate}
+              \item Proving the theorem,
+                    \begin{align}
+                        \abs{f_n(z)}    & \leq M_n                             &
+                        \forall \quad z & \in G                                  \\
+                        s               & = \iser[n]{0} M_n                      \\
+                        s_k             & = \sum_{n=0}^{k} M_n                 &
+                        s               & = \iser[n]{0} M_n                      \\
+                        R_k             & = s - s_k                            &
+                        \abs{R_k}       & = \sum_{n=k+1}^{\infty} f_n            \\
+                        \abs{R_k}       & \leq \sum_{n=k+1}^{\infty} \abs{f_n} &
+                        \abs{R_k}       & \leq \sum_{n=k+1}^{\infty} M_n
+                    \end{align}
+                    This proves that the sequence $ f_k $ is uniformly convergent.
+
+              \item Let $ \{g'_m\} $ be a sequence of continuous terms in $ G $ and let
+                    this sequence be U.C. in $ G $,
+                    \begin{align}
+                        \color{y_h} G(z) & = \color{y_h} \iser{0} g_m(z)
+                    \end{align}
+                    Further, the series $ \{g_m'(z)\} $ is U.C. and has continuous
+                    terms. \par
+                    From the term-wise integration theorem,
+                    \begin{align}
+                        H(z)                & = \color{y_p} \iser{0} g'_m(z)     &
+                        \int_C\ H(z)\ \dl z & = \iser{0}\ \int_C\ g'_m(z)\ \dl z   \\
+                        \int_C\ H(z)\ \dl z & = \iser{0} g_m(z)                  &
+                        \int_C\ H(z)\ \dl z & = G(z)                               \\
+                        H(z)                & = \color{y_p} G'(z)
+                    \end{align}
+                    Thus, the sum of the series of derivatives is equal to the derivative
+                    of the original series sum.
+
+              \item In the conditions for uniform convergence, the absolute value
+                    of $ R_n $ does not depend on $ z $ anywhere within region $ G $. \par
+                    This means that a series being U.C. in a region $ G $ makes it
+                    U.C. in all subregions that are infinite sets. \par
+                    The converse is false. Trivial.
+
+              \item Given that $ \abs{1 + z^2} > 1 $, the geometric series formula is
+                    applicable,
+                    \begin{align}
+                        s_n(z) & = (1 + z^2) - \frac{1}{(1 + z^2)^n}
+                    \end{align}
+                    Thus, the region of convergence of the series is $ \abs{1 + z^2}
+                        > 1 $.
+
+              \item Using the geometric series formula with $ x \neq 0 $
+                    \begin{align}
+                        q                       & = \frac{1}{1 + x^2} < 1          &
+                        s                       & = \frac{1}{1 - q}                  \\
+                        \iser{1} (1 + x^2)^{-m} & = -1 + \frac{1+x^2}{x^2}         &
+                        S                       & = -x^2 + 1 + x^2 = \color{y_h} 1
+                    \end{align}
+                    For the special case with $ x = 0,\ S = 0$ \par
+                    In order to plot the graphs, using the finite series sum of the
+                    geometric series,
+                    \begin{align}
+                        s_n & = \frac{1-q^{n+1}}{1 - q}               &
+                        S_n & = -x^2 + (1 + x^2)\ \Bigg[ 1 - \frac{1}
+                        {(1 + x^2)^{n+1}} \Bigg]                        \\
+                        S_n & = \color{y_p} 1 - \frac{1}{(1 + x^2)^n}
+                    \end{align}
+          \end{enumerate}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}[declare function = {func(\x,\n)
+                              = 1 - (1 + x^2)^(-\n) ;}]
+                  \begin{axis}[
+                          legend pos = south east,
+                          grid = both, Ani,
+                          domain = -2:2,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 5]},
+                      ]
+                      \foreach \k in {1, 4, 16, 64, 256}
+                          {
+                              \edef\temp{%
+                                  \noexpand \addplot+[thick, samples = 400]
+                                  {func(x, \k)};
+                                  \noexpand \addlegendentry{k = \k};
+                              }\temp
+                          }
+                      \addplot[GraphSmooth, black, densely dashed] {1};
+                      \node[GraphNode, draw = black, fill = white]
+                      at (axis cs:0, 0){};
+                      \node[GraphNode, draw = black, fill = white]
+                      at (axis cs:0, 1){};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item From section $ 12.6 $,
+          \begin{align}
+              u(x, t)              & = \iser[n]{1} B_n\ \sin\Big(
+              \frac{n\pi x}{L}\Big)
+              \ e^{-\lambda_n^2 t} &
+              \lambda_n            & = \frac{cn\pi}{L}              \\
+              B_n                  & = \frac{2}{L} \int_{0}^{L}f(x)
+              \ \sin\Big(\frac{n\pi x}{L} \Big)
+              \ \dl x              &
+              \diffp ut            & = c^2\ \diffp[2] ux
+          \end{align}
+          Looking at an upper bound for $ \abs{B_n} $,
+          \begin{align}
+              \abs{B_n} & = \abs{\frac{2}{L}
+              \int_{0}^{L}f(x)\ \sin\Big(\frac{n\pi x}{L} \Big) \ \dl x}       \\
+              \abs{B_n} & \leq \frac{2}{L}
+              \int_{0}^{L} \abs{f(x)\ \sin\Big(\frac{n\pi x}{L} \Big)} \ \dl x \\
+              \abs{B_n} & \leq \frac{2}{L} \int_{0}^{L} \abs{f(x)}\ \dl x
+          \end{align}
+          Assuming $ f(x) $ is finite in this interval, and this integral computes to
+          $ K $, it is independent of $ n $.
+          \begin{align}
+              \abs{B_n}                         & \leq K                        &
+              \forall \quad n                   & \geq 1                          \\
+              \abs{u_n}                         & \leq K \exp(-\lambda_n^2 t)     \\
+              t                                 & \geq t_0 > 0                  &
+              \implies \quad e^{-\lambda_n^2 t} & \leq e^{-\lambda_n^2 t_0}       \\
+              t                                 & \geq t_0 > 0                  &
+              \implies \quad \abs{u_n}          & \leq                            \\
+              \abs{u_n}                         & \leq K \exp(-\lambda_n^2 t_0)
+          \end{align}
+          This series is now term-wise bounded in absolute value by a series of
+          constant functions, (independent of $ x, t $). Using the Weierstrass M-test,
+          it is uniformly convergent. \par
+          In combination with U.C., and the fact that each term of the series is
+          continuous $ \forall\quad  t \geq t_0 > 0 $, the series sum $ u(x, t) $ is also
+          continuous $ \forall\quad  t \geq t_0 > 0 $, and $ \forall \quad x \in [0,L] $.
+          \par
+          The boundary conditions are,
+          \begin{align}
+              u(0, t)   & = 0 \quad \forall\quad t \geq 0         &
+              u(L, t)   & = 0 \quad \forall\quad t \geq 0           \\
+              u_n(0, t) & = B_n \sin(0)\ \exp(-\lambda_n^2 t) = 0 &
+              u_n(L, t) & = B_n \sin(n\pi)\ \exp(c^2n^2 t) = 0      \\
+          \end{align}
+          Using Theorem 2, the series sum also has to satisfy the boundary conditions
+          since every term of the series does so already $ \forall \quad t \geq t_0 $.
+
+    \item Looking at the upper bound for the time derivative of $ u_n $,
+          \begin{align}
+              \diffp {u_n}{t}      & = B_n\ \sin\Big(
+              \frac{n\pi x}{L}\Big)\ (-\lambda_n^2)\ e^{-\lambda_n^2 t}        \\
+              \abs{\diffp{u_n}{t}} & \leq \abs{B_n}\ (\lambda_n^2)
+              \ \abs{e^{-\lambda_n^2 t}}                                       \\
+                                   & \leq \lambda_n^2\ K\ e^{-\lambda_n^2 t_0}
+              \qquad\qquad \forall \quad t \geq t_0 > 0
+          \end{align}
+          Using the ratio test on the expanded series after taking the time derivative,
+          \begin{align}
+              \abs{\frac{a'_{n+1}}{a'_{n}}} & \leq \frac{\lambda_{n+1}^2}{\lambda_n^2}
+              \cdot \frac{\exp(-\lambda_{n+1}^2 t_0)}{\exp(-\lambda_n^2 t_0)}          \\
+              \abs{\frac{a'_{n+1}}{a'_{n}}} & \leq \frac{(n+1)^2}{n^2}
+              \cdot \exp \Bigg[ -\frac{c\pi(2n + 1)}{L}\ t_0 \Bigg]                    \\
+              \lim_{n \to \infty} \abs{\frac{a'_{n+1}}
+              {a'_{n}}}                     & = 0
+          \end{align}
+          Since $ \difcp{u_n}{t} $ is bounded in absolute value by a series of constant
+          functions independent of $ x, t $ and the ratio test is satisfied, term-wise
+          differentiation is permissible.
+          \begin{align}
+              \iser[n]{0} \diffp{u_n}{t} & = \diffp ut
+          \end{align}
+          By the exact same logic, the series can be differentiated term-wise w.r.t.
+          $ x $ twice, to yield
+          \begin{align}
+              \iser[n]{0} \diffp[2] {u_n}{x} & = \diffp[2] ux
+          \end{align}
+          Since each term of the series satisfies the heat equation and the series sum
+          can be differentiated term-wise, the series sum itself also satisfies the
+          heat equation.
+
+\end{enumerate}

@@ -1,0 +1,238 @@
+\section{Trigonometric and Hyperbolic Functions, Euler's Formula}
+
+\begin{enumerate}
+    \item To prove these identities,
+          \begin{align}
+              \cosh z & = \cosh(x + \i y) = \cosh x \cosh(\i y) + \sinh x \sinh(\i y) \\
+                      & = \cosh x \cos y + \i\ \sinh x \sin y                         \\
+              \sinh z & = \cosh(x + \i y) = \sinh x \cosh(\i y) + \cosh x \sinh(\i y) \\
+                      & = \sinh x \cos y + \i\ \cosh x \sin y
+          \end{align}
+
+    \item To prove these identities,
+          \begin{align}
+              \cosh(z_1 + z_2) & = \cosh(x_1 + x_2)\cosh[\i (y_1 + y_2)]
+              + \sinh(x_1 + x_2)\sinh[\i (y_2 + y_2)]                              \\
+                               & = \cosh(x_1 + x_2)\cos (y_1 + y_2)
+              + \i\ \sinh(x_1 + x_2)\sin (y_2 + y_2)                               \\
+                               & = (\cosh x_1 \cosh x_2 + \sinh x_1 \sinh x_2)
+              \ (\cos y_1 \cos y_2 - \sin y_1 \sin y_2)                            \\
+                               & + \i\ (\sinh x_1 \cosh x_2 + \cosh x_1 \sinh x_2)
+              \ (\sin y_1 \cos y_2 + \cos y_1 \sin y_2)
+          \end{align}
+          Collecting terms and simplifying,
+          \begin{align}
+              \color{y_h}\cosh(z_1 + z_2) & = \Big[\cosh x_1 \cos y_1
+                  + \i\ \sinh x_1 \sin y_1\Big]
+              \ \Big[ \cosh x_2 \cos y_2 + \i\ \sinh x_2 \sin y_2 \Big] \\
+                                          & + \Big[\sinh x_1 \cos y_1
+                  + \i\ \cosh x_1 \sin y_1\Big]
+              \ \Big[ \sinh x_2 \cos y_2 + \i\ \cosh x_2 \sin y_2 \Big] \\
+                                          & = \color{y_h}
+              \cosh z_1 \cosh z_2 + \sinh z_1 \sinh z_2
+          \end{align}
+          Starting with the right-hand side instead,
+          \begin{align}
+              \color{y_p}\sinh z_1 \cosh z_2 + \cosh z_1 \sinh z_2 & =
+              -\i\ \sin(\i z_1) \cos(\i z_2) -\i\ \cos(\i z_1) \sin(\i z_2) \\
+                                                                   & =
+              -\i\ \Big[ \sin(\i z_1 + \i z_2) \Big]                        \\
+                                                                   & =
+              -\i^2 \sinh(z_1 + z_2) = \color{y_p}\sinh(z_1 + z_2)
+          \end{align}
+          This is a much simpler approach.
+
+    \item Using the relations between trigonometric and hyperbolic functions,
+          \begin{align}
+              \color{y_h} \cosh^2(z)
+              - \sinh^2(z) & = \cos^2(\i z) - \i^2\ \sin^2(\i z)           \\
+                           & = \cos^2(\i z) + \sin^2(\i z) = \color{y_h} 1 \\
+              \color{y_p} \cosh^2(z)
+              + \sinh^2(z) & = \cos^2(\i z) + \i^2\ \sin^2(\i z)           \\
+                           & = \cos^2(\i z) - \sin^2(\i z) = \cos(2\i z)   \\
+                           & = \color{y_p} \cosh(2z)
+          \end{align}
+
+    \item Since hyperbolic functions are linear combinations of exponential functions,
+          they are also entire. \par
+          Using the relations,
+          \begin{align}
+              \cos z & = \cosh(\i z) & \sin z & = -\i\ \sinh(\i z)
+          \end{align}
+          The trigonometric functions are also entire.
+
+    \item The first function \textcolor{y_h}{is harmonic},
+          \begin{align}
+              \cos z               & = \cosh(\i z) = \cosh(-y + \i x)          \\
+                                   & = \cosh(y) \cos(x) - \i\ \sinh(y) \sin(x) \\
+              \Im{(\cos z)} = f(z) & = -\sinh y \sin x                         \\
+              f_{xx} + f_{yy}      & = \sinh y \sin x - \sinh y \sin x = 0
+          \end{align}
+          The second function \textcolor{y_h}{is harmonic},
+          \begin{align}
+              \sin z               & = -\i\ \sinh(\i z) = -\i\ \sinh(-y + \i x) \\
+                                   & = -\i\ \Big[-\sinh(y) \cos(x)
+              + \i\ \cosh(y) \sin(x)\Big]                                       \\
+              \Re{(\sin z)} = g(z) & = \cosh y \sin x                           \\
+              g_{xx} + g_{yy}      & = -\cosh y \sin x + \cosh y \sin x = 0
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \sin(2\pi\ \i) & = \i\ \color{y_p} \sinh(2\pi) \\
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \cos(\i) & = \color{y_h} \cosh(1)     \\
+              \sin(\i) & = \i\ \color{y_p} \sinh(1)
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \cos(\pi\ \i)  & = \color{y_h} \cosh(\pi)     \\
+              \cosh(\pi\ \i) & = \cos(\pi) = \color{y_h} -1
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \cosh(-1 + 2\i) & = {\color{y_h} \cosh(1) \cos(2)}
+              - \i\ \color{y_p} \sinh(1)\sin(2)                  \\
+              \cos(-2 - \i)   & = {\color{y_h} \cosh(1) \cos(2)}
+              - \i\ \color{y_p} \sinh(1)\sin(2)
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \sinh(3 + 4\i) & = {\color{y_h} \sinh(3) \cos(4)}
+              + \i\ \color{y_p} \cosh(3)\sin(4)                 \\
+              \cosh(3 + 4\i) & = {\color{y_h} \cosh(3) \cos(4)}
+              + \i\ \color{y_p} \sinh(3)\sin(4)
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \sin(\pi\ \i)                          & = \i\ \color{y_p} \sinh(\pi) \\
+              \cos\Big(\frac{\pi}{2} - \pi\ \i \Big) & = \sin(\pi\ \i)
+              = \i\ \color{y_p} \sinh(\pi)
+          \end{align}
+
+    \item Calculating,
+          \begin{align}
+              \cos(\i\ \pi/2)                                  & = \color{y_h}
+              \cosh(\pi/2)                                                          \\
+              \cos\Big(\frac{\pi}{2} + \i\ \frac{\pi}{2} \Big) & = -\sin(\i\ \pi/2)
+              = -\i\ \color{y_p} \sinh(\pi/2)
+          \end{align}
+
+    \item Proving $ \cos(z) $ is even,
+          \begin{align}
+              \color{y_h} \cos(-z) & = \cos(-x -\i\ y) = \cos(-x)\cosh(-y) -\i
+              \ \sin(-x)\sinh(-y)                                              \\
+                                   & = \cos(x) \cosh(y) - \i\ \sin(x)\sinh(y)
+              = \color{y_h} \cos(z)
+          \end{align}
+          Proving $ \sin(z) $ is odd,
+          \begin{align}
+              \color{y_p} \sin(-z) & = \sin(-x -\i\ y) = \sin(-x)\cosh(-y) + \i
+              \ \cos(-x)\sinh(-y)                                               \\
+                                   & = -\sin(x) \cosh(y) - \i\ \cos(x)\sinh(y)
+              = \color{y_p} -\sin(z)
+          \end{align}
+
+    \item Proving the first inequality,
+          \begin{align}
+              \abs{\cos z}^2 & = \cos^2 x \cosh^2 y + \sin^2 x \sinh^2 y &
+                             & = \cos^2 x + \sinh^2 y                      \\
+              \abs{\cos z}   & \geq \abs{\sinh y}                          \\
+              \abs{\cos z}^2 & = \cosh^2 y - \sin^2 x                    &
+              \abs{\cos z}   & \leq \cosh y
+          \end{align}
+          Proving the second inequality,
+          \begin{align}
+              \abs{\sin z}^2 & = \sin^2 x \cosh^2 y + \cos^2 x \sinh^2 y &
+                             & = \sin^2 x + \sinh^2 y                      \\
+              \abs{\sin z}   & \geq \abs{\sinh y}                          \\
+              \abs{\sin z}^2 & = \cosh^2 y - \cos^2 x                    &
+              \abs{\sin z}   & \leq \cosh y
+          \end{align}
+          Since the hyperbolic functions in real numbers are not bounded, the
+          complex sine and cosine functions are also not bounded.
+
+    \item Calculating directly,
+          \begin{align}
+              \sin z_1 \cos z_2 & = \Big[ \sin x_1 \cosh y_1
+                  + \i\ \cos x_1 \sinh y_1 \Big]\ \Big[ \cos x_2 \cosh y_2 - \i
+              \ \sin x_2 \sinh y_2 \Big]                                     \\
+                                & = \color{y_h} \Big[ \sin x_1 \cos(\i\ y_1)
+                  + \cos x_1 \sin(\i\ y_1) \Big]\ \Big[ \cos x_2 \cos(\i\ y_2) -
+              \ \sin x_2 \sin(\i\ y_2) \Big]                                 \\
+              \sin(z_1 + z_2)   & = \sin(x_1 + x_2) \cos[\i(y_1 + y_2)]
+              + \cos(x_1 + x_2) \sin[\i(y_1 + y_2)]                          \\
+              \sin(z_1 - z_2)   & = \sin(x_1 - x_2) \cos[\i(y_1 - y_2)]
+              + \cos(x_1 - x_2) \sin[\i(y_1 - y_2)]
+          \end{align}
+          Using the properties of sines and cosine addition,
+          \begin{align}
+              \frac{\sin(z_1 + z_2) + \sin(z_1 - z_2)}{2} & = \sin x_1 \cos x_2
+              \cos(\i y_1) \cos(\i y_2)                                         \\
+                                                          & - \cos x_2 \sin x_1
+              \sin(\i y_1) \sin(\i y_2)
+              \nonumber                                                         \\
+                                                          & + \cos x_1 \cos x_2
+              \sin(\i y_1) \cos(\i y_2) \nonumber                               \\
+                                                          & - \sin x_1 \sin x_2
+              \cos(\i y_1) \sin(\i y_2)
+          \end{align}
+          The two expressions match.
+
+    \item Finding all solutions,
+          \begin{align}
+              \sin z         & = 100                                 \\
+              \sin x \cosh y & = 100                               &
+              \cos x \sinh y & = 0                                   \\
+              x              & = \color{y_h} 2n\pi + \frac{\pi}{2} &
+              y              & = \color{y_p} \cosh^{-1}(100)
+          \end{align}
+
+    \item Finding all solutions,
+          \begin{align}
+              \cosh z        & = 0                                  \\
+              \cos y \cosh x & = 0                                &
+              \sinh x \sin y & = 0                                  \\
+              x              & = \color{y_h} 0                    &
+              y              & = \color{y_p} n\pi + \frac{\pi}{2}
+          \end{align}
+
+    \item Finding all solutions,
+          \begin{align}
+              \cosh z            & = -1                        \\
+              \cos y \cosh x     & = -1                      &
+              \sinh x \sin y     & = 0                         \\
+              x_1                & = \color{y_h} 0           &
+              \implies \quad y_1 & = \color{y_p} (2n + 1)\pi   \\
+              y_2                & = \color{y_p} (2m + 1)\pi &
+              \implies \quad x_2 & = \color{y_h} 0             \\
+          \end{align}
+          Since $ (x_1, y_1) $ and $ (x_2, y_2) $ are the same solution, there is only
+          one distinct family of solutions.
+
+    \item Finding all solutions,
+          \begin{align}
+              \sinh z        & = 0                  \\
+              \sinh x \cos y & = 0                &
+              \cosh x \sin y & = 0                  \\
+              y              & = \color{y_p} n\pi &
+              x              & = \color{y_h} 0
+          \end{align}
+
+    \item Finding the expression for $ \tan(z) $,
+          \begin{align}
+              \tan z       & = \frac{\sin z}{\cos z} =
+              \frac{\sin x \cos x + \i\ \sinh y \cosh y}
+              {\cos^2 x \cosh^2 y + \sin^2 x \sinh^2 y}                     \\
+              \Re{\tan(z)} & = \frac{\sin x \cos x}{\cos^2 x + \sinh^2 y}   \\
+              \Im{\tan(z)} & = \frac{\sinh y \cosh y}{\cos^2 x + \sinh^2 y}
+          \end{align}
+
+\end{enumerate}

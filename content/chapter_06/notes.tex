@@ -174,15 +174,15 @@
     \item[Second shifting theorem] This theorem deals with a $ t-$shifted function with
         a Heaviside function nullifying it upto the shift distance $ a $.
         \begin{align}
-            f(t)              & \rightarrow \tilde{f} \equiv f(t-a)u(t-a) \\
+            f(t)              & \to \tilde{f} \equiv f(t-a)u(t-a) \\
             \tilde{f}         & = \begin{dcases}
                                       0      & x < a \\
                                       f(t-a) & x > a
-                                  \end{dcases}                          \\
-            \Lap\{\tilde{f}\} & = e^{-as}\Lap\{f(t)\}                     \\
+                                  \end{dcases}                  \\
+            \Lap\{\tilde{f}\} & = e^{-as}\Lap\{f(t)\}             \\
             f(t-a)u(t-a)      & = \Lap^{-1}\{e^{-as}F(s)\}
         \end{align}
-        A corollary to the above relation is to replace $ (t-a) \rightarrow t $
+        A corollary to the above relation is to replace $ (t-a) \to t $
         \begin{align}
             \Lap\{f(t)u(t-a)\} & = e^{-as}\Lap\{f(t+a)\}
         \end{align}
@@ -223,7 +223,7 @@
     \item[Dirac's delta function] The infiniteismal width limit of the finite
         rectangular wave defined above. The unit area under the curve is still preserved.
         \begin{align}
-            \delta(t-a) & = \lim_{k \rightarrow 0} f_k (t - a) \\
+            \delta(t-a) & = \lim_{k \to 0} f_k (t - a) \\
             \delta(t-a) & = \begin{dcases}
                                 \infty & t = a    \\
                                 0      & t \neq a
@@ -234,7 +234,7 @@
         \begin{align}
             \infint g(t)\ \delta(t-a) & = g(a)
         \end{align}
-    \item[Laplace transform of Dirac's delta] Using the limit $ k \rightarrow 0 $ of the
+    \item[Laplace transform of Dirac's delta] Using the limit $ k \to 0 $ of the
         finite analog delta fucntion to find the Laplace transform,
         \begin{align}
             \Lap\{f_k(t-a)\}    & = \frac{e^{-as} - e^{-(a+k)s}}{ks} \\
@@ -308,7 +308,7 @@
         Differentiating the Laplace transform thus is equivalent to multiplying the
         original function by $ (-t) $.
     \item[Integration of transforms] Assuming the limit of $ f(t) / t $ exists for
-        $ t \rightarrow 0^+ $, and the Laplace transform of $ f(t) $ exists, then,
+        $ t \to 0^+ $, and the Laplace transform of $ f(t) $ exists, then,
         \begin{align}
             \Lap\left\{ \frac{f(t)}{t} \right\} & = \int_{s}^{\infty} F(p)\ \dl p \\
         \end{align}
@@ -357,5 +357,5 @@
         \end{align}
         This system of equations in $ Y_1,\ Y_2$ can be solved and then inverse
         transformed to solve the given system of ODEs.
-        
+
 \end{description}

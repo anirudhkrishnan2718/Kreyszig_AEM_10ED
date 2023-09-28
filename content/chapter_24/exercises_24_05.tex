@@ -1,0 +1,317 @@
+\section{Random Variables. Probability Distributions}
+
+\begin{enumerate}
+    \item Using the normalization condition,
+          \begin{align}
+              1 & = \sum_{j=1}^{5} p_j = k(1 + 4 + 9 + 16 + 25) &
+              k & = \frac{1}{55}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Discrete PDF}, Ani,
+                          grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {1,2,3,4,5}] {x^2/55};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Discrete CDF}, Ani,
+                          grid = both, xmin = 0.5, xmax = 5.5]
+                      \addplot+[const plot, mark options={black, mark size = 1.5pt},
+                          y_p] coordinates {(-1,0) (1,1/55) (2,5/55) (3,14/55) (4,30/55)
+                              (5,55/55) (7,1)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the normalization condition,
+          \begin{align}
+              1    & = \int_{0}^{5} kv^2\ \dl v                              &
+              k    & = \frac{3}{125}                                           \\
+              F(x) & = \int_{0}^{x} f(v)\ \dl v                              &
+                   & = \Bigg[ \frac{v^3}{125} \Bigg]_{0}^x = \frac{x^3}{125}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous PDF}, Ani,
+                          grid = both]
+                      \addplot[GraphSmooth, y_h, domain = 0:5] {3*x^2/125};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous CDF}, Ani,
+                          grid = both, xmin = -0.5, xmax = 5.5]
+                      \addplot[GraphSmooth, y_p, domain = 0:5] {x^3/125};
+                      \addplot[GraphSmooth, y_p, domain = 5:6] {1};
+                      \addplot[GraphSmooth, y_p, domain = -1:0] {0};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the normalization condition,
+          \begin{align}
+              1    & = \int_{-2}^{2} k\ \dl v                           &
+              k    & = \frac{1}{4}                                        \\
+              F(x) & = \int_{-2}^{x} f(v)\ \dl v                        &
+              F(x) & = \Bigg[ \frac{v}{4} \Bigg]_{-2}^x = \frac{x+2}{4}   \\
+              P(0 \leq X \leq 2)
+                   & = F(2) - F(0) = \frac{1}{2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous PDF}, Ani,
+                          grid = both]
+                      \addplot[GraphSmooth, y_h, domain = -2:2] {1/4};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous CDF}, Ani,
+                          grid = both, xmin = -2.5, xmax = 2.5]
+                      \addplot[GraphSmooth, y_p, domain = 2:3] {1};
+                      \addplot[GraphSmooth, y_p, domain = -2:2] {(x+2)/4};
+                      \addplot[GraphSmooth, y_p, domain = -3:-2] {0};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Finding the unknown constants,
+          \begin{align}
+              P(-c < X < c) & = F(c) - F(-c) = \frac{c+2-(-c+2)}{4} &
+              0.95          & = \frac{c}{2}                           \\
+              c             & = 1.9
+          \end{align}
+          For the second part of the problem,
+          \begin{align}
+              P(0 < X < d) & = F(d) - F(0) = \frac{d+2-(2)}{4} &
+              0.95         & = \frac{d}{4}                       \\
+              d            & = 3.8
+          \end{align}
+          Such a value $ d $ does not exist, since the sample space $ S $ is only the
+          interval $ [-2,2] $.
+
+    \item The plots are,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Discrete PDF}, Ani,
+                          grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h] coordinates {(-2,1/8) (-1,3/8) (1,3/8) (2,1/8)};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Discrete CDF}, Ani,
+                          grid = both, xmin = -2.5, xmax = 2.5, ymin = -0.1, ymax = 1.1]
+                      \addplot+[const plot, mark options={black, mark size = 1.5pt},
+                          y_p] coordinates {(-3,0) (-2,1/8) (-1,4/8) (1,7/8)
+                              (2,1) (3,1)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          No since the probabilities have already summed to unity.
+
+    \item The probabilities are,
+          \begin{align}
+              P(X=0) & = \frac{4}{10} \cdot \frac{3}{9} = \frac{2}{15} &
+              P(X=1) & = \frac{6}{10} \cdot \frac{4}{9}
+              + \frac{4}{10} \cdot \frac{6}{9} = \frac{8}{15}            \\
+              P(X=2) & = \frac{6}{10} \cdot \frac{5}{9} = \frac{1}{3}
+          \end{align}
+          Now, the other probabilities are simply sums of the above discrete PDF.
+          \begin{align}
+              P(1<X<2)        & = 0                                          &
+              P(X \leq 1)     & = \frac{2}{15} + \frac{8}{15} = \frac{2}{3}    \\
+              P(X \geq 1)     & = \frac{8}{15} + \frac{1}{3} = \frac{13}{15} &
+              P(X > 1)        & = \frac{1}{3}                                  \\
+              P(0.5 < X < 10) & = \frac{8}{15} + \frac{1}{3} = \frac{13}{15}
+          \end{align}
+
+    \item Using the normalization condition,
+          \begin{align}
+              1 & = k\ (1^3 + 2^3 + 3^3 + 4^3) & k & = \frac{1}{100} \\
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Discrete PDF}, Ani,
+                          grid = both]
+                      \addplot+[ycomb, mark options={black, mark size = 1.5pt},
+                          y_h, samples at = {0,1,...,4}] {0.01*x^3};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Discrete CDF}, Ani,
+                          grid = both, xmin = -0.5, xmax = 4.5]
+                      \addplot+[const plot, mark options={black, mark size = 1.5pt},
+                          y_p] coordinates {(-2,0) (0,0) (1,1/100) (2,9/100) (3,36/100)
+                              (4,100/100) (6,1)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the normalization condition,
+          \begin{align}
+              F(x)   & = \begin{dcases}
+                             1 - e^{-3x} & \quad x > 0    \\
+                             0           & \quad x \leq 0 \\
+                         \end{dcases} &
+              f(x)   & = F'(x)
+              =  \begin{dcases}
+                     3e^{-3x} & \quad x > 0    \\
+                     0        & \quad x \leq 0 \\
+                 \end{dcases}               \\
+              F(x^*) & = 0.9                           &
+              x^*    & = \frac{\ln(0.1)}{-3} = 0.767
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous PDF}, Ani,
+                          grid = both]
+                      \addplot[GraphSmooth, y_h, domain = -1:0] {0};
+                      \addplot[GraphSmooth, y_h, domain = 0:4] {3*e^(-3*x)};
+                      \node[GraphNode, fill = black] at (axis cs:0,0){};
+                      \node[GraphNode, draw = black, fill = white] at (axis cs:0,3){};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous CDF}, Ani,
+                          grid = both, xmin = -0.5, xmax = 3.5]
+                      \addplot[GraphSmooth, y_p, domain = 0:4] {1-e^(-3*x)};
+                      \addplot[GraphSmooth, y_p, domain = -1:0] {0};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the normalization condition
+          \begin{align}
+              \int_{0.9}^{1.1} f(v)\ \dl v & = 1                             &
+              1                            & = \Bigg[\frac{kv^2}{2}
+              \Bigg]_{0.9}^{1.1}                                               \\
+              k                            & = \frac{2}{(1.1^2 - 0.9^2)} = 5   \\
+              P(0.95<X<1.05)               & = \frac{5(1.05^2 - 0.95^2)}{2}
+              = \frac{1}{2}
+          \end{align}
+
+    \item Using the normalization condition
+          \begin{align}
+              \int_{119.9}^{120.1} f(v)\ \dl v & = 1
+              = \Bigg[ kv \Bigg]_{119.9}^{120.1}                            \\
+              k                                & = 5                        \\
+              P(X<119.91)                      & = 5(119.91 - 119.9) = 0.05 \\
+              P(X>120.09)                      & = 5(120.1 - 120.09) = 0.05 \\
+              N                                & = 500 * (0.05 + 0.05) = 50
+          \end{align}
+
+    \item Let $ q $ be the probability of a single bulb not failing,
+          \begin{align}
+              f(x)       & = \begin{dcases}
+                                 6\ [0.25 - (x-1.5)^2] & \quad x \in [1,2]      \\
+                                 0                     & \quad \text{otherwise}
+                             \end{dcases} \\
+              P(X > 1.5) & = \int_{1.5}^{2} f(v)\ \dl v
+              = \Bigg[1.5v - 2(x-1.5)^3\Bigg]_{1.5}^2                       \\
+                         & = 0.5 = q
+          \end{align}
+          Since each bulb operates independently of the others,
+          \begin{align}
+              P(E) & = q^3 = \frac{1}{8}
+          \end{align}
+
+    \item The PDF is,
+          \begin{align}
+              f(x)           & = F'(x) = \begin{dcases}
+                                             0    & \quad x < 2       \\
+                                             0.4x & \quad x \in [2,3) \\
+                                             0    & \quad x \geq 3
+                                         \end{dcases}          \\
+              P(2.5 < X < 5) & = F(5) - F(2.5) = 1 - \frac{2.25}{5} = 0.55
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous PDF}, Ani,
+                          grid = both]
+                      \addplot[GraphSmooth, y_h, domain = 2:3] {0.4*x};
+                      \addplot[GraphSmooth, y_h, domain = 1:2] {0};
+                      \addplot[GraphSmooth, y_h, domain = 3:4] {0};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous CDF}, Ani,
+                          grid = both, xmin = 0.5, xmax = 4.5]
+                      \addplot[GraphSmooth, y_p, domain = 2:3] {(x^2-4)/5};
+                      \addplot[GraphSmooth, y_p, domain = 0:2] {0};
+                      \addplot[GraphSmooth, y_p, domain = 3:5] {1};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The PDF is,
+          \begin{align}
+              f(x) & = \begin{dcases}
+                           1-\abs{x} & \quad \abs{x} < 1      \\
+                           0         & \quad \text{otherwise}
+                       \end{dcases}                   \\
+              F(x) & =  \int_{-1}^{x} f(v)\ \dl v = \Bigg[v + \frac{v^2}{2}
+              \Bigg]_{-1}^x = \frac{1}{2} + x + \frac{x^2}{2} \qquad x<0    \\
+              F(x) & =  \int_{-1}^{x} f(v)\ \dl v = \frac{1}{2} +
+              \Bigg[v - \frac{v^2}{2} \Bigg]_{0}^x
+              = \frac{1}{2} + x - \frac{x^2}{2} \qquad x>0
+          \end{align}
+          For a total of 1000 cans,
+          \begin{align}
+              P(X>0)      & P(Y > 100) = F(1) - F(0) = 0.5        &
+              n_1         & = 500                                   \\
+              P(X < -0.5) & = P(Y < 99.5) = F(-0.5) = \frac{1}{8}   \\
+              P(X < -1)   & = P(Y < 99) = F(-1) = 0
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous PDF}, Ani,
+                          grid = both, xmin = -1.5, xmax = 1.5]
+                      \addplot[GraphSmooth, y_h, domain = -3:-1] {0};
+                      \addplot[GraphSmooth, y_h, domain = -1:1] {1 - abs(x)};
+                      \addplot[GraphSmooth, y_h, domain = 1:3] {0};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous CDF}, Ani,
+                          grid = both, xmin = -1.5, xmax = 1.5]
+                      \addplot[GraphSmooth, y_p, domain = -3:-1] {0};
+                      \addplot[GraphSmooth, y_p, domain = -1:0] {0.5 + x + x^2/2};
+                      \addplot[GraphSmooth, y_p, domain = 0:1] {0.5 + x - x^2/2};
+                      \addplot[GraphSmooth, y_p, domain = 1:3] {1};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Let $ X $ be the number of die rolls including the first six,
+          \begin{align}
+              P(X=1) & = \frac{1}{6}                                        &
+              P(X=2) & = \frac{5}{6} \cdot \frac{1}{6}
+              = \frac{5}{6^2}                                                 \\
+              P(X=3) & = \frac{5^2}{6^2} \cdot \frac{1}{6}                  &
+              P(X=4) & = \frac{5^3}{6^3} \cdot \frac{1}{6}                    \\
+              P(X=k) & = \frac{1}{6} \cdot \left( \frac{5}{6} \right)^{k-1}
+          \end{align}
+          The sum of all probabilities is,
+          \begin{align}
+              \sum_{k=1}^{\infty} P(X=k) & = \frac{1}{6}\ \sum_{k=1}^{\infty}
+              (5/6)^{k-1}                                                          \\
+                                         & = \frac{1}{6} \cdot \frac{1}{(1 - 5/6)}
+              = 1
+          \end{align}
+
+    \item The complements are,
+          \begin{align}
+              X & > b                                 & X \geq b \\
+              X & < c                                 & X \leq c \\
+              X & < b \quad \text{and} \quad X > c    &
+              X & \leq b \quad \text{and} \quad X > c
+          \end{align}
+\end{enumerate}

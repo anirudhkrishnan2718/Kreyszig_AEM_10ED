@@ -1,0 +1,423 @@
+\section{Logarithm, General Power, Principal Value}
+
+\begin{enumerate}
+    \item Performing the computations in Example $ 1 $,
+          \begin{align}
+              \ln(1 + 0\i)  & = \ln(1) + \i\ (0 + 2n\pi)                        &
+                            & = \i\ 2n\pi                                         \\
+              \ln(4 + 0\i)  & = \ln(4) + \i\ (0 + 2n\pi)                        &
+                            & = 2\ln(2) + \i\ 2n\pi                               \\
+              \ln(-1 + 0\i) & = \ln(1) + \i\ (-\pi + 2n\pi)                     &
+                            & = \i\ (2n-1)\pi                                     \\
+              \ln(-4 + 0\i) & = \ln(4) + \i\ (\pi + 2n\pi)                      &
+                            & = 2\ln(2) + \i\ (2n-1)\pi                           \\
+              \ln(\i)       & = \ln(1) + \i\ (\pi/2 + 2n\pi)                    &
+                            & = \i\ \Bigg[2n\pi + \frac{\pi}{2}\Bigg]             \\
+              \ln(4\i)      & = \ln(4) + \i\ (\pi/2 + 2n\pi)                    &
+                            & = 2\ln(2) + \i\ \Bigg[2n\pi + \frac{\pi}{2}\Bigg]   \\
+              \ln(-4\i)     & = \ln(4) + \i\ (-\pi/2 + 2n\pi)                   &
+                            & = 2\ln(2) + \i\ \Bigg[2n\pi - \frac{\pi}{2}\Bigg]   \\
+              \ln(3-4\i)    & = \ln(5) - \i\ [\arctan(4/3) + 2n\pi]             &
+          \end{align}
+
+    \item Verifying the relations,
+          \begin{align}
+              z_1                 & = -\i                   &
+              z_2                 & = -1                      \\
+              \ln(z_1 \cdot z_2)  & = \ln(\i)               &
+                                  & = 0 + \i\ \frac{\pi}{2}   \\
+              \ln z_1             & = \ln(-\i)              &
+                                  & = 0 - \i\ \frac{\pi}{2}   \\
+              \ln z_2             & = \ln(-1)               &
+                                  & = 0 + \i\ \pi             \\
+              \ln(z_1 \cdot z_2)  & = \ln z_1 + \ln z_2       \\
+              \ln(z_1 / z_2)      & =\ln(\i)                &
+                                  & = 0 + \i\ \frac{\pi}{2}   \\
+              \ln(z_1) - \ln(z_2) & = -\i\ \frac{3\pi}{2}   &
+                                  & = \i\ \frac{\pi}{2}
+          \end{align}
+
+    \item Using the Cauchy Riemann relations in polar form,
+          \begin{align}
+              \ln z    & = \ln r + \i\ (\theta + c)   \\
+              u_r      & = \frac{1}{r}              &
+              u_\theta & = 0                          \\
+              v_r      & = 0                        &
+              v_\theta & = 1                          \\
+              u_r      & = \frac{1}{r}\ v_\theta    &
+              v_r      & = \frac{-1}{r}\ u_\theta
+          \end{align}
+          Since the Cauchy-Riemann relations hold, the function is analytic, except at
+          the origin and the negative real axis (which is a branch cut).
+
+    \item Proving formula $ 4a $,
+          \begin{align}
+              \exp(\ln z) & = \exp[\ln r + \i\ \theta]                   &
+                          & = e^{\ln r}\ [\cos \theta + \i\ \sin \theta]   \\
+                          & = r\ [\cos\theta + \i\ \sin\theta]           &
+                          & = z
+          \end{align}
+          Proving formula $ 4b $,
+          \begin{align}
+              \ln(e^z) & = \ln(e^x \cos y + \i\ e^x \sin y) &
+                       & = \ln(e^x) + \i\ (y + 2n\pi)         \\
+                       & = x + \i y + \i\ (2n\pi)           &
+                       & = z + \i\ 2n\pi
+          \end{align}
+
+    \item Finding the principal logarithm,
+          \begin{align}
+              z     & = -11 + 0\i         &
+              \ln z & = \ln(11) - \i\ \pi   \\
+              \Ln z & = \ln(11) + \i\ \pi
+          \end{align}
+
+    \item Finding the principal logarithm,
+          \begin{align}
+              z     & = 4 + 4\i                                &
+              \ln z & = \ln(\sqrt{32}) + \i\ \frac{\pi}{4}       \\
+              \Ln z & = \frac{5}{2}\ \ln 2 + \i\ \frac{\pi}{4}
+          \end{align}
+
+    \item Finding the principal logarithm,
+          \begin{align}
+              z     & = 4 - 4\i                                &
+              \ln z & = \ln(\sqrt{32}) - \i\ \frac{\pi}{4}       \\
+              \Ln z & = \frac{5}{2}\ \ln 2 - \i\ \frac{\pi}{4}
+          \end{align}
+
+    \item Finding the principal logarithm,
+          \begin{align}
+              z_1     & = 1 + \i                                  &
+              \Ln z_1 & = \frac{1}{2}\ \ln(2) + \i\ \frac{\pi}{4}   \\
+              z_2     & = 1 - \i                                  &
+              \Ln z_2 & = \frac{1}{2}\ \ln(2) - \i\ \frac{\pi}{4}   \\
+          \end{align}
+
+    \item Finding the principal logarithm,
+          \begin{align}
+              z     & = 0.6 + 0.8\i               &
+              \ln z & = \ln(1) + \i\ \arctan(4/3)   \\
+              \Ln z & = \i\ \arctan(4/3)
+          \end{align}
+
+    \item Finding the principal logarithm,
+          \begin{align}
+              z_1     & = -15 + 0.1\ \i                                         \\
+              \ln z_1 & = \frac{1}{2}\ \ln(225.01) + \i\ [\pi - \arctan(1/150)] \\
+              z_2     & = -15 - 0.1\ \i                                         \\
+              \ln z_2 & = \frac{1}{2}\ \ln(225.01) + \i\ \arctan(1/150)         \\
+              \Ln z_2 & = \frac{1}{2}\ \ln(225.01) + \i\ [\arctan(1/150) - \pi]
+          \end{align}
+
+    \item Finding the principal logarithm,
+          \begin{align}
+              z     & = 0 + e\ \i                  &
+              \ln z & = \ln(e) + \i\ \frac{\pi}{2}   \\
+              \Ln z & = 1 + \i\ \frac{\pi}{2}
+          \end{align}
+
+    \item Graphing some solutions in the complex plane,
+          \begin{align}
+              z     & = e + 0\ \i          &
+              \ln z & = \ln(e) + 2n\pi\ \i   \\
+              \ln z & = 1 + 2n\pi\ \i
+          \end{align}
+
+    \item Graphing some solutions in the complex plane,
+          \begin{align}
+              z     & = 1 + 0\ \i          &
+              \ln z & = \ln(1) + 2n\pi\ \i   \\
+              \ln z & = 0 + 2n\pi\ \i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ \ln(e + 0\ \i) $},
+                          height = 8cm, width = 8cm,
+                          PiStyleY, ytick distance = 2*pi,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[scatter, only marks,
+                          samples at = {-2,-1,0,1,2}, scatter src = y]
+                      ({1}, {2*pi*x});
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ \ln(1 + 0\ \i) $},
+                          height = 8cm, width = 8cm,
+                          PiStyleY, ytick distance = 2*pi,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[scatter, only marks,
+                          samples at = {-2,-1,0,1,2}, scatter src = y]
+                      ({0}, {2*pi*x});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing some solutions in the complex plane,
+          \begin{align}
+              z     & = -7 + 0\ \i             &
+              \ln z & = \ln(7) + (2n+1)\pi\ \i
+          \end{align}
+
+    \item Graphing some solutions in the complex plane,
+          \begin{align}
+              z     & = \exp(0 + \i)   &
+              \ln z & = \i + 2n\pi\ \i
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ \ln(-7 + 0\ \i) $},
+                          height = 8cm, width = 8cm,
+                          PiStyleY, ytick distance = 2*pi,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[scatter, only marks,
+                          samples at = {-2,-1,0,1,2}, scatter src = y]
+                      ({ln(7)}, {2*pi*x + pi});
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ \ln(e^{\i}) $},
+                          height = 8cm, width = 8cm,
+                          PiStyleY, ytick distance = 2*pi,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[scatter, only marks,
+                          samples at = {-2,-1,0,1,2}, scatter src = y]
+                      ({0}, {2*pi*x + 1});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Graphing some solutions in the complex plane,
+          \begin{align}
+              z     & = 4 + 3\ \i                           &
+              \ln z & = \ln(5) + (\arctan(3/4) + 2n\pi)\ \i
+          \end{align}
+
+    \item Graphing some solutions in the complex plane,
+          \begin{align}
+              z_1      & = \i^2 = -1                     &
+              \ln z_1  & = \ln(-1 + 0\i) = (2n+1)\pi\ \i   \\
+              z_2      & = \i                            &
+              2\ln z_2 & = 2\ln(0 + \i) = (4n+1)\pi\ \i    \\
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[legend pos = outer north east,
+                          title = {$ \ln(3 + 4\ \i) $},
+                          height = 8cm, width = 8cm,
+                          PiStyleY, ytick distance = 2*pi,
+                          grid = both,Ani,
+                          colormap/jet,
+                      ]
+                      \addplot[scatter, only marks,
+                          samples at = {-2,-1,0,1,2}, scatter src = y]
+                      ({ln(5)}, {2*pi*x + atan(3/4)});
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Solving,
+          \begin{align}
+              \ln z         & = -\frac{\pi}{2}\ \i     &
+              e^{\ln z}     & = \exp(-\pi/2\ \i) = -\i   \\
+              z + 2n\pi\ \i & = -\i                    &
+              z             & = -\i + 2n\pi\ \i
+          \end{align}
+
+    \item Solving,
+          \begin{align}
+              \ln z         & = 4 - 3\i                    &
+              e^{\ln z}     & = \exp(4 - 3\i)                \\
+              z + 2n\pi\ \i & = e^4\ (\cos 3 - \i\ \sin 3)
+          \end{align}
+
+    \item Solving,
+          \begin{align}
+              \ln z         & = e - \pi\i                      &
+              e^{\ln z}     & = \exp(e - \pi\i)                  \\
+              z + 2n\pi\ \i & = e^e\ (\cos \pi - \i\ \sin \pi) &
+              z             & = -e^e
+          \end{align}
+
+    \item Solving,
+          \begin{align}
+              \ln z         & = 0.6 + 0.4\i                           &
+              e^{\ln z}     & = \exp(0.6 + 0.4\i)                       \\
+              z + 2n\pi\ \i & = e^{0.6}\ [\cos(0.4) + \i\ \sin (0.4)]
+          \end{align}
+
+    \item Finding the principal value,
+          \begin{align}
+              (2\i)^{2\i} & = \exp[2\i\ \ln(2\i)]                       &
+              \ln(2\i)    & = \ln(2) + \i\ \frac{\pi}{2}                  \\
+              z           & = \exp[\ln(4)\ \i - \pi]                    &
+              z           & = e^{-\pi}\ [\cos(\ln 4) + \i\ \sin(\ln 4)]
+          \end{align}
+
+    \item Finding the principal value,
+          \begin{align}
+              (1 + \i)^{1 - \i} & = \exp[(1 - \i)\ \ln(1 + \i)]       \\
+              \ln(1 + \i)       & = \ln(\sqrt{2}) + \i\ \frac{\pi}{4} \\
+              z                 & = \exp[\ln(\sqrt{2}) + \pi/4
+              + \i\ (\pi/4 - \ln\sqrt{2})]                            \\
+              z                 & = \sqrt{2} e^{\pi/4}
+              \ [\cos(\pi/4 - \ln\sqrt{2}) + \i\ \sin(\pi/4 - \ln\sqrt{2})]
+          \end{align}
+
+    \item Finding the principal value,
+          \begin{align}
+              (1 - \i)^{1 + \i} & = \exp[(1 + \i)\ \ln(1 - \i)]       \\
+              \ln(1 - \i)       & = \ln(\sqrt{2}) - \i\ \frac{\pi}{4} \\
+              z                 & = \exp[\ln(\sqrt{2}) + \pi/4
+              + \i\ (\ln \sqrt{2}  - \pi/4)]                          \\
+              z                 & = \sqrt{2} e^{\pi/4}
+              \ [\cos(\ln\sqrt{2} - \pi/4) + \i\ \sin(\ln\sqrt{2} - \pi/4)]
+          \end{align}
+
+    \item Finding the principal value,
+          \begin{align}
+              (-3)^{3 - \i} & = \exp[(3 - \i)\ \ln(-3)] \\
+              \ln(-3)       & = \ln 3 + \i\ \pi         \\
+              z             & = \exp[3\ln 3 + \pi
+              + \i\ (3\pi - \ln 3)]                     \\
+              z             & = 27 e^{\pi}
+              \ [-\cos(\ln 3) + \i\ \sin(\ln 3)]
+          \end{align}
+
+    \item Finding the principal value,
+          \begin{align}
+              \i^\i   & = \exp[\i\ \ln(\i)]          &
+              \ln(\i) & = \ln(1) + \i\ \frac{\pi}{2}   \\
+              z       & = \exp(-\pi/2)
+          \end{align}
+
+    \item Finding the principal value,
+          \begin{align}
+              (-1)^{2 - \i} & = \exp[(2 - \i)\ \ln(-1)] \\
+              \ln(-1)       & = \ln 1 + \i\ \pi         \\
+              z             & = \exp[\pi + \i\ 2\pi]    \\
+              z             & = e^{\pi}
+              \ [\cos(2\pi) + \i\ \sin(2\pi)] = e^{\pi}
+          \end{align}
+
+    \item Finding the principal value,
+          \begin{align}
+              (3 + 4\i)^{1/3} & = \exp[(1/3)\ \ln(3 + 4\i)]   \\
+              \ln(3 + 4\i)    & = \ln 5 + \i\ \arctan(4/3)    \\
+              z               & = \exp\Bigg[\frac{\ln 5}{3} +
+              \i\ \frac{\arctan(4/3)}{3}\Bigg]                \\
+              z               & = 5^{1/3}
+              \ \Bigg[\cos\Big( \frac{\arctan(4/3)}{3} \Big)
+                  + \i\ \sin\Big( \frac{\arctan(4/3)}{3} \Big)\Bigg]
+          \end{align}
+
+    \item Starting with problem $ 23 $,
+          \begin{align}
+              z_1 & = (x + \i y)^{a + \i b} = \exp\Big[(a+\i b)
+              \ (\ln x \cos y + \i \ln x\sin y) \Big]           \\
+                  & = \exp(\alpha + \i\ \beta)                  \\
+              z_2 & = (x - \i y)^{a - \i b} = \exp\Big[(a-\i b)
+              \ (\ln x \cos y - \i \ln x\sin y) \Big]           \\
+                  & = \exp(\alpha - \i\ \beta)
+          \end{align}
+          Clearly, $ z_2 = \bar{z}_1 $, which provides the answer to problem $ 24 $.
+
+    \item Inverse trigonometric functions,
+          \begin{enumerate}
+              \item Finding the expression,
+                    \begin{align}
+                        z = \cos w     & = \frac{e^{\i w} + e^{-\i w}}{2}
+                        = \frac{e^{2\i w} + 1}
+                        {2e^{\i w}}    &
+                        t              & = e^{\i w}                                 \\
+                        t^2 - 2zt + 1  & = 0                                      &
+                        t              & = z \pm \sqrt{z^2 - 1}                     \\
+                        \arccos(z) = w & = -\i\ \ln\Big( z + \sqrt{z^2 - 1} \Big)
+                    \end{align}
+              \item Finding the expression,
+                    \begin{align}
+                        z = \sin w        & = \frac{e^{\i w} - e^{-\i w}}{2\i}
+                        = \frac{e^{2\i w} - 1}
+                        {2\i\ e^{\i w}}   &
+                        t                 & = e^{\i w}                              \\
+                        t^2 - 2\i\ zt - 1 & = 0                                   &
+                        t                 & = \i z \pm \sqrt{1 - z^2}               \\
+                        \arcsin(z) = w    & = -\i\ \ln\Big( \i z + \sqrt{1 - z^2}
+                        \Big)
+                    \end{align}
+              \item Finding the expression,
+                    \begin{align}
+                        z = \cosh w      & = \frac{e^{w} + e^{-w}}{2}
+                        = \frac{e^{2w} + 1}
+                        {2e^{w}}         &
+                        t                & = e^{w}                               \\
+                        t^2 - 2zt + 1    & = 0                                 &
+                        t                & = z \pm \sqrt{z^2 - 1}                \\
+                        \cosh^{-1} z = w & = \ln\Big( z + \sqrt{z^2 - 1} \Big)
+                    \end{align}
+              \item Finding the expression,
+                    \begin{align}
+                        z = \sinh w       & = \frac{e^{w} - e^{-w}}{2}
+                        = \frac{e^{2w} - 1}
+                        {2e^{w}}          &
+                        t                 & = e^{w}                            \\
+                        t^2 - 2zt - 1     & = 0                              &
+                        t                 & = z \pm \sqrt{1 + z^2}             \\
+                        \sinh^{-1}(z) = w & = \ln\Big( \i z + \sqrt{1 + z^2}
+                        \Big)
+                    \end{align}
+              \item Finding the expression,
+                    \begin{align}
+                        z = \tan w           & = \frac{1}{\i}\
+                        \frac{e^{\i w} - e^{-\i w}}{e^{\i w} + e^{-\i w}}
+                        = \frac{e^{2\i w} - 1}
+                        {\i\ e^{2\i w} + \i} &
+                        t                    & = e^{\i w}                       \\
+                        t^2 - 1              & = \i zt^2 + \i z               &
+                        t^2                  & = \frac{\i z + 1}{1 - \i z}      \\
+                        t                    & = \sqrt{\frac{\i - z}{\i + z}}
+                        = \Bigg( \frac{\i + z}{\i - z} \Bigg)^{-1/2}            \\
+                        \arctan(z) = w       & = \frac{\i}{2}\ \ln\Bigg[
+                            \frac{\i + z}{\i - z}\Bigg]
+                    \end{align}
+              \item Finding the expression,
+                    \begin{align}
+                        z = \tanh w       & =
+                        \frac{e^{w} - e^{-w}}{e^{w} + e^{-w}}
+                        = \frac{e^{2w} - 1}
+                        {e^{2w} + 1}      &
+                        t                 & = e^{w}                        \\
+                        t^2 - 1           & = zt^2 + z                   &
+                        t^2               & = \frac{z + 1}{1 - z}          \\
+                        t                 & = \sqrt{\frac{1 + z}{1 - z}}   \\
+                        \tanh^{-1}(z) = w & = \frac{1}{2}\ \ln\Bigg[
+                            \frac{1 + z}{1 - z}\Bigg]
+                    \end{align}
+
+              \item To show the many-valued nature of $ \sin^{-1} z $, look at the
+                    fact that $ \sin $ and $ \cos $ are periodic with period $ 2\pi $.
+                    This means that $ z \to z + 2n\pi $ makes no change to the
+                    output of $ \sin(z) $. \par
+                    The converse of this statement is that $ \arcsin(z) $ is many valued
+                    with separation $ \Delta w  = 2n\pi$. \par
+                    Since $ \sqrt{1 - z^2} $ can have two possible results which differ
+                    by a factor of $ (-1) $, the two possible values of $ w $ differ by
+                    $ \pi $ \par
+                    This provides the second branch of solutions $ w_1 + (2n+1)\pi $.
+          \end{enumerate}
+\end{enumerate}

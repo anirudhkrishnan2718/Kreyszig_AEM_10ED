@@ -7,6 +7,7 @@
 % \usepackage[]{titlesec}
 \usepackage[dvipsnames]{xcolor}
 
+\usepackage{float}
 \usepackage[hidelinks]{hyperref}
 \usepackage{needspace}
 \usepackage{enumitem}
@@ -18,12 +19,18 @@
 % \usepackage[autostyle, english = american]{csquotes}
 \usepackage{pgfplots}
 \pgfplotsset{compat = 1.18, width = 12 cm, height = 8 cm}
+
 \usepackage{pgfplotstable}
 \usepackage{nicematrix}
 
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{math}
+\usetikzlibrary{intersections}
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{colormaps}
+\usepgfplotslibrary{statistics}
+
 
 %% reusable functions of one or more variables inside plots
 \input{./tables/tikz_functions.tex}
@@ -49,7 +56,7 @@
 }
 
 
-\usepgfplotslibrary{polar}
+\usepgfplotslibrary{polar, fillbetween}
 \usepackage[font=small,labelfont=bf]{caption}
 
 \usepackage{tabularray}
@@ -57,10 +64,12 @@
 \NineColors{saturation = high}
 
 \usepackage{mathtools}
-\usepackage{float}
 \usepackage{subcaption}
-\usetikzlibrary{external}
+
+%%------------------------- SKIP RECOMPILING UNCHANGED FIGURES -------------------------%%
+\usepgfplotslibrary{external}
 \tikzexternalize[prefix=Figures/]
+
 \usetikzlibrary{angles,quotes, graphs, arrows.meta}
 \usepackage{circuitikz}
 \usepackage[l3]{csvsimple}
@@ -72,24 +81,54 @@
 \usepackage[scr]{rsfso}
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \renewcommand{\vec}[1]{\mathbf{#1}}
+\renewcommand{\Re}[1]{\operatorname{Re}{#1}}
+\renewcommand{\Im}[1]{\operatorname{Im}{#1}}
+\renewcommand{\i}{\mathfrak{i}}
+
+
 \newcommand{\dotp}{\boldsymbol{\cdot}}
 \newcommand\bmatcol[2]{\begin{bNiceMatrix}[r, margin] #1 \\ #2\end{bNiceMatrix}}
+\newcommand\permu[2]{\prescript{#1}{}{\mathsf{P}_{#2}}}
 \newcommand\bmattt[4]{\begin{bNiceMatrix}[r, margin] #1 & #2 \\ #3 & #4 \end{bNiceMatrix}}
+
+% Gauss elimination augmented matrix in two dimensions
+\newcommand\Gausstwo[6]{\begin{bNiceArray}{rr|r}[margin]
+    \CodeBefore
+    \columncolor[opacity=0.05]{black}{3}
+    \Body
+    #1 & #2 & #3 \\
+    #4 & #5 & #6
+\end{bNiceArray}}
+
 %% infinite series sum with default index m
 \newcommand\iser[2][m]{\sum_{#1 = #2}^{\infty}}
 % \newcommand\Lap{\mathscr{L}}
 \DeclareMathOperator{\Lap}{\mathscr{L}}
+\DeclareMathOperator{\Fou}{\mathscr{F}}
+\DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\arcsec}{arcsec}
 \DeclareMathOperator{\arccot}{arccot}
 \DeclareMathOperator{\arccsc}{arccsc}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator\Arg{Arg}
+\DeclareMathOperator\Var{Var}
+\DeclareMathOperator\Cov{Cov}
+\DeclareMathOperator\Ln{Ln}
+\DeclareMathOperator\prv{prv}
+\DeclareMathOperator\CONF{CONF}
+\DeclareMathOperator\ex{\mathbb{E}}
 
 % \usepackage{xparse}
 \usepackage[]{diffcoeff}
 
 %% integral from some start point to infinity
 \newcommand\infint[1][0]{\int_{#1}^{\infty}}
+\newcommand\intRL{\int_{-\infty}^{\infty}}
+\newcommand\Res{\mathop{\mathrm{Res}}}
+\newcommand\wt{\widetilde}
+\let\pgfmathMod=\pgfmathmod\relax
 
 
 %%---------------------- BASIC DOCUMENT DETAILS --------------------%%
@@ -113,6 +152,7 @@
 %% equation numbering font size and colors
 \renewcommand{\theequation}{\scriptsize\sffamily{\color{blue1}\thesection}.{\color{blue3}\arabic{equation}}}
 
+\tikzstyle{force}=[-Triangle,y_p,thick,line cap=round]
 
 %%-------------- FINE CONTROL OVER DOCUMENT DIMENSIONS------------- %%
 %% Insert blank line on new paragraph
@@ -190,22 +230,22 @@
 \setlist[enumerate, 1]{
     after={\bigskip},
     leftmargin = *,
-    label={\color{cyan3}\sffamily\textbf{\arabic*.}}}
+    label={\color{cyan4}\sffamily\textbf{\arabic*.}}}
 
 \setlist[enumerate, 2]{
     after={\bigskip},
     leftmargin = *,
-    label={\color{cyan4}\sffamily\textbf{(\alph*)}}}
+    label={\color{cyan5}\sffamily\textbf{(\alph*)}}}
 
     \setlist[enumerate, 3]{
     after={\bigskip},
     leftmargin = *,
-    label={\color{cyan5}\sffamily\textbf{(\arabic*)}}}
+    label={\color{cyan6}\sffamily\textbf{(\arabic*)}}}
 
 \setlist[itemize, 1]{
     after={\bigskip},
     leftmargin = *,
-    label=\textcolor{violet2}{\textbullet}}
+    label=\textcolor{violet3}{\textbullet}}
 
 \setlist[description]{
     after=\bigskip,
@@ -213,7 +253,7 @@
     align=left,
     leftmargin=*,
     itemindent=!,
-    font={\sffamily\slshape\small\color{azure3}}}
+    font={\sffamily\slshape\small\color{azure4}}}
 
 %% dont show any subdivisions below chapters in TOC
 \setcounter{tocdepth}{2}
@@ -224,23 +264,22 @@
 
 %% expressions in ODE solutions
 \colorlet{y_p}{red4}
-\colorlet{y_h}{green4}
-
+\colorlet{y_h}{green5}
+\colorlet{y_s}{brown6}
+\colorlet{y_t}{azure4}
 
 %%------------------------- MAIN DOCUMENT --------------------------%%
 
 \begin{document}
 % \pagenumbering{Alph}
 \renewcommand{\arraystretch}{1.5}
-\layout
-% \maketitle
-\begin{titlepage}
-    \input{./custom_titlepage_auto.tex}
-    \frontmatter
-    \tableofcontents
-    \listoffigures
-    \listoftables
-\end{titlepage}
+% \begin{titlepage}
+%     \input{./custom_titlepage_auto.tex}
+%     \frontmatter
+%     \tableofcontents
+%     % \listoffigures
+%     % \listoftables
+% \end{titlepage}
 % \pagenumbering{arabic}
 
 \mainmatter
@@ -283,18 +322,32 @@
 %%---------------------- INCLUDE CHAPTERS --------------------------%%
 
 %% textbook notes
-\include{content/chapter_01/notes}
-\include{content/chapter_02/notes}
-\include{content/chapter_03/notes}
-\include{content/chapter_04/notes}
-\include{content/chapter_05/notes}
-\include{content/chapter_06/notes}
-\include{content/chapter_07/notes}
-\include{content/chapter_08/notes}
-\include{content/chapter_09/notes}
-\include{content/chapter_10/notes}
-\include{content/chapter_11/notes}
+% \include{content/chapter_01/notes}
+% \include{content/chapter_02/notes}
+% \include{content/chapter_03/notes}
+% \include{content/chapter_04/notes}
+% \include{content/chapter_05/notes}
+% \include{content/chapter_06/notes}
+% \include{content/chapter_07/notes}
+% \include{content/chapter_08/notes}
+% \include{content/chapter_09/notes}
+% \include{content/chapter_10/notes}
+% \include{content/chapter_11/notes}
+% \include{content/chapter_12/notes}
+% \include{content/chapter_13/notes}
+% \include{content/chapter_14/notes}
+% \include{content/chapter_15/notes}
+% \include{content/chapter_16/notes}
+% \include{content/chapter_17/notes}
+% \include{content/chapter_18/notes}
+% \include{content/chapter_19/notes}
+% \include{content/chapter_20/notes}
+% \include{content/chapter_21/notes}
+% \include{content/chapter_22/notes}
+% \include{content/chapter_24/notes}
+% \include{content/chapter_25/notes}
 
+\setcounter{chapter}{24}
 %% section exercises
 % \include{content/chapter_01/exercises}
 % \include{content/chapter_02/exercises}
@@ -306,6 +359,19 @@
 % \include{content/chapter_08/exercises}
 % \include{content/chapter_09/exercises}
 % \include{content/chapter_10/exercises}
-\include{content/chapter_11/exercises}
+% \include{content/chapter_11/exercises}
+% \include{content/chapter_12/exercises}
+% \include{content/chapter_13/exercises}
+% \include{content/chapter_14/exercises}
+% \include{content/chapter_15/exercises}
+% \include{content/chapter_16/exercises}
+% \include{content/chapter_17/exercises}
+% \include{content/chapter_18/exercises}
+% \include{content/chapter_19/exercises}
+% \include{content/chapter_20/exercises}
+% \include{content/chapter_21/exercises}
+% \include{content/chapter_22/exercises}
+% \include{content/chapter_24/exercises}
+\include{content/chapter_25/exercises}
 
 \end{document}

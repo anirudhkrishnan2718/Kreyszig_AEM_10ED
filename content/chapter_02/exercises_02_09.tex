@@ -3,34 +3,41 @@
 \begin{enumerate}
     \item Solving the h-ODE,
           \begin{align}
-              0                         & = RI' + \frac{1}{C}\ I                                \\
-              \int\  \frac{1}{I}\ \dl I & = \frac{-1}{RC}\int \dl t                             \\
-              I_{h}                     & = {\color{y_h} p_{1}\exp\left( \frac{-t}{RC} \right)} \\
-              I_{p}                     & = {\color{y_p} 0}                                     \\
+              0                         & = RI' + \frac{1}{C}\ I                    \\
+              \int\  \frac{1}{I}\ \dl I & = \frac{-1}{RC}\int \dl t                 \\
+              I_{h}                     & = {\color{y_h} p_{1}\exp
+              \left( \frac{-t}{RC} \right)}                                         \\
+              I_{p}                     & = {\color{y_p} 0}                         \\
               I                         & ={\color{y_p} I_{p}} + {\color{y_h}I_{h}}
           \end{align}
-          After the transient current exponentially decays to zero, the steady state current
-          is zero, because the capacitor has charged up fully. Note that this result is
-          independent of the constant emf $ E_{0} $.
+          After the transient current exponentially decays to zero, the steady state
+          current is zero, because the capacitor has charged up fully. Note that this
+          result is independent of the constant emf $ E_{0} $.
 
     \item RL circuit with sinusoidally varying $ E $,
           \begin{align}
-              \omega E_{0}\cos(\omega t) & = RI' + \frac{1}{C}\ I                                                      \\
-              S                          & = \omega L - \frac{1}{\omega C}                                             \\
-              I_{p}                      & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big] \\
-              I_{p}                      & = {\color{y_p} \frac{E_{0} \cdot (\omega C)^{2}}{(\omega RC)^{2} + 1}
-              \left[ R\sin(\omega t) + \frac{1}{\omega C} \cos(\omega t) \right]}                                      \\
-              I_h                        & = {\color{y_h} c_{1} \exp\left( \frac{-t}{RC} \right)}                      \\
-              I                          & ={\color{y_p} I_{p}} + {\color{y_h}I_{h}}
+              \omega E_{0}\cos(\omega t) & = RI' + \frac{1}{C}\ I                 \\
+              S                          & = \omega L - \frac{1}{\omega C}        \\
+              I_{p}                      & = \frac{E_{0}}{R^{2} + S^{2}}
+              \ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big]                      \\
+              I_{p}                      & = {\color{y_p} \frac{E_{0}
+                  \cdot (\omega C)^{2}}{(\omega RC)^{2} + 1}
+              \left[ R\sin(\omega t) + \frac{1}{\omega C} \cos(\omega t) \right]} \\
+              I_h                        & = {\color{y_h} c_{1}
+              \exp\left( \frac{-t}{RC} \right)}                                   \\
+              I                          & ={\color{y_p} I_{p}}
+              + {\color{y_h}I_{h}}
           \end{align}
 
     \item For an RL circuit with a constant emf,
           \begin{align}
-              E                                & = LI' + RI                                                                        \\
-              \int\  \frac{1}{(RI - E)}\ \dl I & = \frac{-1}{L}\int \dl t                                                          \\
-              \frac{1}{R}\ln(RI - E)           & = \frac{-t}{L} + c_{1}                                                            \\
-              I                                & = {\color{y_p} \frac{E}{R}} + {\color{y_h} c_{1}\exp\left( \frac{-Rt}{L} \right)} \\
-              I                                & ={\color{y_p} I_{p}} + {\color{y_h}I_{h}}
+              E                                & = LI' + RI                  \\
+              \int\  \frac{1}{(RI - E)}\ \dl I & = \frac{-1}{L}\int \dl t    \\
+              \frac{1}{R}\ln(RI - E)           & = \frac{-t}{L} + c_{1}      \\
+              I                                & = {\color{y_p} \frac{E}{R}}
+              + {\color{y_h} c_{1}\exp\left( \frac{-Rt}{L} \right)}          \\
+              I                                & ={\color{y_p} I_{p}}
+              + {\color{y_h}I_{h}}
           \end{align}
           Graphing the current for $ L = 0.25,\ R = 10,\ E = 48 $,
           \begin{figure}[H]
@@ -47,12 +54,11 @@
                           legend pos = north east,
                           grid = both,
                           xtick distance = 0.05,
-                          width = 12cm,
-                          height = 8cm,
                           xtick = {0,0.05,...,0.2},
                           Ani,
                       ]
-                      \addplot[GraphSmooth, red, color = y_p, domain = 0:0.2]{I_p + I_h};
+                      \addplot[GraphSmooth, y_p, domain = 0:0.2]
+                      {I_p + I_h};
                       \addlegendentry{$ I $};
                   \end{axis}
               \end{tikzpicture}
@@ -60,17 +66,21 @@
 
     \item For an RL circuit with a constant emf, solving the h-ODE
           \begin{align}
-              E_{0}\sin(\omega t)        & = LI' + RI                                                                              \\
-              E_{0}\omega \cos(\omega t) & = LI'' + RI'                                                   & a & = R/L \qquad b = 0 \\
-              \lambda_{1}, \lambda_{2}   & = \frac{-R/L \pm R/L}{2}                                       &   & = \frac{-R}{L}, 0  \\
-              I_{h}                      & = {\color{y_h} c_{1} + c_{2}\exp\left( \frac{-Rt}{L} \right) }
+              E_{0}\sin(\omega t)        & = LI' + RI                     \\
+              E_{0}\omega \cos(\omega t) & = LI'' + RI'                 &
+              a                          & = R/L \qquad b = 0             \\
+              \lambda_{1}, \lambda_{2}   & = \frac{-R/L \pm R/L}{2}     &
+                                         & = \frac{-R}{L}, 0              \\
+              I_{h}                      & = {\color{y_h} c_{1} + c_{2}
+              \exp\left( \frac{-Rt}{L} \right) }
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              S     & = \omega L - \frac{1}{\omega C}                                             \\
-              I_{p} & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big] \\
+              S     & = \omega L - \frac{1}{\omega C}                      \\
+              I_{p} & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t)
+              + R\sin(\omega t)\Big]                                       \\
               I_{p} & = {\color{y_p} \frac{E_{0}}{R^{2} + (\omega L)^{2}}\
-              \Big[R\sin(\omega t) - \omega L \cos(\omega t)\Big]}                                \\
+              \Big[R\sin(\omega t) - \omega L \cos(\omega t)\Big]}         \\
               I     & ={\color{y_p} I_{p}} + {\color{y_h}I_{h}}
           \end{align}
           Graphing the current for $ L = 0.25,\ R = 1,\ E = 10,\ \omega = 4$,
@@ -87,25 +97,27 @@
                           ylabel = {Current ($ I $)},
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           domain = 0:50,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_p]{I_p + I_h};
-                      \addplot[GraphSmooth, color = y_h]{I_h};
+                      \addplot[GraphSmooth, y_p]{I_p + I_h};
+                      \addplot[GraphSmooth, y_h]{I_h};
                       \addlegendentry{$ I $};
                       \addlegendentry{$ I_{h} $};
                   \end{axis}
               \end{tikzpicture}
           \end{figure}
 
-    \item For an LC circuit with a negligible resistance and sinusoidal emf, solving the h-ODE, \par
+    \item For an LC circuit with a negligible resistance and sinusoidal emf, solving
+          the h-ODE, \par
           given $ L = 0.5,\ C = 0.005,\ \omega = 1,\ E_{0} = 1$,
           \begin{align}
-              \cos t                   & = LI'' + \frac{1}{C}\ I                          & a & = 0 \qquad b = \frac{-4}{LC} \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4/LC}}{2}                   &   & = 0 \pm \frac{i}{\sqrt{LC}}  \\
-              I_{h}                    & = {\color{y_h} c_{1}\cos(20 t)+ c_{2}\sin(20 t)}
+              \cos t                   & = LI'' + \frac{1}{C}\ I        &
+              a                        & = 0 \qquad b = \frac{-4}{LC}     \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4/LC}}{2} &
+                                       & = 0 \pm \frac{i}{\sqrt{LC}}      \\
+              I_{h}                    & = {\color{y_h} c_{1}\cos(20 t)
+              + c_{2}\sin(20 t)}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
@@ -116,9 +128,10 @@
           \end{align}
           Applying the IC $ Q(0) = 0,\ I(0) = 0 $,
           \begin{align}
-              I(0) = 0 & = c_{1} - \frac{E_{0}}{S}                                                          \\
-              Q(0) = 0 & \implies I'(0) = 0 = 20c_{2}                                                       \\
-              I        & = {\color{y_h} \frac{E_{0}}{S} \cos(20t)} - {\color{y_p} \frac{E_{0}}{S}\ \cos(t)}
+              I(0) = 0 & = c_{1} - \frac{E_{0}}{S}                 \\
+              Q(0) = 0 & \implies I'(0) = 0 = 20c_{2}              \\
+              I        & = {\color{y_h} \frac{E_{0}}{S} \cos(20t)}
+              - {\color{y_p} \frac{E_{0}}{S}\ \cos(t)}
           \end{align}
           \begin{figure}[H]
               \centering
@@ -135,25 +148,27 @@
                           ylabel = {Current ($ I $)},
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           domain = 0:3*pi,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_p]{I_p + I_h};
-                      \addplot[GraphSmooth, color = y_h, thin]{I_h};
+                      \addplot[GraphSmooth, y_p]{I_p + I_h};
+                      \addplot[GraphSmooth, y_h]{I_h};
                       \addlegendentry{$ I $};
                       \addlegendentry{$ I_{h} $};
                   \end{axis}
               \end{tikzpicture}
           \end{figure}
 
-    \item For an LC circuit with a negligible resistance and sinusoidal emf, solving the h-ODE, \par
+    \item For an LC circuit with a negligible resistance and sinusoidal emf, solving
+          the h-ODE, \par
           given $ L = 0.5,\ C = 0.005,\ \omega = 1,\ E_{t} = 2t^{2}$,
           \begin{align}
-              4t                       & = LI'' + \frac{1}{C}\ I                          & a & = 0 \qquad b = \frac{-4}{LC} \\
-              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4/LC}}{2}                   &   & = 0 \pm \frac{i}{\sqrt{LC}}  \\
-              I_{h}                    & = {\color{y_h} c_{1}\cos(20 t)+ c_{2}\sin(20 t)}
+              4t                       & = LI'' + \frac{1}{C}\ I        &
+              a                        & = 0 \qquad b = \frac{-4}{LC}     \\
+              \lambda_{1}, \lambda_{2} & = \frac{0 \pm i\sqrt{4/LC}}{2} &
+                                       & = 0 \pm \frac{i}{\sqrt{LC}}      \\
+              I_{h}                    & = {\color{y_h} c_{1}\cos(20 t)
+              + c_{2}\sin(20 t)}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
@@ -180,15 +195,13 @@
                           PiStyleX,
                           xlabel = {Time ($ t $)},
                           ylabel = {Current ($ I $)},
-                          legend pos = north east,
+                          legend pos = north west,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           domain = 0:1*pi,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_p]{I_p + I_h};
-                      \addplot[GraphSmooth, color = y_h, thin]{I_h};
+                      \addplot[GraphSmooth, y_p]{I_p + I_h};
+                      \addplot[GraphSmooth, y_h]{I_h};
                       \addlegendentry{$ I $};
                       \addlegendentry{$ I_{h} $};
                   \end{axis}
@@ -197,73 +210,101 @@
 
     \item Maximize $ I_{0} $, given $ R, L $ are constant,
           \begin{align}
-              I_{0}                & = E_{0} \left[ R^{2} + (\omega L)^{2} + \frac{1}{(\omega C)^{2}}
-              - \frac{2L}{C} \right]^{-1/2}                                                           \\
-              \diff {I_{0}}{C}     & = \frac{-E_{0}}{2} \cdot \left( \frac{-2}{\omega^{2}C^{3}}
-              + \frac{2L}{C^{2}} \right) \cdot [R^{2} + S^{2}]^{-3/2}                                 \\
+              I_{0}                & = E_{0} \left[ R^{2} + (\omega L)^{2}
+                  + \frac{1}{(\omega C)^{2}}
+              - \frac{2L}{C} \right]^{-1/2}                                            \\
+              \diff {I_{0}}{C}     & = \frac{-E_{0}}{2} \cdot \left( \frac{-2}
+              {\omega^{2}C^{3}}
+              + \frac{2L}{C^{2}} \right) \cdot [R^{2} + S^{2}]^{-3/2}                  \\
               \diff {I_{0}}{C} = 0 & \implies \frac{1}{\omega^{2}} = LC \implies S = 0
           \end{align}
-          At zero complex impedance, the resistance of the circuit is minimized thus maximizing
-          the current amplitude.
+          At zero complex impedance, the resistance of the circuit is minimized thus
+          maximizing the current amplitude.
 
     \item Finding the steady state current,
           \begin{align}
-              0.5I'' + 4I' + \frac{1}{0.1}\ I & = \diff* {500 \sin(2t)}{t} = 1000\cos(2t)                                   \\
-              S                               & = \omega L - \frac{1}{\omega C} = -4                                        \\
-              I_{p}                           & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big] \\
-              I_{p}                           & = {\color{y_p} \frac{125}{2}\ [\cos(2t) + \sin(2t)]}                        \\
-          \end{align}
-
-    \item Finding the steady state current,
-          \begin{align}
-              0.1I'' + 4I' + \frac{1}{0.05}\ I & = \diff* {110}{t} = 0                          \\
-              I_{p}                            & = Kt + M                                       \\
-              0                                & = 4K + 20M            & \cdots\cdots & [t^{0}] \\
-              0                                & = 20K                 & \cdots\cdots & [t]     \\
-              I_{p}                            & = {\color{y_p} 0}                              \\
+              0.5I'' + 4I' + \frac{1}{0.1}\ I & = \diff* {500 \sin(2t)}{t}
+              = 1000\cos(2t)                                                    \\
+              S                               & = \omega L - \frac{1}{\omega C}
+              = -4                                                              \\
+              I_{p}                           & = \frac{E_{0}}{R^{2} + S^{2}}
+              \ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big]                    \\
+              I_{p}                           & = {\color{y_p} \frac{125}{2}
+              \ [\cos(2t) + \sin(2t)]}                                          \\
           \end{align}
 
     \item Finding the steady state current,
           \begin{align}
-              I'' + 2I' + 20I & = \diff* {157\sin(3t)}{t} = 471\cos(3t)                                     \\
-              S               & = \omega L - \frac{1}{\omega C} = -\frac{11}{3}                             \\
-              I_{p}           & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big] \\
-              I_{p}           & = {\color{y_p} 33\cos(2t) + 18\sin(2t)}                                     \\
+              0.1I'' + 4I' + \frac{1}{0.05}\ I & = \diff* {110}{t} = 0   \\
+              I_{p}                            & = Kt + M                \\
+              0                                & = 4K + 20M            &
+              \cdots\cdots                     & [t^{0}]                 \\
+              0                                & = 20K                 &
+              \cdots\cdots                     & [t]                     \\
+              I_{p}                            & = {\color{y_p} 0}       \\
           \end{align}
 
     \item Finding the steady state current,
           \begin{align}
-              0.4I'' + 12I' + 80I & = \diff* {220\sin(10t)}{t} = 2200\cos(10t)                                  \\
-              S                   & = \omega L - \frac{1}{\omega C} = -4                                        \\
-              I_{p}               & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big] \\
-              I_{p}               & = {\color{y_p} 5.5 \left[ \cos(10t) + 3\sin(10t) \right]}                   \\
+              I'' + 2I' + 20I & = \diff* {157\sin(3t)}{t} = 471\cos(3t)         \\
+              S               & = \omega L - \frac{1}{\omega C} = -\frac{11}{3} \\
+              I_{p}           & = \frac{E_{0}}{R^{2} + S^{2}}
+              \ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big]                    \\
+              I_{p}           & = {\color{y_p} 33\cos(2t) + 18\sin(2t)}         \\
           \end{align}
 
     \item Finding the steady state current,
           \begin{align}
-              0.1I'' + 0.2I' + \frac{1}{2}\ I & = \diff* {220\sin(314t)}{t} = 69080\cos(314t)                               \\
-              S                               & = \omega L - \frac{1}{\omega C} = 31.4                                      \\
-              I_{p}                           & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big] \\
-              I_{p}                           & = {\color{y_p} -7.00534\cos(10t) + 0.04462 \sin(10t) }                      \\
+              0.4I'' + 12I' + 80I & = \diff* {220\sin(10t)}{t} = 2200\cos(10t) \\
+              S                   & = \omega L - \frac{1}{\omega C} = -4       \\
+              I_{p}               & = \frac{E_{0}}{R^{2} + S^{2}}
+              \ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big]                   \\
+              I_{p}               & = {\color{y_p} 5.5 \left[ \cos(10t)
+              + 3\sin(10t) \right]}                                            \\
+          \end{align}
+
+    \item Finding the steady state current,
+          \begin{align}
+              0.1I'' + 0.2I' + \frac{1}{2}\ I & = \diff* {220\sin(314t)}{t}
+              = 69080\cos(314t)                                                  \\
+              S                               & = \omega L - \frac{1}{\omega C}
+              = 31.4                                                             \\
+              I_{p}                           & = \frac{E_{0}}{R^{2} + S^{2}}
+              \ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big]                     \\
+              I_{p}                           & = {\color{y_p} -7.00534\cos(10t)
+              + 0.04462 \sin(10t) }                                              \\
           \end{align}
     \item Finding the steady state current,
           \begin{align}
-              1.2I'' + 12I' + \frac{3000}{20}\ I & = \diff* {12000\sin(25t)}{t} = 300000\cos(25t)                              \\
-              S                                  & = \omega L - \frac{1}{\omega C} = 24                                        \\
-              I_{p}                              & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big] \\
-              I_{p}                              & = {\color{y_p} -400\cos(25t) + 200\sin(25t) }                               \\
+              1.2I'' + 12I' + \frac{3000}{20}\ I & = \diff* {12000\sin(25t)}{t}
+              = 300000\cos(25t)                                                    \\
+              S                                  & = \omega L - \frac{1}{\omega C}
+              = 24                                                                 \\
+              I_{p}                              & = \frac{E_{0}}{R^{2} + S^{2}}
+              \ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big]                       \\
+              I_{p}                              & = {\color{y_p} -400\cos(25t)
+              + 200\sin(25t) }                                                     \\
           \end{align}
 
-    \item If $ R > 0 $, then prove $ I_{h} $ decays to zero with time, given $ R, L, C > 0 $,
+    \item If $ R > 0 $, then prove $ I_{h} $ decays to zero with time, given
+          $ R, L, C > 0 $,
           \begin{align}
-              E_{0}\omega\cos(\omega t) & = LI'' + RI' + \frac{1}{C}\ I                                                                                   \\
-              a                         & = \frac{R}{L}                                               & b     & = \frac{1}{LC}                            \\
-              \alpha                    & = \frac{R}{2L}                                              & \beta & = \frac{1}{2L}\sqrt{R^{2} - \frac{4L}{C}} \\
-              I_{h}                     & = e^{-\alpha t}[c_{1}\cos(\beta t) + c_{2}\sin(\beta t)]    & \beta & < 0                                       \\
-              I_{h}                     & = c_{1}e^{-(\alpha + \beta)t} + c_{2}e^{-(\alpha - \beta)t} & \beta & > 0
+              E_{0}\omega\cos(\omega t)     & = LI'' + RI' + \frac{1}{C}\ I        \\
+              a                             & = \frac{R}{L}                      &
+              b                             & = \frac{1}{LC}                       \\
+              \alpha                        & = \frac{R}{2L}                     &
+              \beta                         & = \frac{1}{2L}\sqrt{R^{2}
+              - \frac{4L}{C}}                                                      \\
+              I_{h}                         & = e^{-\alpha t}[c_{1}\cos(\beta t)
+              + c_{2}\sin(\beta t)]         &
+              \beta                         & < 0                                  \\
+              I_{h}                         & = c_{1}e^{-(\alpha + \beta)t}
+              + c_{2}e^{-(\alpha - \beta)t} &
+              \beta                         & > 0
           \end{align}
-          Since $ 0 < \beta < \alpha $ is guaranteed for the case $ \beta > 0 $, the two terms both have a
-          negative exponent. In both cases, exponential decay is unavoidable for $ R > 0 $.
+          Since $ 0 < \beta < \alpha $ is guaranteed for the case $ \beta > 0 $, the two
+          terms both have a negative exponent. In both cases, exponential decay is
+          unavoidable for $ R > 0 $.
 
     \item From the above problem,
           \begin{align}
@@ -278,22 +319,29 @@
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = 0.2I'' + 8I' + \frac{1000}{12.5}\ I    & a & = 40 \qquad b = 400 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-40 \pm \sqrt{0}}{2}             &   & = -20, -20          \\
+              0                        & = 0.2I'' + 8I' + \frac{1000}{12.5}\ I    &
+              a                        & = 40 \qquad b = 400                        \\
+              \lambda_{1}, \lambda_{2} & = \frac{-40 \pm \sqrt{0}}{2}             &
+                                       & = -20, -20                                 \\
               I_{h}                    & = {\color{y_h} (c_{1} + c_{2}t)e^{-20t}}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              0.2I'' + 8I' + \frac{1000}{12.5}\ I & = \diff* {100\sin(10t)}{t} = 1000\cos(10t)                                  \\
-              S                                   & = \omega L - \frac{1}{\omega C} = -6                                        \\
-              I_{p}                               & = \frac{E_{0}}{R^{2} + S^{2}}\ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big] \\
-              I_{p}                               & = {\color{y_p}  6\cos(25t) + 12\sin(25t) }                                  \\
+              0.2I'' + 8I' + \frac{1000}{12.5}\ I & = \diff* {100\sin(10t)}{t}
+              = 1000\cos(10t)                                                       \\
+              S                                   & = \omega L - \frac{1}{\omega C}
+              = -6                                                                  \\
+              I_{p}                               & = \frac{E_{0}}{R^{2} + S^{2}}
+              \ \Big[-S\cos(\omega t) + R\sin(\omega t)\Big]                        \\
+              I_{p}                               & = {\color{y_p}  6\cos(25t)
+              + 12\sin(25t) }                                                       \\
           \end{align}
           Applying the IC $ Q(0) = 0,\ I(0) = 0 $,
           \begin{align}
-              I(0) = 0 & = c_{1} + 6                                                                    \\
-              Q(0) = 0 & \implies I'(0) = 0 = 300 + c_{2} - 20c_{1}                                     \\
-              I        & = {\color{y_h} [-6 + 14.7t]e^{-20t}} + {\color{y_p} 6[\cos(25t) + 2\sin(25t)]}
+              I(0) = 0 & = c_{1} + 6                                \\
+              Q(0) = 0 & \implies I'(0) = 0 = 300 + c_{2} - 20c_{1} \\
+              I        & = {\color{y_h} [-6 + 14.7t]e^{-20t}}
+              + {\color{y_p} 6[\cos(25t) + 2\sin(25t)]}
           \end{align}
           \begin{figure}[H]
               \centering
@@ -304,18 +352,16 @@
                           }
                   ]
                   \begin{axis}[
-                          PiStyleX,
+                          PiStyleX, xtick distance = (1/25)*pi,
                           xlabel = {Time ($ t $)},
                           ylabel = {Current ($ I $)},
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           domain = 0:0.2*pi,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_p]{I_p + I_h};
-                      \addplot[GraphSmooth, color = y_h, thin]{I_h};
+                      \addplot[GraphSmooth, y_p]{I_p + I_h};
+                      \addplot[GraphSmooth, y_h]{I_h};
                       \addlegendentry{$ I $};
                       \addlegendentry{$ I_{h} $};
                   \end{axis}
@@ -324,9 +370,12 @@
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = I'' + 6I' + 25I                                      & a & = 6 \qquad b = 25 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-6 \pm i\sqrt{64}}{2}                          &   & = -3 \pm 4i       \\
-              I_{h}                    & = {\color{y_h} [c_{1}\cos(4t) + c_{2}\sin(4t)]e^{-3t}}
+              0                        & = I'' + 6I' + 25I             &
+              a                        & = 6 \qquad b = 25               \\
+              \lambda_{1}, \lambda_{2} & = \frac{-6 \pm i\sqrt{64}}{2} &
+                                       & = -3 \pm 4i                     \\
+              I_{h}                    & = {\color{y_h} [c_{1}\cos(4t)
+                  + c_{2}\sin(4t)]e^{-3t}}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
@@ -338,10 +387,11 @@
           \end{align}
           Applying the IC $ Q(0) = 0,\ I(0) = 0 $,
           \begin{align}
-              I'(0) + 6I(0) + 25Q(0) & = E(0) = 600                                                                   \\
-              I(0) = 0               & = 100 + c_{1}                                                                  \\
-              Q(0) = 0               & \implies I'(0) = 600 = 4c_{2} - 3c_{1}                                         \\
-              I                      & = {\color{y_h} [-100\cos(4t) + 75\sin(4t)]e^{-3t}} + {\color{y_p} 100 \cos(t)}
+              I'(0) + 6I(0) + 25Q(0) & = E(0) = 600                               \\
+              I(0) = 0               & = 100 + c_{1}                              \\
+              Q(0) = 0               & \implies I'(0) = 600 = 4c_{2} - 3c_{1}     \\
+              I                      & = {\color{y_h} [-100\cos(4t) + 75\sin(4t)]
+              e^{-3t}} + {\color{y_p} 100 \cos(t)}
           \end{align}
           \begin{figure}[H]
               \centering
@@ -357,13 +407,11 @@
                           ylabel = {Current ($ I $)},
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           domain = 0:3*pi,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_p]{I_p + I_h};
-                      \addplot[GraphSmooth, color = y_h, thin]{I_h};
+                      \addplot[GraphSmooth, y_p]{I_p + I_h};
+                      \addplot[GraphSmooth, y_h]{I_h};
                       \addlegendentry{$ I $};
                       \addlegendentry{$ I_{h} $};
                   \end{axis}
@@ -372,17 +420,22 @@
 
     \item Solving the h-ODE,
           \begin{align}
-              0                        & = I'' + 18I' + 80I                            & a & = 18 \qquad b = 80 \\
-              \lambda_{1}, \lambda_{2} & = \frac{-18 \pm \sqrt{4}}{2}                  &   & = -8, -10          \\
-              I_{h}                    & = {\color{y_h} c_{1}e^{-10t} + c_{2} e^{-8t}}
+              0                        & = I'' + 18I' + 80I           &
+              a                        & = 18 \qquad b = 80             \\
+              \lambda_{1}, \lambda_{2} & = \frac{-18 \pm \sqrt{4}}{2} &
+                                       & = -8, -10                      \\
+              I_{h}                    & = {\color{y_h} c_{1}e^{-10t}
+              + c_{2} e^{-8t}}
           \end{align}
           Solving the nh-ODE,
           \begin{align}
-              I'' + 18I' + 80I & = -8200\sin(10t)                                                     \\
-              I_{p}            & = K\cos(10t) + M\sin(10t)                                            \\
-              0                & = -100K + 180M + 80K                       & \cdots\cdots & [\cos t] \\
-              -8200            & = -100M - 180K + 80M                       & \cdots\cdots & [\sin t] \\
-              I_{p}            & = {\color{y_p}  45\cos(10t) + 5\sin(10t) }                           \\
+              I'' + 18I' + 80I & = -8200\sin(10t)                             \\
+              I_{p}            & = K\cos(10t) + M\sin(10t)                    \\
+              0                & = -100K + 180M + 80K                       &
+              \cdots\cdots     & [\cos t]                                     \\
+              -8200            & = -100M - 180K + 80M                       &
+              \cdots\cdots     & [\sin t]                                     \\
+              I_{p}            & = {\color{y_p}  45\cos(10t) + 5\sin(10t) }   \\
           \end{align}
           Applying the IC $ Q(0) = 0,\ I(0) = 0 $,
           \begin{align}
@@ -406,31 +459,39 @@
                           ylabel = {Current ($ I $)},
                           legend pos = north east,
                           grid = both,
-                          width = 12cm,
-                          height = 8cm,
                           domain = 0:0.6*pi,
                           Ani,
                       ]
-                      \addplot[GraphSmooth, color = y_p]{I_p + I_h};
-                      \addplot[GraphSmooth, color = y_h, thin]{I_h};
+                      \addplot[GraphSmooth, y_p]{I_p + I_h};
+                      \addplot[GraphSmooth, y_h]{I_h};
                       \addlegendentry{$ I $};
                       \addlegendentry{$ I_{h} $};
                   \end{axis}
               \end{tikzpicture}
           \end{figure}
 
-    \item  To understand the underlying similarities in the modeling of spring-mass systems
-          and electrical circuits,
+    \item  To understand the underlying similarities in the modeling of spring-mass
+          systems and electrical circuits,
           \begin{table}[ht]
               \centering
               \SetTblrInner{rowsep=0.5em}
-              \begin{tblr}{colspec={Q[r]|[dotted]Q[r, $$]|Q[l, $$]|[dotted]Q[l]}, colsep = 1em}
-                  \SetCell[c=2]{c}\textbf{Spring Mass} &                     & \SetCell[c=2]{c} \text{\textbf{Electrical Circuit}} &                           \\ \hline[dotted]
-                  Mass                                 & m                   & L                                                   & Inductance                \\
-                  Damping constant                     & c                   & R                                                   & Resistance                \\
-                  Spring modulus                       & k                   & 1/C                                                 & reciprocal of Capacitance \\
-                  Driving Force                        & F_{0}\cos(\omega t) & E_{0}\omega \cos(\omega t)                          & derivative of EMF         \\
-                  Displacement                         & y(t)                & I(t)                                                & Current                   \\ \hline
+              \begin{tblr}{colspec={Q[r]|[dotted]Q[r, $$]|Q[l, $$]|[dotted]Q[l]},
+                  colsep = 1em}
+                  \SetCell[c=2]{c}\textbf{Spring Mass} &                           &
+                  \SetCell[c=2]{c} \text{\textbf{Electrical
+                  Circuit}}                            &                             \\
+                  \hline[dotted]
+                  Mass                                 & m                         &
+                  L                                    & Inductance                  \\
+                  Damping constant                     & c                         &
+                  R                                    & Resistance                  \\
+                  Spring modulus                       & k                         &
+                  1/C                                  & reciprocal of Capacitance   \\
+                  Driving Force                        & F_{0}\cos(\omega t)       &
+                  E_{0}\omega \cos(\omega t)           & derivative of EMF           \\
+                  Displacement                         & y(t)                      &
+                  I(t)                                 & Current                     \\
+                  \hline
               \end{tblr}
           \end{table}
 
@@ -438,20 +499,25 @@
               5I'' + 10I' + 60I & = 220 \cos(10t) \\
               I'' + 2I' + 12I   & = 44 \cos(10t)
           \end{align}
-          From the above table, $ L = \SI{1}{\henry},\  R = \SI{2}{\ohm},\ C = 1/12 \unit{\farad}$, \par
-          the derivative of the emf becomes, $ E(t)' = 44 \cos(10t) \unit{\volt} $, which means,
-          $ E(t) =  4.4\sin(10t) \unit{\volt}$
+          From the above table, $ L = \SI{1}{\henry},
+              \  R = \SI{2}{\ohm},\ C = 1/12 \unit{\farad}$, \par
+          the derivative of the emf becomes, $ E(t)' = 44 \cos(10t) \unit{\volt} $,
+          which means, $ E(t) =  4.4\sin(10t) \unit{\volt}$
 
     \item Deriving the solution to the electrical system ODE using complex numbers,
           \begin{align}
-              L\tilde{I}'' +  R \tilde{I}' + \frac{1}{C}\ \tilde{I}                    & = E_{0}\omega \exp(i\omega t)                   \\
-              I_{p}                                                                    & = K\exp(i\omega t)                              \\
-              I_{p}'                                                                   & = i\omega K\exp(i\omega t)                      \\
-              I_{p}''                                                                  & = -\omega^{2}K\exp(i\omega t)                   \\
-              K\exp(i\omega t) [-\omega^{2}L + iR\omega + 1/C]                         & = E_{0}i\omega \exp(i\omega t)                  \\
-              K                                                                        & = \frac{E_{0}i}{-S + iR} = \frac{E_{0}}{R + iS} \\
-              |I_{p}|                                               = \sqrt{K \bar{K}} & = \frac{E_{0}}{\sqrt{S^{2} + R^{2}}}            \\
-              \text{given}\ R > 0, \qquad \arg Z                                       & = \frac{S}{R} = \tan(-\theta)
+              L\tilde{I}'' +  R \tilde{I}' + \frac{1}{C}\ \tilde{I}
+                                                 & = E_{0}\omega \exp(i\omega t)  \\
+              I_{p}                              & = K\exp(i\omega t)             \\
+              I_{p}'                             & = i\omega K\exp(i\omega t)     \\
+              I_{p}''                            & = -\omega^{2}K\exp(i\omega t)  \\
+              K\exp(i\omega t) [-\omega^{2}L + iR\omega + 1/C]
+                                                 & = E_{0}i\omega \exp(i\omega t) \\
+              K                                  & = \frac{E_{0}i}{-S + iR}
+              = \frac{E_{0}}{R + iS}                                              \\
+              |I_{p}| = \sqrt{K \bar{K}}         & = \frac{E_{0}}{\sqrt{S^{2}
+              + R^{2}}}                                                           \\
+              \text{given}\ R > 0, \qquad \arg Z & = \frac{S}{R} = \tan(-\theta)
           \end{align}
           These results agree with the text.
 \end{enumerate}

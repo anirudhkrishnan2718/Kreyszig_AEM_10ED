@@ -1,0 +1,326 @@
+\section{Testing of Hypotheses. Decisions}
+
+\begin{enumerate}
+    \item Examples, for the two sided test, the right sided and left sided tests,
+          \begin{align}
+              \text{null:}\ \theta & = a    & \text{alternative:}\ \theta & \neq a \\
+              \text{null:}\ \theta & \leq b & \text{alternative:}\ \theta & > b    \\
+              \text{null:}\ \theta & \geq c & \text{alternative:}\ \theta & < c
+          \end{align}
+
+    \item The tests are,
+          \begin{itemize}
+              \item Mean of a normal RV with known variance. Uses the standard normal PDF
+              \item Mean of a normal RV with unknown variance. Uses Student's $t$-RV
+              \item Variance of a normal RV. Uses the $ \chi^2 $ RV
+              \item Comparison of the means of two normal RVs with paired datasets,
+                    using the standard normal RV
+              \item Comparison of the means of two normal RVs, using a $ t $-RV and the
+                    pooled sample variance.
+              \item Comparison of the variances of two normal RVs, using the
+                    $ F $-distribution
+          \end{itemize}
+
+    \item Using \texttt{numpy} to do the right-sided test, the null hypothesis is
+          \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.0500       \\
+                  \bar{x}          & 0.2857       \\
+                  s                & 4.3095       \\
+                  n                & 7            \\
+                  \text{Statistic} & 0.1754       \\
+                  \text{Limit}     & 1.9432       \\
+              \end{tblr}
+          \end{table}
+
+    \item Using \texttt{numpy} to do the two-sided test, the null hypothesis is
+          \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \alpha             & 0.0500       \\
+                  \bar{x}            & 0.5069       \\
+                  s                  & 0.5000       \\
+                  n                  & 4040         \\
+                  \text{Statistic}   & 0.0139       \\
+                  \text{Lower Limit} & -1.9600      \\
+                  \text{Upper Limit} & 1.9600       \\
+              \end{tblr}
+          \end{table}
+
+    \item Using \texttt{numpy} to do the two-sided test, the null hypothesis is
+          \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \alpha             & 0.0500       \\
+                  \bar{x}            & 0.5016       \\
+                  s                  & 0.5000       \\
+                  n                  & 12000        \\
+                  \text{Statistic}   & 0.0032       \\
+                  \text{Lower Limit} & -1.9600      \\
+                  \text{Upper Limit} & 1.9600       \\
+              \end{tblr}
+          \end{table}
+
+    \item Using \texttt{numpy} to do the left-sided test, the null hypothesis is
+          \textcolor{y_p}{rejected}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.0500       \\
+                  \bar{x}          & 58.5000      \\
+                  \sigma^2         & 9.0000       \\
+                  n                & 20.0000      \\
+                  \text{Statistic} & -2.2361      \\
+                  \text{Limit}     & -1.6449      \\
+              \end{tblr}
+          \end{table}
+
+    \item Using \texttt{numpy} to do the left-sided test, the null hypothesis is
+          \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.0500       \\
+                  \bar{x}          & 58.5000      \\
+                  \sigma^2         & 9.0000       \\
+                  n                & 5.0000       \\
+                  \text{Statistic} & -1.1180      \\
+                  \text{Limit}     & -1.6449      \\
+              \end{tblr}
+          \end{table}
+
+    \item The value of $ c $ is
+          \begin{align}
+              c                         & = \Phi(0.05) \cdot \frac{\sigma}{\sqrt{n}}
+              + \mu_0                   &
+                                        & = 58.8966                                  \\
+              P(X > c)_{\mu = \mu_1}    & = 1 - \Phi\left( \frac{c - \mu_1}
+              {\sigma/\sqrt{n}} \right) &
+              \beta                     & = 0.00235                                  \\
+              \eta                      & = 1 - \beta = \SI{99.76}{\percent}
+          \end{align}
+
+    \item The upper and lower limits are,
+          \begin{align}
+              l_1 & = \Phi^{-1}(0.025) \cdot \frac{\sigma}{\sqrt{n}} + \mu_0 = 58.685 \\
+              l_2 & = \Phi^{-1}(0.975) \cdot \frac{\sigma}{\sqrt{n}} + \mu_0 = 61.315
+          \end{align}
+          Where $ \Phi^{-1} $ is the inverse of the standard normal distribution, also
+          called the percent point function \texttt{PPF}.
+
+    \item Using the right sided test for $ m $ samples each of size $ n=10 $,
+          at $ \alpha = 0.1 $,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  m      & \text{Fraction Accepted} \\ \hline
+                  100    & 0.91                     \\
+                  1000   & 0.907                    \\
+                  10000  & 0.9022                   \\
+                  100000 & 0.89894                  \\
+              \end{tblr}
+          \end{table}
+          \par
+          Performing a similar test for the variance,
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  m      & \text{Fraction Accepted} \\ \hline
+                  100    & 0.93                     \\
+                  1000   & 0.897                    \\
+                  10000  & 0.9033                   \\
+                  100000 & 0.90124                  \\
+              \end{tblr}
+          \end{table}
+          The fraction of random samples that fail the test asymptotically converges to
+          the false negative rate $ \alpha = 0.1 $.
+
+    \item Performing the two sided $ t -$ test using \texttt{numpy}, the hypothesis
+          is \textcolor{y_p}{rejected}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \alpha             & 0.9500       \\
+                  \bar{x}            & 4990         \\
+                  s                  & 20           \\
+                  n                  & 50           \\
+                  \text{Statistic}   & -3.5355      \\
+                  \text{Lower Limit} & -2.0096      \\
+                  \text{Upper Limit} & 2.0096       \\
+              \end{tblr}
+          \end{table}
+
+    \item Performing the two sided $ t -$ test using \texttt{numpy}, the hypothesis
+          is \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.9500       \\
+                  \bar{x}          & 37000        \\
+                  s                & 5000         \\
+                  n                & 25           \\
+                  \text{Statistic} & 2.0000       \\
+                  \text{Limit}     & 1.7109       \\
+              \end{tblr}
+          \end{table}
+
+    \item Performing the two sided $ t -$ test using \texttt{numpy}, the hypothesis
+          is \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \alpha             & 0.9500       \\
+                  \bar{x}            & 0.5500       \\
+                  s                  & 0.7387       \\
+                  n                  & 8            \\
+                  \text{Statistic}   & 2.1058       \\
+                  \text{Lower Limit} & -2.3646      \\
+                  \text{Upper Limit} & 2.3646       \\
+              \end{tblr}
+          \end{table}
+
+    \item Performing the two sided $ z -$ test using \texttt{numpy}, the hypothesis
+          is \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \alpha             & 0.05         \\
+                  \bar{x}            & 0.7750       \\
+                  \sigma             & 75           \\
+                  n                  & 400          \\
+                  \text{Statistic}   & 0.0577       \\
+                  \text{Lower Limit} & -1.9600      \\
+                  \text{Upper Limit} & 1.9600       \\
+              \end{tblr}
+          \end{table}
+
+    \item Performing the right-sided $ \chi^2 -$ test using \texttt{numpy}, the
+          hypothesis is \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.0500       \\
+                  \sigma           & 0.8000       \\
+                  s                & 1.0000       \\
+                  n                & 20           \\
+                  \text{Statistic} & 29.6875      \\
+                  \text{Limit}     & 30.1435      \\
+              \end{tblr}
+          \end{table}
+
+    \item Performing the right-sided $ \chi^2 -$ test using \texttt{numpy}, the
+          hypothesis is \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.0500       \\
+                  \sigma           & 5.0000       \\
+                  s                & 3.5000       \\
+                  n                & 28           \\
+                  \text{Statistic} & 13.2300      \\
+                  \text{Limit}     & 40.1133      \\
+              \end{tblr}
+          \end{table}
+
+    \item Performing the right-sided two-sample paired $ t -$ test using \texttt{numpy},
+          the hypothesis that the mileage of $ B $ is significantly greater is
+          \textcolor{y_h}{accepted}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.05         \\
+                  \bar{x}          & -0.6         \\
+                  s_x              & 0.4          \\
+                  s_y              & 0.6          \\
+                  n_1              & 16           \\
+                  n_2              & 16           \\
+                  \text{Statistic} & -3.3282      \\
+                  \text{Limit}     & 1.6973       \\
+              \end{tblr}
+          \end{table}
+
+    \item Performing the right-sided two-sample paired $ F -$ test using \texttt{numpy},
+          the hypothesis that the variance of the first sample is smaller is
+          \textcolor{y_p}{rejected}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}  & \text{Value} \\ \hline
+                  \alpha           & 0.0500       \\
+                  s_x              & 18.7083      \\
+                  s_y              & 7.8680       \\
+                  n_1              & 6            \\
+                  n_2              & 7            \\
+                  \text{Statistic} & 5.6538       \\
+                  \text{Limit}     & 4.3874       \\
+              \end{tblr}
+          \end{table}
+
+    \item Let $ c $ be some limit dependent on the confidence value $ \gamma $.
+          For Type I errors, with $ \mu_1 > \mu_0 $,
+          \begin{align}
+              \alpha = P\left( \frac{z - \mu_0}{\sigma/\sqrt{n}} > c \right)
+          \end{align}
+          This quantity goes up with increasing $ n $, which means $ \alpha $ goes down
+          with increasing $ n $ keeping all other elements fixed. \par
+          For Type II errors, once again with $ \mu_1 > \mu_0 $
+          \begin{align}
+              \beta & = P\left(z + \frac{\mu_1 - \mu_0}{\sigma/\sqrt{n}} > c \right)
+          \end{align}
+          This value can also be made arbitrarily small by increasing $ n $. \par
+          The fact that normal distributions span the entire real line means that these
+          values can never be zero. \par
+          By a similar procedure, the case $ \mu_1 < \mu_0 $ can also be proved.
+
+    \item Performing the right-sided two-sample generalized $ t -$ test using
+          \texttt{numpy}, the hypothesis that the means of the two samples are equal is
+          \textcolor{y_p}{rejected}.
+          \begin{table}[H]
+              \centering
+              \begin{tblr}{colspec = {Q[r,$$]|[dotted]Q[r,$$]},
+                  colsep = 1.2em}
+                  \text{Quantity}    & \text{Value} \\ \hline
+                  \alpha             & 0.0500       \\
+                  \bar{x} - \bar{y}  & -4           \\
+                  s_x                & 3            \\
+                  s_y                & 3            \\
+                  n_1                & 12           \\
+                  n_2                & 18           \\
+                  \text{Statistic}   & -0.2520      \\
+                  \text{Lower Limit} & -2.0484      \\
+                  \text{Upper Limit} & 2.0484       \\
+              \end{tblr}
+          \end{table}
+
+\end{enumerate}

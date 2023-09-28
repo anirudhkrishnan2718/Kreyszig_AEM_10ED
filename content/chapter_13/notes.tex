@@ -1,0 +1,360 @@
+\chapter{Complex Numbers and Functions, Complex Differentiation}
+
+\section{Complex Numbers and Their Geometric Representation}
+
+\begin{description}
+    \item[Complex number] An ordered pair of real numbers geometrically represented
+        as the two coordinates in a complex Cartesian plane.
+        \begin{align}
+            z & = x + y\i & \Re(z) = x \qquad \Im(z) = y
+        \end{align}
+        The real and imaginary parts of $ z $ are $ x $ and $ y $ respectively. \par
+        Two complex numbers are equal if and only if both their real and imaginary
+        parts are equal.
+
+    \item[Imaginary unit] The unit imaginary part of a complex number is defined as
+        the imaginary unit $ \i $. Algebraically, it is $ \sqrt{-1} $.
+        \begin{align}
+            \i & \equiv \sqrt{-1} &  & \text{Albegra}  \\
+            \i & = (0, 1)         &  & \text{Geometry}
+        \end{align}
+
+    \item[Complex arithmetic] Complex arithmetic simply adds the extra rule that
+        $ \i^2 = -1 $. Otherwise, it behaves the same arithmetic acting independently
+        on the real and imaginary parts of $ z $.
+        \begin{align}
+            z_1 + z_2       & = (x_1 + x_2) + (y_1 + y_2) \i                       \\
+            z_1 - z_2       & = (x_1 - x_2) + (y_1 - y_2) \i                       \\
+            z_1 \cdot z_2   & = (x_1x_2 - y_1y_2) + (x_1y_2 + x_2y_1) \i           \\
+            \frac{z_1}{z_2} & = \frac{(x_1 + y_1 \i)(x_2 - y_2 \i)}{x_2^2 + y_2^2}
+        \end{align}
+
+    \item[Complex plane] A Cartesian $ xy $ coordinate system with the $ x $ and $ y $
+        axes being called the real and imaginary axes respectively. \par
+        The real and imaginary parts of $ z $ now become the coordinates of a point in
+        this $ 2d $ Cartesian plane.
+
+    \item[Complex conjugate] The complex number mirrored on the real plane, defined as
+        \begin{align}
+            \bar{z}  & \equiv x - y\i            &
+            z\bar{z} & = x^2 + y^2                 \\
+            \Re(z)   & = \frac{z + \bar{z}}{2}   &
+            \Im(z)   & = \frac{z - \bar{z}}{2\i}
+        \end{align}
+        The complex conjugate is distributive over all 4 basic arithmetic operations.
+\end{description}
+
+\section{Derivative, Analytic Function}
+
+\begin{description}
+    \item[Polar form]  Using the polar coordinates in $ 2d $,
+        \begin{align}
+            z & = r \cos\theta + \i\ r \sin\theta
+        \end{align}
+        Here, $ r $ is called the modulus and $ \theta $, the argument of the complex
+        number. \par
+        Geometrically, $ (r, \theta) $ is simply the polar representation of the point
+        $ (x, y) $ in Ccartesian coordinates.
+        \begin{align}
+            r & \equiv \abs{z} = \sqrt{z\bar{z}}
+        \end{align}
+
+    \item[Argument] The slope of the line joining $ z $ to the origin. This is
+        conventionally single valued by restricting it to the range
+        \begin{align}
+            \Arg(z) & \equiv \theta   & \arg(z)     & = \Arg(z) + 2n\pi \\
+            \theta  & \in (-\pi, \pi] & \tan \theta & = \frac{y}{x}
+        \end{align}
+        $ \Arg(z) $ is the principal value of the argument. Other values are separated by
+        multiples of $ 2\pi $. \par
+        Positive and negative real numbers have $ \Arg(z) = 0, \pi $ respectively.
+
+    \item[Inequalities] The triangle inequality applied to complex numbers by way of
+        their moduli is,
+        \begin{align}
+            \abs{z_1 + z_2} \leq \abs{z_1} + \abs{z_2}
+        \end{align}
+
+    \item[Multiplication] Multiplying two complex numbers using sine and cosine addition
+        formulas,
+        \begin{align}
+            z_1 \cdot z_2       & \equiv r_1r_2\ \Big[\cos(\theta_1 + \theta_2)
+            + \i\ \sin(\theta_1 + \theta_2) \Big]                               \\
+            \abs{z_1 \cdot z_2} & = \abs{z_1} \cdot \abs{z_2}                   \\
+            \arg(z_1 \cdot z_2) & = \arg(z_1) + \arg(z_2)
+        \end{align}
+
+    \item[Division] Dividing two complex numbers using sine and cosine subtraction
+        formulas,
+        \begin{align}
+            z_1 \cdot z_2                   & \equiv \frac{r_1}{r_2}
+            \ \Big[\cos(\theta_1 - \theta_2) + \i\ \sin(\theta_1 - \theta_2) \Big] \\
+            \abs{\frac{z_1}{z_2}}           & = \frac{\abs{z_1}}{\abs{z_2}}        \\
+            \arg\Big( \frac{z_1}{z_2} \Big) & = \arg(z_1) - \arg(z_2)
+        \end{align}
+
+    \item[Integer powers] Using Euler's formula for complex numbers,
+        \begin{align}
+            z^n & = r^n\ \Big[\cos(n\theta) + \i\ \sin(n\theta)\Big]
+        \end{align}
+        Taking $ r = 1 $ enables the derivation of $ cos(n\theta) $ and $ \sin(n\theta) $
+        formulas by comparing the real and imaginary parts of the equation.
+
+    \item[De Moivre's formula] A formula restating Euler's formula for complex numbers,
+        \begin{align}
+            z                  & = \cos \theta + \i\ \sin\theta      &
+            \implies \quad z^n & = \cos(n\theta) + \i\ \sin(n\theta)
+        \end{align}
+
+    \item[Roots] Raising a complex number to an integer power results in a unique answer.
+        \begin{align}
+            z & = w^n     &  & z\ \text{is unique}                                \\
+            w & = z^{1/n} &  & w\ \text{has}\ n\ \text{different possible values}
+        \end{align}
+        To find the $ n^{\text{th}} $ root of $ z $, DeMoivre's formula gives,
+        \begin{align}
+            z                   & = r\ \Big[ \cos\theta + \i\ \sin\theta \Big] &
+            z^{1/n} = w         & = R\ \Big[ \cos\phi + \i\ \sin\phi \Big]       \\
+            \implies \quad R    & = r^{1/n}                                    &
+            \implies \quad \phi & = \frac{\theta}{n} + \frac{2k\pi}{n}
+        \end{align}
+        There are $ n $ distinct values of $ \phi $ for $ k \in \{0, 1, 2, \dots, (n-1)
+            \} $. These are all complex numbers with the same modulus evenly oriented
+        about the full $ 2\pi $ range. \par
+        The set $ z^{1/n} $ also constitute the vertices of a regular polygon of $ n $
+        sides, (with one vertex on the positive real line). \par
+    \item[Roots of -1] For the special case of $ z = -1 $,
+        \begin{align}
+            (-1)^{1/n} & = \cos \Big( \frac{2k\pi}{n} \Big)
+            + \i\ \sin\Big( \frac{2k\pi}{n} \Big)                       \\
+            (-1)^{1/n} & = \{1, \omega, \omega^2, \dots, \omega^{n-1}\}
+        \end{align}
+        Here, $ \omega $ is the first complex root of $ -1 $, and all the others in the
+        set happen to be higher powers of $ \omega $ since $ r = 1 $. \par
+        This set lies on the unit circle and operates on other complex numbres to
+        increase their argument by $ 2k\pi/n $.
+\end{description}
+
+\section{Derivative, Analytic Function}
+
+\begin{description}
+    \item[Circle] A circle in the complex plane is defined as the set of all points whose
+        distance from the center $ (z_0) $ is fixed.
+        \begin{align}
+            C & :\ \abs{z - z_0} = \rho &
+            A :\ \rho_1 \leq \abs{z - z_0} \leq \rho_2
+        \end{align}
+        The interior and exterior of this circle involve the appropriate inequalities
+        instead. \par
+        An annulus (ring) involves a lower limit as well as an upper limit on the
+        distance from the center.
+
+    \item[Neighbourhood] Any open circular disk around $ z_0 $ is a neighbourhood of
+        $ z_0 $. This neighbourhood includes $ z_0 $ by definition.
+
+    \item[Half-plane] A restriction on the sign of either the real or complex part of
+        $ z $.
+
+    \item[Open set] Every point in $ S $ has a neighbourhood consisting entirely of
+        points that belong to $ S $
+    \item[Connected set] Any two points of $ S $ can be joined by finitely many line
+        segments all of whose points belong to $ S $.
+    \item[Domain] An open and connected set.
+    \item[Complement of a set] The set of all points in the complex plane that do not
+        belong to $ S $
+    \item[Closed set] A set whose complement is open.
+    \item[Boundary point] A point whose every neighbourhood consists of points that
+        belong to $ S $ as well as points that dont. \par
+        If a set is closed then all of its boundary points belong to that set. The
+        converse is true if the set is open.
+
+    \item[Complex function] A map from a set of complex numbers $ S $ to another set of
+        complex numbers $ W $ such that every $ z $ in $ S $ has a unique member of
+        $ W $ to map onto.
+        \begin{align}
+            f(z) & = w                                       \\
+            z    & = x + \i\ y & w & = u(x, y) + \i\ v(x, y)
+        \end{align}
+        Here, $ z $ is called a complex variable, $ S $ is the domain of definition, and
+        the set of all values of $ f $ is called its range.
+
+    \item[Limit] If a complex function $ f $ is defined in a neighbourhood of $ z_0 $
+        (except possibly at $ z_0 $) and if the values of $ f(z) $ are close to some finite
+        complex number $ l $ for all $ z $ close to $ z_0 $, then,
+        \begin{align}
+            \abs{f(z) - l}                       & < \epsilon &
+            \forall \quad \abs{z - z_0} < \delta                \\
+            \implies \quad \lim_{z \to z_0} f(z) & \equiv l
+        \end{align}
+        Geometrically, for every $ z \neq z_0 $ in this disk of radius $ \delta $,
+        $ f(z) $ lies in the disk of radius $ \epsilon $ centered on $ l $. \par
+        Unlike a real function, $ z $ can approach $ z_0 $ from any direction.
+
+    \item[Continuous function] A function $ f $ is continuous at $ z_0 $ if
+        \begin{align}
+            \lim_{z \to z_0} f(z) & = f(z_0)
+        \end{align}
+        This requires that $ f $ is defined in some neighbourhood of $ z_0 $. \par
+        A function is continuous in a domain if it is continuous at each point in the
+        domain.
+
+    \item[Derivative] The function $ f $ is differentiable at $ z_0 $ if the limit
+        \begin{align}
+            f'(z_0) & \equiv \lim_{\Delta z \to 0}
+            \frac{f(z + \Delta z - f(z))}
+            {\Delta z}                                             \\
+            f'(z_0) & \equiv \lim_{z \to z_0} \frac{f(z) - f(z_0)}
+            {z - z_0}                                              \\
+        \end{align}
+        exists and is finite. \par
+        Since this limit can be approached from any direction, all of those limits have
+        to exist and be equal to the derivative. \par
+        The rules of real differentiation are carried over as is for complex functions.
+
+    \item[Analytic function] A function is analytic in some domain $ D $ if it is defined
+        and differentiable at all points in $ D $. \par
+        As a special case, the function is analytic at some point $ z_0 $ in the
+        domain if it is analytic in a neighbourhood of $ z_0 $. \par
+        Alternative terminology is \emph{holomorphic}
+\end{description}
+
+\section{Cauchy-Riemann Equations, Laplace's Equation}
+
+\begin{description}
+    \item[Cauchy-Riemann equations] A test to check whether a function is analytic.
+        \begin{align}
+            f(z)      & = u(x, y) + \i\ v(x, y) &
+                      & \text{is analytic}        \\
+            \diffp ux & = \diffp vy             &
+            \diffp uy & = -\diffp vx
+        \end{align}
+        The fact that $ f(z) $ is defined and continuous in some neighbourhood of
+        $ z $ and differentiable at $ z $ itself $ \iff $
+        The first order partial derivatives of $ u(x, y) $ and $ v(x, y) $ exist and
+        satisfy Cauchy-Riemann equations.
+
+    \item[Corollary relation] If two real-valued continuous functions $ u(x, y) $
+        and $ v(x, y) $ exist and have continuous first partial derivatives satisfying
+        the Cauchy-Riemann equations, then \par
+        the complex function $ f(z) = u + \i\ v $ is analytic in $ D $
+
+    \item[Laplace's equation] Let $ f(z) = u(x, y) + \i\ v(x, y) $ be analytic in some
+        domain $ D $, then
+        \begin{align}
+            \nabla^2 u & = u_{xx} + u_{yy} = 0 &
+            \nabla^2 v & = v_{xx} + v_{yy} = 0
+        \end{align}
+        hold in $ D $ and these second partial derivatives are continuous. \par
+        The real and imaginary parts of an analytic function are harmonic functions.
+\end{description}
+
+\section{Exponential Function}
+
+\begin{description}
+    \item[Definition] The complex exponential function is defined as,
+        \begin{align}
+            z & = x + \i\ y & e^z & = e^x\ [\cos y + \i \sin y]
+        \end{align}
+
+    \item[Entire function] A function that is analytic in the entire complex plane.
+        $ e^z $ is an example.
+
+    \item[Euler formula] Using the polar form of a complex number,
+        \begin{align}
+            z           & = re^{\i \theta} = r\cos\theta + \i\ r\sin\theta \\
+            e^{\i 2\pi} & = 1
+        \end{align}
+        Comparing this to the definition of an exponential function,
+        \begin{align}
+            \abs{e^z}   & = e^x                        &
+            \Arg{(e^z)} & = y                            \\
+            e^x         & \neq 0 \quad \forall \quad z
+        \end{align}
+        This is an entire function that has no zeros in the complex plane.
+
+    \item[Fundamental region] The horizontal strip $ y \in (-\pi, \pi] $
+        corresponds to $ y $ being the principal argument. The range of $ e^z $ is
+        constrained to be in the region $(e^{-\pi}, e^{\pi}]$.
+\end{description}
+
+\section{Trigonometric and Hyperbolic Functions, Euler's Formula}
+
+\begin{description}
+    \item[Complex trigonometric functions] Using Euler's formula, and eliminating
+        \begin{align}
+            \cos(z) & = \frac{e^{\i z} + e^{-\i z}}{2}   &
+            \sin(z) & = \frac{e^{\i z} - e^{-\i z}}{2\i} &
+        \end{align}
+        This uses the definition of $ e^z $ using $ z_1 = x $ and $ z_2 = \i y $. Then,
+        the two linear equations yield the complex trigonometric functions.
+
+    \item[Properties of complex trig functions] All properties are similar to real
+        trigonometric functions. \par
+        The sine and cosine modulus are no longer bounded in complex.
+        \begin{align}
+            \abs{\cos(z)}^2 & = \cos^2 x + \sinh^2 y &
+            \abs{\sin(z)}^2 & = \sin^2 x + \sinh^2 y
+        \end{align}
+
+    \item[Hyperbolic functions] These are defined just as in the real case,
+        \begin{align}
+            \cosh(z) & = \frac{e^z + e^{-z}}{2} &
+            \sinh(z) & = \frac{e^z - e^{-z}}{2}
+        \end{align}
+        These two functions happen to be intimately related in the complex plane, since,
+        \begin{align}
+            \cosh(\i z) & = \cos z  &
+            \sinh(\i z) & = \sin z    \\
+            \cos(\i z)  & = \cosh z &
+            \sin(\i z)  & = \sinh z
+        \end{align}
+\end{description}
+
+\section{Logarithm, General Power, Principal Value}
+
+\begin{description}
+    \item[Complex logarithm] Just like the real case, this is defined as the inverse of
+        the exponential function.
+        \begin{align}
+            \ln z   & = \ln r + \i\ \theta &
+            \abs{z} & > 0
+        \end{align}
+        This is a multi-valued function since the argument is only determined upto a
+        multiple of $ 2\pi $. \par
+        Each of these functions is called a \emph{branch} of the logarithm.
+
+    \item[Principal value of logarithm] The value of $ ln z $ corresponding to the
+        principal value of the argument. \par
+        This is also called the \emph{principal branch} of the logarithm.
+
+    \item[Properties of logarithm] Since the logarithm is multivalued for complex
+        numbers, the following identities,
+        \begin{align}
+            \ln(z_1 \cdot z_2) & = \ln z_1 + \ln z_2 &
+            \ln(z_1 / z_2)     & = \ln z_1 - \ln z_2
+        \end{align}
+        are an equality of infinite sets, instead of an equality relating two quantities.
+
+    \item[Analyticity] For all integers $ n $, the logarithm is analytic,
+        \begin{align}
+            f(z)  & = \ln z = \Ln z + 2n\pi\ \i \\
+            f'(z) & = \frac{1}{z}
+        \end{align}
+        except at the origin and the negative real axis. This is called a
+        \emph{branch cut} of the logarithm.
+
+    \item[General powers] The power function is defined using the logarithm as,
+        \begin{align}
+            z^c & = \exp(c \cdot \ln z)                   &
+            z   & \neq 0, \quad c \quad \text{is complex}
+        \end{align}
+        Once again, this function is multivalued with the principal value of $ z^c $
+        corresponds to the principal branch $ \Ln z $. \par
+        \begin{itemize}
+            \item For $ c $ being a nonzero integer, the power function is single
+                  valued. \par
+            \item For $ c $ being a quotient of positive integers, the function is
+                  finitely multivalued. \par
+            \item Else, the function is infinitely multivalued.
+        \end{itemize}
+\end{description}

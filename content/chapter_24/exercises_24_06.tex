@@ -1,0 +1,318 @@
+\section{Mean and Variance of a Distribution}
+
+\begin{enumerate}
+    \item Using the normalization condition,
+          \begin{align}
+              1    & = \int_{0}^{2} kv\ \dl v           &
+              1    & = \Bigg[ \frac{kv^2}{2} \Bigg]_0^2   \\
+              k    & = 1/2                              &
+              f(x) & = \frac{x}{2}
+          \end{align}
+          Now, the mean and variance are,
+          \begin{align}
+              \mu      & = \int_{0}^{2} \frac{x^2}{2}\ \dl x = \Bigg[\frac{x^3}{6}
+              \Bigg]_0^2 = \color{y_h} \frac{4}{3}                                 \\
+              \sigma^2 & = \int_{0}^{2} \frac{x}{2}\ (x-4/3)^2\ \dl x
+              = \int_{0}^{2} \frac{x^3 - 8x^2/3 + 16x/9}{2}\ \dl x                 \\
+                       & = \Bigg[ \frac{x^4}{8} - \frac{4x^3}{9} + \frac{4x^2}{9}
+                  \Bigg]_0^2 = \color{y_p} \frac{2}{9}
+          \end{align}
+
+    \item The PDF is,
+          \begin{align}
+              f(x) & = \frac{1}{6} \qquad \forall \qquad X \in \{1,2,3,4,5,6\}
+          \end{align}
+          Now, the mean and variance are,
+          \begin{align}
+              \mu      & = \sum_j x_j \cdot f(x_j) = \frac{1+2+3+4+5+6}{6}
+              = \color{y_h} 3.5                                                      \\
+              \sigma^2 & = \sum_j (x_j - \mu)\ f(x_j) =
+              \frac{(-2.5)^2 + (-1.5)^2 + (-0.5)^2 + (0.5)^2 + (1.5)^2 + (2.5)^2}{6} \\
+                       & = \color{y_p} \frac{35}{12}
+          \end{align}
+
+    \item Using the normalization condition,
+          \begin{align}
+              1    & = \int_{0}^{2\pi} k\ \dl v  &
+              1    & = \Bigg[ kv \Bigg]_0^{2\pi}   \\
+              k    & = \frac{1}{2\pi}            &
+              f(x) & = \frac{1}{2\pi}
+          \end{align}
+          Now, the mean and variance are,
+          \begin{align}
+              \mu      & = \int_{0}^{2\pi} \frac{x}{2\pi}\ \dl x
+              = \Bigg[\frac{x^2}{4\pi}\Bigg]_0^{2\pi} = \color{y_h} \pi     \\
+              \sigma^2 & = \int_{0}^{2\pi} \frac{1}{2\pi}\ (x-\pi)^2\ \dl x
+              = \Bigg[ \frac{(x-\pi)^3}{6\pi} \Bigg]_0^{2\pi}
+              = \color{y_p} \frac{\pi^2}{3}
+          \end{align}
+
+    \item Since this is a linear transformation in the RV,
+          \begin{align}
+              \mu_Y      & = a\ \mu_X + b    & \mu_Y      & = \sqrt{3} - \sqrt{3} = 0 \\
+              \sigma^2_Y & = a^2\ \sigma^2_X & \sigma^2_Y & = 1
+          \end{align}
+
+    \item The mean and variance are,
+          \begin{align}
+              f(x)     & = 4e^{-4x} \qquad \forall \qquad x \geq 0                    \\
+              \mu      & = \infint 4x\ e^{-4x}\ \dl x
+              = \Bigg[ \frac{e^{-4x}}{-4} \Bigg]_0^{\infty} = \color{y_h} \frac{1}{4} \\
+              \sigma^2 & = \infint (x-1/4)^2\ (4e^{-4x})\ \dl x
+              = \Bigg[ \frac{-e^{-4x}}{16}\ (1 + 16x^2)  \Bigg]_0^{\infty}
+              = \color{y_p} \frac{1}{16}
+          \end{align}
+
+    \item Using the normalization condition,
+          \begin{align}
+              1    & = \int_{-1}^{1} k(1-v^2)\ \dl v             &
+              1    & = \Bigg[ k - \frac{kv^3}{3} \Bigg]_{-1}^{1}   \\
+              k    & = \frac{1}{4/3}                             &
+              f(x) & = \frac{3(1-x^2)}{4}
+          \end{align}
+          The mean and variance are,
+          \begin{align}
+              \mu      & = \int_{-1}^{1} \frac{3x}{4}\ (1-x^2)\ \dl x
+              = \frac{3}{4}\ \Bigg[ \frac{x^2}{2} - \frac{x^4}{4} \Bigg]_{-1}^{1}
+              = \color{y_h} 0                                                 \\
+              \sigma^2 & = \frac{3}{4}\int_{-1}^{1} (x - 0)^2\ (1-x^2)\ \dl x
+              = \frac{3}{4}\ \Bigg[ \frac{x^3}{3} - \frac{x^5}{5} \Bigg]_{-1}^{1}
+              = \color{y_p} \frac{1}{5}
+          \end{align}
+
+    \item Using the normalization condition,
+          \begin{align}
+              1    & = \infint Ce^{-v/2}\ \dl v                 &
+              1    & = \Bigg[ -2C\ e^{-v/2} \Bigg]_{0}^{\infty}   \\
+              C    & = \frac{1}{2}                              &
+              f(x) & = \frac{e^{-v/2}}{2}
+          \end{align}
+          The mean and variance are,
+          \begin{align}
+              \mu      & = \infint \frac{xe^{-x/2}}{2}\ \dl x
+              = \Bigg[e^{-x/2}\ (2 - x) \Bigg]_{0}^{\infty}
+              = \color{y_h} 2                                           \\
+              \sigma^2 & = \infint (x - 2)^2\ \frac{e^{-x/2}}{2}\ \dl x
+              = \Bigg[ -(x^2 + 4)e^{-x/2} \Bigg]_{0}^{\infty}
+              = \color{y_p} 4
+          \end{align}
+
+    \item The discrete PDF uses the fact that $ (k-1) $ tails precede the first head,
+          \begin{align}
+              P(X=k)        & = \left( \frac{1}{2} \right)^{k-1} \cdot \frac{1}{2}    \\
+              \mu           & = \sum_{k=1}^{\infty} x_j \cdot f(x_j)                &
+              \mu           & = \frac{1}{2} + \frac{2}{2^2} + \frac{3}{2^3}
+              + \dots                                                                 \\
+              \frac{\mu}{2} & = \frac{1}{2^2} + \frac{2}{2^3} + \frac{3}{2^4}
+              + \dots       &
+              \mu - \frac{\mu}{2}
+                            & = \frac{1}{2} + \frac{1}{2^2} + \frac{1}{2^3} + \dots   \\
+              \mu           & = 2
+          \end{align}
+
+    \item Using the normalization condition,
+          \begin{align}
+              1    & = \int_{0.9}^{1.1} -k(v-0.9)(v-1.1)\ \dl v                  &
+              1    & = -k\ \Bigg[ \frac{v^3}{3} - v^2 + 0.99v \Bigg]_{0.9}^{1.1}   \\
+              k    & = 750                                                       &
+              f(x) & = -750(x-0.9)(x-1.1)
+          \end{align}
+          The mean and variance are,
+          \begin{align}
+              \mu      & = \int_{0.9}^{1.1} (-750)(x-0.9)(x-1.1)x\ \dl x
+              = \Bigg[ \frac{-750x^4 + 2000x^3 - 1485x^2}{4} \Bigg]_{0.9}^{1.1}
+              = \color{y_h} 1                                                      \\
+              \sigma^2 & = \int_{0.9}^{1.1} (x - 1)^2\ (-750)(x-0.9)(x-1.1)\ \dl x \\
+                       & = \Bigg[ \frac{-300x^5 + 1500x^4 - 2995x^3
+                      + 2985x^2-1485x}{2} \Bigg]_{0}^{\infty}
+              = \color{y_p} \frac{1}{500}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Continuous PDF}, Ani,
+                          grid = both, xmin = 0.8, xmax = 1.2]
+                      \addplot[GraphSmooth, y_h, domain = 0.5:0.9] {0};
+                      \addplot[GraphSmooth, y_h, domain = 0.9:1.1]
+                      {-750*(x-0.9)*(x-1.1)};
+                      \addplot[GraphSmooth, y_h, domain = 1.1:1.5] {0};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Using the symmetry of the PDF,
+          \begin{align}
+              P(E) & = 2 \cdot P(X>1.06) =
+              2\int_{1.06}^{1.1} (-750)(x-0.9)(x-1.1)\ \dl x \\
+                   & = \frac{26}{125} = \SI{20.8}{\percent}
+          \end{align}
+
+    \item Using the symmetry of the PDF, let the maximum permissible deviation be $ k $,
+          \begin{align}
+              P(E) & = 2 \cdot P(X>1 + k) =
+              2\int_{1+k}^{1.1} (-750)(x-0.9)(x-1.1)\ \dl x            \\
+                   & = \Bigg[-500x^3 + 1500x^2-1485x\Bigg]_{1+k}^{1.1}
+              = 500k^3 - 15k + 1
+          \end{align}
+          If this probability is to be $ 0.1 $, then the solutions of this cubic
+          equation are,
+          \begin{align}
+              P(E) & = 0.1 & k & = \{-0.1977, 0.073, 0.125\}
+          \end{align}
+          Since $ k \in [0,0.1] $, the only usable value is $ k^* = 0.073 $
+
+    \item Plotting a histogram of the sum of 6 fair dice rolled together,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram 100 trials},
+                          grid = both,Ani, ybar,
+                          xtick = {6,12,...,39}]
+                      \addplot[white, very thick, fill = y_h,
+                          fill opacity = 0.25, bar width = 3, bar shift = -1.5]
+                      coordinates {(3,0) (6,0) (9,0) (12,7) (15,22) (18,21) (21,21)
+                              (24,19) (27,6) (30,4) (33,0) (36,0)};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[width = 8cm,title = {Histogram $ 1e6 $ trials},
+                          grid = both,Ani, ybar,
+                          xtick = {20,40,...,120},]
+                      \addplot[white, very thick, fill = y_p,
+                          fill opacity = 0.25, bar width = 10, bar shift = 5]
+                      coordinates {(20, 0) (30,14) (40,3231) (50,81507)
+                              (60,389272) (70,418130) (80,102984) (90, 4917) (100,35)
+                              (110,35) (120,0)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The expected number of units sold per day is,
+          \begin{align}
+              \ex[X] & = 0.1(10) + 0.3(11) + 0.4(12) + 0.2(13) = 11.7 \\
+              P      & = 55(11.7) = 643.5\ \$
+          \end{align}
+
+    \item Finding the expected value,
+          \begin{align}
+              g(X)      & = X^2                                        &
+              \ex[g(X)] & = \ex[X^2]                                     \\
+              \ex[X^2]  & = \int_{-1}^{1} x^2 \cdot \frac{1}{2}\ \dl x &
+                        & = \color{y_h} \frac{1}{3}
+          \end{align}
+
+    \item The mean and variance are,
+          \begin{align}
+              \mu      & = \int_{0}^{1} 6x(1-x)x\ \dl x
+              = \Bigg[ 2x^3 - \frac{3x^4}{2} \Bigg]_{0}^{1}
+              = \color{y_h} \frac{1}{2}                                 \\
+              \sigma^2 & = \int_{0}^{1} (x - 0.5)^2\ (6x)(1 - x)\ \dl x \\
+                       & = \Bigg[ \frac{-24x^5 + 60x^4-50x^3+15x^2}{20}
+                  \Bigg]_{0}^{1}
+              = \color{y_p} \frac{1}{20}                                \\
+              Z        & = \color{y_s} \frac{X - 0.5}{\sqrt{0.05}}
+          \end{align}
+
+    \item Using the heuristic for normally distributed variables,
+          \begin{align}
+              P(X > k) & = \int_{k}^{1} 6x(1-x)\ \dl x = 2k^3 - 3k^2 + 1 \\
+              P(X>k)   & = 0.05  \quad \implies \quad k = 0.865
+          \end{align}
+          This is the only root of the cubic equation that lies in the interval
+          $ [0,1] $.
+
+    \item Since this is a discrete PDF,
+          \begin{align}
+              \ex[X] & = \frac{1 + 2 \cdot 2 + 3 \cdot 2 + 4 \cdot 3+ 5 \cdot 2
+              + 6 \cdot 4}{36}                                                      \\
+                     & + \frac{8 \cdot 2 + 9 \cdot 1 + 10 \cdot 2 + 12 \cdot 4}{36} \\
+                     & + \frac{15 \cdot 2 + 16 \cdot 1 + 18 \cdot 2}{36}
+              + \frac{20 \cdot 2 + 24 \cdot 2 + 25 \cdot 1 + 30 \cdot 2
+              + 36 \cdot 1}{36}                                                     \\
+                     & = \color{y_h} \frac{49}{4}
+          \end{align}
+
+    \item The mean life is,
+          \begin{align}
+              \ex[X] & = \infint 0.001x\ e^{-0.001x}\ \dl x
+              = \Bigg[-(x + 1000)e^{-0.001x}\Bigg]_0^{\infty} \\
+                     & = \color{y_h} \SI{1000}{\hour}
+          \end{align}
+
+    \item The expected value is,
+          \begin{align}
+              \ex[X^3] & = \frac{0^3 \cdot 1 + 1^3 \cdot 3 + 2^3 \cdot 3
+              + 3^3 \cdot 1}{8} =                                        \\
+                       & = \color{y_h} \frac{27}{4}
+          \end{align}
+
+    \item Deriving,
+          \begin{enumerate}
+              \item The relation is,
+                    \begin{align}
+                        \ex[X-\mu] & = \intRL (x-\mu)\ f(x)\ \dl x                     \\
+                                   & = \intRL x\ f(x)\ \dl x - \mu\ \intRL f(x)\ \dl x \\
+                                   & = \mu - \mu(1) = 0
+                    \end{align}
+
+              \item Proving,
+                    \begin{align}
+                        \ex[X^1]       & = \intRL x^1\ f(x)\ \dl x = \mu              \\
+                        \ex[(X-\mu)^2] & = \intRL (x^2 - 2\mu x + \mu^2)\ f(x)\ \dl x
+                        = \ex[X^2] - \mu^2                                            \\
+                        \ex[1]         & = \ex[X^0] = \intRL x^0\ f(x)\ \dl x = 1
+                    \end{align}
+
+              \item The moments are,
+                    \begin{align}
+                        \ex[X^k] & = \intRL \frac{x^k}{b-a}\ \dl x
+                        = \Bigg[\frac{x^{k+1}}{(b-a)(k+1)}\Bigg]_b^a                \\
+                                 & = \frac{1}{(k+1)} \cdot \frac{b^{k+1} - a^{k+1}}
+                        {b-a}
+                    \end{align}
+
+              \item A symmetric distribution is symmetric about its mean.
+                    \begin{align}
+                        \ex[(X-\mu)^3] & = \intRL (x-\mu)^3\ f(x)\ \dl x          &
+                        v              & = x-\mu                                    \\
+                        \ex[(X-\mu)^3] & = \int_{-\infty}^{0} v^3 f(v+\mu)\ \dl v
+                        + \infint v^3 f(v+\mu)\ \dl v                               \\
+                                       & = \infint (-v)^3 f(-v+\mu)\ \dl v
+                        + \infint v^3 f(v+\mu)\ \dl v                               \\
+                                       & = 0
+                    \end{align}
+                    provided, $ f(\mu+v) = f(\mu-v) $, which is a result of the symmetry
+                    of the PDF.
+
+              \item The skewness is,
+                    \begin{align}
+                        \ex[X]         & = \infint x^2e^{-x}\ \dl x = \Bigg[-e^{-x}
+                        (x^2 + 2x + 2) \Bigg]_0^\infty = 2 = \mu                    \\
+                        \ex[(X-\mu)^3] & = \infint (x-2)^3\ (xe^{-x})\ \dl x = 4    \\
+                        \ex[(X-\mu)^2] & = \infint (x-2)^2\ (xe^{-x})\ \dl x = 2    \\
+                        \gamma         & = \frac{4}{2\sqrt{2}} = \sqrt{2}
+                    \end{align}
+                    \begin{figure}[H]
+                        \centering
+                        \begin{tikzpicture}
+                            \begin{axis}[width = 8cm,title = {Continuous PDF}, Ani,
+                                    grid = both, xmin = -0.5, xmax = 5.5]
+                                \addplot[GraphSmooth, y_h, domain = -1:0] {0};
+                                \addplot[GraphSmooth, y_h, domain = 0:6]
+                                {x*e^(-x)};
+                            \end{axis}
+                        \end{tikzpicture}
+                    \end{figure}
+
+              \item Coded in \texttt{sympy}. TBC.
+
+              \item Let the function be discrete at just three points.
+                    \begin{align}
+                        f(-5)           & = \frac{1}{6} & f(-1)                 & = a \\
+                        f(4)            & = b                                         \\
+                        a+b+\frac{1}{6} & = 1           & \frac{-5}{6} - a + 4b & = 0
+                    \end{align}
+                    This gives the solution $ a=1/2 $ and $ b = 1/3 $ which makes the
+                    PDF non-symmetric.
+          \end{enumerate}
+\end{enumerate}

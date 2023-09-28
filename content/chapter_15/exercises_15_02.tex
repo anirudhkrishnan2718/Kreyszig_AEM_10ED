@@ -1,0 +1,234 @@
+\section{Power Series}
+
+\begin{enumerate}
+    \item Power series require non-negative integer powers of $ z $ so that they terminate
+          after finitely many differentiation steps. So, these two series do not qualify.
+
+    \item Refer notes. TBC.
+
+    \item A power series converges
+          \begin{enumerate}
+              \item On the entire complex plane
+              \item In an open disc of finite radius centered on $ z_0 $
+              \item Only at the center of the power series
+          \end{enumerate}
+
+    \item Example $ 1 $, using $ z_0 = 4 - 3\pi \i $
+          \begin{align}
+              \iser{0} a_m z^m    & = \frac{1}{1-z}                           &
+              \frac{1}{1 - z}     & = \frac{1}{(1 - z_0) - (z - z_0)}           \\
+                                  & = \Bigg(\frac{1}{1-z_0}\Bigg)
+              \cdot\frac{1}{1 - \frac{z-z_0}
+              {1-z_0}}            &
+              \frac{1}{1 - z_0}   & = w_0, \qquad \frac{z - z_0}{1 - z_0} = w   \\
+              w_0\ [ 1 - w ]^{-1} & = w_0\ [1 + w + w^2 + \dots]
+          \end{align}
+          Now, the original series can be expressed as a power series around the new
+          center $ z_0 $, as
+          \begin{align}
+              S & = \frac{1}{-3 + 3\pi\i}\ \Bigg[ 1 + \frac{z - 4 + 3\pi\i}{-3 + 3\pi\i}
+                  + \Big( \frac{z - 4 + 3\pi\i}{-3 + 3\pi\i} \Big)^2 + \dots \Bigg]
+          \end{align}
+          Exmaple $ 2 $,
+          \begin{align}
+              \exp(z)                        & = \exp(z_0) \cdot \exp(z - z_0) \\
+              1 + z + \frac{z^2}{2!} + \dots & = e^{z_0}\ \Bigg[
+                  1 + (z - z_0) + \frac{(z - z_0)^2}{2!} + \dots \Bigg]
+          \end{align}
+          Example $ 3 $, using the binomial theorem
+          \begin{align}
+              \iser[n]{0} n!\ z^n & = \iser[n]{0} n!\ (z - z_0 + z_0)^n \\
+                                  & = \iser[n]{0} n!
+              \ \sum_{r=0}^{n}\binom{n}{r}\
+              (z - z_0)^r\ z_0^{1-r}
+          \end{align}
+          In Exmaple $ 1 $, making the radius of convergence $ R = 6 $,
+          \begin{align}
+              z \to z/6 & \implies 1 + \frac{z}{6} + \Big( \frac{z}{6} \Big)^2
+              + \dots                                                               \\
+              R         & = \abs{\frac{a_{n}}{a_{n+1}}} = \abs{\frac{6^{n+1}}{6^n}}
+              = 6
+          \end{align}
+
+    \item Looking at the new power series, with $ z^2 = w $
+          \begin{align}
+              S_1 & = a_0 + a_1z + a_2z^2 + a_3z^3 + \dots          &
+              R_1 & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}   \\
+              S_2 & = a_0 + a_1w + a_2w^2 + a_3w^3 + \dots
+          \end{align}
+          Since $ S_1 $ converges for $ \abs{z} < R $, and $ S_2 $ converges for all
+          $ \abs{w} < R $
+          \begin{align}
+              \abs{w} = \abs{z}^2 & < R & \implies \quad \abs{z} & < \sqrt{R}
+          \end{align}
+
+    \item Radius of convergence,
+          \begin{align}
+              z_0 & = \color{y_h} -1 + 0\i                          &
+              R   & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}   \\
+              R   & = \color{y_p} \frac{1}{4}
+          \end{align}
+
+    \item Radius of convergence, using the result of Problem $ 5 $,
+          \begin{align}
+              s^*      & = \iser[n]{0} \frac{(-1)^n}{(2n)!}
+              \ \Bigg( z - \frac{\pi}{2}
+              \Bigg)^n &
+              R^*      & = \lim_{n \to \infty} \abs{\frac{a_n^*}{a_{n+1}^*}}     \\
+              R^*      & = \lim_{n \to \infty} \abs{\frac{(2n+2)(2n+1)}{(-1)}} &
+              R^*      & = \infty                                                \\
+              z_0      & = w_0 = \color{y_h} \frac{\pi}{2} + 0\i               &
+              R        & = \sqrt{R^*} = \color{y_p} \infty
+          \end{align}
+
+    \item Radius of convergence,
+          \begin{align}
+              z_0    & = \color{y_h} 0 + \pi\i                                       &
+              R      & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}                 \\
+              R      & = \lim_{n \to \infty} \frac{n^n\ (n+1)}{(n+1)^{n+1}}          &
+              R      & = \lim_{n \to \infty} \Bigg[\frac{n}{(n+1)}\Bigg]^n             \\
+              R      & = \exp \Bigg[\lim_{n \to \infty} \frac{\ln n - \ln(n+1)}{1/n}
+              \Bigg] &
+              R      & = \exp \Bigg[\lim_{n \to \infty} \frac{-n}{(n+1)}
+              \Bigg]                                                                   \\
+              R      & = \color{y_p} \frac{1}{e}
+          \end{align}
+
+    \item Radius of convergence, using the result of Problem $ 5 $,
+          \begin{align}
+              s^* & = \iser[n]{0} \frac{n(n-1)}{3^n}\ (z-\i)^n          &
+              R^* & = \lim_{n \to \infty} \abs{\frac{a_n^*}{a_{n+1}^*}}   \\
+              R^* & = \lim_{n \to \infty} \abs{\frac{3\ (n-1)}{(n+1)}}  &
+              R^* & = 3                                                   \\
+              z_0 & = w_0 = \color{y_h} 0 + \i                          &
+              R   & = \sqrt{R^*} = \color{y_p} \sqrt{3}
+          \end{align}
+
+    \item Radius of convergence,
+          \begin{align}
+              z_0 & = \color{y_h} 0 + 2\i                                 &
+              R   & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}         \\
+              R   & = \lim_{n \to \infty} \frac{(n+1)^{n+1}}{n^n}         &
+              R   & > \lim_{n \to \infty} \Bigg[\frac{n^{n+1}}{n^n}\Bigg]   \\
+              R   & = \color{y_p} \infty
+          \end{align}
+
+    \item Radius of convergence,
+          \begin{align}
+              z_0 & = \color{y_h} 0 + 0\i                           &
+              R   & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}   \\
+              R   & = \lim_{n \to \infty} \abs{\frac{1+5\i}{2-\i}}  &
+              R   & = \color{y_p} \sqrt{\frac{26}{5}}
+          \end{align}
+
+    \item Radius of convergence,
+          \begin{align}
+              z_0 & = \color{y_h} 0 + 0\i                           &
+              R   & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}   \\
+              R   & = \lim_{n \to \infty} \abs{\frac{-8n}{(n+1)}}   &
+              R   & = \color{y_p} 8
+          \end{align}
+
+    \item Radius of convergence, using the result from Problem $ 5 $, recursively
+          \begin{align}
+              s^* & = \iser[n]{0} 16^n\ (z + \i)^n                      &
+              R^* & = \lim_{n \to \infty} \abs{\frac{a_n^*}{a_{n+1}^*}}   \\
+              R^* & = \lim_{n \to \infty} \abs{\frac{1}{16}}            &
+              R^* & = \frac{1}{16}                                        \\
+              z_0 & = w_0 = \color{y_h} 0 - \i                          &
+              R   & = \sqrt[4]{R^*} = \color{y_p} \frac{1}{2}
+          \end{align}
+
+    \item Radius of convergence, using the result from Problem $ 5 $
+          \begin{align}
+              s^* & = \iser[n]{0} \frac{(-1)^n}{4^n\ (n!)^2}\ z^n       &
+              R^* & = \lim_{n \to \infty} \abs{\frac{a_n^*}{a_{n+1}^*}}   \\
+              R^* & = \lim_{n \to \infty} \abs{-4(n+1)^2}               &
+              R^* & = \infty                                              \\
+              z_0 & = w_0 = \color{y_h} 0 + 0 \i                        &
+              R   & = \sqrt{R^*} = \color{y_p} \infty
+          \end{align}
+
+    \item Radius of convergence,
+          \begin{align}
+              z_0 & = \color{y_h} 0 + 2\i                                           &
+              R   & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}                   \\
+              R   & = \lim_{n \to \infty} \abs{\frac{4(n+1)^2}{(2n+1)(2n+2)}}       &
+              R   & = \lim_{n \to \infty} \abs{\frac{4n^2 + 8n + 4}{4n^2 + 6n + 2}}   \\
+              R   & = \color{y_p} 1
+          \end{align}
+
+    \item Radius of convergence,
+          \begin{align}
+              z_0 & = \color{y_h} 0 + 0\i                                            &
+              R   & = \lim_{n \to \infty} \abs{\frac{a_n}{a_{n+1}}}                    \\
+              R   & = \lim_{n \to \infty} \abs{\frac{2(n+1)^3}{(3n+1)(3n+2)(3n+3)}}  &
+              R   & = \lim_{n \to \infty} \abs{\frac{2n^3 + O(n^2)}{27n^3 + O(n^2)}}   \\
+              R   & = \color{y_p} \frac{2}{27}
+          \end{align}
+
+    \item Radius of convergence, using the result from Problem $ 5 $,
+          \begin{align}
+              s^* & = \iser[n]{1} \frac{2^n}{n(n+1)}\ z^n               &
+              R^* & = \lim_{n \to \infty} \abs{\frac{a_n^*}{a_{n+1}^*}}   \\
+              R^* & = \lim_{n \to \infty} \abs{\frac{(n+2)}{2n}}        &
+              R^* & = \frac{1}{2}                                         \\
+              z_0 & = w_0 = \color{y_h} 0 + 0 \i                        &
+              R   & = \sqrt{R^*} = \color{y_p} \frac{1}{\sqrt{2}}
+          \end{align}
+
+    \item Radius of convergence, using the result from Problem $ 5 $,
+          \begin{align}
+              s^*   & = \frac{2}{\sqrt{\pi}}\ \iser[n]{0}
+              \frac{(-1)^n}{(2n+1)\ n!}
+              \ z^n &
+              R^*   & = \lim_{n \to \infty} \abs{\frac{a_n^*}{a_{n+1}^*}}          \\
+              R^*   & = \lim_{n \to \infty} \abs{\frac{(n+1)(2n+3)}{(-1)(2n+1)}} &
+              R^*   & = \infty                                                     \\
+              z_0   & = w_0 = \color{y_h} 0 + 0 \i                               &
+              R     & = \sqrt{R^*} = \color{y_p} \infty
+          \end{align}
+
+    \item Code written in \texttt{sympy} for the detection of more than one limit
+          point. Rest, TBC.
+
+    \item Radius of convergence,
+          \begin{enumerate}
+              \item The rate of ``decay'' of the coefficients should be inversely
+                    proportional to the radius of convergence, since this decay is better able
+                    to compensate for larger $ \abs{z} $ values. Thus,
+                    \begin{align}
+                        \abs{\frac{a_{n+1}}{a_n}} & = \frac{1}{R}
+                    \end{align}
+
+              \item For the given transformations of coefficients,
+                    \begin{align}
+                        a_n               & \to k\ a_n            &
+                        \implies \qquad R & \to R                   \\
+                        a_n               & \to k^n\ a_n          &
+                        \implies \qquad R & \to \frac{R}{\abs{k}}   \\
+                        a_n               & \to \frac{1}{a_n}     &
+                        \implies \qquad R & \to \frac{1}{R}         \\
+                    \end{align}
+                    Applications can be the change of a general series into a power series
+                    in order to use the results established in this section.
+          \end{enumerate}
+
+    \item Example $ 6 $ is a case of two geometric sequences being added term-wise,
+          \begin{align}
+              c_n & = a_n + b_n
+          \end{align}
+          Using $ (-1)^n $ to ensure multiple limit points means that Theorem $ 6 $ is
+          not applicable. These limit points lead to different $ R $ values that have to
+          be compared to select the strictest one.
+
+    \item Comparing the distances from the origin,
+          \begin{align}
+              \abs{z_1} & = \sqrt{1000} &
+              \abs{z_2} & = \sqrt{997}    \\
+              \abs{z_1} & > \abs{z_2}
+          \end{align}
+          The second and third statement suggest that a series converging at $ z_1 $
+          has to converge at $ z_2 $ since it is closer to the center.
+
+\end{enumerate}

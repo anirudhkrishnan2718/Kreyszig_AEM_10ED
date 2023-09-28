@@ -1,0 +1,173 @@
+\chapter{Unconstrained Optimization. Linear Programming}
+
+\section{Unconstrained Optimization: Method of Steepest Descent}
+
+\begin{description}
+    \item[Objective function] The function to be optimized.
+    \item[Control variables] The independent variables on which the objective function
+        depends
+        \begin{align}
+            f(x_1,x_2,\dots,x_n)
+        \end{align}
+    \item[Constraints] Conditions on the control variables such as the cost of production
+        being nonnegative, or some equation relating inputs.
+
+    \item[Local extremum] The vector $ \vec{X}_0 $ is a local minimum of the vector
+        function $ f(\vec{x}) $ spanning the domain $ R $ if,
+        \begin{align}
+            f(\vec{x})                              & \geq f(\vec{X}_0) &
+            \forall \quad \abs{\vec{x} - \vec{X_0}} & < r
+        \end{align}
+        where $ r $ is the size of some neighbourhood of $ R $.
+
+    \item[Gradient] The gradient of a vector function at an extremum is zero, for all
+        extrema not on the boundary of its domain $ R $.
+        \begin{align}
+            \nabla f (\vec{X}_0)    & = \vec{0} &
+            \nabla f(x_1,\dots,x_n) & =
+            \begin{bNiceMatrix}
+                \difcp {f}{x_1} \\ \difcp {f}{x_2} \\ \vdots \\ \difcp {f}{x_n}
+            \end{bNiceMatrix}
+        \end{align}
+        Such a point is called a stationary point of the function. This is a necessary
+        condition for extrema, but not sufficient. (inflection point or saddle point
+        ).
+
+    \item[Steepest descent] An iterative method, which involves reducing the vector
+        function to a scalar function of a single parameter $ t $,
+        \begin{align}
+            \vec{z}(t) & = \vec{x} - t \cdot \nabla f (\vec{x}) &
+            g(t)       & = f\Big[\vec{z}(t)\Big]
+        \end{align}
+        The direction of steepest descent is $ -\nabla f(\vec{x}_n) $, and the value of
+        $ t $ that minimizes $ g(t)  $ provides the next point $ \vec{X}_{n+1} $ for the
+        iterative process.
+\end{description}
+
+\section{Linear Programming}
+
+\begin{description}
+    \item[Objective function] A linear obejctive function of the form
+        \begin{align}
+            z & = f(\vec{x}) = a_1x_1 + a_2x_2 + \dots + a_nx_n
+        \end{align}
+        along with some constraints on the input variables in the form of linear
+        inequalities.
+
+    \item[Geometric solution] For the simple case of two inputs, the objective
+        function is a straight line in the $ 2d $ Cartesian plane. The constraints
+        are half-planes that represent each inequality.
+
+    \item[Feasibility region] The set intersection of all the half-planes made by
+        the linear constraints.
+
+    \item[Slack variable] A dummy variable introduced to convert an inequality into
+        an equation with a simpler constraint.
+        \begin{align}
+            ax_1 + bx_2 & \geq c & x_3 & = ax_1 + bx_2 - c \\
+            x_3         & \geq 0
+        \end{align}
+        After introducing enough slack variables, every constraint becomes a (strictly)
+        nonnegative inequality, which is much easier to deal with.
+
+    \item[Normal form] For the objective function
+        \begin{align}
+            f &
+            = \sum_{j=1}^{n} c_j\ x_j        \\
+            \begin{bNiceMatrix}[margin]
+                a_{11} & \dots  & a_{1n} \\
+                a_{21} & \vdots & a_{2n} \\
+                \vdots & \ddots & \vdots \\
+                a_{m1} & \dots  & a_{mn} \\
+            \end{bNiceMatrix}\ \begin{bNiceMatrix}[margin]
+                                   x_1 \\ x_2 \\ \vdots \\ x_m
+                               \end{bNiceMatrix}
+              & = \begin{bNiceMatrix}[margin]
+                      b_1 \\ b_2 \\ \vdots \\ b_m
+                  \end{bNiceMatrix}
+        \end{align}
+        Using $ (n-m) $ slack variables, the constraints on all the $ x_i $ are just
+        non-negativity, and all the $ b_i $ non-negative. \par
+        For the case of this matrix being L.I, choosing values for $ (n-m) $ variables
+        uniquely determines the rest.
+
+    \item[Optimal solution] A feasible solution for the set of constraints that also
+        optimizes the objective function.
+
+    \item[Basic feasible solution] A feasible solution that also ensures at least
+        $ (n-m) $ variables zero. (This is the number of slack variables). \par
+        Some optimal solution of a linear programming problem is also a basic feasible
+        solution of the problem.
+\end{description}
+
+\section{Simplex Method}
+
+\begin{description}
+    \item[Normal form] The objective function is represented as
+        \begin{align}
+            z - \sum_{i=1}^{n} c_i x_i
+        \end{align}
+        where the slack variables have coefficient zero.
+
+    \item[Simplex method] The starting point is an augmented matrix composed of
+        $ z, \{x_i\}, b $, called the simplex table.
+
+        \begin{table}[H]
+            \centering
+            \begin{tblr}{
+                colspec =
+                {Q[c, $$]|[dotted]Q[c,$$]Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]
+                Q[c,$$]Q[c,$$]|[dotted]Q[c,$$]},
+                colsep = 1.2em}
+                z & x_1    & \dots & x_m    & x_{m+1} & \dots & x_n & b   \\ \hline
+                1 & c_1    & \dots & c_m    & c_{m+1} & \dots & c_n & 0   \\
+                0 & a_{11} & \dots & a_{1m} & 1       & \dots & 0   & b_1 \\
+                0 & a_{21} & \dots & a_{2m} & 0       & \dots & 1   & b_2 \\
+            \end{tblr}
+        \end{table}
+
+    \item[Basic variables] Columns $ x_i $ that have only one nonzero entry. Else, they
+        are called nonbasic variables.
+
+    \item[Iterative process] Every simplex table gives a basic feasible solution that
+        requires setting all non-basic variables to zero. This can be used to find the
+        value of the objective function at the current step. \par
+        Then a sequence of pivot operations moves to other basic feasible solutions, all
+        the while increasing the value of $ z $.
+
+    \item[Pivoting] A sequence of three operations,
+        \begin{itemize}
+            \item Select that column with the first negative entry in the first row.
+            \item Divide the last column by this column and select the row with the
+                  smallest quotient.
+            \item Use this picot element to reduce all entries in its column to zero
+                  using row operations.
+            \item Set all nonbasic variables to zero in order to find the value of
+                  $ z $.
+        \end{itemize}
+
+        As long as row elimination is only applied to negative elements in the first row
+        in the first step above, the objective function is guaranteed to keep increasing.
+
+    \item[Stopping criterion] When there are no negative entries in the first row,
+        or alternatively, when all the non-slack variables are basic, the optimal
+        solution has been reached.
+\end{description}
+
+\section{Simplex Method: Difficulties}
+
+\begin{description}
+    \item[Degenerate solutions] Occassionaly, more than the requisite number of variables
+        are zero at a basic feasible solution. In the normal procedure, only $ (n-m) $
+        variables are zero for a problem with $ n $ total variables and $ m $
+        constraints. \par
+        When more than $ (n-m) $ variables are zero after any step of the simplex method,
+        then this extra variable is made non-basic and another variable is instead made
+        basic, with no change in $ z $.
+
+    \item[Difficulties in Starting] In order to find a basic feasible solution that acts
+        as a starting point, most commonly because the inequalities are not all the
+        same type. \par
+        In order to deal with this, simply multiply by $ -1 $ to flip the sign of the
+        mismatched inequality to convert them all to the same type and proceed as before.
+\end{description}

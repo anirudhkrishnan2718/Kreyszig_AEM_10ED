@@ -1,0 +1,590 @@
+\section{Laplace's Equation in Cylindrical and Spherical Coordinates}
+
+\begin{enumerate}
+    \item Deriving the Laplacian in spherical coordinates from the Laplacian in
+          cylindrical coordinates,
+          \begin{align}
+              x & = s \cos\theta                   &
+              y & = s \sin\theta                     \\
+              z & = r \cos\phi                     &
+              s & = r \sin \phi = \sqrt{x^2 + y^2}
+          \end{align}
+          Consider the $ xy $ plane with fixed $ z $ and then the $ sz $ plane with
+          fixed $ \theta $.
+          \begin{align}
+              \nabla^2 u      & = u_{rr} + \frac{1}{r}\ u_r + \frac{1}{r^2}
+              \ u_{\theta\theta} + u_{zz}                                   \\
+              u_{xx} + u_{yy} & = u_{ss} + \frac{1}{s}\ u_s + \frac{1}{s^2}
+              \ u_{\theta\theta}                                            \\
+              u_{ss} + u_{zz} & = u_{rr} + \frac{1}{r}\ u_r + \frac{1}{r^2}
+              \ u_{\phi\phi}
+          \end{align}
+          In the $ xy $ plane the magnitute is $ \sqrt{x^2 + y^2} = s $ and direction is
+          $ \theta $. However, in the $ sz $ plane, the magnitude is now
+          $ \sqrt{s^2 + z^2} = r $ and direction is $ \phi $. \par
+          Summing the above terms and eliminating $ s $ in favour of the spherical
+          coordinates.
+          \begin{align}
+              \nabla^2 u & = u_{rr} + \frac{1}{r}\ u_r + \frac{1}{r^2}\ u_{\phi\phi}
+              + \frac{1}{s}\ u_s + \frac{1}{s^2}\ u_{\theta\theta}                   \\
+                         & = u_{rr} + \frac{1}{r}\ u_r + \frac{1}{r^2}\ u_{\phi\phi}
+              + \frac{1}{r^2\sin^2\phi}\ u_{\theta\theta}
+              + \color{y_p} \frac{1}{s}\ u_s                                         \\
+              u_s        & = u_r\ r_s + u_\theta\ \theta_s + u_\phi\ \phi_s          \\
+                         & = u_r\ \diffp*{\ \Big[\sqrt{s^2 + z^2}\Big]}{s}
+              + u_\theta\ (0) + u_\phi\ \diffp*{\ \Big[\arcsin(s/r)\Big]}{s}         \\
+                         & = u_r\ \frac{s}{r} + u_\phi\ \frac{1}{\sqrt{r^2 - s^2}}
+              = u_r\ \frac{s}{r} + u_\phi\ \frac{\cos\phi}{r}
+          \end{align}
+          Substituting into the above expression,
+          \begin{align}
+              \frac{1}{s}\ u_s & = \frac{1}{r}\ u_r + \frac{\cot\phi}{r^2}\ u_\phi \\
+              \nabla^2u        & = u_{rr} + \frac{2}{r}\ u_r + \frac{1}{r^2}
+              \ \Bigg[ u_{\phi\phi} + \frac{1}{\sin^2\phi}\ u_{\theta\theta}
+                  + \cot\phi\ u_\phi \Bigg]
+          \end{align}
+
+    \item Converting the Laplacian in cylindrical coordinates back to Carteisan
+          coordinates,
+          \begin{align}
+              r        & = \sqrt{x^2 + y^2}                     &
+              \theta   & = \arctan(y/x)                           \\
+              x        & = r\cos\theta                          &
+              y        & = r\sin\theta                            \\
+              u_r      & = u_x\ x_r + u_y\ y_r                  &
+                       & = u_x \cos\theta + u_y \sin\theta        \\
+              u_{r}    & = u_x\ \frac{x}{r} + u_y\ \frac{y}{r}    \\
+              u_\theta & = u_x\ x_\theta + u_y\ y_\theta        &
+                       & = -u_x\ r\sin\theta + u_y\ r\cos\theta   \\
+              u_\theta & = -u_x\ y + u_y\ x
+          \end{align}
+          To find the second derivative,
+          \begin{align}
+              u_{rr}           & = \frac{x}{r}\ \Bigg[u_{xx}\ \frac{x}{r}
+                  + u_x\ \frac{y^2}{r^3} + u_{yx}\ \frac{y}{r}
+              - u_y\ \frac{xy}{r^3}\Bigg]                                      \\
+                               & +  \frac{y}{r}\ \Bigg[u_{xy}\ \frac{x}{r}
+                  - u_x\ \frac{xy}{r^3} + u_{yy}\ \frac{y}{r}
+              + u_y\ \frac{x^2}{r^3}\Bigg]                                     \\
+              u_{\theta\theta} & = (-y)[-u_{xx}\ y + u_{yx}\ x + u_y]
+              + (x) [-u_{xy}\ y - u_x + u_{yy}\ x]                             \\
+                               & = y^2\ u_{xx} - x\ u_x + x^2\ u_{yy} - y\ u_y
+              -2xy\ u_{xy}
+          \end{align}
+          Consolidating the three terms,
+          \begin{align}
+              u_{\theta\theta} + r^2\ u_{rr} + r\ u_r & = u_{xx} \Big[ y^2
+              + x^2 \Big] + u_{yy} \Big[ x^2 + y^2 \Big]                         \\
+                                                      & + u_x \Big[
+                  -x + x \Big] + u_y \Big[ -y + y \Big] + u_{xy} \Big[
+              -2xy + 2xy\Big]                                                    \\
+                                                      & = r^2\ (u_{xx} + u_{yy}) \\
+              \frac{1}{r^2}\ u_{\theta\theta} +
+              \frac{1}{r}\ u_r + u_{rr} + u_{zz}      &
+              = u_{xx} + u_{yy} + u_{zz}
+          \end{align}
+
+    \item Plotting the first few Legendre polynomials in $ \cos\phi $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$P_n(\cos\phi)$},
+                          grid = both, domain = 0:2*pi,
+                          PiStyleX, xtick distance = 0.25 * pi,Ani,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},
+                          samples = 100,]
+                      \addplot+ [thick] {leg_P_0(cos(x))};
+                      \addplot+ [thick] {leg_P_1(cos(x))};
+                      \addplot+ [thick] {leg_P_2(cos(x))};
+                      \addplot+ [thick] {leg_P_3(cos(x))};
+                      \addlegendentry{$ P_0 $};
+                      \addlegendentry{$ P_1 $};
+                      \addlegendentry{$ P_2 $};
+                      \addlegendentry{$ P_3 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item The zero surfaces correspond to the Legendre polynomials $ P_n(\cos\phi)
+              = 0 $.
+          \begin{align}
+              P_1(\cos\phi) & = \cos\phi = 0                                 &
+              \implies \phi & = \frac{\pi}{2}                                  \\
+              P_2(\cos\phi) & = 3\cos^2\phi - 1 = 0                          &
+              \implies \phi & = \frac{\pi}{6}, \frac{5\pi}{6}                  \\
+              P_3(\cos\phi) & = 5\cos^3\phi - 3\cos\phi = 0                  &
+              \implies \phi & = \frac{\pi}{2}, \frac{\pi}{6}, \frac{5\pi}{6}
+          \end{align}
+          Geometrically these are the $ xy $ plane, the double cones with angle
+          $ 30^\circ $, and their union.
+
+    \item Using \texttt{sympy} to evaluate the terms upto $ A_{10} $ and plotting
+          the partial sums at $ r = R $,
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = outer north east, title = {$u(R=1)$},
+                          grid = both, domain = 0:pi,
+                          PiStyleX, xtick distance = 0.25 * pi,Ani,
+                          colormap/jet,
+                          cycle list = {[samples of colormap = 4]},
+                          samples = 100, ytick = {0,55,110}]
+                      \addplot[thick, samples = 200, black, dashed]{
+                          ifthenelse(x<pi/2,110,0)};
+                      \addplot+ [thick] {55 * leg_P_0(cos(x)) +
+                          82.5 * leg_P_1(cos(x)) - 48.125 * leg_P_3(cos(x))};
+                      \addplot+ [thick] {55 * leg_P_0(cos(x)) +
+                          82.5 * leg_P_1(cos(x)) - 48.125 * leg_P_3(cos(x))
+                          + 37.813 * leg_P_5(cos(x))};
+                      \addplot+ [thick] {55 * leg_P_0(cos(x)) +
+                          82.5 * leg_P_1(cos(x)) - 48.125 * leg_P_3(cos(x))
+                          + 37.813 * leg_P_5(cos(x)) - 32.227 * leg_P_7(cos(x))};
+                      \addplot+ [thick] {55 * leg_P_0(cos(x)) +
+                          82.5 * leg_P_1(cos(x)) - 48.125 * leg_P_3(cos(x))
+                          + 37.813 * leg_P_5(cos(x)) - 32.227 * leg_P_7(cos(x))
+                          + 28.574 * leg_P_9(cos(x))};
+                      \addlegendentry{$ f(R=1) $};
+                      \addlegendentry{$ S_3 $};
+                      \addlegendentry{$ S_5 $};
+                      \addlegendentry{$ S_7 $};
+                      \addlegendentry{$ S_9 $};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The partial sums seem to get better at approximating the boundary condition.
+
+    \item Refer to plot in Problem $ 5 $. The oscillations move closer to the
+          jump discontinuity as the number of terms in the Fourier series increases.
+
+    \item Verifying that the solutions $ u_n $ satisfy Laplace's equation.
+          \begin{align}
+              u(r, \phi)             & = A_n r^n P_n(\cos\phi)        \\
+              u_{r}                  & = n\ A_n r^{n-1} P_n(\cos\phi) \\
+              \diffp*{\ (r^2u_r)}{r} & = \color{y_h} n(n+1)
+              \ A_n r^{n}P_n(\cos\phi)
+          \end{align}
+          Differentiating w.r.t. $ \phi $,
+          \begin{align}
+              u_\phi                       & = A_nr^n\ P_n'(\cos\phi)            \\
+              \frac{1}{\sin\phi}\ \diffp*
+              {\ (\sin\phi\ u_\phi)}{\phi} & = \color{y_h} A_nr^n\ \Big[\cot\phi
+                  \ P_n'(\cos\phi) + P_n''(\cos\phi)\Big]
+          \end{align}
+          Using the Legendre ODE, and abbreviating $ P_n(\cos\phi) $ to $ P $, it solves
+          this ODE by definition,
+          \begin{align}
+              \diff[2] P\phi + \cot\phi\ \diff P\phi + n(n+1)P & = 0                  \\
+              \frac{1}{r^2}\ \Bigg[ \diffp*{\ (r^2\ u_r)}{r} + \frac{1}{\sin\phi}
+              \ \diffp*{\ (\sin\phi\ u_\phi)}{\phi} \Bigg]     & = \frac{A_nr^n}{r^2}
+              \ (0) = 0
+          \end{align}
+
+          Verifying that the solutions $ u_n^* $ satisfy Laplace's equation.
+          \begin{align}
+              u^*(r, \phi)           & = B_n r^{-n-1} P_n(\cos\phi)         \\
+              u^*_{r}                & = -(n+1)\ B_n r^{-n-2} P_n(\cos\phi) \\
+              \diffp*{\ (r^2u_r)}{r} & = \color{y_p} n(n+1)
+              \ B_n r^{-n-1}P_n(\cos\phi)
+          \end{align}
+          Differentiating w.r.t. $ \phi $,
+          \begin{align}
+              u_\phi                       & = B_nr^{-n-1}\ P_n'(\cos\phi)            \\
+              \frac{1}{\sin\phi}\ \diffp*
+              {\ (\sin\phi\ u_\phi)}{\phi} & = \color{y_p} B_nr^{-n-1}\ \Big[\cot\phi
+                  \ P_n'(\cos\phi) + P_n''(\cos\phi)\Big]
+          \end{align}
+          Using the Legendre ODE, and abbreviating $ P_n(\cos\phi) $ to $ P $, it solves
+          this ODE by definition,
+          \begin{align}
+              \diff[2] P\phi + \cot\phi\ \diff P\phi + n(n+1)P & = 0                  \\
+              \frac{1}{r^2}\ \Bigg[ \diffp*{\ (r^2\ u_r)}{r} + \frac{1}{\sin\phi}
+              \ \diffp*{\ (\sin\phi\ u_\phi)}{\phi} \Bigg]     & = \frac{A_nr^{-n-1}}
+              {r^2}\ (0) = 0
+          \end{align}
+
+    \item Since the potential depends only on $ r $,
+          \begin{align}
+              u(r)       & = \frac{c}{r}                                          &
+              \nabla^2 u & = u_{rr} + \frac{2}{r}\ u_r                              \\
+              \nabla^2 u & = \frac{2c}{r^3} - \frac{2}{r} \cdot \frac{c}{r^2} = 0
+          \end{align}
+
+    \item Since the potential depends only on $ r $,
+          \begin{align}
+              \nabla^2 u    & = u_{rr} + \frac{2}{r}\ u_r                  &
+              \nabla^2 u    & = \frac{1}{r^2}\ \diffp*{\ (r^2 u_r)}{r} = 0   \\
+              r^2 \diffp ur & = c_1                                        &
+              \diffp ur     & = \frac{k_1}{r^2}                              \\
+              u             & = \color{y_p}\frac{k_1}{r} + k_2
+          \end{align}
+          This solution is unique due to the uniqueness of general solutions of ODEs.
+
+    \item Since the potential depends only on $ r $,
+          \begin{align}
+              \nabla^2 u           & = u_{rr} + \frac{1}{r}\ u_r = 0 &
+              r^2\ u_{rr} + r\ u_r & = 0                               \\
+              \lambda^2            & = 0                             &
+              \lambda              & = \{0, 0\}                        \\
+              u                    & = \color{y_p}k_1 + k_2\ln(r)
+          \end{align}
+          This solution is unique due to the uniqueness of general solutions of ODEs.
+
+    \item Substituting into the Laplace equation in Cartesian coordinates,
+          \begin{align}
+              u          & = \frac{c_1}{\sqrt{x^2 + y^2 + z^2}} + c_2                &
+              \nabla^2 u & = u_{xx} + u_{yy} + u_{zz}                                  \\
+              u_{x}      & = \frac{-c_1x}{(x^2 + y^2 + z^2)^{3/2}}                   &
+              u_{xx}     & = -c_1\ \frac{r^3 - 3x^2r}{r^6}                             \\
+              \nabla^2 u & =\frac{-c_1}{r^6}\ \Big[ 3r^3 - 3r(x^2 + y^2 + z^2) \Big] &
+              \nabla^2 u & = 0
+          \end{align}
+          Substituting into the Laplace equation in Spherical coordinates,
+          \begin{align}
+              u                   & = u'' + \frac{2u'}{r} &
+              u'                  & = \frac{-c_1}{r^2}      \\
+              u''                 & = \frac{2c_1}{r^3}    &
+              u'' + \frac{2u'}{r} & = 0
+          \end{align}
+
+    \item From Problem $ 10 $, the potential depending only on $ r $ is,
+          \begin{align}
+              u    & = c_1 \ln(r) + c_2                               \\
+              u(2) & = c_1\ln(2) + c_2 = 220                        &
+              u(4) & = c_1\ln(4) + c_2 = 140                          \\
+              c_1  & = \frac{-80}{\ln(2)}                           &
+              c_2  & = 300                                            \\
+              u    & = \color{y_p} -\frac{80}{\ln(2)}\ \ln(r) + 300
+          \end{align}
+
+    \item From Problem $ 9 $, the potential depending only on $ r $ is,
+          \begin{align}
+              u    & = \frac{c_1}{r} + c_2              \\
+              u(2) & = \frac{c_1}{2} + c_2 = 220      &
+              u(4) & = \frac{c_1}{4} + c_2 = 140        \\
+              c_1  & = 320                            &
+              c_2  & = 60                               \\
+              u    & = \color{y_h} \frac{320}{r} + 60
+          \end{align}
+          Plotting the two potentials in the domain $ r \in [2, 4] $, the cylindrical
+          potential is larger than the spherical potential
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          legend pos = north east,
+                          grid = both, Ani,
+                          domain = 2:4,
+                      ]
+                      \addplot[GraphSmooth,y_h]{(320/x) + 60};
+                      \addplot[GraphSmooth, y_p]{-ln(x) * 80/(ln(2)) + 300};
+                      \addlegendentry{spherical};
+                      \addlegendentry{cylindrical};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+          The equipotential lines are cylinders and spheres respectively. These would
+          look like circular cross sections in the $ xy $ plane. The above plot is more
+          useful in comparing the two potentials.
+
+    \item Using the Laplacian for spherical coordinates when the potential is dependent
+          only on $ r $,
+          \begin{align}
+              \nabla^2 u                & = u_{rr} + \frac{2}{r}\ u_r &
+              \color{y_h}c^2 \Bigg[ u_{rr}
+              + \frac{2}{r}\ u_r \Bigg] & = \color{y_h}u_t
+          \end{align}
+          The initial condition is $ u(r, 0) = f(r) $ and the boundary condition is
+          $ u(R, t) = 0 $. \par
+          Introducing the new variable $ v = ur $,
+          \begin{align}
+              v_t            & = r\ u_t                             &
+              v_r            & = r\ u_r + u                           \\
+              v_{rr}         & = r\ u_{rr} + 2u_r                   &
+              \frac{v_t}{r}  & = c^2 \Bigg[ \frac{v_{rr}}{r} \Bigg]   \\
+              \color{y_p}v_t & = \color{y_p}c^2\ v_{rr}
+          \end{align}
+          The constraint on $ v $ in order for the temperature to be bounded at $ r = 0 $
+          is that $ v(0, t) = 0 $. \par
+          The new I.C. $ v(r, 0) = rf(r) $ and the new B.C. is $ v(R, t) = 0 $.
+          \begin{align}
+              v(r, t)                  & = A(r) \cdot B(t)                 &
+              A \cdot \dot{B}          & = c^2\ B \cdot A''                  \\
+              \frac{1}{c^2B}\ \diff Bt & = \frac{1}{A}\ \diff[2] Ar = -k^2   \\
+          \end{align}
+          Solving the two ODEs in $ t, r $ separately,
+          \begin{align}
+              \diff Bt    & = -(ck)^2\ B                  &
+              B           & = p_1 \exp(-\lambda^2 t)        \\
+              \diff[2] Ar & = -k^2A                       &
+              A           & = q_1 \cos(kr) + q_2 \sin(kr)
+          \end{align}
+          Applying the boundary conditions on $ A(r) $,
+          \begin{align}
+              A(0)              & = 0                           &
+              \implies q_1      & = 0                             \\
+              A(R)              & = 0                           &
+              \implies \sin(kR) & = 0                             \\
+              k                 & = \color{y_h} \frac{n\pi}{R}  &
+              \lambda           & = \color{y_h} \frac{cn\pi}{R}
+          \end{align}
+          Consolidating the two functions into $ v(r, t) $, and combining the two
+          constants $ p, q $
+          \begin{align}
+              v_n(r, t) & = \color{y_p} d_n\ \sin\Big( \frac{n\pi r}{R}\Big) \cdot
+              \exp(-\lambda_n^2 t)                                                 \\
+              v(r, 0)   & = \iser[n]{1} v_n(r, 0) = \iser[n]{1} d_n \sin\Big(
+              \frac{n\pi r}{R} \Big) = rf(r)
+          \end{align}
+          Since this is simply the Fourier sine expansion of $ f(r) $,
+          \begin{align}
+              d_n & = \color{y_p} \frac{2}{R} \int_{0}^{R} rf(r)
+              \ \sin \Big( \frac{n\pi r}{R} \Big)\ \dl r
+          \end{align}
+
+    \item The analog of Problem $12$ is hot and cold concentric cylinders. For
+          Problem $ 13 $, it is concentric hot and cold spheres.
+
+    \item Decomposing the boundary function into a linear superposition of
+          Legendre polynomials in $ \cos\phi $,
+          \begin{align}
+              f(\phi) & = \cos\phi = P_1(\cos\phi)       &
+              u(R=1)  & = \iser[n]{0} A_n\ P_n(\cos\phi)         \\
+              A_n     & = \color{y_h} \begin{cases}
+                                          1 & \quad n = 1            \\
+                                          0 & \quad \text{otherwise}
+                                      \end{cases}    &
+              u_r     & = \color{y_p} r\ \cos\phi
+          \end{align}
+
+    \item Decomposing the boundary function into a linear superposition of
+          Legendre polynomials in $ \cos\phi $,
+          \begin{align}
+              f(\phi) & = 1 = P_0(\cos\phi)              &
+              u(R=1)  & = \iser[n]{0} A_n\ P_n(\cos\phi)         \\
+              A_n     & = \color{y_h} \begin{cases}
+                                          1 & \quad n = 0            \\
+                                          0 & \quad \text{otherwise}
+                                      \end{cases}    &
+              u_r     & = \color{y_p} 1
+          \end{align}
+
+    \item Decomposing the boundary function into a linear superposition of
+          Legendre polynomials in $ \cos\phi $,
+          \begin{align}
+              f(\phi) & = 1 - \cos^2\phi = \frac{-2P_2 + 2P_0}{3}                    &
+              u(R=1)  & = \iser[n]{0} A_n\ P_n(\cos\phi)                               \\
+              A_n     & = \color{y_h} \begin{cases}
+                                          2/3  & \quad n = 0            \\
+                                          -2/3 & \quad n = 2            \\
+                                          0    & \quad \text{otherwise}
+                                      \end{cases}                             &
+              u_r     & = \color{y_p} \frac{2}{3} - \frac{(3\cos^2\phi - 1)}{3}\ r^2
+          \end{align}
+
+    \item Decomposing the boundary function into a linear superposition of
+          Legendre polynomials in $ \cos\phi $,
+          \begin{align}
+              f(\phi) & = \cos(2\phi) = \frac{4P_2 - P_0}{3} &
+              u(R=1)  & = \iser[n]{0} A_n\ P_n(\cos\phi)            \\
+              A_n     & = \color{y_h} \begin{cases}
+                                          -1/3 & \quad n = 0            \\
+                                          4/3  & \quad n = 2            \\
+                                          0    & \quad \text{otherwise}
+                                      \end{cases}     &
+              u_r     & = \color{y_p} -\frac{1}{3}
+              + \frac{(6\cos^2\phi - 2)}{3}\ r^2
+          \end{align}
+
+    \item Decomposing the boundary function into a linear superposition of
+          Legendre polynomials in $ \cos\phi $,
+          \begin{align}
+              f(\phi) & = \cos(2\phi) = 4P_3 - 2P_2 + P_1 - 2P_0                   \\
+              u(R=1)  & = \iser[n]{0} A_n\ P_n(\cos\phi)                           \\
+              A_n     & = \color{y_h} \begin{cases}
+                                          -1 & \quad n = 0            \\
+                                          2  & \quad n = 1            \\
+                                          -2 & \quad n = 2            \\
+                                          4  & \quad n = 3            \\
+                                          0  & \quad \text{otherwise}
+                                      \end{cases}                  \\
+              u_r     & = \color{y_p} -1 + 2r\ P_1(\cos\phi) - 2r^2\ P_2(\cos\phi)
+              + 4r^3\ P_3(\cos\phi)
+          \end{align}
+
+    \item From the boundary condition in Problem $ 17 $, the potential outside the
+          sphere is,
+          \begin{align}
+              u(r, \phi) & = \iser[n]{0} \frac{B_n}{r^{n+1}}\ P_n(\cos\phi) &
+              f(\phi)    & = P_0 = \iser[n]{0} B_n\ P_n(\cos\phi)             \\
+              u(r, \phi) & = \color{y_h} \frac{1}{r}
+          \end{align}
+          This happens to be the same as the potential due to a point charge at the
+          origin.
+
+    \item  Using the same Fourier-Legendre coefficients, in Problem $ 16 $,
+          \begin{align}
+              u^*(r, \phi) & = \frac{1}{r^2}\ P_1(\cos\phi)
+          \end{align}
+          Using the same Fourier-Legendre coefficients, in Problem $ 19 $,
+          \begin{align}
+              u^*(r, \phi) & = -\frac{1}{3}\ \frac{P_0(\cos\phi)}{r} + \frac{4}{3}
+              \ \frac{P_2(\cos\phi)}{r^3}
+          \end{align}
+
+    \item Plotting the $ xz $ plane cross sections of equipotential surfaces,
+          \begin{align}
+              u & = r\ \cos\phi & r & = \frac{k}{\cos\phi}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{polaraxis}[rotate = -90, x dir = reverse,
+                          enlargelimits = false, ytick = {0, 0.5, 1},
+                          width = 10cm, height = 10cm, xmin = 0, xmax = 180,
+                          xticklabel style={color = blue, circle, anchor = east},
+                          yticklabel style={anchor = north west},
+                          grid = both, xtick = {0, 45, 90, 135, 180},
+                          xticklabels={0, $ \pi/4 $, $ \pi/2 $, $ 3\pi/4 $, $ \pi $},
+                          trig format plots = deg]
+                      \addplot [thick, y_h, dashed,
+                          domain = 0:180, restrict y to domain = 0:1]{0.25/cos(90-x)};
+                      \addplot [thick, y_p, dashed,
+                          domain = 0:180, restrict y to domain = 0:1]{0.5/cos(90-x)};
+                      \addplot [thick, y_t, dashed,
+                          domain = 0:180, restrict y to domain = 0:1]{0.75/cos(90-x)};
+                  \end{polaraxis}
+              \end{tikzpicture}
+          \end{figure}
+          These are planes perpendicular to the $x$ axis, which show up as lines parallel
+          to the $ z $ axis in the plot.
+
+    \item Transmission line,
+          \begin{enumerate}
+              \item Consider a small segment of cable at position $ x $ and width
+                    $ \Delta x $,
+                    \begin{align}
+                        u_B - u_A         & = Rj + L\ \diffp jt &
+                        Rj + L\ \diffp jt & = -\diffp ux
+                    \end{align}
+                    Here the PDE comes from the infinitesimal limit of the wire segment.
+                    The negative sign comes from the fact that potential is decreasing
+                    left to right.
+
+              \item Using Kirchoff's current law, on a small segment of wire,
+                    \begin{align}
+                        j_B - j_A  & = \Delta j_C + \Delta j_G &
+                        -\diffp jx & = C\ \diffp ut + Gu
+                    \end{align}
+                    Here, $ G $ is the reciprocal of the resistance from the wire to the
+                    ground, which is different from $ R $, the resistance per unit length
+                    of the wire itself.
+
+              \item Eliminating current $ j $,
+                    \begin{align}
+                        -j_x              & = C\ u_t + Gu                        &
+                        -j_{xt}           & = C\ u_{tt} + G\ u_t                   \\
+                        j_{t}             & = \frac{-1}{L}\ u_x - \frac{R}{L}\ j &
+                        j_{tx}            & = \frac{-1}{L}\ u_{xx} - \frac{R}{L}
+                        \ j_x                                                      \\
+                        \color{y_h}u_{xx} & = \color{y_h}LC\ u_{tt} + (RC + LG)
+                        \ u_t + RG\ u
+                    \end{align}
+                    Eliminating potential $ u $,
+                    \begin{align}
+                        -u_x               & = Rj + L\ j_t                        &
+                        -u_{xt}            & = R\ j_{t} + L\ j_{tt}                 \\
+                        u_{t}              & = \frac{-1}{C}\ j_x - \frac{G}{C}\ u &
+                        u_{tx}             & = \frac{-1}{C}\ j_{xx} - \frac{G}{C}
+                        \ u_x                                                       \\
+                        \color{y_p} j_{xx} & = \color{y_p} LC\ j_{tt} + (RC + LG)
+                        \ j_t + RG\ j
+                    \end{align}
+
+              \item For the special case where $ G \to 0 $ and frequency
+                    is negligible, leading to $ L \to 0 $,
+                    \begin{align}
+                        u_{xx} & = RC\ u_t &
+                        j_{xx} & = RC\ j_t
+                    \end{align}
+                    Since this is the heat equation with B.C. $ u(0, t)
+                        = u(L, t) = 0$. \par
+                    Further, the I.C is $ u(x, 0) = U_0 $.
+                    Decomposing the function $ u(x, t) $ into $ V(x) \cdot W(t)$,
+                    \begin{align}
+                        c^2     & = \frac{1}{RC}                                     \\
+                        V(x)    & = \color{y_p}\sin\Big( \frac{n\pi x}{L} \Big)      \\
+                        W(t)    & = \color{y_p}\exp\Bigg[ -\left( \frac{n\pi}{L}
+                        \right)^2 \cdot \frac{t}{RC} \Bigg]                          \\
+                        u(x, 0) & = \iser[n]{1} A_n \sin\Big( \frac{n\pi x}{L} \Big) \\
+                        A_n     & = \frac{2}{L}\int_{0}^{L} f(x)\
+                        \sin\Big( \frac{n\pi x}{L} \Big)\ \dl x
+                    \end{align}
+                    Applying the given boundary condition to the general solution above,
+                    \begin{align}
+                        A_n     & = \frac{2U_0}{L}\int_{0}^{L}\
+                        \sin\Big( \frac{n\pi x}{L} \Big)\ \dl x           \\
+                                & = \frac{2U_0}{n\pi}\ \Bigg[ \cos\Big(
+                            \frac{n\pi x}{L} \Big)\Bigg]_L^0
+                        = \color{y_p} \frac{2U_0}{n\pi}\ [1 - \cos(n\pi)] \\
+                        u(x, t) & = \iser[n]{1} A_n\ V_n(x)\ W_n(t)
+                    \end{align}
+
+              \item For the special case where $ L \gg R $ and frequency
+                    is negligible, leading to $ C \gg G $,
+                    \begin{align}
+                        u_{xx} & = LC\ u_{tt} &
+                        j_{xx} & = LC\ j_{tt}
+                    \end{align}
+                    Since this is the wave equation with B.C. $ u(0, t)
+                        = u(L, t) = 0$ and \par
+                    Further, the I.C is $ u(x, 0) = U_0 \sin(\pi x/l) $ and
+                    $ u_t(x, 0) = 0 $.
+                    Decomposing the function $ u(x, t) $ into $ V(x) \cdot W(t)$,
+                    \begin{align}
+                        c^2     & = \frac{1}{LC}, \qquad \lambda_n = \frac{cn\pi}{l} &
+                        V(x)    & = \color{y_p}\sin\Big( \frac{n\pi x}{L} \Big)        \\
+                        W(t)    & = \color{y_p}\cos(\lambda_n t)                     &
+                        u(x, 0) & = \iser[n]{1} A_n \sin\Big( \frac{n\pi x}{L} \Big)
+                    \end{align}
+                    Applying the given boundary condition to the general solution above,
+                    \begin{align}
+                        A_n     & = \color{y_p} \begin{cases}
+                                                    U_0 & \quad n = 1            \\
+                                                    0   & \quad \text{otherwise}
+                                                \end{cases}                     &
+                        u(x, t) & = U_0\ \cos(\lambda_1 t)\ \sin\Big( \frac{\pi x}{l}
+                        \Big)
+                    \end{align}
+          \end{enumerate}
+
+    \item Transforming $ u \to v $, to reflect on the unit sphere,
+          \begin{align}
+              W(r, \theta, \phi)         & = \frac{U(1/r, \theta, \phi)}{r} &
+              r \cdot W(r, \theta, \phi) & =  U(\rho, \theta, \phi)           \\
+              U_\theta                   & = r \cdot W_\theta               &
+              U_{\theta\theta}           & = r \cdot W_{\theta\theta}         \\
+              U_\phi                     & = r \cdot W_\phi                 &
+              U_{\phi\phi}               & = r \cdot W_{\phi\phi}
+          \end{align}
+          Relating $ U_\rho $ to $ W_r $,
+          \begin{align}
+              U_\rho                                & = (W + rW_r) \cdot \diffp r\rho
+              = \Bigg( \frac{-1}{\rho^2} \Bigg) \ [W + rW_r]                           \\
+              U_{\rho\rho}                          & = \Bigg( \frac{1}{\rho^4} \Bigg)
+              \ [rW_{rr} + 2W_r] + \Bigg( \frac{2}{\rho^3} \Bigg) [W + rW_r]           \\
+              U_{\rho\rho} + \frac{2}{\rho}\ U_\rho & = r^5 \Bigg[ W_{rr}
+              + \frac{2}{r}\ W_r \Bigg]                                                \\
+              \frac{1}{\rho^2}\ U_{\phi\phi}
+              + \frac{\cot\phi}{\rho^2}\ U_\phi     & = r^3\ W_{\phi\phi}
+              + r^3\ \cot\phi\ W_\phi                                                  \\
+              \frac{1}{\rho^2 \sin^2\phi}
+              \ U_{\theta\theta}                    & = \frac{r^3}{\sin^2\phi}
+              \ W_{\theta\theta}                                                       \\
+              \nabla^2 U(\rho, \theta, \phi)        & = r^5\ [\nabla^2 W(r, \theta
+              , \phi)]
+          \end{align}
+          Since $ U $ satisfies Laplace's equation, so does $ W $.
+\end{enumerate}

@@ -130,14 +130,16 @@
                           grid = both,
                           height = 12cm,
                           domain = 0:1,
-                          colormap/jet,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 6]},
+                          samples = 200,
                           Ani]
-                      \addplot[GraphSmooth, color = red4] {leg_P_0(x)};
-                      \addplot[GraphSmooth, color = brown4] {leg_P_2(x)};
-                      \addplot[GraphSmooth, color = yellow4] {leg_P_4(x)};
-                      \addplot[GraphSmooth, color = green4] {leg_P_6(x)};
-                      \addplot[GraphSmooth, color = azure4] {leg_P_8(x)};
-                      \addplot[GraphSmooth, color = violet4] {leg_P_10(x)};
+                      \addplot+[thick] {leg_P_0(x)};
+                      \addplot+[thick] {leg_P_2(x)};
+                      \addplot+[thick] {leg_P_4(x)};
+                      \addplot+[thick] {leg_P_6(x)};
+                      \addplot+[thick] {leg_P_8(x)};
+                      \addplot+[thick] {leg_P_10(x)};
                       \addlegendentry{$ P_{0} $}
                       \addlegendentry{$ P_{2} $}
                       \addlegendentry{$ P_{4} $}
@@ -157,13 +159,15 @@
                           grid = both,
                           height = 12cm,
                           domain = 0:1,
-                          colormap/jet,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 5]},
+                          samples = 200,
                           Ani]
-                      \addplot[GraphSmooth, color = red4] {leg_P_1(x)};
-                      \addplot[GraphSmooth, color = brown4] {leg_P_3(x)};
-                      \addplot[GraphSmooth, color = yellow4] {leg_P_5(x)};
-                      \addplot[GraphSmooth, color = green4] {leg_P_7(x)};
-                      \addplot[GraphSmooth, color = azure4] {leg_P_9(x)};
+                      \addplot+[thick] {leg_P_1(x)};
+                      \addplot+[thick] {leg_P_3(x)};
+                      \addplot+[thick] {leg_P_5(x)};
+                      \addplot+[thick] {leg_P_7(x)};
+                      \addplot+[thick] {leg_P_9(x)};
                       \addlegendentry{$ P_{1} $}
                       \addlegendentry{$ P_{3} $}
                       \addlegendentry{$ P_{5} $}
@@ -202,12 +206,14 @@
                           height = 12cm,
                           restrict y to domain = -3:3,
                           domain = -1:1,
-                          colormap/jet,
+                          colormap/viridis,
+                          cycle list = {[samples of colormap = 4]},
+                          samples = 200,
                           Ani]
-                      \addplot[GraphSmooth, color = red4] {leg_Q_0(x)};
-                      \addplot[GraphSmooth, color = brown4] {leg_Q_1(x)};
-                      \addplot[GraphSmooth, color = yellow4] {leg_Q_2(x)};
-                      \addplot[GraphSmooth, color = violet4] {leg_Q_3(x)};
+                      \addplot+[thick] {leg_Q_0(x)};
+                      \addplot+[thick] {leg_Q_1(x)};
+                      \addplot+[thick] {leg_Q_2(x)};
+                      \addplot+[thick] {leg_Q_3(x)};
                       \addlegendentry{$ Q_{0} $}
                       \addlegendentry{$ Q_{1} $}
                       \addlegendentry{$ Q_{2} $}
@@ -283,8 +289,8 @@
                                         & = \frac{1}{r_2} \left( 1
                         + \frac{r_1^2}{r_2^2}
                         - \frac{2r_1}{r_2} \cos \theta \right)^{-1/2}            \\
-                        \frac{r_1}{r_2} & \rightarrow u\qquad \qquad
-                        \cos\theta \rightarrow x                                 \\
+                        \frac{r_1}{r_2} & \to u\qquad \qquad
+                        \cos\theta \to x                                         \\
                                         & = \frac{1}{r_2} (1 + u^2 - 2ux)^{-1/2} \\
                                         & = \frac{1}{r_2} \sum_{m = 0}^{\infty}
                         P_m(\cos \theta)\ \left( \frac{r_1}{r_2} \right)^m
@@ -402,12 +408,13 @@
               \item $ n = 2, k = 1 $,
                     \begin{align}
                         P_2^1 (x) & = \sqrt{1 - x^2}\ \diff**{x}{\left[
-                        p_2(x) \right]}                                                 \\
-                                  & = 3x \sqrt{1 - x^2} = 3x\mu                         \\
+                        p_2(x) \right]}                                            \\
+                                  & = 3x \sqrt{1 - x^2} = 3x\mu                    \\
                         2xy'      & = \frac{-2x^2}{\mu}
-                        = \frac{6x - 12x^3}{\mu}                                        \\
+                        = \frac{6x - 12x^3}{\mu}                                   \\
                         (1 - x^2)y'' + \left(6 - \frac{1}{1-x^2} \right)y
-                                  & = \frac{6x^3 - 9x}{\mu} + \frac{(15x - 18x^3)}{\mu} \\
+                                  & = \frac{6x^3 - 9x}{\mu} + \frac{(15x - 18x^3)}
+                        {\mu}                                                      \\
                                   & = \frac{(6x - 12x^3)}{\mu}
                     \end{align}
               \item $ n = 2, k = 2 $,
@@ -428,7 +435,7 @@
                         2xy'      & = -60x^2(7x^2 - 4)                \\
                         (1 - x^2)y'' + \left(20 - \frac{4}{1-x^2} \right)y
                                   & = (1-x^2)(120 - 630x^2)
-                        + 15(8 - 10x^2)(7x^2 - 1)                    \\
+                        + 15(8 - 10x^2)(7x^2 - 1)                     \\
                                   & = -420x^4 + 240x^2
                     \end{align}
           \end{enumerate}

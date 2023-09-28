@@ -1,617 +1,659 @@
 \section{Constant-Coefficient Systems, Phase Plane Method}
 \begin{enumerate}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}        & = \vec{Ay}                   &
-    \vec{A}         & = \bmattt{1}{1}{3}{-1}         \\
-    \lambda^{2} - 4 & = 0                          &
-    \{\lambda_i\}   & = \{-2, 2\}                    \\
-    \vec{v^{(1)}}   & = \bmatcol{-1}{3}            &
-    \vec{v^{(2)}}   & = \bmatcol{1}{1}               \\
-    \vec{y}         & = c_1 \bmatcol{-1}{3}e^{-2t}
-    + c_2 \bmatcol{1}{1} e^{2t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}                     & = \vec{Ay}                  &
-    \vec{A}                      & = \bmattt{6}{9}{1}{6}         \\
-    \lambda^{2} - 12\lambda + 27 & = 0                         &
-    \{\lambda_i\}                & = \{3, 9\}                    \\
-    \vec{v^{(1)}}                & = \bmatcol{-3}{1}           &
-    \vec{v^{(2)}}                & = \bmatcol{3}{1}              \\
-    \vec{y}                      & = c_1 \bmatcol{-3}{1}e^{3t}
-    + c_2 \bmatcol{3}{1} e^{9t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}               & = \vec{Ay}              &
-    \vec{A}                & = \bmattt{1}{2}{0.5}{1}   \\
-    \lambda^{2} - 2\lambda & = 0                     &
-    \{\lambda_i\}          & = \{0, 2\}                \\
-    \vec{v^{(1)}}          & = \bmatcol{-2}{1}       &
-    \vec{v^{(2)}}          & = \bmatcol{2}{1}          \\
-    \vec{y}                & = c_1 \bmatcol{-2}{1}
-    + c_2 \bmatcol{2}{1} e^{2t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}                   & = \vec{Ay}                            &
-    \vec{A}                    & = \bmattt{-8}{-2}{2}{-4}                \\
-    \lambda^{2} + 7\lambda - 9 & = 0                                   &
-    \lambda_1, \lambda_2       & = \left\{ \frac{-7 + \sqrt{85}}{2},\
-    \frac{-7 - \sqrt{85}}{2} \right\}                                    \\
-    \vec{v^{(1)}}              & = \bmatcol{9 - \sqrt{85}}{1}          &
-    \vec{v^{(2)}}              & = \bmatcol{9 + \sqrt{85}}{1}            \\
-    \vec{y}                    & = c_1 \vec{v^{(1)}} e^{\lambda_1 t}
-    + c_2 \vec{v^{(2)}} e^{\lambda_2 t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}                  & = \vec{Ay}                 &
-    \vec{A}                   & = \bmattt{2}{5}{5}{25/2}     \\
-    \lambda^{2} - 14.5\lambda & = 0                        &
-    \lambda_1, \lambda_2      & = \left\{ 0, 14.5 \right\}   \\
-    \vec{v^{(1)}}             & = \bmatcol{-5}{2}          &
-    \vec{v^{(2)}}             & = \bmatcol{2}{5}             \\
-    \vec{y}                   & = c_1 \bmatcol{-5}{2}
-    + c_2 \bmatcol{2}{5} e^{14.5t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}             & = \vec{Ay}                              &
-    \vec{A}              & = \bmattt{2}{-2}{2}{2}                    \\
-    0                    & = \lambda^{2} - 4\lambda + 8            &
-    \lambda_1, \lambda_2 & = \left\{ 2 - 2i, 2 + 2i \right\}         \\
-    \vec{v^{(1)}}        & = \bmatcol{-i}{1}                       &
-    \vec{v^{(2)}}        & = \bmatcol{i}{1}                          \\
-    \vec{y}              & = c_1 \bmatcol{-i}{1} e^{(2 - 2i)t}
-    + c_2 \bmatcol{i}{1} e^{(2 + 2i)t}                               \\
-    y_1                  & = e^{2t} [-c_1 \sin(2t) - c_2 \sin(2t)] &
-    y_2                  & = e^{2t} [c_1 \cos(2t) + c_2 \cos(2t)]
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-\vec{y'}  = \vec{Ay} \qquad\qquad
-\vec{A} = \begin{bNiceMatrix}[r, margin]
-0  & 1  & 0 \\
--1 & 0  & 1 \\
-0  & -1 & 0
-\end{bNiceMatrix}                                                 \\
-0                     = \lambda^{3} + 2\lambda \qquad \qquad
-\lambda_1, \lambda_2  = \left\{ 0, -\sqrt{2}i, \sqrt{2}i \right\}        \\
-\vec{v^{(1)}}         =  \begin{bNiceMatrix}[r, margin] 1 \\ 0 \\ 1 \end{bNiceMatrix}
-\qquad\qquad \vec{v^{(2)}} = \begin{bNiceMatrix}[r, margin]
--1 \\ \sqrt{2}i \\ 1
-\end{bNiceMatrix}
-\qquad\qquad \vec{v^{(3)}} = \begin{bNiceMatrix}[r, margin]
--1 \\ -\sqrt{2}i \\ 1
-\end{bNiceMatrix}                        \\
-\vec{y}  = c_1 \begin{bNiceMatrix}[r, margin] 1 \\ 0 \\ 1 \end{bNiceMatrix}
-+ c_2 \begin{bNiceMatrix}[r, margin] -1 \\ \sqrt{2}i \\ 1 \end{bNiceMatrix}e^{-\sqrt{2}i t}
-+ c_3 \begin{bNiceMatrix}[r, margin] -1 \\ -\sqrt{2}i \\ 1 \end{bNiceMatrix}e^{\sqrt{2}i t} \\
-y_1 = c_1 - c_2\cos(\sqrt{2}t) - c_3\cos(\sqrt{2}t)                      \\
-y_2 = c_2\sqrt{2}\sin(\sqrt{2}t) - c_3\sqrt{2}\sin(\sqrt{2}t)            \\
-y_3 = c_1 + c_2\cos(\sqrt{2}t) + c_3\cos(\sqrt{2}t)
-\end{align}
-Dividing the third eigenvector by $ -i $ produces the textbook result.
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}      & = \vec{Ay}
-    \qquad\qquad
-    \vec{A}                           = \bmattt{8}{-1}{1}{10} \\
-    0             & = \lambda^{2} - 18\lambda + 81
-    \qquad\qquad
-    \lambda_1, \lambda_2              = \left\{ 9, 9 \right\} \\
-    \vec{y^{(2)}} & = (\vec{x^{(1)}}t + \vec{u})e^{\lambda t} \\
-    \vec{v^{(1)}} & = \bmatcol{-1}{1}
-    \qquad\qquad
-    (\vec{A} - \lambda\vec{I})\vec{u} = \vec{x^{(1)}}         \\
-    u_1 + u_2     & = 1
-    \qquad\qquad
-    \vec{u}                           = \bmatcol{0}{1}        \\
-    y             & = c_1 \bmatcol{-1}{1}e^{9t}
-    + c_2\left( \bmatcol{-1}{1}t + \bmatcol{0}{1} \right)e^{9t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-\vec{y'}  = \vec{Ay} \qquad\qquad
-\vec{A} = \begin{bNiceMatrix}[r, margin]
-10  & 10  & -4  \\
--10 & 1   & -14 \\
--4  & -14 & -2
-\end{bNiceMatrix}                           \\
-0                     = \lambda^{3} - 9\lambda -324\lambda + 2196
-\qquad\qquad
-\lambda_1, \lambda_2  = \left\{ -18, 9, 18 \right\} \\
-\vec{v^{(1)}}         =  \begin{bNiceMatrix}[r, margin] 1 \\ 2 \\ 2 \end{bNiceMatrix}
-\qquad\qquad
-\vec{v^{(2)}} = \begin{bNiceMatrix}[r, margin]
--2 \\ -1 \\ 2
-\end{bNiceMatrix}
-\qquad\qquad
-\vec{v^{(3)}} = \begin{bNiceMatrix}[r, margin]
-2 \\ -2 \\ 1
-\end{bNiceMatrix}                      \\
-\vec{y}  = c_1 \begin{bNiceMatrix}[r, margin] 1 \\ 2 \\ 2 \end{bNiceMatrix}e^{-18t}
-+ c_2 \begin{bNiceMatrix}[r, margin] -2 \\ -1 \\ 2 \end{bNiceMatrix}e^{-9t}
-+ c_3 \begin{bNiceMatrix}[r, margin] 2 \\ -2 \\ 1 \end{bNiceMatrix}e^{18t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}      & = \vec{Ay}
-    \qquad\qquad
-    \vec{A}                           = \bmattt{2}{2}{5}{-1}   \\
-    0             & = \lambda^{2} - \lambda - 12
-    \qquad\qquad
-    \lambda_1, \lambda_2              = \left\{ -3, 4 \right\} \\
-    \vec{v^{(1)}} & = \bmatcol{-2}{5}
-    \qquad\qquad
-    \vec{v^{(2)}} = \bmatcol{1}{1}                             \\
-    \vec{y}       & = c_1 \bmatcol{-2}{5}e^{-3t}
-    + c_2\bmatcol{1}{1}e^{4t}
-\end{align}
-Using the I.C.,
-\begin{align}
-    \vec{y}(0) & = \bmatcol{0}{7} = \bmatcol{-2c_1 + c_2}{5c_1 + c_2} \\
-    c_1        & = 1 \qquad\qquad c_2 = 2
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}      & = \vec{Ay}
-    \qquad\qquad
-    \vec{A}                           = \bmattt{2}{5}{-0.5}{-1.5} \\
-    0             & = \lambda^{2} - 0.5\lambda - 0.5
-    \qquad\qquad
-    \lambda_1, \lambda_2              = \left\{ -0.5, 1 \right\}  \\
-    \vec{v^{(1)}} & = \bmatcol{-2}{1}
-    \qquad\qquad
-    \vec{v^{(2)}} = \bmatcol{-5}{1}                               \\
-    \vec{y}       & = c_1 \bmatcol{-2}{1}e^{-0.5t}
-    + c_2\bmatcol{-5}{1}e^{t}
-\end{align}
-Using the I.C.,
-\begin{align}
-    \vec{y}(0) & = \bmatcol{-12}{0} = \bmatcol{-2c_1 - 5c_2}{c_1 + c_2} \\
-    c_1        & = -4 \qquad\qquad c_2 = 4                              \\
-    \vec{y}    & = \bmatcol{8}{-4}e^{-0.5t}
-    + c_2\bmatcol{-20}{4}e^{t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}      & = \vec{Ay}
-    \qquad\qquad
-    \vec{A}                           = \bmattt{1}{3}{1/3}{1} \\
-    0             & = \lambda^{2} - 2\lambda
-    \qquad\qquad
-    \lambda_1, \lambda_2              = \left\{ 0, 2 \right\} \\
-    \vec{v^{(1)}} & = \bmatcol{-3}{1}
-    \qquad\qquad
-    \vec{v^{(2)}} = \bmatcol{3}{1}                            \\
-    \vec{y}       & = c_1 \bmatcol{-3}{1}
-    + c_2\bmatcol{3}{1}e^{2t}
-\end{align}
-Using the I.C.,
-\begin{align}
-    \vec{y}(0) & = \bmatcol{12}{2} = \bmatcol{-3c_1 + 3c_2}{c_1 + c_2} \\
-    c_1        & = -1 \qquad\qquad c_2 = 3                             \\
-    \vec{y}    & = \bmatcol{3}{-1}
-    + c_2\bmatcol{9}{3}e^{2t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}      & = \vec{Ay}
-    \qquad\qquad
-    \vec{A}                           = \bmattt{0}{1}{1}{0}    \\
-    0             & = \lambda^{2} - 1
-    \qquad\qquad
-    \lambda_1, \lambda_2              = \left\{ -1, 1 \right\} \\
-    \vec{v^{(1)}} & = \bmatcol{-1}{1}
-    \qquad\qquad
-    \vec{v^{(2)}} = \bmatcol{1}{1}                             \\
-    \vec{y}       & = c_1 \bmatcol{-1}{1}e^{-t}
-    + c_2\bmatcol{1}{1}e^{t}
-\end{align}
-Using the I.C.,
-\begin{align}
-    \vec{y}(0) & = \bmatcol{0}{2} = \bmatcol{-c_1 + c_2}{c_1 + c_2} \\
-    c_1        & = 1 \qquad\qquad c_2 = 1                           \\
-    \vec{y}    & = \bmatcol{-1}{1}e^{-t}
-    + c_2\bmatcol{1}{1}e^{t}
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}      & = \vec{Ay}
-    \qquad\qquad
-    \vec{A}                           = \bmattt{-1}{-1}{1}{-1}      \\
-    0             & = \lambda^{2} + 2\lambda + 2
-    \qquad\qquad
-    \lambda_1, \lambda_2              = \left\{ -1-i, -1+i \right\} \\
-    \vec{v^{(1)}} & = \bmatcol{-i}{1}
-    \qquad\qquad
-    \vec{v^{(2)}} = \bmatcol{i}{1}                                  \\
-    \vec{y}       & = c_1 \bmatcol{-i}{1}e^{(-1-i)t}
-    + c_2\bmatcol{i}{1}e^{(-1+i)t}
-\end{align}
-Using the I.C.,
-\begin{align}
-    \vec{y}(0) & = \bmatcol{1}{0} = \bmatcol{i(-c_1 + c_2)}{c_1 + c_2} \\
-    c_1        & = 0.5i \qquad\qquad c_2 = -0.5i                       \\
-    \vec{y}    & = \bmatcol{0.5}{0.5i}e^{(-1-i)t}
-    + \bmatcol{0.5}{-0.5i}e^{(-1+i)t}                                  \\
-    y_1        & = e^{-t}\cos(t)                                       \\
-    y_2        & = e^{-t}\sin(t)
-\end{align}
-\item Solving the homogeneous system of ODEs,
-\begin{align}
-    \vec{y'}      & = \vec{Ay}
-    \qquad\qquad
-    \vec{A}                           = \bmattt{3}{2}{2}{3}   \\
-    0             & = \lambda^{2} - 6\lambda + 5
-    \qquad\qquad
-    \lambda_1, \lambda_2              = \left\{ 1, 5 \right\} \\
-    \vec{v^{(1)}} & = \bmatcol{-1}{1}
-    \qquad\qquad
-    \vec{v^{(2)}} = \bmatcol{1}{1}                            \\
-    \vec{y}       & = c_1 \bmatcol{-1}{1}e^{t}
-    + c_2\bmatcol{1}{1}e^{5t}
-\end{align}
-Using the I.C.,
-\begin{align}
-    \vec{y}(0) & = \bmatcol{0.5}{-0.5} = \bmatcol{-c_1 + c_2}{c_1 + c_2} \\
-    c_1        & = -0.5 \qquad\qquad c_2 = 0                             \\
-    \vec{y}    & = \bmatcol{0.5}{-0.5}e^{t}
-\end{align}
-\item Converting system of ODEs into a single ODE,
-\begin{align}
-    y_1'                 & = 8y_1 - y_2                 &
-    y_2'                 & = y_1 + 10y_2                  \\
-    y_2                  & = 8y_1 - y_1'                &
-    8y_1' - y_1''        & = 81y_1 - 10y_1'               \\
-    0                    & = z'' - 18z' + 81z           &
-    \lambda_1, \lambda_2 & = 9, 9                         \\
-    z = y_1              & = (c_1 + c_2t)e^{9t}         &
-    y_1'                 & = e^{9t}(c_2 + 9c_1 + 9c_2t)   \\
-    y_2                  & = e^{9t}(-c_1 - c_2 - c_2t)    \\
-    \vec{y}              & = c_1 \bmatcol{1}{-1}e^{9t}
-    + c_2\left( \bmatcol{1}{-1}t + \bmatcol{0}{-1} \right)e^{9t}
-\end{align}
-This matches the other method.
-\item Converting system of ODEs into a single ODE,
-\begin{align}
-    y_1'                 & = -y_1 + y_2                                       &
-    y_2'                 & = -y_1 - y_2                                         \\
-    y_2                  & = y_1 + y_1'                                       &
-    y_1' + y_1''         & = -2y_1 - y_1'                                       \\
-    0                    & = z'' + 2z' + 2z                                   &
-    \lambda_1, \lambda_2 & = -1 \pm i                                           \\
-    z = y_1              & = [c_1 \cos(t) + c_2\sin(t)]e^{-t}                   \\
-    y_1'                 & = e^{-t}[(-c_1 + c_2)\cos t + (-c_1 - c_2) \sin t]   \\
-    y_2                  & = e^{-t}[c_2 \cos t - c_1 \sin t]                    \\
-    \vec{y}              & = c_1 \bmatcol{\cos t}{-\sin t}e^{-t}
-    + c_2\bmatcol{\sin t}{\cos t}e^{-t}
-\end{align}
-This matches the other method.
-\item Solving the homogeneous system of ODEs for the two tanks,
-\begin{align}
-    y_1'          & = \frac{4}{200}y_2 - \frac{16}{200}y_1
-    \qquad\qquad
-    y_2' = \frac{16}{200}y_1 - \frac{16}{200}y_2                          \\
-    \vec{y'}      & = \vec{Ay}
-    \qquad\qquad
-    \vec{A}                           = \bmattt{-0.08}{0.02}{0.08}{-0.08} \\
-    0             & = \lambda^{2} + \frac{4}{25}\lambda + \frac{3}{625}
-    \qquad\qquad
-    \lambda_1, \lambda_2
-    = \left\{ \frac{-3}{25}, \frac{-1}{25} \right\}                       \\
-    \vec{v^{(1)}} & = \bmatcol{-1}{2}
-    \qquad\qquad
-    \vec{v^{(2)}} = \bmatcol{1}{2}                                        \\
-    \vec{y}       & = c_1 \bmatcol{-1}{2}e^{-0.12t}
-    + c_2\bmatcol{1}{2}e^{-0.04t}
-\end{align}
-Using the I.C.,
-\begin{align}
-    \vec{y}(0) & = \bmatcol{100}{200} = \bmatcol{-c_1 + c_2}{2c_1 + 2c_2} \\
-    c_1        & = 0 \qquad\qquad c_2 = 100                               \\
-    \vec{y}    & = \bmatcol{100}{200}e^{-0.04t}
-\end{align}
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}        & = \vec{Ay}                   &
+              \vec{A}         & = \bmattt{1}{1}{3}{-1}         \\
+              \lambda^{2} - 4 & = 0                          &
+              \{\lambda_i\}   & = \{-2, 2\}                    \\
+              \vec{v^{(1)}}   & = \bmatcol{-1}{3}            &
+              \vec{v^{(2)}}   & = \bmatcol{1}{1}               \\
+              \vec{y}         & = c_1 \bmatcol{-1}{3}e^{-2t}
+              + c_2 \bmatcol{1}{1} e^{2t}
+          \end{align}
 
-\item By KVL on each loop in the circuit,
-\begin{align}
-    LI_2' + R(I_2 - I_1)                      & = 0                       &
-    R(I_1 - I_2) + \frac{1}{C}\int I_1\ \dl t & = 0                         \\
-    R(I_1' - I_2') + \frac{1}{C}I_1           & = 0                       &
-    I_1'                                      & = \frac{-1}{RC}I_1 + I_2'   \\
-    I_2'                                      & = 0.75(I_1 - I_2)         &
-    I_1'                                      & = -3.25I_1 - 0.75I_2
-\end{align}
-Solving the system of h-ODEs
-\begin{align}
-    \vec{I'}      & = \vec{AI}
-    \qquad\qquad
-    \vec{A}                           = \bmattt{-3.25}{-0.75}{0.75}{-0.75} \\
-    0             & = \lambda^{2} + 4\lambda + 3
-    \qquad\qquad
-    \lambda_1, \lambda_2              = \left\{ -3, -1 \right\}            \\
-    \vec{v^{(1)}} & = \bmatcol{-3}{1}
-    \qquad\qquad
-    \vec{v^{(2)}} = \bmatcol{-1}{3}                                        \\
-    \vec{I}       & = c_1 \bmatcol{-3}{1}e^{-3t}
-    + c_2 \bmatcol{-1}{3}e^{-t}
-\end{align}
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}                     & = \vec{Ay}                  &
+              \vec{A}                      & = \bmattt{6}{9}{1}{6}         \\
+              \lambda^{2} - 12\lambda + 27 & = 0                         &
+              \{\lambda_i\}                & = \{3, 9\}                    \\
+              \vec{v^{(1)}}                & = \bmatcol{-3}{1}           &
+              \vec{v^{(2)}}                & = \bmatcol{3}{1}              \\
+              \vec{y}                      & = c_1 \bmatcol{-3}{1}e^{3t}
+              + c_2 \bmatcol{3}{1} e^{9t}
+          \end{align}
 
-\item Graphing the 6 types of critical points,
-\begin{enumerate}
-    \item Improper Node, with $ c_1 = c_2 = 1 $, passing through $ (2, 0) $
-    \item Proper Node, with $ c_1 = c_2 = 1 $, passing through $ (1, 1) $
-    \item Saddle point, with $ c_1 = c_2 = 1 $, passing through $ (1, 1) $
-    \item Center, with $ c_1 = c_2 = 1 $, passing through $ (1, 1) $
-    \item Spiral, with $ c_1 = c_2 = 1 $, passing through $ (0, 1) $
-    \item Improper Node, with $ c_1 = -1,\ c_2 = 1 $, passing through $ (-1, 2) $
-\end{enumerate}
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \begin{tikzpicture}
-            \begin{axis}[
-                    declare function = {
-                            u(\x) = e^(-2*\x);
-                            v(\x) = e^(-4*\x);
-                        },
-                    xmin = -2.5, xmax = 2.5, ymin = -2.5, ymax = 2.5,
-                    % restrict y to domain = -1:1,
-                    title = {Improper Node with
-                            ${\color{y_p} \vec{x^{(1)}}}$ and
-                            ${\color{y_h} \vec{x^{(2)}}}$},
-                    xlabel = $ y_1 $,
-                    ylabel = $ y_2 $,
-                    axis equal,
-                    width = 8cm,
-                    legend pos = north west,
-                    domain = -0.5:1.5,
-                    Ani]
-                \foreach \c in {1, -1} {%
-                        \edef\temp{%
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.9}]
-                            ({\c*u(x) + v(x)}, {\c*u(x) - v(x)});
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.9}]
-                            ({\c*u(x) - v(x)}, {\c*u(x) + v(x)});
-                        }\temp
-                    }
-                \addplot[ samples = 100, color=y_p,
-                    arrow inside={end=stealth,opt={scale=2}}{0.75}]
-                ({u(x)}, {u(x)});
-                \addplot[ samples = 100, color=y_h,
-                    arrow inside={end=stealth,opt={scale=2}}{0.75}]
-                ({v(x)}, {-v(x)});
-                \addplot[ samples = 100, color=y_p,
-                    arrow inside={end=stealth,opt={scale=2}}{0.75}]
-                ({-u(x)}, {-u(x)});
-                \addplot[ samples = 100, color=y_h,
-                    arrow inside={end=stealth,opt={scale=2}}{0.75}]
-                ({-v(x)}, {v(x)});
-                \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
-                \node[GraphNode,
-                    label={90:\scriptsize(2, 0)}] at (axis cs:2,0) {};
-            \end{axis}
-        \end{tikzpicture}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.48\textwidth}
-        \begin{tikzpicture}
-            \begin{axis}[
-                    declare function = {
-                            u(\x) = e^(\x);
-                            v(\x) = e^(\x);
-                        },
-                    xmin = -2, xmax = 2, ymin = -2, ymax = 2,
-                    % restrict y to domain = -1:1,
-                    title = {Proper Node with
-                            ${\color{y_p} \vec{x^{(1)}}}$ and
-                            ${\color{y_h} \vec{x^{(2)}}}$},
-                    xlabel = $ y_1 $,
-                    ylabel = $ y_2 $,
-                    axis equal,
-                    width = 8cm,
-                    legend pos = north west,
-                    domain = -4:1,
-                    Ani]
-                \foreach \c in {-sqrt(3), -1/sqrt(3), 1} {%
-                        \edef\temp{%
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.2}]
-                            ({\c*u(x)}, {-v(x)});
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.2}]
-                            ({\c*u(x)}, {v(x)});
-                        }\temp
-                    }
-                \addplot[ samples = 100, color=y_p,
-                    arrow inside={end=stealth,opt={scale=2}}{0.5}]
-                ({u(x)}, {0});
-                \addplot[ samples = 100, color=y_h,
-                    arrow inside={end=stealth,opt={scale=2}}{0.5}]
-                ({0}, {-v(x)});
-                \addplot[ samples = 100, color=y_p,
-                    arrow inside={end=stealth,opt={scale=2}}{0.5}]
-                ({-u(x)}, {0});
-                \addplot[ samples = 100, color=y_h,
-                    arrow inside={end=stealth,opt={scale=2}}{0.5}]
-                ({0}, {v(x)});
-                \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
-                \node[GraphNode,
-                    label={-45:\scriptsize(1,1)}] at (axis cs:1,1) {};
-            \end{axis}
-        \end{tikzpicture}
-    \end{subfigure}
-\end{figure}
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}               & = \vec{Ay}              &
+              \vec{A}                & = \bmattt{1}{2}{0.5}{1}   \\
+              \lambda^{2} - 2\lambda & = 0                     &
+              \{\lambda_i\}          & = \{0, 2\}                \\
+              \vec{v^{(1)}}          & = \bmatcol{-2}{1}       &
+              \vec{v^{(2)}}          & = \bmatcol{2}{1}          \\
+              \vec{y}                & = c_1 \bmatcol{-2}{1}
+              + c_2 \bmatcol{2}{1} e^{2t}
+          \end{align}
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \begin{tikzpicture}
-            \begin{axis}[
-                    declare function = {
-                            u(\x) = e^(\x);
-                            v(\x) = e^(-\x);
-                        },
-                    xmin = -2, xmax = 2, ymin = -2, ymax = 2,
-                    % restrict y to domain = -1:1,
-                    title = {Saddle point with
-                            ${\color{y_p} \vec{x^{(1)}}}$ and
-                            ${\color{y_h} \vec{x^{(2)}}}$},
-                    xlabel = $ y_1 $,
-                    ylabel = $ y_2 $,
-                    axis equal,
-                    width = 8cm,
-                    legend pos = north west,
-                    domain = -3:3,
-                    Ani]
-                \foreach \c in {1/8, 1} {%
-                        \edef\temp{%
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.5, 0.7, 0.8, 0.9}]
-                            ({\c*u(x)}, {-v(x)});
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.5, 0.7, 0.8, 0.9}]
-                            ({\c*u(x)}, {v(x)});
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.5, 0.7, 0.8, 0.9}]
-                            ({-\c*u(x)}, {-v(x)});
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.5, 0.7, 0.8, 0.9}]
-                            ({-\c*u(x)}, {v(x)});
-                        }\temp
-                    }
-                \addplot[ samples = 100, color=y_p,
-                    arrow inside={end=stealth,opt={scale=2}}{0.05}]
-                ({u(x)}, {0});
-                \addplot[ samples = 100, color=y_h,
-                    arrow inside={end=stealth,opt={scale=2}}{0.95}]
-                ({0}, {-v(x)});
-                \addplot[ samples = 100, color=y_p,
-                    arrow inside={end=stealth,opt={scale=2}}{0.05}]
-                ({-u(x)}, {0});
-                \addplot[ samples = 100, color=y_h,
-                    arrow inside={end=stealth,opt={scale=2}}{0.95}]
-                ({0}, {v(x)});
-                \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
-                \node[GraphNode,
-                    label={45:\scriptsize(1, 1)}] at (axis cs:1,1) {};
-            \end{axis}
-        \end{tikzpicture}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-        \begin{tikzpicture}
-            \begin{axis}[
-                    % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
-                    % restrict y to domain = -1:1,
-                    title = {Center},
-                    xlabel = $ y_1 $,
-                    ylabel = $ y_2 $,
-                    axis equal,
-                    width = 8cm,
-                    legend pos = north west,
-                    domain = 0:2*pi,
-                    Ani]
-                \foreach \c in {0.5,sqrt(2)} {%
-                        \edef\temp{%
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0, 0.5}]
-                            ({\c*sin(x)}, {\c*cos(x)});
-                        }\temp
-                    }
-                \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
-                \node[GraphNode,
-                    label={45:\scriptsize(1, 1)}] at (axis cs:1,1) {};
-            \end{axis}
-        \end{tikzpicture}
-    \end{subfigure}
-\end{figure}
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}                   & = \vec{Ay}                            &
+              \vec{A}                    & = \bmattt{-8}{-2}{2}{-4}                \\
+              \lambda^{2} + 7\lambda - 9 & = 0                                   &
+              \lambda_1, \lambda_2       & = \left\{ \frac{-7 + \sqrt{85}}{2},\
+              \frac{-7 - \sqrt{85}}{2} \right\}                                    \\
+              \vec{v^{(1)}}              & = \bmatcol{9 - \sqrt{85}}{1}          &
+              \vec{v^{(2)}}              & = \bmatcol{9 + \sqrt{85}}{1}            \\
+              \vec{y}                    & = c_1 \vec{v^{(1)}} e^{\lambda_1 t}
+              + c_2 \vec{v^{(2)}} e^{\lambda_2 t}
+          \end{align}
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \begin{tikzpicture}
-            \begin{axis}[
-                    xmin = -2, xmax = 2, ymin = -2, ymax = 2,
-                    % restrict y to domain = -1:1,
-                    title = {Spiral},
-                    xlabel = $ y_1 $,
-                    ylabel = $ y_2 $,
-                    axis equal,
-                    width = 8cm,
-                    legend pos = north west,
-                    domain = -0.5*pi:1.5*pi,
-                    Ani]
-                \foreach \c in {1,4} {%
-                        \edef\temp{%
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.95}]
-                            ({\c*e^(-x)*sin(x)}, {\c*e^(-x)*cos(x)});
-                            \noexpand \addplot[ samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.95}]
-                            ({-\c*e^(-x)*sin(x)}, {-\c*e^(-x)*cos(x)});
-                        }\temp
-                    }
-                \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
-                \node[GraphNode,
-                    label={45:\scriptsize(0, 1)}] at (axis cs:0, 1) {};
-            \end{axis}
-        \end{tikzpicture}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-        \begin{tikzpicture}
-            \begin{axis}[
-                    xmin = -10, xmax = 10, ymin = -10, ymax = 10,
-                    % restrict y to domain = -1:1,
-                    title = {Degenerate Node with
-                            ${\color{y_p} \vec{x^{(1)}}}$ and
-                            ${\color{y_h} \vec{x^{(2)}}}$},
-                    xlabel = $ y_1 $,
-                    ylabel = $ y_2 $,
-                    axis equal,
-                    width = 8cm,
-                    legend pos = north west,
-                    domain = -1:1,
-                    Ani]
-                \foreach \c in {-1} {%
-                        \edef\temp{%
-                            \noexpand \addplot[thin, samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.25}]
-                            ({(\c + x)*e^(3*x)}, {(-\c - x + 1)*e^(3*x)});
-                            \noexpand \addplot[thin, samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.15}]
-                            ({(\c - x)*e^(3*x)}, {(-\c + x - 1)*e^(3*x)});
-                            \noexpand \addplot[thin, samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.25}]
-                            ({(-\c + x)*e^(3*x)}, {(\c - x + 1)*e^(3*x)});
-                            \noexpand \addplot[thin, samples = 100, color=blue3,
-                                arrow inside={end=stealth,opt={scale=2}}{0.15}]
-                            ({(-\c - x)*e^(3*x)}, {(\c + x - 1)*e^(3*x)});
-                        }\temp
-                    }
-                \addplot[thick, samples = 100, color=y_p,
-                    arrow inside={end=stealth,opt={scale=2}}{0.3}]
-                ({e^(3*x)}, {-e^(3*x)});
-                \addplot[thick, samples = 100, color=y_p,
-                arrow inside={end=stealth,opt={scale=2}}{0.3}]
-                (-{e^(3*x)}, {e^(3*x)});
-                \addplot[thick, samples = 100, color=y_h,
-                    arrow inside={end=stealth,opt={scale=2}}{0.3}]
-                ({x*e^(3*x)}, {(-x+1)*e^(3*x)});
-                \addplot[thick, samples = 100, color=y_h,
-                    arrow inside={end=stealth,opt={scale=2}}{0.3}]
-                ({-x*e^(3*x)}, {-1*(-x+1)*e^(3*x)});
-                \node[GraphNode, fill = white, draw = black] at (axis cs:0,0) {};
-                \node[GraphNode,
-                    label={45:\scriptsize(-1, 2)}] at (axis cs:-1, 2) {};
-            \end{axis}
-        \end{tikzpicture}
-    \end{subfigure}
-\end{figure}
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}                  & = \vec{Ay}                 &
+              \vec{A}                   & = \bmattt{2}{5}{5}{25/2}     \\
+              \lambda^{2} - 14.5\lambda & = 0                        &
+              \lambda_1, \lambda_2      & = \left\{ 0, 14.5 \right\}   \\
+              \vec{v^{(1)}}             & = \bmatcol{-5}{2}          &
+              \vec{v^{(2)}}             & = \bmatcol{2}{5}             \\
+              \vec{y}                   & = c_1 \bmatcol{-5}{2}
+              + c_2 \bmatcol{2}{5} e^{14.5t}
+          \end{align}
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}             & = \vec{Ay}                              &
+              \vec{A}              & = \bmattt{2}{-2}{2}{2}                    \\
+              0                    & = \lambda^{2} - 4\lambda + 8            &
+              \lambda_1, \lambda_2 & = \left\{ 2 - 2 \i, 2 + 2 \i \right\}     \\
+              \vec{v^{(1)}}        & = \bmatcol{-\i}{1}                      &
+              \vec{v^{(2)}}        & = \bmatcol{\i}{1}                         \\
+              \vec{y}              & = c_1 \bmatcol{-\i}{1} e^{(2 - 2 \i)t}
+              + c_2 \bmatcol{\i}{1} e^{(2 + 2 \i)t}                            \\
+              y_1                  & = e^{2t} [-c_1 \sin(2t) - c_2 \sin(2t)] &
+              y_2                  & = e^{2t} [c_1 \cos(2t) + c_2 \cos(2t)]
+          \end{align}
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}  = \vec{Ay} \qquad\qquad
+              \vec{A} = \begin{bNiceMatrix}[r, margin]
+                            0  & 1  & 0 \\
+                            -1 & 0  & 1 \\
+                            0  & -1 & 0
+                        \end{bNiceMatrix}                       \\
+              0                     = \lambda^{3} + 2\lambda \qquad \qquad
+              \lambda_1, \lambda_2  = \left\{ 0, -\sqrt{2}\ \i, \sqrt{2}\ \i
+              \right\}                                                      \\
+              \vec{v^{(1)}}         =
+              \begin{bNiceMatrix}[r, margin] 1 \\ 0 \\ 1 \end{bNiceMatrix}
+              \qquad\qquad \vec{v^{(2)}} =
+              \begin{bNiceMatrix}[r, margin]
+                  -1 \\ \sqrt{2}\ \i \\ 1
+              \end{bNiceMatrix}
+              \qquad\qquad \vec{v^{(3)}} =
+              \begin{bNiceMatrix}[r, margin]
+                  -1 \\ -\sqrt{2}\ \i \\ 1
+              \end{bNiceMatrix}                                 \\
+              \vec{y}  = c_1 \begin{bNiceMatrix}[r, margin] 1 \\
+                                 0             \\
+                                 1\end{bNiceMatrix}
+              + c_2 \begin{bNiceMatrix}[r, margin] -1 \\
+                        \sqrt{2}\ \i   \\
+                        1\end{bNiceMatrix}e^{-\sqrt{2}\ \i t}
+              + c_3 \begin{bNiceMatrix}[r, margin] -1 \\
+                        -\sqrt{2}\ \i  \\
+                        1\end{bNiceMatrix}e^{\sqrt{2}\ \i t}
+              \\
+              y_1 = c_1 - c_2\cos(\sqrt{2}t) - c_3\cos(\sqrt{2}t)           \\
+              y_2 = c_2\sqrt{2}\sin(\sqrt{2}t) - c_3\sqrt{2}\sin(\sqrt{2}t) \\
+              y_3 = c_1 + c_2\cos(\sqrt{2}t) + c_3\cos(\sqrt{2}t)
+          \end{align}
+          Dividing the third eigenvector by $ -\i $ produces the textbook result.
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}      & = \vec{Ay}
+              \qquad\qquad
+              \vec{A}                           = \bmattt{8}{-1}{1}{10} \\
+              0             & = \lambda^{2} - 18\lambda + 81
+              \qquad\qquad
+              \lambda_1, \lambda_2              = \left\{ 9, 9 \right\} \\
+              \vec{y^{(2)}} & = (\vec{x^{(1)}}t + \vec{u})e^{\lambda t} \\
+              \vec{v^{(1)}} & = \bmatcol{-1}{1}
+              \qquad\qquad
+              (\vec{A} - \lambda\vec{I})\vec{u} = \vec{x^{(1)}}         \\
+              u_1 + u_2     & = 1
+              \qquad\qquad
+              \vec{u}                           = \bmatcol{0}{1}        \\
+              y             & = c_1 \bmatcol{-1}{1}e^{9t}
+              + c_2\left( \bmatcol{-1}{1}t + \bmatcol{0}{1} \right)e^{9t}
+          \end{align}
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}  = \vec{Ay} \qquad\qquad
+              \vec{A} = \begin{bNiceMatrix}[r, margin]
+                            10  & 10  & -4  \\
+                            -10 & 1   & -14 \\
+                            -4  & -14 & -2
+                        \end{bNiceMatrix}             \\
+              0                     = \lambda^{3} - 9\lambda -324\lambda + 2196
+              \qquad\qquad
+              \lambda_1, \lambda_2  = \left\{ -18, 9, 18 \right\} \\
+              \vec{v^{(1)}}         =
+              \begin{bNiceMatrix}[r, margin] 1 \\ 2 \\ 2 \end{bNiceMatrix}
+              \qquad\qquad
+              \vec{v^{(2)}} =
+              \begin{bNiceMatrix}[r, margin]
+                  -2 \\ -1 \\ 2
+              \end{bNiceMatrix}
+              \qquad\qquad
+              \vec{v^{(3)}} =
+              \begin{bNiceMatrix}[r, margin]
+                  2 \\ -2 \\ 1
+              \end{bNiceMatrix}                       \\
+              \vec{y}  = c_1 \begin{bNiceMatrix}[r, margin] 1 \\
+                                 2             \\
+                                 2\end{bNiceMatrix}e^{-18t}
+              + c_2 \begin{bNiceMatrix}[r, margin] -2 \\
+                        -1             \\
+                        2\end{bNiceMatrix}e^{-9t}
+              + c_3 \begin{bNiceMatrix}[r, margin] 2 \\
+                        -2            \\
+                        1\end{bNiceMatrix}e^{18t}
+          \end{align}
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}      & = \vec{Ay}
+              \qquad\qquad
+              \vec{A}                           = \bmattt{2}{2}{5}{-1}   \\
+              0             & = \lambda^{2} - \lambda - 12
+              \qquad\qquad
+              \lambda_1, \lambda_2              = \left\{ -3, 4 \right\} \\
+              \vec{v^{(1)}} & = \bmatcol{-2}{5}
+              \qquad\qquad
+              \vec{v^{(2)}} = \bmatcol{1}{1}                             \\
+              \vec{y}       & = c_1 \bmatcol{-2}{5}e^{-3t}
+              + c_2\bmatcol{1}{1}e^{4t}
+          \end{align}
+          Using the I.C.,
+          \begin{align}
+              \vec{y}(0) & = \bmatcol{0}{7} = \bmatcol{-2c_1 + c_2}{5c_1 + c_2} \\
+              c_1        & = 1 \qquad\qquad c_2 = 2
+          \end{align}
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}      & = \vec{Ay}
+              \qquad\qquad
+              \vec{A}                           = \bmattt{2}{5}{-0.5}{-1.5} \\
+              0             & = \lambda^{2} - 0.5\lambda - 0.5
+              \qquad\qquad
+              \lambda_1, \lambda_2              = \left\{ -0.5, 1 \right\}  \\
+              \vec{v^{(1)}} & = \bmatcol{-2}{1}
+              \qquad\qquad
+              \vec{v^{(2)}} = \bmatcol{-5}{1}                               \\
+              \vec{y}       & = c_1 \bmatcol{-2}{1}e^{-0.5t}
+              + c_2\bmatcol{-5}{1}e^{t}
+          \end{align}
+          Using the I.C.,
+          \begin{align}
+              \vec{y}(0) & = \bmatcol{-12}{0} = \bmatcol{-2c_1 - 5c_2}
+              {c_1 + c_2}                                              \\
+              c_1        & = -4 \qquad\qquad c_2 = 4                   \\
+              \vec{y}    & = \bmatcol{8}{-4}e^{-0.5t}
+              + c_2\bmatcol{-20}{4}e^{t}
+          \end{align}
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}      & = \vec{Ay}
+              \qquad\qquad
+              \vec{A}                           = \bmattt{1}{3}{1/3}{1} \\
+              0             & = \lambda^{2} - 2\lambda
+              \qquad\qquad
+              \lambda_1, \lambda_2              = \left\{ 0, 2 \right\} \\
+              \vec{v^{(1)}} & = \bmatcol{-3}{1}
+              \qquad\qquad
+              \vec{v^{(2)}} = \bmatcol{3}{1}                            \\
+              \vec{y}       & = c_1 \bmatcol{-3}{1}
+              + c_2\bmatcol{3}{1}e^{2t}
+          \end{align}
+          Using the I.C.,
+          \begin{align}
+              \vec{y}(0) & = \bmatcol{12}{2} = \bmatcol{-3c_1 + 3c_2}{c_1 + c_2} \\
+              c_1        & = -1 \qquad\qquad c_2 = 3                             \\
+              \vec{y}    & = \bmatcol{3}{-1}
+              + c_2\bmatcol{9}{3}e^{2t}
+          \end{align}
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}      & = \vec{Ay}
+              \qquad\qquad
+              \vec{A}                           = \bmattt{0}{1}{1}{0}    \\
+              0             & = \lambda^{2} - 1
+              \qquad\qquad
+              \lambda_1, \lambda_2              = \left\{ -1, 1 \right\} \\
+              \vec{v^{(1)}} & = \bmatcol{-1}{1}
+              \qquad\qquad
+              \vec{v^{(2)}} = \bmatcol{1}{1}                             \\
+              \vec{y}       & = c_1 \bmatcol{-1}{1}e^{-t}
+              + c_2\bmatcol{1}{1}e^{t}
+          \end{align}
+          Using the I.C.,
+          \begin{align}
+              \vec{y}(0) & = \bmatcol{0}{2} = \bmatcol{-c_1 + c_2}{c_1 + c_2} \\
+              c_1        & = 1 \qquad\qquad c_2 = 1                           \\
+              \vec{y}    & = \bmatcol{-1}{1}e^{-t}
+              + c_2\bmatcol{1}{1}e^{t}
+          \end{align}
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}      & = \vec{Ay}
+              \qquad\qquad
+              \vec{A}                           = \bmattt{-1}{-1}{1}{-1}        \\
+              0             & = \lambda^{2} + 2\lambda + 2
+              \qquad\qquad
+              \lambda_1, \lambda_2              = \left\{ -1-\i, -1+\i \right\} \\
+              \vec{v^{(1)}} & = \bmatcol{-\i}{1}
+              \qquad\qquad
+              \vec{v^{(2)}} = \bmatcol{\i}{1}                                   \\
+              \vec{y}       & = c_1 \bmatcol{-\i}{1}e^{(-1-\i)t}
+              + c_2\bmatcol{i}{1}e^{(-1+\i)t}
+          \end{align}
+          Using the I.C.,
+          \begin{align}
+              \vec{y}(0) & = \bmatcol{1}{0} = \bmatcol{\i(-c_1 + c_2)}{c_1 + c_2} \\
+              c_1        & = 0.5i \qquad\qquad c_2 = -0.5i                        \\
+              \vec{y}    & = \bmatcol{0.5}{0.5i}e^{(-1-\i)t}
+              + \bmatcol{0.5}{-0.5i}e^{(-1+i)t}                                   \\
+              y_1        & = e^{-t}\cos(t)                                        \\
+              y_2        & = e^{-t}\sin(t)
+          \end{align}
+
+    \item Solving the homogeneous system of ODEs,
+          \begin{align}
+              \vec{y'}      & = \vec{Ay}
+              \qquad\qquad
+              \vec{A}                           = \bmattt{3}{2}{2}{3}   \\
+              0             & = \lambda^{2} - 6\lambda + 5
+              \qquad\qquad
+              \lambda_1, \lambda_2              = \left\{ 1, 5 \right\} \\
+              \vec{v^{(1)}} & = \bmatcol{-1}{1}
+              \qquad\qquad
+              \vec{v^{(2)}} = \bmatcol{1}{1}                            \\
+              \vec{y}       & = c_1 \bmatcol{-1}{1}e^{t}
+              + c_2\bmatcol{1}{1}e^{5t}
+          \end{align}
+          Using the I.C.,
+          \begin{align}
+              \vec{y}(0) & = \bmatcol{0.5}{-0.5} = \bmatcol{-c_1 + c_2}{c_1 + c_2} \\
+              c_1        & = -0.5 \qquad\qquad c_2 = 0                             \\
+              \vec{y}    & = \bmatcol{0.5}{-0.5}e^{t}
+          \end{align}
+
+    \item Converting system of ODEs into a single ODE,
+          \begin{align}
+              y_1'                 & = 8y_1 - y_2                 &
+              y_2'                 & = y_1 + 10y_2                  \\
+              y_2                  & = 8y_1 - y_1'                &
+              8y_1' - y_1''        & = 81y_1 - 10y_1'               \\
+              0                    & = z'' - 18z' + 81z           &
+              \lambda_1, \lambda_2 & = 9, 9                         \\
+              z = y_1              & = (c_1 + c_2t)e^{9t}         &
+              y_1'                 & = e^{9t}(c_2 + 9c_1 + 9c_2t)   \\
+              y_2                  & = e^{9t}(-c_1 - c_2 - c_2t)    \\
+              \vec{y}              & = c_1 \bmatcol{1}{-1}e^{9t}
+              + c_2\left( \bmatcol{1}{-1}t + \bmatcol{0}{-1} \right)e^{9t}
+          \end{align}
+          This matches the other method.
+
+    \item Converting system of ODEs into a single ODE,
+          \begin{align}
+              y_1'                 & = -y_1 + y_2                               &
+              y_2'                 & = -y_1 - y_2                                 \\
+              y_2                  & = y_1 + y_1'                               &
+              y_1' + y_1''         & = -2y_1 - y_1'                               \\
+              0                    & = z'' + 2z' + 2z                           &
+              \lambda_1, \lambda_2 & = -1 \pm i                                   \\
+              z = y_1              & = [c_1 \cos(t) + c_2\sin(t)]e^{-t}           \\
+              y_1'                 & = e^{-t}[(-c_1 + c_2)\cos t + (-c_1 - c_2)
+              \sin t]                                                             \\
+              y_2                  & = e^{-t}[c_2 \cos t - c_1 \sin t]            \\
+              \vec{y}              & = c_1 \bmatcol{\cos t}{-\sin t}e^{-t}
+              + c_2\bmatcol{\sin t}{\cos t}e^{-t}
+          \end{align}
+          This matches the other method.
+
+    \item Solving the homogeneous system of ODEs for the two tanks,
+          \begin{align}
+              y_1'          & = \frac{4}{200}y_2 - \frac{16}{200}y_1
+              \qquad\qquad
+              y_2' = \frac{16}{200}y_1 - \frac{16}{200}y_2                          \\
+              \vec{y'}      & = \vec{Ay}
+              \qquad\qquad
+              \vec{A}                           = \bmattt{-0.08}{0.02}{0.08}{-0.08} \\
+              0             & = \lambda^{2} + \frac{4}{25}\lambda + \frac{3}{625}
+              \qquad\qquad
+              \lambda_1, \lambda_2
+              = \left\{ \frac{-3}{25}, \frac{-1}{25} \right\}                       \\
+              \vec{v^{(1)}} & = \bmatcol{-1}{2}
+              \qquad\qquad
+              \vec{v^{(2)}} = \bmatcol{1}{2}                                        \\
+              \vec{y}       & = c_1 \bmatcol{-1}{2}e^{-0.12t}
+              + c_2\bmatcol{1}{2}e^{-0.04t}
+          \end{align}
+          Using the I.C.,
+          \begin{align}
+              \vec{y}(0) & = \bmatcol{100}{200} = \bmatcol{-c_1 + c_2}{2c_1 + 2c_2} \\
+              c_1        & = 0 \qquad\qquad c_2 = 100                               \\
+              \vec{y}    & = \bmatcol{100}{200}e^{-0.04t}
+          \end{align}
+
+    \item By KVL on each loop in the circuit,
+          \begin{align}
+              LI_2' + R(I_2 - I_1)                      & = 0                       &
+              R(I_1 - I_2) + \frac{1}{C}\int I_1\ \dl t & = 0                         \\
+              R(I_1' - I_2') + \frac{1}{C}I_1           & = 0                       &
+              I_1'                                      & = \frac{-1}{RC}I_1 + I_2'   \\
+              I_2'                                      & = 0.75(I_1 - I_2)         &
+              I_1'                                      & = -3.25I_1 - 0.75I_2
+          \end{align}
+          Solving the system of h-ODEs
+          \begin{align}
+              \vec{I'}      & = \vec{AI}
+              \qquad\qquad
+              \vec{A}                           = \bmattt{-3.25}{-0.75}{0.75}{-0.75} \\
+              0             & = \lambda^{2} + 4\lambda + 3
+              \qquad\qquad
+              \lambda_1, \lambda_2              = \left\{ -3, -1 \right\}            \\
+              \vec{v^{(1)}} & = \bmatcol{-3}{1}
+              \qquad\qquad
+              \vec{v^{(2)}} = \bmatcol{-1}{3}                                        \\
+              \vec{I}       & = c_1 \bmatcol{-3}{1}e^{-3t}
+              + c_2 \bmatcol{-1}{3}e^{-t}
+          \end{align}
+
+    \item Graphing the 6 types of critical points,
+          \begin{enumerate}
+              \item Improper Node, with $ c_1 = c_2 = 1 $, passing through $ (2, 0) $
+              \item Proper Node, with $ c_1 = c_2 = 1 $, passing through $ (1, 1) $
+              \item Saddle point, with $ c_1 = c_2 = 1 $, passing through $ (1, 1) $
+              \item Center, with $ c_1 = c_2 = 1 $, passing through $ (1, 1) $
+              \item Spiral, with $ c_1 = c_2 = 1 $, passing through $ (0, 1) $
+              \item Improper Node, with $ c_1 = -1,\ c_2 = 1 $, passing
+                    through $ (-1, 2) $
+          \end{enumerate}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          declare function = {
+                                  u(\x) = e^(-2*\x);
+                                  v(\x) = e^(-4*\x);
+                              },
+                          xmin = -2.5, xmax = 2.5, ymin = -2.5, ymax = 2.5,
+                          % restrict y to domain = -1:1,
+                          title = {Improper Node with
+                                  ${\color{y_p} \vec{x^{(1)}}}$ and
+                                  ${\color{y_h} \vec{x^{(2)}}}$},
+                          xlabel = $ y_1 $,
+                          ylabel = $ y_2 $,
+                          axis equal,
+                          width = 8cm,
+                          legend pos = north west,
+                          domain = -0.5:1.5,
+                          Ani]
+                      \foreach \c in {1, -1} {%
+                              \edef\temp{%
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}{0.9}]
+                                  ({\c*u(x) + v(x)}, {\c*u(x) - v(x)});
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}{0.9}]
+                                  ({\c*u(x) - v(x)}, {\c*u(x) + v(x)});
+                              }\temp
+                          }
+                      \addplot[ samples = 100, color=y_p,
+                          arrow inside={end=stealth,opt={scale=2}}{0.75}]
+                      ({u(x)}, {u(x)});
+                      \addplot[ samples = 100, color=y_h,
+                          arrow inside={end=stealth,opt={scale=2}}{0.75}]
+                      ({v(x)}, {-v(x)});
+                      \addplot[ samples = 100, color=y_p,
+                          arrow inside={end=stealth,opt={scale=2}}{0.75}]
+                      ({-u(x)}, {-u(x)});
+                      \addplot[ samples = 100, color=y_h,
+                          arrow inside={end=stealth,opt={scale=2}}{0.75}]
+                      ({-v(x)}, {v(x)});
+                      \node[GraphNode, fill = white, draw = black] at (axis cs:0,0)
+                      {};
+                      \node[GraphNode,
+                          label={90:\scriptsize(2, 0)}] at (axis cs:2,0) {};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          declare function = {
+                                  u(\x) = e^(\x);
+                                  v(\x) = e^(\x);
+                              },
+                          xmin = -2, xmax = 2, ymin = -2, ymax = 2,
+                          % restrict y to domain = -1:1,
+                          title = {Proper Node with
+                                  ${\color{y_p} \vec{x^{(1)}}}$ and
+                                  ${\color{y_h} \vec{x^{(2)}}}$},
+                          xlabel = $ y_1 $,
+                          ylabel = $ y_2 $,
+                          axis equal,
+                          width = 8cm,
+                          legend pos = north west,
+                          domain = -4:1,
+                          Ani]
+                      \foreach \c in {-sqrt(3), -1/sqrt(3), 1} {%
+                              \edef\temp{%
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}{0.2}]
+                                  ({\c*u(x)}, {-v(x)});
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}{0.2}]
+                                  ({\c*u(x)}, {v(x)});
+                              }\temp
+                          }
+                      \addplot[ samples = 100, color=y_p,
+                          arrow inside={end=stealth,opt={scale=2}}{0.5}]
+                      ({u(x)}, {0});
+                      \addplot[ samples = 100, color=y_h,
+                          arrow inside={end=stealth,opt={scale=2}}{0.5}]
+                      ({0}, {-v(x)});
+                      \addplot[ samples = 100, color=y_p,
+                          arrow inside={end=stealth,opt={scale=2}}{0.5}]
+                      ({-u(x)}, {0});
+                      \addplot[ samples = 100, color=y_h,
+                          arrow inside={end=stealth,opt={scale=2}}{0.5}]
+                      ({0}, {v(x)});
+                      \node[GraphNode, fill = white, draw = black] at (axis cs:0,0)
+                      {};
+                      \node[GraphNode,
+                          label={-45:\scriptsize(1,1)}] at (axis cs:1,1) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          declare function = {
+                                  u(\x) = e^(\x);
+                                  v(\x) = e^(-\x);
+                              },
+                          xmin = -2, xmax = 2, ymin = -2, ymax = 2,
+                          % restrict y to domain = -1:1,
+                          title = {Saddle point with
+                                  ${\color{y_p} \vec{x^{(1)}}}$ and
+                                  ${\color{y_h} \vec{x^{(2)}}}$},
+                          xlabel = $ y_1 $,
+                          ylabel = $ y_2 $,
+                          axis equal,
+                          width = 8cm,
+                          legend pos = north west,
+                          domain = -3:3,
+                          Ani]
+                      \foreach \c in {0.125, 1} {%
+                              \edef\temp{%
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.5, 0.7, 0.8, 0.9}]
+                                  ({\c*u(x)}, {-v(x)});
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.5, 0.7, 0.8, 0.9}]
+                                  ({\c*u(x)}, {v(x)});
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.5, 0.7, 0.8, 0.9}]
+                                  ({-\c*u(x)}, {-v(x)});
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.5, 0.7, 0.8, 0.9}]
+                                  ({-\c*u(x)}, {v(x)});
+                              }\temp
+                          }
+                      \addplot[ samples = 100, color=y_p,
+                          arrow inside={end=stealth,opt={scale=2}}{0.05}]
+                      ({u(x)}, {0});
+                      \addplot[ samples = 100, color=y_h,
+                          arrow inside={end=stealth,opt={scale=2}}{0.95}]
+                      ({0}, {-v(x)});
+                      \addplot[ samples = 100, color=y_p,
+                          arrow inside={end=stealth,opt={scale=2}}{0.05}]
+                      ({-u(x)}, {0});
+                      \addplot[ samples = 100, color=y_h,
+                          arrow inside={end=stealth,opt={scale=2}}{0.95}]
+                      ({0}, {v(x)});
+                      \node[GraphNode, fill = white, draw = black] at (axis cs:0,0)
+                      {};
+                      \node[GraphNode,
+                          label={45:\scriptsize(1, 1)}] at (axis cs:1,1) {};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          % xmin = -1, xmax = 1, ymin = -1, ymax = 1,
+                          % restrict y to domain = -1:1,
+                          title = {Center},
+                          xlabel = $ y_1 $,
+                          ylabel = $ y_2 $,
+                          axis equal,
+                          width = 8cm,
+                          legend pos = north west,
+                          domain = 0:2*pi,
+                          Ani]
+                      \foreach \c in {0.5,sqrt(2)} {%
+                              \edef\temp{%
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0, 0.5}]
+                                  ({\c*sin(x)}, {\c*cos(x)});
+                              }\temp
+                          }
+                      \node[GraphNode, fill = white, draw = black] at (axis cs:0,0)
+                      {};
+                      \node[GraphNode,
+                          label={45:\scriptsize(1, 1)}] at (axis cs:1,1) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xmin = -2, xmax = 2, ymin = -2, ymax = 2,
+                          % restrict y to domain = -1:1,
+                          title = {Spiral},
+                          xlabel = $ y_1 $,
+                          ylabel = $ y_2 $,
+                          axis equal,
+                          width = 8cm,
+                          legend pos = north west,
+                          domain = -0.5*pi:1.5*pi,
+                          Ani]
+                      \foreach \c in {1,4} {%
+                              \edef\temp{%
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.95}]
+                                  ({\c*e^(-x)*sin(x)}, {\c*e^(-x)*cos(x)});
+                                  \noexpand \addplot[ samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.95}]
+                                  ({-\c*e^(-x)*sin(x)}, {-\c*e^(-x)*cos(x)});
+                              }\temp
+                          }
+                      \node[GraphNode, fill = white, draw = black] at (axis cs:0,0)
+                      {};
+                      \node[GraphNode,
+                          label={45:\scriptsize(0, 1)}] at (axis cs:0, 1) {};
+                  \end{axis}
+              \end{tikzpicture}
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          xmin = -10, xmax = 10, ymin = -10, ymax = 10,
+                          % restrict y to domain = -1:1,
+                          title = {Degenerate Node with
+                                  ${\color{y_p} \vec{x^{(1)}}}$ and
+                                  ${\color{y_h} \vec{x^{(2)}}}$},
+                          xlabel = $ y_1 $,
+                          ylabel = $ y_2 $,
+                          axis equal,
+                          width = 8cm,
+                          legend pos = north west,
+                          domain = -1:1,
+                          Ani]
+                      \foreach \c in {-1} {%
+                              \edef\temp{%
+                                  \noexpand \addplot[thin, samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.25}]
+                                  ({(\c + x)*e^(3*x)}, {(-\c - x + 1)*e^(3*x)});
+                                  \noexpand \addplot[thin, samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.15}]
+                                  ({(\c - x)*e^(3*x)}, {(-\c + x - 1)*e^(3*x)});
+                                  \noexpand \addplot[thin, samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.25}]
+                                  ({(-\c + x)*e^(3*x)}, {(\c - x + 1)*e^(3*x)});
+                                  \noexpand \addplot[thin, samples = 100, color=blue3,
+                                      arrow inside={end=stealth,opt={scale=2}}
+                                          {0.15}]
+                                  ({(-\c - x)*e^(3*x)}, {(\c + x - 1)*e^(3*x)});
+                              }\temp
+                          }
+                      \addplot[thick, samples = 100, color=y_p,
+                          arrow inside={end=stealth,opt={scale=2}}{0.3}]
+                      ({e^(3*x)}, {-e^(3*x)});
+                      \addplot[thick, samples = 100, color=y_p,
+                      arrow inside={end=stealth,opt={scale=2}}{0.3}]
+                      (-{e^(3*x)}, {e^(3*x)});
+                      \addplot[thick, samples = 100, color=y_h,
+                          arrow inside={end=stealth,opt={scale=2}}{0.3}]
+                      ({x*e^(3*x)}, {(-x+1)*e^(3*x)});
+                      \addplot[thick, samples = 100, color=y_h,
+                          arrow inside={end=stealth,opt={scale=2}}{0.3}]
+                      ({-x*e^(3*x)}, {-1*(-x+1)*e^(3*x)});
+                      \node[GraphNode, fill = white, draw = black] at (axis cs:0,0)
+                      {};
+                      \node[GraphNode,
+                          label={45:\scriptsize(-1, 2)}] at (axis cs:-1, 2) {};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
 \end{enumerate}

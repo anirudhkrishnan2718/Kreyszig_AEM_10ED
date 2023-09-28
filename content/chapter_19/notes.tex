@@ -1,0 +1,580 @@
+\chapter{Numerics in General}
+
+\section{Introduction}
+
+\begin{description}
+    \item[Motivation] Many mathematical problems do not admit analytical solutions. The
+        approach is usually to solve using brute-force numerical approximations and use
+        pre-formulated lookup tables. \par
+        The advent of cheap computational power has made such numerical approaches more
+        feasible.
+
+    \item[Significant digit] Any given digit of a number $ c $, except possibly for zeros
+        to the left of the first nonzero digit.
+
+    \item[Floating point numbers] Computers internally represent real numbers in
+        floating point form, where the number of significant digits is kept fixed, and
+        the decimal point itself is floating.
+
+    \item[Machine numbers] In modern computers, which use binary (base 2) systems,
+        any number can be represented as
+        \begin{align}
+            \bar{a} & = \pm \bar{m} \cdot 2^n            &
+            \bar{m} & = 0.d_1d_2\dots d_k, \quad d_1 > 0
+        \end{align}
+        This is a $ k $ digit binary number, whose fractional part $ \bar{m} $ is called
+        the mantissa and exponent is $ n $
+
+    \item[Machine accuracy] Since machine numbers are a discrete set, there is a
+        smallest possible real number that they can represent. \par
+        The smallets positive $ \epsilon $ such that there are no machine numbers in
+        $ [1, 1 + \epsilon] $ is called machine accuracy.
+
+    \item[Underflow and Overflow] The range of exponents that IEEE standards mandate is
+        \begin{itemize}
+            \item $ 2^{-126} $ to $ 2^{128} $ for single precision numbers
+            \item $ 2^{-1022} $ to $ 2^{1024} $ for double precision numbers
+        \end{itemize}
+        Cases of underflow (when the number is smaller than these lower limits) are
+        handled by approximating them as zero and moving on. \par
+        Cases of overflow however, lead to the program halting with a fatal error.
+
+    \item[Roundoff] Errors caused by truncating a number by discarding all digits
+        from some decimal place onwards. \par
+        To round a number $ x $ to $ k $ decimals, add $ 0.5 \times 10^{-k} $ to it and
+        then truncate all the digits after the $ (k+1)^{\text{th}} $ digit.
+
+    \item[Error in rounding] Let $ \bar{a} $ be the floating point approximation of
+        $ a $. Then, maximum rounding error is,
+        \begin{align}
+            \abs{1 - \frac{\bar{a}}{a}} \approxeq \abs{1 - \frac{\bar{m}}{m}}
+            \leq \frac{1}{2}\ 10^{1-k}
+        \end{align}
+        This is called the rounding unit.
+
+    \item[Loss of significant digits] A decrease in the number of significant digits as
+        a result of performing some computation, such as subtracting two close numbers.
+        \par Changes to the algorithm to bypass such problematic arithmetic operations
+        is the usual way to deal with these issues.
+
+    \item[Errors] If $ \wt{a} $ is an approximation of the true value $ a $,
+        \begin{align}
+            \epsilon       & \equiv a - \wt{a}              &
+                           & \text{Error}                     \\
+            \epsilon_r     & \equiv \frac{\epsilon}{\wt{a}} &
+                           & \text{Relative Error}            \\
+            \abs{\epsilon} & \leq \beta                     &
+                           & \text{Error bound}
+        \end{align}
+        Relative error is meaningful only for the special case where
+        $ \abs{e} \ll \abs{\wt{a}} $. Usually, only an upper bound on the error can
+        be found.
+
+    \item[Error propagation] The effect of the four basic arithmetic operations on the
+        error,
+        \begin{itemize}
+            \item In addition and subtraction, the individual error bounds add up to
+                  yield the error bound of the result.
+            \item In multiplication and division, the individual relative error bounds
+                  add up to yield an approximate relative error bound of the result.
+        \end{itemize}
+
+    \item[Basic error principle] In general, every numerical method is accompanied by
+        an error estimate. \par
+        If two approximation methods exist such that
+        \begin{align}
+            \wt{a_1} + \epsilon_1 & = \wt{a_2} + \epsilon_2 = a &
+            \abs{\epsilon_2}      & \ll \abs{\epsilon_1}          \\
+            \epsilon_1            & \approxeq \wt{a_2} -
+            \wt{a_1}
+        \end{align}
+        Thus, the difference between the estimated values is an approximation of the
+        error in the worse method.
+
+    \item[Algorithm] A set of steps (independent of programming language) used to
+        program a numerical method.
+
+    \item[Stability] An algorithm where small changes in the initial conditions supplied
+        only cause small changes in the final result. \par
+        This is different from mathematical instability, which is inherent to the
+        mathematical problem itself.
+
+\end{description}
+
+\section{Solution of Equations by Iteration}
+
+\begin{description}
+    \item[Functions of one variable] Equations of the form
+        \begin{align}
+            f(x) & = 0
+        \end{align}
+        are often not explicitly solved. These equations permit recursive methods of
+        finding solutions.
+
+    \item[Fixed point method] A recursive relation for discrete values of $ x $ which
+        act as guesses for the solution can be programmed into a loop.
+        \begin{align}
+            x_{n+1} & = g(x_n)
+        \end{align}
+        Such a value is called a fixed point of the recursion. \par
+        The same equation $ f(x) = 0 $ can be recast into many forms of recursion, which
+        may converge at different rates, or not at all.
+
+    \item[Convergence of fixed point iteration] Let $ x = s $ be a solution of
+        $ x = g(x) $ and suppose that $ g(x) $ has a continuous derivative in some
+        interval $ J $ containing $ s $. \par
+        If $ \abs{g'(x)} \leq K < 1 $ in the interval $ J $, then the iteration process
+        converges for any initial guess $ x_0 $ in $ J $. \par
+        The limit of the sequence is the fixed point $ s $. \par
+        A functino satisying this condition is called a \emph{contraction}.
+
+    \item[Newton-Raphson method] A fast method for solving equations of the form
+        $ f(x) = 0 $, which uses the fact that $f(x),\ f'(x) $ are both continuous.
+        \begin{align}
+            x_{n+1} & = x_n - \frac{f(x_n)}{f'(x_n)}
+        \end{align}
+        Consider the tangent to the curve at $ [x_n, f(x_n)] $ and its intersection with
+        the $ x $ axis,
+        \begin{align}
+            y - f(x_n) & = f'(x_n) \cdot (x - x_n) &
+            y          & = 0
+        \end{align}
+        These two lines intersect at $ x_{n+1} $, which becomes the next guess. \par
+        The algorithm usually has a success criterion based on the relative error between
+        successive guesses, and a failure criterion using the number of iterations.
+
+    \item[Choice of initial guess] The N.R. method is sensitive to initial guess in
+        terms of which solution it converges to and whether it even converges in the
+        first place.
+
+    \item[Order of iteration method] Consider the Taylor series expansion of $ g(x) $
+        near a solution $ s $,
+        \begin{align}
+            x_{n+1} & = g(x_n) = g(s)\ (x_n - s) + \frac{g'(s)}{2!}\ (x_n-s)^2 + \dots \\
+            x_{n+1} & = g(s) - g'(s)\ \epsilon_n + \frac{g''(s)}{2!}\ \epsilon_n^2
+            + \dots
+        \end{align}
+        The index of $ \epsilon $ in the first nonzero term of this Taylor series is
+        called the order of this iteration method.
+
+    \item[Order of Newton's method] Differentiating the N.R. iteration,
+        \begin{align}
+            g(x)  & = x - \frac{f(x)}{f'(x)} & g'(x)  & = \frac{f(x)
+            \cdot f''(x)}{[f'(x)]^2}                                 \\
+            g'(s) & = 0                      & g''(s) & \neq 0
+        \end{align}
+        in general. This means that the number of significant digits approximately
+        doubles with each iteration. This assumes that $ s $ is a simple zero. \par
+        If the zero is of higher order, then the order is one.
+
+    \item[Ill conditioned] If the equation $ f(x) = 0 $ has small $ \abs{f'(x)} $ for
+        $ x $ close to some solution $ s $, then the iteration might not converge
+        for initial guesses far from $ s $.
+
+    \item[Secant method] Replacing the derivative with the finite difference expression,
+        \begin{align}
+            x_{n+1} & = x_n - f(x_n) \cdot \frac{x_{n} - x_{n-1}}{f(x_n) - f(x_{n-1})}
+        \end{align}
+        The secant of $ f(x) $ passing through $ P_{n-1} $ and $ P_n $ intersects the
+        $ x $ axis at $ x_{n+1} $
+\end{description}
+
+\section{Interpolation}
+
+\begin{description}
+    \item[Interpolation] Given the values taken by some unknown function at a certain
+        set of $ n+1 $ points, as the set $ \{x_0,\dots,x_n\} $,
+
+
+    \item[Nodes] The set of $ x $ values at which the function value is known, either
+        by prior empirical measurement or from some reference table.
+
+    \item[Polynomial approximation] The act of finding a polynomial of degree at most
+        $ n $, that passes through all of these points $ (x_0, f_0), \dots, (x_n, f_n) $.
+        \par
+        Such a polynomial, if it exists, is unique.
+
+    \item[Weierstrass approximation theorem] For any continuous function $ f(x) $ in the
+        interval $ J:[a,b] $, and some error bound $ \beta $,
+        \begin{align}
+            \abs{f(x) - p_n(x)} & < \beta & \forall \quad x & \in J
+        \end{align}
+        is always possible for a sufficiently large degree of the polynomial $ n $.
+
+    \item[Lagrange interpolation] Each of the set $ \{f_i\} $ is multiplied by a
+        polynomial $ L_i(x) $ satisfying
+        \begin{align}
+            L_i(x) & = \begin{cases}
+                           1 & \quad x = x_i            \\
+                           0 & \quad x = x_j,\ j \neq i
+                       \end{cases}                      \\
+            P_x    & = \sum_{k=0}^{n} L_k(x) \cdot f_k  = \sum_{k=0}^{n}
+            \frac{l_k(x)}{l_k(x_k)}\ f_k
+        \end{align}
+        The polynomial $ l_k $ is the product of linear factor of all the nodes except
+        the $ k^{\text{th}} $ node.
+        \begin{align}
+            l_k(x) & = \prod_{j=0}^{n} (x - x_j) & j & \neq k
+        \end{align}
+
+    \item[Error of interpolation] The error is approximately the $ (n+1)^{\text{th}} $
+        derivative of $ f(x) $ provided it exists and is continuous.
+
+        \begin{align}
+            \epsilon_n(x) & = f(x) - p_n(x)
+            = \prod_{j=0}^{n} (x-x_j)\ \diff[n+1]{f}{x} \Bigg|_{x=t}
+        \end{align}
+        For some $ t $ between $ x_0 $ and $ x_n $. $ \abs{\epsilon_n} $ is zero at
+        each node, and very small near each node, by continuity of this derivative.
+        \par
+        This error formula gives the error for any polynomial interpolation of $ f(x) $,
+        since such a polynomial must be unique.
+
+    \item[Divided difference] A recursive analog of the slope between two adjacent points
+        in a series of nodes.
+        \begin{align}
+            a_1 & = f[x_0,x_1] = \frac{f_1 - f_0}{x_1 - x_0}                          \\
+            a_2 & = f[x_0, x_1, x_2] = \frac{f[x_1,x_2] - f[x_0,x_1]}{x_2 - x_0}      \\
+            \vdots \nonumber                                                          \\
+            a_k & = f[x_0,\dots,x_k] = \frac{f[x_1,\dots,x_k] - f[x_0,\dots,x_{k-1}]}
+            {x_k - x_0}
+        \end{align}
+
+    \item[Newton's Divided difference] Starting with 2 nodes, one node at a time is
+        introduced successively, until all $ (n+1) $ nodes are used to build up a
+        polynomial of degree $ n $.
+        \begin{align}
+            p_n(x) & = p_{n-1}(x) + g_n(x)
+        \end{align}
+        Here, $ p_{n-1}(x) $ matches the function at $ \{x_0,\dots,x_{n-1}\} $ whereas
+        $ p_n(x) $ matches it at $ x_n $ as well. \par
+        Using the $ n^{\text{th}} $ dividied difference $ a_n $,
+        \begin{align}
+            g_n(x) & = a_n \cdot \prod_{j=0}^{n-1} (x - x_j)                   &
+            a_n    & = \frac{f_n - p_{n-1}(x_n)}{\prod_{j=0}^{n-1}(x_n - x_j)}
+        \end{align}
+        This uses the fact that $ p_n(x_n) = f_n $ but $ p_{n-1}(x_n) $ does not have to
+        match the function, since it was computed using nodes upto $ x_{n-1} $. \par
+        After incorporating all $ (n+1) $ nodes,
+        \begin{align}
+            f(x) \approxeq p_n(x) & = f_0 + (x - x_0) \cdot f[x_0, x_1]
+            + (x-x_0)(x-x_1) \cdot f[x_0,x_1,x_2] + \dots                    \\
+                                  & + \Bigg[\prod_{j=0}^{n-1}(x - x_j)\Bigg]
+            \cdot f[x_0,x_1,\dots,x_n]
+        \end{align}
+
+    \item[Newton's forward difference formula] For the special case where the nodes are
+        equally spaced, with distance $ h $,
+        \begin{align}
+            x_1 & = x_0 + h & x_n & = x_0 + nh
+        \end{align}
+        The $ k^{\text{th}} $ forward difference is now defined recursively as
+        \begin{align}
+            \Delta f_j   & = f_{j+1} - f_j                           \\
+            \Delta^2 f_j & = \Delta f_{j+1} - \Delta f_j             \\
+            \Delta^k f_j & = \Delta^{k-1} f_{j+1} - \Delta^{k-1} f_j
+        \end{align}
+        The $ k^{\text{th}} $ divided difference is much simplified,
+        \begin{align}
+            f[x_0,x_1,\dots,x_k]  & = \frac{1}{k!\ h^k}\ \Delta^k f_0                \\
+            f(x) \approxeq p_n(x) & = \sum_{s = 0}^{n} \binom{r}{s} \ \Delta^s f_0 &
+            r                     & = \frac{x - x_0}{h}                              \\
+            \binom{r}{s}          & = \frac{r(r-1)(r-2)\dots(r-s+1)}{s!}
+        \end{align}
+        Here, the binomial coefficient is generalized to real $ r $ for some positive
+        integer $ s $.
+
+    \item[Error in forward difference] Using the next higher derivative of $ f $,
+        \begin{align}
+            \epsilon_n(x) & = f(x) - p_n(x) = \binom{r}{n+1}\ h^{n+1} \cdot f^{(n+1)}(t)
+        \end{align}
+        for some $ t $ in the domain $ [x_0, x_n] $
+
+    \item[Newton's backward difference formula] Using the divided differences from
+        larger to smaller order instead, the $ k^{\text{th}} $ backward difference is,
+        \begin{align}
+            \Delta f_j   & = f_j - f_{j-1}                           \\
+            \Delta^2 f_j & = \Delta f_{j} - \Delta f_{j-1}           \\
+            \Delta^k f_j & = \Delta^{k-1} f_j - \Delta^{k-1} f_{j-1}
+        \end{align}
+        The slightly changed formula for the interpolating polynomial is
+        \begin{align}
+            f(x) \approxeq p_n(x) & = \sum_{s = 0}^{n} \binom{r+s-1}{s}
+            \ \Delta^s f_0        &
+            r                     & = \frac{x - x_0}{h}                  \\
+            \binom{r+s-1}{s}      & = \frac{r(r-1)(r-2)\dots(r-s+1)}{s!}
+        \end{align}
+        By the symmetry of the binomial formula, these coefficients happen to be the same
+        as the ones in the forward difference formula.
+
+\end{description}
+
+\section{Spline Interpolation}
+
+\begin{description}
+    \item[Motivation] When using a high degree polynomial with many nodes,
+        it may start to oscillate wildly in between successive nodes as a result of the
+        high degree $ (n > 20) $. \par
+
+    \item[Piecewise polynomial interpolation] The single high degree polynomial over
+        all $ (n+1) $ nodes, is replaced by $ n $ lower degree polynomials, each of which
+        operate on a subset of adjacent nodes. \par
+        These individual low degree polynomials are then superposed into a spline that
+        approximates the function over the domain spanned by all the nodes.
+
+    \item[Cubic spline interpolation] A continuous function with continuous first and
+        second derivatives on the interval $ a = x_0 \leq x \leq x_n = b $,
+        such that
+        \begin{align}
+            g(x_0)             & = f(x_0) = f_0 \quad \dots                      &
+            \dots \quad g(x_n) & = f(x_n) = f_n                                    \\
+            g(x)               & = q_0(x), \quad \forall\ x \in [x_0, x_1] \dots &
+            \dots g(x)         & = q_n(x), \quad \forall\ x \in [x_{n-1}, x_n]
+        \end{align}
+        Thus, the spline matches each of the individual cubic polynomials exactly,
+        inside their respective domains. \par
+        Additionally, if the tangent direction of $ g(x) $ is specified at the first
+        and last nodes,
+        \begin{align}
+            g'(x_0) & = k_0 & g'(x_n) & = k_n
+        \end{align}
+        then the spline is determined uniquely.
+
+    \item[Existence and uniqueness of cubic splines] Given a set of arbitrarily spaced
+        nodes $ \{x_j\} $ along with the values of the function at the nodes $ \{f_j\} $,
+        the two numbers $ g'(x_0), g'(x_n) $ determine a unique spline function which is
+        guaranteed to exist.
+
+    \item[Some termiology] Introduce the notation
+        \begin{align}
+            c_j        & \equiv \frac{1}{h_j} = \frac{1}{x_{j+1} - x_j} &
+            \nabla f_j & \equiv f(x_j) - f(x_{j-1})
+        \end{align}
+        The individual cubic polynomials have to satisfy
+        \begin{align}
+            q_j(x_j) & = f(x_j) &
+            q'(x_j)  & = k_j,
+        \end{align}
+        for all $ j \in [0,1,\dots,n-1] $. Additionally, the continuity of $ g''(x) $
+        means that $ q''_{j-1}(x_j) = q''_j(x_j) $.
+
+    \item[Finding the cubic spline components]
+        The set of cubic equations require terms $ \{k_j\} $ for $ j \in [1, n-1] $,
+        provided $ k_0 $ and $ k_n $ are already provided.
+        \begin{align}
+            c_{j-1}\ k_{j-1} + 2(c_{j-1} + c_j)\ k_j + c_j\ k_{j+1}
+             & = 3\ \Big[ c^2_{j-1}\ \nabla f_j + c_j^2\ \nabla f_{j+1} \Big]
+        \end{align}
+        This system of $ (n-1) $ linear equations is guaranteed to have a unique
+        solution that is computationally tractable, by its very nature. \par
+        The coefficient matrix is sparse and tridiagonal. Also, it is strictly
+        diagonally dominant.
+
+    \item[Taylor series expansions to fit coefficients] Each cubic spline is written in
+        the form,
+        \begin{align}
+            q_j & = a_{j0} + a_{j1}\ (x - x_j) + a_{j2}\ (x - x_j)^2 + a_{j3}
+            \ (x - x_j)^3
+        \end{align}
+        for all $ j \in [0,1,\dots,n-1] $
+        Using Taylor's formula yields,
+        \begin{align}
+            a_{j0} & = q_j(x_j) = f_j                                            \\
+            a_{j1} & = q'_j(x_j) = k_j                                           \\
+            a_{j2} & = \frac{q''(x_j)}{2!} = \frac{3}{h_j^2}\ (f_{j+1} - f_j)
+            - \frac{1}{h_j}\ (k_{j+1} + 2k_j)                                    \\
+            a_{j3} & = \frac{q'''(x_j)}{3!} = \frac{2}{h_j^3}\ (f_{j} - f_{j+1})
+            + \frac{1}{h_j^2}\ (k_{j+1} + k_j)
+        \end{align}
+
+    \item[Equidistant nodes] The relation simplifies to, $ h_j = h $ and then
+        $ c_j = c = 1/h $
+        \begin{align}
+            k_{j-1} + 4k_j + k_{j+1} & = \frac{3}{h}\ (f_{j+1} - f_{j-1}) &
+            j                        & \in [1,2,\dots,n-1]
+        \end{align}
+
+    \item[Boundary conditions] Clamped conditions require the spline's derivative to
+        math the function's derivatives at the Boundary
+        \begin{align}
+            g'(x_0) & = f'(x_0) & g'(x_n) & = f'(x_n)
+        \end{align}
+        The free or natural condition involves no curvature (second derivative) at the
+        boundary.
+        \begin{align}
+            g''(x_0) & = 0 & g''(x_n) & = 0
+        \end{align}
+\end{description}
+
+\section{Numeric Integration and Differentiation}
+
+\begin{description}
+    \item[Rectangular rule] The interval of integration $ [a,b] $ is subdivided into
+        $ n $ parts, each of which is of width
+        \begin{align}
+            h               & = \frac{b-a}{n}                                        &
+            f(x)            & \approxeq f(x^*_j) \quad \forall \quad x
+            \in [x_j, x_{j+1}]                                                         \\
+            J               & = \int_{a}^{b} f(x)\ \dl x                             &
+            J \approxeq J_r & \equiv h\ \Big[ f(x_1^*) + f(x_2^*) + \dots + f(x_n^*)
+                \Big]
+        \end{align}
+        In each interval, $ f(x) $ is approximated by a constant function.
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[declare function = {a = 0.75;}]
+                \begin{axis}[title =
+                            {Rectangular rule for $ \sin(\pi x) $},
+                        xlabel = $ x $, ylabel = $ y $, Ani,
+                        view = {0}{90}, grid = both,]
+                    \addplot[ybar, domain = 0:1, bar width = 0.1, color = y_h!0,
+                        fill = y_h!15, samples at = {0.05,0.15,...,0.95}]
+                    {sin(pi*x)};
+                    \addplot[GraphSmooth, black, dotted, domain = 0:1]
+                    {sin(pi*x)};
+                    \addplot[GraphSmooth, only marks, color = y_p, mark size = 1.25pt,
+                        samples at = {0.05,0.15,...,0.95}]
+                    {sin(pi*x)};
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+
+    \item[Trapezoidal rule] A more sophisticated approximation that replaces the
+        constant function $ f(x^*) $ in each segment, with the straight line joining
+        $ (x_j, f_j) $ and $ (x_{j+1}, f_{j+1}) $.
+        \begin{align}
+            J \approxeq J_t & \equiv h\ \Bigg[ \frac{f(x_a)}{2} + f(x_1) + f(x_2)
+                + \dots + f(x_{n-1}) + \frac{f(x_b)}{2} \Bigg]
+        \end{align}
+        \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}[declare function = {a = 0.75;}]
+                \begin{axis}[title =
+                            {Trapezoidal rule for $ 2 + \sin(\pi x) $},
+                        xlabel = $ x $, ylabel = $ y $, Ani,
+                        view = {0}{90}, grid = both, ymin = -0.5, ymax = 3.5]
+                    \addplot[GraphSmooth, black, dotted, domain = 0:2] {2 + sin(pi*x)};
+                    \addplot[GraphSmooth, only marks, color = y_p, mark size = 1.25pt,
+                        samples at = {0,0.4,...,2}] {2 + sin(pi*x)};
+                    \addplot[name path = top, color = y_h,
+                        samples at = {0,0.4,...,2}] {2 + sin(pi*x)};
+                    \path[name path = bottom] (axis cs:0, 0) -- (axis cs:2, 0);
+                    \addplot [fill=y_h!15] fill between[of=top and bottom];
+                    \foreach \k in {0,0.4,...,2}
+                        {
+                            \edef\temp{%
+                                \noexpand \addplot[GraphSmooth, white, domain = 0:1]
+                                ({\k}, {x*(2 + sin(pi*\k))});
+                            }\temp
+                        }
+                \end{axis}
+            \end{tikzpicture}
+        \end{figure}
+
+    \item[Error in trapezoidal rule] Using the Taylor expansion, the error in one
+        subinterval of trapezoidal rule is,
+        \begin{align}
+            \epsilon_j & = -\frac{h^3}{12}\ f''(\wt{t}) & h & = \frac{b-a}{n}
+        \end{align}
+        The sum of these local errors is the global error,
+        \begin{align}
+            \epsilon & = -\frac{(b-a)}{12}\ h^2\ f''(t^*) &
+            t^*      & \in [a,b]
+        \end{align}
+        The error is maximised and minimized for some values of $ t^* $ substituted into
+        the above expression. \par
+        Using the practical error estimate and the fact that the error scales
+        quadratically in $ h $,
+        \begin{align}
+            \epsilon_{h/2} & \approxeq \frac{\epsilon_h}{4}    &
+            \epsilon_{h/2} & \approxeq \frac{J_{h/2} - J_h}{3}
+        \end{align}
+
+    \item[Simpson's rule] Going up one degree higher, the function is now approximated by
+        piecewise quadratic polynomials. \par
+        By convention, the number of subintervals is now even
+        \begin{align}
+            n & = 2m & h & = \frac{b-a}{2m}
+        \end{align}
+        The subintervals are now taken two at a time and the interpolating Lagrange
+        polynomial is now found. For the first two subintervals spanning $ [x_0, x_2] $
+        \begin{align}
+            s      & = \frac{x - x_1}{h}                                               \\
+            p_2(x) & = \frac{s(s-1)}{2}\ f_0 - (s^2 - 1)\ f_1 + \frac{s(s+1)}{2}
+            \ f_2                                                                      \\
+            J_0^*  & = \int_{x_0}^{x_2} p_2(x)\ \dl x = \frac{h}{3}\ (f_0 + 4f_1
+            + f_2)                                                                     \\
+            J      & = \frac{h}{3}\ \Big[ f_0 + 4f_1 + 2f_2 + 4f_3 + \dots + 2f_{2m-2}
+                + 4f_{2m-1} + f_{2m} \Big]
+        \end{align}
+
+    \item[Error of Simpson's rule] If the fourth derivative exists and is continuous,
+        \begin{align}
+            \epsilon_S & = -\frac{b-a}{180}\ h^4\ f^{(4)}(t^*) &
+            t^*        & \in [a, b]
+        \end{align}
+        Using the practical error estimate and the fact that the error scales
+        as $ h^4 $,
+        \begin{align}
+            \epsilon_{h/2} & \approxeq \frac{\epsilon_h}{16}    &
+            \epsilon_{h/2} & \approxeq \frac{J_{h/2} - J_h}{15}
+        \end{align}
+
+    \item[Degree of Precision] The maximum degree of arbitraty polynomials for which an
+        integration formula gives exact results over any interval.
+        \begin{align}
+            DP_{\text{trap}} = 1 & DP_{\text{Sim}} = 3
+        \end{align}
+        This is because Simpson's rule uses two adjacent subintervals at a time, making
+        the error depend on the fourth derivative, which is identically zero for cubic
+        polynomials.
+
+    \item[Numeric stability of Simpson's rule] Looking at the sum of roundoff errors,
+        \begin{align}
+            \epsilon_S & = \frac{h}{3}\ \abs{\epsilon_0 + 4\epsilon_1 + \dots
+                + \epsilon_{2m}} \leq (b-a)\ u
+        \end{align}
+        Here, $ u $ is the smallest machine number. Since this expression is independent
+        of interval size $ h $, the algorithm is stable. \par
+
+    \item[Adaptive integration] This is usually accomplished by checking if the error
+        in the integration over a subinterval crosses a certain tolerance and halving
+        $ h $ to compensate. \par
+        When the subinterval gets halved, the tolerance also needs to be halved.
+
+    \item[Gauss Integration formulas] Unlike the above methods, whose precision is
+        best $ (n-1) $, Gauss showed that a degree of precision of $ (2n-1) $ could be
+        achieved using just $ n $ nodes. \par
+        Starting with a map from $ x \in [a,b] \to t \in [-1, 1] $
+        \begin{align}
+            x                         & = \frac{a}{2}\ (t-1) + \frac{b}{2}\ (t+1) \\
+            \int_{-1}^{1} f(t)\ \dl t & \approxeq \sum_{j = 1}^{n} A_j\ f(t_j)
+        \end{align}
+        The set of nodes that maximize the degree of precision happen be the zeros of
+        the Legendre polynomial $ P_n $. \par
+        The coefficients $ \{A_j\} $ are determined using Lagrange's interpolation
+        polynomial. These are available as lookup tables. \par
+        The disadvantage of this method is that the functional form of $ f(x) $ needs
+        to be known, or its value needs to be observed empirically at the node values
+        $ \{t_j\} $ as specified in the lookup table.
+
+    \item[Open and closed formulae] A closed formula includes the endpoints of its
+        node-spanned domain as nodes, (like the trapezoid and Simpson's rule). \par
+        By contrast, $ t = \pm 1 $ are not zeros of the Legendre polynomials $ P_n $
+        which makes Gaussian formulas open.
+
+    \item[Numeric differentiation] Since this involves subtracting close numbers, it is
+        an inherently unstable process and should be avoided.
+        \begin{align}
+            f'_1  & \approxeq \frac{f_1 - f_0}{h}          &
+            f''_1 & \approxeq \frac{f_2 - 2f_1 + f_0}{h^2}
+        \end{align}
+        Differentating the interpolating Lagrange polynomial instead, gives the three
+        point formulas
+        \begin{align}
+            f'_0 & = \frac{-3f_0 + 4f_1 - f_2}{2h} &
+            f'_1 & = \frac{-f_0 + f_2}{2h}           \\
+            f'_2 & = \frac{f_0 - 4f_1 + 3f_2}{2h}
+        \end{align}
+
+\end{description}

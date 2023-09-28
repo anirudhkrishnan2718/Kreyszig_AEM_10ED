@@ -60,17 +60,18 @@
 
     \item Substituting $ \sqrt{x} = z $,
           \begin{align}
-              0   & = 4xy'' + 4y' + y                                                 &
-              z   & = \sqrt{x}                                                          \\
-              y'  & = \frac{\dot{y}}{2\sqrt{x}} = \frac{\dot{y}}{2z}                  &
-              y'' & = \frac{1}{2z} \left[ \frac{\ddot{y}}{2z}
-              - \frac{\dot{y}}{2z^2} \right]                                            \\
-              0   & = \ddot{y} + \dot{y} \left[ \frac{2}{z} - \frac{1}{z} \right] + y &
-              0   & = z^2 \ddot{y} + z\dot{y} + z^2y                                    \\
-              y_1 & = J_0(z)                                                          &
-              y_2 & = Y_0(z)                                                            \\
-              y_1 & = \color{y_h}J_0(\sqrt{x})                                        &
-              y_2 & = \color{y_p}Y_0(\sqrt{x})
+              0           & = 4xy'' + 4y' + y                                     &
+              z           & = \sqrt{x}                                              \\
+              y'          & = \frac{\dot{y}}{2\sqrt{x}} = \frac{\dot{y}}{2z}      &
+              y''         & = \frac{1}{2z} \left[ \frac{\ddot{y}}{2z}
+              - \frac{\dot{y}}{2z^2} \right]                                        \\
+              0           & = \ddot{y} + \dot{y} \left[ \frac{2}{z} - \frac{1}{z}
+              \right] + y &
+              0           & = z^2 \ddot{y} + z\dot{y} + z^2y                        \\
+              y_1         & = J_0(z)                                              &
+              y_2         & = Y_0(z)                                                \\
+              y_1         & = \color{y_h}J_0(\sqrt{x})                            &
+              y_2         & = \color{y_p}Y_0(\sqrt{x})
           \end{align}
           Since $ \nu \in \mathcal{I} $, the Neumann function is necessary.
 
@@ -171,16 +172,17 @@
                                     width = 12cm,
                                     height = 12cm,
                                     Ani,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 6]},
                                 ]
                                 \foreach [evaluate=\c as \n using (\c)*100/(5)]
                                 \c in {0,...,5}
                                     {
                                         \edef\temp{%
                                             \noexpand
-                                            \addplot[
+                                            \addplot+[thick,
                                                 samples = 200,
                                                 domain=1000:1010,
-                                                color=blue!\n!red, thin,
                                             ] gnuplot[id=besyn] {besyn(\c, x)};
                                             \noexpand \addlegendentry{$ n = \c$};
                                         }\temp
@@ -212,14 +214,15 @@
                                     domain = 0:20*pi,
                                     PiStyleX,
                                     xtick distance = 4*pi,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 11]},
                                 ]
                                 \foreach [evaluate=\c as \n using (\c)*100/(10)]
                                 \c in {0,...,10}
                                     {
                                         \edef\temp{%
-                                            \noexpand \addplot[
+                                            \noexpand \addplot+[thick,
                                                 samples = 200,
-                                                color=blue!\n!red, thin,
                                             ] gnuplot[id = besyn] {besyn(\c, x)-
                                                     ((sin(x - \c*0.5*pi
                                                     - 0.25*pi))*sqrt(2/(x*pi)))};
@@ -243,14 +246,15 @@
                                     domain = 190*pi:200*pi,
                                     PiStyleX,
                                     xtick distance = 4*pi,
+                                    colormap/viridis,
+                                    cycle list = {[samples of colormap = 11]},
                                 ]
                                 \foreach [evaluate=\c as \n using (\c)*100/(10)]
                                 \c in {0,...,10}
                                     {
                                         \edef\temp{%
-                                            \noexpand \addplot[
+                                            \noexpand \addplot+[thick,
                                                 samples = 200,
-                                                color=blue!\n!red, thin,
                                             ] gnuplot[id = besyn] {besyn(\c, x)-
                                                     ((sin(x - \c*0.5*pi
                                                     - 0.25*pi))*sqrt(2/(x*pi)))};
@@ -380,9 +384,9 @@
           $ I_{-\nu} $,
           \begin{align}
               0 & = -x^2 [i^{\nu} J_{-\nu}''(ix)] + ix [i^{\nu}J_{-\nu}'(ix)] -
-              (x^2 + \nu^2) i^{\nu} J_{-\nu}(ix)                               \\
-               z & = ix \\
-               0 & = z^2 J_{-\nu}''(z) + z J_{\nu}'(z) + (z^2 - \nu^2)J_{-\nu}(z) \\
+              (x^2 + \nu^2) i^{\nu} J_{-\nu}(ix)                                 \\
+              z & = ix                                                           \\
+              0 & = z^2 J_{-\nu}''(z) + z J_{\nu}'(z) + (z^2 - \nu^2)J_{-\nu}(z) \\
           \end{align}
           Since $ J_{-\nu} $ satisfies the original Bessel ODE, $I_{-\nu}(x)$
           satisfies the given ODE. Since the given expression is a linear combination of

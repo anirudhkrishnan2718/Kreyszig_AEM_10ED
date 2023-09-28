@@ -1,0 +1,572 @@
+\section{Basic Concepts of PDEs}
+
+\begin{enumerate}
+    \item Writing a general second order ODE in two variables $ u(x, y) $,
+          \begin{align}
+              \mathcal{P}[u] & = A\ \diffp[2] ux + B\ \diffp[2] uy + C\ \diffp {u}{x,y}
+              + D\ \diffp ux + E\ \diffp uy + F\ u = 0
+          \end{align}
+          Using the linearity of partial differentiation,
+          \begin{align}
+              \mathcal{L}[u_1]        & = 0                            &
+              \mathcal{L}[u_2]        & = 0                              \\
+              \implies \mathcal{L}[u] & = \mathcal{L}[c_1u_1 + c_2u_2] &
+              c_1 \mathcal{L}[u_1]
+              + c_2 \mathcal{L}[u_2]  & = 0
+          \end{align}
+          A similar proof follows for $ v(x, y, z) $ which whose differential operator
+          will contain more terms, but still be linear. So, the proof remains the same.
+
+    \item Verifying that the given function solves the one dimensional wave equation,
+          \begin{align}
+              u(x,t)       & = x^2 + t^2         &
+              \diffp[2] ut & = c^2\ \diffp[2] ux   \\
+              2            & = c^2\ (2)          &
+              c^2          & = 1
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = x^2 + t^2 $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/viridis,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -2:2, faceted color = black] {x^2 + y^2};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the one dimensional wave equation,
+          \begin{align}
+              u(x,t)                 & = \cos(4t)\ \sin(2x)          &
+              \diffp[2] ut           & = c^2\ \diffp[2] ux             \\
+              \sin(2x) [-16\cos(4t)] & = c^2\ \cos(4t)\ [-4\sin(2x)] &
+              c^2                    & = 4
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = \cos(4t)\ \sin(2x) $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/viridis,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -0.5*pi:0.5*pi, faceted color = black]
+                      {cos(4*y) * sin(2*x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the one dimensional wave equation,
+          \begin{align}
+              u(x,t)                      & = \sin(kct)\ \cos(kx)            &
+              \diffp[2] ut                & = c^2\ \diffp[2] ux                \\
+              \cos(kx) [-k^2c^2\sin(kct)] & = c^2\ \sin(kct)\ [-k^2\cos(kx)] &
+              c                           & = \text{free}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = \sin(t)\ \cos(x) $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/viridis,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -pi:pi, faceted color = black]
+                      {sin(y) * cos(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the one dimensional wave equation,
+          \begin{align}
+              u(x,t)                           & = \sin(a t)\ \sin(bx) &
+              \diffp[2] ut                     & = c^2\ \diffp[2] ux     \\
+              \sin(bx) [-a^2 \sin(a t)]        &
+              = c^2\ \sin(a t)\ [-b^2\sin(bx)] &
+              c                                & = \frac{a^2}{b^2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = \sin(t)\ \cos(x) $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/viridis,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -pi:pi, faceted color = black]
+                      {sin(y) * cos(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the one dimensional heat equation,
+          \begin{align}
+              u(x,t)             & = e^{-t}\ \sin(x)         &
+              \diffp ut          & = c^2\ \diffp[2] ux         \\
+              [-e^{-t}]\ \sin(x) & = c^2\ e^{-t}\ [-\sin(x)] &
+              c^2                & = 1
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = e^{-t}\ \sin x $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/jet,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -0.5*pi:2*pi, y domain = -1:1,
+                          faceted color = black]
+                      {e^(-y) * sin(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the one dimensional heat equation,
+          \begin{align}
+              u(x,t)                        & = e^{-\omega^2c^2 t}\ \cos(\omega x) &
+              \diffp ut                     & = c^2\ \diffp[2] ux                    \\
+              [-\omega^2c^2\ e^{-\omega^2c^2 t}]
+              \ \cos(\omega x)              & = c^2\ e^{-\omega^2c^2 t}
+              \ [-\omega^2\ \cos(\omega x)] &
+              c                             & = \text{free}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = e^{-\omega^2 c^2 t}\ \cos(\omega x) $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/jet,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -0.5*pi:2*pi, y domain = -1:1,
+                          faceted color = black]
+                      {e^(-y) * cos(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the one dimensional heat equation,
+          \begin{align}
+              u(x,t)           & = e^{-9 t}\ \sin(\omega x)                   &
+              \diffp ut        & = c^2\ \diffp[2] ux                            \\
+              [-9\ e^{-9 t}]
+              \ \sin(\omega x) & = c^2\ e^{-9 t}\ [-\omega^2\ \sin(\omega x)] &
+              c^2              & = \frac{9}{\omega^2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = e^{-9t}\ \sin(\omega x) $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/jet,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -0.5*pi:2*pi, y domain = -1/9:1/9,
+                          faceted color = black]
+                      {e^(-9*y) * sin(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the one dimensional heat equation,
+          \begin{align}
+              u(x,t)      & = e^{-\pi^2 t}\ \cos(25x)                &
+              \diffp ut   & = c^2\ \diffp[2] ux                        \\
+              [-\pi^2\ e^{-\pi^2 t}]
+              \ \cos(25x) & = c^2\ e^{-\pi^2 t}\ [-25^2\ \cos(25 x)] &
+              c^2         & = \frac{\pi^2}{25^2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = e^{-\pi^2 t}\ \cos(25 x) $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$t$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/jet,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -0.08*pi:0.08*pi, y domain = -0.5/pi:0.5/pi,
+                          faceted color = black]
+                      {e^(-pi*pi*y) * cos(25*x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the two dimensional Laplace equation,
+          \begin{align}
+              u(x,t) & = e^{x}\ \cos(y)                 &
+              0      & = \diffp[2] ux + \diffp[2] uy      \\
+              0      & = [e^x] \cos(y) + e^x [-\cos(y)]
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = e^{x}\ \cos(y) $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$y$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/jet,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -1:1, y domain = -2*pi:2*pi,
+                          faceted color = black]
+                      {e^(x) * cos(y)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the two dimensional Laplace equation,
+          \begin{align}
+              u(x,t)       & = \arctan(y/x)                 &
+              0            & = \diffp[2] ux + \diffp[2] uy    \\
+              \diffp[2] ux & = \frac{y(2x)}{(x^2 + y^2)^2}  &
+              \diffp[2] uy & = \frac{-x(2y)}{(x^2 + y^2)^2}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = \arctan(y/x) $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$y$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/jet,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -10:-0.1, y domain = -pi/2:pi/2,
+                          faceted color = black] {atan(y/x)};
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = 0.1:10, y domain = -pi/2:pi/2,
+                          faceted color = black] {atan(y/x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the two dimensional Laplace equation,
+          \begin{align}
+              u(x,t)       & = \cos(y)\ \sinh(x)           &
+              0            & = \diffp[2] ux + \diffp[2] uy   \\
+              \diffp[2] ux & = \cos(y)\ [\sinh(x)]         &
+              \diffp[2] uy & = [-\cos(y)]\ \sinh(x)
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = \cos(y)\ \sinh(x) $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$y$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/jet,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -2:2, y domain = -2*pi:2*pi,
+                          faceted color = black] {cos(y) * sinh(x)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying that the given function solves the two dimensional Laplace equation,
+          \begin{align}
+              u(x,t)       & = \frac{x}{x^2 + y^2}                    &
+              0            & = \diffp[2] ux + \diffp[2] uy              \\
+              \diffp[2] ux & = \frac{2x\ (x^2 - 3y^2)}{(x^2 + y^2)^3} &
+              \diffp[2] uy & = \frac{2x\ (3y^2 - x^2)}{(x^2 + y^2)^3}
+          \end{align}
+          \begin{figure}[H]
+              \centering
+              \begin{tikzpicture}
+                  \begin{axis}[
+                          title = {$ u = \frac{x}{x^2 + y^2} $},
+                          width = 8cm, height = 8cm,
+                          grid = none,
+                          ticks = none,
+                          view={30}{30},
+                          xlabel=$x$,ylabel=$y$,zlabel=$u$,
+                          enlargelimits=0.1, colormap/jet,
+                          Ani]
+                      \addplot3 [surf, opacity= 0.75,
+                          domain = -2:2, y domain = -2:2, restrict z to domain = -20:20,
+                          faceted color = black] {x / (x^2 + y^2)};
+                  \end{axis}
+              \end{tikzpicture}
+          \end{figure}
+
+    \item Verifying special forms of solutions,
+          \begin{enumerate}
+              \item For the wave equation,
+                    \begin{align}
+                        u(x, t)                     & = v(x + ct) + w(x - ct) &
+                        \diffp[2] ut                & = c^2\ \diffp[2] ux       \\
+                        \diffp[2] vt\ c^2           & = \diffp[2] vx          &
+                        \diffp[2] wt\ c^2           & = \diffp[2] wx            \\
+                        c^2\ \diffp[2] {(v + w)}{t} & = \diffp[2]{(v+w)}{x}
+                    \end{align}
+                    This uses the transformation of variables,
+                    \begin{align}
+                        \diffp {v}{(ct)} \cdot \diffp {(ct)}{t} = \diffp {v}{t}
+                    \end{align}
+                    This function does satisfy the given PDE.
+
+              \item Verifying the given functions against Laplace's equation, \par
+                    \textcolor{y_h}{Yes}, \textcolor{y_p}{No}, \textcolor{y_h}{Yes},
+
+                    \begin{align}
+                        u(x, y)      & = \frac{y}{x}                &
+                        f            & = \color{y_h} \frac{2y}{x^3}   \\
+                        \diffp[2] ux & = \color{y_p} \frac{2y}{x^3} &
+                        \diffp[2] uy & = \color{y_p} 0
+                    \end{align}
+                    \begin{align}
+                        u(x, y)      & = \sin(xy)                          &
+                        f            & = \color{y_h} (x^2 + y^2)\ \sin(xy)   \\
+                        \diffp[2] ux & = \color{y_p} -y^2\ \sin(xy)        &
+                        \diffp[2] uy & = \color{y_p} -x^2\ \sin(xy)
+                    \end{align}
+                    \begin{align}
+                        u(x, y)      & = e^{x^2 - y^2}                           &
+                        f            & = \color{y_h} 4(x^2 + y^2)\ e^{x^2 - y^2}   \\
+                        \diffp[2] ux & = \color{y_p} (2 + 4x^2)\ e^{x^2 - y^2}   &
+                        \diffp[2] uy & = \color{y_p} (-2 + 4y^2)\ e^{x^2 - y^2}
+                    \end{align}
+                    \begin{align}
+                        u(x, y)        & = \frac{1}{\sqrt{x^2 + y^2}}              &
+                        f              & = \color{y_h} (x^2 + y^2)^{-3/2}            \\
+                        \diffp ux      & = \frac{-x}{(x^2 + y^2)^{3/2}}            &
+                        \diffp uy      & = \frac{-y}{(x^2 + y^2)^{3/2}}              \\
+                        \diffp[2] ux   & = \frac{-r^3 + 3x^2 r}{r^6}               &
+                        \diffp[2] uy   & = \frac{-r^3 + 3y^2 r}{r^6}                 \\
+                        \diffp[2] ux
+                        + \diffp[2] uy & = \frac{1}{r^3}                           &
+                                       & = \color{y_p} \frac{1}{(x^2 + y^2)^{3/2}}
+                    \end{align}
+
+              \item $3d$ Laplace equation satisfied the given function,
+                    \textcolor{y_h}{Yes}
+                    \begin{align}
+                        u              & = \frac{1}{r}                              &
+                        r^2            & = x^2 + y^2 + z^2                            \\
+                        \difcp ux      & = \frac{-x}{r^3}                           &
+                        \difcp[2] ux   & = \frac{-r^3 + (x)\ (3xr)}{r^6}              \\
+                        \difcp[2] ux + \difcp[2] uy
+                        + \difcp[2] uz & = \frac{-3r^3 + 3r (x^2 + y^2 + z^2)}{r^6} &
+                                       & = 0
+                    \end{align}
+                    $2d$ Laplace equation satisfied by the given function,
+                    \textcolor{y_h}{Yes}
+                    \begin{align}
+                        u                & = \ln(x^2 + y^2)                  &
+                        r^2              & = x^2 + y^2                         \\
+                        \difcp ux        & = \frac{2}{r} \cdot \frac{x}{r}
+                        = \frac{2x}{r^2} &
+                        \difcp[2] ux     & = \frac{2r^2 - 4x^2}{r^4}           \\
+                        \difcp[2] ux
+                        + \difcp[2] uy   & = \frac{4r^2 - 4(x^2 + y^2)}{r^4} &
+                                         & = 0
+                    \end{align}
+                    From part $ b $, the fourth Poisson equation is the $ f(x, y) $
+                    needed on the right hand side. This also means that it does not
+                    satisfy the $2d$ Poisson equation
+              \item Verifying whether the given functions satisfy the PDEs, \par
+                    \textcolor{y_h}{Yes}, \textcolor{y_h}{Yes}, \textcolor{y_h}{Yes}
+                    \begin{align}
+                        u               & = v(x) + w(y)   &
+                        \difcp{u}{x, y} & = 0               \\
+                        \difcp ux       & = \difcp vx + 0 &
+                        \difcp{u}{x, y} & = 0 + 0
+                    \end{align}
+                    \begin{align}
+                        u                         & = v(x) \cdot w(y)               &
+                        u \cdot \difcp{u}{x, y}   & = \difcp ux \cdot \difcp uy       \\
+                        \difcp {u}{x,y}           & = \difcp vx \cdot \difcp wy     &
+                        \difcp ux \cdot \difcp uy & = [w \cdot \difcp vx]
+                        \cdot [v\ \difcp wy]                                          \\
+                                                  &                                 &
+                                                  & = [v \cdot w]\ [\difcp vx \cdot
+                        \difcp wy]
+                    \end{align}
+                    \begin{align}
+                        u            & = v(x+2t) + w(x - 2t)               &
+                        \difcp[2] ut & = 4\ \difcp[2] ux                     \\
+                        \difcp[2] ut & = 4\ \difcp[2] vt + 4\ \difcp[2] wt &
+                        \difcp[2] ux & = \difcp[2] vx + \difcp[2] wx
+                    \end{align}
+          \end{enumerate}
+
+    \item Checking if the given function satisfies Laplace's equation,
+          \begin{align}
+              u(x, y)                     & = a \ln(x^2 + y^2) + b &
+              \difcp[2] ux + \difcp[2] uy & = 0                      \\
+              \difcp[2] ux                & = 2a\ \frac{y^2 - x^2}
+              {(x^2 + y^2)^2}             &
+              \difcp[2] uy                & = 2a\ \frac{x^2 - y^2}
+              {(x^2 + y^2)^2}                                        \\
+          \end{align}
+          Using the boundary conditions,
+          \begin{align}
+              x^2 + y^2    & = 1                     &
+              \implies 110 & = b                       \\
+              x^2 + y^2    & = 100                   &
+              \implies 0   & = a\ln(100) + b           \\
+              b            & = 110                   &
+              a            & = \frac{-110}{\ln(100)}
+          \end{align}
+
+    \item Solving using ODE methods,
+          \begin{align}
+              \difcp[2] uy & = 0                   &
+              \difcp uy    & = f(x)                  \\
+              u            & = y \cdot f(x) + g(x)
+          \end{align}
+
+    \item Solving using ODE methods,
+          \begin{align}
+              \difcp[2] ux & = -16\pi^2\ u                                       &
+              u            & = f(y) \cdot \cos(4\pi x) + g(y) \cdot \sin(4\pi x)
+          \end{align}
+
+    \item Solving using ODE methods,
+          \begin{align}
+              \difcp[2] uy & = \frac{4u}{25}                              &
+              u            & = f(x) \cdot e^{-2y/5} + g(x) \cdot e^{2y/5}
+          \end{align}
+
+    \item Solving using ODE methods,
+          \begin{align}
+              \diffp uy & = -y^2\ u               &
+              \ln(u)    & = \frac{-y^3}{3} + f(x)   \\
+              u         & = g(x) \cdot e^{-y^3/3}
+          \end{align}
+
+    \item Solving the homogeneous ODE in $ x $,
+          \begin{align}
+              2\ \diffp[2] ux + 9\ \diffp ux + 4u & = -3 \cos x - 29 \sin x            \\
+              2 u'' + 9u' + 4u                    & = 0                                \\
+              \lambda                             & = \frac{-9 \pm 7}{4}
+              = \{-4, -1/2\}                                                           \\
+              u_h                                 & = c_1(y) e^{-4x} + c_2(y) e^{-x/2}
+          \end{align}
+          Solving the non-homogeneous ODE in $x$,
+          \begin{align}
+              u_p & = K \cos(x) + M \sin(x)   \\
+              -3  & = -2K + 4K + 9M         &
+              -29 & = -2M + 4M - 9K           \\
+              u_p & = 3\cos x - \sin x
+          \end{align}
+          Combining the two parts of the ODE solution,
+          \begin{align}
+              u(x, y) & = {\color{y_h} c_1(y) e^{-4x} + c_2(y) e^{-x/2}}
+              + {\color{y_p} 3\cos x - \sin x}
+          \end{align}
+
+    \item Solving the homogeneous ODE in $ y $,
+          \begin{align}
+              \diffp[2] uy + 6\ \diffp uy + 13u & = 4e^{3y}             \\
+              u'' + 6u' + 13u                   & = 0                   \\
+              \lambda                           & = \frac{-6 \pm 4i}{2}
+              = \{-3 \pm 2i\}                                           \\
+              u_h                               & = e^{-3y}\
+              [c_1(x) \cos(2y) + c_2(x) \sin(2y)]
+          \end{align}
+          Solving the non-homogeneous ODE in $y$,
+          \begin{align}
+              u_p & = K\ e^{3y}        \\
+              4   & = 9K + 18K + 13K &
+              K   & = 0.1
+          \end{align}
+          Combining the two parts of the ODE solution,
+          \begin{align}
+              u(x, y) & = {\color{y_h} e^{-3y}\ [c_1(x) \cos(2y) + c_2(x) \sin(2y)]}
+              + {\color{y_p} 0.1\ e^{3y}}
+          \end{align}
+
+    \item Solving the homogeneous ODE in $ y $,
+          \begin{align}
+              \diffp {u}{y, x} & = \diffp ux   &
+              \diffp uy        & = u + f(y)      \\
+              \ln[u + f(y)]    & = y + c_2     &
+              u                & = Ae^y + B(y)
+          \end{align}
+
+    \item Solving the homogeneous ODE in $ y $,
+          \begin{align}
+              x^2\ \diffp[2] ux + 2x\ \diffp ux - 2u & = 0            &
+              x^2\ u'' + 2x\ 6u - 2u                 & = 0              \\
+              m^2 + (2-1)m - 2                       & = 0            &
+              m                                      &
+              = \frac{-1 \pm 3}{2} = \{-2, 1\}                          \\
+              u_h                                    & = f(y)\ x^{-2}
+              + g(y)x
+          \end{align}
+
+    \item Using the given equation and cylindrical coordinates,
+          \begin{align}
+              y\ \difcp zx       & = x\ \difcp zy                         &
+              x                  & = r\cos \theta \qquad y = r\sin \theta   \\
+              \diffp {z}{\theta} & = \difcp zx \cdot \difcp {x}{\theta}
+              + \difcp zy \cdot
+              \difcp {y}{\theta} &
+              \difcp {z}{\theta} & = \Big[-r\sin \theta \cdot \cot \theta
+              + r\cos \theta\Big]\ \difcp zy                                \\
+              \difcp{z}{\theta}  & = 0
+          \end{align}
+          Since $ z $ is independent of $ \theta $, the surface is symmetric about the
+          polar axis which makes it a surface of revolution about the $ z $ axis.
+
+    \item Solving the system of ODEs,
+          \begin{align}
+              \difcp[2] ux & = 0                        &
+              \difcp[2] uy & = 0                          \\
+              u            & = f(y) \cdot (c_1 x + c_2) &
+              u            & = g(x) \cdot (b_1y + b_2)    \\
+              u            & = (c_1x + c_2)(b_1y + b_2)
+          \end{align}
+\end{enumerate}
